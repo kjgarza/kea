@@ -1,0 +1,28 @@
+name: Pop Culture
+gameType: monikers
+language: en
+topics:
+  - pop culture
+  - celebrities
+difficulty: medium
+cardCount: 50
+nsfw: false
+recommended: true
+context:
+  markdown: |
+    Generate Monikers phrases featuring well-known pop culture references.
+    Include a mix of:
+    - Fictional characters (Sherlock Holmes, Darth Vader, Harry Potter)
+    - Historical figures (Albert Einstein, Cleopatra, Napoleon)
+    - Celebrities (actors, musicians, athletes)
+    - Iconic fictional creatures/entities (Godzilla, E.T.)
+    - Famous duos or groups (Batman and Robin, The Beatles)
+
+    Requirements:
+    - All entries should be recognizable to a general audience
+    - Culturally diverse selections
+    - Mix of eras (classic and modern)
+    - Entries should work well across all 3 Monikers rounds:
+      - Round 1: Can be described with many words
+      - Round 2: Has a distinctive one-word association
+      - Round 3: Has actable characteristics or poses

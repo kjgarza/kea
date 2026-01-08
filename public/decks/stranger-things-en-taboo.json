@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "deckId": "stranger-things-en-taboo",
+  "version": "2026-01-08T13:15:07.268Z",
+  "name": "Stranger Things",
+  "gameType": "taboo",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "tv-shows",
+    "pop-culture",
+    "stranger-things"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "st-001",
+      "type": "taboo",
+      "target": "Eleven",
+      "forbidden": [
+        "psychic",
+        "powers",
+        "Eggo",
+        "nosebleed",
+        "Hopper"
+      ]
+    },
+    {
+      "cardId": "st-002",
+      "type": "taboo",
+      "target": "Mike",
+      "forbidden": [
+        "Eleven",
+        "leader",
+        "Wheeler",
+        "bicycle",
+        "friend"
+      ]
+    },
+    {
+      "cardId": "st-003",
+      "type": "taboo",
+      "target": "Dustin",
+      "forbidden": [
+        "toothless",
+        "cap",
+        "science",
+        "Demodog",
+        "Curly"
+      ]
+    },
+    {
+      "cardId": "st-004",
+      "type": "taboo",
+      "target": "Lucas",
+      "forbidden": [
+        "sling",
+        "Max",
+        "sister",
+        "fireworks",
+        "Sinclair"
+      ]
+    },
+    {
+      "cardId": "st-005",
+      "type": "taboo",
+      "target": "Will",
+      "forbidden": [
+        "Upside Down",
+        "Byers",
+        "drawing",
+        "missing",
+        "Mind Flayer"
+      ]
+    },
+    {
+      "cardId": "st-006",
+      "type": "taboo",
+      "target": "Nancy",
+      "forbidden": [
+        "reporter",
+        "Jonathan",
+        "Wheeler",
+        "gun",
+        "investigate"
+      ]
+    },
+    {
+      "cardId": "st-007",
+      "type": "taboo",
+      "target": "Steve",
+      "forbidden": [
+        "bat",
+        "babysitter",
+        "hair",
+        "Robin",
+        "Harrington"
+      ]
+    },
+    {
+      "cardId": "st-008",
+      "type": "taboo",
+      "target": "Hopper",
+      "forbidden": [
+        "chief",
+        "police",
+        "Joyce",
+        "cabin",
+        "sheriff"
+      ]
+    },
+    {
+      "cardId": "st-009",
+      "type": "taboo",
+      "target": "Joyce",
+      "forbidden": [
+        "mother",
+        "lights",
+        "Byers",
+        "Winona",
+        "store"
+      ]
+    },
+    {
+      "cardId": "st-010",
+      "type": "taboo",
+      "target": "Jonathan",
+      "forbidden": [
+        "photography",
+        "Nancy",
+        "Byers",
+        "brother",
+        "camera"
+      ]
+    },
+    {
+      "cardId": "st-011",
+      "type": "taboo",
+      "target": "Max",
+      "forbidden": [
+        "skateboard",
+        "redhead",
+        "Billy",
+        "arcade",
+        "Lucas"
+      ]
+    },
+    {
+      "cardId": "st-012",
+      "type": "taboo",
+      "target": "Robin",
+      "forbidden": [
+        "Scoops Ahoy",
+        "Steve",
+        "code",
+        "ice cream",
+        "mall"
+      ]
+    },
+    {
+      "cardId": "st-013",
+      "type": "taboo",
+      "target": "Murray",
+      "forbidden": [
+        "conspiracy",
+        "Russian",
+        "journalist",
+        "bunker",
+        "bald"
+      ]
+    },
+    {
+      "cardId": "st-014",
+      "type": "taboo",
+      "target": "Demogorgon",
+      "forbidden": [
+        "monster",
+        "Upside Down",
+        "flower",
+        "predator",
+        "teeth"
+      ]
+    },
+    {
+      "cardId": "st-015",
+      "type": "taboo",
+      "target": "Mind Flayer",
+      "forbidden": [
+        "shadow",
+        "control",
+        "creature",
+        "Will",
+        "hive"
+      ]
+    },
+    {
+      "cardId": "st-016",
+      "type": "taboo",
+      "target": "Vecna",
+      "forbidden": [
+        "villain",
+        "curse",
+        "Henry",
+        "telekinesis",
+        "season four"
+      ]
+    },
+    {
+      "cardId": "st-017",
+      "type": "taboo",
+      "target": "Hawkins",
+      "forbidden": [
+        "Indiana",
+        "town",
+        "school",
+        "middle",
+        "small"
+      ]
+    },
+    {
+      "cardId": "st-018",
+      "type": "taboo",
+      "target": "Upside Down",
+      "forbidden": [
+        "parallel",
+        "dark",
+        "portal",
+        "dimension",
+        "mirror"
+      ]
+    },
+    {
+      "cardId": "st-019",
+      "type": "taboo",
+      "target": "Hawkins Lab",
+      "forbidden": [
+        "experiments",
+        "Dr. Brenner",
+        "facility",
+        "secrets",
+        "government"
+      ]
+    },
+    {
+      "cardId": "st-020",
+      "type": "taboo",
+      "target": "Starcourt Mall",
+      "forbidden": [
+        "shopping",
+        "food court",
+        "escalator",
+        "mall",
+        "1980s"
+      ]
+    },
+    {
+      "cardId": "st-021",
+      "type": "taboo",
+      "target": "Eggo waffles",
+      "forbidden": [
+        "breakfast",
+        "frozen",
+        "Eleven",
+        "syrup",
+        "brand"
+      ]
+    },
+    {
+      "cardId": "st-022",
+      "type": "taboo",
+      "target": "walkie-talkies",
+      "forbidden": [
+        "communication",
+        "radio",
+        "kids",
+        "talk",
+        "device"
+      ]
+    },
+    {
+      "cardId": "st-023",
+      "type": "taboo",
+      "target": "D&D references",
+      "forbidden": [
+        "game",
+        "dice",
+        "tabletop",
+        "role-playing",
+        "campaign"
+      ]
+    },
+    {
+      "cardId": "st-024",
+      "type": "taboo",
+      "target": "portals",
+      "forbidden": [
+        "gate",
+        "entryway",
+        "Upside Down",
+        "dimensions",
+        "open"
+      ]
+    },
+    {
+      "cardId": "st-025",
+      "type": "taboo",
+      "target": "psychic powers",
+      "forbidden": [
+        "telekinesis",
+        "mind",
+        "Eleven",
+        "abilities",
+        "supernatural"
+      ]
+    },
+    {
+      "cardId": "st-026",
+      "type": "taboo",
+      "target": "Hawkins National Laboratory",
+      "forbidden": [
+        "research",
+        "science",
+        "experiments",
+        "Eleven",
+        "secret"
+      ]
+    },
+    {
+      "cardId": "st-027",
+      "type": "taboo",
+      "target": "80s music",
+      "forbidden": [
+        "decade",
+        "synth",
+        "nostalgia",
+        "classics",
+        "era"
+      ]
+    },
+    {
+      "cardId": "st-028",
+      "type": "taboo",
+      "target": "arcade games",
+      "forbidden": [
+        "quarters",
+        "machines",
+        "Max",
+        "play",
+        "video"
+      ]
+    }
+  ]
+}

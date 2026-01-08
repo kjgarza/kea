@@ -1,0 +1,74 @@
+name: Generate Decks
+
+on:
+  # Trigger on changes to source configs
+  push:
+    branches:
+      - main
+    paths:
+      - 'decks/source/**'
+
+  # Manual trigger with options
+  workflow_dispatch:
+    inputs:
+      deck:
+        description: 'Specific deck to generate (leave empty for all)'
+        required: false
+        type: string
+      dry_run:
+        description: 'Dry run (no API calls)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Generate decks
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "Running in dry-run mode..."
+            if [ -n "${{ inputs.deck }}" ]; then
+              bun scripts/generate-decks.ts --deck "${{ inputs.deck }}" --dry-run
+            else
+              bun scripts/generate-decks.ts --all --dry-run
+            fi
+          else
+            if [ -n "${{ inputs.deck }}" ]; then
+              bun scripts/generate-decks.ts --deck "${{ inputs.deck }}"
+            else
+              bun scripts/generate-decks.ts --all
+            fi
+          fi
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet public/decks/ || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.has_changes == 'true' && inputs.dry_run != true
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/decks/
+          git commit -m "chore: regenerate decks [skip ci]"
+          git push

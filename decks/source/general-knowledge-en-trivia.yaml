@@ -1,0 +1,27 @@
+name: General Knowledge
+gameType: trivia
+language: en
+topics:
+  - general
+difficulty: medium
+cardCount: 50
+nsfw: false
+recommended: true
+triviaFormat: mixed  # Can be: mcq, open, or mixed
+context:
+  markdown: |
+    Generate general knowledge trivia questions covering a variety of topics:
+    - Geography (capitals, countries, landmarks)
+    - Science (planets, elements, basic physics)
+    - History (major events, famous people)
+    - Pop culture (movies, music, sports)
+    - Nature (animals, plants, weather)
+
+    For multiple choice questions:
+    - Include 4 plausible answer choices
+    - Make distractors believable but clearly wrong
+    - Avoid trick questions
+
+    For open-ended questions:
+    - Ensure answers are unambiguous
+    - Prefer single-word or short phrase answers

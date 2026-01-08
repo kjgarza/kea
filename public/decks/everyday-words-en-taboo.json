@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "deckId": "everyday-words-en-taboo",
+  "version": "2026-01-07T00:00:00Z",
+  "name": "Everyday Words",
+  "gameType": "taboo",
+  "language": "en",
+  "difficulty": "easy",
+  "topics": ["general"],
+  "nsfw": false,
+  "cards": [
+    { "cardId": "tb-001", "type": "taboo", "target": "Beach", "forbidden": ["sand", "ocean", "sun", "waves", "vacation"] },
+    { "cardId": "tb-002", "type": "taboo", "target": "Birthday", "forbidden": ["cake", "party", "candles", "presents", "age"] },
+    { "cardId": "tb-003", "type": "taboo", "target": "Coffee", "forbidden": ["drink", "caffeine", "morning", "cup", "beans"] },
+    { "cardId": "tb-004", "type": "taboo", "target": "Hospital", "forbidden": ["doctor", "sick", "nurse", "patient", "medicine"] },
+    { "cardId": "tb-005", "type": "taboo", "target": "Library", "forbidden": ["books", "read", "quiet", "borrow", "shelves"] },
+    { "cardId": "tb-006", "type": "taboo", "target": "Pizza", "forbidden": ["cheese", "slice", "Italian", "toppings", "delivery"] },
+    { "cardId": "tb-007", "type": "taboo", "target": "School", "forbidden": ["teacher", "student", "learn", "class", "homework"] },
+    { "cardId": "tb-008", "type": "taboo", "target": "Television", "forbidden": ["watch", "screen", "channel", "remote", "show"] },
+    { "cardId": "tb-009", "type": "taboo", "target": "Wedding", "forbidden": ["bride", "groom", "marriage", "ring", "ceremony"] },
+    { "cardId": "tb-010", "type": "taboo", "target": "Zoo", "forbidden": ["animals", "cage", "wild", "visitors", "exhibit"] }
+  ]
+}

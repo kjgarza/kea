@@ -1,0 +1,24 @@
+name: Everyday Words
+gameType: taboo
+language: en
+topics:
+  - general
+difficulty: easy
+cardCount: 50
+nsfw: false
+recommended: true
+context:
+  markdown: |
+    Generate Taboo cards for common everyday words and concepts.
+    Categories to include:
+    - Places (beach, hospital, library, school)
+    - Food and drinks (pizza, coffee, birthday cake)
+    - Activities (wedding, vacation, party)
+    - Objects (television, phone, car)
+    - Concepts (love, friendship, work)
+
+    For each target word, provide 5 forbidden words that are:
+    - The most obvious clues someone would use
+    - Not simple variations of the target (no plurals, verb forms)
+    - Commonly associated with the target
+    - All unique from each other

@@ -1,0 +1,22 @@
+name: Animals
+gameType: charades
+language: en
+topics:
+  - animals
+  - nature
+difficulty: medium
+cardCount: 50
+nsfw: false
+recommended: true
+context:
+  markdown: |
+    Generate charades prompts for common animals that are easy to act out.
+    Include a mix of:
+    - Farm animals (cow, pig, chicken)
+    - Wild animals (lion, elephant, monkey)
+    - Sea creatures (fish, shark, octopus)
+    - Birds (eagle, penguin, flamingo)
+    - Insects (butterfly, bee, spider)
+
+    Focus on animals with distinctive movements or behaviors that make them
+    fun and recognizable to act out in charades.

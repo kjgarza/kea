@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "decks": [
+    {
+      "deckId": "animals-en-charades",
+      "name": "Animals",
+      "gameType": "charades",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "animals",
+        "nature"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-07T00:00:00Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "everyday-words-en-taboo",
+      "name": "Everyday Words",
+      "gameType": "taboo",
+      "language": "en",
+      "difficulty": "easy",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-07T00:00:00Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "general-knowledge-en-trivia",
+      "name": "General Knowledge",
+      "gameType": "trivia",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-07T00:00:00Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "pop-culture-en-monikers",
+      "name": "Pop Culture",
+      "gameType": "monikers",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "pop culture",
+        "celebrities"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-07T00:00:00Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "simple-words-en-justone",
+      "name": "Simple Words",
+      "gameType": "justone",
+      "language": "en",
+      "difficulty": "easy",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-07T00:00:00Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "stranger-things-en-taboo",
+      "name": "Stranger Things",
+      "gameType": "taboo",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "tv-shows",
+        "pop-culture",
+        "stranger-things"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-08T13:15:07.268Z",
+      "cardCount": 28
+    }
+  ]
+}

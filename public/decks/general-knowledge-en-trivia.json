@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "deckId": "general-knowledge-en-trivia",
+  "version": "2026-01-07T00:00:00Z",
+  "name": "General Knowledge",
+  "gameType": "trivia",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": ["general"],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "tr-001",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "Which planet is known as the Red Planet?",
+      "choices": ["Venus", "Mars", "Jupiter", "Mercury"],
+      "answerIndex": 1,
+      "answerText": "Mars"
+    },
+    {
+      "cardId": "tr-002",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "What is the largest ocean on Earth?",
+      "choices": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+      "answerIndex": 2,
+      "answerText": "Pacific Ocean"
+    },
+    {
+      "cardId": "tr-003",
+      "type": "trivia",
+      "format": "open",
+      "question": "What is the capital of France?",
+      "answerText": "Paris"
+    },
+    {
+      "cardId": "tr-004",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "How many continents are there?",
+      "choices": ["5", "6", "7", "8"],
+      "answerIndex": 2,
+      "answerText": "7"
+    },
+    {
+      "cardId": "tr-005",
+      "type": "trivia",
+      "format": "open",
+      "question": "What year did World War II end?",
+      "answerText": "1945"
+    },
+    {
+      "cardId": "tr-006",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "Which element has the chemical symbol 'O'?",
+      "choices": ["Gold", "Oxygen", "Osmium", "Silver"],
+      "answerIndex": 1,
+      "answerText": "Oxygen"
+    },
+    {
+      "cardId": "tr-007",
+      "type": "trivia",
+      "format": "open",
+      "question": "Who painted the Mona Lisa?",
+      "answerText": "Leonardo da Vinci"
+    },
+    {
+      "cardId": "tr-008",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "What is the smallest country in the world?",
+      "choices": ["Monaco", "Vatican City", "San Marino", "Liechtenstein"],
+      "answerIndex": 1,
+      "answerText": "Vatican City"
+    },
+    {
+      "cardId": "tr-009",
+      "type": "trivia",
+      "format": "open",
+      "question": "What is the hardest natural substance on Earth?",
+      "answerText": "Diamond"
+    },
+    {
+      "cardId": "tr-010",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "Which planet has the most moons?",
+      "choices": ["Jupiter", "Saturn", "Uranus", "Neptune"],
+      "answerIndex": 1,
+      "answerText": "Saturn"
+    }
+  ]
+}

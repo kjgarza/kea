@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "deckId": "simple-words-en-justone",
+  "version": "2026-01-07T00:00:00Z",
+  "name": "Simple Words",
+  "gameType": "justone",
+  "language": "en",
+  "difficulty": "easy",
+  "topics": ["general"],
+  "nsfw": false,
+  "cards": [
+    { "cardId": "jo-001", "type": "justone", "target": "Volcano" },
+    { "cardId": "jo-002", "type": "justone", "target": "Astronaut" },
+    { "cardId": "jo-003", "type": "justone", "target": "Rainbow" },
+    { "cardId": "jo-004", "type": "justone", "target": "Treasure" },
+    { "cardId": "jo-005", "type": "justone", "target": "Nightmare" },
+    { "cardId": "jo-006", "type": "justone", "target": "Chocolate" },
+    { "cardId": "jo-007", "type": "justone", "target": "Detective" },
+    { "cardId": "jo-008", "type": "justone", "target": "Jungle" },
+    { "cardId": "jo-009", "type": "justone", "target": "Pirate" },
+    { "cardId": "jo-010", "type": "justone", "target": "Wizard" }
+  ]
+}

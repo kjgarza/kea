@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "deckId": "animals-en-charades",
+  "version": "2026-01-07T00:00:00Z",
+  "name": "Animals",
+  "gameType": "charades",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": ["animals", "nature"],
+  "nsfw": false,
+  "cards": [
+    { "cardId": "ch-001", "type": "charades", "prompt": "Elephant" },
+    { "cardId": "ch-002", "type": "charades", "prompt": "Kangaroo" },
+    { "cardId": "ch-003", "type": "charades", "prompt": "Penguin" },
+    { "cardId": "ch-004", "type": "charades", "prompt": "Snake" },
+    { "cardId": "ch-005", "type": "charades", "prompt": "Monkey" },
+    { "cardId": "ch-006", "type": "charades", "prompt": "Butterfly" },
+    { "cardId": "ch-007", "type": "charades", "prompt": "Crocodile" },
+    { "cardId": "ch-008", "type": "charades", "prompt": "Flamingo" },
+    { "cardId": "ch-009", "type": "charades", "prompt": "Gorilla" },
+    { "cardId": "ch-010", "type": "charades", "prompt": "Octopus" }
+  ]
+}

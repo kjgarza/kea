@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "deckId": "pop-culture-en-monikers",
+  "version": "2026-01-07T00:00:00Z",
+  "name": "Pop Culture",
+  "gameType": "monikers",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": ["pop culture", "celebrities"],
+  "nsfw": false,
+  "cards": [
+    { "cardId": "mn-001", "type": "monikers", "phrase": "Sherlock Holmes" },
+    { "cardId": "mn-002", "type": "monikers", "phrase": "Darth Vader" },
+    { "cardId": "mn-003", "type": "monikers", "phrase": "Harry Potter" },
+    { "cardId": "mn-004", "type": "monikers", "phrase": "Batman" },
+    { "cardId": "mn-005", "type": "monikers", "phrase": "Albert Einstein" },
+    { "cardId": "mn-006", "type": "monikers", "phrase": "James Bond" },
+    { "cardId": "mn-007", "type": "monikers", "phrase": "Wonder Woman" },
+    { "cardId": "mn-008", "type": "monikers", "phrase": "SpongeBob SquarePants" },
+    { "cardId": "mn-009", "type": "monikers", "phrase": "The Joker" },
+    { "cardId": "mn-010", "type": "monikers", "phrase": "Indiana Jones" }
+  ]
+}
