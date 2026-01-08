@@ -1,5 +1,6 @@
 import type { DeckIndex, Deck, DeckMeta } from "@/types/deck";
 import type { GameType } from "@/types/game";
+import { withBasePath } from "@/lib/utils/base-path";
 
 // In-memory cache for loaded data
 let deckIndexCache: DeckIndex | null = null;
@@ -13,7 +14,7 @@ export async function loadDeckIndex(): Promise<DeckIndex> {
     return deckIndexCache;
   }
 
-  const response = await fetch("/decks/index.json");
+  const response = await fetch(withBasePath("/decks/index.json"));
   if (!response.ok) {
     throw new Error(`Failed to load deck index: ${response.status}`);
   }
@@ -32,7 +33,7 @@ export async function loadDeck(deckId: string): Promise<Deck> {
     return cached;
   }
 
-  const response = await fetch(`/decks/${deckId}.json`);
+  const response = await fetch(withBasePath(`/decks/${deckId}.json`));
   if (!response.ok) {
     if (response.status === 404) {
       throw new DeckNotFoundError(deckId);

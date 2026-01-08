@@ -4,15 +4,33 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const isProd = process.env.NODE_ENV === "production";
+const repoName = process.env.NEXT_PUBLIC_REPO_NAME || "kea";
+const basePath = isProd ? `/${repoName}` : "";
+
 export const metadata: Metadata = {
-  title: "Party Card Games",
+  title: "Kea",
   description:
-    "Play Charades, Trivia, Taboo, Just One, and Monikers with curated decks",
-  manifest: "/manifest.json",
+    "Playful party card games — Charades, Trivia, Taboo, Just One, and Monikers",
+  manifest: `${basePath}/manifest.json`,
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Party Card Games",
+    title: "Kea",
+  },
+  openGraph: {
+    title: "Kea",
+    description:
+      "Playful party card games — Charades, Trivia, Taboo, Just One, and Monikers",
+    siteName: "Kea",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kea",
+    description:
+      "Playful party card games — Charades, Trivia, Taboo, Just One, and Monikers",
   },
 };
 

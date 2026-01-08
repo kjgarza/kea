@@ -1,6 +1,6 @@
-# Party Card Games
+# Kea 🦜
 
-A fully static web app for playing party card games with friends. Supports 5 game types with LLM-generated card decks.
+A playful party card games app — named after the Kea, one of the world's most intelligent and mischievous birds. Play with friends using 5 game types with LLM-generated card decks.
 
 ## Games
 
