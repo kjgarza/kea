@@ -31,6 +31,23 @@
       "cardCount": 10
     },
     {
+      "deckId": "films-1990s-en-taboo",
+      "name": "Films 1990s",
+      "gameType": "taboo",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "films",
+        "movies",
+        "1990s",
+        "cinema"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-10T15:31:55.944Z",
+      "cardCount": 49
+    },
+    {
       "deckId": "general-knowledge-en-trivia",
       "name": "General Knowledge",
       "gameType": "trivia",
@@ -43,6 +60,38 @@
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
       "cardCount": 10
+    },
+    {
+      "deckId": "music-1990s-en-charades",
+      "name": "Music 1990s",
+      "gameType": "charades",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "music",
+        "songs",
+        "1990s"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-10T15:27:53.916Z",
+      "cardCount": 43
+    },
+    {
+      "deckId": "music-2010s-en-charades",
+      "name": "Music 2010s",
+      "gameType": "charades",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "music",
+        "songs",
+        "2010s"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-10T15:28:09.363Z",
+      "cardCount": 49
     },
     {
       "deckId": "pop-culture-en-monikers",
@@ -58,6 +107,22 @@
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
       "cardCount": 10
+    },
+    {
+      "deckId": "random-concepts-en-justone",
+      "name": "Random Concepts",
+      "gameType": "justone",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "concepts",
+        "random",
+        "general knowledge"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-01-10T15:37:54.455Z",
+      "cardCount": 50
     },
     {
       "deckId": "simple-words-en-justone",

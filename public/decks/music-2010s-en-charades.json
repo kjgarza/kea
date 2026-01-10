@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "deckId": "music-2010s-en-charades",
+  "version": "2026-01-10T15:28:09.363Z",
+  "name": "Music 2010s",
+  "gameType": "charades",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "music",
+    "songs",
+    "2010s"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "mu-001",
+      "type": "charades",
+      "prompt": "Firework"
+    },
+    {
+      "cardId": "mu-002",
+      "type": "charades",
+      "prompt": "Happy"
+    },
+    {
+      "cardId": "mu-003",
+      "type": "charades",
+      "prompt": "Gangnam Style"
+    },
+    {
+      "cardId": "mu-004",
+      "type": "charades",
+      "prompt": "Uptown Funk"
+    },
+    {
+      "cardId": "mu-005",
+      "type": "charades",
+      "prompt": "Shape of You"
+    },
+    {
+      "cardId": "mu-006",
+      "type": "charades",
+      "prompt": "Roar"
+    },
+    {
+      "cardId": "mu-007",
+      "type": "charades",
+      "prompt": "Rolling in the Deep"
+    },
+    {
+      "cardId": "mu-008",
+      "type": "charades",
+      "prompt": "Old Town Road"
+    },
+    {
+      "cardId": "mu-009",
+      "type": "charades",
+      "prompt": "Despacito"
+    },
+    {
+      "cardId": "mu-010",
+      "type": "charades",
+      "prompt": "Someone Like You"
+    },
+    {
+      "cardId": "mu-011",
+      "type": "charades",
+      "prompt": "Havana"
+    },
+    {
+      "cardId": "mu-012",
+      "type": "charades",
+      "prompt": "Call Me Maybe"
+    },
+    {
+      "cardId": "mu-013",
+      "type": "charades",
+      "prompt": "Blurred Lines"
+    },
+    {
+      "cardId": "mu-014",
+      "type": "charades",
+      "prompt": "Thrift Shop"
+    },
+    {
+      "cardId": "mu-015",
+      "type": "charades",
+      "prompt": "Can't Stop the Feeling"
+    },
+    {
+      "cardId": "mu-016",
+      "type": "charades",
+      "prompt": "Shake It Off"
+    },
+    {
+      "cardId": "mu-017",
+      "type": "charades",
+      "prompt": "All About That Bass"
+    },
+    {
+      "cardId": "mu-018",
+      "type": "charades",
+      "prompt": "One Dance"
+    },
+    {
+      "cardId": "mu-019",
+      "type": "charades",
+      "prompt": "Sunflower"
+    },
+    {
+      "cardId": "mu-020",
+      "type": "charades",
+      "prompt": "Bad Guy"
+    },
+    {
+      "cardId": "mu-021",
+      "type": "charades",
+      "prompt": "Senorita"
+    },
+    {
+      "cardId": "mu-022",
+      "type": "charades",
+      "prompt": "Sorry"
+    },
+    {
+      "cardId": "mu-023",
+      "type": "charades",
+      "prompt": "Panda"
+    },
+    {
+      "cardId": "mu-024",
+      "type": "charades",
+      "prompt": "God's Plan"
+    },
+    {
+      "cardId": "mu-025",
+      "type": "charades",
+      "prompt": "Katy Perry"
+    },
+    {
+      "cardId": "mu-026",
+      "type": "charades",
+      "prompt": "Pharrell Williams"
+    },
+    {
+      "cardId": "mu-027",
+      "type": "charades",
+      "prompt": "Bruno Mars"
+    },
+    {
+      "cardId": "mu-028",
+      "type": "charades",
+      "prompt": "Ed Sheeran"
+    },
+    {
+      "cardId": "mu-029",
+      "type": "charades",
+      "prompt": "Adele"
+    },
+    {
+      "cardId": "mu-030",
+      "type": "charades",
+      "prompt": "Lil Nas X"
+    },
+    {
+      "cardId": "mu-031",
+      "type": "charades",
+      "prompt": "Luis Fonsi"
+    },
+    {
+      "cardId": "mu-032",
+      "type": "charades",
+      "prompt": "Carly Rae Jepsen"
+    },
+    {
+      "cardId": "mu-033",
+      "type": "charades",
+      "prompt": "Macklemore"
+    },
+    {
+      "cardId": "mu-034",
+      "type": "charades",
+      "prompt": "Justin Timberlake"
+    },
+    {
+      "cardId": "mu-035",
+      "type": "charades",
+      "prompt": "Taylor Swift"
+    },
+    {
+      "cardId": "mu-036",
+      "type": "charades",
+      "prompt": "Meghan Trainor"
+    },
+    {
+      "cardId": "mu-037",
+      "type": "charades",
+      "prompt": "Drake"
+    },
+    {
+      "cardId": "mu-038",
+      "type": "charades",
+      "prompt": "Billie Eilish"
+    },
+    {
+      "cardId": "mu-039",
+      "type": "charades",
+      "prompt": "Shawn Mendes"
+    },
+    {
+      "cardId": "mu-040",
+      "type": "charades",
+      "prompt": "Justin Bieber"
+    },
+    {
+      "cardId": "mu-041",
+      "type": "charades",
+      "prompt": "Desiigner"
+    },
+    {
+      "cardId": "mu-042",
+      "type": "charades",
+      "prompt": "The Weeknd"
+    },
+    {
+      "cardId": "mu-043",
+      "type": "charades",
+      "prompt": "Dance"
+    },
+    {
+      "cardId": "mu-044",
+      "type": "charades",
+      "prompt": "Hip-Hop"
+    },
+    {
+      "cardId": "mu-045",
+      "type": "charades",
+      "prompt": "R&B"
+    },
+    {
+      "cardId": "mu-046",
+      "type": "charades",
+      "prompt": "Country"
+    },
+    {
+      "cardId": "mu-047",
+      "type": "charades",
+      "prompt": "Pop"
+    },
+    {
+      "cardId": "mu-048",
+      "type": "charades",
+      "prompt": "Disco"
+    },
+    {
+      "cardId": "mu-049",
+      "type": "charades",
+      "prompt": "Rap"
+    }
+  ]
+}

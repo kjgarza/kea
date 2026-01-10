@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "deckId": "random-concepts-en-justone",
+  "version": "2026-01-10T15:37:54.455Z",
+  "name": "Random Concepts",
+  "gameType": "justone",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "concepts",
+    "random",
+    "general knowledge"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "ra-001",
+      "type": "justone",
+      "target": "Volcano"
+    },
+    {
+      "cardId": "ra-002",
+      "type": "justone",
+      "target": "Treasure"
+    },
+    {
+      "cardId": "ra-003",
+      "type": "justone",
+      "target": "Detective"
+    },
+    {
+      "cardId": "ra-004",
+      "type": "justone",
+      "target": "Jungle"
+    },
+    {
+      "cardId": "ra-005",
+      "type": "justone",
+      "target": "Castle"
+    },
+    {
+      "cardId": "ra-006",
+      "type": "justone",
+      "target": "Pirate"
+    },
+    {
+      "cardId": "ra-007",
+      "type": "justone",
+      "target": "Rainbow"
+    },
+    {
+      "cardId": "ra-008",
+      "type": "justone",
+      "target": "Robot"
+    },
+    {
+      "cardId": "ra-009",
+      "type": "justone",
+      "target": "Wizard"
+    },
+    {
+      "cardId": "ra-010",
+      "type": "justone",
+      "target": "Balloon"
+    },
+    {
+      "cardId": "ra-011",
+      "type": "justone",
+      "target": "Bridge"
+    },
+    {
+      "cardId": "ra-012",
+      "type": "justone",
+      "target": "Cactus"
+    },
+    {
+      "cardId": "ra-013",
+      "type": "justone",
+      "target": "Trampoline"
+    },
+    {
+      "cardId": "ra-014",
+      "type": "justone",
+      "target": "Submarine"
+    },
+    {
+      "cardId": "ra-015",
+      "type": "justone",
+      "target": "Sculpture"
+    },
+    {
+      "cardId": "ra-016",
+      "type": "justone",
+      "target": "Library"
+    },
+    {
+      "cardId": "ra-017",
+      "type": "justone",
+      "target": "Vampire"
+    },
+    {
+      "cardId": "ra-018",
+      "type": "justone",
+      "target": "Compass"
+    },
+    {
+      "cardId": "ra-019",
+      "type": "justone",
+      "target": "Festival"
+    },
+    {
+      "cardId": "ra-020",
+      "type": "justone",
+      "target": "Giraffe"
+    },
+    {
+      "cardId": "ra-021",
+      "type": "justone",
+      "target": "Lighthouse"
+    },
+    {
+      "cardId": "ra-022",
+      "type": "justone",
+      "target": "Igloo"
+    },
+    {
+      "cardId": "ra-023",
+      "type": "justone",
+      "target": "Carousel"
+    },
+    {
+      "cardId": "ra-024",
+      "type": "justone",
+      "target": "Fireworks"
+    },
+    {
+      "cardId": "ra-025",
+      "type": "justone",
+      "target": "Maze"
+    },
+    {
+      "cardId": "ra-026",
+      "type": "justone",
+      "target": "Sailboat"
+    },
+    {
+      "cardId": "ra-027",
+      "type": "justone",
+      "target": "Planet"
+    },
+    {
+      "cardId": "ra-028",
+      "type": "justone",
+      "target": "Sphinx"
+    },
+    {
+      "cardId": "ra-029",
+      "type": "justone",
+      "target": "Garden"
+    },
+    {
+      "cardId": "ra-030",
+      "type": "justone",
+      "target": "Candle"
+    },
+    {
+      "cardId": "ra-031",
+      "type": "justone",
+      "target": "Harbor"
+    },
+    {
+      "cardId": "ra-032",
+      "type": "justone",
+      "target": "Parachute"
+    },
+    {
+      "cardId": "ra-033",
+      "type": "justone",
+      "target": "Meteor"
+    },
+    {
+      "cardId": "ra-034",
+      "type": "justone",
+      "target": "Telescope"
+    },
+    {
+      "cardId": "ra-035",
+      "type": "justone",
+      "target": "Marathon"
+    },
+    {
+      "cardId": "ra-036",
+      "type": "justone",
+      "target": "Glacier"
+    },
+    {
+      "cardId": "ra-037",
+      "type": "justone",
+      "target": "Ferris Wheel"
+    },
+    {
+      "cardId": "ra-038",
+      "type": "justone",
+      "target": "Dragon"
+    },
+    {
+      "cardId": "ra-039",
+      "type": "justone",
+      "target": "Oasis"
+    },
+    {
+      "cardId": "ra-040",
+      "type": "justone",
+      "target": "Knight"
+    },
+    {
+      "cardId": "ra-041",
+      "type": "justone",
+      "target": "Cinema"
+    },
+    {
+      "cardId": "ra-042",
+      "type": "justone",
+      "target": "Fossil"
+    },
+    {
+      "cardId": "ra-043",
+      "type": "justone",
+      "target": "Amphitheater"
+    },
+    {
+      "cardId": "ra-044",
+      "type": "justone",
+      "target": "Orchestra"
+    },
+    {
+      "cardId": "ra-045",
+      "type": "justone",
+      "target": "Bonsai"
+    },
+    {
+      "cardId": "ra-046",
+      "type": "justone",
+      "target": "Windmill"
+    },
+    {
+      "cardId": "ra-047",
+      "type": "justone",
+      "target": "Tornado"
+    },
+    {
+      "cardId": "ra-048",
+      "type": "justone",
+      "target": "Labyrinth"
+    },
+    {
+      "cardId": "ra-049",
+      "type": "justone",
+      "target": "Canyon"
+    },
+    {
+      "cardId": "ra-050",
+      "type": "justone",
+      "target": "Chameleon"
+    }
+  ]
+}
