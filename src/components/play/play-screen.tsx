@@ -168,9 +168,9 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
       </header>
 
       {/* Card Display */}
-      <main className="flex-1 flex flex-col">
-        <div className="flex-1 flex items-center justify-center p-4">
-          <div className="w-full max-w-lg aspect-[3/4] bg-card rounded-xl shadow-lg border overflow-hidden">
+      <main className="flex-1 flex flex-col min-h-0">
+        <div className="flex items-center justify-center p-4 min-h-0 overflow-auto">
+          <div className="w-full max-w-lg aspect-[3/4] max-h-[calc(100vh-180px)] bg-card rounded-xl shadow-lg border overflow-hidden">
             <CardDisplay
               card={currentCard}
               isRevealed={session.isRevealed}
