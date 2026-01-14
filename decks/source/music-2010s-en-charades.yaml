@@ -1,0 +1,76 @@
+name: Music 2010s
+gameType: charades
+language: en
+topics:
+  - music
+  - songs
+  - 2010s
+difficulty: medium
+cardCount: 50
+nsfw: false
+recommended: true
+context:
+  markdown: |
+    Generate charades prompts for popular songs from the 2010s Billboard Hot 100 number-one singles.
+    Players should act out the song title, artist name, or key elements from the song without speaking.
+    Include a mix of:
+    - Song titles that are easy to visualize (e.g., "Firework", "Happy", "Can't Feel My Face")
+    - Artist names that have distinctive characteristics
+    - Musical genres represented in the 2010s (pop, hip-hop, dance, R&B, country, etc.)
+    - Songs with visual elements from music videos or lyrics
+    - Dance moves or actions associated with songs
+
+    Focus on the most iconic number-one hits that players would recognize and be able to act out effectively.
+    Songs should have clear visual or physical representations that can be acted out in charades.
+
+cards:
+  - Kesha - Tik Tok
+  - The Black Eyed Peas - Imma Be
+  - Taio Cruz - Break Your Heart
+  - Rihanna - Rude Boy
+  - B.o.B - Nothin' on You
+  - Usher - OMG
+  - Eminem - Not Afraid
+  - Katy Perry - California Gurls
+  - Eminem - Love the Way You Lie
+  - Katy Perry - Teenage Dream
+  - Bruno Mars - Just the Way You Are
+  - Far East Movement - Like a G6
+  - Kesha - We R Who We R
+  - Rihanna - What's My Name?
+  - Rihanna - Only Girl (In the World)
+  - Pink - Raise Your Glass
+  - Katy Perry - Firework
+  - Bruno Mars - Grenade
+  - Wiz Khalifa - Black and Yellow
+  - Lady Gaga - Born This Way
+  - Katy Perry - E.T.
+  - Rihanna - S&M
+  - Adele - Rolling in the Deep
+  - Pitbull - Give Me Everything
+  - LMFAO - Party Rock Anthem
+  - Katy Perry - Last Friday Night
+  - Maroon 5 - Moves Like Jagger
+  - Adele - Someone Like You
+  - Rihanna - We Found Love
+  - LMFAO - Sexy and I Know It
+  - Adele - Set Fire to the Rain
+  - Kelly Clarkson - Stronger
+  - Katy Perry - Part of Me
+  - Fun. - We Are Young
+  - Gotye - Somebody That I Used to Know
+  - Carly Rae Jepsen - Call Me Maybe
+  - Flo Rida - Whistle
+  - Maroon 5 - One More Night
+  - Rihanna - Diamonds
+  - Bruno Mars - Locked Out of Heaven
+  - Macklemore - Thrift Shop
+  - Baauer - Harlem Shake
+  - Bruno Mars - When I Was Your Man
+  - Pink - Just Give Me a Reason
+  - Macklemore - Can't Hold Us
+  - Robin Thicke - Blurred Lines
+  - Katy Perry - Roar
+  - Miley Cyrus - Wrecking Ball
+  - Lorde - Royals
+  - Eminem - The Monster

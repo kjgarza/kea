@@ -1,0 +1,76 @@
+name: Music 1990s
+gameType: charades
+language: en
+topics:
+  - music
+  - songs
+  - 1990s
+difficulty: medium
+cardCount: 50
+nsfw: false
+recommended: true
+context:
+  markdown: |
+    Generate charades prompts for popular songs from the 1990s Billboard Hot 100 number-one singles.
+    Players should act out the song title, artist name, or key elements from the song without speaking.
+    Include a mix of:
+    - Song titles that are easy to visualize (e.g., "I Will Always Love You", "Baby Got Back", "Vogue")
+    - Artist names that have distinctive characteristics
+    - Musical genres represented in the 1990s (R&B, pop, hip-hop, adult contemporary, rock ballads)
+    - Songs with visual elements from music videos or lyrics
+    - Dance moves or actions associated with songs (e.g., "Macarena", "Ice Ice Baby")
+
+    Focus on the most iconic number-one hits from the 1990s that players would recognize and be able to act out effectively.
+    Songs should have clear visual or physical representations that can be acted out in charades.
+
+cards:
+  - Michael Bolton - How Am I Supposed to Live Without You
+  - Paula Abdul - Opposites Attract
+  - Janet Jackson - Escapade
+  - Alannah Myles - Black Velvet
+  - Madonna - Vogue
+  - Wilson Phillips - Hold On
+  - Roxette - It Must Have Been Love
+  - New Kids on the Block - Step By Step
+  - Mariah Carey - Vision of Love
+  - Vanilla Ice - Ice Ice Baby
+  - Mariah Carey - Love Takes Time
+  - Madonna - Justify My Love
+  - C+C Music Factory - Gonna Make You Sweat
+  - Whitney Houston - All the Man That I Need
+  - Mariah Carey - Someday
+  - Amy Grant - Baby Baby
+  - Extreme - More Than Words
+  - Marky Mark - Good Vibrations
+  - Michael Jackson - Black or White
+  - Right Said Fred - I'm Too Sexy
+  - Mr. Big - To Be With You
+  - Vanessa Williams - Save the Best for Last
+  - Kris Kross - Jump
+  - Sir Mix-a-Lot - Baby Got Back
+  - Boyz II Men - End of the Road
+  - Whitney Houston - I Will Always Love You
+  - Peabo Bryson - A Whole New World
+  - Snow - Informer
+  - Janet Jackson - That's The Way Love Goes
+  - SWV - Weak
+  - UB40 - Falling in Love with You
+  - Mariah Carey - Dreamlover
+  - Mariah Carey - Hero
+  - All-4-One - I Swear
+  - Lisa Loeb - Stay (I Missed You)
+  - Boyz II Men - I'll Make Love to You
+  - Boyz II Men - On Bended Knee
+  - Ini Kamoze - Here Comes the Hotstepper
+  - TLC - Creep
+  - Madonna - Take A Bow
+  - Montell Jordan - This Is How We Do It
+  - TLC - Waterfalls
+  - Seal - Kiss from a Rose
+  - Michael Jackson - You Are Not Alone
+  - Coolio - Gangsta's Paradise
+  - Mariah Carey - Fantasy
+  - Mariah Carey - One Sweet Day
+  - Céline Dion - Because You Loved Me
+  - Mariah Carey - Always Be My Baby
+  - Los Del Rio - Macarena

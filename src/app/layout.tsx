@@ -1,8 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "600", "700", "800", "900"],
+});
 
 const isProd = process.env.NODE_ENV === "production";
 const repoName = process.env.NEXT_PUBLIC_REPO_NAME || "kea";
@@ -52,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased min-h-screen`}>
+      <body className={`${inter.variable} ${nunito.variable} font-sans antialiased min-h-screen`}>
         {children}
       </body>
     </html>

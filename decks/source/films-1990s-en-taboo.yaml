@@ -1,0 +1,81 @@
+name: Films 1990s
+gameType: taboo
+language: en
+topics:
+  - films
+  - movies
+  - 1990s
+  - cinema
+difficulty: medium
+cardCount: 50
+nsfw: false
+recommended: true
+context:
+  markdown: |
+    Generate taboo prompts for popular films from the 1990s.
+    Players must describe the movie without saying the title or key related words.
+    Include a mix of:
+    - Blockbuster action and adventure films
+    - Acclaimed dramas and Oscar winners
+    - Animation and family films
+    - Science fiction and thriller films
+    - Romantic comedies and drama films
+
+    Players should focus on:
+    - Plot details and storylines
+    - Character descriptions and relationships
+    - Setting and memorable scenes
+    - Emotional themes and messages
+    - Notable actors and characters
+
+cards:
+  - Titanic
+  - The Phantom Menace
+  - Jurassic Park
+  - Independence Day
+  - The Lion King
+  - Forrest Gump
+  - The Sixth Sense
+  - The Lost World
+  - Men in Black
+  - Armageddon
+  - Terminator 2
+  - Ghost
+  - Aladdin
+  - Twister
+  - Toy Story
+  - Saving Private Ryan
+  - Home Alone
+  - The Matrix
+  - Notting Hill
+  - American Beauty
+  - Dances with Wolves
+  - The Silence of the Lambs
+  - Unforgiven
+  - Schindler's List
+  - Braveheart
+  - The English Patient
+  - Shakespeare in Love
+  - Pulp Fiction
+  - Scream
+  - Mrs. Doubtfire
+  - The Bodyguard
+  - Robin Hood: Prince of Thieves
+  - True Lies
+  - The Mask
+  - Speed
+  - Seven
+  - The Fugitive
+  - Die Hard with a Vengeance
+  - Apollo 13
+  - GoldenEye
+  - Pocahontas
+  - The Flintstones
+  - Batman Forever
+  - The Rock
+  - Tomorrow Never Dies
+  - A Bug's Life
+  - Toy Story 2
+  - Godzilla
+  - There's Something About Mary
+  - The Mummy

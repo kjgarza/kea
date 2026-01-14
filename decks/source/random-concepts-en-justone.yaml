@@ -1,0 +1,83 @@
+name: Random Concepts
+gameType: justone
+language: en
+topics:
+  - concepts
+  - random
+  - general knowledge
+difficulty: medium
+cardCount: 50
+nsfw: false
+recommended: true
+context:
+  markdown: |
+    Generate Just One cards with random everyday concepts, objects, and ideas.
+    Players will receive a word and try to guess it based on one-word clues from other players.
+    Include a mix of:
+    - Common objects and items
+    - Abstract concepts and ideas
+    - Animals and nature
+    - Actions and verbs
+    - Emotions and feelings
+    - Famous things and places
+    - Food and drinks
+    - Professions and roles
+
+    Focus on words that are:
+    - Clear and unambiguous
+    - Meaningful and recognizable
+    - Easy to give one-word clues for
+    - Not too obscure or specialized
+    - Diverse across categories
+
+cards:
+  - Lighthouse
+  - Compass
+  - Mirror
+  - Shadow
+  - Echo
+  - Bridge
+  - Window
+  - Door
+  - Mountain
+  - River
+  - Forest
+  - Ocean
+  - Desert
+  - Garden
+  - Library
+  - Museum
+  - Theater
+  - Restaurant
+  - Hospital
+  - School
+  - Clock
+  - Calendar
+  - Map
+  - Telescope
+  - Microscope
+  - Ladder
+  - Rope
+  - Knot
+  - Anchor
+  - Flame
+  - Ice
+  - Storm
+  - Rainbow
+  - Cloud
+  - Wind
+  - Thunder
+  - Lightning
+  - Snow
+  - Rain
+  - Sunrise
+  - Sunset
+  - Moon
+  - Star
+  - Planet
+  - Galaxy
+  - Meteor
+  - Volcano
+  - Castle
+  - Palace
+  - Temple
