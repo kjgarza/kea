@@ -178,9 +178,7 @@ async function translateCards(
   const prompts = batches.map((batch, i) => ({
     systemPrompt: SYSTEM_PROMPT,
     prompt: `Translate these ${gameType} game cards to Spanish:\n\n${JSON.stringify(
-      batch.map(extractTranslatableFields),
-      null,
-      2
+      batch.map(extractTranslatableFields)
     )}\n\nReturn: { "cards": [...] }`,
     batchIndex: i,
     originalBatch: batch,
