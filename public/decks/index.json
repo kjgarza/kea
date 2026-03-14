@@ -17,6 +17,20 @@
       "cardCount": 10
     },
     {
+      "deckId": "classic-en-justone",
+      "name": "Classic Just One",
+      "gameType": "justone",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T07:35:59.165Z",
+      "cardCount": 550
+    },
+    {
       "deckId": "everyday-words-en-taboo",
       "name": "Everyday Words",
       "gameType": "taboo",

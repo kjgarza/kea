@@ -1,0 +1,2766 @@
+{
+  "schemaVersion": 1,
+  "deckId": "classic-en-justone",
+  "version": "2026-03-14T07:35:59.165Z",
+  "name": "Classic Just One",
+  "gameType": "justone",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "general"
+  ],
+  "nsfw": false,
+  "recommended": true,
+  "cards": [
+    {
+      "cardId": "ju-001",
+      "type": "justone",
+      "target": "Branch"
+    },
+    {
+      "cardId": "ju-002",
+      "type": "justone",
+      "target": "Cinderella"
+    },
+    {
+      "cardId": "ju-003",
+      "type": "justone",
+      "target": "Crepe"
+    },
+    {
+      "cardId": "ju-004",
+      "type": "justone",
+      "target": "Island"
+    },
+    {
+      "cardId": "ju-005",
+      "type": "justone",
+      "target": "Taxi"
+    },
+    {
+      "cardId": "ju-006",
+      "type": "justone",
+      "target": "Sail"
+    },
+    {
+      "cardId": "ju-007",
+      "type": "justone",
+      "target": "Cheddar"
+    },
+    {
+      "cardId": "ju-008",
+      "type": "justone",
+      "target": "Shrek"
+    },
+    {
+      "cardId": "ju-009",
+      "type": "justone",
+      "target": "Pole"
+    },
+    {
+      "cardId": "ju-010",
+      "type": "justone",
+      "target": "Western"
+    },
+    {
+      "cardId": "ju-011",
+      "type": "justone",
+      "target": "Viking"
+    },
+    {
+      "cardId": "ju-012",
+      "type": "justone",
+      "target": "Alarm"
+    },
+    {
+      "cardId": "ju-013",
+      "type": "justone",
+      "target": "Dance"
+    },
+    {
+      "cardId": "ju-014",
+      "type": "justone",
+      "target": "Hulk"
+    },
+    {
+      "cardId": "ju-015",
+      "type": "justone",
+      "target": "Desert"
+    },
+    {
+      "cardId": "ju-016",
+      "type": "justone",
+      "target": "Goal"
+    },
+    {
+      "cardId": "ju-017",
+      "type": "justone",
+      "target": "Bread"
+    },
+    {
+      "cardId": "ju-018",
+      "type": "justone",
+      "target": "Devil"
+    },
+    {
+      "cardId": "ju-019",
+      "type": "justone",
+      "target": "Primary"
+    },
+    {
+      "cardId": "ju-020",
+      "type": "justone",
+      "target": "Tarzan"
+    },
+    {
+      "cardId": "ju-021",
+      "type": "justone",
+      "target": "Screw"
+    },
+    {
+      "cardId": "ju-022",
+      "type": "justone",
+      "target": "Rake"
+    },
+    {
+      "cardId": "ju-023",
+      "type": "justone",
+      "target": "Computer"
+    },
+    {
+      "cardId": "ju-024",
+      "type": "justone",
+      "target": "Starbucks"
+    },
+    {
+      "cardId": "ju-025",
+      "type": "justone",
+      "target": "Ball"
+    },
+    {
+      "cardId": "ju-026",
+      "type": "justone",
+      "target": "Series"
+    },
+    {
+      "cardId": "ju-027",
+      "type": "justone",
+      "target": "Nest"
+    },
+    {
+      "cardId": "ju-028",
+      "type": "justone",
+      "target": "Spice"
+    },
+    {
+      "cardId": "ju-029",
+      "type": "justone",
+      "target": "Elephant"
+    },
+    {
+      "cardId": "ju-030",
+      "type": "justone",
+      "target": "Carnival"
+    },
+    {
+      "cardId": "ju-031",
+      "type": "justone",
+      "target": "Vengeance"
+    },
+    {
+      "cardId": "ju-032",
+      "type": "justone",
+      "target": "Boss"
+    },
+    {
+      "cardId": "ju-033",
+      "type": "justone",
+      "target": "Emergency"
+    },
+    {
+      "cardId": "ju-034",
+      "type": "justone",
+      "target": "Cross"
+    },
+    {
+      "cardId": "ju-035",
+      "type": "justone",
+      "target": "Waltz"
+    },
+    {
+      "cardId": "ju-036",
+      "type": "justone",
+      "target": "Mafia"
+    },
+    {
+      "cardId": "ju-037",
+      "type": "justone",
+      "target": "Large"
+    },
+    {
+      "cardId": "ju-038",
+      "type": "justone",
+      "target": "Missile"
+    },
+    {
+      "cardId": "ju-039",
+      "type": "justone",
+      "target": "Microsoft"
+    },
+    {
+      "cardId": "ju-040",
+      "type": "justone",
+      "target": "Ski"
+    },
+    {
+      "cardId": "ju-041",
+      "type": "justone",
+      "target": "Genius"
+    },
+    {
+      "cardId": "ju-042",
+      "type": "justone",
+      "target": "Dracula"
+    },
+    {
+      "cardId": "ju-043",
+      "type": "justone",
+      "target": "Lion"
+    },
+    {
+      "cardId": "ju-044",
+      "type": "justone",
+      "target": "Sock"
+    },
+    {
+      "cardId": "ju-045",
+      "type": "justone",
+      "target": "Friday"
+    },
+    {
+      "cardId": "ju-046",
+      "type": "justone",
+      "target": "Cocktail"
+    },
+    {
+      "cardId": "ju-047",
+      "type": "justone",
+      "target": "Mario"
+    },
+    {
+      "cardId": "ju-048",
+      "type": "justone",
+      "target": "Cork"
+    },
+    {
+      "cardId": "ju-049",
+      "type": "justone",
+      "target": "Violin"
+    },
+    {
+      "cardId": "ju-050",
+      "type": "justone",
+      "target": "Peach"
+    },
+    {
+      "cardId": "ju-051",
+      "type": "justone",
+      "target": "Rat"
+    },
+    {
+      "cardId": "ju-052",
+      "type": "justone",
+      "target": "Plier"
+    },
+    {
+      "cardId": "ju-053",
+      "type": "justone",
+      "target": "Amazon"
+    },
+    {
+      "cardId": "ju-054",
+      "type": "justone",
+      "target": "Tobacco"
+    },
+    {
+      "cardId": "ju-055",
+      "type": "justone",
+      "target": "Ruler"
+    },
+    {
+      "cardId": "ju-056",
+      "type": "justone",
+      "target": "Hanukkah"
+    },
+    {
+      "cardId": "ju-057",
+      "type": "justone",
+      "target": "Elastic"
+    },
+    {
+      "cardId": "ju-058",
+      "type": "justone",
+      "target": "Pan"
+    },
+    {
+      "cardId": "ju-059",
+      "type": "justone",
+      "target": "Flash"
+    },
+    {
+      "cardId": "ju-060",
+      "type": "justone",
+      "target": "Tunnel"
+    },
+    {
+      "cardId": "ju-061",
+      "type": "justone",
+      "target": "Fox"
+    },
+    {
+      "cardId": "ju-062",
+      "type": "justone",
+      "target": "Police"
+    },
+    {
+      "cardId": "ju-063",
+      "type": "justone",
+      "target": "Simpson"
+    },
+    {
+      "cardId": "ju-064",
+      "type": "justone",
+      "target": "Lightning"
+    },
+    {
+      "cardId": "ju-065",
+      "type": "justone",
+      "target": "Newspaper"
+    },
+    {
+      "cardId": "ju-066",
+      "type": "justone",
+      "target": "Mountain"
+    },
+    {
+      "cardId": "ju-067",
+      "type": "justone",
+      "target": "Peanut"
+    },
+    {
+      "cardId": "ju-068",
+      "type": "justone",
+      "target": "Lightbulb"
+    },
+    {
+      "cardId": "ju-069",
+      "type": "justone",
+      "target": "Jedi"
+    },
+    {
+      "cardId": "ju-070",
+      "type": "justone",
+      "target": "Pimento"
+    },
+    {
+      "cardId": "ju-071",
+      "type": "justone",
+      "target": "Sombrero"
+    },
+    {
+      "cardId": "ju-072",
+      "type": "justone",
+      "target": "Clover"
+    },
+    {
+      "cardId": "ju-073",
+      "type": "justone",
+      "target": "Button"
+    },
+    {
+      "cardId": "ju-074",
+      "type": "justone",
+      "target": "Cheese"
+    },
+    {
+      "cardId": "ju-075",
+      "type": "justone",
+      "target": "Chewbacca"
+    },
+    {
+      "cardId": "ju-076",
+      "type": "justone",
+      "target": "Widowmaker"
+    },
+    {
+      "cardId": "ju-077",
+      "type": "justone",
+      "target": "Doctor"
+    },
+    {
+      "cardId": "ju-078",
+      "type": "justone",
+      "target": "Strawberry"
+    },
+    {
+      "cardId": "ju-079",
+      "type": "justone",
+      "target": "Nuclear"
+    },
+    {
+      "cardId": "ju-080",
+      "type": "justone",
+      "target": "Lottery"
+    },
+    {
+      "cardId": "ju-081",
+      "type": "justone",
+      "target": "Cemetery"
+    },
+    {
+      "cardId": "ju-082",
+      "type": "justone",
+      "target": "Cupid"
+    },
+    {
+      "cardId": "ju-083",
+      "type": "justone",
+      "target": "Umbrella"
+    },
+    {
+      "cardId": "ju-084",
+      "type": "justone",
+      "target": "Leap"
+    },
+    {
+      "cardId": "ju-085",
+      "type": "justone",
+      "target": "Root"
+    },
+    {
+      "cardId": "ju-086",
+      "type": "justone",
+      "target": "Treasure"
+    },
+    {
+      "cardId": "ju-087",
+      "type": "justone",
+      "target": "Pilot"
+    },
+    {
+      "cardId": "ju-088",
+      "type": "justone",
+      "target": "Mickey"
+    },
+    {
+      "cardId": "ju-089",
+      "type": "justone",
+      "target": "Sewer"
+    },
+    {
+      "cardId": "ju-090",
+      "type": "justone",
+      "target": "Galaxy"
+    },
+    {
+      "cardId": "ju-091",
+      "type": "justone",
+      "target": "Myth"
+    },
+    {
+      "cardId": "ju-092",
+      "type": "justone",
+      "target": "Facebook"
+    },
+    {
+      "cardId": "ju-093",
+      "type": "justone",
+      "target": "Acorn"
+    },
+    {
+      "cardId": "ju-094",
+      "type": "justone",
+      "target": "Bone"
+    },
+    {
+      "cardId": "ju-095",
+      "type": "justone",
+      "target": "Bridge"
+    },
+    {
+      "cardId": "ju-096",
+      "type": "justone",
+      "target": "Crane"
+    },
+    {
+      "cardId": "ju-097",
+      "type": "justone",
+      "target": "Operation"
+    },
+    {
+      "cardId": "ju-098",
+      "type": "justone",
+      "target": "Rap"
+    },
+    {
+      "cardId": "ju-099",
+      "type": "justone",
+      "target": "Muse"
+    },
+    {
+      "cardId": "ju-100",
+      "type": "justone",
+      "target": "Defense"
+    },
+    {
+      "cardId": "ju-101",
+      "type": "justone",
+      "target": "Light"
+    },
+    {
+      "cardId": "ju-102",
+      "type": "justone",
+      "target": "Sofa"
+    },
+    {
+      "cardId": "ju-103",
+      "type": "justone",
+      "target": "Mozart"
+    },
+    {
+      "cardId": "ju-104",
+      "type": "justone",
+      "target": "Ring"
+    },
+    {
+      "cardId": "ju-105",
+      "type": "justone",
+      "target": "Pizza"
+    },
+    {
+      "cardId": "ju-106",
+      "type": "justone",
+      "target": "Knight"
+    },
+    {
+      "cardId": "ju-107",
+      "type": "justone",
+      "target": "Peace"
+    },
+    {
+      "cardId": "ju-108",
+      "type": "justone",
+      "target": "Flower"
+    },
+    {
+      "cardId": "ju-109",
+      "type": "justone",
+      "target": "Switzerland"
+    },
+    {
+      "cardId": "ju-110",
+      "type": "justone",
+      "target": "Calendar"
+    },
+    {
+      "cardId": "ju-111",
+      "type": "justone",
+      "target": "Syrup"
+    },
+    {
+      "cardId": "ju-112",
+      "type": "justone",
+      "target": "Forest"
+    },
+    {
+      "cardId": "ju-113",
+      "type": "justone",
+      "target": "Scale"
+    },
+    {
+      "cardId": "ju-114",
+      "type": "justone",
+      "target": "Zeus"
+    },
+    {
+      "cardId": "ju-115",
+      "type": "justone",
+      "target": "Cockroach"
+    },
+    {
+      "cardId": "ju-116",
+      "type": "justone",
+      "target": "Pirate"
+    },
+    {
+      "cardId": "ju-117",
+      "type": "justone",
+      "target": "Vacation"
+    },
+    {
+      "cardId": "ju-118",
+      "type": "justone",
+      "target": "Elf"
+    },
+    {
+      "cardId": "ju-119",
+      "type": "justone",
+      "target": "Magnet"
+    },
+    {
+      "cardId": "ju-120",
+      "type": "justone",
+      "target": "Fork"
+    },
+    {
+      "cardId": "ju-121",
+      "type": "justone",
+      "target": "Buffy"
+    },
+    {
+      "cardId": "ju-122",
+      "type": "justone",
+      "target": "Volcano"
+    },
+    {
+      "cardId": "ju-123",
+      "type": "justone",
+      "target": "Passion"
+    },
+    {
+      "cardId": "ju-124",
+      "type": "justone",
+      "target": "Rooster"
+    },
+    {
+      "cardId": "ju-125",
+      "type": "justone",
+      "target": "Electricity"
+    },
+    {
+      "cardId": "ju-126",
+      "type": "justone",
+      "target": "Baker"
+    },
+    {
+      "cardId": "ju-127",
+      "type": "justone",
+      "target": "Perfume"
+    },
+    {
+      "cardId": "ju-128",
+      "type": "justone",
+      "target": "Flame"
+    },
+    {
+      "cardId": "ju-129",
+      "type": "justone",
+      "target": "Zombie"
+    },
+    {
+      "cardId": "ju-130",
+      "type": "justone",
+      "target": "Joker"
+    },
+    {
+      "cardId": "ju-131",
+      "type": "justone",
+      "target": "Poison"
+    },
+    {
+      "cardId": "ju-132",
+      "type": "justone",
+      "target": "Star"
+    },
+    {
+      "cardId": "ju-133",
+      "type": "justone",
+      "target": "Wolf"
+    },
+    {
+      "cardId": "ju-134",
+      "type": "justone",
+      "target": "Jones"
+    },
+    {
+      "cardId": "ju-135",
+      "type": "justone",
+      "target": "Anniversary"
+    },
+    {
+      "cardId": "ju-136",
+      "type": "justone",
+      "target": "Hammer"
+    },
+    {
+      "cardId": "ju-137",
+      "type": "justone",
+      "target": "Chile"
+    },
+    {
+      "cardId": "ju-138",
+      "type": "justone",
+      "target": "Gumbo"
+    },
+    {
+      "cardId": "ju-139",
+      "type": "justone",
+      "target": "Emperor"
+    },
+    {
+      "cardId": "ju-140",
+      "type": "justone",
+      "target": "Pope"
+    },
+    {
+      "cardId": "ju-141",
+      "type": "justone",
+      "target": "Hollywood"
+    },
+    {
+      "cardId": "ju-142",
+      "type": "justone",
+      "target": "Mosquito"
+    },
+    {
+      "cardId": "ju-143",
+      "type": "justone",
+      "target": "Spear"
+    },
+    {
+      "cardId": "ju-144",
+      "type": "justone",
+      "target": "Purse"
+    },
+    {
+      "cardId": "ju-145",
+      "type": "justone",
+      "target": "End"
+    },
+    {
+      "cardId": "ju-146",
+      "type": "justone",
+      "target": "Board"
+    },
+    {
+      "cardId": "ju-147",
+      "type": "justone",
+      "target": "Fireman"
+    },
+    {
+      "cardId": "ju-148",
+      "type": "justone",
+      "target": "Glass"
+    },
+    {
+      "cardId": "ju-149",
+      "type": "justone",
+      "target": "Burrito"
+    },
+    {
+      "cardId": "ju-150",
+      "type": "justone",
+      "target": "Greece"
+    },
+    {
+      "cardId": "ju-151",
+      "type": "justone",
+      "target": "Slipper"
+    },
+    {
+      "cardId": "ju-152",
+      "type": "justone",
+      "target": "Leaf"
+    },
+    {
+      "cardId": "ju-153",
+      "type": "justone",
+      "target": "Cougar"
+    },
+    {
+      "cardId": "ju-154",
+      "type": "justone",
+      "target": "Revolution"
+    },
+    {
+      "cardId": "ju-155",
+      "type": "justone",
+      "target": "Sahara"
+    },
+    {
+      "cardId": "ju-156",
+      "type": "justone",
+      "target": "Grotto"
+    },
+    {
+      "cardId": "ju-157",
+      "type": "justone",
+      "target": "Ford"
+    },
+    {
+      "cardId": "ju-158",
+      "type": "justone",
+      "target": "Casino"
+    },
+    {
+      "cardId": "ju-159",
+      "type": "justone",
+      "target": "Candy"
+    },
+    {
+      "cardId": "ju-160",
+      "type": "justone",
+      "target": "Fountain"
+    },
+    {
+      "cardId": "ju-161",
+      "type": "justone",
+      "target": "Flintstone"
+    },
+    {
+      "cardId": "ju-162",
+      "type": "justone",
+      "target": "Robot"
+    },
+    {
+      "cardId": "ju-163",
+      "type": "justone",
+      "target": "Comedy"
+    },
+    {
+      "cardId": "ju-164",
+      "type": "justone",
+      "target": "Language"
+    },
+    {
+      "cardId": "ju-165",
+      "type": "justone",
+      "target": "Hairdresser"
+    },
+    {
+      "cardId": "ju-166",
+      "type": "justone",
+      "target": "Dinosaur"
+    },
+    {
+      "cardId": "ju-167",
+      "type": "justone",
+      "target": "Yellow"
+    },
+    {
+      "cardId": "ju-168",
+      "type": "justone",
+      "target": "Mushroom"
+    },
+    {
+      "cardId": "ju-169",
+      "type": "justone",
+      "target": "Pigeon"
+    },
+    {
+      "cardId": "ju-170",
+      "type": "justone",
+      "target": "Pikachu"
+    },
+    {
+      "cardId": "ju-171",
+      "type": "justone",
+      "target": "Thunder"
+    },
+    {
+      "cardId": "ju-172",
+      "type": "justone",
+      "target": "Garden"
+    },
+    {
+      "cardId": "ju-173",
+      "type": "justone",
+      "target": "Painting"
+    },
+    {
+      "cardId": "ju-174",
+      "type": "justone",
+      "target": "Shack"
+    },
+    {
+      "cardId": "ju-175",
+      "type": "justone",
+      "target": "Truce"
+    },
+    {
+      "cardId": "ju-176",
+      "type": "justone",
+      "target": "Mummy"
+    },
+    {
+      "cardId": "ju-177",
+      "type": "justone",
+      "target": "Battery"
+    },
+    {
+      "cardId": "ju-178",
+      "type": "justone",
+      "target": "Fair"
+    },
+    {
+      "cardId": "ju-179",
+      "type": "justone",
+      "target": "Karate"
+    },
+    {
+      "cardId": "ju-180",
+      "type": "justone",
+      "target": "Parrot"
+    },
+    {
+      "cardId": "ju-181",
+      "type": "justone",
+      "target": "Olympics"
+    },
+    {
+      "cardId": "ju-182",
+      "type": "justone",
+      "target": "Climb"
+    },
+    {
+      "cardId": "ju-183",
+      "type": "justone",
+      "target": "Lawyer"
+    },
+    {
+      "cardId": "ju-184",
+      "type": "justone",
+      "target": "Tolkien"
+    },
+    {
+      "cardId": "ju-185",
+      "type": "justone",
+      "target": "River"
+    },
+    {
+      "cardId": "ju-186",
+      "type": "justone",
+      "target": "Carpet"
+    },
+    {
+      "cardId": "ju-187",
+      "type": "justone",
+      "target": "Pony"
+    },
+    {
+      "cardId": "ju-188",
+      "type": "justone",
+      "target": "Crown"
+    },
+    {
+      "cardId": "ju-189",
+      "type": "justone",
+      "target": "New"
+    },
+    {
+      "cardId": "ju-190",
+      "type": "justone",
+      "target": "Tarantino"
+    },
+    {
+      "cardId": "ju-191",
+      "type": "justone",
+      "target": "Barbie"
+    },
+    {
+      "cardId": "ju-192",
+      "type": "justone",
+      "target": "Chocolate"
+    },
+    {
+      "cardId": "ju-193",
+      "type": "justone",
+      "target": "Snow"
+    },
+    {
+      "cardId": "ju-194",
+      "type": "justone",
+      "target": "Tie"
+    },
+    {
+      "cardId": "ju-195",
+      "type": "justone",
+      "target": "Wind"
+    },
+    {
+      "cardId": "ju-196",
+      "type": "justone",
+      "target": "Thought"
+    },
+    {
+      "cardId": "ju-197",
+      "type": "justone",
+      "target": "Frankenstein"
+    },
+    {
+      "cardId": "ju-198",
+      "type": "justone",
+      "target": "Shelf"
+    },
+    {
+      "cardId": "ju-199",
+      "type": "justone",
+      "target": "Accent"
+    },
+    {
+      "cardId": "ju-200",
+      "type": "justone",
+      "target": "Shower"
+    },
+    {
+      "cardId": "ju-201",
+      "type": "justone",
+      "target": "Stew"
+    },
+    {
+      "cardId": "ju-202",
+      "type": "justone",
+      "target": "Canada"
+    },
+    {
+      "cardId": "ju-203",
+      "type": "justone",
+      "target": "Zoo"
+    },
+    {
+      "cardId": "ju-204",
+      "type": "justone",
+      "target": "Pipe"
+    },
+    {
+      "cardId": "ju-205",
+      "type": "justone",
+      "target": "Book"
+    },
+    {
+      "cardId": "ju-206",
+      "type": "justone",
+      "target": "Towel"
+    },
+    {
+      "cardId": "ju-207",
+      "type": "justone",
+      "target": "Venus"
+    },
+    {
+      "cardId": "ju-208",
+      "type": "justone",
+      "target": "Octopus"
+    },
+    {
+      "cardId": "ju-209",
+      "type": "justone",
+      "target": "Cycle"
+    },
+    {
+      "cardId": "ju-210",
+      "type": "justone",
+      "target": "Opera"
+    },
+    {
+      "cardId": "ju-211",
+      "type": "justone",
+      "target": "Ladybug"
+    },
+    {
+      "cardId": "ju-212",
+      "type": "justone",
+      "target": "Mustard"
+    },
+    {
+      "cardId": "ju-213",
+      "type": "justone",
+      "target": "Sherlock"
+    },
+    {
+      "cardId": "ju-214",
+      "type": "justone",
+      "target": "Bottle"
+    },
+    {
+      "cardId": "ju-215",
+      "type": "justone",
+      "target": "Virus"
+    },
+    {
+      "cardId": "ju-216",
+      "type": "justone",
+      "target": "Music"
+    },
+    {
+      "cardId": "ju-217",
+      "type": "justone",
+      "target": "Throat"
+    },
+    {
+      "cardId": "ju-218",
+      "type": "justone",
+      "target": "America"
+    },
+    {
+      "cardId": "ju-219",
+      "type": "justone",
+      "target": "Coffee"
+    },
+    {
+      "cardId": "ju-220",
+      "type": "justone",
+      "target": "Fever"
+    },
+    {
+      "cardId": "ju-221",
+      "type": "justone",
+      "target": "Google"
+    },
+    {
+      "cardId": "ju-222",
+      "type": "justone",
+      "target": "Bow"
+    },
+    {
+      "cardId": "ju-223",
+      "type": "justone",
+      "target": "Mars"
+    },
+    {
+      "cardId": "ju-224",
+      "type": "justone",
+      "target": "Golf"
+    },
+    {
+      "cardId": "ju-225",
+      "type": "justone",
+      "target": "Ticket"
+    },
+    {
+      "cardId": "ju-226",
+      "type": "justone",
+      "target": "Register"
+    },
+    {
+      "cardId": "ju-227",
+      "type": "justone",
+      "target": "Playstation"
+    },
+    {
+      "cardId": "ju-228",
+      "type": "justone",
+      "target": "Blond"
+    },
+    {
+      "cardId": "ju-229",
+      "type": "justone",
+      "target": "Iris"
+    },
+    {
+      "cardId": "ju-230",
+      "type": "justone",
+      "target": "Limb"
+    },
+    {
+      "cardId": "ju-231",
+      "type": "justone",
+      "target": "Oprah"
+    },
+    {
+      "cardId": "ju-232",
+      "type": "justone",
+      "target": "Ninja"
+    },
+    {
+      "cardId": "ju-233",
+      "type": "justone",
+      "target": "Comforter"
+    },
+    {
+      "cardId": "ju-234",
+      "type": "justone",
+      "target": "Hunter"
+    },
+    {
+      "cardId": "ju-235",
+      "type": "justone",
+      "target": "Vegetable"
+    },
+    {
+      "cardId": "ju-236",
+      "type": "justone",
+      "target": "Oven"
+    },
+    {
+      "cardId": "ju-237",
+      "type": "justone",
+      "target": "Socket"
+    },
+    {
+      "cardId": "ju-238",
+      "type": "justone",
+      "target": "Easter"
+    },
+    {
+      "cardId": "ju-239",
+      "type": "justone",
+      "target": "Hose"
+    },
+    {
+      "cardId": "ju-240",
+      "type": "justone",
+      "target": "Rail"
+    },
+    {
+      "cardId": "ju-241",
+      "type": "justone",
+      "target": "Butterfly"
+    },
+    {
+      "cardId": "ju-242",
+      "type": "justone",
+      "target": "Powder"
+    },
+    {
+      "cardId": "ju-243",
+      "type": "justone",
+      "target": "Porcelain"
+    },
+    {
+      "cardId": "ju-244",
+      "type": "justone",
+      "target": "Market"
+    },
+    {
+      "cardId": "ju-245",
+      "type": "justone",
+      "target": "Cocoon"
+    },
+    {
+      "cardId": "ju-246",
+      "type": "justone",
+      "target": "Barbecue"
+    },
+    {
+      "cardId": "ju-247",
+      "type": "justone",
+      "target": "Panda"
+    },
+    {
+      "cardId": "ju-248",
+      "type": "justone",
+      "target": "Dream"
+    },
+    {
+      "cardId": "ju-249",
+      "type": "justone",
+      "target": "Marriage"
+    },
+    {
+      "cardId": "ju-250",
+      "type": "justone",
+      "target": "Bellybutton"
+    },
+    {
+      "cardId": "ju-251",
+      "type": "justone",
+      "target": "Cavity"
+    },
+    {
+      "cardId": "ju-252",
+      "type": "justone",
+      "target": "Sleeve"
+    },
+    {
+      "cardId": "ju-253",
+      "type": "justone",
+      "target": "Gremlins"
+    },
+    {
+      "cardId": "ju-254",
+      "type": "justone",
+      "target": "Poker"
+    },
+    {
+      "cardId": "ju-255",
+      "type": "justone",
+      "target": "Pie"
+    },
+    {
+      "cardId": "ju-256",
+      "type": "justone",
+      "target": "Sugar"
+    },
+    {
+      "cardId": "ju-257",
+      "type": "justone",
+      "target": "Theater"
+    },
+    {
+      "cardId": "ju-258",
+      "type": "justone",
+      "target": "Shovel"
+    },
+    {
+      "cardId": "ju-259",
+      "type": "justone",
+      "target": "Dune"
+    },
+    {
+      "cardId": "ju-260",
+      "type": "justone",
+      "target": "Pregnant"
+    },
+    {
+      "cardId": "ju-261",
+      "type": "justone",
+      "target": "Cat"
+    },
+    {
+      "cardId": "ju-262",
+      "type": "justone",
+      "target": "Palace"
+    },
+    {
+      "cardId": "ju-263",
+      "type": "justone",
+      "target": "Election"
+    },
+    {
+      "cardId": "ju-264",
+      "type": "justone",
+      "target": "Honey"
+    },
+    {
+      "cardId": "ju-265",
+      "type": "justone",
+      "target": "Rambo"
+    },
+    {
+      "cardId": "ju-266",
+      "type": "justone",
+      "target": "Reggae"
+    },
+    {
+      "cardId": "ju-267",
+      "type": "justone",
+      "target": "Manure"
+    },
+    {
+      "cardId": "ju-268",
+      "type": "justone",
+      "target": "Lake"
+    },
+    {
+      "cardId": "ju-269",
+      "type": "justone",
+      "target": "Monkey"
+    },
+    {
+      "cardId": "ju-270",
+      "type": "justone",
+      "target": "Lighthouse"
+    },
+    {
+      "cardId": "ju-271",
+      "type": "justone",
+      "target": "Neighborhood"
+    },
+    {
+      "cardId": "ju-272",
+      "type": "justone",
+      "target": "Rock"
+    },
+    {
+      "cardId": "ju-273",
+      "type": "justone",
+      "target": "Tiger"
+    },
+    {
+      "cardId": "ju-274",
+      "type": "justone",
+      "target": "Needle"
+    },
+    {
+      "cardId": "ju-275",
+      "type": "justone",
+      "target": "Soap"
+    },
+    {
+      "cardId": "ju-276",
+      "type": "justone",
+      "target": "Prison"
+    },
+    {
+      "cardId": "ju-277",
+      "type": "justone",
+      "target": "Hole"
+    },
+    {
+      "cardId": "ju-278",
+      "type": "justone",
+      "target": "Punk"
+    },
+    {
+      "cardId": "ju-279",
+      "type": "justone",
+      "target": "Evening"
+    },
+    {
+      "cardId": "ju-280",
+      "type": "justone",
+      "target": "Map"
+    },
+    {
+      "cardId": "ju-281",
+      "type": "justone",
+      "target": "Number"
+    },
+    {
+      "cardId": "ju-282",
+      "type": "justone",
+      "target": "Decathlon"
+    },
+    {
+      "cardId": "ju-283",
+      "type": "justone",
+      "target": "Rum"
+    },
+    {
+      "cardId": "ju-284",
+      "type": "justone",
+      "target": "Metal"
+    },
+    {
+      "cardId": "ju-285",
+      "type": "justone",
+      "target": "Tuna"
+    },
+    {
+      "cardId": "ju-286",
+      "type": "justone",
+      "target": "King"
+    },
+    {
+      "cardId": "ju-287",
+      "type": "justone",
+      "target": "Ballet"
+    },
+    {
+      "cardId": "ju-288",
+      "type": "justone",
+      "target": "Band"
+    },
+    {
+      "cardId": "ju-289",
+      "type": "justone",
+      "target": "Alcohol"
+    },
+    {
+      "cardId": "ju-290",
+      "type": "justone",
+      "target": "Lava"
+    },
+    {
+      "cardId": "ju-291",
+      "type": "justone",
+      "target": "Canvas"
+    },
+    {
+      "cardId": "ju-292",
+      "type": "justone",
+      "target": "Vampire"
+    },
+    {
+      "cardId": "ju-293",
+      "type": "justone",
+      "target": "Monopoly"
+    },
+    {
+      "cardId": "ju-294",
+      "type": "justone",
+      "target": "Cartoon"
+    },
+    {
+      "cardId": "ju-295",
+      "type": "justone",
+      "target": "Hotel"
+    },
+    {
+      "cardId": "ju-296",
+      "type": "justone",
+      "target": "Darwin"
+    },
+    {
+      "cardId": "ju-297",
+      "type": "justone",
+      "target": "Tomato"
+    },
+    {
+      "cardId": "ju-298",
+      "type": "justone",
+      "target": "Parachute"
+    },
+    {
+      "cardId": "ju-299",
+      "type": "justone",
+      "target": "Cannon"
+    },
+    {
+      "cardId": "ju-300",
+      "type": "justone",
+      "target": "Binoculars"
+    },
+    {
+      "cardId": "ju-301",
+      "type": "justone",
+      "target": "Mirage"
+    },
+    {
+      "cardId": "ju-302",
+      "type": "justone",
+      "target": "Ramses"
+    },
+    {
+      "cardId": "ju-303",
+      "type": "justone",
+      "target": "Bonfire"
+    },
+    {
+      "cardId": "ju-304",
+      "type": "justone",
+      "target": "Crossroads"
+    },
+    {
+      "cardId": "ju-305",
+      "type": "justone",
+      "target": "Princess"
+    },
+    {
+      "cardId": "ju-306",
+      "type": "justone",
+      "target": "Guillotine"
+    },
+    {
+      "cardId": "ju-307",
+      "type": "justone",
+      "target": "Magician"
+    },
+    {
+      "cardId": "ju-308",
+      "type": "justone",
+      "target": "Hockey"
+    },
+    {
+      "cardId": "ju-309",
+      "type": "justone",
+      "target": "Banana"
+    },
+    {
+      "cardId": "ju-310",
+      "type": "justone",
+      "target": "Fitzgerald"
+    },
+    {
+      "cardId": "ju-311",
+      "type": "justone",
+      "target": "Caesar"
+    },
+    {
+      "cardId": "ju-312",
+      "type": "justone",
+      "target": "Noodle"
+    },
+    {
+      "cardId": "ju-313",
+      "type": "justone",
+      "target": "Hat"
+    },
+    {
+      "cardId": "ju-314",
+      "type": "justone",
+      "target": "Dentist"
+    },
+    {
+      "cardId": "ju-315",
+      "type": "justone",
+      "target": "Wheat"
+    },
+    {
+      "cardId": "ju-316",
+      "type": "justone",
+      "target": "Shell"
+    },
+    {
+      "cardId": "ju-317",
+      "type": "justone",
+      "target": "Shakespeare"
+    },
+    {
+      "cardId": "ju-318",
+      "type": "justone",
+      "target": "Giant"
+    },
+    {
+      "cardId": "ju-319",
+      "type": "justone",
+      "target": "Foam"
+    },
+    {
+      "cardId": "ju-320",
+      "type": "justone",
+      "target": "Cave"
+    },
+    {
+      "cardId": "ju-321",
+      "type": "justone",
+      "target": "Knife"
+    },
+    {
+      "cardId": "ju-322",
+      "type": "justone",
+      "target": "Pillow"
+    },
+    {
+      "cardId": "ju-323",
+      "type": "justone",
+      "target": "Armstrong"
+    },
+    {
+      "cardId": "ju-324",
+      "type": "justone",
+      "target": "Sword"
+    },
+    {
+      "cardId": "ju-325",
+      "type": "justone",
+      "target": "Flight"
+    },
+    {
+      "cardId": "ju-326",
+      "type": "justone",
+      "target": "Explosion"
+    },
+    {
+      "cardId": "ju-327",
+      "type": "justone",
+      "target": "Penguin"
+    },
+    {
+      "cardId": "ju-328",
+      "type": "justone",
+      "target": "Cell"
+    },
+    {
+      "cardId": "ju-329",
+      "type": "justone",
+      "target": "Gandhi"
+    },
+    {
+      "cardId": "ju-330",
+      "type": "justone",
+      "target": "Oasis"
+    },
+    {
+      "cardId": "ju-331",
+      "type": "justone",
+      "target": "Crocodile"
+    },
+    {
+      "cardId": "ju-332",
+      "type": "justone",
+      "target": "Jewelry"
+    },
+    {
+      "cardId": "ju-333",
+      "type": "justone",
+      "target": "Subway"
+    },
+    {
+      "cardId": "ju-334",
+      "type": "justone",
+      "target": "Glasses"
+    },
+    {
+      "cardId": "ju-335",
+      "type": "justone",
+      "target": "Sting"
+    },
+    {
+      "cardId": "ju-336",
+      "type": "justone",
+      "target": "Jackson"
+    },
+    {
+      "cardId": "ju-337",
+      "type": "justone",
+      "target": "Cigarette"
+    },
+    {
+      "cardId": "ju-338",
+      "type": "justone",
+      "target": "Bracelet"
+    },
+    {
+      "cardId": "ju-339",
+      "type": "justone",
+      "target": "Weather"
+    },
+    {
+      "cardId": "ju-340",
+      "type": "justone",
+      "target": "Tower"
+    },
+    {
+      "cardId": "ju-341",
+      "type": "justone",
+      "target": "Tattoo"
+    },
+    {
+      "cardId": "ju-342",
+      "type": "justone",
+      "target": "Spielberg"
+    },
+    {
+      "cardId": "ju-343",
+      "type": "justone",
+      "target": "Apple"
+    },
+    {
+      "cardId": "ju-344",
+      "type": "justone",
+      "target": "Siren"
+    },
+    {
+      "cardId": "ju-345",
+      "type": "justone",
+      "target": "Boxing"
+    },
+    {
+      "cardId": "ju-346",
+      "type": "justone",
+      "target": "Heart"
+    },
+    {
+      "cardId": "ju-347",
+      "type": "justone",
+      "target": "Moscow"
+    },
+    {
+      "cardId": "ju-348",
+      "type": "justone",
+      "target": "Pool"
+    },
+    {
+      "cardId": "ju-349",
+      "type": "justone",
+      "target": "Unicorn"
+    },
+    {
+      "cardId": "ju-350",
+      "type": "justone",
+      "target": "Orange"
+    },
+    {
+      "cardId": "ju-351",
+      "type": "justone",
+      "target": "Melon"
+    },
+    {
+      "cardId": "ju-352",
+      "type": "justone",
+      "target": "Anchor"
+    },
+    {
+      "cardId": "ju-353",
+      "type": "justone",
+      "target": "Israel"
+    },
+    {
+      "cardId": "ju-354",
+      "type": "justone",
+      "target": "Cactus"
+    },
+    {
+      "cardId": "ju-355",
+      "type": "justone",
+      "target": "Tennis"
+    },
+    {
+      "cardId": "ju-356",
+      "type": "justone",
+      "target": "Pepper"
+    },
+    {
+      "cardId": "ju-357",
+      "type": "justone",
+      "target": "Triangle"
+    },
+    {
+      "cardId": "ju-358",
+      "type": "justone",
+      "target": "Doll"
+    },
+    {
+      "cardId": "ju-359",
+      "type": "justone",
+      "target": "Italy"
+    },
+    {
+      "cardId": "ju-360",
+      "type": "justone",
+      "target": "Scene"
+    },
+    {
+      "cardId": "ju-361",
+      "type": "justone",
+      "target": "Polar"
+    },
+    {
+      "cardId": "ju-362",
+      "type": "justone",
+      "target": "Mouse"
+    },
+    {
+      "cardId": "ju-363",
+      "type": "justone",
+      "target": "Necklace"
+    },
+    {
+      "cardId": "ju-364",
+      "type": "justone",
+      "target": "Farm"
+    },
+    {
+      "cardId": "ju-365",
+      "type": "justone",
+      "target": "Belgium"
+    },
+    {
+      "cardId": "ju-366",
+      "type": "justone",
+      "target": "France"
+    },
+    {
+      "cardId": "ju-367",
+      "type": "justone",
+      "target": "Moon"
+    },
+    {
+      "cardId": "ju-368",
+      "type": "justone",
+      "target": "Cafeteria"
+    },
+    {
+      "cardId": "ju-369",
+      "type": "justone",
+      "target": "Handle"
+    },
+    {
+      "cardId": "ju-370",
+      "type": "justone",
+      "target": "Tool"
+    },
+    {
+      "cardId": "ju-371",
+      "type": "justone",
+      "target": "String"
+    },
+    {
+      "cardId": "ju-372",
+      "type": "justone",
+      "target": "Australia"
+    },
+    {
+      "cardId": "ju-373",
+      "type": "justone",
+      "target": "Castle"
+    },
+    {
+      "cardId": "ju-374",
+      "type": "justone",
+      "target": "Guard"
+    },
+    {
+      "cardId": "ju-375",
+      "type": "justone",
+      "target": "Sheep"
+    },
+    {
+      "cardId": "ju-376",
+      "type": "justone",
+      "target": "Puppet"
+    },
+    {
+      "cardId": "ju-377",
+      "type": "justone",
+      "target": "Game"
+    },
+    {
+      "cardId": "ju-378",
+      "type": "justone",
+      "target": "Vegas"
+    },
+    {
+      "cardId": "ju-379",
+      "type": "justone",
+      "target": "Safe"
+    },
+    {
+      "cardId": "ju-380",
+      "type": "justone",
+      "target": "Plane"
+    },
+    {
+      "cardId": "ju-381",
+      "type": "justone",
+      "target": "Brain"
+    },
+    {
+      "cardId": "ju-382",
+      "type": "justone",
+      "target": "Mask"
+    },
+    {
+      "cardId": "ju-383",
+      "type": "justone",
+      "target": "Concert"
+    },
+    {
+      "cardId": "ju-384",
+      "type": "justone",
+      "target": "Troy"
+    },
+    {
+      "cardId": "ju-385",
+      "type": "justone",
+      "target": "Shark"
+    },
+    {
+      "cardId": "ju-386",
+      "type": "justone",
+      "target": "Lonely"
+    },
+    {
+      "cardId": "ju-387",
+      "type": "justone",
+      "target": "Potato"
+    },
+    {
+      "cardId": "ju-388",
+      "type": "justone",
+      "target": "Wave"
+    },
+    {
+      "cardId": "ju-389",
+      "type": "justone",
+      "target": "School"
+    },
+    {
+      "cardId": "ju-390",
+      "type": "justone",
+      "target": "Lego"
+    },
+    {
+      "cardId": "ju-391",
+      "type": "justone",
+      "target": "Tokyo"
+    },
+    {
+      "cardId": "ju-392",
+      "type": "justone",
+      "target": "Heel"
+    },
+    {
+      "cardId": "ju-393",
+      "type": "justone",
+      "target": "Chicken"
+    },
+    {
+      "cardId": "ju-394",
+      "type": "justone",
+      "target": "Helicopter"
+    },
+    {
+      "cardId": "ju-395",
+      "type": "justone",
+      "target": "Colonel"
+    },
+    {
+      "cardId": "ju-396",
+      "type": "justone",
+      "target": "Tradition"
+    },
+    {
+      "cardId": "ju-397",
+      "type": "justone",
+      "target": "Snake"
+    },
+    {
+      "cardId": "ju-398",
+      "type": "justone",
+      "target": "Cup"
+    },
+    {
+      "cardId": "ju-399",
+      "type": "justone",
+      "target": "Picasso"
+    },
+    {
+      "cardId": "ju-400",
+      "type": "justone",
+      "target": "Watch"
+    },
+    {
+      "cardId": "ju-401",
+      "type": "justone",
+      "target": "Cake"
+    },
+    {
+      "cardId": "ju-402",
+      "type": "justone",
+      "target": "Stallion"
+    },
+    {
+      "cardId": "ju-403",
+      "type": "justone",
+      "target": "Mexico"
+    },
+    {
+      "cardId": "ju-404",
+      "type": "justone",
+      "target": "White"
+    },
+    {
+      "cardId": "ju-405",
+      "type": "justone",
+      "target": "Bald"
+    },
+    {
+      "cardId": "ju-406",
+      "type": "justone",
+      "target": "Caterpillar"
+    },
+    {
+      "cardId": "ju-407",
+      "type": "justone",
+      "target": "Humor"
+    },
+    {
+      "cardId": "ju-408",
+      "type": "justone",
+      "target": "Corner"
+    },
+    {
+      "cardId": "ju-409",
+      "type": "justone",
+      "target": "Antarctica"
+    },
+    {
+      "cardId": "ju-410",
+      "type": "justone",
+      "target": "Sausage"
+    },
+    {
+      "cardId": "ju-411",
+      "type": "justone",
+      "target": "Plastic"
+    },
+    {
+      "cardId": "ju-412",
+      "type": "justone",
+      "target": "Ray"
+    },
+    {
+      "cardId": "ju-413",
+      "type": "justone",
+      "target": "Carton"
+    },
+    {
+      "cardId": "ju-414",
+      "type": "justone",
+      "target": "Pebble"
+    },
+    {
+      "cardId": "ju-415",
+      "type": "justone",
+      "target": "Everest"
+    },
+    {
+      "cardId": "ju-416",
+      "type": "justone",
+      "target": "Terminator"
+    },
+    {
+      "cardId": "ju-417",
+      "type": "justone",
+      "target": "Letter"
+    },
+    {
+      "cardId": "ju-418",
+      "type": "justone",
+      "target": "Drag"
+    },
+    {
+      "cardId": "ju-419",
+      "type": "justone",
+      "target": "Paradise"
+    },
+    {
+      "cardId": "ju-420",
+      "type": "justone",
+      "target": "Egg"
+    },
+    {
+      "cardId": "ju-421",
+      "type": "justone",
+      "target": "Nintendo"
+    },
+    {
+      "cardId": "ju-422",
+      "type": "justone",
+      "target": "Bet"
+    },
+    {
+      "cardId": "ju-423",
+      "type": "justone",
+      "target": "Salt"
+    },
+    {
+      "cardId": "ju-424",
+      "type": "justone",
+      "target": "Manual"
+    },
+    {
+      "cardId": "ju-425",
+      "type": "justone",
+      "target": "Frost"
+    },
+    {
+      "cardId": "ju-426",
+      "type": "justone",
+      "target": "House"
+    },
+    {
+      "cardId": "ju-427",
+      "type": "justone",
+      "target": "Godfather"
+    },
+    {
+      "cardId": "ju-428",
+      "type": "justone",
+      "target": "War"
+    },
+    {
+      "cardId": "ju-429",
+      "type": "justone",
+      "target": "Rope"
+    },
+    {
+      "cardId": "ju-430",
+      "type": "justone",
+      "target": "Wine"
+    },
+    {
+      "cardId": "ju-431",
+      "type": "justone",
+      "target": "Club"
+    },
+    {
+      "cardId": "ju-432",
+      "type": "justone",
+      "target": "Christmas"
+    },
+    {
+      "cardId": "ju-433",
+      "type": "justone",
+      "target": "Fashion"
+    },
+    {
+      "cardId": "ju-434",
+      "type": "justone",
+      "target": "Station"
+    },
+    {
+      "cardId": "ju-435",
+      "type": "justone",
+      "target": "Lamp"
+    },
+    {
+      "cardId": "ju-436",
+      "type": "justone",
+      "target": "Radio"
+    },
+    {
+      "cardId": "ju-437",
+      "type": "justone",
+      "target": "Pear"
+    },
+    {
+      "cardId": "ju-438",
+      "type": "justone",
+      "target": "Gladiator"
+    },
+    {
+      "cardId": "ju-439",
+      "type": "justone",
+      "target": "Sun"
+    },
+    {
+      "cardId": "ju-440",
+      "type": "justone",
+      "target": "Cereal"
+    },
+    {
+      "cardId": "ju-441",
+      "type": "justone",
+      "target": "Berry"
+    },
+    {
+      "cardId": "ju-442",
+      "type": "justone",
+      "target": "Study"
+    },
+    {
+      "cardId": "ju-443",
+      "type": "justone",
+      "target": "Gothic"
+    },
+    {
+      "cardId": "ju-444",
+      "type": "justone",
+      "target": "Titanic"
+    },
+    {
+      "cardId": "ju-445",
+      "type": "justone",
+      "target": "Machine"
+    },
+    {
+      "cardId": "ju-446",
+      "type": "justone",
+      "target": "Dwarf"
+    },
+    {
+      "cardId": "ju-447",
+      "type": "justone",
+      "target": "Circus"
+    },
+    {
+      "cardId": "ju-448",
+      "type": "justone",
+      "target": "Elvis"
+    },
+    {
+      "cardId": "ju-449",
+      "type": "justone",
+      "target": "Mower"
+    },
+    {
+      "cardId": "ju-450",
+      "type": "justone",
+      "target": "Stone"
+    },
+    {
+      "cardId": "ju-451",
+      "type": "justone",
+      "target": "Train"
+    },
+    {
+      "cardId": "ju-452",
+      "type": "justone",
+      "target": "Shrimp"
+    },
+    {
+      "cardId": "ju-453",
+      "type": "justone",
+      "target": "Room"
+    },
+    {
+      "cardId": "ju-454",
+      "type": "justone",
+      "target": "Cleopatra"
+    },
+    {
+      "cardId": "ju-455",
+      "type": "justone",
+      "target": "Window"
+    },
+    {
+      "cardId": "ju-456",
+      "type": "justone",
+      "target": "Tango"
+    },
+    {
+      "cardId": "ju-457",
+      "type": "justone",
+      "target": "Ripe"
+    },
+    {
+      "cardId": "ju-458",
+      "type": "justone",
+      "target": "Temple"
+    },
+    {
+      "cardId": "ju-459",
+      "type": "justone",
+      "target": "Sand"
+    },
+    {
+      "cardId": "ju-460",
+      "type": "justone",
+      "target": "Fries"
+    },
+    {
+      "cardId": "ju-461",
+      "type": "justone",
+      "target": "Grenade"
+    },
+    {
+      "cardId": "ju-462",
+      "type": "justone",
+      "target": "Stuffing"
+    },
+    {
+      "cardId": "ju-463",
+      "type": "justone",
+      "target": "Brush"
+    },
+    {
+      "cardId": "ju-464",
+      "type": "justone",
+      "target": "Pig"
+    },
+    {
+      "cardId": "ju-465",
+      "type": "justone",
+      "target": "Human"
+    },
+    {
+      "cardId": "ju-466",
+      "type": "justone",
+      "target": "Alcatraz"
+    },
+    {
+      "cardId": "ju-467",
+      "type": "justone",
+      "target": "Smoke"
+    },
+    {
+      "cardId": "ju-468",
+      "type": "justone",
+      "target": "Hazelnut"
+    },
+    {
+      "cardId": "ju-469",
+      "type": "justone",
+      "target": "Diamond"
+    },
+    {
+      "cardId": "ju-470",
+      "type": "justone",
+      "target": "Rose"
+    },
+    {
+      "cardId": "ju-471",
+      "type": "justone",
+      "target": "Godzilla"
+    },
+    {
+      "cardId": "ju-472",
+      "type": "justone",
+      "target": "Uniform"
+    },
+    {
+      "cardId": "ju-473",
+      "type": "justone",
+      "target": "Rain"
+    },
+    {
+      "cardId": "ju-474",
+      "type": "justone",
+      "target": "Fire"
+    },
+    {
+      "cardId": "ju-475",
+      "type": "justone",
+      "target": "Helmet"
+    },
+    {
+      "cardId": "ju-476",
+      "type": "justone",
+      "target": "Ship"
+    },
+    {
+      "cardId": "ju-477",
+      "type": "justone",
+      "target": "Bowling"
+    },
+    {
+      "cardId": "ju-478",
+      "type": "justone",
+      "target": "Churchill"
+    },
+    {
+      "cardId": "ju-479",
+      "type": "justone",
+      "target": "Ram"
+    },
+    {
+      "cardId": "ju-480",
+      "type": "justone",
+      "target": "Spy"
+    },
+    {
+      "cardId": "ju-481",
+      "type": "justone",
+      "target": "Halloween"
+    },
+    {
+      "cardId": "ju-482",
+      "type": "justone",
+      "target": "Chip"
+    },
+    {
+      "cardId": "ju-483",
+      "type": "justone",
+      "target": "Baby"
+    },
+    {
+      "cardId": "ju-484",
+      "type": "justone",
+      "target": "Canteen"
+    },
+    {
+      "cardId": "ju-485",
+      "type": "justone",
+      "target": "Pair"
+    },
+    {
+      "cardId": "ju-486",
+      "type": "justone",
+      "target": "Failure"
+    },
+    {
+      "cardId": "ju-487",
+      "type": "justone",
+      "target": "History"
+    },
+    {
+      "cardId": "ju-488",
+      "type": "justone",
+      "target": "Beer"
+    },
+    {
+      "cardId": "ju-489",
+      "type": "justone",
+      "target": "Disco"
+    },
+    {
+      "cardId": "ju-490",
+      "type": "justone",
+      "target": "President"
+    },
+    {
+      "cardId": "ju-491",
+      "type": "justone",
+      "target": "Mirror"
+    },
+    {
+      "cardId": "ju-492",
+      "type": "justone",
+      "target": "Prom"
+    },
+    {
+      "cardId": "ju-493",
+      "type": "justone",
+      "target": "Bath"
+    },
+    {
+      "cardId": "ju-494",
+      "type": "justone",
+      "target": "Pit"
+    },
+    {
+      "cardId": "ju-495",
+      "type": "justone",
+      "target": "Fairy"
+    },
+    {
+      "cardId": "ju-496",
+      "type": "justone",
+      "target": "Ladder"
+    },
+    {
+      "cardId": "ju-497",
+      "type": "justone",
+      "target": "Angel"
+    },
+    {
+      "cardId": "ju-498",
+      "type": "justone",
+      "target": "Mad"
+    },
+    {
+      "cardId": "ju-499",
+      "type": "justone",
+      "target": "Hair"
+    },
+    {
+      "cardId": "ju-500",
+      "type": "justone",
+      "target": "Matrix"
+    },
+    {
+      "cardId": "ju-501",
+      "type": "justone",
+      "target": "Mustache"
+    },
+    {
+      "cardId": "ju-502",
+      "type": "justone",
+      "target": "Bubble"
+    },
+    {
+      "cardId": "ju-503",
+      "type": "justone",
+      "target": "Chain"
+    },
+    {
+      "cardId": "ju-504",
+      "type": "justone",
+      "target": "Stark"
+    },
+    {
+      "cardId": "ju-505",
+      "type": "justone",
+      "target": "Cookie"
+    },
+    {
+      "cardId": "ju-506",
+      "type": "justone",
+      "target": "Avatar"
+    },
+    {
+      "cardId": "ju-507",
+      "type": "justone",
+      "target": "Mill"
+    },
+    {
+      "cardId": "ju-508",
+      "type": "justone",
+      "target": "Jungle"
+    },
+    {
+      "cardId": "ju-509",
+      "type": "justone",
+      "target": "Nun"
+    },
+    {
+      "cardId": "ju-510",
+      "type": "justone",
+      "target": "Firecracker"
+    },
+    {
+      "cardId": "ju-511",
+      "type": "justone",
+      "target": "Iron"
+    },
+    {
+      "cardId": "ju-512",
+      "type": "justone",
+      "target": "Batman"
+    },
+    {
+      "cardId": "ju-513",
+      "type": "justone",
+      "target": "Song"
+    },
+    {
+      "cardId": "ju-514",
+      "type": "justone",
+      "target": "Nile"
+    },
+    {
+      "cardId": "ju-515",
+      "type": "justone",
+      "target": "Cinema"
+    },
+    {
+      "cardId": "ju-516",
+      "type": "justone",
+      "target": "Pump"
+    },
+    {
+      "cardId": "ju-517",
+      "type": "justone",
+      "target": "Aladdin"
+    },
+    {
+      "cardId": "ju-518",
+      "type": "justone",
+      "target": "Tube"
+    },
+    {
+      "cardId": "ju-519",
+      "type": "justone",
+      "target": "Belt"
+    },
+    {
+      "cardId": "ju-520",
+      "type": "justone",
+      "target": "Bar"
+    },
+    {
+      "cardId": "ju-521",
+      "type": "justone",
+      "target": "Mouth"
+    },
+    {
+      "cardId": "ju-522",
+      "type": "justone",
+      "target": "Carousel"
+    },
+    {
+      "cardId": "ju-523",
+      "type": "justone",
+      "target": "Psycho"
+    },
+    {
+      "cardId": "ju-524",
+      "type": "justone",
+      "target": "Grass"
+    },
+    {
+      "cardId": "ju-525",
+      "type": "justone",
+      "target": "Fall"
+    },
+    {
+      "cardId": "ju-526",
+      "type": "justone",
+      "target": "Doping"
+    },
+    {
+      "cardId": "ju-527",
+      "type": "justone",
+      "target": "Garlic"
+    },
+    {
+      "cardId": "ju-528",
+      "type": "justone",
+      "target": "Cube"
+    },
+    {
+      "cardId": "ju-529",
+      "type": "justone",
+      "target": "Rocky"
+    },
+    {
+      "cardId": "ju-530",
+      "type": "justone",
+      "target": "Milk"
+    },
+    {
+      "cardId": "ju-531",
+      "type": "justone",
+      "target": "Ice"
+    },
+    {
+      "cardId": "ju-532",
+      "type": "justone",
+      "target": "Flute"
+    },
+    {
+      "cardId": "ju-533",
+      "type": "justone",
+      "target": "Champagne"
+    },
+    {
+      "cardId": "ju-534",
+      "type": "justone",
+      "target": "Safari"
+    },
+    {
+      "cardId": "ju-535",
+      "type": "justone",
+      "target": "Alien"
+    },
+    {
+      "cardId": "ju-536",
+      "type": "justone",
+      "target": "Cane"
+    },
+    {
+      "cardId": "ju-537",
+      "type": "justone",
+      "target": "Musketeer"
+    },
+    {
+      "cardId": "ju-538",
+      "type": "justone",
+      "target": "Thread"
+    },
+    {
+      "cardId": "ju-539",
+      "type": "justone",
+      "target": "Tulip"
+    },
+    {
+      "cardId": "ju-540",
+      "type": "justone",
+      "target": "Ikea"
+    },
+    {
+      "cardId": "ju-541",
+      "type": "justone",
+      "target": "Croissant"
+    },
+    {
+      "cardId": "ju-542",
+      "type": "justone",
+      "target": "Ghost"
+    },
+    {
+      "cardId": "ju-543",
+      "type": "justone",
+      "target": "Straw"
+    },
+    {
+      "cardId": "ju-544",
+      "type": "justone",
+      "target": "Nail"
+    },
+    {
+      "cardId": "ju-545",
+      "type": "justone",
+      "target": "Potter"
+    },
+    {
+      "cardId": "ju-546",
+      "type": "justone",
+      "target": "Spartacus"
+    },
+    {
+      "cardId": "ju-547",
+      "type": "justone",
+      "target": "Fur"
+    },
+    {
+      "cardId": "ju-548",
+      "type": "justone",
+      "target": "Tornado"
+    },
+    {
+      "cardId": "ju-549",
+      "type": "justone",
+      "target": "Pyramid"
+    },
+    {
+      "cardId": "ju-550",
+      "type": "justone",
+      "target": "Alliance"
+    }
+  ]
+}
