@@ -211,17 +211,26 @@ async function translateCards(
       continue;
     }
 
-    const translatedBatch = result.data;
+    const translatedBatch = result.data as Array<{ cardId?: string } & Record<string, unknown>>;
 
-    for (let j = 0; j < originalBatch.length; j++) {
-      const original = originalBatch[j];
-      const translated = translatedBatch[j];
+    // Build a lookup map from cardId -> translated card so we don't depend on order
+    const translatedById = new Map<string, (typeof translatedBatch)[number]>();
+    for (const translated of translatedBatch) {
+      if (translated && typeof translated.cardId === "string") {
+        translatedById.set(translated.cardId, translated);
+      }
+    }
 
-      if (translated && translated.cardId === original.cardId) {
+    for (const original of originalBatch) {
+      const translated = translatedById.get(original.cardId);
+
+      if (translated) {
         translatedCards.push(mergeTranslation(original, translated));
       } else {
-        // Mismatch — keep original to avoid data loss
-        console.warn(`   ⚠️  Card ID mismatch in batch ${i + 1} at index ${j} — keeping original`);
+        // No matching translation for this cardId — keep original to avoid data loss
+        console.warn(
+          `   ⚠️  No matching translated card for cardId ${original.cardId} in batch ${i + 1} — keeping original`
+        );
         translatedCards.push(original);
       }
     }
