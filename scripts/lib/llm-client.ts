@@ -9,7 +9,7 @@ function getClient(): OpenAI {
   return _openai;
 }
 
-const MODEL = "gpt-4o";
+const DEFAULT_MODEL = "gpt-4o";
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
 
@@ -33,14 +33,15 @@ export async function generateWithRetry<T>(
   systemPrompt: string,
   prompt: string,
   parseResponse: (content: string) => T,
-  temperature: number = 0.7
+  temperature: number = 0.7,
+  model: string = DEFAULT_MODEL
 ): Promise<GenerationResult<T>> {
   let lastError: Error | null = null;
 
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
       const response = await getClient().chat.completions.create({
-        model: MODEL,
+        model,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: prompt },
@@ -79,7 +80,8 @@ export async function generateBatch<T>(
   prompts: { prompt: string; systemPrompt: string }[],
   parseResponse: (content: string) => T,
   concurrency: number = 5,
-  temperature: number = 0.7
+  temperature: number = 0.7,
+  model: string = DEFAULT_MODEL
 ): Promise<GenerationResult<T>[]> {
   const results: GenerationResult<T>[] = [];
 
@@ -88,7 +90,7 @@ export async function generateBatch<T>(
     const batch = prompts.slice(i, i + concurrency);
     const batchResults = await Promise.all(
       batch.map(({ prompt, systemPrompt }) =>
-        generateWithRetry(systemPrompt, prompt, parseResponse, temperature)
+        generateWithRetry(systemPrompt, prompt, parseResponse, temperature, model)
       )
     );
     results.push(...batchResults);
