@@ -116,12 +116,42 @@ function mergeTranslation(original: Card, translated: Record<string, unknown>): 
       };
     case "trivia":
       if (original.format === "mcq") {
+        // Safely merge MCQ translations while keeping answerIndex consistent.
+        let mergedChoices = original.choices;
+        let mergedAnswerIndex = original.answerIndex;
+
+        if (Array.isArray(translated.choices)) {
+          const candidateChoices = (translated.choices as unknown[]).filter(
+            (c) => typeof c === "string"
+          ) as string[];
+
+          // Only accept translated choices if they are all strings and the length matches.
+          if (candidateChoices.length === original.choices.length) {
+            mergedChoices = candidateChoices;
+
+            // If a translated answerIndex is provided and valid for the new choices, use it.
+            if (
+              typeof (translated as { answerIndex?: unknown }).answerIndex === "number" &&
+              Number.isInteger(
+                (translated as { answerIndex?: number }).answerIndex as number
+              )
+            ) {
+              const translatedIndex = (translated as { answerIndex: number }).answerIndex;
+              if (
+                translatedIndex >= 0 &&
+                translatedIndex < candidateChoices.length
+              ) {
+                mergedAnswerIndex = translatedIndex;
+              }
+            }
+          }
+        }
+
         return {
           ...original,
           question: String(translated.question ?? original.question),
-          choices: Array.isArray(translated.choices)
-            ? (translated.choices as string[])
-            : original.choices,
+          choices: mergedChoices,
+          answerIndex: mergedAnswerIndex,
           answerText: String(translated.answerText ?? original.answerText),
         };
       } else {
