@@ -24,8 +24,9 @@ const DECK_META = {
   difficulty: "medium" as const,
   topics: ["general"],
   nsfw: false,
-  recommended: true,
 };
+
+const DECK_RECOMMENDED = true;
 
 const { values: args } = parseArgs({
   args: Bun.argv.slice(2),
@@ -82,7 +83,7 @@ async function updateIndex(deck: Deck): Promise<void> {
     language: deck.language,
     difficulty: deck.difficulty,
     topics: deck.topics,
-    recommended: DECK_META.recommended,
+    recommended: DECK_RECOMMENDED,
     nsfw: deck.nsfw,
     version: deck.version,
     cardCount: deck.cards.length,
