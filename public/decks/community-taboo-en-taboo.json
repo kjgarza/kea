@@ -1,0 +1,1516 @@
+{
+  "schemaVersion": 1,
+  "deckId": "community-taboo-en-taboo",
+  "version": "2026-03-14T07:39:22.745Z",
+  "name": "Community Taboo Cards",
+  "gameType": "taboo",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "general",
+    "mixed"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "tb-csv-001",
+      "type": "taboo",
+      "target": "HARVARD UNIVERSITY",
+      "forbidden": [
+        "Ivy League",
+        "School",
+        "Crimson",
+        "Cambridge",
+        "Yale"
+      ]
+    },
+    {
+      "cardId": "tb-csv-002",
+      "type": "taboo",
+      "target": "FLY SWATTER",
+      "forbidden": [
+        "Kill",
+        "Slap",
+        "Bug",
+        "Buzz",
+        "Tool"
+      ]
+    },
+    {
+      "cardId": "tb-csv-003",
+      "type": "taboo",
+      "target": "CANADA",
+      "forbidden": [
+        "North",
+        "Cold",
+        "Snow",
+        "Goose",
+        "Mountie"
+      ]
+    },
+    {
+      "cardId": "tb-csv-004",
+      "type": "taboo",
+      "target": "ADDICTION",
+      "forbidden": [
+        "Drug",
+        "Alcohol",
+        "Rehab",
+        "Habit",
+        "Withdrawal"
+      ]
+    },
+    {
+      "cardId": "tb-csv-005",
+      "type": "taboo",
+      "target": "INCISION",
+      "forbidden": [
+        "Cut",
+        "Operate",
+        "Surgery",
+        "Scalpel",
+        "Stitch"
+      ]
+    },
+    {
+      "cardId": "tb-csv-006",
+      "type": "taboo",
+      "target": "POLO",
+      "forbidden": [
+        "Horse",
+        "Water",
+        "Shirt",
+        "Club",
+        "Sport"
+      ]
+    },
+    {
+      "cardId": "tb-csv-007",
+      "type": "taboo",
+      "target": "SCREAM",
+      "forbidden": [
+        "Yell",
+        "Shout",
+        "Scare",
+        "Fear",
+        "Surprise"
+      ]
+    },
+    {
+      "cardId": "tb-csv-008",
+      "type": "taboo",
+      "target": "CURFEW",
+      "forbidden": [
+        "Late",
+        "Teenager",
+        "Home",
+        "Ground",
+        "Time"
+      ]
+    },
+    {
+      "cardId": "tb-csv-009",
+      "type": "taboo",
+      "target": "SPREADSHEET",
+      "forbidden": [
+        "Excel",
+        "Numbers",
+        "Math",
+        "Equations",
+        "Table"
+      ]
+    },
+    {
+      "cardId": "tb-csv-010",
+      "type": "taboo",
+      "target": "SPIRITUAL",
+      "forbidden": [
+        "Belief",
+        "Religion",
+        "Faith",
+        "God",
+        "Holy"
+      ]
+    },
+    {
+      "cardId": "tb-csv-011",
+      "type": "taboo",
+      "target": "BLISTER",
+      "forbidden": [
+        "Pop",
+        "Skin",
+        "Heel",
+        "Handle",
+        "Foot"
+      ]
+    },
+    {
+      "cardId": "tb-csv-012",
+      "type": "taboo",
+      "target": "MOTHERBOARD",
+      "forbidden": [
+        "Computer",
+        "Processor",
+        "Boot",
+        "Circuit",
+        "Chip"
+      ]
+    },
+    {
+      "cardId": "tb-csv-013",
+      "type": "taboo",
+      "target": "NORTH CAROLINA",
+      "forbidden": [
+        "Atlantic",
+        "Tar Heel",
+        "South",
+        "Virginia",
+        "Tennessee"
+      ]
+    },
+    {
+      "cardId": "tb-csv-014",
+      "type": "taboo",
+      "target": "BAR STOOL",
+      "forbidden": [
+        "Drink",
+        "Sit",
+        "Chair",
+        "Fight",
+        "Kitchen"
+      ]
+    },
+    {
+      "cardId": "tb-csv-015",
+      "type": "taboo",
+      "target": "THERAPIST",
+      "forbidden": [
+        "Analyze",
+        "Doctor",
+        "Couch",
+        "Shrink",
+        "Psychiatrist"
+      ]
+    },
+    {
+      "cardId": "tb-csv-016",
+      "type": "taboo",
+      "target": "WHIRLPOOL",
+      "forbidden": [
+        "Water",
+        "Spin",
+        "River",
+        "Swirl",
+        "Appliance"
+      ]
+    },
+    {
+      "cardId": "tb-csv-017",
+      "type": "taboo",
+      "target": "CALCULUS",
+      "forbidden": [
+        "Math",
+        "Function",
+        "Derivative",
+        "Integral",
+        "Limit"
+      ]
+    },
+    {
+      "cardId": "tb-csv-018",
+      "type": "taboo",
+      "target": "ILLITERATE",
+      "forbidden": [
+        "Read",
+        "Write",
+        "Word",
+        "School",
+        "Educate"
+      ]
+    },
+    {
+      "cardId": "tb-csv-019",
+      "type": "taboo",
+      "target": "BEATBOX",
+      "forbidden": [
+        "Rhythm",
+        "Drum",
+        "Mouth",
+        "Sound",
+        "Music"
+      ]
+    },
+    {
+      "cardId": "tb-csv-020",
+      "type": "taboo",
+      "target": "SQUIRREL",
+      "forbidden": [
+        "Tree",
+        "Rocky",
+        "Bushy",
+        "Road",
+        "Fly"
+      ]
+    },
+    {
+      "cardId": "tb-csv-021",
+      "type": "taboo",
+      "target": "ANTEATER",
+      "forbidden": [
+        "Animal",
+        "Insects",
+        "Tongue",
+        "Termites",
+        "Hill"
+      ]
+    },
+    {
+      "cardId": "tb-csv-022",
+      "type": "taboo",
+      "target": "BIGFOOT",
+      "forbidden": [
+        "Sasquatch",
+        "Yeti",
+        "Hairy",
+        "Monster",
+        "Legend"
+      ]
+    },
+    {
+      "cardId": "tb-csv-023",
+      "type": "taboo",
+      "target": "CONCH",
+      "forbidden": [
+        "Shell",
+        "Whelk",
+        "Ocean",
+        "Beach",
+        "Snail"
+      ]
+    },
+    {
+      "cardId": "tb-csv-024",
+      "type": "taboo",
+      "target": "PAPER BOY",
+      "forbidden": [
+        "News",
+        "Deliver",
+        "Bicycle",
+        "Nintendo",
+        "Throw"
+      ]
+    },
+    {
+      "cardId": "tb-csv-025",
+      "type": "taboo",
+      "target": "PILLAGE",
+      "forbidden": [
+        "Burn",
+        "City",
+        "Pirate",
+        "Soldier",
+        "Plunder"
+      ]
+    },
+    {
+      "cardId": "tb-csv-026",
+      "type": "taboo",
+      "target": "SIT-UP",
+      "forbidden": [
+        "Crunch",
+        "Abdominal",
+        "Fitness",
+        "Workout",
+        "Exercise"
+      ]
+    },
+    {
+      "cardId": "tb-csv-027",
+      "type": "taboo",
+      "target": "PHOTOGRAPH",
+      "forbidden": [
+        "Picture",
+        "Camera",
+        "Cheese",
+        "Art",
+        "Snap"
+      ]
+    },
+    {
+      "cardId": "tb-csv-028",
+      "type": "taboo",
+      "target": "WITCHCRAFT",
+      "forbidden": [
+        "Burn",
+        "Magic",
+        "Potter",
+        "Practice",
+        "Wizard"
+      ]
+    },
+    {
+      "cardId": "tb-csv-029",
+      "type": "taboo",
+      "target": "TUMOR",
+      "forbidden": [
+        "Cancer",
+        "Malignant",
+        "Benign",
+        "Doctor",
+        "Lump"
+      ]
+    },
+    {
+      "cardId": "tb-csv-030",
+      "type": "taboo",
+      "target": "GARBAGE",
+      "forbidden": [
+        "Day",
+        "Trash",
+        "Collect",
+        "Truck",
+        "Can"
+      ]
+    },
+    {
+      "cardId": "tb-csv-031",
+      "type": "taboo",
+      "target": "ZOO",
+      "forbidden": [
+        "Animal",
+        "Panda",
+        "Monkey",
+        "Visit",
+        "Cage"
+      ]
+    },
+    {
+      "cardId": "tb-csv-032",
+      "type": "taboo",
+      "target": "LUGE",
+      "forbidden": [
+        "Olympics",
+        "Slide",
+        "Back",
+        "Board",
+        "Downhill"
+      ]
+    },
+    {
+      "cardId": "tb-csv-033",
+      "type": "taboo",
+      "target": "CUCUMBER",
+      "forbidden": [
+        "Vegetable",
+        "Green",
+        "Crunch",
+        "Grow",
+        "Pickle"
+      ]
+    },
+    {
+      "cardId": "tb-csv-034",
+      "type": "taboo",
+      "target": "ENTREPRENEUR",
+      "forbidden": [
+        "Business",
+        "Company",
+        "Hire",
+        "Start",
+        "Sell"
+      ]
+    },
+    {
+      "cardId": "tb-csv-035",
+      "type": "taboo",
+      "target": "BIRTHDAY CAKE",
+      "forbidden": [
+        "Candle",
+        "Chocolate",
+        "Vanilla",
+        "Frosting",
+        "Party"
+      ]
+    },
+    {
+      "cardId": "tb-csv-036",
+      "type": "taboo",
+      "target": "COLOGNE",
+      "forbidden": [
+        "Smell",
+        "Date",
+        "Man",
+        "French",
+        "Dab"
+      ]
+    },
+    {
+      "cardId": "tb-csv-037",
+      "type": "taboo",
+      "target": "DEMOCRACY",
+      "forbidden": [
+        "Government",
+        "Elect",
+        "Vote",
+        "America",
+        "Republic"
+      ]
+    },
+    {
+      "cardId": "tb-csv-038",
+      "type": "taboo",
+      "target": "FUNGUS",
+      "forbidden": [
+        "Mushroom",
+        "Spore",
+        "Mildew",
+        "Mold",
+        "Green"
+      ]
+    },
+    {
+      "cardId": "tb-csv-039",
+      "type": "taboo",
+      "target": "HAIRBRUSH",
+      "forbidden": [
+        "Comb",
+        "Salon",
+        "Straight",
+        "Tangle",
+        "Morning"
+      ]
+    },
+    {
+      "cardId": "tb-csv-040",
+      "type": "taboo",
+      "target": "VISOR",
+      "forbidden": [
+        "Golf",
+        "Hat",
+        "Head",
+        "Sun",
+        "Eyes"
+      ]
+    },
+    {
+      "cardId": "tb-csv-041",
+      "type": "taboo",
+      "target": "WALL STREET",
+      "forbidden": [
+        "Stock Market",
+        "Broker",
+        "Bond",
+        "Greed",
+        "New York"
+      ]
+    },
+    {
+      "cardId": "tb-csv-042",
+      "type": "taboo",
+      "target": "ODYSSEUS",
+      "forbidden": [
+        "Troy",
+        "Home",
+        "Ulysses",
+        "Homer",
+        "Epic"
+      ]
+    },
+    {
+      "cardId": "tb-csv-043",
+      "type": "taboo",
+      "target": "MOTEL",
+      "forbidden": [
+        "Inn",
+        "Hotel",
+        "Cheap",
+        "Sleep",
+        "Stay"
+      ]
+    },
+    {
+      "cardId": "tb-csv-044",
+      "type": "taboo",
+      "target": "RAINBOW",
+      "forbidden": [
+        "Color",
+        "Gold",
+        "Light",
+        "Reading",
+        "Waterfall"
+      ]
+    },
+    {
+      "cardId": "tb-csv-045",
+      "type": "taboo",
+      "target": "ELVIS PRESLEY",
+      "forbidden": [
+        "Graceland",
+        "Hound Dog",
+        "Sing",
+        "Rock N' Roll",
+        "King"
+      ]
+    },
+    {
+      "cardId": "tb-csv-046",
+      "type": "taboo",
+      "target": "CANVAS",
+      "forbidden": [
+        "Blank",
+        "Paint",
+        "Draw",
+        "Door",
+        "Poll"
+      ]
+    },
+    {
+      "cardId": "tb-csv-047",
+      "type": "taboo",
+      "target": "WRITE",
+      "forbidden": [
+        "Paper",
+        "Pencil",
+        "Pen",
+        "Letter",
+        "Hand"
+      ]
+    },
+    {
+      "cardId": "tb-csv-048",
+      "type": "taboo",
+      "target": "WILDFIRE",
+      "forbidden": [
+        "Hot",
+        "Forest",
+        "Brush",
+        "Fight",
+        "Spread"
+      ]
+    },
+    {
+      "cardId": "tb-csv-049",
+      "type": "taboo",
+      "target": "EMERALD",
+      "forbidden": [
+        "Green",
+        "Oz",
+        "Stone",
+        "Gem",
+        "Diamond"
+      ]
+    },
+    {
+      "cardId": "tb-csv-050",
+      "type": "taboo",
+      "target": "BOXER",
+      "forbidden": [
+        "Sport",
+        "Dog",
+        "Punch",
+        "Ring",
+        "Gloves"
+      ]
+    },
+    {
+      "cardId": "tb-csv-051",
+      "type": "taboo",
+      "target": "BEEF JERKY",
+      "forbidden": [
+        "Slim Jim",
+        "Dry",
+        "Meat",
+        "Chew",
+        "Salt"
+      ]
+    },
+    {
+      "cardId": "tb-csv-052",
+      "type": "taboo",
+      "target": "KIDDIE POOL",
+      "forbidden": [
+        "Swim",
+        "Small",
+        "Kid",
+        "Shallow",
+        "Baby"
+      ]
+    },
+    {
+      "cardId": "tb-csv-053",
+      "type": "taboo",
+      "target": "TOOTHPASTE",
+      "forbidden": [
+        "Brush",
+        "Teeth",
+        "Mouth",
+        "Bed",
+        "Clean"
+      ]
+    },
+    {
+      "cardId": "tb-csv-054",
+      "type": "taboo",
+      "target": "PUREE",
+      "forbidden": [
+        "Blend",
+        "Liquid",
+        "Smooth",
+        "Sauce",
+        "Tomato"
+      ]
+    },
+    {
+      "cardId": "tb-csv-055",
+      "type": "taboo",
+      "target": "KING CRAB",
+      "forbidden": [
+        "Seafood",
+        "Claw",
+        "Sideways",
+        "Pincer",
+        "Leg"
+      ]
+    },
+    {
+      "cardId": "tb-csv-056",
+      "type": "taboo",
+      "target": "WELCOME",
+      "forbidden": [
+        "Greet",
+        "Mat",
+        "Hello",
+        "Home",
+        "Party"
+      ]
+    },
+    {
+      "cardId": "tb-csv-057",
+      "type": "taboo",
+      "target": "CRAWL",
+      "forbidden": [
+        "Baby",
+        "Space",
+        "Bug",
+        "Knees",
+        "Floor"
+      ]
+    },
+    {
+      "cardId": "tb-csv-058",
+      "type": "taboo",
+      "target": "CROP CIRCLE",
+      "forbidden": [
+        "Corn",
+        "Ufo",
+        "Pattern",
+        "Alien",
+        "Hoax"
+      ]
+    },
+    {
+      "cardId": "tb-csv-059",
+      "type": "taboo",
+      "target": "PASSWORD",
+      "forbidden": [
+        "Hack",
+        "Steal",
+        "Lock",
+        "Secret",
+        "Login"
+      ]
+    },
+    {
+      "cardId": "tb-csv-060",
+      "type": "taboo",
+      "target": "WEBCAM",
+      "forbidden": [
+        "Skype",
+        "Chat",
+        "Video",
+        "Talk",
+        "Computer"
+      ]
+    },
+    {
+      "cardId": "tb-csv-061",
+      "type": "taboo",
+      "target": "WHEELCHAIR",
+      "forbidden": [
+        "Disable",
+        "Handicap",
+        "Roll",
+        "Electric",
+        "Ramp"
+      ]
+    },
+    {
+      "cardId": "tb-csv-062",
+      "type": "taboo",
+      "target": "YANKEE",
+      "forbidden": [
+        "Northern",
+        "New York",
+        "American",
+        "Baseball",
+        "British"
+      ]
+    },
+    {
+      "cardId": "tb-csv-063",
+      "type": "taboo",
+      "target": "ZEUS",
+      "forbidden": [
+        "Jupiter",
+        "Greek",
+        "King",
+        "God",
+        "Olympus"
+      ]
+    },
+    {
+      "cardId": "tb-csv-064",
+      "type": "taboo",
+      "target": "BEETHOVEN",
+      "forbidden": [
+        "Composer",
+        "Deaf",
+        "Piano",
+        "Symphony",
+        "Roll Over"
+      ]
+    },
+    {
+      "cardId": "tb-csv-065",
+      "type": "taboo",
+      "target": "BIKINI",
+      "forbidden": [
+        "Yellow",
+        "Beach",
+        "Wear",
+        "Two Piece",
+        "Wax"
+      ]
+    },
+    {
+      "cardId": "tb-csv-066",
+      "type": "taboo",
+      "target": "BUFFET",
+      "forbidden": [
+        "Eat",
+        "Meal",
+        "All",
+        "Salad",
+        "Chinese"
+      ]
+    },
+    {
+      "cardId": "tb-csv-067",
+      "type": "taboo",
+      "target": "COAST",
+      "forbidden": [
+        "Ocean",
+        "Beach",
+        "Sand",
+        "Sail",
+        "Wave"
+      ]
+    },
+    {
+      "cardId": "tb-csv-068",
+      "type": "taboo",
+      "target": "PLATEAU",
+      "forbidden": [
+        "Flat",
+        "Land",
+        "Mountain",
+        "West",
+        "Desert"
+      ]
+    },
+    {
+      "cardId": "tb-csv-069",
+      "type": "taboo",
+      "target": "RANCID",
+      "forbidden": [
+        "Sour",
+        "Milk",
+        "Bad",
+        "Rotten",
+        "Trash"
+      ]
+    },
+    {
+      "cardId": "tb-csv-070",
+      "type": "taboo",
+      "target": "SIGNAL",
+      "forbidden": [
+        "Smoke",
+        "Morse Code",
+        "Sign",
+        "Light",
+        "Turn"
+      ]
+    },
+    {
+      "cardId": "tb-csv-071",
+      "type": "taboo",
+      "target": "SLOW MOTION",
+      "forbidden": [
+        "Move",
+        "Movie",
+        "Frame",
+        "Action",
+        "Film"
+      ]
+    },
+    {
+      "cardId": "tb-csv-072",
+      "type": "taboo",
+      "target": "SLEET",
+      "forbidden": [
+        "Rain",
+        "Sky",
+        "Ice",
+        "Cloud",
+        "Freeze"
+      ]
+    },
+    {
+      "cardId": "tb-csv-073",
+      "type": "taboo",
+      "target": "DANCE",
+      "forbidden": [
+        "Disco",
+        "Ballroom",
+        "Waltz",
+        "Floor",
+        "Revolution"
+      ]
+    },
+    {
+      "cardId": "tb-csv-074",
+      "type": "taboo",
+      "target": "ENGINEER",
+      "forbidden": [
+        "Train",
+        "Civil",
+        "Bridge",
+        "Electric",
+        "Computer"
+      ]
+    },
+    {
+      "cardId": "tb-csv-075",
+      "type": "taboo",
+      "target": "CEO",
+      "forbidden": [
+        "Business",
+        "Company",
+        "Lead",
+        "Head",
+        "Run"
+      ]
+    },
+    {
+      "cardId": "tb-csv-076",
+      "type": "taboo",
+      "target": "CHEAT",
+      "forbidden": [
+        "Rules",
+        "System",
+        "Affair",
+        "Game",
+        "Break"
+      ]
+    },
+    {
+      "cardId": "tb-csv-077",
+      "type": "taboo",
+      "target": "JULIUS CAESAR",
+      "forbidden": [
+        "Brutus",
+        "Rome",
+        "Salad",
+        "Calendar",
+        "Emperor"
+      ]
+    },
+    {
+      "cardId": "tb-csv-078",
+      "type": "taboo",
+      "target": "APOCALYPSE",
+      "forbidden": [
+        "End",
+        "World",
+        "Plague",
+        "Rapture",
+        "Nuclear"
+      ]
+    },
+    {
+      "cardId": "tb-csv-079",
+      "type": "taboo",
+      "target": "SURGEON",
+      "forbidden": [
+        "Doctor",
+        "Stitch",
+        "Hospital",
+        "Operate",
+        "Brain"
+      ]
+    },
+    {
+      "cardId": "tb-csv-080",
+      "type": "taboo",
+      "target": "SAMURAI",
+      "forbidden": [
+        "Japan",
+        "Warrior",
+        "Ninja",
+        "Sword",
+        "Katana"
+      ]
+    },
+    {
+      "cardId": "tb-csv-081",
+      "type": "taboo",
+      "target": "WATERMELON",
+      "forbidden": [
+        "Seed",
+        "Red",
+        "Green",
+        "Summer",
+        "Juice"
+      ]
+    },
+    {
+      "cardId": "tb-csv-082",
+      "type": "taboo",
+      "target": "BLIND",
+      "forbidden": [
+        "Vision",
+        "See",
+        "Glasses",
+        "Cane",
+        "Dog"
+      ]
+    },
+    {
+      "cardId": "tb-csv-083",
+      "type": "taboo",
+      "target": "REAL ESTATE",
+      "forbidden": [
+        "House",
+        "Land",
+        "Realty",
+        "Mortgage",
+        "Bubble"
+      ]
+    },
+    {
+      "cardId": "tb-csv-084",
+      "type": "taboo",
+      "target": "EXORCISM",
+      "forbidden": [
+        "Demon",
+        "Priest",
+        "Holy",
+        "Christ",
+        "Cleanse"
+      ]
+    },
+    {
+      "cardId": "tb-csv-085",
+      "type": "taboo",
+      "target": "PEANUT",
+      "forbidden": [
+        "Butter",
+        "Jelly",
+        "Shell",
+        "Salt",
+        "Charlie Brown"
+      ]
+    },
+    {
+      "cardId": "tb-csv-086",
+      "type": "taboo",
+      "target": "PARDON",
+      "forbidden": [
+        "Forgive",
+        "Convict",
+        "Amnesty",
+        "French",
+        "President"
+      ]
+    },
+    {
+      "cardId": "tb-csv-087",
+      "type": "taboo",
+      "target": "EASTER EGG",
+      "forbidden": [
+        "Color",
+        "Paint",
+        "Dye",
+        "Vinegar",
+        "Hunt"
+      ]
+    },
+    {
+      "cardId": "tb-csv-088",
+      "type": "taboo",
+      "target": "EMBARRASSED",
+      "forbidden": [
+        "Shy",
+        "Blush",
+        "Red",
+        "Foolish",
+        "Feel"
+      ]
+    },
+    {
+      "cardId": "tb-csv-089",
+      "type": "taboo",
+      "target": "POISON IVY",
+      "forbidden": [
+        "Itch",
+        "Rash",
+        "Plant",
+        "Skin",
+        "Touch"
+      ]
+    },
+    {
+      "cardId": "tb-csv-090",
+      "type": "taboo",
+      "target": "BEG",
+      "forbidden": [
+        "Ask",
+        "Knee",
+        "Plead",
+        "Mercy",
+        "Dog"
+      ]
+    },
+    {
+      "cardId": "tb-csv-091",
+      "type": "taboo",
+      "target": "BUDDHA",
+      "forbidden": [
+        "Fat",
+        "India",
+        "Meditate",
+        "Religion",
+        "Statue"
+      ]
+    },
+    {
+      "cardId": "tb-csv-092",
+      "type": "taboo",
+      "target": "BRUISE",
+      "forbidden": [
+        "Black",
+        "Blue",
+        "Blood",
+        "Skin",
+        "Hurt"
+      ]
+    },
+    {
+      "cardId": "tb-csv-093",
+      "type": "taboo",
+      "target": "THORN",
+      "forbidden": [
+        "Rose",
+        "Prick",
+        "Bush",
+        "Side",
+        "Stem"
+      ]
+    },
+    {
+      "cardId": "tb-csv-094",
+      "type": "taboo",
+      "target": "PHARMACIST",
+      "forbidden": [
+        "Pill",
+        "Prescription",
+        "Pharmacy",
+        "Counter",
+        "Medicine"
+      ]
+    },
+    {
+      "cardId": "tb-csv-095",
+      "type": "taboo",
+      "target": "VOCAL CHORDS",
+      "forbidden": [
+        "Talk",
+        "Sing",
+        "Throat",
+        "Lose",
+        "Vibrate"
+      ]
+    },
+    {
+      "cardId": "tb-csv-096",
+      "type": "taboo",
+      "target": "CAMEL",
+      "forbidden": [
+        "Hump",
+        "Ride",
+        "Spit",
+        "Desert",
+        "Water"
+      ]
+    },
+    {
+      "cardId": "tb-csv-097",
+      "type": "taboo",
+      "target": "GREEN TEA",
+      "forbidden": [
+        "Caffeine",
+        "Hot",
+        "Bag",
+        "Drink",
+        "Coffee"
+      ]
+    },
+    {
+      "cardId": "tb-csv-098",
+      "type": "taboo",
+      "target": "SUPERCOMPUTER",
+      "forbidden": [
+        "Keyboard",
+        "Internet",
+        "Research",
+        "Powerful",
+        "Science"
+      ]
+    },
+    {
+      "cardId": "tb-csv-099",
+      "type": "taboo",
+      "target": "TRAGEDY",
+      "forbidden": [
+        "Greek",
+        "Romeo And Juliet",
+        "Sad",
+        "Horrible",
+        "Ending"
+      ]
+    },
+    {
+      "cardId": "tb-csv-100",
+      "type": "taboo",
+      "target": "DRAW",
+      "forbidden": [
+        "Art",
+        "Straws",
+        "Tie",
+        "Pencil",
+        "Pen"
+      ]
+    },
+    {
+      "cardId": "tb-csv-101",
+      "type": "taboo",
+      "target": "SERIAL KILLER",
+      "forbidden": [
+        "Murder",
+        "Hannibal",
+        "Crazy",
+        "Kill",
+        "Catch"
+      ]
+    },
+    {
+      "cardId": "tb-csv-102",
+      "type": "taboo",
+      "target": "AL CAPONE",
+      "forbidden": [
+        "Mob",
+        "Mafia",
+        "Prohibition",
+        "Alcohol",
+        "Bootleg"
+      ]
+    },
+    {
+      "cardId": "tb-csv-103",
+      "type": "taboo",
+      "target": "EAST",
+      "forbidden": [
+        "Sunrise",
+        "Asia",
+        "Russia",
+        "West",
+        "New York"
+      ]
+    },
+    {
+      "cardId": "tb-csv-104",
+      "type": "taboo",
+      "target": "HILLARY CLINTON",
+      "forbidden": [
+        "First Lady",
+        "President",
+        "Secretary Of State",
+        "Bill",
+        "Election"
+      ]
+    },
+    {
+      "cardId": "tb-csv-105",
+      "type": "taboo",
+      "target": "WRESTLING",
+      "forbidden": [
+        "Greek",
+        "Arm",
+        "Fight",
+        "Boxing",
+        "Grab"
+      ]
+    },
+    {
+      "cardId": "tb-csv-106",
+      "type": "taboo",
+      "target": "FRENCH KISS",
+      "forbidden": [
+        "Lips",
+        "Make Out",
+        "Tongue",
+        "Party",
+        "Mouth"
+      ]
+    },
+    {
+      "cardId": "tb-csv-107",
+      "type": "taboo",
+      "target": "PIPE ORGAN",
+      "forbidden": [
+        "Church",
+        "Music",
+        "Hymn",
+        "Play",
+        "Piano"
+      ]
+    },
+    {
+      "cardId": "tb-csv-108",
+      "type": "taboo",
+      "target": "WAITER",
+      "forbidden": [
+        "Tip",
+        "Table",
+        "Serve",
+        "Food",
+        "Male"
+      ]
+    },
+    {
+      "cardId": "tb-csv-109",
+      "type": "taboo",
+      "target": "STEWARDESS",
+      "forbidden": [
+        "Plane",
+        "Serve",
+        "Order",
+        "Air",
+        "Food"
+      ]
+    },
+    {
+      "cardId": "tb-csv-110",
+      "type": "taboo",
+      "target": "POKER",
+      "forbidden": [
+        "Card",
+        "Face",
+        "Gamble",
+        "Bluff",
+        "Hold"
+      ]
+    },
+    {
+      "cardId": "tb-csv-111",
+      "type": "taboo",
+      "target": "FERRIS WHEEL",
+      "forbidden": [
+        "Fair",
+        "Ride",
+        "Circus",
+        "Around",
+        "High"
+      ]
+    },
+    {
+      "cardId": "tb-csv-112",
+      "type": "taboo",
+      "target": "SMOOTH",
+      "forbidden": [
+        "Rough",
+        "Slick",
+        "Suave",
+        "Texture",
+        "Creamy"
+      ]
+    },
+    {
+      "cardId": "tb-csv-113",
+      "type": "taboo",
+      "target": "CELLO",
+      "forbidden": [
+        "String",
+        "Bass",
+        "Yo-Yo Ma",
+        "Bow",
+        "Orchestra"
+      ]
+    },
+    {
+      "cardId": "tb-csv-114",
+      "type": "taboo",
+      "target": "WHISKEY",
+      "forbidden": [
+        "Bourbon",
+        "Shot",
+        "Bar",
+        "Jack Daniels",
+        "Scotch"
+      ]
+    },
+    {
+      "cardId": "tb-csv-115",
+      "type": "taboo",
+      "target": "GOLDFISH",
+      "forbidden": [
+        "Guppy",
+        "Bowl",
+        "Crackers",
+        "Cheese",
+        "Aquarium"
+      ]
+    },
+    {
+      "cardId": "tb-csv-116",
+      "type": "taboo",
+      "target": "BARTENDER",
+      "forbidden": [
+        "Serve",
+        "Drink",
+        "Alcohol",
+        "Beer",
+        "Order"
+      ]
+    },
+    {
+      "cardId": "tb-csv-117",
+      "type": "taboo",
+      "target": "JAYWALK",
+      "forbidden": [
+        "Cross",
+        "Road",
+        "Street",
+        "Illegal",
+        "Cars"
+      ]
+    },
+    {
+      "cardId": "tb-csv-118",
+      "type": "taboo",
+      "target": "EARRING",
+      "forbidden": [
+        "Pierce",
+        "Jewelry",
+        "Lobe",
+        "Hoop",
+        "Girl"
+      ]
+    },
+    {
+      "cardId": "tb-csv-119",
+      "type": "taboo",
+      "target": "WRIGHT BROTHERS",
+      "forbidden": [
+        "Air Plane",
+        "Flight",
+        "Inventors",
+        "Kitty Hawk",
+        "Bicycle"
+      ]
+    },
+    {
+      "cardId": "tb-csv-120",
+      "type": "taboo",
+      "target": "DEMON",
+      "forbidden": [
+        "Evil",
+        "Possess",
+        "Halloween",
+        "Hell",
+        "Horn"
+      ]
+    },
+    {
+      "cardId": "tb-csv-121",
+      "type": "taboo",
+      "target": "MOOSE",
+      "forbidden": [
+        "North",
+        "Chocolate",
+        "Deer",
+        "Hunt",
+        "Antler"
+      ]
+    },
+    {
+      "cardId": "tb-csv-122",
+      "type": "taboo",
+      "target": "DIAPER",
+      "forbidden": [
+        "Wear",
+        "Stink",
+        "Wet",
+        "Change",
+        "Baby"
+      ]
+    },
+    {
+      "cardId": "tb-csv-123",
+      "type": "taboo",
+      "target": "UNICORN",
+      "forbidden": [
+        "Fantasy",
+        "Horn",
+        "Horse",
+        "Rainbow",
+        "One"
+      ]
+    },
+    {
+      "cardId": "tb-csv-124",
+      "type": "taboo",
+      "target": "HANGMAN",
+      "forbidden": [
+        "Execute",
+        "Rope",
+        "Hood",
+        "Death",
+        "Punish"
+      ]
+    },
+    {
+      "cardId": "tb-csv-125",
+      "type": "taboo",
+      "target": "DRUMSTICK",
+      "forbidden": [
+        "Wood",
+        "Chicken",
+        "Hit",
+        "Band",
+        "Snare"
+      ]
+    }
+  ]
+}
