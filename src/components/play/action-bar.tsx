@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SkipForward, Check, ArrowRight, Clock } from "lucide-react";
+import { SkipForward, Check, ArrowRight, Clock, Timer, BellRing } from "lucide-react";
 import type { GameType } from "@/types/game";
 
 interface ActionBarProps {
@@ -12,6 +12,10 @@ interface ActionBarProps {
   onCorrect?: () => void;
   onEndTurn?: () => void;
   isRevealed?: boolean;
+  // Taboo specific
+  tabooTimerActive?: boolean;
+  onTabooStartTimer?: () => void;
+  onTabooAlert?: () => void;
 }
 
 interface ActionButtonProps {
@@ -53,6 +57,9 @@ export function ActionBar({
   onCorrect,
   onEndTurn,
   isRevealed = false,
+  tabooTimerActive = false,
+  onTabooStartTimer,
+  onTabooAlert,
 }: ActionBarProps) {
   // Monikers has special controls
   if (gameType === "monikers") {
@@ -107,7 +114,61 @@ export function ActionBar({
     );
   }
 
-  // Default: Pass and Next (for Charades, Taboo, Just One)
+  // Taboo: timer-based controls
+  if (gameType === "taboo") {
+    if (!tabooTimerActive) {
+      return (
+        <div className="flex gap-3 p-4 pb-6">
+          <ActionButton
+            variant="pass"
+            onClick={onPass}
+            icon={<SkipForward className="h-5 w-5" />}
+          >
+            Pass
+          </ActionButton>
+          <ActionButton
+            variant="primary"
+            onClick={onTabooStartTimer}
+            icon={<Timer className="h-5 w-5" />}
+          >
+            Start Timer
+          </ActionButton>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex flex-col gap-3 p-4 pb-6">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onTabooAlert}
+          className="w-full h-16 rounded-2xl bg-destructive text-destructive-foreground font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-destructive/30"
+        >
+          <BellRing className="h-6 w-6" />
+          ALERT! Taboo Word Said
+        </motion.button>
+        <div className="flex gap-3">
+          <ActionButton
+            variant="pass"
+            onClick={onPass}
+            icon={<SkipForward className="h-5 w-5" />}
+          >
+            Pass
+          </ActionButton>
+          <ActionButton
+            variant="primary"
+            onClick={onNext}
+            icon={<Check className="h-5 w-5" />}
+          >
+            Got it!
+          </ActionButton>
+        </div>
+      </div>
+    );
+  }
+
+  // Default: Pass and Next (for Charades, Just One)
   return (
     <div className="flex gap-3 p-4 pb-6">
       <ActionButton

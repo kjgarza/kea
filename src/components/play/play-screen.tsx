@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, RotateCcw, Sparkles, PartyPopper, Play, Shuffle } from "lucide-react";
@@ -22,6 +22,7 @@ import { EndTurnOverlay } from "@/components/monikers/end-turn-overlay";
 import { useGameState } from "@/hooks/use-game-state";
 import { GAMES, GameType } from "@/types/game";
 import { isMonikersSession } from "@/types/session";
+import { TABOO_TIMER_SECONDS } from "@/lib/game/constants";
 
 interface PlayScreenProps {
   deckId: string;
@@ -61,6 +62,37 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   const [showRestartDialog, setShowRestartDialog] = useState(false);
   const [showEndTurnOverlay, setShowEndTurnOverlay] = useState(false);
   const [shuffleEnabled, setShuffleEnabled] = useState(false);
+
+  const [tabooTimerSeconds, setTabooTimerSeconds] = useState(TABOO_TIMER_SECONDS);
+  const [tabooTimerActive, setTabooTimerActive] = useState(false);
+
+  // Countdown tick
+  useEffect(() => {
+    if (!tabooTimerActive) return;
+    if (tabooTimerSeconds <= 0) {
+      setTabooTimerActive(false);
+      setTabooTimerSeconds(TABOO_TIMER_SECONDS);
+      handlePass();
+      return;
+    }
+    const id = setInterval(() => setTabooTimerSeconds((s) => s - 1), 1000);
+    return () => clearInterval(id);
+  }, [tabooTimerActive, tabooTimerSeconds, handlePass]);
+
+  // Reset timer on card change
+  useEffect(() => {
+    if (deck?.gameType === "taboo") {
+      setTabooTimerActive(false);
+      setTabooTimerSeconds(TABOO_TIMER_SECONDS);
+    }
+  }, [currentCard, deck?.gameType]);
+
+  const handleTabooStartTimer = useCallback(() => setTabooTimerActive(true), []);
+  const handleTabooAlert = useCallback(() => {
+    setTabooTimerActive(false);
+    setTabooTimerSeconds(TABOO_TIMER_SECONDS);
+    handlePass();
+  }, [handlePass]);
 
   // Calculate cards remaining for Monikers
   const monikersCardsRemaining = session && isMonikersSession(session)
@@ -200,6 +232,8 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
               card={currentCard}
               isRevealed={session.isRevealed}
               onReveal={handleReveal}
+              tabooTimerSeconds={tabooTimerSeconds}
+              tabooTimerActive={tabooTimerActive}
             />
           </motion.div>
         </div>
@@ -212,6 +246,9 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
           onCorrect={handleMonikersCorrect}
           onEndTurn={() => setShowEndTurnOverlay(true)}
           isRevealed={session.isRevealed}
+          tabooTimerActive={tabooTimerActive}
+          onTabooStartTimer={handleTabooStartTimer}
+          onTabooAlert={handleTabooAlert}
         />
       </main>
 
