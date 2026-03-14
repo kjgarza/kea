@@ -54,6 +54,8 @@ Translate the text fields of the provided game cards from English to Spanish.
 Return a JSON object with a "cards" array containing the translated cards.
 Preserve all cardId and type fields exactly as-is — never change them.
 Only translate the text content fields (prompts, targets, phrases, questions, choices, answers, forbidden words).
+Never add, remove, or reorder items in any arrays (for example: choices, forbidden). Only translate the text of existing items.
+Preserve any index fields such as answerIndex exactly as provided. For multiple-choice (mcq) trivia cards, do not reorder the choices array; only translate the text of each choice so that the existing answerIndex continues to point to the same logical answer.
 Keep proper nouns (names of people, brands, specific places) untranslated unless they have a well-known standard Spanish form.
 Ensure the translations are natural and appropriate for a party game context.`;
 
@@ -80,6 +82,7 @@ function extractTranslatableFields(card: Card): Record<string, unknown> {
           question: card.question,
           choices: card.choices,
           answerText: card.answerText,
+          answerIndex: card.answerIndex,
         };
       } else {
         return {
