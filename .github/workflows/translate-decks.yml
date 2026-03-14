@@ -41,20 +41,20 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          ARGS=""
+          ARGS=()
           if [ -n "${{ inputs.deck }}" ]; then
-            ARGS="--deck ${{ inputs.deck }}"
+            ARGS+=(--deck "${{ inputs.deck }}")
           else
-            ARGS="--all"
+            ARGS+=(--all)
           fi
           if [ "${{ inputs.force }}" = "true" ]; then
-            ARGS="$ARGS --force"
+            ARGS+=(--force)
           fi
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            ARGS="$ARGS --dry-run"
+            ARGS+=(--dry-run)
           fi
-          echo "Running: bun scripts/translate-decks.ts $ARGS"
-          bun scripts/translate-decks.ts $ARGS
+          echo "Running: bun scripts/translate-decks.ts ${ARGS[*]}"
+          bun scripts/translate-decks.ts "${ARGS[@]}"
 
       - name: Check for changes
         id: changes
