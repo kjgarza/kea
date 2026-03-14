@@ -1,8 +1,13 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let _openai: OpenAI | null = null;
+
+function getClient(): OpenAI {
+  if (!_openai) {
+    _openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  }
+  return _openai;
+}
 
 const MODEL = "gpt-4o";
 const MAX_RETRIES = 3;
@@ -27,19 +32,20 @@ function sleep(ms: number): Promise<void> {
 export async function generateWithRetry<T>(
   prompt: string,
   systemPrompt: string,
-  parseResponse: (content: string) => T
+  parseResponse: (content: string) => T,
+  temperature: number = 0.7
 ): Promise<GenerationResult<T>> {
   let lastError: Error | null = null;
 
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
-      const response = await openai.chat.completions.create({
+      const response = await getClient().chat.completions.create({
         model: MODEL,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: prompt },
         ],
-        temperature: 0.7,
+        temperature,
         response_format: { type: "json_object" },
       });
 
@@ -72,7 +78,8 @@ export async function generateWithRetry<T>(
 export async function generateBatch<T>(
   prompts: { prompt: string; systemPrompt: string }[],
   parseResponse: (content: string) => T,
-  concurrency: number = 5
+  concurrency: number = 5,
+  temperature: number = 0.7
 ): Promise<GenerationResult<T>[]> {
   const results: GenerationResult<T>[] = [];
 
@@ -81,7 +88,7 @@ export async function generateBatch<T>(
     const batch = prompts.slice(i, i + concurrency);
     const batchResults = await Promise.all(
       batch.map(({ prompt, systemPrompt }) =>
-        generateWithRetry(prompt, systemPrompt, parseResponse)
+        generateWithRetry(prompt, systemPrompt, parseResponse, temperature)
       )
     );
     results.push(...batchResults);
