@@ -174,7 +174,7 @@ async function translateDeckName(name: string, dryRun: boolean): Promise<string>
     `Translate this party game deck name to Spanish. Return JSON: { "name": "..." }\n\nDeck name: "${name}"`,
     (content) => {
       const parsed = JSON.parse(content);
-      return String(parsed.name ?? name);
+      return typeof parsed.name === "string" ? parsed.name : name;
     },
     TRANSLATION_TEMPERATURE,
     TRANSLATION_MODEL
