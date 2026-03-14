@@ -101,6 +101,21 @@ async function updateIndex(deck: Deck): Promise<void> {
   console.log(`Updated ${indexPath} (${index.decks.length} decks)`);
 }
 
+async function readExistingDeck(outPath: string): Promise<Deck<JustOneCard> | null> {
+  try {
+    return await Bun.file(outPath).json();
+  } catch {
+    return null;
+  }
+}
+
+function cardsChanged(existing: JustOneCard[], incoming: JustOneCard[]): boolean {
+  if (existing.length !== incoming.length) return true;
+  return existing.some(
+    (card, i) => card.cardId !== incoming[i].cardId || card.target !== incoming[i].target
+  );
+}
+
 async function main() {
   const filePath = args.file!;
   console.log(`Importing from: ${filePath}`);
@@ -114,15 +129,19 @@ async function main() {
     target: toTitleCase(word),
   }));
 
+  const outPath = `${OUTPUT_DIR}/${DECK_ID}.json`;
+  const existingDeck = await readExistingDeck(outPath);
+  const hasChanges = !existingDeck || cardsChanged(existingDeck.cards, cards);
+  const version = hasChanges ? new Date().toISOString() : (existingDeck?.version ?? new Date().toISOString());
+
   const deck: Deck<JustOneCard> = {
     schemaVersion: 1,
     deckId: DECK_ID,
-    version: new Date().toISOString(),
+    version,
     ...DECK_META,
     cards,
   };
 
-  const outPath = `${OUTPUT_DIR}/${DECK_ID}.json`;
   await Bun.write(outPath, JSON.stringify(deck, null, 2));
   console.log(`Written ${cards.length} cards to ${outPath}`);
 
