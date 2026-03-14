@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "deckId": "animals-es-charades",
+  "version": "2026-03-14T09:14:31.714Z",
+  "name": "Animales",
+  "gameType": "charades",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "animals",
+    "nature"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "ch-001",
+      "type": "charades",
+      "prompt": "Elefante"
+    },
+    {
+      "cardId": "ch-002",
+      "type": "charades",
+      "prompt": "Canguro"
+    },
+    {
+      "cardId": "ch-003",
+      "type": "charades",
+      "prompt": "Pingüino"
+    },
+    {
+      "cardId": "ch-004",
+      "type": "charades",
+      "prompt": "Serpiente"
+    },
+    {
+      "cardId": "ch-005",
+      "type": "charades",
+      "prompt": "Mono"
+    },
+    {
+      "cardId": "ch-006",
+      "type": "charades",
+      "prompt": "Mariposa"
+    },
+    {
+      "cardId": "ch-007",
+      "type": "charades",
+      "prompt": "Cocodrilo"
+    },
+    {
+      "cardId": "ch-008",
+      "type": "charades",
+      "prompt": "Flamenco"
+    },
+    {
+      "cardId": "ch-009",
+      "type": "charades",
+      "prompt": "Gorila"
+    },
+    {
+      "cardId": "ch-010",
+      "type": "charades",
+      "prompt": "Pulpo"
+    }
+  ]
+}

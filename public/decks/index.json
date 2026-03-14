@@ -2,6 +2,21 @@
   "schemaVersion": 1,
   "decks": [
     {
+      "deckId": "animals-es-charades",
+      "name": "Animales",
+      "gameType": "charades",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "animals",
+        "nature"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:14:31.714Z",
+      "cardCount": 10
+    },
+    {
       "deckId": "animals-en-charades",
       "name": "Animals",
       "gameType": "charades",
@@ -15,6 +30,35 @@
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
       "cardCount": 10
+    },
+    {
+      "deckId": "community-taboo-es-taboo",
+      "name": "Cartas Tabú Comunitarias",
+      "gameType": "taboo",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "general",
+        "mixed"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:16:00.145Z",
+      "cardCount": 125
+    },
+    {
+      "deckId": "classic-es-justone",
+      "name": "Clásico Just One",
+      "gameType": "justone",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:15:23.185Z",
+      "cardCount": 550
     },
     {
       "deckId": "classic-en-justone",
@@ -44,6 +88,67 @@
       "nsfw": false,
       "version": "2026-03-14T07:39:22.745Z",
       "cardCount": 125
+    },
+    {
+      "deckId": "random-concepts-es-justone",
+      "name": "Conceptos Aleatorios",
+      "gameType": "justone",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "concepts",
+        "random",
+        "general knowledge"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:17:17.554Z",
+      "cardCount": 50
+    },
+    {
+      "deckId": "general-knowledge-es-trivia",
+      "name": "Conocimientos Generales",
+      "gameType": "trivia",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:16:49.238Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "stranger-things-es-taboo",
+      "name": "Cosas Extrañas",
+      "gameType": "taboo",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "tv-shows",
+        "pop-culture",
+        "stranger-things"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:17:51.242Z",
+      "cardCount": 28
+    },
+    {
+      "deckId": "pop-culture-es-monikers",
+      "name": "Cultura Pop",
+      "gameType": "monikers",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "pop culture",
+        "celebrities"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:17:10.515Z",
+      "cardCount": 10
     },
     {
       "deckId": "everyday-words-en-taboo",
@@ -120,6 +225,83 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-10T15:28:09.363Z",
+      "cardCount": 49
+    },
+    {
+      "deckId": "music-2010s-es-charades",
+      "name": "Música 2010s",
+      "gameType": "charades",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "music",
+        "songs",
+        "2010s"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:17:05.621Z",
+      "cardCount": 49
+    },
+    {
+      "deckId": "music-1990s-es-charades",
+      "name": "Música de los años 1990",
+      "gameType": "charades",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "music",
+        "songs",
+        "1990s"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:16:57.554Z",
+      "cardCount": 42
+    },
+    {
+      "deckId": "everyday-words-es-taboo",
+      "name": "Palabras Cotidianas",
+      "gameType": "taboo",
+      "language": "es",
+      "difficulty": "easy",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:16:12.058Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "simple-words-es-justone",
+      "name": "Palabras Simples",
+      "gameType": "justone",
+      "language": "es",
+      "difficulty": "easy",
+      "topics": [
+        "general"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:17:22.502Z",
+      "cardCount": 10
+    },
+    {
+      "deckId": "films-1990s-es-taboo",
+      "name": "Películas de los 90",
+      "gameType": "taboo",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "films",
+        "movies",
+        "1990s",
+        "cinema"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-14T09:16:32.925Z",
       "cardCount": 49
     },
     {

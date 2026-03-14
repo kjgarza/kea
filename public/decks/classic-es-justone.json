@@ -1,0 +1,2765 @@
+{
+  "schemaVersion": 1,
+  "deckId": "classic-es-justone",
+  "version": "2026-03-14T09:15:23.185Z",
+  "name": "Clásico Just One",
+  "gameType": "justone",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "general"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "ju-001",
+      "type": "justone",
+      "target": "Rama"
+    },
+    {
+      "cardId": "ju-002",
+      "type": "justone",
+      "target": "Cenicienta"
+    },
+    {
+      "cardId": "ju-003",
+      "type": "justone",
+      "target": "Crepe"
+    },
+    {
+      "cardId": "ju-004",
+      "type": "justone",
+      "target": "Isla"
+    },
+    {
+      "cardId": "ju-005",
+      "type": "justone",
+      "target": "Taxi"
+    },
+    {
+      "cardId": "ju-006",
+      "type": "justone",
+      "target": "Navegar"
+    },
+    {
+      "cardId": "ju-007",
+      "type": "justone",
+      "target": "Cheddar"
+    },
+    {
+      "cardId": "ju-008",
+      "type": "justone",
+      "target": "Shrek"
+    },
+    {
+      "cardId": "ju-009",
+      "type": "justone",
+      "target": "Polo"
+    },
+    {
+      "cardId": "ju-010",
+      "type": "justone",
+      "target": "Occidental"
+    },
+    {
+      "cardId": "ju-011",
+      "type": "justone",
+      "target": "Vikingo"
+    },
+    {
+      "cardId": "ju-012",
+      "type": "justone",
+      "target": "Alarma"
+    },
+    {
+      "cardId": "ju-013",
+      "type": "justone",
+      "target": "Baile"
+    },
+    {
+      "cardId": "ju-014",
+      "type": "justone",
+      "target": "Hulk"
+    },
+    {
+      "cardId": "ju-015",
+      "type": "justone",
+      "target": "Desierto"
+    },
+    {
+      "cardId": "ju-016",
+      "type": "justone",
+      "target": "Meta"
+    },
+    {
+      "cardId": "ju-017",
+      "type": "justone",
+      "target": "Pan"
+    },
+    {
+      "cardId": "ju-018",
+      "type": "justone",
+      "target": "Diablo"
+    },
+    {
+      "cardId": "ju-019",
+      "type": "justone",
+      "target": "Primario"
+    },
+    {
+      "cardId": "ju-020",
+      "type": "justone",
+      "target": "Tarzán"
+    },
+    {
+      "cardId": "ju-021",
+      "type": "justone",
+      "target": "Tornillo"
+    },
+    {
+      "cardId": "ju-022",
+      "type": "justone",
+      "target": "Rastrillo"
+    },
+    {
+      "cardId": "ju-023",
+      "type": "justone",
+      "target": "Computadora"
+    },
+    {
+      "cardId": "ju-024",
+      "type": "justone",
+      "target": "Starbucks"
+    },
+    {
+      "cardId": "ju-025",
+      "type": "justone",
+      "target": "Pelota"
+    },
+    {
+      "cardId": "ju-026",
+      "type": "justone",
+      "target": "Serie"
+    },
+    {
+      "cardId": "ju-027",
+      "type": "justone",
+      "target": "Nido"
+    },
+    {
+      "cardId": "ju-028",
+      "type": "justone",
+      "target": "Especia"
+    },
+    {
+      "cardId": "ju-029",
+      "type": "justone",
+      "target": "Elefante"
+    },
+    {
+      "cardId": "ju-030",
+      "type": "justone",
+      "target": "Carnaval"
+    },
+    {
+      "cardId": "ju-031",
+      "type": "justone",
+      "target": "Venganza"
+    },
+    {
+      "cardId": "ju-032",
+      "type": "justone",
+      "target": "Jefe"
+    },
+    {
+      "cardId": "ju-033",
+      "type": "justone",
+      "target": "Emergencia"
+    },
+    {
+      "cardId": "ju-034",
+      "type": "justone",
+      "target": "Cruz"
+    },
+    {
+      "cardId": "ju-035",
+      "type": "justone",
+      "target": "Vals"
+    },
+    {
+      "cardId": "ju-036",
+      "type": "justone",
+      "target": "Mafia"
+    },
+    {
+      "cardId": "ju-037",
+      "type": "justone",
+      "target": "Grande"
+    },
+    {
+      "cardId": "ju-038",
+      "type": "justone",
+      "target": "Misil"
+    },
+    {
+      "cardId": "ju-039",
+      "type": "justone",
+      "target": "Microsoft"
+    },
+    {
+      "cardId": "ju-040",
+      "type": "justone",
+      "target": "Esquí"
+    },
+    {
+      "cardId": "ju-041",
+      "type": "justone",
+      "target": "Genio"
+    },
+    {
+      "cardId": "ju-042",
+      "type": "justone",
+      "target": "Drácula"
+    },
+    {
+      "cardId": "ju-043",
+      "type": "justone",
+      "target": "León"
+    },
+    {
+      "cardId": "ju-044",
+      "type": "justone",
+      "target": "Calcetín"
+    },
+    {
+      "cardId": "ju-045",
+      "type": "justone",
+      "target": "Viernes"
+    },
+    {
+      "cardId": "ju-046",
+      "type": "justone",
+      "target": "Cóctel"
+    },
+    {
+      "cardId": "ju-047",
+      "type": "justone",
+      "target": "Mario"
+    },
+    {
+      "cardId": "ju-048",
+      "type": "justone",
+      "target": "Corcho"
+    },
+    {
+      "cardId": "ju-049",
+      "type": "justone",
+      "target": "Violín"
+    },
+    {
+      "cardId": "ju-050",
+      "type": "justone",
+      "target": "Durazno"
+    },
+    {
+      "cardId": "ju-051",
+      "type": "justone",
+      "target": "Rata"
+    },
+    {
+      "cardId": "ju-052",
+      "type": "justone",
+      "target": "Alicate"
+    },
+    {
+      "cardId": "ju-053",
+      "type": "justone",
+      "target": "Amazonas"
+    },
+    {
+      "cardId": "ju-054",
+      "type": "justone",
+      "target": "Tabaco"
+    },
+    {
+      "cardId": "ju-055",
+      "type": "justone",
+      "target": "Regla"
+    },
+    {
+      "cardId": "ju-056",
+      "type": "justone",
+      "target": "Janucá"
+    },
+    {
+      "cardId": "ju-057",
+      "type": "justone",
+      "target": "Elástico"
+    },
+    {
+      "cardId": "ju-058",
+      "type": "justone",
+      "target": "Pan"
+    },
+    {
+      "cardId": "ju-059",
+      "type": "justone",
+      "target": "Flash"
+    },
+    {
+      "cardId": "ju-060",
+      "type": "justone",
+      "target": "Túnel"
+    },
+    {
+      "cardId": "ju-061",
+      "type": "justone",
+      "target": "Zorro"
+    },
+    {
+      "cardId": "ju-062",
+      "type": "justone",
+      "target": "Policía"
+    },
+    {
+      "cardId": "ju-063",
+      "type": "justone",
+      "target": "Simpson"
+    },
+    {
+      "cardId": "ju-064",
+      "type": "justone",
+      "target": "Rayo"
+    },
+    {
+      "cardId": "ju-065",
+      "type": "justone",
+      "target": "Periódico"
+    },
+    {
+      "cardId": "ju-066",
+      "type": "justone",
+      "target": "Montaña"
+    },
+    {
+      "cardId": "ju-067",
+      "type": "justone",
+      "target": "Cacahuate"
+    },
+    {
+      "cardId": "ju-068",
+      "type": "justone",
+      "target": "Bombilla"
+    },
+    {
+      "cardId": "ju-069",
+      "type": "justone",
+      "target": "Jedi"
+    },
+    {
+      "cardId": "ju-070",
+      "type": "justone",
+      "target": "Pimiento"
+    },
+    {
+      "cardId": "ju-071",
+      "type": "justone",
+      "target": "Sombrero"
+    },
+    {
+      "cardId": "ju-072",
+      "type": "justone",
+      "target": "Trébol"
+    },
+    {
+      "cardId": "ju-073",
+      "type": "justone",
+      "target": "Botón"
+    },
+    {
+      "cardId": "ju-074",
+      "type": "justone",
+      "target": "Queso"
+    },
+    {
+      "cardId": "ju-075",
+      "type": "justone",
+      "target": "Chewbacca"
+    },
+    {
+      "cardId": "ju-076",
+      "type": "justone",
+      "target": "Viuda Negra"
+    },
+    {
+      "cardId": "ju-077",
+      "type": "justone",
+      "target": "Doctor"
+    },
+    {
+      "cardId": "ju-078",
+      "type": "justone",
+      "target": "Fresa"
+    },
+    {
+      "cardId": "ju-079",
+      "type": "justone",
+      "target": "Nuclear"
+    },
+    {
+      "cardId": "ju-080",
+      "type": "justone",
+      "target": "Lotería"
+    },
+    {
+      "cardId": "ju-081",
+      "type": "justone",
+      "target": "Cementerio"
+    },
+    {
+      "cardId": "ju-082",
+      "type": "justone",
+      "target": "Cupido"
+    },
+    {
+      "cardId": "ju-083",
+      "type": "justone",
+      "target": "Paraguas"
+    },
+    {
+      "cardId": "ju-084",
+      "type": "justone",
+      "target": "Salto"
+    },
+    {
+      "cardId": "ju-085",
+      "type": "justone",
+      "target": "Raíz"
+    },
+    {
+      "cardId": "ju-086",
+      "type": "justone",
+      "target": "Tesoro"
+    },
+    {
+      "cardId": "ju-087",
+      "type": "justone",
+      "target": "Piloto"
+    },
+    {
+      "cardId": "ju-088",
+      "type": "justone",
+      "target": "Mickey"
+    },
+    {
+      "cardId": "ju-089",
+      "type": "justone",
+      "target": "Alcantarilla"
+    },
+    {
+      "cardId": "ju-090",
+      "type": "justone",
+      "target": "Galaxia"
+    },
+    {
+      "cardId": "ju-091",
+      "type": "justone",
+      "target": "Mito"
+    },
+    {
+      "cardId": "ju-092",
+      "type": "justone",
+      "target": "Facebook"
+    },
+    {
+      "cardId": "ju-093",
+      "type": "justone",
+      "target": "Bellota"
+    },
+    {
+      "cardId": "ju-094",
+      "type": "justone",
+      "target": "Hueso"
+    },
+    {
+      "cardId": "ju-095",
+      "type": "justone",
+      "target": "Puente"
+    },
+    {
+      "cardId": "ju-096",
+      "type": "justone",
+      "target": "Grúa"
+    },
+    {
+      "cardId": "ju-097",
+      "type": "justone",
+      "target": "Operación"
+    },
+    {
+      "cardId": "ju-098",
+      "type": "justone",
+      "target": "Rap"
+    },
+    {
+      "cardId": "ju-099",
+      "type": "justone",
+      "target": "Museo"
+    },
+    {
+      "cardId": "ju-100",
+      "type": "justone",
+      "target": "Defensa"
+    },
+    {
+      "cardId": "ju-101",
+      "type": "justone",
+      "target": "Luz"
+    },
+    {
+      "cardId": "ju-102",
+      "type": "justone",
+      "target": "Sofá"
+    },
+    {
+      "cardId": "ju-103",
+      "type": "justone",
+      "target": "Mozart"
+    },
+    {
+      "cardId": "ju-104",
+      "type": "justone",
+      "target": "Anillo"
+    },
+    {
+      "cardId": "ju-105",
+      "type": "justone",
+      "target": "Pizza"
+    },
+    {
+      "cardId": "ju-106",
+      "type": "justone",
+      "target": "Caballero"
+    },
+    {
+      "cardId": "ju-107",
+      "type": "justone",
+      "target": "Paz"
+    },
+    {
+      "cardId": "ju-108",
+      "type": "justone",
+      "target": "Flor"
+    },
+    {
+      "cardId": "ju-109",
+      "type": "justone",
+      "target": "Suiza"
+    },
+    {
+      "cardId": "ju-110",
+      "type": "justone",
+      "target": "Calendario"
+    },
+    {
+      "cardId": "ju-111",
+      "type": "justone",
+      "target": "Jarabe"
+    },
+    {
+      "cardId": "ju-112",
+      "type": "justone",
+      "target": "Bosque"
+    },
+    {
+      "cardId": "ju-113",
+      "type": "justone",
+      "target": "Escala"
+    },
+    {
+      "cardId": "ju-114",
+      "type": "justone",
+      "target": "Zeus"
+    },
+    {
+      "cardId": "ju-115",
+      "type": "justone",
+      "target": "Cucaracha"
+    },
+    {
+      "cardId": "ju-116",
+      "type": "justone",
+      "target": "Pirata"
+    },
+    {
+      "cardId": "ju-117",
+      "type": "justone",
+      "target": "Vacaciones"
+    },
+    {
+      "cardId": "ju-118",
+      "type": "justone",
+      "target": "Elfo"
+    },
+    {
+      "cardId": "ju-119",
+      "type": "justone",
+      "target": "Imán"
+    },
+    {
+      "cardId": "ju-120",
+      "type": "justone",
+      "target": "Tenedor"
+    },
+    {
+      "cardId": "ju-121",
+      "type": "justone",
+      "target": "Buffy"
+    },
+    {
+      "cardId": "ju-122",
+      "type": "justone",
+      "target": "Volcán"
+    },
+    {
+      "cardId": "ju-123",
+      "type": "justone",
+      "target": "Pasión"
+    },
+    {
+      "cardId": "ju-124",
+      "type": "justone",
+      "target": "Gallo"
+    },
+    {
+      "cardId": "ju-125",
+      "type": "justone",
+      "target": "Electricidad"
+    },
+    {
+      "cardId": "ju-126",
+      "type": "justone",
+      "target": "Panadero"
+    },
+    {
+      "cardId": "ju-127",
+      "type": "justone",
+      "target": "Perfume"
+    },
+    {
+      "cardId": "ju-128",
+      "type": "justone",
+      "target": "Llama"
+    },
+    {
+      "cardId": "ju-129",
+      "type": "justone",
+      "target": "Zombi"
+    },
+    {
+      "cardId": "ju-130",
+      "type": "justone",
+      "target": "Guasón"
+    },
+    {
+      "cardId": "ju-131",
+      "type": "justone",
+      "target": "Veneno"
+    },
+    {
+      "cardId": "ju-132",
+      "type": "justone",
+      "target": "Estrella"
+    },
+    {
+      "cardId": "ju-133",
+      "type": "justone",
+      "target": "Lobo"
+    },
+    {
+      "cardId": "ju-134",
+      "type": "justone",
+      "target": "Jones"
+    },
+    {
+      "cardId": "ju-135",
+      "type": "justone",
+      "target": "Aniversario"
+    },
+    {
+      "cardId": "ju-136",
+      "type": "justone",
+      "target": "Martillo"
+    },
+    {
+      "cardId": "ju-137",
+      "type": "justone",
+      "target": "Chile"
+    },
+    {
+      "cardId": "ju-138",
+      "type": "justone",
+      "target": "Gumbo"
+    },
+    {
+      "cardId": "ju-139",
+      "type": "justone",
+      "target": "Emperador"
+    },
+    {
+      "cardId": "ju-140",
+      "type": "justone",
+      "target": "Papa"
+    },
+    {
+      "cardId": "ju-141",
+      "type": "justone",
+      "target": "Hollywood"
+    },
+    {
+      "cardId": "ju-142",
+      "type": "justone",
+      "target": "Mosquito"
+    },
+    {
+      "cardId": "ju-143",
+      "type": "justone",
+      "target": "Lanza"
+    },
+    {
+      "cardId": "ju-144",
+      "type": "justone",
+      "target": "Bolso"
+    },
+    {
+      "cardId": "ju-145",
+      "type": "justone",
+      "target": "Fin"
+    },
+    {
+      "cardId": "ju-146",
+      "type": "justone",
+      "target": "Tablero"
+    },
+    {
+      "cardId": "ju-147",
+      "type": "justone",
+      "target": "Bombero"
+    },
+    {
+      "cardId": "ju-148",
+      "type": "justone",
+      "target": "Vaso"
+    },
+    {
+      "cardId": "ju-149",
+      "type": "justone",
+      "target": "Burrito"
+    },
+    {
+      "cardId": "ju-150",
+      "type": "justone",
+      "target": "Grecia"
+    },
+    {
+      "cardId": "ju-151",
+      "type": "justone",
+      "target": "Zapatilla"
+    },
+    {
+      "cardId": "ju-152",
+      "type": "justone",
+      "target": "Hoja"
+    },
+    {
+      "cardId": "ju-153",
+      "type": "justone",
+      "target": "Puma"
+    },
+    {
+      "cardId": "ju-154",
+      "type": "justone",
+      "target": "Revolución"
+    },
+    {
+      "cardId": "ju-155",
+      "type": "justone",
+      "target": "Sahara"
+    },
+    {
+      "cardId": "ju-156",
+      "type": "justone",
+      "target": "Gruta"
+    },
+    {
+      "cardId": "ju-157",
+      "type": "justone",
+      "target": "Ford"
+    },
+    {
+      "cardId": "ju-158",
+      "type": "justone",
+      "target": "Casino"
+    },
+    {
+      "cardId": "ju-159",
+      "type": "justone",
+      "target": "Caramelo"
+    },
+    {
+      "cardId": "ju-160",
+      "type": "justone",
+      "target": "Fuente"
+    },
+    {
+      "cardId": "ju-161",
+      "type": "justone",
+      "target": "Piedra Rosetta"
+    },
+    {
+      "cardId": "ju-162",
+      "type": "justone",
+      "target": "Robot"
+    },
+    {
+      "cardId": "ju-163",
+      "type": "justone",
+      "target": "Comedia"
+    },
+    {
+      "cardId": "ju-164",
+      "type": "justone",
+      "target": "Idioma"
+    },
+    {
+      "cardId": "ju-165",
+      "type": "justone",
+      "target": "Peluquero"
+    },
+    {
+      "cardId": "ju-166",
+      "type": "justone",
+      "target": "Dinosaurio"
+    },
+    {
+      "cardId": "ju-167",
+      "type": "justone",
+      "target": "Amarillo"
+    },
+    {
+      "cardId": "ju-168",
+      "type": "justone",
+      "target": "Hongo"
+    },
+    {
+      "cardId": "ju-169",
+      "type": "justone",
+      "target": "Paloma"
+    },
+    {
+      "cardId": "ju-170",
+      "type": "justone",
+      "target": "Pikachu"
+    },
+    {
+      "cardId": "ju-171",
+      "type": "justone",
+      "target": "Trueno"
+    },
+    {
+      "cardId": "ju-172",
+      "type": "justone",
+      "target": "Jardín"
+    },
+    {
+      "cardId": "ju-173",
+      "type": "justone",
+      "target": "Pintura"
+    },
+    {
+      "cardId": "ju-174",
+      "type": "justone",
+      "target": "Cabaña"
+    },
+    {
+      "cardId": "ju-175",
+      "type": "justone",
+      "target": "Tregua"
+    },
+    {
+      "cardId": "ju-176",
+      "type": "justone",
+      "target": "Momia"
+    },
+    {
+      "cardId": "ju-177",
+      "type": "justone",
+      "target": "Batería"
+    },
+    {
+      "cardId": "ju-178",
+      "type": "justone",
+      "target": "Feria"
+    },
+    {
+      "cardId": "ju-179",
+      "type": "justone",
+      "target": "Karate"
+    },
+    {
+      "cardId": "ju-180",
+      "type": "justone",
+      "target": "Loro"
+    },
+    {
+      "cardId": "ju-181",
+      "type": "justone",
+      "target": "Olimpiadas"
+    },
+    {
+      "cardId": "ju-182",
+      "type": "justone",
+      "target": "Escalar"
+    },
+    {
+      "cardId": "ju-183",
+      "type": "justone",
+      "target": "Abogado"
+    },
+    {
+      "cardId": "ju-184",
+      "type": "justone",
+      "target": "Tolkien"
+    },
+    {
+      "cardId": "ju-185",
+      "type": "justone",
+      "target": "Río"
+    },
+    {
+      "cardId": "ju-186",
+      "type": "justone",
+      "target": "Alfombra"
+    },
+    {
+      "cardId": "ju-187",
+      "type": "justone",
+      "target": "Poni"
+    },
+    {
+      "cardId": "ju-188",
+      "type": "justone",
+      "target": "Corona"
+    },
+    {
+      "cardId": "ju-189",
+      "type": "justone",
+      "target": "Nuevo"
+    },
+    {
+      "cardId": "ju-190",
+      "type": "justone",
+      "target": "Tarantino"
+    },
+    {
+      "cardId": "ju-191",
+      "type": "justone",
+      "target": "Barbie"
+    },
+    {
+      "cardId": "ju-192",
+      "type": "justone",
+      "target": "Chocolate"
+    },
+    {
+      "cardId": "ju-193",
+      "type": "justone",
+      "target": "Nieve"
+    },
+    {
+      "cardId": "ju-194",
+      "type": "justone",
+      "target": "Corbata"
+    },
+    {
+      "cardId": "ju-195",
+      "type": "justone",
+      "target": "Viento"
+    },
+    {
+      "cardId": "ju-196",
+      "type": "justone",
+      "target": "Pensamiento"
+    },
+    {
+      "cardId": "ju-197",
+      "type": "justone",
+      "target": "Frankenstein"
+    },
+    {
+      "cardId": "ju-198",
+      "type": "justone",
+      "target": "Estante"
+    },
+    {
+      "cardId": "ju-199",
+      "type": "justone",
+      "target": "Acento"
+    },
+    {
+      "cardId": "ju-200",
+      "type": "justone",
+      "target": "Ducha"
+    },
+    {
+      "cardId": "ju-201",
+      "type": "justone",
+      "target": "Guiso"
+    },
+    {
+      "cardId": "ju-202",
+      "type": "justone",
+      "target": "Canadá"
+    },
+    {
+      "cardId": "ju-203",
+      "type": "justone",
+      "target": "Zoológico"
+    },
+    {
+      "cardId": "ju-204",
+      "type": "justone",
+      "target": "Tubo"
+    },
+    {
+      "cardId": "ju-205",
+      "type": "justone",
+      "target": "Libro"
+    },
+    {
+      "cardId": "ju-206",
+      "type": "justone",
+      "target": "Toalla"
+    },
+    {
+      "cardId": "ju-207",
+      "type": "justone",
+      "target": "Venus"
+    },
+    {
+      "cardId": "ju-208",
+      "type": "justone",
+      "target": "Pulpo"
+    },
+    {
+      "cardId": "ju-209",
+      "type": "justone",
+      "target": "Ciclo"
+    },
+    {
+      "cardId": "ju-210",
+      "type": "justone",
+      "target": "Ópera"
+    },
+    {
+      "cardId": "ju-211",
+      "type": "justone",
+      "target": "Mariquita"
+    },
+    {
+      "cardId": "ju-212",
+      "type": "justone",
+      "target": "Mostaza"
+    },
+    {
+      "cardId": "ju-213",
+      "type": "justone",
+      "target": "Sherlock"
+    },
+    {
+      "cardId": "ju-214",
+      "type": "justone",
+      "target": "Botella"
+    },
+    {
+      "cardId": "ju-215",
+      "type": "justone",
+      "target": "Virus"
+    },
+    {
+      "cardId": "ju-216",
+      "type": "justone",
+      "target": "Música"
+    },
+    {
+      "cardId": "ju-217",
+      "type": "justone",
+      "target": "Garganta"
+    },
+    {
+      "cardId": "ju-218",
+      "type": "justone",
+      "target": "América"
+    },
+    {
+      "cardId": "ju-219",
+      "type": "justone",
+      "target": "Café"
+    },
+    {
+      "cardId": "ju-220",
+      "type": "justone",
+      "target": "Fiebre"
+    },
+    {
+      "cardId": "ju-221",
+      "type": "justone",
+      "target": "Google"
+    },
+    {
+      "cardId": "ju-222",
+      "type": "justone",
+      "target": "Arco"
+    },
+    {
+      "cardId": "ju-223",
+      "type": "justone",
+      "target": "Marte"
+    },
+    {
+      "cardId": "ju-224",
+      "type": "justone",
+      "target": "Golf"
+    },
+    {
+      "cardId": "ju-225",
+      "type": "justone",
+      "target": "Boleto"
+    },
+    {
+      "cardId": "ju-226",
+      "type": "justone",
+      "target": "Registrar"
+    },
+    {
+      "cardId": "ju-227",
+      "type": "justone",
+      "target": "Playstation"
+    },
+    {
+      "cardId": "ju-228",
+      "type": "justone",
+      "target": "Rubio"
+    },
+    {
+      "cardId": "ju-229",
+      "type": "justone",
+      "target": "Iris"
+    },
+    {
+      "cardId": "ju-230",
+      "type": "justone",
+      "target": "Extremidad"
+    },
+    {
+      "cardId": "ju-231",
+      "type": "justone",
+      "target": "Oprah"
+    },
+    {
+      "cardId": "ju-232",
+      "type": "justone",
+      "target": "Ninja"
+    },
+    {
+      "cardId": "ju-233",
+      "type": "justone",
+      "target": "Edredón"
+    },
+    {
+      "cardId": "ju-234",
+      "type": "justone",
+      "target": "Cazador"
+    },
+    {
+      "cardId": "ju-235",
+      "type": "justone",
+      "target": "Vegetal"
+    },
+    {
+      "cardId": "ju-236",
+      "type": "justone",
+      "target": "Horno"
+    },
+    {
+      "cardId": "ju-237",
+      "type": "justone",
+      "target": "Enchufe"
+    },
+    {
+      "cardId": "ju-238",
+      "type": "justone",
+      "target": "Pascua"
+    },
+    {
+      "cardId": "ju-239",
+      "type": "justone",
+      "target": "Manguera"
+    },
+    {
+      "cardId": "ju-240",
+      "type": "justone",
+      "target": "Riel"
+    },
+    {
+      "cardId": "ju-241",
+      "type": "justone",
+      "target": "Mariposa"
+    },
+    {
+      "cardId": "ju-242",
+      "type": "justone",
+      "target": "Polvo"
+    },
+    {
+      "cardId": "ju-243",
+      "type": "justone",
+      "target": "Porcelana"
+    },
+    {
+      "cardId": "ju-244",
+      "type": "justone",
+      "target": "Mercado"
+    },
+    {
+      "cardId": "ju-245",
+      "type": "justone",
+      "target": "Capullo"
+    },
+    {
+      "cardId": "ju-246",
+      "type": "justone",
+      "target": "Barbacoa"
+    },
+    {
+      "cardId": "ju-247",
+      "type": "justone",
+      "target": "Panda"
+    },
+    {
+      "cardId": "ju-248",
+      "type": "justone",
+      "target": "Sueño"
+    },
+    {
+      "cardId": "ju-249",
+      "type": "justone",
+      "target": "Matrimonio"
+    },
+    {
+      "cardId": "ju-250",
+      "type": "justone",
+      "target": "Ombligo"
+    },
+    {
+      "cardId": "ju-251",
+      "type": "justone",
+      "target": "Cavidad"
+    },
+    {
+      "cardId": "ju-252",
+      "type": "justone",
+      "target": "Manga"
+    },
+    {
+      "cardId": "ju-253",
+      "type": "justone",
+      "target": "Gremlins"
+    },
+    {
+      "cardId": "ju-254",
+      "type": "justone",
+      "target": "Póker"
+    },
+    {
+      "cardId": "ju-255",
+      "type": "justone",
+      "target": "Pastel"
+    },
+    {
+      "cardId": "ju-256",
+      "type": "justone",
+      "target": "Azúcar"
+    },
+    {
+      "cardId": "ju-257",
+      "type": "justone",
+      "target": "Teatro"
+    },
+    {
+      "cardId": "ju-258",
+      "type": "justone",
+      "target": "Pala"
+    },
+    {
+      "cardId": "ju-259",
+      "type": "justone",
+      "target": "Duna"
+    },
+    {
+      "cardId": "ju-260",
+      "type": "justone",
+      "target": "Embarazada"
+    },
+    {
+      "cardId": "ju-261",
+      "type": "justone",
+      "target": "Gato"
+    },
+    {
+      "cardId": "ju-262",
+      "type": "justone",
+      "target": "Palacio"
+    },
+    {
+      "cardId": "ju-263",
+      "type": "justone",
+      "target": "Elección"
+    },
+    {
+      "cardId": "ju-264",
+      "type": "justone",
+      "target": "Miel"
+    },
+    {
+      "cardId": "ju-265",
+      "type": "justone",
+      "target": "Rambo"
+    },
+    {
+      "cardId": "ju-266",
+      "type": "justone",
+      "target": "Reggae"
+    },
+    {
+      "cardId": "ju-267",
+      "type": "justone",
+      "target": "Estiércol"
+    },
+    {
+      "cardId": "ju-268",
+      "type": "justone",
+      "target": "Lago"
+    },
+    {
+      "cardId": "ju-269",
+      "type": "justone",
+      "target": "Mono"
+    },
+    {
+      "cardId": "ju-270",
+      "type": "justone",
+      "target": "Faro"
+    },
+    {
+      "cardId": "ju-271",
+      "type": "justone",
+      "target": "Vecindario"
+    },
+    {
+      "cardId": "ju-272",
+      "type": "justone",
+      "target": "Roca"
+    },
+    {
+      "cardId": "ju-273",
+      "type": "justone",
+      "target": "Tigre"
+    },
+    {
+      "cardId": "ju-274",
+      "type": "justone",
+      "target": "Aguja"
+    },
+    {
+      "cardId": "ju-275",
+      "type": "justone",
+      "target": "Jabón"
+    },
+    {
+      "cardId": "ju-276",
+      "type": "justone",
+      "target": "Prisión"
+    },
+    {
+      "cardId": "ju-277",
+      "type": "justone",
+      "target": "Hoyos"
+    },
+    {
+      "cardId": "ju-278",
+      "type": "justone",
+      "target": "Punk"
+    },
+    {
+      "cardId": "ju-279",
+      "type": "justone",
+      "target": "Noche"
+    },
+    {
+      "cardId": "ju-280",
+      "type": "justone",
+      "target": "Mapa"
+    },
+    {
+      "cardId": "ju-281",
+      "type": "justone",
+      "target": "Número"
+    },
+    {
+      "cardId": "ju-282",
+      "type": "justone",
+      "target": "Decatlón"
+    },
+    {
+      "cardId": "ju-283",
+      "type": "justone",
+      "target": "Ron"
+    },
+    {
+      "cardId": "ju-284",
+      "type": "justone",
+      "target": "Metal"
+    },
+    {
+      "cardId": "ju-285",
+      "type": "justone",
+      "target": "Atún"
+    },
+    {
+      "cardId": "ju-286",
+      "type": "justone",
+      "target": "Rey"
+    },
+    {
+      "cardId": "ju-287",
+      "type": "justone",
+      "target": "Ballet"
+    },
+    {
+      "cardId": "ju-288",
+      "type": "justone",
+      "target": "Banda"
+    },
+    {
+      "cardId": "ju-289",
+      "type": "justone",
+      "target": "Alcohol"
+    },
+    {
+      "cardId": "ju-290",
+      "type": "justone",
+      "target": "Lava"
+    },
+    {
+      "cardId": "ju-291",
+      "type": "justone",
+      "target": "Lienzo"
+    },
+    {
+      "cardId": "ju-292",
+      "type": "justone",
+      "target": "Vampiro"
+    },
+    {
+      "cardId": "ju-293",
+      "type": "justone",
+      "target": "Monopoly"
+    },
+    {
+      "cardId": "ju-294",
+      "type": "justone",
+      "target": "Dibujo animado"
+    },
+    {
+      "cardId": "ju-295",
+      "type": "justone",
+      "target": "Hotel"
+    },
+    {
+      "cardId": "ju-296",
+      "type": "justone",
+      "target": "Darwin"
+    },
+    {
+      "cardId": "ju-297",
+      "type": "justone",
+      "target": "Tomate"
+    },
+    {
+      "cardId": "ju-298",
+      "type": "justone",
+      "target": "Paracaídas"
+    },
+    {
+      "cardId": "ju-299",
+      "type": "justone",
+      "target": "Cañón"
+    },
+    {
+      "cardId": "ju-300",
+      "type": "justone",
+      "target": "Binoculares"
+    },
+    {
+      "cardId": "ju-301",
+      "type": "justone",
+      "target": "Espejismo"
+    },
+    {
+      "cardId": "ju-302",
+      "type": "justone",
+      "target": "Ramsés"
+    },
+    {
+      "cardId": "ju-303",
+      "type": "justone",
+      "target": "Fogata"
+    },
+    {
+      "cardId": "ju-304",
+      "type": "justone",
+      "target": "Cruce de caminos"
+    },
+    {
+      "cardId": "ju-305",
+      "type": "justone",
+      "target": "Princesa"
+    },
+    {
+      "cardId": "ju-306",
+      "type": "justone",
+      "target": "Guillotina"
+    },
+    {
+      "cardId": "ju-307",
+      "type": "justone",
+      "target": "Mago"
+    },
+    {
+      "cardId": "ju-308",
+      "type": "justone",
+      "target": "Hockey"
+    },
+    {
+      "cardId": "ju-309",
+      "type": "justone",
+      "target": "Plátano"
+    },
+    {
+      "cardId": "ju-310",
+      "type": "justone",
+      "target": "Fitzgerald"
+    },
+    {
+      "cardId": "ju-311",
+      "type": "justone",
+      "target": "César"
+    },
+    {
+      "cardId": "ju-312",
+      "type": "justone",
+      "target": "Fideo"
+    },
+    {
+      "cardId": "ju-313",
+      "type": "justone",
+      "target": "Sombrero"
+    },
+    {
+      "cardId": "ju-314",
+      "type": "justone",
+      "target": "Dentista"
+    },
+    {
+      "cardId": "ju-315",
+      "type": "justone",
+      "target": "Trigo"
+    },
+    {
+      "cardId": "ju-316",
+      "type": "justone",
+      "target": "Concha"
+    },
+    {
+      "cardId": "ju-317",
+      "type": "justone",
+      "target": "Shakespeare"
+    },
+    {
+      "cardId": "ju-318",
+      "type": "justone",
+      "target": "Gigante"
+    },
+    {
+      "cardId": "ju-319",
+      "type": "justone",
+      "target": "Espuma"
+    },
+    {
+      "cardId": "ju-320",
+      "type": "justone",
+      "target": "Cueva"
+    },
+    {
+      "cardId": "ju-321",
+      "type": "justone",
+      "target": "Cuchillo"
+    },
+    {
+      "cardId": "ju-322",
+      "type": "justone",
+      "target": "Almohada"
+    },
+    {
+      "cardId": "ju-323",
+      "type": "justone",
+      "target": "Armstrong"
+    },
+    {
+      "cardId": "ju-324",
+      "type": "justone",
+      "target": "Espada"
+    },
+    {
+      "cardId": "ju-325",
+      "type": "justone",
+      "target": "Vuelo"
+    },
+    {
+      "cardId": "ju-326",
+      "type": "justone",
+      "target": "Explosión"
+    },
+    {
+      "cardId": "ju-327",
+      "type": "justone",
+      "target": "Pingüino"
+    },
+    {
+      "cardId": "ju-328",
+      "type": "justone",
+      "target": "Célula"
+    },
+    {
+      "cardId": "ju-329",
+      "type": "justone",
+      "target": "Gandhi"
+    },
+    {
+      "cardId": "ju-330",
+      "type": "justone",
+      "target": "Oasis"
+    },
+    {
+      "cardId": "ju-331",
+      "type": "justone",
+      "target": "Cocodrilo"
+    },
+    {
+      "cardId": "ju-332",
+      "type": "justone",
+      "target": "Joyería"
+    },
+    {
+      "cardId": "ju-333",
+      "type": "justone",
+      "target": "Metro"
+    },
+    {
+      "cardId": "ju-334",
+      "type": "justone",
+      "target": "Gafas"
+    },
+    {
+      "cardId": "ju-335",
+      "type": "justone",
+      "target": "Aguijón"
+    },
+    {
+      "cardId": "ju-336",
+      "type": "justone",
+      "target": "Jackson"
+    },
+    {
+      "cardId": "ju-337",
+      "type": "justone",
+      "target": "Cigarrillo"
+    },
+    {
+      "cardId": "ju-338",
+      "type": "justone",
+      "target": "Pulsera"
+    },
+    {
+      "cardId": "ju-339",
+      "type": "justone",
+      "target": "Clima"
+    },
+    {
+      "cardId": "ju-340",
+      "type": "justone",
+      "target": "Torre"
+    },
+    {
+      "cardId": "ju-341",
+      "type": "justone",
+      "target": "Tatuaje"
+    },
+    {
+      "cardId": "ju-342",
+      "type": "justone",
+      "target": "Spielberg"
+    },
+    {
+      "cardId": "ju-343",
+      "type": "justone",
+      "target": "Manzana"
+    },
+    {
+      "cardId": "ju-344",
+      "type": "justone",
+      "target": "Sirena"
+    },
+    {
+      "cardId": "ju-345",
+      "type": "justone",
+      "target": "Boxeo"
+    },
+    {
+      "cardId": "ju-346",
+      "type": "justone",
+      "target": "Corazón"
+    },
+    {
+      "cardId": "ju-347",
+      "type": "justone",
+      "target": "Moscú"
+    },
+    {
+      "cardId": "ju-348",
+      "type": "justone",
+      "target": "Piscina"
+    },
+    {
+      "cardId": "ju-349",
+      "type": "justone",
+      "target": "Unicornio"
+    },
+    {
+      "cardId": "ju-350",
+      "type": "justone",
+      "target": "Naranja"
+    },
+    {
+      "cardId": "ju-351",
+      "type": "justone",
+      "target": "Melón"
+    },
+    {
+      "cardId": "ju-352",
+      "type": "justone",
+      "target": "Ancla"
+    },
+    {
+      "cardId": "ju-353",
+      "type": "justone",
+      "target": "Israel"
+    },
+    {
+      "cardId": "ju-354",
+      "type": "justone",
+      "target": "Cactus"
+    },
+    {
+      "cardId": "ju-355",
+      "type": "justone",
+      "target": "Tenis"
+    },
+    {
+      "cardId": "ju-356",
+      "type": "justone",
+      "target": "Pimiento"
+    },
+    {
+      "cardId": "ju-357",
+      "type": "justone",
+      "target": "Triángulo"
+    },
+    {
+      "cardId": "ju-358",
+      "type": "justone",
+      "target": "Muñeca"
+    },
+    {
+      "cardId": "ju-359",
+      "type": "justone",
+      "target": "Italia"
+    },
+    {
+      "cardId": "ju-360",
+      "type": "justone",
+      "target": "Escena"
+    },
+    {
+      "cardId": "ju-361",
+      "type": "justone",
+      "target": "Polar"
+    },
+    {
+      "cardId": "ju-362",
+      "type": "justone",
+      "target": "Ratón"
+    },
+    {
+      "cardId": "ju-363",
+      "type": "justone",
+      "target": "Collar"
+    },
+    {
+      "cardId": "ju-364",
+      "type": "justone",
+      "target": "Granja"
+    },
+    {
+      "cardId": "ju-365",
+      "type": "justone",
+      "target": "Bélgica"
+    },
+    {
+      "cardId": "ju-366",
+      "type": "justone",
+      "target": "Francia"
+    },
+    {
+      "cardId": "ju-367",
+      "type": "justone",
+      "target": "Luna"
+    },
+    {
+      "cardId": "ju-368",
+      "type": "justone",
+      "target": "Cafetería"
+    },
+    {
+      "cardId": "ju-369",
+      "type": "justone",
+      "target": "Mango"
+    },
+    {
+      "cardId": "ju-370",
+      "type": "justone",
+      "target": "Herramienta"
+    },
+    {
+      "cardId": "ju-371",
+      "type": "justone",
+      "target": "Cuerda"
+    },
+    {
+      "cardId": "ju-372",
+      "type": "justone",
+      "target": "Australia"
+    },
+    {
+      "cardId": "ju-373",
+      "type": "justone",
+      "target": "Castillo"
+    },
+    {
+      "cardId": "ju-374",
+      "type": "justone",
+      "target": "Guardia"
+    },
+    {
+      "cardId": "ju-375",
+      "type": "justone",
+      "target": "Oveja"
+    },
+    {
+      "cardId": "ju-376",
+      "type": "justone",
+      "target": "Títere"
+    },
+    {
+      "cardId": "ju-377",
+      "type": "justone",
+      "target": "Juego"
+    },
+    {
+      "cardId": "ju-378",
+      "type": "justone",
+      "target": "Las Vegas"
+    },
+    {
+      "cardId": "ju-379",
+      "type": "justone",
+      "target": "Caja Fuerte"
+    },
+    {
+      "cardId": "ju-380",
+      "type": "justone",
+      "target": "Avión"
+    },
+    {
+      "cardId": "ju-381",
+      "type": "justone",
+      "target": "Cerebro"
+    },
+    {
+      "cardId": "ju-382",
+      "type": "justone",
+      "target": "Máscara"
+    },
+    {
+      "cardId": "ju-383",
+      "type": "justone",
+      "target": "Concierto"
+    },
+    {
+      "cardId": "ju-384",
+      "type": "justone",
+      "target": "Troya"
+    },
+    {
+      "cardId": "ju-385",
+      "type": "justone",
+      "target": "Tiburón"
+    },
+    {
+      "cardId": "ju-386",
+      "type": "justone",
+      "target": "Solitario"
+    },
+    {
+      "cardId": "ju-387",
+      "type": "justone",
+      "target": "Papa"
+    },
+    {
+      "cardId": "ju-388",
+      "type": "justone",
+      "target": "Ola"
+    },
+    {
+      "cardId": "ju-389",
+      "type": "justone",
+      "target": "Escuela"
+    },
+    {
+      "cardId": "ju-390",
+      "type": "justone",
+      "target": "Lego"
+    },
+    {
+      "cardId": "ju-391",
+      "type": "justone",
+      "target": "Tokio"
+    },
+    {
+      "cardId": "ju-392",
+      "type": "justone",
+      "target": "Talon"
+    },
+    {
+      "cardId": "ju-393",
+      "type": "justone",
+      "target": "Pollo"
+    },
+    {
+      "cardId": "ju-394",
+      "type": "justone",
+      "target": "Helicóptero"
+    },
+    {
+      "cardId": "ju-395",
+      "type": "justone",
+      "target": "Coronel"
+    },
+    {
+      "cardId": "ju-396",
+      "type": "justone",
+      "target": "Tradición"
+    },
+    {
+      "cardId": "ju-397",
+      "type": "justone",
+      "target": "Serpiente"
+    },
+    {
+      "cardId": "ju-398",
+      "type": "justone",
+      "target": "Taza"
+    },
+    {
+      "cardId": "ju-399",
+      "type": "justone",
+      "target": "Picasso"
+    },
+    {
+      "cardId": "ju-400",
+      "type": "justone",
+      "target": "Reloj"
+    },
+    {
+      "cardId": "ju-401",
+      "type": "justone",
+      "target": "Pastel"
+    },
+    {
+      "cardId": "ju-402",
+      "type": "justone",
+      "target": "Semental"
+    },
+    {
+      "cardId": "ju-403",
+      "type": "justone",
+      "target": "México"
+    },
+    {
+      "cardId": "ju-404",
+      "type": "justone",
+      "target": "Blanco"
+    },
+    {
+      "cardId": "ju-405",
+      "type": "justone",
+      "target": "Calvo"
+    },
+    {
+      "cardId": "ju-406",
+      "type": "justone",
+      "target": "Oruga"
+    },
+    {
+      "cardId": "ju-407",
+      "type": "justone",
+      "target": "Humor"
+    },
+    {
+      "cardId": "ju-408",
+      "type": "justone",
+      "target": "Esquina"
+    },
+    {
+      "cardId": "ju-409",
+      "type": "justone",
+      "target": "Antártida"
+    },
+    {
+      "cardId": "ju-410",
+      "type": "justone",
+      "target": "Salchicha"
+    },
+    {
+      "cardId": "ju-411",
+      "type": "justone",
+      "target": "Plástico"
+    },
+    {
+      "cardId": "ju-412",
+      "type": "justone",
+      "target": "Rayo"
+    },
+    {
+      "cardId": "ju-413",
+      "type": "justone",
+      "target": "Cartón"
+    },
+    {
+      "cardId": "ju-414",
+      "type": "justone",
+      "target": "Piedra"
+    },
+    {
+      "cardId": "ju-415",
+      "type": "justone",
+      "target": "Everest"
+    },
+    {
+      "cardId": "ju-416",
+      "type": "justone",
+      "target": "Terminator"
+    },
+    {
+      "cardId": "ju-417",
+      "type": "justone",
+      "target": "Carta"
+    },
+    {
+      "cardId": "ju-418",
+      "type": "justone",
+      "target": "Arrastrar"
+    },
+    {
+      "cardId": "ju-419",
+      "type": "justone",
+      "target": "Paraíso"
+    },
+    {
+      "cardId": "ju-420",
+      "type": "justone",
+      "target": "Huevo"
+    },
+    {
+      "cardId": "ju-421",
+      "type": "justone",
+      "target": "Nintendo"
+    },
+    {
+      "cardId": "ju-422",
+      "type": "justone",
+      "target": "Apuesta"
+    },
+    {
+      "cardId": "ju-423",
+      "type": "justone",
+      "target": "Sal"
+    },
+    {
+      "cardId": "ju-424",
+      "type": "justone",
+      "target": "Manual"
+    },
+    {
+      "cardId": "ju-425",
+      "type": "justone",
+      "target": "Escarcha"
+    },
+    {
+      "cardId": "ju-426",
+      "type": "justone",
+      "target": "Casa"
+    },
+    {
+      "cardId": "ju-427",
+      "type": "justone",
+      "target": "Padrino"
+    },
+    {
+      "cardId": "ju-428",
+      "type": "justone",
+      "target": "Guerra"
+    },
+    {
+      "cardId": "ju-429",
+      "type": "justone",
+      "target": "Cuerda"
+    },
+    {
+      "cardId": "ju-430",
+      "type": "justone",
+      "target": "Vino"
+    },
+    {
+      "cardId": "ju-431",
+      "type": "justone",
+      "target": "Club"
+    },
+    {
+      "cardId": "ju-432",
+      "type": "justone",
+      "target": "Navidad"
+    },
+    {
+      "cardId": "ju-433",
+      "type": "justone",
+      "target": "Moda"
+    },
+    {
+      "cardId": "ju-434",
+      "type": "justone",
+      "target": "Estación"
+    },
+    {
+      "cardId": "ju-435",
+      "type": "justone",
+      "target": "Lámpara"
+    },
+    {
+      "cardId": "ju-436",
+      "type": "justone",
+      "target": "Radio"
+    },
+    {
+      "cardId": "ju-437",
+      "type": "justone",
+      "target": "Pera"
+    },
+    {
+      "cardId": "ju-438",
+      "type": "justone",
+      "target": "Gladiador"
+    },
+    {
+      "cardId": "ju-439",
+      "type": "justone",
+      "target": "Sol"
+    },
+    {
+      "cardId": "ju-440",
+      "type": "justone",
+      "target": "Cereal"
+    },
+    {
+      "cardId": "ju-441",
+      "type": "justone",
+      "target": "Baya"
+    },
+    {
+      "cardId": "ju-442",
+      "type": "justone",
+      "target": "Estudio"
+    },
+    {
+      "cardId": "ju-443",
+      "type": "justone",
+      "target": "Gótico"
+    },
+    {
+      "cardId": "ju-444",
+      "type": "justone",
+      "target": "Titanic"
+    },
+    {
+      "cardId": "ju-445",
+      "type": "justone",
+      "target": "Máquina"
+    },
+    {
+      "cardId": "ju-446",
+      "type": "justone",
+      "target": "Enano"
+    },
+    {
+      "cardId": "ju-447",
+      "type": "justone",
+      "target": "Circo"
+    },
+    {
+      "cardId": "ju-448",
+      "type": "justone",
+      "target": "Elvis"
+    },
+    {
+      "cardId": "ju-449",
+      "type": "justone",
+      "target": "Cortadora"
+    },
+    {
+      "cardId": "ju-450",
+      "type": "justone",
+      "target": "Piedra"
+    },
+    {
+      "cardId": "ju-451",
+      "type": "justone",
+      "target": "Tren"
+    },
+    {
+      "cardId": "ju-452",
+      "type": "justone",
+      "target": "Camarón"
+    },
+    {
+      "cardId": "ju-453",
+      "type": "justone",
+      "target": "Habitación"
+    },
+    {
+      "cardId": "ju-454",
+      "type": "justone",
+      "target": "Cleopatra"
+    },
+    {
+      "cardId": "ju-455",
+      "type": "justone",
+      "target": "Ventana"
+    },
+    {
+      "cardId": "ju-456",
+      "type": "justone",
+      "target": "Tango"
+    },
+    {
+      "cardId": "ju-457",
+      "type": "justone",
+      "target": "Maduro"
+    },
+    {
+      "cardId": "ju-458",
+      "type": "justone",
+      "target": "Templo"
+    },
+    {
+      "cardId": "ju-459",
+      "type": "justone",
+      "target": "Arena"
+    },
+    {
+      "cardId": "ju-460",
+      "type": "justone",
+      "target": "Papas fritas"
+    },
+    {
+      "cardId": "ju-461",
+      "type": "justone",
+      "target": "Granada"
+    },
+    {
+      "cardId": "ju-462",
+      "type": "justone",
+      "target": "Relleno"
+    },
+    {
+      "cardId": "ju-463",
+      "type": "justone",
+      "target": "Cepillo"
+    },
+    {
+      "cardId": "ju-464",
+      "type": "justone",
+      "target": "Cerdo"
+    },
+    {
+      "cardId": "ju-465",
+      "type": "justone",
+      "target": "Humano"
+    },
+    {
+      "cardId": "ju-466",
+      "type": "justone",
+      "target": "Alcatraz"
+    },
+    {
+      "cardId": "ju-467",
+      "type": "justone",
+      "target": "Humo"
+    },
+    {
+      "cardId": "ju-468",
+      "type": "justone",
+      "target": "Avellana"
+    },
+    {
+      "cardId": "ju-469",
+      "type": "justone",
+      "target": "Diamante"
+    },
+    {
+      "cardId": "ju-470",
+      "type": "justone",
+      "target": "Rosa"
+    },
+    {
+      "cardId": "ju-471",
+      "type": "justone",
+      "target": "Godzilla"
+    },
+    {
+      "cardId": "ju-472",
+      "type": "justone",
+      "target": "Uniforme"
+    },
+    {
+      "cardId": "ju-473",
+      "type": "justone",
+      "target": "Lluvia"
+    },
+    {
+      "cardId": "ju-474",
+      "type": "justone",
+      "target": "Fuego"
+    },
+    {
+      "cardId": "ju-475",
+      "type": "justone",
+      "target": "Casco"
+    },
+    {
+      "cardId": "ju-476",
+      "type": "justone",
+      "target": "Barco"
+    },
+    {
+      "cardId": "ju-477",
+      "type": "justone",
+      "target": "Boliche"
+    },
+    {
+      "cardId": "ju-478",
+      "type": "justone",
+      "target": "Churchill"
+    },
+    {
+      "cardId": "ju-479",
+      "type": "justone",
+      "target": "Carnero"
+    },
+    {
+      "cardId": "ju-480",
+      "type": "justone",
+      "target": "Espía"
+    },
+    {
+      "cardId": "ju-481",
+      "type": "justone",
+      "target": "Halloween"
+    },
+    {
+      "cardId": "ju-482",
+      "type": "justone",
+      "target": "Papas"
+    },
+    {
+      "cardId": "ju-483",
+      "type": "justone",
+      "target": "Bebé"
+    },
+    {
+      "cardId": "ju-484",
+      "type": "justone",
+      "target": "Cantimplora"
+    },
+    {
+      "cardId": "ju-485",
+      "type": "justone",
+      "target": "Par"
+    },
+    {
+      "cardId": "ju-486",
+      "type": "justone",
+      "target": "Fallo"
+    },
+    {
+      "cardId": "ju-487",
+      "type": "justone",
+      "target": "Historia"
+    },
+    {
+      "cardId": "ju-488",
+      "type": "justone",
+      "target": "Cerveza"
+    },
+    {
+      "cardId": "ju-489",
+      "type": "justone",
+      "target": "Disco"
+    },
+    {
+      "cardId": "ju-490",
+      "type": "justone",
+      "target": "Presidente"
+    },
+    {
+      "cardId": "ju-491",
+      "type": "justone",
+      "target": "Espejo"
+    },
+    {
+      "cardId": "ju-492",
+      "type": "justone",
+      "target": "Baile de graduación"
+    },
+    {
+      "cardId": "ju-493",
+      "type": "justone",
+      "target": "Baño"
+    },
+    {
+      "cardId": "ju-494",
+      "type": "justone",
+      "target": "Foso"
+    },
+    {
+      "cardId": "ju-495",
+      "type": "justone",
+      "target": "Hada"
+    },
+    {
+      "cardId": "ju-496",
+      "type": "justone",
+      "target": "Escalera"
+    },
+    {
+      "cardId": "ju-497",
+      "type": "justone",
+      "target": "Ángel"
+    },
+    {
+      "cardId": "ju-498",
+      "type": "justone",
+      "target": "Enojado"
+    },
+    {
+      "cardId": "ju-499",
+      "type": "justone",
+      "target": "Cabello"
+    },
+    {
+      "cardId": "ju-500",
+      "type": "justone",
+      "target": "Matrix"
+    },
+    {
+      "cardId": "ju-501",
+      "type": "justone",
+      "target": "Bigote"
+    },
+    {
+      "cardId": "ju-502",
+      "type": "justone",
+      "target": "Burbuja"
+    },
+    {
+      "cardId": "ju-503",
+      "type": "justone",
+      "target": "Cadena"
+    },
+    {
+      "cardId": "ju-504",
+      "type": "justone",
+      "target": "Stark"
+    },
+    {
+      "cardId": "ju-505",
+      "type": "justone",
+      "target": "Galleta"
+    },
+    {
+      "cardId": "ju-506",
+      "type": "justone",
+      "target": "Avatar"
+    },
+    {
+      "cardId": "ju-507",
+      "type": "justone",
+      "target": "Molino"
+    },
+    {
+      "cardId": "ju-508",
+      "type": "justone",
+      "target": "Selva"
+    },
+    {
+      "cardId": "ju-509",
+      "type": "justone",
+      "target": "Monja"
+    },
+    {
+      "cardId": "ju-510",
+      "type": "justone",
+      "target": "Cohete"
+    },
+    {
+      "cardId": "ju-511",
+      "type": "justone",
+      "target": "Hierro"
+    },
+    {
+      "cardId": "ju-512",
+      "type": "justone",
+      "target": "Batman"
+    },
+    {
+      "cardId": "ju-513",
+      "type": "justone",
+      "target": "Canción"
+    },
+    {
+      "cardId": "ju-514",
+      "type": "justone",
+      "target": "Nilo"
+    },
+    {
+      "cardId": "ju-515",
+      "type": "justone",
+      "target": "Cine"
+    },
+    {
+      "cardId": "ju-516",
+      "type": "justone",
+      "target": "Bomba"
+    },
+    {
+      "cardId": "ju-517",
+      "type": "justone",
+      "target": "Aladino"
+    },
+    {
+      "cardId": "ju-518",
+      "type": "justone",
+      "target": "Tubo"
+    },
+    {
+      "cardId": "ju-519",
+      "type": "justone",
+      "target": "Cinturón"
+    },
+    {
+      "cardId": "ju-520",
+      "type": "justone",
+      "target": "Bar"
+    },
+    {
+      "cardId": "ju-521",
+      "type": "justone",
+      "target": "Boca"
+    },
+    {
+      "cardId": "ju-522",
+      "type": "justone",
+      "target": "Carrusel"
+    },
+    {
+      "cardId": "ju-523",
+      "type": "justone",
+      "target": "Psicópata"
+    },
+    {
+      "cardId": "ju-524",
+      "type": "justone",
+      "target": "Hierba"
+    },
+    {
+      "cardId": "ju-525",
+      "type": "justone",
+      "target": "Caída"
+    },
+    {
+      "cardId": "ju-526",
+      "type": "justone",
+      "target": "Dopaje"
+    },
+    {
+      "cardId": "ju-527",
+      "type": "justone",
+      "target": "Ajo"
+    },
+    {
+      "cardId": "ju-528",
+      "type": "justone",
+      "target": "Cubo"
+    },
+    {
+      "cardId": "ju-529",
+      "type": "justone",
+      "target": "Rocky"
+    },
+    {
+      "cardId": "ju-530",
+      "type": "justone",
+      "target": "Leche"
+    },
+    {
+      "cardId": "ju-531",
+      "type": "justone",
+      "target": "Hielo"
+    },
+    {
+      "cardId": "ju-532",
+      "type": "justone",
+      "target": "Flauta"
+    },
+    {
+      "cardId": "ju-533",
+      "type": "justone",
+      "target": "Champán"
+    },
+    {
+      "cardId": "ju-534",
+      "type": "justone",
+      "target": "Safari"
+    },
+    {
+      "cardId": "ju-535",
+      "type": "justone",
+      "target": "Extraterrestre"
+    },
+    {
+      "cardId": "ju-536",
+      "type": "justone",
+      "target": "Caña"
+    },
+    {
+      "cardId": "ju-537",
+      "type": "justone",
+      "target": "Mosquetero"
+    },
+    {
+      "cardId": "ju-538",
+      "type": "justone",
+      "target": "Hilo"
+    },
+    {
+      "cardId": "ju-539",
+      "type": "justone",
+      "target": "Tulipán"
+    },
+    {
+      "cardId": "ju-540",
+      "type": "justone",
+      "target": "Ikea"
+    },
+    {
+      "cardId": "ju-541",
+      "type": "justone",
+      "target": "Croissant"
+    },
+    {
+      "cardId": "ju-542",
+      "type": "justone",
+      "target": "Fantasma"
+    },
+    {
+      "cardId": "ju-543",
+      "type": "justone",
+      "target": "Pajita"
+    },
+    {
+      "cardId": "ju-544",
+      "type": "justone",
+      "target": "Uña"
+    },
+    {
+      "cardId": "ju-545",
+      "type": "justone",
+      "target": "Potter"
+    },
+    {
+      "cardId": "ju-546",
+      "type": "justone",
+      "target": "Espartaco"
+    },
+    {
+      "cardId": "ju-547",
+      "type": "justone",
+      "target": "Pelo"
+    },
+    {
+      "cardId": "ju-548",
+      "type": "justone",
+      "target": "Tornado"
+    },
+    {
+      "cardId": "ju-549",
+      "type": "justone",
+      "target": "Pirámide"
+    },
+    {
+      "cardId": "ju-550",
+      "type": "justone",
+      "target": "Alianza"
+    }
+  ]
+}

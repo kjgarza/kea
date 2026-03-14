@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "deckId": "films-1990s-es-taboo",
+  "version": "2026-03-14T09:16:32.925Z",
+  "name": "Películas de los 90",
+  "gameType": "taboo",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "films",
+    "movies",
+    "1990s",
+    "cinema"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "fi-001",
+      "type": "taboo",
+      "target": "Titanic",
+      "forbidden": [
+        "barco",
+        "iceberg",
+        "Jack",
+        "Rose",
+        "hundimiento"
+      ]
+    },
+    {
+      "cardId": "fi-002",
+      "type": "taboo",
+      "target": "Forrest Gump",
+      "forbidden": [
+        "caja",
+        "chocolates",
+        "correr",
+        "Jenny",
+        "Alabama"
+      ]
+    },
+    {
+      "cardId": "fi-003",
+      "type": "taboo",
+      "target": "El Rey León",
+      "forbidden": [
+        "Simba",
+        "Mufasa",
+        "orgullo",
+        "círculo",
+        "Hakuna"
+      ]
+    },
+    {
+      "cardId": "fi-004",
+      "type": "taboo",
+      "target": "Parque Jurásico",
+      "forbidden": [
+        "dinosaurios",
+        "isla",
+        "T-Rex",
+        "caos",
+        "clonación"
+      ]
+    },
+    {
+      "cardId": "fi-005",
+      "type": "taboo",
+      "target": "The Matrix",
+      "forbidden": [
+        "Neo",
+        "realidad",
+        "rojo",
+        "Morpheus",
+        "simulación"
+      ]
+    },
+    {
+      "cardId": "fi-006",
+      "type": "taboo",
+      "target": "Pulp Fiction",
+      "forbidden": [
+        "Tarantino",
+        "Vincent",
+        "Jules",
+        "maletín",
+        "diner"
+      ]
+    },
+    {
+      "cardId": "fi-007",
+      "type": "taboo",
+      "target": "Toy Story",
+      "forbidden": [
+        "Woody",
+        "Buzz",
+        "Andy",
+        "juguetes",
+        "jugar"
+      ]
+    },
+    {
+      "cardId": "fi-008",
+      "type": "taboo",
+      "target": "Rescatando al Soldado Ryan",
+      "forbidden": [
+        "guerra",
+        "Normandía",
+        "Tom",
+        "soldados",
+        "rescate"
+      ]
+    },
+    {
+      "cardId": "fi-009",
+      "type": "taboo",
+      "target": "La Bella y la Bestia",
+      "forbidden": [
+        "Bella",
+        "castillo",
+        "rosa",
+        "Gaston",
+        "encantado"
+      ]
+    },
+    {
+      "cardId": "fi-010",
+      "type": "taboo",
+      "target": "El Sexto Sentido",
+      "forbidden": [
+        "fantasmas",
+        "muerto",
+        "Bruce",
+        "Haley",
+        "secreto"
+      ]
+    },
+    {
+      "cardId": "fi-011",
+      "type": "taboo",
+      "target": "Aladino",
+      "forbidden": [
+        "Genio",
+        "lámpara",
+        "Jazmín",
+        "mágico",
+        "árabe"
+      ]
+    },
+    {
+      "cardId": "fi-012",
+      "type": "taboo",
+      "target": "Solo en Casa",
+      "forbidden": [
+        "Kevin",
+        "Navidad",
+        "vacaciones",
+        "solo",
+        "padres"
+      ]
+    },
+    {
+      "cardId": "fi-013",
+      "type": "taboo",
+      "target": "En Busca del Destino",
+      "forbidden": [
+        "matemáticas",
+        "Robin",
+        "terapia",
+        "genio",
+        "Boston"
+      ]
+    },
+    {
+      "cardId": "fi-014",
+      "type": "taboo",
+      "target": "La Lista de Schindler",
+      "forbidden": [
+        "Holocausto",
+        "judíos",
+        "Oskar",
+        "Liam",
+        "lista"
+      ]
+    },
+    {
+      "cardId": "fi-015",
+      "type": "taboo",
+      "target": "Hombres de Negro",
+      "forbidden": [
+        "extraterrestres",
+        "traje",
+        "Will",
+        "Agente",
+        "memoria"
+      ]
+    },
+    {
+      "cardId": "fi-016",
+      "type": "taboo",
+      "target": "Fargo",
+      "forbidden": [
+        "Minnesota",
+        "desmenuzadora",
+        "embarazada",
+        "Frances",
+        "crimen"
+      ]
+    },
+    {
+      "cardId": "fi-017",
+      "type": "taboo",
+      "target": "The Truman Show",
+      "forbidden": [
+        "Jim",
+        "realidad",
+        "TV",
+        "programa",
+        "falso"
+      ]
+    },
+    {
+      "cardId": "fi-018",
+      "type": "taboo",
+      "target": "Braveheart",
+      "forbidden": [
+        "Escocia",
+        "libertad",
+        "Mel",
+        "William",
+        "batalla"
+      ]
+    },
+    {
+      "cardId": "fi-019",
+      "type": "taboo",
+      "target": "A Bug's Life",
+      "forbidden": [
+        "hormigas",
+        "saltamontes",
+        "circo",
+        "colonia",
+        "Flik"
+      ]
+    },
+    {
+      "cardId": "fi-020",
+      "type": "taboo",
+      "target": "Ghost",
+      "forbidden": [
+        "Patrick",
+        "Demi",
+        "arcilla",
+        "espíritu",
+        "amor"
+      ]
+    },
+    {
+      "cardId": "fi-021",
+      "type": "taboo",
+      "target": "The Silence of the Lambs",
+      "forbidden": [
+        "Hannibal",
+        "Clarice",
+        "caníbal",
+        "haba",
+        "serial"
+      ]
+    },
+    {
+      "cardId": "fi-022",
+      "type": "taboo",
+      "target": "Mrs. Doubtfire",
+      "forbidden": [
+        "Robin",
+        "disfraz",
+        "niñera",
+        "familia",
+        "voz"
+      ]
+    },
+    {
+      "cardId": "fi-023",
+      "type": "taboo",
+      "target": "Apollo 13",
+      "forbidden": [
+        "espacio",
+        "NASA",
+        "Houston",
+        "Tom",
+        "astronautas"
+      ]
+    },
+    {
+      "cardId": "fi-024",
+      "type": "taboo",
+      "target": "The Green Mile",
+      "forbidden": [
+        "prisión",
+        "Tom",
+        "ratón",
+        "ejecución",
+        "sanación"
+      ]
+    },
+    {
+      "cardId": "fi-025",
+      "type": "taboo",
+      "target": "The Fugitive",
+      "forbidden": [
+        "Harrison",
+        "inocente",
+        "persecución",
+        "doctor",
+        "asesinato"
+      ]
+    },
+    {
+      "cardId": "fi-026",
+      "type": "taboo",
+      "target": "Pretty Woman",
+      "forbidden": [
+        "Julia",
+        "Richard",
+        "compras",
+        "amor",
+        "hotel"
+      ]
+    },
+    {
+      "cardId": "fi-027",
+      "type": "taboo",
+      "target": "Armageddon",
+      "forbidden": [
+        "asteroide",
+        "Bruce",
+        "espacio",
+        "perforar",
+        "desastre"
+      ]
+    },
+    {
+      "cardId": "fi-028",
+      "type": "taboo",
+      "target": "The Shawshank Redemption",
+      "forbidden": [
+        "prisión",
+        "escape",
+        "Morgan",
+        "Andy",
+        "inocente"
+      ]
+    },
+    {
+      "cardId": "fi-029",
+      "type": "taboo",
+      "target": "Independence Day",
+      "forbidden": [
+        "extraterrestres",
+        "presidente",
+        "tierra",
+        "ataque",
+        "Will"
+      ]
+    },
+    {
+      "cardId": "fi-030",
+      "type": "taboo",
+      "target": "Sleepless in Seattle",
+      "forbidden": [
+        "Tom",
+        "Meg",
+        "radio",
+        "Seattle",
+        "amor"
+      ]
+    },
+    {
+      "cardId": "fi-031",
+      "type": "taboo",
+      "target": "La vida es bella",
+      "forbidden": [
+        "Italia",
+        "Holocausto",
+        "padre",
+        "hijo",
+        "comedia"
+      ]
+    },
+    {
+      "cardId": "fi-032",
+      "type": "taboo",
+      "target": "La Máscara",
+      "forbidden": [
+        "Jim",
+        "verde",
+        "Stanley",
+        "caricatura",
+        "mágico"
+      ]
+    },
+    {
+      "cardId": "fi-033",
+      "type": "taboo",
+      "target": "Notting Hill",
+      "forbidden": [
+        "Julia",
+        "Hugh",
+        "librería",
+        "famoso",
+        "amor"
+      ]
+    },
+    {
+      "cardId": "fi-034",
+      "type": "taboo",
+      "target": "A toda velocidad",
+      "forbidden": [
+        "autobús",
+        "Keanu",
+        "Sandra",
+        "bomba",
+        "rápido"
+      ]
+    },
+    {
+      "cardId": "fi-035",
+      "type": "taboo",
+      "target": "El proyecto de la bruja de Blair",
+      "forbidden": [
+        "bosque",
+        "documental",
+        "cámara",
+        "aterrador",
+        "bruja"
+      ]
+    },
+    {
+      "cardId": "fi-036",
+      "type": "taboo",
+      "target": "Unos hombres buenos",
+      "forbidden": [
+        "tribunal",
+        "Tom",
+        "Jack",
+        "militar",
+        "verdad"
+      ]
+    },
+    {
+      "cardId": "fi-037",
+      "type": "taboo",
+      "target": "El día de la marmota",
+      "forbidden": [
+        "Bill",
+        "repetir",
+        "día",
+        "Punxsutawney",
+        "Phil"
+      ]
+    },
+    {
+      "cardId": "fi-038",
+      "type": "taboo",
+      "target": "El extraño mundo de Jack",
+      "forbidden": [
+        "Jack",
+        "Halloween",
+        "Tim",
+        "Sally",
+        "stop-motion"
+      ]
+    },
+    {
+      "cardId": "fi-039",
+      "type": "taboo",
+      "target": "Sin idea",
+      "forbidden": [
+        "Alicia",
+        "adolescente",
+        "Beverly",
+        "moda",
+        "escuela secundaria"
+      ]
+    },
+    {
+      "cardId": "fi-040",
+      "type": "taboo",
+      "target": "La momia",
+      "forbidden": [
+        "Egipto",
+        "Brendan",
+        "maldición",
+        "tumba",
+        "aventura"
+      ]
+    },
+    {
+      "cardId": "fi-041",
+      "type": "taboo",
+      "target": "10 cosas que odio de ti",
+      "forbidden": [
+        "escuela secundaria",
+        "Shakespeare",
+        "Heath",
+        "hermanas",
+        "romance"
+      ]
+    },
+    {
+      "cardId": "fi-042",
+      "type": "taboo",
+      "target": "L.A. Confidential",
+      "forbidden": [
+        "policía",
+        "Los Ángeles",
+        "corrupción",
+        "Kevin",
+        "crimen"
+      ]
+    },
+    {
+      "cardId": "fi-043",
+      "type": "taboo",
+      "target": "El gran Lebowski",
+      "forbidden": [
+        "Dude",
+        "boliche",
+        "Jeff",
+        "alfombra",
+        "comedia"
+      ]
+    },
+    {
+      "cardId": "fi-044",
+      "type": "taboo",
+      "target": "El príncipe de Egipto",
+      "forbidden": [
+        "Moisés",
+        "dreamworks",
+        "plagas",
+        "Éxodo",
+        "Faraón"
+      ]
+    },
+    {
+      "cardId": "fi-045",
+      "type": "taboo",
+      "target": "Lo que el viento se llevó",
+      "forbidden": [
+        "Jack",
+        "Helen",
+        "escritor",
+        "TOC",
+        "romance"
+      ]
+    },
+    {
+      "cardId": "fi-046",
+      "type": "taboo",
+      "target": "La Roca",
+      "forbidden": [
+        "Alcatraz",
+        "Sean",
+        "Nicholas",
+        "rehén",
+        "isla"
+      ]
+    },
+    {
+      "cardId": "fi-047",
+      "type": "taboo",
+      "target": "Belleza Americana",
+      "forbidden": [
+        "Kevin",
+        "suburbia",
+        "rosa",
+        "adolescente",
+        "crisis de la mediana edad"
+      ]
+    },
+    {
+      "cardId": "fi-048",
+      "type": "taboo",
+      "target": "Fuego",
+      "forbidden": [
+        "robo",
+        "De Niro",
+        "Pacino",
+        "Los Ángeles",
+        "crimen"
+      ]
+    },
+    {
+      "cardId": "fi-049",
+      "type": "taboo",
+      "target": "El Gigante de Hierro",
+      "forbidden": [
+        "robot",
+        "años 50",
+        "niño",
+        "guerra fría",
+        "amistad"
+      ]
+    }
+  ]
+}

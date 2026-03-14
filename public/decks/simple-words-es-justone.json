@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "deckId": "simple-words-es-justone",
+  "version": "2026-03-14T09:17:22.502Z",
+  "name": "Palabras Simples",
+  "gameType": "justone",
+  "language": "es",
+  "difficulty": "easy",
+  "topics": [
+    "general"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "jo-001",
+      "type": "justone",
+      "target": "Volcán"
+    },
+    {
+      "cardId": "jo-002",
+      "type": "justone",
+      "target": "Astronauta"
+    },
+    {
+      "cardId": "jo-003",
+      "type": "justone",
+      "target": "Arcoíris"
+    },
+    {
+      "cardId": "jo-004",
+      "type": "justone",
+      "target": "Tesoro"
+    },
+    {
+      "cardId": "jo-005",
+      "type": "justone",
+      "target": "Pesadilla"
+    },
+    {
+      "cardId": "jo-006",
+      "type": "justone",
+      "target": "Chocolate"
+    },
+    {
+      "cardId": "jo-007",
+      "type": "justone",
+      "target": "Detective"
+    },
+    {
+      "cardId": "jo-008",
+      "type": "justone",
+      "target": "Selva"
+    },
+    {
+      "cardId": "jo-009",
+      "type": "justone",
+      "target": "Pirata"
+    },
+    {
+      "cardId": "jo-010",
+      "type": "justone",
+      "target": "Mago"
+    }
+  ]
+}

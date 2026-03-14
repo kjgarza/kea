@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "deckId": "general-knowledge-es-trivia",
+  "version": "2026-03-14T09:16:49.238Z",
+  "name": "Conocimientos Generales",
+  "gameType": "trivia",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "general"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "tr-001",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "¿Qué planeta es conocido como el Planeta Rojo?",
+      "choices": [
+        "Venus",
+        "Marte",
+        "Júpiter",
+        "Mercurio"
+      ],
+      "answerIndex": 1,
+      "answerText": "Marte"
+    },
+    {
+      "cardId": "tr-002",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "¿Cuál es el océano más grande de la Tierra?",
+      "choices": [
+        "Océano Atlántico",
+        "Océano Índico",
+        "Océano Pacífico",
+        "Océano Ártico"
+      ],
+      "answerIndex": 2,
+      "answerText": "Océano Pacífico"
+    },
+    {
+      "cardId": "tr-003",
+      "type": "trivia",
+      "format": "open",
+      "question": "¿Cuál es la capital de Francia?",
+      "answerText": "París"
+    },
+    {
+      "cardId": "tr-004",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "¿Cuántos continentes hay?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answerIndex": 2,
+      "answerText": "7"
+    },
+    {
+      "cardId": "tr-005",
+      "type": "trivia",
+      "format": "open",
+      "question": "¿En qué año terminó la Segunda Guerra Mundial?",
+      "answerText": "1945"
+    },
+    {
+      "cardId": "tr-006",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "¿Qué elemento tiene el símbolo químico 'O'?",
+      "choices": [
+        "Oro",
+        "Oxígeno",
+        "Osmiio",
+        "Plata"
+      ],
+      "answerIndex": 1,
+      "answerText": "Oxígeno"
+    },
+    {
+      "cardId": "tr-007",
+      "type": "trivia",
+      "format": "open",
+      "question": "¿Quién pintó la Mona Lisa?",
+      "answerText": "Leonardo da Vinci"
+    },
+    {
+      "cardId": "tr-008",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "¿Cuál es el país más pequeño del mundo?",
+      "choices": [
+        "Mónaco",
+        "Ciudad del Vaticano",
+        "San Marino",
+        "Liechtenstein"
+      ],
+      "answerIndex": 1,
+      "answerText": "Ciudad del Vaticano"
+    },
+    {
+      "cardId": "tr-009",
+      "type": "trivia",
+      "format": "open",
+      "question": "¿Cuál es la sustancia natural más dura de la Tierra?",
+      "answerText": "Diamante"
+    },
+    {
+      "cardId": "tr-010",
+      "type": "trivia",
+      "format": "mcq",
+      "question": "¿Qué planeta tiene más lunas?",
+      "choices": [
+        "Júpiter",
+        "Saturno",
+        "Urano",
+        "Neptuno"
+      ],
+      "answerIndex": 1,
+      "answerText": "Saturno"
+    }
+  ]
+}

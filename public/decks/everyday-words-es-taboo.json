@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "deckId": "everyday-words-es-taboo",
+  "version": "2026-03-14T09:16:12.058Z",
+  "name": "Palabras Cotidianas",
+  "gameType": "taboo",
+  "language": "es",
+  "difficulty": "easy",
+  "topics": [
+    "general"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "tb-001",
+      "type": "taboo",
+      "target": "Playa",
+      "forbidden": [
+        "arena",
+        "océano",
+        "sol",
+        "olas",
+        "vacaciones"
+      ]
+    },
+    {
+      "cardId": "tb-002",
+      "type": "taboo",
+      "target": "Cumpleaños",
+      "forbidden": [
+        "pastel",
+        "fiesta",
+        "velas",
+        "regalos",
+        "edad"
+      ]
+    },
+    {
+      "cardId": "tb-003",
+      "type": "taboo",
+      "target": "Café",
+      "forbidden": [
+        "beber",
+        "cafeína",
+        "mañana",
+        "taza",
+        "granos"
+      ]
+    },
+    {
+      "cardId": "tb-004",
+      "type": "taboo",
+      "target": "Hospital",
+      "forbidden": [
+        "doctor",
+        "enfermo",
+        "enfermera",
+        "paciente",
+        "medicina"
+      ]
+    },
+    {
+      "cardId": "tb-005",
+      "type": "taboo",
+      "target": "Biblioteca",
+      "forbidden": [
+        "libros",
+        "leer",
+        "silencio",
+        "prestar",
+        "estantes"
+      ]
+    },
+    {
+      "cardId": "tb-006",
+      "type": "taboo",
+      "target": "Pizza",
+      "forbidden": [
+        "queso",
+        "porción",
+        "italiana",
+        "ingredientes",
+        "entrega"
+      ]
+    },
+    {
+      "cardId": "tb-007",
+      "type": "taboo",
+      "target": "Escuela",
+      "forbidden": [
+        "maestro",
+        "estudiante",
+        "aprender",
+        "clase",
+        "tarea"
+      ]
+    },
+    {
+      "cardId": "tb-008",
+      "type": "taboo",
+      "target": "Televisión",
+      "forbidden": [
+        "ver",
+        "pantalla",
+        "canal",
+        "control remoto",
+        "programa"
+      ]
+    },
+    {
+      "cardId": "tb-009",
+      "type": "taboo",
+      "target": "Boda",
+      "forbidden": [
+        "novia",
+        "novio",
+        "matrimonio",
+        "anillo",
+        "ceremonia"
+      ]
+    },
+    {
+      "cardId": "tb-010",
+      "type": "taboo",
+      "target": "Zoológico",
+      "forbidden": [
+        "animales",
+        "jaula",
+        "salvaje",
+        "visitantes",
+        "exhibición"
+      ]
+    }
+  ]
+}

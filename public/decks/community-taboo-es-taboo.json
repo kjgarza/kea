@@ -1,0 +1,1516 @@
+{
+  "schemaVersion": 1,
+  "deckId": "community-taboo-es-taboo",
+  "version": "2026-03-14T09:16:00.145Z",
+  "name": "Cartas Tabú Comunitarias",
+  "gameType": "taboo",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "general",
+    "mixed"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "tb-csv-001",
+      "type": "taboo",
+      "target": "UNIVERSIDAD DE HARVARD",
+      "forbidden": [
+        "Ivy League",
+        "Escuela",
+        "Carmesí",
+        "Cambridge",
+        "Yale"
+      ]
+    },
+    {
+      "cardId": "tb-csv-002",
+      "type": "taboo",
+      "target": "MATAMOSCAS",
+      "forbidden": [
+        "Matar",
+        "Golpear",
+        "Bicho",
+        "Zumbido",
+        "Herramienta"
+      ]
+    },
+    {
+      "cardId": "tb-csv-003",
+      "type": "taboo",
+      "target": "CANADÁ",
+      "forbidden": [
+        "Norte",
+        "Frío",
+        "Nieve",
+        "Ganso",
+        "Mountie"
+      ]
+    },
+    {
+      "cardId": "tb-csv-004",
+      "type": "taboo",
+      "target": "ADICCIÓN",
+      "forbidden": [
+        "Droga",
+        "Alcohol",
+        "Rehabilitación",
+        "Hábito",
+        "Síndrome de abstinencia"
+      ]
+    },
+    {
+      "cardId": "tb-csv-005",
+      "type": "taboo",
+      "target": "INCISIÓN",
+      "forbidden": [
+        "Cortar",
+        "Operar",
+        "Cirugía",
+        "Escalpelo",
+        "Puntada"
+      ]
+    },
+    {
+      "cardId": "tb-csv-006",
+      "type": "taboo",
+      "target": "POLO",
+      "forbidden": [
+        "Caballo",
+        "Agua",
+        "Camisa",
+        "Club",
+        "Deporte"
+      ]
+    },
+    {
+      "cardId": "tb-csv-007",
+      "type": "taboo",
+      "target": "GRITO",
+      "forbidden": [
+        "Gritar",
+        "Vociferar",
+        "Asustar",
+        "Miedo",
+        "Sorpresa"
+      ]
+    },
+    {
+      "cardId": "tb-csv-008",
+      "type": "taboo",
+      "target": "TOQUE DE QUEDA",
+      "forbidden": [
+        "Tarde",
+        "Adolescente",
+        "Casa",
+        "Castigo",
+        "Hora"
+      ]
+    },
+    {
+      "cardId": "tb-csv-009",
+      "type": "taboo",
+      "target": "HOJA DE CÁLCULO",
+      "forbidden": [
+        "Excel",
+        "Números",
+        "Matemáticas",
+        "Ecuaciones",
+        "Tabla"
+      ]
+    },
+    {
+      "cardId": "tb-csv-010",
+      "type": "taboo",
+      "target": "ESPIRITUAL",
+      "forbidden": [
+        "Creencia",
+        "Religión",
+        "Fe",
+        "Dios",
+        "Sagrado"
+      ]
+    },
+    {
+      "cardId": "tb-csv-011",
+      "type": "taboo",
+      "target": "AMPOLLAS",
+      "forbidden": [
+        "Reventar",
+        "Piel",
+        "Talón",
+        "Mango",
+        "Pie"
+      ]
+    },
+    {
+      "cardId": "tb-csv-012",
+      "type": "taboo",
+      "target": "PLACA BASE",
+      "forbidden": [
+        "Computadora",
+        "Procesador",
+        "Arrancar",
+        "Circuito",
+        "Chip"
+      ]
+    },
+    {
+      "cardId": "tb-csv-013",
+      "type": "taboo",
+      "target": "CAROLINA DEL NORTE",
+      "forbidden": [
+        "Atlántico",
+        "Tar Heel",
+        "Sur",
+        "Virginia",
+        "Tennessee"
+      ]
+    },
+    {
+      "cardId": "tb-csv-014",
+      "type": "taboo",
+      "target": "TABURETE DE BAR",
+      "forbidden": [
+        "Beber",
+        "Sentarse",
+        "Silla",
+        "Pelea",
+        "Cocina"
+      ]
+    },
+    {
+      "cardId": "tb-csv-015",
+      "type": "taboo",
+      "target": "TERAPEUTA",
+      "forbidden": [
+        "Analizar",
+        "Doctor",
+        "Sofá",
+        "Psicólogo",
+        "Psiquiatra"
+      ]
+    },
+    {
+      "cardId": "tb-csv-016",
+      "type": "taboo",
+      "target": "TORBELLINO",
+      "forbidden": [
+        "Agua",
+        "Girar",
+        "Río",
+        "Remolino",
+        "Electrodoméstico"
+      ]
+    },
+    {
+      "cardId": "tb-csv-017",
+      "type": "taboo",
+      "target": "CÁLCULO",
+      "forbidden": [
+        "Matemáticas",
+        "Función",
+        "Derivada",
+        "Integral",
+        "Límite"
+      ]
+    },
+    {
+      "cardId": "tb-csv-018",
+      "type": "taboo",
+      "target": "ANALFABETO",
+      "forbidden": [
+        "Leer",
+        "Escribir",
+        "Palabra",
+        "Escuela",
+        "Educar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-019",
+      "type": "taboo",
+      "target": "BEATBOX",
+      "forbidden": [
+        "Ritmo",
+        "Batería",
+        "Boca",
+        "Sonido",
+        "Música"
+      ]
+    },
+    {
+      "cardId": "tb-csv-020",
+      "type": "taboo",
+      "target": "ARDILLA",
+      "forbidden": [
+        "Árbol",
+        "Rocoso",
+        "Arbustivo",
+        "Camino",
+        "Volador"
+      ]
+    },
+    {
+      "cardId": "tb-csv-021",
+      "type": "taboo",
+      "target": "OSO HORMIGUERO",
+      "forbidden": [
+        "Animal",
+        "Insectos",
+        "Lengua",
+        "Termitas",
+        "Colina"
+      ]
+    },
+    {
+      "cardId": "tb-csv-022",
+      "type": "taboo",
+      "target": "PIEDRA DE MONTAÑA",
+      "forbidden": [
+        "Sasquatch",
+        "Yeti",
+        "Peludo",
+        "Monstruo",
+        "Leyenda"
+      ]
+    },
+    {
+      "cardId": "tb-csv-023",
+      "type": "taboo",
+      "target": "CONCHA",
+      "forbidden": [
+        "Concha",
+        "Caracol",
+        "Océano",
+        "Playa",
+        "Caracol"
+      ]
+    },
+    {
+      "cardId": "tb-csv-024",
+      "type": "taboo",
+      "target": "CHICO DE PERIÓDICO",
+      "forbidden": [
+        "Noticias",
+        "Entregar",
+        "Bicicleta",
+        "Nintendo",
+        "Lanzar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-025",
+      "type": "taboo",
+      "target": "Saqueo",
+      "forbidden": [
+        "Quemar",
+        "Ciudad",
+        "Pirata",
+        "Soldado",
+        "Saquear"
+      ]
+    },
+    {
+      "cardId": "tb-csv-026",
+      "type": "taboo",
+      "target": "ABDOMINALES",
+      "forbidden": [
+        "Crunch",
+        "Abdominal",
+        "Fitness",
+        "Entrenamiento",
+        "Ejercicio"
+      ]
+    },
+    {
+      "cardId": "tb-csv-027",
+      "type": "taboo",
+      "target": "FOTOGRAFÍA",
+      "forbidden": [
+        "Imagen",
+        "Cámara",
+        "Queso",
+        "Arte",
+        "Capturar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-028",
+      "type": "taboo",
+      "target": "HECHICERÍA",
+      "forbidden": [
+        "Quemar",
+        "Magia",
+        "Mago",
+        "Práctica",
+        "Hechicero"
+      ]
+    },
+    {
+      "cardId": "tb-csv-029",
+      "type": "taboo",
+      "target": "TUMOR",
+      "forbidden": [
+        "Cáncer",
+        "Maligno",
+        "Benigno",
+        "Doctor",
+        "Bulto"
+      ]
+    },
+    {
+      "cardId": "tb-csv-030",
+      "type": "taboo",
+      "target": "BASURA",
+      "forbidden": [
+        "Día",
+        "Basura",
+        "Recoger",
+        "Camión",
+        "Lata"
+      ]
+    },
+    {
+      "cardId": "tb-csv-031",
+      "type": "taboo",
+      "target": "ZOO",
+      "forbidden": [
+        "Animal",
+        "Panda",
+        "Mono",
+        "Visitar",
+        "Jaula"
+      ]
+    },
+    {
+      "cardId": "tb-csv-032",
+      "type": "taboo",
+      "target": "LUGE",
+      "forbidden": [
+        "Olimpiadas",
+        "Tobogán",
+        "Espalda",
+        "Tabla",
+        "Descenso"
+      ]
+    },
+    {
+      "cardId": "tb-csv-033",
+      "type": "taboo",
+      "target": "CUCUMBER",
+      "forbidden": [
+        "Vegetal",
+        "Verde",
+        "Crujiente",
+        "Crecer",
+        "Pepinillo"
+      ]
+    },
+    {
+      "cardId": "tb-csv-034",
+      "type": "taboo",
+      "target": "ENTREPRENEUR",
+      "forbidden": [
+        "Negocio",
+        "Empresa",
+        "Contratar",
+        "Empezar",
+        "Vender"
+      ]
+    },
+    {
+      "cardId": "tb-csv-035",
+      "type": "taboo",
+      "target": "BIRTHDAY CAKE",
+      "forbidden": [
+        "Vela",
+        "Chocolate",
+        "Vainilla",
+        "Glaseado",
+        "Fiesta"
+      ]
+    },
+    {
+      "cardId": "tb-csv-036",
+      "type": "taboo",
+      "target": "COLOGNE",
+      "forbidden": [
+        "Olor",
+        "Cita",
+        "Hombre",
+        "Francés",
+        "Aplicar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-037",
+      "type": "taboo",
+      "target": "DEMOCRACY",
+      "forbidden": [
+        "Gobierno",
+        "Elegir",
+        "Votar",
+        "América",
+        "República"
+      ]
+    },
+    {
+      "cardId": "tb-csv-038",
+      "type": "taboo",
+      "target": "FUNGUS",
+      "forbidden": [
+        "Hongo",
+        "Espora",
+        "Moho",
+        "Mildew",
+        "Verde"
+      ]
+    },
+    {
+      "cardId": "tb-csv-039",
+      "type": "taboo",
+      "target": "HAIRBRUSH",
+      "forbidden": [
+        "Peine",
+        "Salón",
+        "Lacio",
+        "Enredar",
+        "Mañana"
+      ]
+    },
+    {
+      "cardId": "tb-csv-040",
+      "type": "taboo",
+      "target": "VISOR",
+      "forbidden": [
+        "Golf",
+        "Sombrero",
+        "Cabeza",
+        "Sol",
+        "Ojos"
+      ]
+    },
+    {
+      "cardId": "tb-csv-041",
+      "type": "taboo",
+      "target": "WALL STREET",
+      "forbidden": [
+        "Mercado de Valores",
+        "Corredor",
+        "Bono",
+        "Codicia",
+        "Nueva York"
+      ]
+    },
+    {
+      "cardId": "tb-csv-042",
+      "type": "taboo",
+      "target": "ODYSSEUS",
+      "forbidden": [
+        "Troya",
+        "Hogar",
+        "Ulises",
+        "Homero",
+        "Épico"
+      ]
+    },
+    {
+      "cardId": "tb-csv-043",
+      "type": "taboo",
+      "target": "MOTEL",
+      "forbidden": [
+        "Posada",
+        "Hotel",
+        "Barato",
+        "Dormir",
+        "Quedarse"
+      ]
+    },
+    {
+      "cardId": "tb-csv-044",
+      "type": "taboo",
+      "target": "RAINBOW",
+      "forbidden": [
+        "Color",
+        "Oro",
+        "Luz",
+        "Lectura",
+        "Cascada"
+      ]
+    },
+    {
+      "cardId": "tb-csv-045",
+      "type": "taboo",
+      "target": "ELVIS PRESLEY",
+      "forbidden": [
+        "Graceland",
+        "Hound Dog",
+        "Cantar",
+        "Rock N' Roll",
+        "Rey"
+      ]
+    },
+    {
+      "cardId": "tb-csv-046",
+      "type": "taboo",
+      "target": "LONA",
+      "forbidden": [
+        "En blanco",
+        "Pintura",
+        "Dibujar",
+        "Puerta",
+        "Encuesta"
+      ]
+    },
+    {
+      "cardId": "tb-csv-047",
+      "type": "taboo",
+      "target": "ESCRIBIR",
+      "forbidden": [
+        "Papel",
+        "Lápiz",
+        "Pluma",
+        "Carta",
+        "Mano"
+      ]
+    },
+    {
+      "cardId": "tb-csv-048",
+      "type": "taboo",
+      "target": "INCENDIO FORESTAL",
+      "forbidden": [
+        "Caliente",
+        "Bosque",
+        "Matorral",
+        "Luchar",
+        "Extender"
+      ]
+    },
+    {
+      "cardId": "tb-csv-049",
+      "type": "taboo",
+      "target": "ESMERALDA",
+      "forbidden": [
+        "Verde",
+        "Oz",
+        "Piedra",
+        "Gema",
+        "Diamante"
+      ]
+    },
+    {
+      "cardId": "tb-csv-050",
+      "type": "taboo",
+      "target": "BOXEADOR",
+      "forbidden": [
+        "Deporte",
+        "Perro",
+        "Golpe",
+        "Ring",
+        "Guantes"
+      ]
+    },
+    {
+      "cardId": "tb-csv-051",
+      "type": "taboo",
+      "target": "CARNE SECA",
+      "forbidden": [
+        "Slim Jim",
+        "Seco",
+        "Carne",
+        "Masticar",
+        "Sal"
+      ]
+    },
+    {
+      "cardId": "tb-csv-052",
+      "type": "taboo",
+      "target": "PISCINA INFANTIL",
+      "forbidden": [
+        "Nadar",
+        "Pequeña",
+        "Niño",
+        "Poco profunda",
+        "Bebé"
+      ]
+    },
+    {
+      "cardId": "tb-csv-053",
+      "type": "taboo",
+      "target": "PASTA DE DIENTES",
+      "forbidden": [
+        "Cepillo",
+        "Dientes",
+        "Boca",
+        "Cama",
+        "Limpiar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-054",
+      "type": "taboo",
+      "target": "PURÉ",
+      "forbidden": [
+        "Mezclar",
+        "Líquido",
+        "Suave",
+        "Salsa",
+        "Tomate"
+      ]
+    },
+    {
+      "cardId": "tb-csv-055",
+      "type": "taboo",
+      "target": "CANGREJO REY",
+      "forbidden": [
+        "Mariscos",
+        "Pinza",
+        "De lado",
+        "Tenaza",
+        "Pierna"
+      ]
+    },
+    {
+      "cardId": "tb-csv-056",
+      "type": "taboo",
+      "target": "BIENVENIDO",
+      "forbidden": [
+        "Saludar",
+        "Alfombra",
+        "Hola",
+        "Casa",
+        "Fiesta"
+      ]
+    },
+    {
+      "cardId": "tb-csv-057",
+      "type": "taboo",
+      "target": "GATEAR",
+      "forbidden": [
+        "Bebé",
+        "Espacio",
+        "Bicho",
+        "Rodillas",
+        "Suelo"
+      ]
+    },
+    {
+      "cardId": "tb-csv-058",
+      "type": "taboo",
+      "target": "CÍRCULO DE CULTIVO",
+      "forbidden": [
+        "Maíz",
+        "Ovni",
+        "Patrón",
+        "Extraterrestre",
+        "Fraude"
+      ]
+    },
+    {
+      "cardId": "tb-csv-059",
+      "type": "taboo",
+      "target": "CONTRASEÑA",
+      "forbidden": [
+        "Hackear",
+        "Robar",
+        "Cerradura",
+        "Secreto",
+        "Iniciar sesión"
+      ]
+    },
+    {
+      "cardId": "tb-csv-060",
+      "type": "taboo",
+      "target": "CÁMARA WEB",
+      "forbidden": [
+        "Skype",
+        "Charla",
+        "Video",
+        "Hablar",
+        "Computadora"
+      ]
+    },
+    {
+      "cardId": "tb-csv-061",
+      "type": "taboo",
+      "target": "SILLA DE RUEDAS",
+      "forbidden": [
+        "Discapacitado",
+        "Minusválido",
+        "Rodar",
+        "Eléctrico",
+        "Rampa"
+      ]
+    },
+    {
+      "cardId": "tb-csv-062",
+      "type": "taboo",
+      "target": "YANQUI",
+      "forbidden": [
+        "Norteño",
+        "Nueva York",
+        "Americano",
+        "Béisbol",
+        "Británico"
+      ]
+    },
+    {
+      "cardId": "tb-csv-063",
+      "type": "taboo",
+      "target": "ZEUS",
+      "forbidden": [
+        "Júpiter",
+        "Griego",
+        "Rey",
+        "Dios",
+        "Olímpico"
+      ]
+    },
+    {
+      "cardId": "tb-csv-064",
+      "type": "taboo",
+      "target": "BEETHOVEN",
+      "forbidden": [
+        "Compositor",
+        "Sordo",
+        "Piano",
+        "Sinfonía",
+        "Rodar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-065",
+      "type": "taboo",
+      "target": "BIQUINI",
+      "forbidden": [
+        "Amarillo",
+        "Playa",
+        "Usar",
+        "Dos piezas",
+        "Cera"
+      ]
+    },
+    {
+      "cardId": "tb-csv-066",
+      "type": "taboo",
+      "target": "BUFÉ",
+      "forbidden": [
+        "Comer",
+        "Comida",
+        "Todo",
+        "Ensalada",
+        "China"
+      ]
+    },
+    {
+      "cardId": "tb-csv-067",
+      "type": "taboo",
+      "target": "COSTA",
+      "forbidden": [
+        "Océano",
+        "Playa",
+        "Arena",
+        "Navegar",
+        "Ola"
+      ]
+    },
+    {
+      "cardId": "tb-csv-068",
+      "type": "taboo",
+      "target": "PLATÓ",
+      "forbidden": [
+        "Plano",
+        "Tierra",
+        "Montaña",
+        "Oeste",
+        "Desierto"
+      ]
+    },
+    {
+      "cardId": "tb-csv-069",
+      "type": "taboo",
+      "target": "RANCIO",
+      "forbidden": [
+        "Ácido",
+        "Leche",
+        "Malo",
+        "Podrido",
+        "Basura"
+      ]
+    },
+    {
+      "cardId": "tb-csv-070",
+      "type": "taboo",
+      "target": "SEÑAL",
+      "forbidden": [
+        "Humo",
+        "Código Morse",
+        "Señal",
+        "Luz",
+        "Girar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-071",
+      "type": "taboo",
+      "target": "CÁMARA LENTA",
+      "forbidden": [
+        "Mover",
+        "Película",
+        "Cuadro",
+        "Acción",
+        "Filmar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-072",
+      "type": "taboo",
+      "target": "AGUANIEVE",
+      "forbidden": [
+        "Lluvia",
+        "Cielo",
+        "Hielo",
+        "Nube",
+        "Congelar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-073",
+      "type": "taboo",
+      "target": "BAILE",
+      "forbidden": [
+        "Disco",
+        "Salón",
+        "Vals",
+        "Pista",
+        "Revolución"
+      ]
+    },
+    {
+      "cardId": "tb-csv-074",
+      "type": "taboo",
+      "target": "INGENIERO",
+      "forbidden": [
+        "Tren",
+        "Civil",
+        "Puente",
+        "Eléctrico",
+        "Computadora"
+      ]
+    },
+    {
+      "cardId": "tb-csv-075",
+      "type": "taboo",
+      "target": "CEO",
+      "forbidden": [
+        "Negocios",
+        "Empresa",
+        "Liderar",
+        "Cabeza",
+        "Dirigir"
+      ]
+    },
+    {
+      "cardId": "tb-csv-076",
+      "type": "taboo",
+      "target": "ENGAÑAR",
+      "forbidden": [
+        "Reglas",
+        "Sistema",
+        "Aventura",
+        "Juego",
+        "Romper"
+      ]
+    },
+    {
+      "cardId": "tb-csv-077",
+      "type": "taboo",
+      "target": "JULIO CÉSAR",
+      "forbidden": [
+        "Bruto",
+        "Roma",
+        "Ensalada",
+        "Calendario",
+        "Emperador"
+      ]
+    },
+    {
+      "cardId": "tb-csv-078",
+      "type": "taboo",
+      "target": "APOCALIPSIS",
+      "forbidden": [
+        "Fin",
+        "Mundo",
+        "Plaga",
+        "Arrebato",
+        "Nuclear"
+      ]
+    },
+    {
+      "cardId": "tb-csv-079",
+      "type": "taboo",
+      "target": "CIRUJANO",
+      "forbidden": [
+        "Doctor",
+        "Puntada",
+        "Hospital",
+        "Operar",
+        "Cerebro"
+      ]
+    },
+    {
+      "cardId": "tb-csv-080",
+      "type": "taboo",
+      "target": "SAMURÁI",
+      "forbidden": [
+        "Japón",
+        "Guerrero",
+        "Ninja",
+        "Espada",
+        "Katana"
+      ]
+    },
+    {
+      "cardId": "tb-csv-081",
+      "type": "taboo",
+      "target": "SANDÍA",
+      "forbidden": [
+        "Semilla",
+        "Rojo",
+        "Verde",
+        "Verano",
+        "Jugo"
+      ]
+    },
+    {
+      "cardId": "tb-csv-082",
+      "type": "taboo",
+      "target": "CIEGO",
+      "forbidden": [
+        "Visión",
+        "Ver",
+        "Gafas",
+        "Bastón",
+        "Perro"
+      ]
+    },
+    {
+      "cardId": "tb-csv-083",
+      "type": "taboo",
+      "target": "BIENES RAÍCES",
+      "forbidden": [
+        "Casa",
+        "Tierra",
+        "Inmobiliaria",
+        "Hipoteca",
+        "Burbuja"
+      ]
+    },
+    {
+      "cardId": "tb-csv-084",
+      "type": "taboo",
+      "target": "EXORCISMO",
+      "forbidden": [
+        "Demonio",
+        "Sacerdote",
+        "Santo",
+        "Cristo",
+        "Limpiar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-085",
+      "type": "taboo",
+      "target": "CACAHUATE",
+      "forbidden": [
+        "Mantequilla",
+        "Jalea",
+        "Cáscara",
+        "Sal",
+        "Charlie Brown"
+      ]
+    },
+    {
+      "cardId": "tb-csv-086",
+      "type": "taboo",
+      "target": "PERDÓN",
+      "forbidden": [
+        "Perdonar",
+        "Convicto",
+        "Amnistía",
+        "Francés",
+        "Presidente"
+      ]
+    },
+    {
+      "cardId": "tb-csv-087",
+      "type": "taboo",
+      "target": "HUEVO DE PASCUA",
+      "forbidden": [
+        "Color",
+        "Pintar",
+        "Tinte",
+        "Vinagre",
+        "Caza"
+      ]
+    },
+    {
+      "cardId": "tb-csv-088",
+      "type": "taboo",
+      "target": "SONROJADO",
+      "forbidden": [
+        "Tímido",
+        "Rubor",
+        "Rojo",
+        "Tonto",
+        "Sentir"
+      ]
+    },
+    {
+      "cardId": "tb-csv-089",
+      "type": "taboo",
+      "target": "HIEDRA VENENOSA",
+      "forbidden": [
+        "Picazón",
+        "Erupción",
+        "Planta",
+        "Piel",
+        "Tocar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-090",
+      "type": "taboo",
+      "target": "SUPLICAR",
+      "forbidden": [
+        "Pedir",
+        "Rodilla",
+        "Rogar",
+        "Misericordia",
+        "Perro"
+      ]
+    },
+    {
+      "cardId": "tb-csv-091",
+      "type": "taboo",
+      "target": "BUDDHA",
+      "forbidden": [
+        "Gordo",
+        "India",
+        "Meditar",
+        "Religión",
+        "Estatua"
+      ]
+    },
+    {
+      "cardId": "tb-csv-092",
+      "type": "taboo",
+      "target": "BRUISE",
+      "forbidden": [
+        "Negro",
+        "Azul",
+        "Sangre",
+        "Piel",
+        "Dañar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-093",
+      "type": "taboo",
+      "target": "THORN",
+      "forbidden": [
+        "Rosa",
+        "Pinchar",
+        "Arbusto",
+        "Lado",
+        "Tallo"
+      ]
+    },
+    {
+      "cardId": "tb-csv-094",
+      "type": "taboo",
+      "target": "PHARMACIST",
+      "forbidden": [
+        "Píldora",
+        "Receta",
+        "Farmacia",
+        "Mostrador",
+        "Medicamento"
+      ]
+    },
+    {
+      "cardId": "tb-csv-095",
+      "type": "taboo",
+      "target": "VOCAL CHORDS",
+      "forbidden": [
+        "Hablar",
+        "Cantar",
+        "Garganta",
+        "Perder",
+        "Vibrar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-096",
+      "type": "taboo",
+      "target": "CAMEL",
+      "forbidden": [
+        "Joroba",
+        "Montar",
+        "Escupir",
+        "Desierto",
+        "Agua"
+      ]
+    },
+    {
+      "cardId": "tb-csv-097",
+      "type": "taboo",
+      "target": "GREEN TEA",
+      "forbidden": [
+        "Cafeína",
+        "Caliente",
+        "Bolsa",
+        "Beber",
+        "Café"
+      ]
+    },
+    {
+      "cardId": "tb-csv-098",
+      "type": "taboo",
+      "target": "SUPERCOMPUTER",
+      "forbidden": [
+        "Teclado",
+        "Internet",
+        "Investigación",
+        "Poderoso",
+        "Ciencia"
+      ]
+    },
+    {
+      "cardId": "tb-csv-099",
+      "type": "taboo",
+      "target": "TRAGEDY",
+      "forbidden": [
+        "Griego",
+        "Romeo y Julieta",
+        "Triste",
+        "Horrible",
+        "Final"
+      ]
+    },
+    {
+      "cardId": "tb-csv-100",
+      "type": "taboo",
+      "target": "DRAW",
+      "forbidden": [
+        "Arte",
+        "Popotes",
+        "Empatar",
+        "Lápiz",
+        "Pluma"
+      ]
+    },
+    {
+      "cardId": "tb-csv-101",
+      "type": "taboo",
+      "target": "SERIAL KILLER",
+      "forbidden": [
+        "Asesinato",
+        "Hannibal",
+        "Loco",
+        "Matar",
+        "Atrapar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-102",
+      "type": "taboo",
+      "target": "AL CAPONE",
+      "forbidden": [
+        "Pandilla",
+        "Mafia",
+        "Prohibición",
+        "Alcohol",
+        "Contrabando"
+      ]
+    },
+    {
+      "cardId": "tb-csv-103",
+      "type": "taboo",
+      "target": "EAST",
+      "forbidden": [
+        "Amanecer",
+        "Asia",
+        "Rusia",
+        "Oeste",
+        "Nueva York"
+      ]
+    },
+    {
+      "cardId": "tb-csv-104",
+      "type": "taboo",
+      "target": "HILLARY CLINTON",
+      "forbidden": [
+        "Primera Dama",
+        "Presidente",
+        "Secretaria de Estado",
+        "Bill",
+        "Elección"
+      ]
+    },
+    {
+      "cardId": "tb-csv-105",
+      "type": "taboo",
+      "target": "WRESTLING",
+      "forbidden": [
+        "Griego",
+        "Brazo",
+        "Pelear",
+        "Boxeo",
+        "Agarrar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-106",
+      "type": "taboo",
+      "target": "BESO FRANCÉS",
+      "forbidden": [
+        "Labios",
+        "Besarse",
+        "Lengua",
+        "Fiesta",
+        "Boca"
+      ]
+    },
+    {
+      "cardId": "tb-csv-107",
+      "type": "taboo",
+      "target": "ÓRGANO DE PIPA",
+      "forbidden": [
+        "Iglesia",
+        "Música",
+        "Himno",
+        "Tocar",
+        "Piano"
+      ]
+    },
+    {
+      "cardId": "tb-csv-108",
+      "type": "taboo",
+      "target": "MESERO",
+      "forbidden": [
+        "Propina",
+        "Mesa",
+        "Servir",
+        "Comida",
+        "Masculino"
+      ]
+    },
+    {
+      "cardId": "tb-csv-109",
+      "type": "taboo",
+      "target": "AZAFATA",
+      "forbidden": [
+        "Avión",
+        "Servir",
+        "Orden",
+        "Aire",
+        "Comida"
+      ]
+    },
+    {
+      "cardId": "tb-csv-110",
+      "type": "taboo",
+      "target": "POKER",
+      "forbidden": [
+        "Carta",
+        "Cara",
+        "Apostar",
+        "Engañar",
+        "Sostener"
+      ]
+    },
+    {
+      "cardId": "tb-csv-111",
+      "type": "taboo",
+      "target": "RUEDA DE LA FORTUNA",
+      "forbidden": [
+        "Feria",
+        "Atracción",
+        "Circo",
+        "Alrededor",
+        "Alto"
+      ]
+    },
+    {
+      "cardId": "tb-csv-112",
+      "type": "taboo",
+      "target": "SUAVE",
+      "forbidden": [
+        "Áspero",
+        "Resbaladizo",
+        "Suave",
+        "Textura",
+        "Crema"
+      ]
+    },
+    {
+      "cardId": "tb-csv-113",
+      "type": "taboo",
+      "target": "CELLO",
+      "forbidden": [
+        "Cuerda",
+        "Bajo",
+        "Yo-Yo Ma",
+        "Arco",
+        "Orquesta"
+      ]
+    },
+    {
+      "cardId": "tb-csv-114",
+      "type": "taboo",
+      "target": "WHISKEY",
+      "forbidden": [
+        "Bourbon",
+        "Trago",
+        "Bar",
+        "Jack Daniels",
+        "Escocés"
+      ]
+    },
+    {
+      "cardId": "tb-csv-115",
+      "type": "taboo",
+      "target": "PECES DE ORO",
+      "forbidden": [
+        "Guppy",
+        "Tazón",
+        "Galletas",
+        "Queso",
+        "Acuario"
+      ]
+    },
+    {
+      "cardId": "tb-csv-116",
+      "type": "taboo",
+      "target": "BARTENDER",
+      "forbidden": [
+        "Servir",
+        "Bebida",
+        "Alcohol",
+        "Cerveza",
+        "Orden"
+      ]
+    },
+    {
+      "cardId": "tb-csv-117",
+      "type": "taboo",
+      "target": "CRUZAR LA CALLE",
+      "forbidden": [
+        "Cruzar",
+        "Camino",
+        "Calle",
+        "Ilegal",
+        "Autos"
+      ]
+    },
+    {
+      "cardId": "tb-csv-118",
+      "type": "taboo",
+      "target": "ARETE",
+      "forbidden": [
+        "Perforar",
+        "Joyería",
+        "Lóbulo",
+        "Aro",
+        "Chica"
+      ]
+    },
+    {
+      "cardId": "tb-csv-119",
+      "type": "taboo",
+      "target": "HERMANOS WRIGHT",
+      "forbidden": [
+        "Avión",
+        "Vuelo",
+        "Inventores",
+        "Kitty Hawk",
+        "Bicicleta"
+      ]
+    },
+    {
+      "cardId": "tb-csv-120",
+      "type": "taboo",
+      "target": "DEMONIO",
+      "forbidden": [
+        "Maligno",
+        "Poseer",
+        "Halloween",
+        "Infierno",
+        "Cuerno"
+      ]
+    },
+    {
+      "cardId": "tb-csv-121",
+      "type": "taboo",
+      "target": "ALCE",
+      "forbidden": [
+        "Norte",
+        "Chocolate",
+        "Ciervo",
+        "Cazar",
+        "Cuerno"
+      ]
+    },
+    {
+      "cardId": "tb-csv-122",
+      "type": "taboo",
+      "target": "PAÑAL",
+      "forbidden": [
+        "Usar",
+        "Olor",
+        "Mojado",
+        "Cambiar",
+        "Bebé"
+      ]
+    },
+    {
+      "cardId": "tb-csv-123",
+      "type": "taboo",
+      "target": "UNICORNIO",
+      "forbidden": [
+        "Fantasía",
+        "Cuerno",
+        "Caballo",
+        "Arcoíris",
+        "Uno"
+      ]
+    },
+    {
+      "cardId": "tb-csv-124",
+      "type": "taboo",
+      "target": "AHORCADO",
+      "forbidden": [
+        "Ejecutar",
+        "Cuerda",
+        "Capucha",
+        "Muerte",
+        "Castigar"
+      ]
+    },
+    {
+      "cardId": "tb-csv-125",
+      "type": "taboo",
+      "target": "PERNIL",
+      "forbidden": [
+        "Madera",
+        "Pollo",
+        "Golpear",
+        "Banda",
+        "Caja"
+      ]
+    }
+  ]
+}
