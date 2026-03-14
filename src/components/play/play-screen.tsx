@@ -301,18 +301,16 @@ function StartScreen({
           <h1 className="text-3xl font-bold font-display mb-2">{deck.name}</h1>
           <p className="text-muted-foreground mb-8">{cardCount} cards</p>
 
-          {!hasSavedSession && (
-            <div className="flex items-center justify-between p-4 bg-muted/50 rounded-2xl mb-6">
-              <div className="flex items-center gap-2">
-                <Shuffle className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm font-medium">Shuffle cards</span>
-              </div>
-              <Switch
-                checked={shuffleEnabled}
-                onCheckedChange={onShuffleChange}
-              />
+          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-2xl mb-6">
+            <div className="flex items-center gap-2">
+              <Shuffle className="w-4 h-4 text-muted-foreground" />
+              <span className="text-sm font-medium">Shuffle cards</span>
             </div>
-          )}
+            <Switch
+              checked={shuffleEnabled}
+              onCheckedChange={onShuffleChange}
+            />
+          </div>
 
           <div className="space-y-3">
             {hasSavedSession ? (

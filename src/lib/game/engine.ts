@@ -19,7 +19,7 @@ export function createInitialSession(
 ): SessionState {
   const cardIds = deck.cards.map((c) => c.cardId);
   const orderedCardIds = options.shuffleEnabled
-    ? shuffleArray(cardIds, deck.deckId)
+    ? shuffleArray(cardIds, `${deck.deckId}-${Date.now()}-${Math.random()}`)
     : cardIds;
 
   const [firstCard, ...remainingCards] = orderedCardIds;
