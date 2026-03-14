@@ -22,6 +22,7 @@ import { EndTurnOverlay } from "@/components/monikers/end-turn-overlay";
 import { useGameState } from "@/hooks/use-game-state";
 import { GAMES, GameType } from "@/types/game";
 import { isMonikersSession } from "@/types/session";
+import { TABOO_TIMER_SECONDS } from "@/lib/game/constants";
 
 interface PlayScreenProps {
   deckId: string;
@@ -62,8 +63,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   const [showEndTurnOverlay, setShowEndTurnOverlay] = useState(false);
   const [shuffleEnabled, setShuffleEnabled] = useState(false);
 
-  const TABOO_TIMER_DURATION = 60;
-  const [tabooTimerSeconds, setTabooTimerSeconds] = useState(TABOO_TIMER_DURATION);
+  const [tabooTimerSeconds, setTabooTimerSeconds] = useState(TABOO_TIMER_SECONDS);
   const [tabooTimerActive, setTabooTimerActive] = useState(false);
 
   // Countdown tick
@@ -71,7 +71,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
     if (!tabooTimerActive) return;
     if (tabooTimerSeconds <= 0) {
       setTabooTimerActive(false);
-      setTabooTimerSeconds(TABOO_TIMER_DURATION);
+      setTabooTimerSeconds(TABOO_TIMER_SECONDS);
       handlePass();
       return;
     }
@@ -83,14 +83,14 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   useEffect(() => {
     if (deck?.gameType === "taboo") {
       setTabooTimerActive(false);
-      setTabooTimerSeconds(TABOO_TIMER_DURATION);
+      setTabooTimerSeconds(TABOO_TIMER_SECONDS);
     }
   }, [currentCard, deck?.gameType]);
 
   const handleTabooStartTimer = useCallback(() => setTabooTimerActive(true), []);
   const handleTabooAlert = useCallback(() => {
     setTabooTimerActive(false);
-    setTabooTimerSeconds(TABOO_TIMER_DURATION);
+    setTabooTimerSeconds(TABOO_TIMER_SECONDS);
     handlePass();
   }, [handlePass]);
 
