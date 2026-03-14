@@ -34,6 +34,20 @@ export default async function GamePage({ params }: GamePageProps) {
           <p className="text-muted-foreground">{game.description}</p>
         </header>
 
+        <section className="mb-8">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+            How to Play
+          </h2>
+          <ol className="space-y-1">
+            {game.howToPlay.map((step, i) => (
+              <li key={i} className="flex gap-3 text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground shrink-0">{i + 1}.</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         <section>
           <h2 className="text-xl font-semibold mb-4">Choose a Deck</h2>
           <DeckList gameType={gameType} />
