@@ -15,11 +15,12 @@ import { shuffleArray, shuffleForRound } from "./shuffle";
  */
 export function createInitialSession(
   deck: Deck,
-  options: { shuffleEnabled: boolean }
+  options: { shuffleEnabled: boolean; shuffleSeed?: string }
 ): SessionState {
   const cardIds = deck.cards.map((c) => c.cardId);
+  const seed = options.shuffleSeed ?? deck.deckId;
   const orderedCardIds = options.shuffleEnabled
-    ? shuffleArray(cardIds, deck.deckId)
+    ? shuffleArray(cardIds, seed)
     : cardIds;
 
   const [firstCard, ...remainingCards] = orderedCardIds;
@@ -30,6 +31,7 @@ export function createInitialSession(
     deckVersion: deck.version,
     gameType: deck.gameType,
     shuffleEnabled: options.shuffleEnabled,
+    shuffleSeed: options.shuffleSeed,
     remainingCardIds: remainingCards,
     passedCardIds: [] as string[],
     currentCardId: firstCard ?? null,
@@ -328,8 +330,9 @@ export function monikersStartNextRound(
   if (nextRound > 3) return session; // Already finished
 
   const cardIds = deck.cards.map((c) => c.cardId);
+  const roundSeed = session.shuffleSeed ?? deck.deckId;
   const orderedCardIds = session.shuffleEnabled
-    ? shuffleForRound(cardIds, deck.deckId, nextRound)
+    ? shuffleForRound(cardIds, roundSeed, nextRound)
     : cardIds;
 
   const [firstCard, ...remainingCards] = orderedCardIds;
@@ -348,7 +351,7 @@ export function monikersStartNextRound(
  * Restart session from beginning
  */
 export function restartSession(session: SessionState, deck: Deck): SessionState {
-  return createInitialSession(deck, { shuffleEnabled: session.shuffleEnabled });
+  return createInitialSession(deck, { shuffleEnabled: session.shuffleEnabled, shuffleSeed: session.shuffleSeed });
 }
 
 /**

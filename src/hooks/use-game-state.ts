@@ -92,7 +92,8 @@ export function useGameState(deckId: string): UseGameStateReturn {
     (shuffleEnabled: boolean) => {
       if (!deck) return;
 
-      const newSession = createInitialSession(deck, { shuffleEnabled });
+      const shuffleSeed = shuffleEnabled ? `${Date.now()}-${Math.random()}` : undefined;
+      const newSession = createInitialSession(deck, { shuffleEnabled, shuffleSeed });
       setSession(newSession);
       setHasStarted(true);
     },

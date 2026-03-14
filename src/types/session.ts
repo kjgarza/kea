@@ -10,6 +10,7 @@ export interface BaseSessionState {
   deckVersion: string;
   gameType: GameType;
   shuffleEnabled: boolean;
+  shuffleSeed?: string; // Per-session nonce for reproducible shuffles across all rounds
   remainingCardIds: string[];
   passedCardIds: string[];
   currentCardId: string | null;
