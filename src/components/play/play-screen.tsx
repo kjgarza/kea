@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, RotateCcw, Sparkles, PartyPopper, Play, Shuffle } from "lucide-react";
@@ -66,18 +66,37 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   const [tabooTimerSeconds, setTabooTimerSeconds] = useState(TABOO_TIMER_SECONDS);
   const [tabooTimerActive, setTabooTimerActive] = useState(false);
 
+  const audioContextRef = useRef<AudioContext | null>(null);
+
+  const playTabooSound = useCallback((frequency: number) => {
+    try {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new AudioContext();
+      }
+      const ctx = audioContextRef.current;
+      const oscillator = ctx.createOscillator();
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(frequency, ctx.currentTime);
+      oscillator.connect(ctx.destination);
+      oscillator.start();
+      oscillator.stop(ctx.currentTime + 0.3);
+    } catch {
+      // Ignore errors (e.g. unsupported browser)
+    }
+  }, []);
+
   // Countdown tick
   useEffect(() => {
     if (!tabooTimerActive) return;
     if (tabooTimerSeconds <= 0) {
       setTabooTimerActive(false);
       setTabooTimerSeconds(TABOO_TIMER_SECONDS);
-      handlePass();
+      playTabooSound(400);
       return;
     }
     const id = setInterval(() => setTabooTimerSeconds((s) => s - 1), 1000);
     return () => clearInterval(id);
-  }, [tabooTimerActive, tabooTimerSeconds, handlePass]);
+  }, [tabooTimerActive, tabooTimerSeconds, playTabooSound]);
 
   // Reset timer on card change
   useEffect(() => {
@@ -91,8 +110,8 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   const handleTabooAlert = useCallback(() => {
     setTabooTimerActive(false);
     setTabooTimerSeconds(TABOO_TIMER_SECONDS);
-    handlePass();
-  }, [handlePass]);
+    playTabooSound(800);
+  }, [playTabooSound]);
 
   // Calculate cards remaining for Monikers
   const monikersCardsRemaining = session && isMonikersSession(session)
