@@ -11,6 +11,7 @@ import {
   isJustOneCard,
   isMonikersCard,
 } from "@/types/card";
+import { TABOO_TIMER_SECONDS } from "@/lib/game/constants";
 
 interface CardDisplayProps {
   card: Card;
@@ -20,7 +21,7 @@ interface CardDisplayProps {
   tabooTimerActive?: boolean;
 }
 
-export function CardDisplay({ card, isRevealed = false, onReveal, tabooTimerSeconds = 60, tabooTimerActive = false }: CardDisplayProps) {
+export function CardDisplay({ card, isRevealed = false, onReveal, tabooTimerSeconds = TABOO_TIMER_SECONDS, tabooTimerActive = false }: CardDisplayProps) {
   if (isCharadesCard(card)) {
     return <CharadesCardDisplay card={card} />;
   }
@@ -200,7 +201,7 @@ function TriviaCardDisplay({
 // Taboo Card - Fiery Red gradient
 function TabooCardDisplay({
   card,
-  timerSeconds = 60,
+  timerSeconds = TABOO_TIMER_SECONDS,
   timerActive = false,
 }: {
   card: { target: string; forbidden: string[] };
