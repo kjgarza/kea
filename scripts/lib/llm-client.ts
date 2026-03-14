@@ -88,7 +88,7 @@ export async function generateBatch<T>(
     const batch = prompts.slice(i, i + concurrency);
     const batchResults = await Promise.all(
       batch.map(({ prompt, systemPrompt }) =>
-        generateWithRetry(prompt, systemPrompt, parseResponse, temperature)
+        generateWithRetry(systemPrompt, prompt, parseResponse, temperature)
       )
     );
     results.push(...batchResults);
