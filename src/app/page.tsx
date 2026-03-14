@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import Link from "next/link";
 import { GameGrid } from "@/components/home/game-grid";
 
 export default function Home() {
@@ -47,6 +48,20 @@ export default function Home() {
         </header>
 
         <GameGrid />
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <Link
+            href="/about"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
+          >
+            About Kea
+          </Link>
+        </motion.div>
       </div>
     </main>
   );
