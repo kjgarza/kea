@@ -30,8 +30,8 @@ function sleep(ms: number): Promise<void> {
  * Generate content with retry logic
  */
 export async function generateWithRetry<T>(
-  prompt: string,
   systemPrompt: string,
+  prompt: string,
   parseResponse: (content: string) => T,
   temperature: number = 0.7
 ): Promise<GenerationResult<T>> {
