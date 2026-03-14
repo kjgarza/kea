@@ -17,6 +17,7 @@ import type { Deck, DeckIndex, DeckMeta } from "../src/types/deck";
 const OUTPUT_DIR = "./public/decks";
 const BATCH_SIZE = 15;
 const TRANSLATION_TEMPERATURE = 0.3;
+const TRANSLATION_MODEL = "gpt-4o-mini";
 
 // Parse CLI arguments
 const { values: args } = parseArgs({
@@ -177,7 +178,8 @@ async function translateDeckName(name: string, dryRun: boolean): Promise<string>
       const parsed = JSON.parse(content);
       return String(parsed.name ?? name);
     },
-    TRANSLATION_TEMPERATURE
+    TRANSLATION_TEMPERATURE,
+    TRANSLATION_MODEL
   );
 
   return result.success && result.data ? result.data : name;
@@ -223,7 +225,8 @@ async function translateCards(
       return translatedCards as Record<string, unknown>[];
     },
     5,
-    TRANSLATION_TEMPERATURE
+    TRANSLATION_TEMPERATURE,
+    TRANSLATION_MODEL
   );
 
   // Merge results back
