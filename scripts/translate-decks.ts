@@ -108,13 +108,27 @@ function mergeTranslation(original: Card, translated: Record<string, unknown>): 
     case "monikers":
       return { ...original, phrase: String(translated.phrase ?? original.phrase) };
     case "taboo":
-      return {
-        ...original,
-        target: String(translated.target ?? original.target),
-        forbidden: Array.isArray(translated.forbidden)
-          ? (translated.forbidden as string[])
-          : original.forbidden,
-      };
+      // Safely merge Taboo translations: keep forbidden words schema and count intact.
+      {
+        let mergedForbidden = original.forbidden;
+
+        if (Array.isArray(translated.forbidden)) {
+          const candidateForbidden = (translated.forbidden as unknown[]).filter(
+            (w) => typeof w === "string"
+          ) as string[];
+
+          // Only accept translated forbidden words if all are strings and length matches.
+          if (candidateForbidden.length === original.forbidden.length) {
+            mergedForbidden = candidateForbidden;
+          }
+        }
+
+        return {
+          ...original,
+          target: String(translated.target ?? original.target),
+          forbidden: mergedForbidden,
+        };
+      }
     case "trivia":
       if (original.format === "mcq") {
         // Safely merge MCQ translations while keeping answerIndex consistent.
