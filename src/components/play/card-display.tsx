@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Drama, Brain, Ban, Lightbulb, Users, Check, X } from "lucide-react";
+import { Drama, Brain, Ban, Lightbulb, Users, Check, X, Timer } from "lucide-react";
 import type { Card } from "@/types/card";
 import {
   isCharadesCard,
@@ -16,9 +16,11 @@ interface CardDisplayProps {
   card: Card;
   isRevealed?: boolean;
   onReveal?: () => void;
+  tabooTimerSeconds?: number;
+  tabooTimerActive?: boolean;
 }
 
-export function CardDisplay({ card, isRevealed = false, onReveal }: CardDisplayProps) {
+export function CardDisplay({ card, isRevealed = false, onReveal, tabooTimerSeconds = 60, tabooTimerActive = false }: CardDisplayProps) {
   if (isCharadesCard(card)) {
     return <CharadesCardDisplay card={card} />;
   }
@@ -34,7 +36,7 @@ export function CardDisplay({ card, isRevealed = false, onReveal }: CardDisplayP
   }
 
   if (isTabooCard(card)) {
-    return <TabooCardDisplay card={card} />;
+    return <TabooCardDisplay card={card} timerSeconds={tabooTimerSeconds} timerActive={tabooTimerActive} />;
   }
 
   if (isJustOneCard(card)) {
@@ -198,8 +200,12 @@ function TriviaCardDisplay({
 // Taboo Card - Fiery Red gradient
 function TabooCardDisplay({
   card,
+  timerSeconds = 60,
+  timerActive = false,
 }: {
   card: { target: string; forbidden: string[] };
+  timerSeconds?: number;
+  timerActive?: boolean;
 }) {
   return (
     <motion.div
@@ -218,6 +224,18 @@ function TabooCardDisplay({
       <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
         <Ban className="w-4 h-4 text-white" />
         <span className="text-xs font-semibold text-white uppercase tracking-wide">Taboo</span>
+      </div>
+
+      {/* Timer pill */}
+      <div className={`absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-sm transition-colors ${
+        timerActive
+          ? timerSeconds <= 10
+            ? "bg-red-600/90 text-white"
+            : "bg-white/20 text-white"
+          : "bg-white/10 text-white/50"
+      }`}>
+        <Timer className="w-4 h-4" />
+        <span className="text-sm font-bold tabular-nums">{String(timerSeconds).padStart(2, "0")}s</span>
       </div>
 
       {/* Content */}
