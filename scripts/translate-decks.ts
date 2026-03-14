@@ -141,8 +141,8 @@ async function translateDeckName(name: string, dryRun: boolean): Promise<string>
   if (dryRun) return `${name} (ES)`;
 
   const result = await generateWithRetry(
-    `Translate this party game deck name to Spanish. Return JSON: { "name": "..." }\n\nDeck name: "${name}"`,
     "You are a professional English to Spanish translator. Return only a JSON object with the translated name.",
+    `Translate this party game deck name to Spanish. Return JSON: { "name": "..." }\n\nDeck name: "${name}"`,
     (content) => {
       const parsed = JSON.parse(content);
       return String(parsed.name ?? name);
