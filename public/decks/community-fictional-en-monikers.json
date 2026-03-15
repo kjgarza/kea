@@ -1,0 +1,814 @@
+{
+  "schemaVersion": 1,
+  "deckId": "community-fictional-en-monikers",
+  "version": "2026-03-15T07:31:41.440Z",
+  "name": "Community Monikers: Fictional Characters",
+  "gameType": "monikers",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "fictional characters",
+    "pop culture"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "mk-fictional-001",
+      "type": "monikers",
+      "phrase": "Blacula",
+      "description": "The title character from a horror\nfilm about an 18th century African\nprince turned vampire. locked in a\ncoffin for two centuries by Count\nDracula, the box was purchased as\npart of an estate by two interior\ndecorators who accidentally set him\nloose in 70s Los Angeles."
+    },
+    {
+      "cardId": "mk-fictional-002",
+      "type": "monikers",
+      "phrase": "Flying\nSpaghetti Monster",
+      "description": "The deity of Pastafarianism, a parody\nreligion opposing intelligent design.\nA contemporary version of Russell's\nteapot, it is portrayed as a clump of\npasta and meatballs with two eye\nstalks. It often appears touching\nAdam's finger in Michelangelo's\nSistine Chapel ceiling painting."
+    },
+    {
+      "cardId": "mk-fictional-003",
+      "type": "monikers",
+      "phrase": "Achilles",
+      "description": "An Ancient Greek hero and\ndemigod from Homer's Iliad, who\ndefeated the Trojan warrior Hector\nas revenge for killing his friend and\nlover Patroclus. He was later killed\nby an arrow to his heel-the only\npart of his body that was vulnerable\nto physical injury."
+    },
+    {
+      "cardId": "mk-fictional-004",
+      "type": "monikers",
+      "phrase": "The Pied Piper",
+      "description": "A character in medieval folklore that\nled a group of children away from\nthe town of Hamelin, Germany with\na magic flute. In the tale, he was\nhired to clear the town of a rat\ninfestation, but after receiving no\npayment, he used the flute to\nkidnap their children instead."
+    },
+    {
+      "cardId": "mk-fictional-005",
+      "type": "monikers",
+      "phrase": "Atlas",
+      "description": "A titan from Greek mythology, who\nwas forced to hold up the celestial\nspheres as punishment for fighting\nthe Olympian gods in the War of the\nTitans. He is often shown holding a\nsphere on his shoulders, which is\nnow commonly mistaken to be the\nEarth."
+    },
+    {
+      "cardId": "mk-fictional-006",
+      "type": "monikers",
+      "phrase": "Hodor",
+      "description": "Winterfell's stableboy in George R.R.\nMartin's A Song of Ice and Fire and\nthe Game of Thrones TV adaptation.\nHe carries the crippled Bran Stark\naround in a large basket. Though his\nreal name is Walder, he is only\nreferred to by this name, since it is\nthe only word he ever uses."
+    },
+    {
+      "cardId": "mk-fictional-007",
+      "type": "monikers",
+      "phrase": "An Oompa Loompa",
+      "description": "A race of short. orange-skinned\nfolks from Willy Wonka & the\nChocolate Factory, who work in the\nfactory and sing moralizing songs.\nIn an early version of Roald Dahl's\nnovel, they were depicted as African\npygmies but were later rewritten to\nbe white and blonde."
+    },
+    {
+      "cardId": "mk-fictional-008",
+      "type": "monikers",
+      "phrase": "Rapunzel",
+      "description": "A character from a fairy tale\ncollected by the Brothers Grimm,\nwho is imprisoned in a tower by an\nevil witch. She is widely associated\nwith the command, said by those\nwho want to visit her in her tower,\n\"Let down your hair, so that I may\nclimb the golden stair.\""
+    },
+    {
+      "cardId": "mk-fictional-009",
+      "type": "monikers",
+      "phrase": "Pac-Man",
+      "description": "The hero and title character of an\nBOs arcade game, where he\nnavigates mazes and eats pellets.\npower pellets, and fruit while\navoiding ghosts. One of gaming's\nearliest breakout stars, he was soon\nusurped by his female counterpart\nin a far superior sequel."
+    },
+    {
+      "cardId": "mk-fictional-010",
+      "type": "monikers",
+      "phrase": "Godzilla",
+      "description": "The King of the Monsters, who first\nappeared In a series of Japanese\nfilms made in response to the\natomic bombings of Hiroshima and\nNagasaki. The monster typically has\na reptilian look, walks on two legs,\nhas a long tail. and has \"nuclear\nbreath.\""
+    },
+    {
+      "cardId": "mk-fictional-011",
+      "type": "monikers",
+      "phrase": "Man Hands",
+      "description": "The minor character on the show\nSeinfeld. She is a beautiful women\nwho Jerry cannot stay attracted to\nbecause of her large extremities.\nThe episode's writer, David Mandel,\ncreated the character in response to\nhis wife's own self-consciousness\nabout this condition."
+    },
+    {
+      "cardId": "mk-fictional-012",
+      "type": "monikers",
+      "phrase": "The Very Hungry\nCaterpillar",
+      "description": "A children's book character that\ntakes readers through an insect's\ntransformation from larva to\nbutterfly. The book received\nworldwide acclaim, selling over 30M\ncopies. The competitive eater\nKobayashi frequently gives this\nbook out as a holiday gift."
+    },
+    {
+      "cardId": "mk-fictional-013",
+      "type": "monikers",
+      "phrase": "Mr. Owl",
+      "description": "A bespectacled, know-it-all bird\nwho famously answered the\nquestion \"How many licks does it\ntake to get to the Tootsie Roll\ncenter of a Tootsie Pop?\" by licking\nthe lollipop 3 times before biting\ninto it with his sharp beak. then\ndeclaring that it takes only 3 licks."
+    },
+    {
+      "cardId": "mk-fictional-014",
+      "type": "monikers",
+      "phrase": "Yoshi",
+      "description": "The egg-laying dinosaur sidekick of\nMario and Luigi. The name refers\nboth to individuals and the entire\nspecies. They have long tongues\nthat they use to eat things like\nGoombas, apples, and other\nobjects. which can be excreted as\neggs or expectorated as fireballs."
+    },
+    {
+      "cardId": "mk-fictional-015",
+      "type": "monikers",
+      "phrase": "Hannibal Lector",
+      "description": "A psychiatrist. serial killer. cannibal,\nand antihero from The Silence of the\nLambs novel and film. He was\nfamously portrayed by Anthony\nHopkins, who explains to Clarice\nthat he once ate a census taker's\nliver \"with fava beans and a nice\nChianti. [slurping sounds]\""
+    },
+    {
+      "cardId": "mk-fictional-016",
+      "type": "monikers",
+      "phrase": "Slimer",
+      "description": "A character from the Ghostbusters\nfranchise, who appears as a\ntransparent green blob composed\nof pure Ectoplasm. Ravenously\nconsuming all food in sight, writer\nand actor Dan Aykroyd allegedly\nreferred to him as \"The Ghost of\nJohn Belushi.\""
+    },
+    {
+      "cardId": "mk-fictional-017",
+      "type": "monikers",
+      "phrase": "Magic Mike",
+      "description": "The title character of a Steven\nSoderbergh film about a male\nstripper who performs at Xquisite\nStrip Club. Played by Channing\nTatum, the character is loosely\nbased on Tatum's real-life experience\nas a young stripper in Tampa,\nFlorida."
+    },
+    {
+      "cardId": "mk-fictional-018",
+      "type": "monikers",
+      "phrase": "The Raven",
+      "description": "A large black bird and the subject of\na poem by Edgar Allan Poe. In it,\nthe bird visits a man grieving the\nloss of his love, Lenore. Sitting\nabove him on a bust of the goddess\nAthena, the bird repeats the words\n\"nevermore\" to the man's inquiries,\nslowly driving him mad."
+    },
+    {
+      "cardId": "mk-fictional-019",
+      "type": "monikers",
+      "phrase": "The Loch Ness\nMonster",
+      "description": "A legendary cryptid, who supposedly\nlives in a deep freshwater lake\nin the Scottish Highlands. Believers\nspeculate that the creature is a\nmarine dinosaur that somehow\nsurvived to modern day. The\nscientific community continues to\nregard the creature as a hoax."
+    },
+    {
+      "cardId": "mk-fictional-020",
+      "type": "monikers",
+      "phrase": "Teddy Ruxpin",
+      "description": "A storytelling toy bear from the BOs,\nwho had an audio cassette deck in\nhis body. Stories such as \"The\nWooly What's-It: Learning Can Be\nFun!\" and \"Tweeg and the Bounders:\nYou Have to Earn the Things\nWorth Having\" tended to focus on\npromoting positive behavior."
+    },
+    {
+      "cardId": "mk-fictional-021",
+      "type": "monikers",
+      "phrase": "Rosemary's Baby",
+      "description": "The title infant from a 70s horror\nfilm by Roman Polanski. Its mother,\nplayed by Mia Farrow, fears that her\nhusband made a Satanic pact with\ntheir neighbors in order for success\nin his acting career. At the conclusion,\nit is revealed that the child is\nactually the spawn of Satan."
+    },
+    {
+      "cardId": "mk-fictional-022",
+      "type": "monikers",
+      "phrase": "The Swedish Chef",
+      "description": "A cook and Muppet that hails from\nNorthern Europe. He wears a toque\nblanche and speaks in sing-songy\ngibberish. Humans from his country\nof origin often find the character\noffensive and claim that his accent\ntotally sounds more like Norwegian\nanyway."
+    },
+    {
+      "cardId": "mk-fictional-023",
+      "type": "monikers",
+      "phrase": "The Eye of Sauron",
+      "description": "A manifestation of the title\ncharacter in J.R.R. Tolklen's fantasy\nseries The Lord of the Rings. Frodo\ndescribes it as \"rimmed with fire,\nbut was itself glazed, yellow as a\ncat's, watchful and intent, and the\nblack slit of its pupil opened on a\npit, a window into nothing.\""
+    },
+    {
+      "cardId": "mk-fictional-024",
+      "type": "monikers",
+      "phrase": "Bubble Boy",
+      "description": "A person with a genetic disease that\nleaves them vulnerable to infection\nand forced to live in a completely\nsterile environment. One was\nfamously portrayed on Seinfeld,\nwhere he fought with George over a\nTrivial Pursuit card that read\n\"Moops\" instead of \"Moors.\""
+    },
+    {
+      "cardId": "mk-fictional-025",
+      "type": "monikers",
+      "phrase": "Bloody Mary",
+      "description": "A legendary ghost who is said to be\nconjured In a mirror by saying her\nname multiple times. Often\nattempted by young girls, the ghost\nis sometimes said to reveal the\nfuture and other times said to\nattempt to scratch the person's eyes\nout."
+    },
+    {
+      "cardId": "mk-fictional-026",
+      "type": "monikers",
+      "phrase": "The Hamburglar",
+      "description": "A young, red-headed thief who\ndresses in striped clothing and\nsteals items from the McDonald's\nrestaurant chain. Originally an old\nman with a long nose inexplicably\ncalled the \"Lone Jogger,\" he has\nsince ceased being a villain in the\nMcDonaldland universe."
+    },
+    {
+      "cardId": "mk-fictional-027",
+      "type": "monikers",
+      "phrase": "Khan!",
+      "description": "A villain from the Star Trek\nfranchise, who once controlled a\nportion of the earth during the\nEugenics Wars of the 90s. Ricardo\nMontalban played the genetically\nengineered superhuman, delivering\nlines such as \"Revenge is a dish that\nIs best served cold.\""
+    },
+    {
+      "cardId": "mk-fictional-028",
+      "type": "monikers",
+      "phrase": "A California Raisin",
+      "description": "A member of a fictional R&B group\ncomposed of anthropomorphic\ndried grapes from the West Coast.\nThey came to prominence in\nclaymation form, singing a cover of\n\"I Heard It Through the Grapevine•\nin an advertisement. They were also\npopular as plastic toys."
+    },
+    {
+      "cardId": "mk-fictional-029",
+      "type": "monikers",
+      "phrase": "A Hungry\nHungry Hippo",
+      "description": "The title character of a children's\ngame that teaches kids to eat\nmarbles. Each of the four players\nsimultaneously mash a plastic lever\nto get their character-a colorful\nversion of the third largest land\nmammal-to consume as many of\nthese inedible objects as possible."
+    },
+    {
+      "cardId": "mk-fictional-030",
+      "type": "monikers",
+      "phrase": "Aunt Jemima",
+      "description": "The pretty racist mascot of a line of\npancake mixes and syrups by the\nQuaker Oats Company. Her\ncharacter was derived from a\nminstrel show's mammy-like figure.\nLike Uncle Ben, she represents an\nidealized view of domestic\nservitude in southern I ife."
+    },
+    {
+      "cardId": "mk-fictional-031",
+      "type": "monikers",
+      "phrase": "The Kraken",
+      "description": "A gigantic mythical sea monster\nthat first appeared in Norse\nmythology. Because of its size, it\nwas thought to have been inspired\nby giant squid sightings. In\ncontemporary media, is often seen\nbeing \"released\" or \"unleashed\"\nupon an unsuspecting hero."
+    },
+    {
+      "cardId": "mk-fictional-032",
+      "type": "monikers",
+      "phrase": "A Cylon",
+      "description": "A member of a robotic civilization in\nthe Battlestar Galactica franchise.\nThey were created somewhat by\naccident on Caprica and are unique\nin that they experience many\ncommon human emotions and are\noften not fully aware of their status\nas a robotic llfeform."
+    },
+    {
+      "cardId": "mk-fictional-033",
+      "type": "monikers",
+      "phrase": "Splinter",
+      "description": "An elderly humanoid rat who was\nthe sensei of the Teenage Mutant\nNinja Turtles. In the 80s cartoon\nseries, he was mutated from the\ngreat samurai warrior, Hamato\nYoshi. In other versions, however,\nthis character was the pet rodent of\nHamato Yoshi."
+    },
+    {
+      "cardId": "mk-fictional-034",
+      "type": "monikers",
+      "phrase": "Ba bar",
+      "description": "An elephant from the children's\nbook by Jean de Brunhoff, who\ncritics argue offers a justification for\ncolonialism. In the book, he leaves\nthe jungle, visits a city, returns in a\ngreen suit, introduces French\ncivilization to his fellow elephants,\nand Is crowned king."
+    },
+    {
+      "cardId": "mk-fictional-035",
+      "type": "monikers",
+      "phrase": "Chun-Li",
+      "description": "A character from the Street Fighter\nvideo game series, who relies\nprimarily on powerful kicks\ndelivered with the aid of her\nremarkably muscular thighs. Her\nmost famous move is the Lightning\nKick, with the Spinning Bird Kick a\nclose second. Her blood type is A."
+    },
+    {
+      "cardId": "mk-fictional-036",
+      "type": "monikers",
+      "phrase": "The T-1000",
+      "description": "A shapeshifting robot from Terminator\n2. Made of liquid metal, Skynet\nsent it into the past to kill Edward\nFurlong, who was protected by\nArnold Schwarzenegger's loveable,\ntechnologically inferior, T-800. Billy\nIdol was slated to play the character\nbefore a motorcycle accident."
+    },
+    {
+      "cardId": "mk-fictional-037",
+      "type": "monikers",
+      "phrase": "Cthulhu",
+      "description": "A monstrous deity created by H.P.\nLovecraft. It is hundreds of meters\ntall and has the the arms and legs of\na man, claws, the head of a giant\noctopus, and bat wings. Its mythos\ngained increased popularity from a\nseries of allusions to it in the HBO\nseries True Detective."
+    },
+    {
+      "cardId": "mk-fictional-038",
+      "type": "monikers",
+      "phrase": "A Muggle",
+      "description": "Any non-magical character in the\nHarry Potter franchise. Their\ninability to perform magic was likely\na hereditary trait and was used as a\njustification for persecution by an\nextremist group of magical persons,\nDeath Eaters, who believed their\nown bloodlines should remain pure."
+    },
+    {
+      "cardId": "mk-fictional-039",
+      "type": "monikers",
+      "phrase": "Count Chocula",
+      "description": "A vampire mascot from the General\nMills Corporation's series of\nmonster-based breakfast cereals.\nLike his col leagues Franken-Berry,\nBoo-Berry, Fruit Brute, and Yummy\nMummy, his origin is a mystery. His\ntagline, \"I vant to eat your cereal!\"\nseems a little on the nose."
+    },
+    {
+      "cardId": "mk-fictional-040",
+      "type": "monikers",
+      "phrase": "A Furby",
+      "description": "A fuzzy interactive toy that became\npopular in the late 90s. Vaguely\nresembling an owl, it speaks a\nunique language, learning English\nover time through interacting with\nits owner. When held upside down it\nsays things like \"me scared\" and\nbegins crying."
+    },
+    {
+      "cardId": "mk-fictional-041",
+      "type": "monikers",
+      "phrase": "The Yellow\nPower Ranger",
+      "description": "A hero from the 90s children's show\nthat featured a team of teenagers\nthat fought off aliens by transforming\ninto superheroes and piloting\nrobots called Zords. The show was\noften accused of racism for aligning\neach character's uniform color with\nthe actor's ethnicity."
+    },
+    {
+      "cardId": "mk-fictional-042",
+      "type": "monikers",
+      "phrase": "Uncle Tom",
+      "description": "A racial epithet used against\nmembers of a subjugated group,\nparticularly African Americans, who\ndisplay excessive deference to\nauthority. The term is derived from\nthe eponymous character in the\n1852 novel by Harriet Beecher\nStowe."
+    },
+    {
+      "cardId": "mk-fictional-043",
+      "type": "monikers",
+      "phrase": "P.F. Chang",
+      "description": "The combined identity of Paul\nFleming and Philip Chiang, the two\nfounders of the eponymous Asian\nFusion restaurant founded in\nScottsdale, Arizona in 1993. They\noperate over 200 restaurants across\nthe US, far more than its equally\nmiddlebrow competitor, Benihana."
+    },
+    {
+      "cardId": "mk-fictional-044",
+      "type": "monikers",
+      "phrase": "Oedipus",
+      "description": "A legendary Ancient Greek king\nwho was prophesied to murder his\nfather and marry his mother. The\npsychologist Sigmund Freud named\nhis complex related to a person's\nunconscious desire to sexually\npossess their opposite sex parent\nafter this person."
+    },
+    {
+      "cardId": "mk-fictional-045",
+      "type": "monikers",
+      "phrase": "Teen Wolf",
+      "description": "An adolescent lycanthrope from an\n80s film and recent TV series.\nOriginally played by Michael J. Fox,\nhe uses his powers to gain\npopularity at his high school and\nbecome their star basketball player,\nleading the Beavers to a state\nchampionship title."
+    },
+    {
+      "cardId": "mk-fictional-046",
+      "type": "monikers",
+      "phrase": "Falkor",
+      "description": "A luckdragon from the novel and film\nThe Neverending Story, who was\nridden by Bastian and Atreyu. He is\ndepicted as a creepy, but sort of\nadorable, dragon with mostly\ndog-like features: paws, shaggy hair,\nand big floppy ears. He can fly even\nthough he doesn't have wings."
+    },
+    {
+      "cardId": "mk-fictional-047",
+      "type": "monikers",
+      "phrase": "The Trojan Horse",
+      "description": "A wooden object used by the Greeks\nto end the Trojan War. When the\nTrojans took it inside the city walls\nas a trophy, the soldiers hiding inside\nopened the city gates. This myth led\nto the use of the term for a type of\nmalware that is doubtlessly on your\nparent's computer right now."
+    },
+    {
+      "cardId": "mk-fictional-048",
+      "type": "monikers",
+      "phrase": "The Gerber Baby",
+      "description": "The logo of an infant-focused food\ncompany. Based on the face of a\nperson who grew up to be mystery\nnovelist, Ann Turner Cook, the logo\nwas originally intended to be a\nsketch outline for a future painting,\nbut has remained the company's\nofficial logo for decades."
+    },
+    {
+      "cardId": "mk-fictional-049",
+      "type": "monikers",
+      "phrase": "Poppin' Fresh, the\nPillsbury Doughboy",
+      "description": "The mascot of a company famous\nfor their pre-packaged biscuit\ningredients. He has been a staple in\ntheir advertising for decades, which\nusually features him being poked in\nthe belly by a finger and responding\nby rubbing his stomach and\ngiggling."
+    },
+    {
+      "cardId": "mk-fictional-050",
+      "type": "monikers",
+      "phrase": "Krang",
+      "description": "A fictional supervillain from the\nTeenage Mutant Ninja Turtles\nfranchise. He is allied with Shredder,\nwho built a mechanical body for\nhim when, following his exile from\nDimension X, he was transformed\ninto a brain-like creature with a\ncreaky voice."
+    },
+    {
+      "cardId": "mk-fictional-051",
+      "type": "monikers",
+      "phrase": "Humpty Dumpty",
+      "description": "A character from a nursery rhyme\nwho falls off a wall and can't be put\nback together again. Typically\nportrayed as a humanoid egg,\nscholars have speculated that he\nrepresents Richard 111, the\nhumpback king who was defeated\nat Bosworth Field by Henry VII."
+    },
+    {
+      "cardId": "mk-fictional-052",
+      "type": "monikers",
+      "phrase": "Joe Camel",
+      "description": "The debonair, bipedal ungulate and\nmascot for an R.J. Reynolds brand\nof cigarettes. When interna I\ndocuments demonstrated that the\ncompany was targeting children as\nfuture smokers, the character was\nretired and replaced with a more\ntraditional quadruped In 1997."
+    },
+    {
+      "cardId": "mk-fictional-053",
+      "type": "monikers",
+      "phrase": "Free Willy",
+      "description": "The title character from the 1gg3\nfilm about a young boy's attempts\nto rescue a killer whale from its\ncruel life as an amusement park\nattraction. At the film's conclusion,\nhe flees a whaling ship by jumping\nover a rock embankment and\nreturns to his family."
+    },
+    {
+      "cardId": "mk-fictional-054",
+      "type": "monikers",
+      "phrase": "Crocodile Dundee",
+      "description": "The title character in a trilogy of\nfish-out-of-water films about an\nAustralian bushman struggling to\nfind his way in big city America.\nPlayed by Paul Hogan, he famously\nthreatens muggers, saying \"That's\nnot a knife. [draws his bowie knife]\nThat's a knife.\""
+    },
+    {
+      "cardId": "mk-fictional-055",
+      "type": "monikers",
+      "phrase": "The Kool-Aid Man",
+      "description": "The 6 foot tall, cherry-flavored\nmascot for a powdery drink mix that\nis combined with water and sugar.\nHe is famous for making a dramatic\nentrance when children express\nthirst by smashing through a brick\nwall and yelling his catchphrase \"Oh\nyeah!\""
+    },
+    {
+      "cardId": "mk-fictional-056",
+      "type": "monikers",
+      "phrase": "Miss Piggy",
+      "description": "A porcine Muppet and spouse of\nKermit the Frog, who she frequently\npounces on. A notorious diva and\nsinger, she is modeled on the singer\nand actress Peggy Lee. Throughout\nher career, she has been used to\nsymbolize the modern American\nwoman."
+    },
+    {
+      "cardId": "mk-fictional-057",
+      "type": "monikers",
+      "phrase": "The Shark\nfrom Jaws",
+      "description": "A man-eating great white that\nterrorizes the town of Amity Island\nin a film by Steven Spielberg. Not\nseen until well into the film, it is so\nlarge that Roy Scheider's character\nsuggests the crew is \"gonna need a\nbigger boat.• It was nicknamed\nBruce after Spielberg's lawyer."
+    },
+    {
+      "cardId": "mk-fictional-058",
+      "type": "monikers",
+      "phrase": "Rip Van Winkle",
+      "description": "The protagonist of a Washington\nIrving short story, who drinks\nmoonshine, goes bowling with\nghostly Dutchmen, falls asleep, and\nawakens decades into the future\nwith a long, scraggly beard. He\nreturns to his village and finds that\nhis wife and friends have all died."
+    },
+    {
+      "cardId": "mk-fictional-059",
+      "type": "monikers",
+      "phrase": "Colonel Mustard",
+      "description": "A character from the board game\nClue (aka Cluedo). He was originally\nnamed Yellow, but had his name\nchanged to this condiment instead.\nIn Hasbro's latest update, he is now\na former football player. In the\nclassic film adaptation, he was\nplayed by Martin Mull."
+    },
+    {
+      "cardId": "mk-fictional-060",
+      "type": "monikers",
+      "phrase": "A Werewolf",
+      "description": "A human who transforms into a\nhirsute, bloodthirsty creature.\nKnown as lycanthropy, this change\nis often triggered by a fu II moon.\nSuspected lycanthropes were\npersecuted in early modern Europe,\nand are now a staple figure in pop\nculture and party games."
+    },
+    {
+      "cardId": "mk-fictional-061",
+      "type": "monikers",
+      "phrase": "A Planeteer",
+      "description": "One of the five teenagers who\npossess rings that allows them to\ncontrol Earth, Fire, Wind, Water, or\nHeart. When their powers combine,\nthey summon the environmental\nsuperhero Captain Planet to help\nfight villains such as Hoggish\nGreedly and Verminous Skumm."
+    },
+    {
+      "cardId": "mk-fictional-062",
+      "type": "monikers",
+      "phrase": "Yorick",
+      "description": "A character whose remains are dug\nup in Shakespeare's Hamlet. He\nprovokes a lengthy rumination on\nthe ravages of time by Hamlet,\nleading to the most characteristic\nimage from the play: the prince\nholding this character's skull aloft\nwhile delivering a monologue."
+    },
+    {
+      "cardId": "mk-fictional-063",
+      "type": "monikers",
+      "phrase": "A Man from\nNantucket",
+      "description": "A character from a famous limerick\nthat references an island 30 miles\nsouth of Cape Cod. The limerick\ndescribes this person as being\nparticularly well-endowed, with the\nmost popular rhyming couplet\nbeing \"Whose dick was so long he\ncould suck It.•"
+    },
+    {
+      "cardId": "mk-fictional-064",
+      "type": "monikers",
+      "phrase": "Jareth,\nthe Goblin King",
+      "description": "The villain from the 1986 film\nLabyrinth by Jim Henson. Played by\nDavid Bowie, a 40-year-old Bowie\nkidnaps the baby brother of a\nteenage Jennifer Connelly, who he\nthen attempts to woo with his\ncrystal orbs, giant codpiece, and\nteased-out blonde bangs."
+    },
+    {
+      "cardId": "mk-fictional-065",
+      "type": "monikers",
+      "phrase": "Log Lady",
+      "description": "A minor character from the\ntelevision show Twin Peaks. She\ncarries a piece of a tree cradled in\nher arms at all times, and seems to\nact as a medium between the object\nand the outside world, such as when\nshe claims that it \"saw something\"\nthe night Laura Palmer died."
+    },
+    {
+      "cardId": "mk-fictional-066",
+      "type": "monikers",
+      "phrase": "Bartleby\nthe Scrivener",
+      "description": "The title character from a short\nstory by Herman Melville, who is\nemployed to copy legal documents\nby hand. After gaining a reputation\nas a hard worker, he unexpectedly\nrefuses to do any further work,\ninstead repeating \"I would prefer\nnot to\" to al I requests."
+    },
+    {
+      "cardId": "mk-fictional-067",
+      "type": "monikers",
+      "phrase": "Lolita",
+      "description": "The title character of a Vladimir\nNabokov novel, referring to the\nnickname given to 12-year-old\nDolores Haze by her stepfather, the\nhebophile Humbert Humbert.\nNabokov has expressed pleasure\nthat because of him, people no\nlonger name their children this."
+    },
+    {
+      "cardId": "mk-fictional-068",
+      "type": "monikers",
+      "phrase": "Siri",
+      "description": "The name of Apple's personal\nassistant on IOS operation system\nthat interacts with users through\nnatural language. It has spawned a\npopular Tumblr consisting of ironic\ninteractions, such as the search \"I\nhave a gambling addiction•\nreturning a list of nearby casinos."
+    },
+    {
+      "cardId": "mk-fictional-069",
+      "type": "monikers",
+      "phrase": "The Sorcerer's\nApprentice",
+      "description": "The assistant to a wizard in Disney's\nFantasia. Played by Mickey Mouse,\nhe enchants a broom to fetch water.\nUnable to control the magic, a flood\nensues. Each time he attempts to\ndestroy the broom and end the\nspell, it splits in ha If and continues\nits work at double pace."
+    },
+    {
+      "cardId": "mk-fictional-070",
+      "type": "monikers",
+      "phrase": "Charizard",
+      "description": "A species of Pok~mon that\nresembles an orange dragon and is\nthe evolved form of Charmeleon\nand the final evolution of Charmander.\nDespite its appearance, it is a\nfire/flying type, NOT a dragon type.\nIts Japanese name is Lizardon."
+    },
+    {
+      "cardId": "mk-fictional-071",
+      "type": "monikers",
+      "phrase": "Portnoy",
+      "description": "The title character from a 1969\nnovel by Phil Ip Roth that Is told as\nan extended psychotherapy session\nby a young Jewish bachelor. The\nnovel is notorious for its description\nof this character masturbating with\na piece of raw liver, which his\nmother later serves for dinner."
+    },
+    {
+      "cardId": "mk-fictional-072",
+      "type": "monikers",
+      "phrase": "The Boy\nWho Cried Wolf",
+      "description": "A shepherd from Aesop's Fables\nwho tricked villagers by raising false\nalarm about his sheep being\nattacked. When a legitimate threat\noccurs, the villagers do not respond\nand the flock is devoured. The fable\nappears to have little effect on the\nlikelihood of lying among children."
+    },
+    {
+      "cardId": "mk-fictional-073",
+      "type": "monikers",
+      "phrase": "Dr. Quinn, Medicine Woman",
+      "description": "The title character of a 90s TV show\nabout a 19th century aristocrat who\nsets up a clinic in Colorado Springs.\nPlayed by Jane Seymour, she\nintroduces modern healing\npractices to the town's locals as well\nas to her rugged mountain man\nByron Sully."
+    },
+    {
+      "cardId": "mk-fictional-074",
+      "type": "monikers",
+      "phrase": "Captain Ahab",
+      "description": "The monomaniacal, peg-legged\ncommander of the Pequod\nwhaleship in Herman Melville's novel\nMoby Dick. His quest for vengeance\nagainst the white whale drives him\nmad, leading to the death of his\nentire crew except Ishmael, the\nnovel's narrator."
+    },
+    {
+      "cardId": "mk-fictional-075",
+      "type": "monikers",
+      "phrase": "Skeletor",
+      "description": "The main villain in the Masters of\nthe Universe fantasy world. He ls the\narch nemesis of He-Man and is\ntypically shows with a blue\nhumanoid body, bare skull, and\npurple hood. His goal is to learn the\nsecrets of Castle Grayskull and use\nthem to conquer the land of Eternia."
+    },
+    {
+      "cardId": "mk-fictional-076",
+      "type": "monikers",
+      "phrase": "A Merman",
+      "description": "The male version of the mythological\ncreature that Is a woman from\nthe waist up but has a fish tail in\nplace of legs. Their behaviors and\nabilities range across cultures, and\ninclude having green teeth, the\nability to cure illnesses, seducing\nwomen, and holding tridents."
+    },
+    {
+      "cardId": "mk-fictional-077",
+      "type": "monikers",
+      "phrase": "Clippy",
+      "description": "The nickname of the Office\nAssistant in Microsoft Office, who\nappears as the metal object used to\nhold sheets of paper together. He\nwould \"tap\" on the monitor to get\nyour attention. Supposedly,\nMicrosoft's internal name for it was\nTFC (The Fucking Clown)."
+    },
+    {
+      "cardId": "mk-fictional-078",
+      "type": "monikers",
+      "phrase": "The Walrus",
+      "description": "The character in a song by the\nBeatles from their album Magical\nMystery Tour. It is a reference to a\nLewis Carroll's poem, also about a\nflippered marine mammal. The lyrics\nthat follow, \"Goo Goo Ga Joob,\"\npossibly stated by the character,\nwere drawn from Finnegan's Wake."
+    },
+    {
+      "cardId": "mk-fictional-079",
+      "type": "monikers",
+      "phrase": "Robocop",
+      "description": "The title character of an 80s sci-fi\nfilm about a cyborg policeman who\nis tasked by the evil Omni Consumer\nProducts megacorporation to\nprotect Detroit. In 2011, a group\nraised $67,436 on the crowdfunding\nsite Kickstarter to create a 7 foot tall\nbronze statue of the character."
+    },
+    {
+      "cardId": "mk-fictional-080",
+      "type": "monikers",
+      "phrase": "Frogger",
+      "description": "The title amphibian from a classic\n80s arcade game, where you cross\nheavy traffic and hitch a ride on\nlogs to cross a treacherous river. A\nreal-life version was played with a\nRoomba decorated as the character.\nIt made it across a highway 10 times\nbefore being flattened by an SUV."
+    },
+    {
+      "cardId": "mk-fictional-081",
+      "type": "monikers",
+      "phrase": "Comic Book Guy",
+      "description": "The overweight owner of The\nAndroid's Dungeon & Baseball Card\nShop on The Simpsons. His\ncharacter has a master's degree in\nfolklore mythology-he translated\nThe Lord of the Rings into\nKlingon-and is known for his\ncatchphrase \"Worst [blank] ever.\""
+    },
+    {
+      "cardId": "mk-fictional-082",
+      "type": "monikers",
+      "phrase": "Dr. Mario",
+      "description": "This plumber-tu med-pharmacist\nand title character of this Nintendo\npuzzle series. Clearly inspired by\nTetris, the player organizes pills by\ncolor, ostensibly to eradicate viruses\nand definitely not to teach children\nhow to raid their parent's medicine\ncabinet."
+    },
+    {
+      "cardId": "mk-fictional-083",
+      "type": "monikers",
+      "phrase": "A Troll Doll",
+      "description": "A plastic toy depicting a being with\ndistinctive tal I, bright, and fuzzy\nhair. They were the subject of fads\nthroughout the 70s, BOs, and 90s.\nThe original version was carved by a\npoor Danish fisherman and\nwoodcutter as a Christmas gift to\nhis daughter."
+    },
+    {
+      "cardId": "mk-fictional-084",
+      "type": "monikers",
+      "phrase": "The Invisible Man",
+      "description": "The title of both Ralph Ellison's\nnovel about the struggle of black\nintellectuals in early 20th century\nAmerica and H.G. Well's sci-fi\nnovella about a avaricious,\npower-mad man who is able to alter\nhis body's refractive index to reflect\nno light."
+    },
+    {
+      "cardId": "mk-fictional-085",
+      "type": "monikers",
+      "phrase": "Carrie",
+      "description": "The title character of a horror film\nbased on a Stephen King story. She\nmanifests telekinetic abilities after\nbeing bullied about her first period.\nIn the film's climax, she is doused in\nan upended bucket of pig's blood at\nprom, leading her to kill most of the\nattendees in an electrical fire."
+    },
+    {
+      "cardId": "mk-fictional-086",
+      "type": "monikers",
+      "phrase": "Prancer",
+      "description": "One of the flying reindeer that pulls\nSanta's sleigh In \"The N lght Before\nChristmas.• His name is also used in\na fitness method and internet meme\nby Joanna Rohrback that is a\n\"springy, rhythmic way of moving\nforward, similar to a horse's gait and\nideally induced by elation\""
+    },
+    {
+      "cardId": "mk-fictional-087",
+      "type": "monikers",
+      "phrase": "Hal-9000",
+      "description": "The sentient computer from Stanley\nKubrick's 2001: A Space Odyssey.\nInitially a helpful part of the ship, it\neventually turns on the crew, killing\nDr. Poole before being disconnected\nby Dave. As its mind goes, it sings\n\"Daisy Bell\" while pleading for its\nlife."
+    },
+    {
+      "cardId": "mk-fictional-088",
+      "type": "monikers",
+      "phrase": "Ch airy",
+      "description": "An iconic characters from Pee-wee's\nPlayhouse, a live-action children's\nshow created by and starring Paul\nReubens. She is a talking and\nsinging piece of blue furniture with\nlarge eyes and a mouth between her\ncushions. She has a weirdly\nflirtatious relationship with Pee-wee."
+    },
+    {
+      "cardId": "mk-fictional-089",
+      "type": "monikers",
+      "phrase": "The Soup Nazi",
+      "description": "A minor character from the sitcom\nSeinfeld. He exerts strict control\nover his restaurant's customers and\npractices price discrimination over\nthe sale of his broth-based food. He\nwas inspired by Al Yeganeh, a New\nYork City chef, who famously took\noffense at the moniker."
+    },
+    {
+      "cardId": "mk-fictional-090",
+      "type": "monikers",
+      "phrase": "Lennie Small",
+      "description": "The large, mentally disabled friend\nof George In Of Mice and Men. He\nloves petting soft things, but is\nunable to control his strength,\naccidentally killing a puppy and a\nwoman. George shoots him at the\nend of the novel to protect him\nfrom an angry lynch mob."
+    },
+    {
+      "cardId": "mk-fictional-091",
+      "type": "monikers",
+      "phrase": "Flappy Bird",
+      "description": "The winged title character from an\niOS game where you navigate\nthrough a set of pipes. The creator\nremoved the game from the App\nStore, despite earning $50,000 per\nday, in the wake of criticism over\nalleged plagiarism of graphics and\ngameplay mechanics."
+    },
+    {
+      "cardId": "mk-fictional-092",
+      "type": "monikers",
+      "phrase": "The Dude",
+      "description": "The nickname of Jeffrey Lebowski in\nthe Coen Brothers film The Big\nLebowski. Played by Jeff Bridges. he\nis depicted as an unemplayed\nslacker. pacifist, and bowler who\ndrinks White Russians and listens to\nCreedence. He was based on the\nSeattle Seven member Jeff Dowd."
+    },
+    {
+      "cardId": "mk-fictional-093",
+      "type": "monikers",
+      "phrase": "Icarus",
+      "description": "An mythical figure in Ancient\nGreece, who along with his father\nDaedalus, escape from the\nLabyrinth with wax wings. He is\nwarned not to fly too high or too\nlow. Ignoring the warning, the sun\nmelts the wax and he plummets into\nthe sea."
+    },
+    {
+      "cardId": "mk-fictional-094",
+      "type": "monikers",
+      "phrase": "The Jesus",
+      "description": "An amateur bowler and alleged\npederast In the Coen Brothers film\nThe Big Lebowski. Played by John\nTurturro, he speaks with a heavy\nCuban accent, paints his pinky\nfingers red, wears a hairnet, refers\nto himself in the third person, and is\nnot to be fucked with."
+    },
+    {
+      "cardId": "mk-fictional-095",
+      "type": "monikers",
+      "phrase": "Nyan Cat",
+      "description": "A cartoon feline with the body of a\nPop-Tart. It is depicted flying in\nspace with a rainbow trail, accompanied\nby an upbeat song with the\nJapanese word for \"Meow\" as its\nlyrics. A popular variation has users\nsyncing the video to Slipknot's song\n\"Psychosocial.\""
+    },
+    {
+      "cardId": "mk-fictional-096",
+      "type": "monikers",
+      "phrase": "Goose",
+      "description": "The best friend, wingman, homoerotic\nvolleyball partner, and Radar\nIntercept Officer for Maverick in the\nfilm Top Gun. Played by Anthony\nEdwards, he was tragically killed\nduring a training exercise when he\nbroke his neck ejecting from a F-14\naircraft."
+    },
+    {
+      "cardId": "mk-fictional-097",
+      "type": "monikers",
+      "phrase": "Benjamin Button",
+      "description": "The title character who ages in\nreverse from a short story by F.\nScott Fitzgerald and film adaptation\nby David Fincher. He is born as a\n70-year-old man capable of speech\nand as time passes, grows younger\ninstead of older."
+    },
+    {
+      "cardId": "mk-fictional-098",
+      "type": "monikers",
+      "phrase": "The Lawnmower\nMan",
+      "description": "A simple-minded gardener from a\nStephen King short story and film\nadaptation. He gains telepathic\npowers by being forced to play\nweird 90s virtual reality games. He\neventually escapes capture by\nconverting his consciousness into\npure energy."
+    },
+    {
+      "cardId": "mk-fictional-099",
+      "type": "monikers",
+      "phrase": "Commander\nWilliam T. Riker",
+      "description": "The Enterprise's first officer on Star\nTrek: The Next Generation. He is\nreferred to as \"Number One\" by\nCaptain Picard and often sits down\nby whipping one leg over the back\nof a chair. An unofficial Twitter\naccount documents his perverted\nGoogle search history."
+    },
+    {
+      "cardId": "mk-fictional-100",
+      "type": "monikers",
+      "phrase": "E.Honda",
+      "description": "A sumo wrestler from the Street\nFighter video game series. His\ncharacter possesses above-average\nstrength but below-average speed,\nexcept when executing his Hundred\nViolent Sumo Hands move,\ncommonly known as the Hundred\nHand Slap. His blood type is A."
+    },
+    {
+      "cardId": "mk-fictional-101",
+      "type": "monikers",
+      "phrase": "Carlton Banks",
+      "description": "The Fresh Prince of Bel-Air's cousin\nand Uncle Phil's heir. Played by\nAlfonso Ribeiro, he is depicted as a\npreppy yaung Republican, who is\nprobably best known for his spazzy\ndance to Tom Jones's song \"It's Not\nUnusual\" and being slapped on the\nback of the head."
+    },
+    {
+      "cardId": "mk-fictional-102",
+      "type": "monikers",
+      "phrase": "Miss Havisham",
+      "description": "The original spinster from the novel\nGreat Expectations. On the day of\nher wedding, she discovered that\nshe had been defrauded by her\nbetrothed. Heartbroken, from that\nday she lived alone in her mansion,\nshunned company, and never\nremoved her wedding dress."
+    },
+    {
+      "cardId": "mk-fictional-103",
+      "type": "monikers",
+      "phrase": "Gizmo",
+      "description": "A fuzzy pet from the Gremlins\nhorror-comedy franchise. His owners\nwere implored by Mr. Wing to follow\nthree simple rules in caring for their\nMogwai: (1) Do not expose him to\nbright light; (2) Do not get him wet;\nand (3) Do not feed him after\nmidnight."
+    },
+    {
+      "cardId": "mk-fictional-104",
+      "type": "monikers",
+      "phrase": "Mother Brain",
+      "description": "The antagonist of the Metroid video\ngame franchise. She is typically\ndepicted as a brain in a vat with\nspikes and a single eyeball, though\nshe sometimes transforms into a\nbipedal monster that looks kind of\nlike an old lady. She also appeared in\nthe Captain N cartoon series."
+    },
+    {
+      "cardId": "mk-fictional-105",
+      "type": "monikers",
+      "phrase": "Balki Bartokomous",
+      "description": "A character from the sitcom Perfect\nStrangers. He is a rustic from the\nisland of Mypos, who Cousin Larry\nacclimates to big city Chicago.\nFeatures of the character include\ncelebrating with the \"dance of joy•\nand exclaiming \"Don't be ridiculous•\nwhen it is he who is being ridiculous."
+    },
+    {
+      "cardId": "mk-fictional-106",
+      "type": "monikers",
+      "phrase": "Slender Man",
+      "description": "A character and internet meme that\nstalks children, often shown as a tall\nfigure in a gray suit with a featureless\nface. He allegedly inspired two\n12-year-old Wisconsin girls to stab a\nclassmate 19 times. One claimed that\nhe watches her, can read minds, and\ncan teleport."
+    },
+    {
+      "cardId": "mk-fictional-107",
+      "type": "monikers",
+      "phrase": "Manti Te'o's\ngirlfriend",
+      "description": "The fictional, deceased paramour of\nthe Notre Dame linebacker. who had\nsupposedly died the same day as his\ngrandmother. When it was revealed\nthat the woman (aka Lennay Kekua\naka Ronaiah Tuiasosopo) never\nexisted, he was forced to admit that\nhe had been catfished."
+    },
+    {
+      "cardId": "mk-fictional-108",
+      "type": "monikers",
+      "phrase": "Stefan",
+      "description": "A guest correspondent on SNL's\nWeekend Update. He recommends\nNew York's hottest clubs, followed\nby a description of their outlandish\npatrons like Black George Washington,\nsunburned drifters with soap\nsud beards, sherpas, and guys with\nafros in graduation caps."
+    },
+    {
+      "cardId": "mk-fictional-109",
+      "type": "monikers",
+      "phrase": "Colonel Angus",
+      "description": "A character from an SNL skit played\nby Christopher Walken. The humor Is\nderived from the character's gag\nname that refers to performing oral\nsex on a woman, e.g. \"Sometimes\n[he] just rubs you the wrong way•\nand his stated preference for the\nDeep South."
+    },
+    {
+      "cardId": "mk-fictional-110",
+      "type": "monikers",
+      "phrase": "Greedo",
+      "description": "A bounty hunter from the Star Wars\nfranchise. In the original 1977 version\nof his confrontation with Han Solo at\nChalmun's Spaceport Cantina, Han\nshoots and kills him before he fires a\nshot. In the film's rerelease, he takes\nthe first shot and misses, leading to\nthe meme \"Han shot first.•"
+    },
+    {
+      "cardId": "mk-fictional-111",
+      "type": "monikers",
+      "phrase": "Godot",
+      "description": "The title character of Samuel\nBeckett's absurdist play, who\nVladimir and Estragon wait for.\nBeckett claimed that his name\nderived from the French slang term\nfor boot. Americans typically\nmispronounce the name by\nemphasizing its second syllable."
+    },
+    {
+      "cardId": "mk-fictional-112",
+      "type": "monikers",
+      "phrase": "Admiral Ackbar",
+      "description": "A fish-like humanoid who commanded\nthe Rebel Alliance's fleet in Star\nWars: Episode VI. He planned a\nsneak attack on the second Death\nStar as it orbited the forest moon of\nEndor. Imperial forces knew of the\nimpending assault, leading to his\nIconic II ne \"It's a trap!\""
+    },
+    {
+      "cardId": "mk-fictional-113",
+      "type": "monikers",
+      "phrase": "Raskolnikov",
+      "description": "The lead character in Dostoyevsky's\nnovel Crime and Punishment.\nImpoverished in St. Petersburg, he\nmurders a pawnbroker with an axe,\nwhich he justifies through a theory\nthat some people have the right to\ncommit murder. He confesses his\ncrime and is exiled to Siberia."
+    },
+    {
+      "cardId": "mk-fictional-114",
+      "type": "monikers",
+      "phrase": "Hester Prynne",
+      "description": "The protagonist of Nathaniel\nHawthorne's The Scarlet Letter. Set\nin 17th century New England, she has\nan affair and conceives a child with\nthe minister of her church. After\nbeing found guilty of adultery, she is\nforced to wear a scarlet 'W' on her\ndress as a signal of shame."
+    },
+    {
+      "cardId": "mk-fictional-115",
+      "type": "monikers",
+      "phrase": "Duck Hunt Dog",
+      "description": "Your canine companion in an NES\ngame where you used the system's\nZapper light gun to shoot waterfowl\nas they emerge from bushes. While\nostensibly meant to be to fetch your\nkills, this character's primary role\nwas to laugh at your pitiful performance."
+    },
+    {
+      "cardId": "mk-fictional-116",
+      "type": "monikers",
+      "phrase": "The Last Unicorn",
+      "description": "The single-horned title character\nfrom an BOs animated film, who\ndiscovers that she is the only\nremaining member of her species.\nVoiced by Mia Farrow, she is\npursued by a creature ca lied the\nRed Bull. Defeating him, she returns\nher kind back into the world."
+    },
+    {
+      "cardId": "mk-fictional-117",
+      "type": "monikers",
+      "phrase": "King Hippo",
+      "description": "A boxer from Nintendo's Punch-Out!!\nfranchise. He is depicted as an\nobese, tan, large-mouthed man\nwearing a crown and boxer shorts.\nHe wears two bandages in an X\npattern over his navel, suggesting his\nweak point. He cannot recover from\nbeing knocked down."
+    },
+    {
+      "cardId": "mk-fictional-118",
+      "type": "monikers",
+      "phrase": "A Highlander",
+      "description": "An immortal, broadsword-wielding\ncharacter from an sos action film.\nThe film's tagline, \"There can be\nonly one,\" refers to a contest to gain\neach other's power and knowledge\nthrough defeating and then\nbeheading their rivals in a duel-a\nprocess referred to as Quickening."
+    },
+    {
+      "cardId": "mk-fictional-119",
+      "type": "monikers",
+      "phrase": "Dr. Zaius",
+      "description": "An orangutan from the Planet of the\nApes. Living In the East Coast Ape\nCity during the 40th century, he\nparadoxically serves as Minister of\nScience and Chief Defender of the\nFaith. He was immortalized in a song\nfrom The Simpsons that parodies\nFalco's \"Rock Me Amadeus.\""
+    },
+    {
+      "cardId": "mk-fictional-120",
+      "type": "monikers",
+      "phrase": "Uncle Ben",
+      "description": "The actually pretty racist mascot of\na top-selling rice brand. Wearing a\ntuxedo and bow tie, this character's\nname references a term commonly\nused in the American South to\ndenote older male servants. In 2007,\nthe company \"promoted\" the\ncharacter to chairman of the board."
+    },
+    {
+      "cardId": "mk-fictional-121",
+      "type": "monikers",
+      "phrase": "Sisyphus",
+      "description": "An Ancient Greek king who Zeus\npunished for his hubris by forcing\nhim to roll a boulder up a hill. only to\nsee it roll back down and be forced\nto repeat this process endlessly. The\nmyth of his struggle was used for\nphilosophical purposes by Albert\nCamus."
+    },
+    {
+      "cardId": "mk-fictional-122",
+      "type": "monikers",
+      "phrase": "Gregor Samsa",
+      "description": "A character from Franz Kafka's\nnovella The Metamorphosis, who\nwakes up one day to find himself\ntransformed into a large insect. He\nslowly loses his ability to communicate,\nbecomes a burden on his\nfamily, and eventually wills himself\nto die somehow."
+    },
+    {
+      "cardId": "mk-fictional-123",
+      "type": "monikers",
+      "phrase": "The Alien\nfrom Alien",
+      "description": "The extraterrestrial from a famous\naction-horror film series. Sometimes\nreferred to as a Xenomorph, these\ncreatures are organized around a\nsingle queen, which gives birth to\ncreatures that follow a lifecycle from\negg to facehugger to chestburster to\nadult."
+    },
+    {
+      "cardId": "mk-fictional-124",
+      "type": "monikers",
+      "phrase": "Juan Valdez",
+      "description": "The fictional mascot of the National\nFederation of Coffee Growers of\nColombia. With his mule Conchita,\nhe is a national symbol for Colombian\ncoffee. Played by Carlos Sclinchez\nand others, his tagline, iDisfrute de\nun buen cafe! has been widely\nparodied in pop culture."
+    },
+    {
+      "cardId": "mk-fictional-125",
+      "type": "monikers",
+      "phrase": "Sweeney Todd",
+      "description": "A legendary Victorian murderer also\nknown as The Demon Barber of\nFleet Street. He has a lever in his\nshop that drops customers through a\ntrapdoor, who he finishes off with a\nrazor. His accomplice, Mrs. Lovett,\nhelps dispose of the bodies by\nbaking them into savory pies."
+    },
+    {
+      "cardId": "mk-fictional-126",
+      "type": "monikers",
+      "phrase": "Ghost Dog",
+      "description": "The title character from a film by Jim\nJarmusch about a freelance hitman\nemployed by the Mafia, who strictly\nfollows Hagakure, the code of the\nsamurai. The film itself is a blend of\nthe samurai and gangster genres,\nwith a soundtrack produced by RZA\nof the Wu-Tang Clan."
+    },
+    {
+      "cardId": "mk-fictional-127",
+      "type": "monikers",
+      "phrase": "She-Hulk",
+      "description": "A superhero from the Marvel Comics\nuniverse, who gained her powers\nafter receiving a blood transfusion\nfrom her cousin, Dr. Bruce Banner.\nLike him, she transforms into a\ngreen, raging creature. Unlike him,\nshe is able to retain her reason and\npersonality while doing so."
+    },
+    {
+      "cardId": "mk-fictional-128",
+      "type": "monikers",
+      "phrase": "Joan of Arc",
+      "description": "The Maid of Orll!ans and 15th\ncentury martyr who claimed God\ninstructed her to take back France\nfrom the English. After predicting\nseveral military outcomes, she was\ngiven a substantial role in strategic\ndecision-making. She was eventually\ncaptured and burned at the stake."
+    },
+    {
+      "cardId": "mk-fictional-129",
+      "type": "monikers",
+      "phrase": "Kindergarten Cop",
+      "description": "The title character from a 1990\ncomedy about a detective who goes\nundercover at an elementary school\nand discovers his love of teaching.\nPlayed by Arnold Schwarzenegger,\nthe film is famous for the line \"It's\nnot a tumor!\" which he delivers in his\nthick Austrian accent."
+    },
+    {
+      "cardId": "mk-fictional-130",
+      "type": "monikers",
+      "phrase": "A Reptilian",
+      "description": "A humanoid common in conspiracy\ntheories about a race of shapeshifting\nlizard people who control\ngovernments around the world. On\na 2011 radio show, Louis C.K. once\nrepeatedly asked former us\nSecretary of Defense Donald\nRumsfeld lf he was one of these."
+    },
+    {
+      "cardId": "mk-fictional-131",
+      "type": "monikers",
+      "phrase": "Grimace",
+      "description": "Initially a villain in the McDonaldland\nuniverse, this purple monster was\nretconned as a loveable hero. He\nalso appears in a meme featuring a\ncrudely drawn version posing\nseductively and asking Ronald\nMcDonald if he wants some\n\"McNuggles.\""
+    },
+    {
+      "cardId": "mk-fictional-132",
+      "type": "monikers",
+      "phrase": "Xena,\nWarrior Princess",
+      "description": "The title character of the cult classic\nTV show starring New Zealand actor\nLucy Lawless. The show was a\nspinoff of Hercules: The Legendary\nJourneys and featured her weekly\nadventures and pursuit of the\n«greater good\" in a mythological\nversion of Ancient Greece."
+    },
+    {
+      "cardId": "mk-fictional-133",
+      "type": "monikers",
+      "phrase": "Octopussy",
+      "description": "The title character and Bond girl in\nthe 13th film of the series. She leads\na cephalopod cult and circus troupe\nfrom a floating palace in Udaipur,\nIndia, which is inexplicably part of an\nAfghan plot to force European\ndisarmament by using a nuclear\nweapon."
+    }
+  ]
+}

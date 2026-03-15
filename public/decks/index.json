@@ -75,6 +75,66 @@
       "cardCount": 550
     },
     {
+      "deckId": "community-celebrity-en-monikers",
+      "name": "Community Monikers: Celebrities",
+      "gameType": "monikers",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "celebrities",
+        "pop culture"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-15T07:31:41.438Z",
+      "cardCount": 125
+    },
+    {
+      "deckId": "community-etcetera-en-monikers",
+      "name": "Community Monikers: Et Cetera",
+      "gameType": "monikers",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "general",
+        "mixed"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-15T07:31:41.439Z",
+      "cardCount": 102
+    },
+    {
+      "deckId": "community-fictional-en-monikers",
+      "name": "Community Monikers: Fictional Characters",
+      "gameType": "monikers",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "fictional characters",
+        "pop culture"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-15T07:31:41.440Z",
+      "cardCount": 133
+    },
+    {
+      "deckId": "community-historical-en-monikers",
+      "name": "Community Monikers: Historical Figures",
+      "gameType": "monikers",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "history",
+        "famous people"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-03-15T07:31:41.441Z",
+      "cardCount": 99
+    },
+    {
       "deckId": "community-taboo-en-taboo",
       "name": "Community Taboo Cards",
       "gameType": "taboo",
