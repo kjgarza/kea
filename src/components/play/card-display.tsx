@@ -337,7 +337,7 @@ function JustOneCardDisplay({ card }: { card: { target: string } }) {
 }
 
 // Monikers Card - Vibrant Orange gradient
-function MonikersCardDisplay({ card }: { card: { phrase: string } }) {
+function MonikersCardDisplay({ card }: { card: { phrase: string; description?: string } }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -356,7 +356,7 @@ function MonikersCardDisplay({ card }: { card: { phrase: string } }) {
       </div>
 
       {/* Content */}
-      <div className="relative flex flex-col items-center justify-center h-full p-8">
+      <div className="relative flex flex-col items-center justify-center h-full p-8 gap-4">
         <motion.p
           key={card.phrase}
           initial={{ opacity: 0, y: 20 }}
@@ -365,6 +365,17 @@ function MonikersCardDisplay({ card }: { card: { phrase: string } }) {
         >
           {card.phrase}
         </motion.p>
+        {card.description && (
+          <motion.p
+            key={card.description}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="text-sm md:text-base text-white/70 text-center italic leading-snug max-w-xs"
+          >
+            {card.description}
+          </motion.p>
+        )}
       </div>
     </motion.div>
   );

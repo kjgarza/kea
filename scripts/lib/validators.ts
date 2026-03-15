@@ -235,10 +235,24 @@ function validateMonikersCard(
     return { valid: false, errors };
   }
 
+  if (
+    obj.description !== undefined &&
+    (typeof obj.description !== "string" || obj.description.trim().length === 0)
+  ) {
+    errors.push("'description' must be a non-empty string if provided");
+  }
+
+  if (errors.length > 0) {
+    return { valid: false, errors };
+  }
+
   const card: MonikersCard = {
     cardId,
     type: "monikers",
     phrase: (obj.phrase as string).trim(),
+    ...(obj.description && typeof obj.description === "string"
+      ? { description: obj.description.trim() }
+      : {}),
   };
 
   return { valid: true, errors: [], card };
