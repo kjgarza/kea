@@ -49,6 +49,7 @@ export interface JustOneCard extends BaseCard {
 export interface MonikersCard extends BaseCard {
   type: "monikers";
   phrase: string;
+  description?: string;
 }
 
 // Discriminated union of all card types
