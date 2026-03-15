@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 1,
+  "deckId": "community-etcetera-en-monikers",
+  "version": "2026-03-15T07:31:41.439Z",
+  "name": "Community Monikers: Et Cetera",
+  "gameType": "monikers",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "general",
+    "mixed"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "mk-etcetera-001",
+      "type": "monikers",
+      "phrase": "A Russian\nNesting Doll",
+      "description": "A set of colorful wooden figurines\nthat decrease in size and are placed\ninside of one another. Associated\nwith a former Communist nation,\nthey are often painted as women,\nbut themes vary from babushkas to\nStar Wars characters to just\nBatmans all the way down."
+    },
+    {
+      "cardId": "mk-etcetera-002",
+      "type": "monikers",
+      "phrase": "Ebola",
+      "description": "A virus that causes hemorrhagic\nfever, typically acquired by contact\nwith an infected monkey, fruit bat,\nor person. Its most severe\nsymptoms can include bleeding\nfrom the eyes, nose, ears, mouth,\nand rectum. There is no specific\ntreatment for the disease."
+    },
+    {
+      "cardId": "mk-etcetera-003",
+      "type": "monikers",
+      "phrase": "A Furry",
+      "description": "A person who wears a full body\nanimal suit, often for conventions,\nroleplaying, or personal recreation.\nTheir use in sexua I activity is a\ncontroversial topic in the community.\nIn a recent survey, 37% reported that\nit was an important part of their\ninterest in the activity."
+    },
+    {
+      "cardId": "mk-etcetera-004",
+      "type": "monikers",
+      "phrase": "El Chupacabra",
+      "description": "Literally \"goat sucker,\" this\nlegendary American cryptld Is often\ndescribed as a reptile-like creature\nthat attacks and drinks the blood of\nsheep and other livestock. Most\nsupposed sightings have been\nattributed to dogs or wolves\nafflicted by the skin disease mange."
+    },
+    {
+      "cardId": "mk-etcetera-005",
+      "type": "monikers",
+      "phrase": "A Narwhal",
+      "description": "An Arctic whale with a large\nprotruding tusk, which is actually an\nelongated canine tooth. Its name\ntranslates to \"corpse whale\" from\nthe Old Norse, due to the similarity\nof its flesh tone with a drowned\nsailor. According to the Weebl's\nStuff song, they are so awesome."
+    },
+    {
+      "cardId": "mk-etcetera-006",
+      "type": "monikers",
+      "phrase": "100 Duck-Sized\nHorses",
+      "description": "From a hypothetical scenario that\nposes the question of who would\nwin in a fight: a single equine-sized\nfowl or fivescore fowl-sized equines.\nThe question was made famous in a\n2012 Reddit AMA with President\nBarack Obama. The comment\nreceived over 1,000 upvotes."
+    },
+    {
+      "cardId": "mk-etcetera-007",
+      "type": "monikers",
+      "phrase": "A Raver",
+      "description": "A person who attends a party\nfeaturing electronic music, dancing,\nand visual effects. Attendees are\noften characterized as being under\nthe influence of MDMA, using\nfluorescent glow sticks, sucking on\npacifiers, applying Vicks VapoRub,\nand wearing phat pants."
+    },
+    {
+      "cardId": "mk-etcetera-008",
+      "type": "monikers",
+      "phrase": "A Communist",
+      "description": "A member of a political movement\nthat believes in the common\nownership of the means of\nproduction. The concept was first\ndeveloped by the German political\nphilosopher Karl Marx and became\nthe national ideology of the Soviet\nUnion In the 20th century."
+    },
+    {
+      "cardId": "mk-etcetera-009",
+      "type": "monikers",
+      "phrase": "The 99%",
+      "description": "The 99%"
+    },
+    {
+      "cardId": "mk-etcetera-010",
+      "type": "monikers",
+      "phrase": "An Illusionist",
+      "description": "A performer of magic acts that\noften include demonstrating\n\"impossible\" tricks to a credulous\naudience. The term was preferred\nby the character Gob Bluth in the\ntelevision series Arrested Development.\nwhose performances often\nwent horribly wrong."
+    },
+    {
+      "cardId": "mk-etcetera-011",
+      "type": "monikers",
+      "phrase": "A Castrato",
+      "description": "A male vocal performer whose has\nan abnormally high vocal register,\ntypically achieved by neutering the\nperformer before puberty. There are\ntoday some \"natural\" performers\nwith hormonal anomalies that give\nthe same effect. The last castration\nfor this occurred in the 1870s."
+    },
+    {
+      "cardId": "mk-etcetera-012",
+      "type": "monikers",
+      "phrase": "A Baby Sloth",
+      "description": "The juvenile form of a slow-moving,\nhook-handed mammal whose fur is\nhome to other creatures, including\nbeetles and cockroaches. Popular\non websites devoted to cuteness\ndue to their perpetual smiles and\ndocility. They are especially darling\nwhen taking a bath."
+    },
+    {
+      "cardId": "mk-etcetera-013",
+      "type": "monikers",
+      "phrase": "A Mole",
+      "description": "An informant or spy recruited to\nreport on a target government or\norganization from the inside. They\na re named after a small, subterranean\nspecies of mammal. The term\nwas popularized by John Le Carre in\nTinker, Tailor, Soldier, Spy, but was\nfirst used by Francis Bacon in 1626."
+    },
+    {
+      "cardId": "mk-etcetera-014",
+      "type": "monikers",
+      "phrase": "A Beard",
+      "description": "A term referencing facial hair and\nused for a person who conceals\nsomeone else's sexual orientation,\neither knowingly or unknowingly.\nThis concept was an element in the\n1984 film Broadway Danny Rose by\nWoody Allen and remains a popular\ncomedic subject."
+    },
+    {
+      "cardId": "mk-etcetera-015",
+      "type": "monikers",
+      "phrase": "A Human\nCentipede",
+      "description": "The title creature of a 2009 horror\nfilm where a sadistic German doctor\nforms one of these by sewing three\nindividuals together, mouth to anus,\nforcing them to share a single\ndigestive system. The film's director\nexplained that his work is partially a\nreflection on fascism."
+    },
+    {
+      "cardId": "mk-etcetera-016",
+      "type": "monikers",
+      "phrase": "A Grammar Nazi",
+      "description": "A person who enforces language\nrules to an unusually high degree.\nAccording to knowyourmeme.com.\none of the earliest uses was in 1995,\nwhen a user on the newsgroup\nalt.gothic called someone out for\ncorrecting the use of the term\n\"thusly\" for \"thus.•"
+    },
+    {
+      "cardId": "mk-etcetera-017",
+      "type": "monikers",
+      "phrase": "A Centaur",
+      "description": "A mythological hybrid whose top\nhalf is human and bottom half is\nhorse. The Greeks considered them\nsavage, drunken beings. The myth\npersists today, including a famous\ntattoo of half Patrick Swayze, half\nhorse and SNL's depiction of one of\nthese on a failed job interview."
+    },
+    {
+      "cardId": "mk-etcetera-018",
+      "type": "monikers",
+      "phrase": "Your Mom",
+      "description": "The woman who gave birth to you\nand/or raised you. The word above\nor the actual name of your real-life\ncaregiver are both val id."
+    },
+    {
+      "cardId": "mk-etcetera-019",
+      "type": "monikers",
+      "phrase": "A Leper",
+      "description": "A person infected with Hansen's\nDisease, which sometimes results in\nthe inability to feel pain and\nconsequent loss of body parts. To\nprevent the spread of the disease,\nthey were historically separated into\nisolated colonies-a practice still\nalive In India and China."
+    },
+    {
+      "cardId": "mk-etcetera-020",
+      "type": "monikers",
+      "phrase": "A TSA Agent",
+      "description": "An employee of a us Department of\nHomeland Security branch. Many of\nits employees are posted in airports\nto screen passengers and their\nproperty, including pat-downs and\nviewing x-rays. Their average salary\nis $25K-$38K per year, excluding\nswag."
+    },
+    {
+      "cardId": "mk-etcetera-021",
+      "type": "monikers",
+      "phrase": "A Fainting Goat",
+      "description": "A farm animal that suffers from a\ngenetic disorder that causes its\nmuscles to freeze for approximately\n10 seconds when panicked. The\ncondition is formally knows as\nmyotonia congenita, which\nBuzzfeed once described as \"easily\nthe cutest neurological disorder.\""
+    },
+    {
+      "cardId": "mk-etcetera-022",
+      "type": "monikers",
+      "phrase": "Burning Man",
+      "description": "A 40-foot wooden effigy that is set\non fire during a weeklong event in\nNevada's Black Rock Desert. The\norganizers deny that it has any\nconnection to similar wicker effigies\nthat were built by ancient Druids for\npagan Celtic rituals that some\nspeculate Involved human sacrifice."
+    },
+    {
+      "cardId": "mk-etcetera-023",
+      "type": "monikers",
+      "phrase": "A Sherpa",
+      "description": "A member of a Nepalese ethnic\ngroup that resides In the Himalayan\nmountain range. The term often\nrefers to guides who assist climbers.\nAmong the most famous of these in\nhistory was Tenzing Norgay, who\nreached the summit of Mount\nEverest with Edmund Hillary in 1953."
+    },
+    {
+      "cardId": "mk-etcetera-024",
+      "type": "monikers",
+      "phrase": "El Nino",
+      "description": "A band of warm weather resulting in\nabove-average temperatures for\nmost of North America and wetter\nseasons for most of South America.\nThis weather system inspired a Chris\nFarley SNL character that depicted\nthe tropical storm as a boastful\nprofessional wrestler."
+    },
+    {
+      "cardId": "mk-etcetera-025",
+      "type": "monikers",
+      "phrase": "A Bleeder",
+      "description": "A person who loses blood quickly\nbecause of a lower than average\nclotting rate, otherwise known as a\nhemophiliac. This term was made\nfamous in the 1998 comedy There's\nSomething About Mary, where Ben\nStiller's character Ted damages his\ngenitals with a zipper."
+    },
+    {
+      "cardId": "mk-etcetera-026",
+      "type": "monikers",
+      "phrase": "A Roomba",
+      "description": "An automated vacuum cleaner\nmarketed as a convenient way to\nclean one's home. Its sensors allow\nit to navigate each room, cleaning\nunder furniture and in often-ignored\ncorners. Cats have been known to\nride it. It definitely does not record\nyour daily movements."
+    },
+    {
+      "cardId": "mk-etcetera-027",
+      "type": "monikers",
+      "phrase": "A Bro",
+      "description": "A stereotype often associated with\ncollege-aged men. The website\nCode Switch defines them using\nfour characteristics: jockish, dudely,\nstoner-ish, and preppy. These\nindividuals are also often white,\nheterosexual, come from privilege,\nand espouse sexist attitudes."
+    },
+    {
+      "cardId": "mk-etcetera-028",
+      "type": "monikers",
+      "phrase": "A Hoarder",
+      "description": "A person who compulsively collects\nthings or refuses to discard\npossessions, resulting in an\nunmanageable amount of crap in\ntheir home. They are the subject of\na popular reality TV show where\nprofessionals exploit the person's\ndisorder for entertainment."
+    },
+    {
+      "cardId": "mk-etcetera-029",
+      "type": "monikers",
+      "phrase": "A Neanderthal",
+      "description": "A member of an extinct species\nclosely related to humans. Research\nsuggests that interbreeding\nbetween the two groups occurred,\nwith modern non-African humans\npossessing 1-4% of their genome.\nThey made tools, built dwellings,\nand had a form of language."
+    },
+    {
+      "cardId": "mk-etcetera-030",
+      "type": "monikers",
+      "phrase": "A Drone",
+      "description": "An unmanned aerial vehicle used in\nmilitary operations that are too\ndangerous for manned aircraft.\nTheir use is controversial, with\ncritics pointing at their indiscriminant\nuse, such as a 2008 airstrike\nagainst a wedding party that killed\n47 Afghan civilians."
+    },
+    {
+      "cardId": "mk-etcetera-031",
+      "type": "monikers",
+      "phrase": "A Fetus",
+      "description": "The stage of development between\nembryo and birth. It is sometimes\ncategorized by the presence of all\nmajor body organs (though not\nnecessarily functioning), typically\naround the 11th week of gestation. In\nhumans, it is approximately 1.2\" in\nlength from crown to rump."
+    },
+    {
+      "cardId": "mk-etcetera-032",
+      "type": "monikers",
+      "phrase": "A Virgin",
+      "description": "A person who has never engaged in\nsexual intercourse, either voluntarily\nor involuntarily. Once used only to\nrefer to young women, it now\ndescribes any person who has not\nparticipated in that activity and can\neven be used metaphorically, as in a\nnonalcoholic drink."
+    },
+    {
+      "cardId": "mk-etcetera-033",
+      "type": "monikers",
+      "phrase": "A Lab Rat",
+      "description": "A rodent used in academic or\ncommercial research, often as a\nprecursor to human trials in the\nearly stages of a project. They are\nregularly decapitated with scissors.\nA common trope of early psychology\nresearch was to place one in a\nmaze to find a wedge of cheese."
+    },
+    {
+      "cardId": "mk-etcetera-034",
+      "type": "monikers",
+      "phrase": "A Close Talker",
+      "description": "A person who stands uncomfortably\nnear a person while speaking.\nThis term was first coined in \"The\nRaincoats,\" an episode of Seinfeld.\nIn it, Elaine's new boyfriend Aaron is\ndescribed as being one of these,\ndisrupting the personal space of\nanyone he speaks to."
+    },
+    {
+      "cardId": "mk-etcetera-035",
+      "type": "monikers",
+      "phrase": "A Gerbil",
+      "description": "A small rodent often kept as a pet.\nNumerous urban legends exist\ninvolving this animal and various\ncelebrity anuses."
+    },
+    {
+      "cardId": "mk-etcetera-036",
+      "type": "monikers",
+      "phrase": "The Boogeyman",
+      "description": "A creature used by adults to scare\nchildren into good behavior. Its\ndescription and motivations vary\nacross cultures, but often include\nkidnapping misbehaving children.\nVariants of this monster include\nLatin America's \"Sack Man\" and\nEgypt's \"Man With Burnt Leg.\""
+    },
+    {
+      "cardId": "mk-etcetera-037",
+      "type": "monikers",
+      "phrase": "Your Evil Twin",
+      "description": "A common trope, where the\nphysical duplicate of a character\nappears, but with inverted values.\nThey are often depicted with subtle\nalterations, such as Spock's ruthless\ndoppelganger having a goatee. The\nwords above or your name prefixed\nby the second word are both valid."
+    },
+    {
+      "cardId": "mk-etcetera-038",
+      "type": "monikers",
+      "phrase": "A T. Rex",
+      "description": "Meaning \"lizard king,\" this species of\nbipedal carnivore lived ln western\nNorth America during the\nCretaceous Period. They are the\nmost widely known dinosaur in the\nworld due to their adorably tiny\narms and footsteps that vibrate\ncups of water."
+    },
+    {
+      "cardId": "mk-etcetera-039",
+      "type": "monikers",
+      "phrase": "A Swinger",
+      "description": "A person who engages in\nrecreational intercourse outside of a\nmonogamous relationship. Despite\npublic declarations otherwise, in a\nrecent study by the Kinsey Institute,\nthese individuals make up 2-4% of\nmarried couples in North America-\nover 4 million people in total."
+    },
+    {
+      "cardId": "mk-etcetera-040",
+      "type": "monikers",
+      "phrase": "A Nutcracker",
+      "description": "A device for cracking hard shells.\nThey can be highly decorative, with\nindividual wooden bodies depicting\nsoldiers or royalty. In these versions,\nthe shell is inserted into the figure's\nmouth and a lever is pressed down,\nwhich crushes the shell and reveals\nthe sweet, sweet meat inside."
+    },
+    {
+      "cardId": "mk-etcetera-041",
+      "type": "monikers",
+      "phrase": "You",
+      "description": "The person reading this card. The\nword above or your actual name are\nboth valid."
+    },
+    {
+      "cardId": "mk-etcetera-042",
+      "type": "monikers",
+      "phrase": "A Nihilist",
+      "description": "Popularly, someone who believes in\nnothing. As a philosophical concept,\na person who believes that major\naspects of life or human inquiry are\neither not valid or do not exist. They\nare often portrayed as effete\nintellectuals, such as the wimpy\nGerman thugs In The Big Lebowskl."
+    },
+    {
+      "cardId": "mk-etcetera-043",
+      "type": "monikers",
+      "phrase": "A Redshirt",
+      "description": "A stock, semi-anonymous character\nwho Is Introduced only to die soon\nafter. The term derives from the\ncostumes worn by extras in the\noriginal Star Trek television series\nwho would accompany the lead\nactors to a hostile situation and be\nkilled in order to heighten tension."
+    },
+    {
+      "cardId": "mk-etcetera-044",
+      "type": "monikers",
+      "phrase": "A Catholic Priest",
+      "description": "A ministerial order of the first\nChristian church to whom God\ngrants the power of transubstantiation\nduring Mass. Although they\ntake a vow of chastity, there have\nbeen many molestation scandals,\nperhaps due to the ready access\ntheir authority affords them."
+    },
+    {
+      "cardId": "mk-etcetera-045",
+      "type": "monikers",
+      "phrase": "The Id",
+      "description": "One of the the three parts of\nSigmund Freud's model of the\npsyche that constitute mental life.\nTh is part contains a person's\ninstincts and is the source of our\nimpulse for sex and aggression. In\nadult life it becomes the most dark,\ninaccessible aspect of personality."
+    },
+    {
+      "cardId": "mk-etcetera-046",
+      "type": "monikers",
+      "phrase": "Ouroboros",
+      "description": "An ancient symbol that represents\nthe cyclical nature of existence,\neternal return, and rebirth. Its first\nknown usage was in an Ancient\nEgyptian source, but appears across\nmany cultures. It is most frequently\ndepicted as a snake or serpent\neating its own tail."
+    },
+    {
+      "cardId": "mk-etcetera-047",
+      "type": "monikers",
+      "phrase": "A Horse-Sized Duck",
+      "description": "From a hypothetical scenario that\nposes the question of who wou Id\nwin in a fight: a single equine-sized\nfowl or fivescore fowl-sized equines.\nThe question was made famous in a\n2012 Reddit AMA with President\nBarack Obama. The comment\nreceived over 1,000 upvotes."
+    },
+    {
+      "cardId": "mk-etcetera-048",
+      "type": "monikers",
+      "phrase": "A Dungeon Master",
+      "description": "The organizer and storyteller in a\nfantasy roleplaying campaign, most\noften associated with D&D. They\nmanage all aspects of a game other\nthan the direct actions of the player\ncharacters, and are commonly seen\nrolling 20-sided dice behind a\nprotective cardboard screen."
+    },
+    {
+      "cardId": "mk-etcetera-049",
+      "type": "monikers",
+      "phrase": "Cocaine Bear",
+      "description": "An ursine internet meme, who\n\"fucking loves\" this white, powdery\ndrug. The image, which shows the\ncreature's roaring face covered in\nsnow, is a parody of the \"binge\"\ntrope in TV and film, such as Al\nPacino's Scarface and Dave\nChappelle's Tyrone Biggums."
+    },
+    {
+      "cardId": "mk-etcetera-050",
+      "type": "monikers",
+      "phrase": "A dog doing yoga",
+      "description": "A canine who practices the Indian\ntradition of physical, mental, and\nspiritual transformation. In western\ncultures this practice is most often\nassociated with physical exercise\nfocused on stretching and the\nassumption of physical postures\nsuch as eagle and tree."
+    },
+    {
+      "cardId": "mk-etcetera-051",
+      "type": "monikers",
+      "phrase": "A Streaker",
+      "description": "A person who strips naked and runs\nthrough a public space, either for\nfun, on a dare, or as a political\nstatement. The first recorded\ninstance was in 1799, when a man\nwas bet 10 guineas to run naked\nfrom Cornhill to Cheapside in\nLondon."
+    },
+    {
+      "cardId": "mk-etcetera-052",
+      "type": "monikers",
+      "phrase": "Your High School\nGym Teacher",
+      "description": "The P.E. instructor of the person\nreading this card. The word above\nor the actual name of your real-life\nP.E. instructor are both valid."
+    },
+    {
+      "cardId": "mk-etcetera-053",
+      "type": "monikers",
+      "phrase": "The Noble Savage",
+      "description": "A literary concept of an individual\nor group that is uncorrupted by\nhuman civilization. It is often used\ntoday to signify condescension\ntoward non-Western cultures, such\nas the portrayal of Native Americans\nin Dances with Wolves or the\nNa'vi in Avatar."
+    },
+    {
+      "cardId": "mk-etcetera-054",
+      "type": "monikers",
+      "phrase": "Pedobear",
+      "description": "An ursine character who is popular\non the website 4chan and is used to\nmock individuals with a sexual\ninterest in minors. He sometimes\nappears accidentally in the press,\nsuch as a story in a Polish newspaper\nthat this character would be the\nmascot for the 2010 Olympics."
+    },
+    {
+      "cardId": "mk-etcetera-055",
+      "type": "monikers",
+      "phrase": "Harry Houdini",
+      "description": "A magician, who in his most famous\ntrick, the Chinese Water Torture\nCell, escaped from a water-filled\ntank while he was hanging\nupside-down. He was also known\nfor debunking psychics and\nmediums, a tradition carried on to\nthis day by professional magicians."
+    },
+    {
+      "cardId": "mk-etcetera-056",
+      "type": "monikers",
+      "phrase": "The 800\nPound Gorilla",
+      "description": "An idiom that describes a primate\nso powerful and heavy that it can\nignore the rights of others. The\noriginal source is a riddle that asks\nwhere it sits CA: Anywhere it wants.)\nThis term is commonly confused\nwith a similar expression about an\nelephant."
+    },
+    {
+      "cardId": "mk-etcetera-057",
+      "type": "monikers",
+      "phrase": "A Damsel in Distress",
+      "description": "A sexist archetype in literature, film,\nand games of a helpless woman\nthat must be saved by a male\ncharacter, such as Princess Peach in\nthe Mario franchise. A recent\nYouTube series by Feminist\nFrequency charted the plot device\nthroughout the history of gaming."
+    },
+    {
+      "cardId": "mk-etcetera-058",
+      "type": "monikers",
+      "phrase": "The1%",
+      "description": "A political and economic classification\nfor the group of individuals\nwho earn up to a quarter of total\nincome in the US. It was derived\nfrom the slogans of the Occupy\nWall Street movement of 2011,\nwhich were meant to highlight\ngrowing economic inequality."
+    },
+    {
+      "cardId": "mk-etcetera-059",
+      "type": "monikers",
+      "phrase": "A Mormon",
+      "description": "A member of the Latter-Day Saints,\ninspired by the visions of 19th\ncentury American Joseph Smith.\nThey were once infamous for some\nmembers practicing polygamy.\nMembers taking part in endowment\nceremonies wear special underwear\ncalled \"temple garments.•"
+    },
+    {
+      "cardId": "mk-etcetera-060",
+      "type": "monikers",
+      "phrase": "Big Brother",
+      "description": "The personification of the nanny\nstate, which comes from Oceania's\ntotalitarian leader in George Orwell's\nnovel 1984. He is frequently\nreminded to be \"watching you,\"\nthough in an instance of the novel's\ndoublethink, the expression is both a\nveiled threat and a reassurance."
+    },
+    {
+      "cardId": "mk-etcetera-061",
+      "type": "monikers",
+      "phrase": "The Superego",
+      "description": "One of the the three parts of\nSigmund Freud's model of the\npsyche that constitute mental life.\nThis part forms a person's ability to\npunish themself for misbehavior. It\noften draws on cultural lessons,\nacting as a source of rules from\nparents and other authority figures."
+    },
+    {
+      "cardId": "mk-etcetera-062",
+      "type": "monikers",
+      "phrase": "Conjoined Twins",
+      "description": "A rare occurrence where identical\nfetuses are joined together in utero.\nClassifications are based on where\ntheir bodies are joined, e.g.\nsyncephalus (one head, single face,\nfour ears, two bodies), cephalothoracopagus\n(fused bodies, two faces\nfacing in opposite directions)."
+    },
+    {
+      "cardId": "mk-etcetera-063",
+      "type": "monikers",
+      "phrase": "A Dead Horse",
+      "description": "Useless to beat and effectively\nunrldeable, this deceased animal is\nused in an idiom to explain that a\npoint, once made, does not need to\nbe re-stated. Similar the phrase, \"To\nslay the slain.• This animal is\nsubstituted with a dog in other\nparts of the English speaking world."
+    },
+    {
+      "cardId": "mk-etcetera-064",
+      "type": "monikers",
+      "phrase": "An Amish",
+      "description": "A member of a Christian sect from\nPA Dutch country. They are known\nfor wearing traditional dress and\neschewing modern technology.\nSome practice Rumspringa, where\nrestrictions are lifted for adolescents\nseeking to experience the\ntemptations of the outside world."
+    },
+    {
+      "cardId": "mk-etcetera-065",
+      "type": "monikers",
+      "phrase": "A Pug",
+      "description": "A short-snouted, brachycephal ic\ndog breed. Generations of\ninbreeding have led to compact\nbreathing passages that leave them\nunable to regulate their body\ntemperature by panting. Many\nairlines have restricted their\ntransport due to in-air deaths."
+    },
+    {
+      "cardId": "mk-etcetera-066",
+      "type": "monikers",
+      "phrase": "An Immoveable\nObject",
+      "description": "One half of a famous paradox that\nasks what would happen if a thing\nthat cannot be stopped encounters\na thing that cannot be moved."
+    },
+    {
+      "cardId": "mk-etcetera-067",
+      "type": "monikers",
+      "phrase": "The Obermensch",
+      "description": "A concept created by Nietzsche in\nThus Spoke Zarathustra that\nroughly translates to \"Superman.\" A\ncharacter in the book holds it up as\na supreme goal for humanity to\nachieve. The term was incorrectly\nused by the Nazi regime to argue\nfor a biologically superior race."
+    },
+    {
+      "cardId": "mk-etcetera-068",
+      "type": "monikers",
+      "phrase": "A Rat King",
+      "description": "A creature comprised of multiple\nrodents knotted at the tail. While\nspecimens exist in museums of\ncuriosities, it is unlikely to ever have\nexisted. It is also the name of a\ncharacter from the Teenage Mutant\nNinja Turtles franchise who exerts a\ntelepathic influence over rodents."
+    },
+    {
+      "cardId": "mk-etcetera-069",
+      "type": "monikers",
+      "phrase": "A Child Soldier",
+      "description": "A term for a young person involved\nin armed conflicts, either voluntarily\nor involuntarily. International\nconventions exist to limit this\nactivity, yet it remains a widespread\npractice, with 200,000 to 300,000\nyoung people currently serving in\neither rebel and government forces."
+    },
+    {
+      "cardId": "mk-etcetera-070",
+      "type": "monikers",
+      "phrase": "An Unstoppable\nForce",
+      "description": "One half of a famous paradox that\nasks what would happen if a thing\nthat cannot be stopped encounters\na thing that cannot be moved."
+    },
+    {
+      "cardId": "mk-etcetera-071",
+      "type": "monikers",
+      "phrase": "A Cyberbu lly",
+      "description": "A person who uses social media to\nlaunch personal attacks, rumors, or\nembarrassing photos or videos.\nVictims have been known to take\ntheir own life. Rebecca Black claims\nto have been a victim after receiving\nmany hateful comments on the\nYouTube page for her song \"Friday.\""
+    },
+    {
+      "cardId": "mk-etcetera-072",
+      "type": "monikers",
+      "phrase": "A Never Nude",
+      "description": "The popular term for a gymnophobic,\na person who fear nakedness.\nThe condition was satirized on the\nshow Arrested Development, where\nthe character Tobias Fanke would\nwear cutoff jean shorts at all times.\nAs of 2014, the condition is sti II not\nrecognized by the DSM."
+    },
+    {
+      "cardId": "mk-etcetera-073",
+      "type": "monikers",
+      "phrase": "A Juggalo",
+      "description": "A fan of the Insane Clown Posse.\nThese individuals gather in the\nwoods each year for an annual\n\"Gathering,\" where they celebrate\ntheir shared culture of wrestling,\ndrinking Faygo soda, painting their\nfaces, and listening to horrible,\nhorrible, horrible music."
+    },
+    {
+      "cardId": "mk-etcetera-074",
+      "type": "monikers",
+      "phrase": "A Doomsday\nPrepper",
+      "description": "The subject of a reality TV show,\nthese individuals plan for their\nsurvival following the breakdown of\ncivilization. They likely have a cache\nof weapons, canned goods for\nmaking \"bunker stew,\" and a belief\nthat drinking one's own purified\nurine is not that big of a deal."
+    },
+    {
+      "cardId": "mk-etcetera-075",
+      "type": "monikers",
+      "phrase": "Your Own Shadow",
+      "description": "The two dimensional silhouette\ncaused by your body blocking a\nlight source. Peter Pan's famously\nran away from him. Some particularly\ncowardly people are afraid of\nthem."
+    },
+    {
+      "cardId": "mk-etcetera-076",
+      "type": "monikers",
+      "phrase": "A Flautist",
+      "description": "A musician who performs using a\nreedless wind instrument. First used\nin 1860, this term is sometimes\nconsidered dated among players of\nthe instrument. Notable performers\ninclude Sir James Galway, Jethro\nTull's Ian Anderson, and Michelle\nFlaherty from American Pie."
+    },
+    {
+      "cardId": "mk-etcetera-077",
+      "type": "monikers",
+      "phrase": "A Coke Mule",
+      "description": "A person who smuggles illicit drugs\nacross national borders. While\nmethods vary, one involves\nswallowing late>< balloons filled with\nthe substance, which is later\nrecovered in their feces. Detection\nof this method is difficu It and is\noften only found on ><-ray."
+    },
+    {
+      "cardId": "mk-etcetera-078",
+      "type": "monikers",
+      "phrase": "The Ego",
+      "description": "One of the the three parts of\nSigmund Freud's model of the\npsyche that constitute mental life. It\nplays an e><ecutive function,\nmediating between raw instinct and\nexternal reality, such as your ability\nto delay immediate pleasure for\nlong term objectives."
+    },
+    {
+      "cardId": "mk-etcetera-079",
+      "type": "monikers",
+      "phrase": "A Manic Pixie\nDream Girl",
+      "description": "Described by Nathan Rabin as a\n\"bubbly, shallow creature that exists\nsolely in the imaginations of\nsensitive writer-directors to teach\nyoung men to embrace life and its\ninfinite mysteries.\" Examples include\nNatalie Portman in Garden State\nand Zooey Deschanel In everything."
+    },
+    {
+      "cardId": "mk-etcetera-080",
+      "type": "monikers",
+      "phrase": "A Pufferfish",
+      "description": "One of the most infamous and\ndeadly culinary dishes. Known as\nFugu in Japan. its preparation is\nstrictly controlled, because its liver,\novaries, and eyes contain fatal levels\nof tetrodotoxin. These areas must\nbe carefully removed to avoid\nasphyxiation and death."
+    },
+    {
+      "cardId": "mk-etcetera-081",
+      "type": "monikers",
+      "phrase": "A Blue Man",
+      "description": "A member of a music collective\nstarring a trio of humanoids played\nby musicians wearing bald caps and\nmakeup. To meet demand, dozens\nof new performers have been\nrecruited, a process satirized on the\nshow Arrested Development with\nthe would-be recruit Tobias FOnke."
+    },
+    {
+      "cardId": "mk-etcetera-082",
+      "type": "monikers",
+      "phrase": "A Nigerian Prince",
+      "description": "A West African practitioner of a\n\"419 scam,\" otherwise known as\nadvance-fee fraud. Victims receive\nemail messages from a person\nclaiming to be displaced royalty\nwho needs their help transferring\nfunds out of their country in\nexchange for future payment."
+    },
+    {
+      "cardId": "mk-etcetera-083",
+      "type": "monikers",
+      "phrase": "A Basic Bitch",
+      "description": "A putdown that describes a woman\nwith a dull personality or lack of\nstyle. The term originated in hip hop\nand was featured in a comedy\nsketch of a doctor diagnosing the\ncondition, which includes symptoms\nsuch as owning scented candles and\nordering Pumpkin Spice lattes."
+    },
+    {
+      "cardId": "mk-etcetera-084",
+      "type": "monikers",
+      "phrase": "A Cosplayer",
+      "description": "A costumed roleplayer who appears\nin public as a fictional character.\nDress is often inspired by manga,\nanime, comic books, video games,\nand films-really anything from nerd\nculture. While not synonymous,\nthere is some overlap with LARPers,\nFurries, and reenactors."
+    },
+    {
+      "cardId": "mk-etcetera-085",
+      "type": "monikers",
+      "phrase": "A Bottom",
+      "description": "In gay culture, a person who prefers\npenetration during intercourse,\nusually through the anus. A survey\nof nearly 56,000 profiles on\ngay.com found that 32% of us\nrespondents preferred bottom, 26%\npreferred top, and 42% preferred\nthe versatile role."
+    },
+    {
+      "cardId": "mk-etcetera-086",
+      "type": "monikers",
+      "phrase": "A nOOb",
+      "description": "A term for a beginner or novice at\nan activity, often used In reference\nto internet activity, such as online\ngaming or computer hacking. The\nterm is spelled using leetspeak, the\nalphabet that uses alternative ASCII\ncharacters as a replacement for\nLatin letters."
+    },
+    {
+      "cardId": "mk-etcetera-087",
+      "type": "monikers",
+      "phrase": "An Eager Beaver",
+      "description": "An idiom for an extremely enthusiastic\nor hard working person that\nsupposedly originated among\nCanadian soldiers in World War II.\nThe term derives from the aquatic,\ndam-building rodents, who\nterraformed much of North America\nwith their wooden structures."
+    },
+    {
+      "cardId": "mk-etcetera-088",
+      "type": "monikers",
+      "phrase": "Bees!",
+      "description": "Flying, communal insects that are\nfound on every continent except\nAntarctica. They often live in large\nhives knows as colonies, with a\nqueen, workers, and drones. Many\nspecies of these produce honey,\nwhich humans harvest in a series of\nhives known as an apiary."
+    },
+    {
+      "cardId": "mk-etcetera-089",
+      "type": "monikers",
+      "phrase": "A Freckleface",
+      "description": "A schoolyard taunt that calls\nattention to a person with a fair\ncomplexion that possesses clusters\nof darker spots comprised of\nconcentrated melanin on the front\nsurface of their head. The condition\nis exacerbated by exposure to the\nsun."
+    },
+    {
+      "cardId": "mk-etcetera-090",
+      "type": "monikers",
+      "phrase": "Florida Man",
+      "description": "The combined exploits of folks from\nthe Sunshine State, collected in a\npopular Twitter profile. Examples\ninclude someone who \"Disguises\nHimself As 'The Sun: Steals Logo\nTowel\" and someone who \"Accidentally\nShoots Himself in the Head\nWhile Celebrating New Year's Eve.•"
+    },
+    {
+      "cardId": "mk-etcetera-091",
+      "type": "monikers",
+      "phrase": "Not a Dick",
+      "description": "A person who avoids acting like an\ninconsiderate jerk. Or anything in\nthe world outside the slang word for\nmale genitalia. Or a person who\ngoes by any other name than the\nnickname for Richard."
+    },
+    {
+      "cardId": "mk-etcetera-092",
+      "type": "monikers",
+      "phrase": "A Bear",
+      "description": "In gay culture. a large, hairy, and\noften hyper-masculine man. It was\nlikely first popularized as a term in\nthe 1979 article \"Who's Who in the\nZoo?\" which categorized gay men\nas one of 7 types of animals.\nSubcategories of this include cubs.\newoks, and grizzlies."
+    },
+    {
+      "cardId": "mk-etcetera-093",
+      "type": "monikers",
+      "phrase": "A Bassoonist",
+      "description": "A person who plays a large double\nreeded woodwind. Despite Its warm,\ndark tone, it is often considered one\nof the most obscure instruments in\nthe modern orchestra. Among its\nmost famous passages is the\nGrandfather's Theme in Sergei\nProkofiev's Peter and the Wolf."
+    },
+    {
+      "cardId": "mk-etcetera-094",
+      "type": "monikers",
+      "phrase": "A LARPer",
+      "description": "A person who assumes the persona\nof a character In a fl ct Iona I setting,\noften created by them. The concept\nwas inspired by Dungeons &\nDragons and other early roleplaying\ngames, but spans genres from high\nfantasy to steampunk to zombie\napocalypse."
+    },
+    {
+      "cardId": "mk-etcetera-095",
+      "type": "monikers",
+      "phrase": "A Chimney Sweep",
+      "description": "A member of an old timey profession\nwho cleared ash and soot from the\narea that provides ventilation for a\nfireplace. This practice once involved\nsignificant child labor, since they\nwere the only ones small enough to\nfit into the space. Most began their\ntraining at age six."
+    },
+    {
+      "cardId": "mk-etcetera-096",
+      "type": "monikers",
+      "phrase": "Colton Burpo",
+      "description": "The subject of the book Heaven is\nfor Real: A Little Boy's Astounding\nStory of His Trip to Heaven and\nBack. He claims to have had visions\nof Jesus riding a rainbow-colored\nhorse while in surgery. Skeptics\nclaim that it was the result of\nhallucinations under anesthesia."
+    },
+    {
+      "cardId": "mk-etcetera-097",
+      "type": "monikers",
+      "phrase": "A Top",
+      "description": "In gay culture, a person who tends to\nprefer the penetrating role, either in\noral or anal sex. In a survey of nearly\n56,000 profiles on gay.com,\nresearchers found that 32% of us\nrespondants preferred bottom, 42%\npreferred versatile. and 26%\npreferred this role."
+    },
+    {
+      "cardId": "mk-etcetera-098",
+      "type": "monikers",
+      "phrase": "Area Man",
+      "description": "A stock character in banal headlines\nfrom The Onion. He believes, for\ninstance. that his \"Intelligence\nProbably Just Too Intimidating For\nMost Women,\" that he \"Could Eat,\"\nand that he is a \"Passionate\nDefender Of What He Imagines\nConstitution To Be.\""
+    },
+    {
+      "cardId": "mk-etcetera-099",
+      "type": "monikers",
+      "phrase": "A Power Bottom",
+      "description": "In gay culture, a controversial term\nthat sometimes refers to a partner\nwho can receive penetration for a\nlong time, sometimes to a partner\nwho is looking for an especially\nwell-endowed top, and sometimes\nto a partner who just prefers being\na bottom."
+    },
+    {
+      "cardId": "mk-etcetera-100",
+      "type": "monikers",
+      "phrase": "8 Maids-a-Milking",
+      "description": "An octet that appears in the song\n\"The Twelve Days of Christmas,\" an\nEnglish Christmas carol that lists a\nseries of gifts given by \"my true\nlove\" on each of those days. These\nindividuals, who tend to dairy cows,\nare first presented on the eighth day\nof Christmas."
+    },
+    {
+      "cardId": "mk-etcetera-101",
+      "type": "monikers",
+      "phrase": "A Boss",
+      "description": "An internet catchphrase that signa Is\na person being like one of these,\nnormally used after completing an\nactivity with particular skill. The\nterm originated in a song by Slim\nThug and was featured in a\nsubsequent parody version from the\ncomedy group The Lonely Island."
+    },
+    {
+      "cardId": "mk-etcetera-102",
+      "type": "monikers",
+      "phrase": "A Booth Babe",
+      "description": "A promotional model, often a\nscantily clad woman, who is paid to\ninteract with potential costumers at\nconventions and other public events.\nNintendo infamously demoed its 3DS\nconsole by chaining them to\nbikini-wearing members of this\nprofession."
+    }
+  ]
+}

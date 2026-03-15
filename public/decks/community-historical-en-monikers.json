@@ -1,0 +1,610 @@
+{
+  "schemaVersion": 1,
+  "deckId": "community-historical-en-monikers",
+  "version": "2026-03-15T07:31:41.441Z",
+  "name": "Community Monikers: Historical Figures",
+  "gameType": "monikers",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "history",
+    "famous people"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "mk-historical-001",
+      "type": "monikers",
+      "phrase": "Georgia O'Keeffe",
+      "description": "An American modernist painter\nwhose work was inspired by the\nNew Mexico landscape surrounding\nher home. She is perhaps most\nfamous for the uncanny resemblance\nof many of her painted\nflowers to female genitalia, though\nshe denied any similarity."
+    },
+    {
+      "cardId": "mk-historical-002",
+      "type": "monikers",
+      "phrase": "Sylvia Plath",
+      "description": "Poet, author, and wife of Ted\nHughes, who was known for her\nconfessional style of poetry as well\nas her novel The Bell Jar. She had a\nhistory of depression, leading to her\nsuicide at 30 from carbon monoxide\npoisoning after sticking her head\nInto an un llt oven."
+    },
+    {
+      "cardId": "mk-historical-003",
+      "type": "monikers",
+      "phrase": "Pablo Escobar",
+      "description": "A Colombian drug lord and \"King of\nCocaine,\" who at his peak trafficked\n15 tons of the drug into the US per\nyear. He was killed by authorities in a\nfirefight in Medellfn. According to a\nrecent BBC report, a number of\nhippos from his menagerie still roam\nthe Colombian countryside."
+    },
+    {
+      "cardId": "mk-historical-004",
+      "type": "monikers",
+      "phrase": "Bob Fosse",
+      "description": "A dancer and choreographer, who\ncreated musicals like All That Jazz\nand Cabaret. His style included\nturned-in knees, bowler hats, canes,\nand copious use of jazz hands-a\ntechnique where the performer's\nhands are shown palms open to the\naudience with fingers splayed wide."
+    },
+    {
+      "cardId": "mk-historical-005",
+      "type": "monikers",
+      "phrase": "Heisenberg",
+      "description": "A German theoretical physicist,\ncreator of the uncertainty principle,\nand winner of a Nobel Prize in\nPhysics for his development of\nquantum mechanics. His name was\nalso used as an alias for the meth\nmanufacturer Walter White in the\nseries Breaking Bad."
+    },
+    {
+      "cardId": "mk-historical-006",
+      "type": "monikers",
+      "phrase": "Rosie the Riveter",
+      "description": "A World War II icon, who represented\nAmerican women working\nfactory jobs. She is most often\nassociated with the \"We Can Do It!\"\nWestinghouse poster, depicting her\nflexing in a blue work shirt and red\nkerchief. Her Canadian precursor\nwas Ronnie the Bren Gun Girl."
+    },
+    {
+      "cardId": "mk-historical-007",
+      "type": "monikers",
+      "phrase": "Hitler's Brain",
+      "description": "A trope first featured in a 60s sci-fi\nfilm, where Nazi scientists remove\nthis organ from the FClhrer's head\nand hide it in the fictional South\nAmerican country of Mandoras. The\nfilm currently holds an approval\nrating of 0% on the metareview site\nRotten Tomatoes."
+    },
+    {
+      "cardId": "mk-historical-008",
+      "type": "monikers",
+      "phrase": "Che Guevara",
+      "description": "A Marxist leader in the Cuban\nRevolution, whose rebellious Image\nhas been commodified on T-shirts\nworldwide. The image, a high\ncontrast version of the Guerril lero\nHeroico photograph by Alberto\nKorda, depicts him with mustache,\nberet, and implacable expression."
+    },
+    {
+      "cardId": "mk-historical-009",
+      "type": "monikers",
+      "phrase": "Homo Erectus",
+      "description": "A distant relative of humans that\nwent extinct approximately 100,000\nyears ago. Latin for \"upright man,\"\nthis hominid walked vertically and\nlikely lived in small hunter-gatherer\nbands, but lacked the large cranial\ncapacity of anatomically modern\nhumans."
+    },
+    {
+      "cardId": "mk-historical-010",
+      "type": "monikers",
+      "phrase": "William Howard Taft",
+      "description": "Secretary of War, 1oth Chief Justice\nof the Supreme Court, and most\nobese president in US history. It is\nunclear whether the story of his\ngetting stuck in a White House\nbathtub is true, but it was confirmed\nthat on at least one occasion, he\ncaused it to overflow."
+    },
+    {
+      "cardId": "mk-historical-011",
+      "type": "monikers",
+      "phrase": "L. Ron Hubbard",
+      "description": "A science fiction author and the\nfounder of Scientology. The religion\nderives from his self-help program\nDianetics, which he modestly\ndescribed as \"a milestone for man\ncomparable to his discovery of fire\nand superior to his invention of the\nwheel and the arch.\""
+    },
+    {
+      "cardId": "mk-historical-012",
+      "type": "monikers",
+      "phrase": "Jackson Pollock",
+      "description": "An abstract expressionist painter\nknown for his drip paintings, which\nwere created by laying the canvas\non the floor and pouring paint from\nabove. His painting, \"No. 5, 1948,\"\nwas sold for $140M in 2006 by\nDavid Geffen-the second most\nexpensive painting ever sold."
+    },
+    {
+      "cardId": "mk-historical-013",
+      "type": "monikers",
+      "phrase": "Caligula",
+      "description": "A Roman emperor known for his\ncruelty, extravagance, and sexual\nperversity. He was the first Roman\nemperor to be assassinated. He is\nbest known for being the title\ncharacter of a semi-pornographic\nfilm starring Malcolm McDowell that\ndepicted his orgies in lengthy detail."
+    },
+    {
+      "cardId": "mk-historical-014",
+      "type": "monikers",
+      "phrase": "Julian Assange",
+      "description": "The Editor-in-chief of WikiLeaks and\nalleged sexual predator. Fearing\nextradition to Sweden for sexual\nassault and the US for espionage\nrelating to the Chelsea Manning\nleaks, he has been living in the\nEcuadorian embassy in London\nsince June 2012."
+    },
+    {
+      "cardId": "mk-historical-015",
+      "type": "monikers",
+      "phrase": "Pavlov's Dog",
+      "description": "A canine from a Russian physiologist's\nclassical conditioning experiments.\nBy ringing a bell associated\nwith food, he could induce the animal\nto salivate even with no food present.\nHe extended these experiments to\nchildren, who underwent surgeries so\nhe could better collect their saliva."
+    },
+    {
+      "cardId": "mk-historical-016",
+      "type": "monikers",
+      "phrase": "Lou Gehrig",
+      "description": "A first baseman for the New York\nYankees and member of baseball's\nHall of Fame. He was the first\nbaseball player to have his uniform\nnumber retired. Late in his career, he\ndeveloped amyotrophic lateral\nsclerosis (ALS), which is now\nsynonymous with his name."
+    },
+    {
+      "cardId": "mk-historical-017",
+      "type": "monikers",
+      "phrase": "Elian Gonzalez",
+      "description": "A Cuban boy who was the subject\nof an International Incident when his\nrelatives attempted to keep him in\nthe US against his father's wishes\nthat he return to Cuba. A famous\nimage from the event shows an\narmed border agent discovering the\nboy cowering in a closet."
+    },
+    {
+      "cardId": "mk-historical-018",
+      "type": "monikers",
+      "phrase": "Jacques Cousteau",
+      "description": "A French conservationist and media\nfigure, who devoted his life to the\nstudy of the ocean. Following his\ndeath, members of his crew alleged\nthat scenes from his films were\nstaged. For instance, pouring bleach\ninto a container to get footage of an\noctopus scrambling out."
+    },
+    {
+      "cardId": "mk-historical-019",
+      "type": "monikers",
+      "phrase": "Khalid Sheikh\nMohammed",
+      "description": "A terrorist known variously as the\n\"principal architect of the 9/11\nattacks\" by the 9/11 Commission\nand \"Ron Jeremy in a pillowcase\" by\nHoratio Sanz. An engineer by\ntraining, he designed a vacuum\ncleaner while being held at a secret\nCIA detention facility in Poland."
+    },
+    {
+      "cardId": "mk-historical-020",
+      "type": "monikers",
+      "phrase": "Richard Pryor",
+      "description": "A comedian once described by\nJerry Seinfeld as \"the Picasso of our\nprofession,\" who was famous for his\nopen discussion of race. In a wellknown\nincident, while freebasing\ncocaine, he poured 151-proof rum\nover his body, lit a match, and ran\ndown the street on fire."
+    },
+    {
+      "cardId": "mk-historical-021",
+      "type": "monikers",
+      "phrase": "Rosa Parks",
+      "description": "A civil rights activist who refused to\ngive up her seat in the colored\nsection of a bus to a white\npassenger. Claudette Colvin had\ndone the same nine months earlier,\nbut NAACP leadership did not want\na pregnant, unmarried teenager as\nthe face of the movement."
+    },
+    {
+      "cardId": "mk-historical-022",
+      "type": "monikers",
+      "phrase": "Kurt Cobain",
+      "description": "The lead singer-songwriter of the\ngrunge rock band Nirvana, known\nfor songs like \"Smells Like Teen\nSpirit\" and \"All Apologies.\" He had a\nhistory of mental illness and drug\nabuse, which led to his death in\n1994 by a self-inflicted shotgun\nwound to the head."
+    },
+    {
+      "cardId": "mk-historical-023",
+      "type": "monikers",
+      "phrase": "God",
+      "description": "The Supreme Being, who monotheists\noften believe to be omniscient,\nomnipotent, omnipresent, and\nresponsible for the creation of the\nuniverse. In the West, he is often\ndepicted as an old white man with a\nlong gray beard."
+    },
+    {
+      "cardId": "mk-historical-024",
+      "type": "monikers",
+      "phrase": "Anne Frank",
+      "description": "A wartime diarist and Holocaust\nvictim. After visiting the famous site\nwhere her family hid from the Nazis\nfor nearly two yea rs, the pop star\nJustin Bieber wrote, \"Truly inspiring\nto be able to come here. Anne was a\ngreat girl. Hopefully she would have\nbeen a belieber.\""
+    },
+    {
+      "cardId": "mk-historical-025",
+      "type": "monikers",
+      "phrase": "Deep Blue",
+      "description": "An IBM computer that defeated\nchess champion Garry Kasparov 2-1,\nwith 3 draws. Kasparov demanded a\nrematch after accusing IBM of\ncheating. They declined and\ndecommissioned it following the\nmatch. Due to its small sample size,\nIt does not have an ELO rating."
+    },
+    {
+      "cardId": "mk-historical-026",
+      "type": "monikers",
+      "phrase": "John Wilkes Booth",
+      "description": "A 19th century actor and Confederate\nsympathizer, who derailed his\nand nearly that of his brother\nEdwin's acting careers when he\nassassinated Abraham Lincoln. The\noriginal plan was to kidnap Lincoln\nand exchange him for a number of\nConfederate POWs."
+    },
+    {
+      "cardId": "mk-historical-027",
+      "type": "monikers",
+      "phrase": "Amelia Earhart",
+      "description": "An American aviatrix, who was the\nfirst woman to fly solo across the\nAtlantic. She vanished mysteriously\nin 1937 while attempting to\ncircumnavigate the globe. Many\nconspiracy theories emerged, from\nher being captured by the Japanese\nto her eloping with her navigator."
+    },
+    {
+      "cardId": "mk-historical-028",
+      "type": "monikers",
+      "phrase": "Vincent Van Gogh",
+      "description": "A Dutch post-Impressionist painter\nknown for his depictions of wheat\nfields, sunflowers. and starry nights.\nHe struggled with mental illness,\nonce slicing off his left ear with a\nrazor and delivering it to a brothel\nas a memento for his friend Paul\nGauguin."
+    },
+    {
+      "cardId": "mk-historical-029",
+      "type": "monikers",
+      "phrase": "Abraham Lincoln",
+      "description": "The 16th President of the US, who\nabolished slavery and led the North\nto victory in the Civil War. He is\noften depicted wearing a top hat\nwith his signature chin curtain\nbeard. He was assassinated by the\nactor John Wilkes Booth while\nattending a play at Ford's Theatre."
+    },
+    {
+      "cardId": "mk-historical-030",
+      "type": "monikers",
+      "phrase": "Dr. Henry Heimlich",
+      "description": "A surgeon credited with inventing a\nmaneuver that prevents suffocation\nwhen a person is choking by\njamming YoUr fist into their\nabdomen. He also advocated for the\ntechnique be used to treat drowning\n(don't do it) and that malaria could\ntreat cancer, Lyme disease, and HIV."
+    },
+    {
+      "cardId": "mk-historical-031",
+      "type": "monikers",
+      "phrase": "Princess Di",
+      "description": "The ex-wife of Prince Charles and\nmother of William and Harry. She\ndied tragically in a Paris car crash,\nwhich was found to be the result of\ngrossly negligent driving and to the\npresence of paparazzi. Her funeral\nwas one of the most viewed events\nin television history."
+    },
+    {
+      "cardId": "mk-historical-032",
+      "type": "monikers",
+      "phrase": "Colonel Sanders",
+      "description": "The founder of Kentucky Fried\nChicken, whose likeness is also used\non their logo. He is easily identified\nby his white hair, goatee,\nblack-rimmed glasses, white suit,\nand string tie. His honorific title\nrefers to a Kentucky tradition rather\nthan a military rank."
+    },
+    {
+      "cardId": "mk-historical-033",
+      "type": "monikers",
+      "phrase": "O.J. Simpson",
+      "description": "Former professional football player,\nactor, and lsotoner spokesman. He\nwas found not guilty of murder in\none of the most public trials of the\n2oth century. He wrote a book\nabout the case called If I Did It and\nis currently incarcerated for the\ntheft of his own sports memorabilia."
+    },
+    {
+      "cardId": "mk-historical-034",
+      "type": "monikers",
+      "phrase": "The Kaiser",
+      "description": "The title of German leader Wilhelm\nII, who ruled until the end of World\nWar I. He was depicted in propaganda\nwith an exaggerated handlebar\nmustache and Pickelhaube, the\nspiked helmet of the Prussian army.\nHe was also once accused of stealing\nour word for \"twenty.\""
+    },
+    {
+      "cardId": "mk-historical-035",
+      "type": "monikers",
+      "phrase": "Jesus H. Christ",
+      "description": "A subversive Jewish rabbi, who\nChristians believe to be the Son of\nGod and Messiah of the Old\nTestament. He allegedly performed\nmiracles, was crucified by the\nRomans, and rose from the dead. A\nmiddle initial is used in various\noaths, but its origin is unclear."
+    },
+    {
+      "cardId": "mk-historical-036",
+      "type": "monikers",
+      "phrase": "George Washington",
+      "description": "The 1st President of the us. John\nAdams claimed that his famed\ntoothlessness was the result of\ncracking Brazil nuts. His false teeth\nwere not made of wood, but\nhippopotamus and elephant ivory.\nHe had a previous pair most likely\nmade from, no Joke, slave teeth."
+    },
+    {
+      "cardId": "mk-historical-037",
+      "type": "monikers",
+      "phrase": "Deep Throat",
+      "description": "The informant who leaked information\nabout Richard Nixon's involvement\nin the Watergate scandal.\nDecades later, former FBI Director\nMark Felt revealed himself as the\ninformant. A Washington Post editor\nchose the alias as a reference to\npornographic film from the 70s."
+    },
+    {
+      "cardId": "mk-historical-038",
+      "type": "monikers",
+      "phrase": "John Hancock",
+      "description": "A Revolutionary War hero and\npresident of the Second Continental\nCongress. He was the first member\nto sign the Declaration of Independence,\nand his signature was so\nprominent that his name is now\nsynonymous with signing one's\nname on a document."
+    },
+    {
+      "cardId": "mk-historical-039",
+      "type": "monikers",
+      "phrase": "Kim Jong-ii",
+      "description": "The former Supreme Leader of the\nDemocratic People's Republic of\nKorea and author of On the Art of\nthe Cinema. His family is at the\ncenter of an elaborate personality\ncult in the so called \"Hermit\nKingdom.\" A famous tumblr collected\nphotos of him looking at things."
+    },
+    {
+      "cardId": "mk-historical-040",
+      "type": "monikers",
+      "phrase": "Mr. Rogers",
+      "description": "The good-natured host of a\nchildren's show that begins with him\nsinging, \"It's a wonderful day in the\nneighborhood,\" putting on a\nsweater and sneakers, and asking\nthe viewers to be his neighbor. Each\nepisode include a trip to the\nNeighborhood of Make-Believe."
+    },
+    {
+      "cardId": "mk-historical-041",
+      "type": "monikers",
+      "phrase": "Josephine Baker",
+      "description": "A performer, civil rights activist, and\nthe first black woman to star in a\nmajor film. She only performed for\nintegrated audiences, though many\nof her acts, such as the exotic Danse\nSauvage wearing a banana skirt,\nstrike a contemporary viewer as sti II\npretty messed up racially."
+    },
+    {
+      "cardId": "mk-historical-042",
+      "type": "monikers",
+      "phrase": "John Henry",
+      "description": "An American folk hero and \"Steel\nDrivin' Man.\" In the myth, he\ncompeted against a steam powered\nhammer to determine who could\ndrill into rock the fastest. He wins\nthe competition, but his heart gives\nout and he dies before being able to\nfully celebrate his victory."
+    },
+    {
+      "cardId": "mk-historical-043",
+      "type": "monikers",
+      "phrase": "Jim Jones",
+      "description": "An American cult leader and\nfounder of the Peoples Temple.\nAfter the group's murder of a\ncongressional delegation, he forced\nthe mass suicide of its 910 members\nin their Guyana compound by\ndrinking grape Kool-Aid laced with\ncyanide and sedatives."
+    },
+    {
+      "cardId": "mk-historical-044",
+      "type": "monikers",
+      "phrase": "Bobby Fischer",
+      "description": "America's greatest chess player and\none of its most famous racists. He\ndefeated Boris Spassky in 1971 to\nbecome world champion. A recluse,\nhe returned to the public eye in the\n90s to invent a new Chess timing\nsystem and to be a public anti-Semite\nbefore dying In Iceland In 2008."
+    },
+    {
+      "cardId": "mk-historical-045",
+      "type": "monikers",
+      "phrase": "Oskar Schindler",
+      "description": "A wealthy German industrialist, who\nprotected his Jewish factory\nemployees from deportation and\ndeath during the Holocaust. By the\nend of World War II, he had spent\nhis entire fortune on bribes to Nazi\nofficials and black-market items for\nthe workers on his famous list."
+    },
+    {
+      "cardId": "mk-historical-046",
+      "type": "monikers",
+      "phrase": "Lot's Wife",
+      "description": "A Biblical figure who was spared\nfrom God's divine Judgment against\nthe cities of Sodom and Gomorrah.\nAs the cities were being destroyed\nby fire and brimstone, her family\nwas told by angels \"look not behind\nthee.\" She did and was transformed\ninto a pillar of salt."
+    },
+    {
+      "cardId": "mk-historical-047",
+      "type": "monikers",
+      "phrase": "Catherine the Great",
+      "description": "The \"Empress and Autocrat of all the\nRussias,\" who led the country's\nGolden Age: an era of revitalization\nand recognition as a great power of\nEurope. She took many lovers during\nher reign, leading to legends about\nher sexual proclivities, including an\nerotic desire for horses."
+    },
+    {
+      "cardId": "mk-historical-048",
+      "type": "monikers",
+      "phrase": "Catherine the\nGreat's Horse",
+      "description": "The alleged equine lover of a\nRussian Empress who led the\ncountry through its Golden Age.\nShe took many lovers during her\nreign, which gave rise to legends\nabout her sexual proclivities,\nincluding an erotic desire for this\nkind of animal."
+    },
+    {
+      "cardId": "mk-historical-049",
+      "type": "monikers",
+      "phrase": "William Henry\nHarrison",
+      "description": "The 9th President of the US, whose\nmost notable accomplishment in\noffice was dying 30 days, 12 hours,\nand 30 minutes into his term. The\ncause of death was pneumonia,\nwhich doctors failed to cure with a\ncombination of opium, leeches, and\nVirginia snakeweed."
+    },
+    {
+      "cardId": "mk-historical-050",
+      "type": "monikers",
+      "phrase": "Tycho Brahe",
+      "description": "A Danish noble and astronomer. At\n20, he lost part of h ls nose In a duel\nand wore a replacement made of\nsilver and gold. He owned a pet elk\nand hired a psychic dwarf named\nJepp. He is rumored to have died\nfrom refusing to leave a banquet to\nurinate, because etiquette."
+    },
+    {
+      "cardId": "mk-historical-051",
+      "type": "monikers",
+      "phrase": "Baby Einstein",
+      "description": "The German theoretical physicist\nand Nobel Prize winner, as an infant.\nHe devised the \"world's most\nfamous equation,\" his mass-energy\nformula E=mc2. This could also refer\nto a series of potentially ineffective\neducation"
+    },
+    {
+      "cardId": "mk-historical-052",
+      "type": "monikers",
+      "phrase": "Anita Hill",
+      "description": "An attorney and academic who was\nthrust into the spotlight when she\naccused Supreme Court nominee\nClarence Thomas of sexual\nharassment. She claimed that\nThomas, among other comments,\nonce asked her \"Who has put pubic\nhair on my Coke?\""
+    },
+    {
+      "cardId": "mk-historical-053",
+      "type": "monikers",
+      "phrase": "Priapus",
+      "description": "A fertility god of the Ancient Greek\ncountryside, where statues were\nerected of him in gardens to protect\nlivestock, plants, and men's virility.\nHe was easily recognized by his\nmassive, permanent erection, which\nled to the medical term for that\ncondition."
+    },
+    {
+      "cardId": "mk-historical-054",
+      "type": "monikers",
+      "phrase": "Judas Iscariot",
+      "description": "One of Jesus's twelve apostles, who\nbetrayed him for 30 pieces of silver.\nHe famously revealed Jesus's\nidentity to Roman soldiers by giving\nhim a kiss, and his name is now\nsynonymous with betraying a\nperson or even an abstract set of\nIdeals."
+    },
+    {
+      "cardId": "mk-historical-055",
+      "type": "monikers",
+      "phrase": "Koko",
+      "description": "A gorilla who was taught by her\ntrainer to sign over 1,000 words of\nGSL (Gorilla Sign Language) and\nallegedly could understand 2,000\nwords of English. She chose a mate\nfrom a series of videotapes in an\nearly form of online dating, though\nthey have not yet mated."
+    },
+    {
+      "cardId": "mk-historical-056",
+      "type": "monikers",
+      "phrase": "A Civil War\nReenactor",
+      "description": "A \"living historian,\" who spends\ntheir free time roleplaying as a\nConfederate or Union soldier in\nAmerica's bloodiest war. A\nparticipant typically falls into one of\nthree classes, from least to most\nauthentic (and unbearable): farb,\nmainstream, and progressive."
+    },
+    {
+      "cardId": "mk-historical-057",
+      "type": "monikers",
+      "phrase": "Montezuma",
+      "description": "The 9th tlatoani of Tenochtitlan and\nruler of the Aztec Triple Alliance.\nDuring their first contact with\nEuropeans, he was killed by\nconquistador Hernan Cortes's men\nas the fled his capital. His \"revenge•\nis a euphemism for contracting\ntraveler's diarrhea in Mexico."
+    },
+    {
+      "cardId": "mk-historical-058",
+      "type": "monikers",
+      "phrase": "Helen Keller",
+      "description": "The deafblind author, leftist, and\nsuffragist, whose teacher, Anne\nSullivan, taught her to communicate\nby spelling words into her hands,\nbeginning with the word \"doll.\"\nTheir relationship was the subject of\nthe biographical play and film The\nMiracle Worker."
+    },
+    {
+      "cardId": "mk-historical-059",
+      "type": "monikers",
+      "phrase": "Betsy Ross",
+      "description": "The person widely believed to have\nsewn the first American flag for\nGeorge Washington. Research by\nthe National Museum of American\nHistory suggests that this story did\nnot enter popular culture until its\n1876 centennial celebration, casting\ndoubt on the veracity of this claim."
+    },
+    {
+      "cardId": "mk-historical-060",
+      "type": "monikers",
+      "phrase": "The elephant that\nThomas Edison\nelectrocuted (Topsy)",
+      "description": "A pachyderm that was smuggled\ninto the US to perform in the circus.\nAfter killing her trainer. she was\npublicly executed by being fed\ncarrots laced with cyanide and\nreceiving a 6,600-volt AC current.\nThe event was captured on film and\nused as a promotional stunt."
+    },
+    {
+      "cardId": "mk-historical-061",
+      "type": "monikers",
+      "phrase": "Bill Clinton",
+      "description": "The 42nd President of the US and\ntenor saxophonist. He was the\nsecond president to be impeached\nin office, due to charges related to\nreceiving oral sex from a White\nHouse intern. The case famously\ndepended \"on what the meaning of\nthe word 'is' is.\""
+    },
+    {
+      "cardId": "mk-historical-062",
+      "type": "monikers",
+      "phrase": "Marie Antoinette",
+      "description": "The Queen of France, who was\nguillotined during the French\nRevolution. Her last words were\n\"Pardon me sir, I meant not to do it,\"\nafter stepping on her executioner's\nfoot. There is no evidence that she\nspoke the phrase most associated\nwith her, \"Let them eat cake.\""
+    },
+    {
+      "cardId": "mk-historical-063",
+      "type": "monikers",
+      "phrase": "Dolly the Sheep",
+      "description": "The first mammal to be cloned from\nan adult stem cell. Taken from a\nmammary gland, she proved that a\ncell from a specific body part could\nbe used to replicate a new\nindividual. She died at 6.5 years old\nof progressive lung disease, which is\nfairly common to her species."
+    },
+    {
+      "cardId": "mk-historical-064",
+      "type": "monikers",
+      "phrase": "The Elephant Man",
+      "description": "The stage name of Joseph Merrick,\nan Englishman with severe\ndeformities who was exhibited as a\nfreak before befriending a doctor\nwho took him in and gave him a\nrelatively good life. He loved theater\nand collected flowers. David Lynch\nmade a biopic loosely based on him."
+    },
+    {
+      "cardId": "mk-historical-065",
+      "type": "monikers",
+      "phrase": "Aaron Burr",
+      "description": "The 3rd Vice President of the us,\nwho shot Alexander Hamilton in a\nduel. He was famously the answer to\nquestion posed in a 1993 commercial\ndirected by Michael Bay for the Got\nMilk? campaign, where a historian is\nunable to answer because his mouth\nIs clogged with peanut butter."
+    },
+    {
+      "cardId": "mk-historical-066",
+      "type": "monikers",
+      "phrase": "The Zodiac Killer",
+      "description": "A serial murderer whose identity is\nstill unknown. His name is a\nreference to letters sent by him to\nnewspapers that included a 408-\ncharacter cipher, which he claimed\nrevealed his identity. In one possible\ndecoding, he claims that his victims\nwill be his slaves In the afterl lfe."
+    },
+    {
+      "cardId": "mk-historical-067",
+      "type": "monikers",
+      "phrase": "Quetzalcoatl",
+      "description": "An ancient Mesoamerican god and\nflying reptile whose name means\n\"feathered serpent.• It has been\nclaimed since the 16th century that\nAztec leader Montezuma II believed\nthe appearance of Spanish conquistador\nHern~n Cort~s signaled his\nreturn."
+    },
+    {
+      "cardId": "mk-historical-068",
+      "type": "monikers",
+      "phrase": "Samson",
+      "description": "A Biblical hero and proto-suicide\nbomber, who once slew an entire\narmy with the jawbone of an ass.\nGod commanded him not to cut his\nhair, but his lover Delilah was bribed\ninto shaving it, leading to his\nimprisonment, blinding, and suicide\nby pulling down a Phlllstlne temple."
+    },
+    {
+      "cardId": "mk-historical-069",
+      "type": "monikers",
+      "phrase": "Rasputin",
+      "description": "A Russian occultist and advisor to\nTsar Nicolas II, who wielded\nextraordinary power over the\nRomanov family. He was assassinated\nby a group of nobles in 1916, and\nhis body was recovered from the\nNeva River having been poisoned,\nshot, beaten, and drowned."
+    },
+    {
+      "cardId": "mk-historical-070",
+      "type": "monikers",
+      "phrase": "Marcel Marceau",
+      "description": "The most famous mime in history,\nwho frequently performed under the\nname Bip the Clown. He referred to\nhis craft as \"the art of silence,\"\ncreating many of the quintessential\nmime performances, including\nWalking in the Wind and Trapped in\na Box."
+    },
+    {
+      "cardId": "mk-historical-071",
+      "type": "monikers",
+      "phrase": "Howard Hughes",
+      "description": "A business magnate and aviator,\nwho set world air speed records\nand created the failed \"Spruce\nGoose.• He suffered from extreme\ngermophobia and OCD, leading to\nrumors of him refusing to cut his\nhair, wearing tissue boxes as shoes,\nand storing his urine in jars."
+    },
+    {
+      "cardId": "mk-historical-072",
+      "type": "monikers",
+      "phrase": "Ham",
+      "description": "One of Noah's sons from the Hebrew\nBible, who was allegedly cursed in\nthe Book of Genesis for seeing \"the\nnakedness of his father\" after Noah\nhad passed out drunk in a tent.\nBecause his name translates to black\nor burnt. this curse was later used to\nexplain dark skin pigmentation."
+    },
+    {
+      "cardId": "mk-historical-073",
+      "type": "monikers",
+      "phrase": "The Earl\nof Sandwich",
+      "description": "The title of John Montagu, the 18th\ncentury British noble who invented\nusing two slices of bread as a\nwrapper for food. The legend is that\nhe was an avid gambler who did not\nhave time for meals between card\ngames, so would have servants bring\nhim meat between slices of bread."
+    },
+    {
+      "cardId": "mk-historical-074",
+      "type": "monikers",
+      "phrase": "Archimedes",
+      "description": "An Ancient Greek scientist who is\nmost famous for determining the\nvolume of objects with irregular\nshapes. The legend is that he solved\nthe problem after noticing the level\nof the water change during a bath.\nHe sprung out naked and took to the\nstreets shouting \"Eureka!\""
+    },
+    {
+      "cardId": "mk-historical-075",
+      "type": "monikers",
+      "phrase": "Carl Sagan",
+      "description": "An astronomer and public intellectual\nbest known for hosting the PBS\nseries Cosmos. He is easily identified\nby his strange vocal delivery of\nwords like \"billions.\" He was also\nresponsible for curating the Pioneer\nplaque and the Golden Record for\nthe Voyager spacecraft."
+    },
+    {
+      "cardId": "mk-historical-076",
+      "type": "monikers",
+      "phrase": "Lady Godiva",
+      "description": "A noble who rode naked on a horse\nthrough the streets of Coventry in\norder to relieve the town of the\nexcessive taxation of her husband.\nShe asked all residents to stay home\nand shut their windows. Only a tailor\ndisregarded her order. who became\nknown as Peeping Tom."
+    },
+    {
+      "cardId": "mk-historical-077",
+      "type": "monikers",
+      "phrase": "The Prophet\nMuhammad (PBUH)",
+      "description": "The religious figure who unified the\nArabian Peninsula under Islam. He\nclaimed to have received a revelation\nfrom God in a cave and began\npreaching a new religion. Visual\ndepictions of Muhammad usually\nshow him with a veiled face or\nrepresented as a flame."
+    },
+    {
+      "cardId": "mk-historical-078",
+      "type": "monikers",
+      "phrase": "Dick Cheney's\npacemaker",
+      "description": "The device regulating the heart\nrhythms of the 46th Vice President\nof the US, who was infamous for\nexpanding the powers of his office\nas well as shooting his best friend in\nthe face. He had its wire less services\ndisabled to prevent terrorists from\npotentially Interfering with It."
+    },
+    {
+      "cardId": "mk-historical-079",
+      "type": "monikers",
+      "phrase": "Zelda Fitzgerald",
+      "description": "A Jazz Age novelist and wife of the\nauthor of The Great Gatsby, who\ndescribed her as the \"first American\nFlapper.• They were also one of the\nfirst celebrity couples of the 20th\ncentury, and their marriage was\nnotorious for its alcohol ism,\nrecriminations, and instability."
+    },
+    {
+      "cardId": "mk-historical-080",
+      "type": "monikers",
+      "phrase": "Charles Ponzi",
+      "description": "A con man whose name is synonymous\nwith a famous scam where a\nswindler pays returns to investors\nusing money paid by new investors.\nHe made millions using this\ntechnique, and after spending time\nin prison, he fled to Florida and sold\nswampland as valuable real estate."
+    },
+    {
+      "cardId": "mk-historical-081",
+      "type": "monikers",
+      "phrase": "Frida Kahlo",
+      "description": "A Mexican painter and feminist icon\nknown for her vivid, tropical\nself-portraits. She is easily identified\nby her prominent unibrow. She was\nmarried to Mexican painter Diego\nRivera, but had numerous affairs\nwith men and women, including\nJosephine Baker."
+    },
+    {
+      "cardId": "mk-historical-082",
+      "type": "monikers",
+      "phrase": "Harriet Tubman",
+      "description": "An escaped slave who became a\nprominent abolitionist and spy\nduring the Civil War. She rescued\nmore than 70 slaves with the help of\nthe Underground Railroad, earning\nher the nickname \"Moses.• Later in\nher life she became a prominent\nfigure in the suffrage movement."
+    },
+    {
+      "cardId": "mk-historical-083",
+      "type": "monikers",
+      "phrase": "Mrs. O'Leary's Cow",
+      "description": "The farm animal blamed for the\nGreat Chicago Fire of 1871, who\nallegedly knocked over a lantern\nwhile being milked. The bovine and\nits owner were posthumously\nexonerated, though not before\ninspiring Brian Wilson to write a\nsong about its pyroki netic abilities."
+    },
+    {
+      "cardId": "mk-historical-084",
+      "type": "monikers",
+      "phrase": "John Wayne\nGacy, Jr.",
+      "description": "A serial killer who raped and\nmurdered more than 30 teenage\nboys in the 70s. storing their remains\nin the crawlspace of his Chicago\nhome. He was well-liked in the\ncommunity, appearing at charity\nevents and children's parties dressed\nas his character Pogo the Clown."
+    },
+    {
+      "cardId": "mk-historical-085",
+      "type": "monikers",
+      "phrase": "Mama Cass",
+      "description": "The stage name of Ellen Naomi\nCohen, a member of the band that\nperformed hits like \"California\nDreamin\" and \"Monday Monday.\"\nShe struggled with obesity most of\nher life, and it was long rumored\nthat she died by choking on either a\nham sandwich or a chicken bone."
+    },
+    {
+      "cardId": "mk-historical-086",
+      "type": "monikers",
+      "phrase": "Archduke\nFranz Ferdinand",
+      "description": "The presumptive heir to the\nAustro-Hungarlan Empire untll his\nassassination in 1914. This acted as\nthe catalyst for the beginning of\nWorld War I. He was an avid hunter.\nkeeping a diary of nearly 300,000\nkills-100,000 of which were\ndisplayed at his castle in Konopi~~."
+    },
+    {
+      "cardId": "mk-historical-087",
+      "type": "monikers",
+      "phrase": "Clarence Thomas",
+      "description": "A Supreme Court Justice who is\nknown for never questioning\nappel I ants during oral arguments.\nHis appointment was clouded by\nallegations of his sexual harassment,\nsuch as asking \"Who has put pubic\nhair on my Coke?\" and referencing\nthe porn star Long Dong Silver."
+    },
+    {
+      "cardId": "mk-historical-088",
+      "type": "monikers",
+      "phrase": "Eva Braun",
+      "description": "The long-time lover and short-time\nwife of Adolf Hitler. They married\nless than 2 days before she killed\nherself with a cyanide capsule while\nHitler shot himself in the head with\nhis Walther PPK pistol. Their bodies\nwere then set on fire as Russian\nforces bombarded Berlin."
+    },
+    {
+      "cardId": "mk-historical-089",
+      "type": "monikers",
+      "phrase": "The Lindbergh Baby",
+      "description": "The infant son of the first aviator to\nfly solo across the Atlantic. He was\nkidnapped in what was called the\n\"Crime of the Century.\" The\ninvestigation lasted over two years,\nculminating in the execution by\nelectric chair of Bruno Hauptmann,\nwho maintained his innocence."
+    },
+    {
+      "cardId": "mk-historical-090",
+      "type": "monikers",
+      "phrase": "Vidal Sassoon",
+      "description": "A hairdresser who created the iconic\nwedge bob cut of the 60s. He\nparlayed his fame into an international\nbrand of beauty products that\nincluded salons, shampoos,\nconditioners, and commercials\nfeaturing the tag line \"If you don't\nlook good, we don't look good.\""
+    },
+    {
+      "cardId": "mk-historical-091",
+      "type": "monikers",
+      "phrase": "John Philip Sousa",
+      "description": "A composer and conductor known\nas \"The March King.• He created\nmany marches still in use today, such\nas \"The Stars and Stripes Forever.•\nHe also designed a large brass\ninstrument that wraps around the\nbody of the musician, which he\nnamed after himself."
+    },
+    {
+      "cardId": "mk-historical-092",
+      "type": "monikers",
+      "phrase": "Typhoid Mary",
+      "description": "A New York City cook and laundress,\nwho is believed to have infected over\n50 people with a deadly bacterial\ndisease. She herself displayed no\nsymptoms of infection and was\nquarantined against her will for\nnearly three decades until her death\nat 70."
+    },
+    {
+      "cardId": "mk-historical-093",
+      "type": "monikers",
+      "phrase": "Grizzly Adams",
+      "description": "A legendary 19th century mountain\nman, who was famous for fighting\nand capturing bears. During a \"play\nfight\" with one of his bears, his scalp\nwas dislodged, leaving the brain\ntissue permanently exposed. He died\nafter a monkey bit into the open\nwound, causing an Infection."
+    },
+    {
+      "cardId": "mk-historical-094",
+      "type": "monikers",
+      "phrase": "Patient Zero",
+      "description": "The medical term for Gai!tan Dugas,\na Canadian flight attendant who was\namong a group of homosexual men\nthat traveled widely and were very\nsexually active, facilitating the early\nspread of the virus. This term now\nrefers to the first case of a condition\nmore generally."
+    },
+    {
+      "cardId": "mk-historical-095",
+      "type": "monikers",
+      "phrase": "Johnnie Cochran",
+      "description": "A lawyer who gained international\nfame for his successful defense of\nO.J. Simpson during his murder trial.\nHe is often associated with the\nphrase \"If it doesn't fit, you must\nacquit,\" referring to the murderer's\ngloves that was supposedly too\nsmall for Simpson's hand."
+    },
+    {
+      "cardId": "mk-historical-096",
+      "type": "monikers",
+      "phrase": "Marion Barry",
+      "description": "The former mayor of Washington,\nDC, who narrowly suffered an\nelectoral defeat after a videotape\nleaked of him smoking crack. He was\nlater reelected mayor after serving\nsix months in federal prison. He is\ncurrently on the DC City Council and\nremains a controversial figure."
+    },
+    {
+      "cardId": "mk-historical-097",
+      "type": "monikers",
+      "phrase": "Schrodinger's Cat",
+      "description": "A thought experiment where this\nfeline is both alive and dead due to\nquantum entanglement. It was\noriginally used to critique an\ninterpretation of quantum mechanics,\nbut now appears often in\npopular culture, ranging from A\nSerious Man to Vu-Gi-Ohl GX."
+    },
+    {
+      "cardId": "mk-historical-098",
+      "type": "monikers",
+      "phrase": "Mr. Wizard",
+      "description": "The eponymous host of a children's\nscience show, who Bill Nye credited\nwith creating a generation of US\nscientists. A popular VouTube\nsupercut shows him being \"a dick\" to\nkids on the show, sarcastically asking\nquestions like \"Haven't you ever seen\na sliced banana before?\""
+    },
+    {
+      "cardId": "mk-historical-099",
+      "type": "monikers",
+      "phrase": "Ruth Bader\nGinsburg",
+      "description": "A Supreme Court Justice known for\nher advocacy for women's rights\nand collection of jabots, a lace neck\nruffle. She has a fervid online\nfollowing, with tumblrs dedicated to\nimages of her with captions such as\n\"Notorious• and «All them fives\nneed to listen when a ten is talking.\""
+    }
+  ]
+}
