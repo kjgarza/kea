@@ -29,7 +29,7 @@ export default function AboutPage() {
 
         {/* Heading */}
         <h1 className="text-4xl md:text-5xl font-bold font-display mb-10 bg-gradient-to-r from-justone via-primary to-trivia bg-clip-text text-transparent">
-          About Kea
+          About
         </h1>
 
         {/* Prose content */}
@@ -84,7 +84,7 @@ export default function AboutPage() {
 
         {/* Footer */}
         <footer className="mt-16 pt-6 border-t border-border/40 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Kea. Built for outdoor adventures.</p>
+          <p>© {new Date().getFullYear()} Kristian Garza. Built for outdoor adventures.</p>
         </footer>
       </div>
     </main>

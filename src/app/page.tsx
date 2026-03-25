@@ -59,7 +59,7 @@ export default function Home() {
             href="/about"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
           >
-            About Kea
+            About
           </Link>
         </motion.div>
       </div>
