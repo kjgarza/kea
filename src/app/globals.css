@@ -172,3 +172,14 @@
     font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
   }
 }
+
+/* Geometric dot pattern overlay for game backgrounds */
+.game-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}

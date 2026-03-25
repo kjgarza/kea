@@ -29,11 +29,19 @@ interface PlayScreenProps {
 }
 
 const gameGradients: Record<GameType, string> = {
-  charades: "from-charades/5 to-charades/10",
-  trivia: "from-trivia/5 to-trivia/10",
-  taboo: "from-taboo/5 to-taboo/10",
-  justone: "from-justone/5 to-justone/10",
-  monikers: "from-monikers/5 to-monikers/10",
+  charades: "from-charades/15 via-charades/8 to-charades/20",
+  trivia: "from-trivia/15 via-trivia/8 to-trivia/20",
+  taboo: "from-taboo/15 via-taboo/8 to-taboo/20",
+  justone: "from-justone/15 via-justone/8 to-justone/20",
+  monikers: "from-monikers/15 via-monikers/8 to-monikers/20",
+};
+
+const gamePatternColors: Record<GameType, string> = {
+  charades: "text-charades",
+  trivia: "text-trivia",
+  taboo: "text-taboo",
+  justone: "text-justone",
+  monikers: "text-monikers",
 };
 
 export function PlayScreen({ deckId }: PlayScreenProps) {
@@ -108,8 +116,6 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
 
   const handleTabooStartTimer = useCallback(() => setTabooTimerActive(true), []);
   const handleTabooAlert = useCallback(() => {
-    setTabooTimerActive(false);
-    setTabooTimerSeconds(TABOO_TIMER_SECONDS);
     playTabooSound(800);
   }, [playTabooSound]);
 
@@ -206,9 +212,10 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   const bgGradient = gameGradients[deck!.gameType];
 
   return (
-    <div className={`min-h-screen flex flex-col bg-gradient-to-b ${bgGradient}`}>
+    <div className={`min-h-screen flex flex-col bg-gradient-to-b ${bgGradient} relative`}>
+      <div className={`game-bg-pattern ${gamePatternColors[deck!.gameType]}`} />
       {/* Header */}
-      <header className="flex items-center justify-between p-4">
+      <header className="flex items-center justify-between p-4 relative z-10">
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link
             href={`/game/${deck!.gameType}`}
@@ -240,7 +247,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
       </header>
 
       {/* Card Display */}
-      <main className="flex-1 flex flex-col min-h-0">
+      <main className="flex-1 flex flex-col min-h-0 relative z-10">
         <div className="flex items-center justify-center p-4 min-h-0 overflow-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -337,11 +344,12 @@ function StartScreen({
   const bgGradient = gameGradients[deck.gameType as GameType];
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient}`}>
+    <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient} relative`}>
+      <div className={`game-bg-pattern ${gamePatternColors[deck.gameType as GameType]}`} />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md"
+        className="w-full max-w-md relative z-10"
       >
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 text-center">
           <motion.div
@@ -419,11 +427,12 @@ function CompleteScreen({
   const bgGradient = gameGradients[deck.gameType as GameType];
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient}`}>
+    <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient} relative`}>
+      <div className={`game-bg-pattern ${gamePatternColors[deck.gameType as GameType]}`} />
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md text-center"
+        className="w-full max-w-md text-center relative z-10"
       >
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8">
           <motion.div
@@ -484,11 +493,12 @@ function RoundCompleteScreen({
   const nextRound = (round + 1) as 1 | 2 | 3;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-monikers/5 to-monikers/10">
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-monikers/15 via-monikers/8 to-monikers/20 relative">
+      <div className="game-bg-pattern text-monikers" />
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md text-center"
+        className="w-full max-w-md text-center relative z-10"
       >
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8">
           <motion.div
