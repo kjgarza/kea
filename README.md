@@ -2,6 +2,8 @@
 
 > Named after the Kea — one of the world's most intelligent and mischievous birds — this app brings the same playful energy to your party game nights.
 
+**Play it:** [kjgarza.github.io/kea](https://kjgarza.github.io/kea/)
+
 A party card games app with 5 game types and LLM-generated card decks. Play directly in the browser with no accounts, no servers, no fuss.
 
 ## Games
