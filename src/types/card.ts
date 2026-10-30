@@ -60,6 +60,17 @@ export interface SituationKeyFact {
 
 export type SituationOrigin = "generated" | "original" | "transcribed";
 
+/**
+ * Result of the generation-time solvability check (#33): a solver model
+ * solved the puzzle against the AI keeper in `questions` questions. A
+ * difficulty signal; absent on puzzles that were never checked.
+ */
+export interface SituationSolvability {
+  questions: number;
+  checkedAt: string; // ISO timestamp
+  model?: string; // solver model
+}
+
 export interface SituationCard extends BaseCard {
   type: "situation";
   title: string;
@@ -71,6 +82,7 @@ export interface SituationCard extends BaseCard {
   contentWarnings?: string[]; // e.g. "suicide", "child death", "gore"
   estMinutes?: number;
   source?: { pack?: string; ref?: string; origin: SituationOrigin };
+  solvability?: SituationSolvability;
 }
 
 // Discriminated union of all card types

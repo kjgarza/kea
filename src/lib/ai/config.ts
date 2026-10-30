@@ -52,3 +52,48 @@ export const THEORY_LIMITS = {
   /** Longest theory the Worker accepts (characters, after trimming). */
   theoryMaxChars: 1200,
 } as const;
+
+// ---------------------------------------------------------------------------
+// Solvability check (#33): solver + ambiguity check, run by the generation
+// scripts against the same keeper and grader players use.
+// ---------------------------------------------------------------------------
+
+export const SOLVABILITY_LIMITS = {
+  /** Questions the solver may ask before it must submit a final theory (spec F19). */
+  maxQuestions: 40,
+  /** Theories the solver may submit in total, the final one included. */
+  maxTheories: 3,
+} as const;
+
+export const SOLVER_MAX_TOKENS = 4000;
+export const SOLVER_EFFORT = "medium" as const;
+export const AMBIGUITY_MAX_TOKENS = 4000;
+export const AMBIGUITY_EFFORT = "medium" as const;
+
+/** Bump when the solver or ambiguity prompts change. */
+export const SOLVER_PROMPT_VERSION = "solver-v1";
+
+// ---------------------------------------------------------------------------
+// Pricing (USD per million tokens), used only to ESTIMATE script costs in
+// logs. Keep every price in this one table. Unknown models are reported as
+// "unpriced" rather than guessed.
+// ---------------------------------------------------------------------------
+
+export interface ModelPricing {
+  inputPerMTok: number;
+  outputPerMTok: number;
+  /** Cache reads; defaults to the input price. */
+  cacheReadPerMTok?: number;
+  /** Cache writes (5-minute TTL); defaults to the input price. */
+  cacheWritePerMTok?: number;
+}
+
+export const MODEL_PRICING: Readonly<Record<string, ModelPricing>> = {
+  [DEFAULT_ANTHROPIC_MODEL]: {
+    inputPerMTok: 4,
+    outputPerMTok: 20,
+    cacheReadPerMTok: 0.2,
+    cacheWritePerMTok: 5,
+  },
+  [DEFAULT_OPENAI_MODEL]: { inputPerMTok: 2.5, outputPerMTok: 10, cacheReadPerMTok: 1.25 },
+};

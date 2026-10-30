@@ -5,6 +5,7 @@ import {
   createStubProvider,
   generateJsonWithRetry,
   isProviderName,
+  openAIUsage,
   type ChatMessage,
   type JsonGenerationRequest,
   type JsonGenerationResult,
@@ -200,7 +201,13 @@ export function createOpenAISdkProvider(model: string = DEFAULT_OPENAI_MODEL): L
       const text = message?.content ?? "";
       if (!text.trim()) throw new ProviderError("empty", "Model returned no text");
       try {
-        return { data: JSON.parse(text), text, model: response.model ?? model, provider: "openai" };
+        return {
+          data: JSON.parse(text),
+          text,
+          model: response.model ?? model,
+          provider: "openai",
+          usage: openAIUsage(response.usage),
+        };
       } catch {
         throw new ProviderError("invalid_json", "Model output is not valid JSON");
       }
@@ -245,4 +252,25 @@ export function getKeeperProvider(options: ProviderOptions = {}): LlmProvider {
     ...options,
     model: options.model ?? (process.env.KEEPER_MODEL?.trim() || undefined),
   });
+}
+
+/**
+ * Providers for the solvability check (#33). The keeper and grader use the
+ * player keeper's provider (`getKeeperProvider`: KEEPER_PROVIDER /
+ * KEEPER_MODEL), so the check tests what players get. The solver and the
+ * ambiguity reviewer default to the same provider and can be changed with
+ * SOLVER_PROVIDER / SOLVER_MODEL.
+ */
+export function getSolvabilityProviders(options: ProviderOptions = {}): {
+  solver: LlmProvider;
+  keeper: LlmProvider;
+  grader: LlmProvider;
+  ambiguity: LlmProvider;
+} {
+  const keeper = getKeeperProvider(options);
+  const solverName = process.env.SOLVER_PROVIDER?.trim() || keeper.name;
+  if (!isProviderName(solverName)) throw new Error(`Unknown SOLVER_PROVIDER "${solverName}"`);
+  const solverModel = process.env.SOLVER_MODEL?.trim() || (solverName === keeper.name ? keeper.model : undefined);
+  const solver = createLlmProvider(solverName, { ...options, model: solverModel });
+  return { solver, keeper, grader: keeper, ambiguity: solver };
 }

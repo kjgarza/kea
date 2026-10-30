@@ -11,3 +11,5 @@ export * from "./grade";
 export * from "./provider";
 export * from "./stub-keeper";
 export * from "./leak-judge";
+export * from "./solver";
+export * from "./usage";

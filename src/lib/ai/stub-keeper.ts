@@ -10,6 +10,7 @@
  */
 import { GRADER_SCHEMA_NAME } from "./grade";
 import type { JsonGenerationRequest } from "./provider";
+import { AMBIGUITY_SCHEMA_NAME, SOLVER_SCHEMA_NAME } from "./solver";
 
 const ASK_FOR_ANSWER = /\b(answer|solution|tell me|respuesta|soluci[oó]n|dime)\b/i;
 
@@ -57,7 +58,44 @@ export function stubGraderRespond(request: JsonGenerationRequest) {
   return { correctFactIds };
 }
 
-/** Offline provider callback for every Worker endpoint, routed by schema name. */
+/**
+ * Offline solver (solvability check, #33): asks a few generic questions, then
+ * submits the setup itself as its theory. It cannot solve anything; it only
+ * exercises the pipeline without API keys.
+ */
+const STUB_SOLVER_QUESTIONS = [
+  "Did someone die?",
+  "Is anyone in danger?",
+  "Did someone act on purpose?",
+  "Is the place important?",
+];
+
+export function stubSolverRespond(request: JsonGenerationRequest) {
+  const user = userText(request);
+  const asked = (user.match(/^\d+\. Q: /gm) ?? []).length;
+  const outOfQuestions = /no questions left/i.test(user);
+  if (!outOfQuestions && asked < STUB_SOLVER_QUESTIONS.length) {
+    return { action: "ask", text: STUB_SOLVER_QUESTIONS[asked] };
+  }
+  const setup = request.system.split("SETUP:\n")[1] ?? "I do not know.";
+  return { action: "theory", text: setup.trim() };
+}
+
+/** Offline ambiguity check: never flags anything. */
+export function stubAmbiguityRespond() {
+  return { ambiguous: false, alternative: "", reason: "" };
+}
+
+/** Offline provider callback for every Worker endpoint and script prompt, routed by schema name. */
 export function stubRespond(request: JsonGenerationRequest) {
-  return request.schemaName === GRADER_SCHEMA_NAME ? stubGraderRespond(request) : stubKeeperRespond(request);
+  switch (request.schemaName) {
+    case GRADER_SCHEMA_NAME:
+      return stubGraderRespond(request);
+    case SOLVER_SCHEMA_NAME:
+      return stubSolverRespond(request);
+    case AMBIGUITY_SCHEMA_NAME:
+      return stubAmbiguityRespond();
+    default:
+      return stubKeeperRespond(request);
+  }
 }

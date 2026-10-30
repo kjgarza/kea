@@ -41,6 +41,17 @@ export interface JsonGenerationRequest {
   effort?: "low" | "medium" | "high";
 }
 
+/**
+ * Token usage reported by the provider for one call. Cache fields are
+ * Anthropic-only (OpenAI's cached prompt tokens are folded into input).
+ */
+export interface TokenUsage {
+  inputTokens: number;
+  outputTokens: number;
+  cacheReadInputTokens?: number;
+  cacheCreationInputTokens?: number;
+}
+
 export interface JsonGenerationResult {
   /** Parsed JSON. Still untrusted: validate it against your own rules. */
   data: unknown;
@@ -48,6 +59,29 @@ export interface JsonGenerationResult {
   text: string;
   model: string;
   provider: ProviderName;
+  /** Token usage, when the provider reports it (the stub does not). */
+  usage?: TokenUsage;
+}
+
+function count(value: unknown): number {
+  return typeof value === "number" && Number.isFinite(value) && value > 0 ? value : 0;
+}
+
+/** Read an Anthropic Messages API `usage` object. */
+export function anthropicUsage(raw: unknown): TokenUsage | undefined {
+  if (!raw || typeof raw !== "object") return undefined;
+  const u = raw as Record<string, unknown>;
+  const usage: TokenUsage = { inputTokens: count(u.input_tokens), outputTokens: count(u.output_tokens) };
+  if (u.cache_read_input_tokens !== undefined) usage.cacheReadInputTokens = count(u.cache_read_input_tokens);
+  if (u.cache_creation_input_tokens !== undefined) usage.cacheCreationInputTokens = count(u.cache_creation_input_tokens);
+  return usage;
+}
+
+/** Read an OpenAI Chat Completions `usage` object. */
+export function openAIUsage(raw: unknown): TokenUsage | undefined {
+  if (!raw || typeof raw !== "object") return undefined;
+  const u = raw as Record<string, unknown>;
+  return { inputTokens: count(u.prompt_tokens), outputTokens: count(u.completion_tokens) };
 }
 
 export interface LlmProvider {
@@ -129,6 +163,7 @@ interface AnthropicMessageResponse {
   model?: string;
   content?: AnthropicContentBlock[];
   stop_reason?: string;
+  usage?: unknown;
 }
 
 function toAnthropicContent(content: ChatMessage["content"]) {
@@ -200,7 +235,13 @@ export function createAnthropicProvider(options: AnthropicProviderOptions): LlmP
       if (json.stop_reason === "max_tokens" && !text.trim()) {
         throw new ProviderError("truncated", "Model hit max_tokens before answering");
       }
-      return { data: parseJsonText(text), text, model: json.model ?? model, provider: "anthropic" };
+      return {
+        data: parseJsonText(text),
+        text,
+        model: json.model ?? model,
+        provider: "anthropic",
+        usage: anthropicUsage(json.usage),
+      };
     },
   };
 }
@@ -218,6 +259,7 @@ export interface OpenAIProviderOptions {
 
 interface OpenAIChatResponse {
   model?: string;
+  usage?: unknown;
   choices?: { message?: { content?: string | null; refusal?: string | null }; finish_reason?: string }[];
 }
 
@@ -272,7 +314,13 @@ export function createOpenAIProvider(options: OpenAIProviderOptions): LlmProvide
       const choice = json.choices?.[0];
       if (choice?.message?.refusal) throw new ProviderError("refusal", "Model declined the request");
       const text = choice?.message?.content ?? "";
-      return { data: parseJsonText(text), text, model: json.model ?? model, provider: "openai" };
+      return {
+        data: parseJsonText(text),
+        text,
+        model: json.model ?? model,
+        provider: "openai",
+        usage: openAIUsage(json.usage),
+      };
     },
   };
 }
