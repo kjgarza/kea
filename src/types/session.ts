@@ -30,11 +30,57 @@ export interface StandardSessionState extends BaseSessionState {
   gameType: Exclude<GameType, "monikers" | "situation">;
 }
 
-// Situation puzzles: the card stack picks the next puzzle. Per-puzzle state
-// (mode, transcript, facts, hints, reveal — spec §4.4) is added with the
-// keeper screen (#25).
+// Situation puzzles (spec §4.4): the card stack picks the next puzzle, and
+// `puzzle` holds the state of the one being played (null = puzzle picker).
+export type SituationMode = "human" | "ai" | "solo";
+
+/** Fixed keeper answer vocabulary (spec §6.2). */
+export type KeeperAnswer = "yes" | "no" | "irrelevant" | "partly" | "rephrase";
+
+export type SituationOutcome = "solved" | "gave_up";
+
+export interface SituationTranscriptEntry {
+  q: string;
+  a: KeeperAnswer;
+  factIds: string[];
+  at: string;
+}
+
+export interface SituationTheory {
+  text: string;
+  verdict: "solved" | "close" | "not_yet";
+}
+
+export interface SituationPuzzleState {
+  /** The card being played (always equals the session's currentCardId). */
+  cardId: string;
+  /**
+   * When the setup was first shown (ISO). Null while the content-warning
+   * interstitial is waiting to be accepted (F5: warnings before the setup).
+   */
+  startedAt: string | null;
+  /** AI/solo modes (#31): question/answer log. Empty in human mode. */
+  transcript: SituationTranscriptEntry[];
+  /** Key-fact ids found so far (human: ticked by the keeper). */
+  factsRevealed: string[];
+  hintsUsed: number;
+  /** Human mode: the keeper confirmed the reveal and sees the crib sheet. */
+  solutionRevealed: boolean;
+  /** Solo mode (#32): submitted theories and their verdicts. */
+  theories: SituationTheory[];
+  /** Human mode: questions counted by the keeper (+1 button). */
+  questionCount: number;
+  /** Set when the puzzle ends (solved / gave up); drives the end screen. */
+  outcome: SituationOutcome | null;
+  endedAt: string | null;
+}
+
 export interface SituationSessionState extends BaseSessionState {
   gameType: "situation";
+  mode: SituationMode;
+  /** Session language (from the deck), used for keeper answers. */
+  language: "en" | "es";
+  puzzle: SituationPuzzleState | null;
 }
 
 // Union of all session types. New game types add their session state here

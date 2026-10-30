@@ -51,11 +51,67 @@ export const es: Messages = {
   "decks.empty": "Todavía no hay barajas para este juego.",
   "decks.contentWarnings": "Advertencias de contenido: {warnings}",
 
-  // Situation puzzles (placeholder screen until the keeper view, #25)
+  // Situation puzzles
   "situation.card.badge": "Enigma",
   "situation.card.contentWarnings": "Advertencias de contenido: {warnings}",
-  "situation.play.nextPuzzle": "Siguiente enigma",
-  "situation.play.skip": "Saltar",
-  "situation.play.keeperComingSoon": "La vista del narrador llegará pronto. Lee la situación en voz alta y responde sí o no a las preguntas.",
   "situation.complete.title": "¡Has jugado todos los enigmas!",
+
+  // Situation: puzzle picker (never shows solutions)
+  "situation.picker.title": "Elige un enigma",
+  "situation.picker.subtitle": "El narrador lee la situación en voz alta; los jugadores hacen preguntas de sí o no.",
+  "situation.picker.left": "Quedan {count}",
+  "situation.picker.nextUp": "Siguiente",
+  "situation.picker.minutes": "~{minutes} min",
+  "situation.picker.warnings": "Advertencias: {warnings}",
+
+  // Situation: content-warning interstitial
+  "situation.warnings.title": "Advertencia de contenido",
+  "situation.warnings.body": "Este enigma trata sobre:",
+  "situation.warnings.continue": "Mostrar la situación",
+  "situation.warnings.choose": "Elegir otro enigma",
+
+  // Situation: setup + reveal confirmation
+  "situation.setup.readAloud": "Lee en voz alta",
+  "situation.setup.reveal": "Narrador: ver solución",
+  "situation.setup.back": "Otro enigma",
+  "situation.reveal.title": "¿Mostrar la solución?",
+  "situation.reveal.body": "Solo debe mirar el narrador. Asegúrate de que los jugadores no vean la pantalla.",
+  "situation.reveal.confirm": "Soy el narrador, mostrar",
+
+  // Situation: human keeper crib sheet
+  "situation.keeper.time": "Tiempo",
+  "situation.keeper.questions": "Preguntas",
+  "situation.keeper.addQuestion": "+1 pregunta",
+  "situation.keeper.removeQuestion": "Deshacer última pregunta",
+  "situation.keeper.setup": "Situación",
+  "situation.keeper.solution": "Solución",
+  "situation.keeper.facts": "Hechos clave {found}/{total}",
+  "situation.keeper.factsHelp": "Toca un hecho cuando los jugadores lo descubran.",
+  "situation.keeper.hints": "Pistas",
+  "situation.keeper.hint": "Pista {number}",
+  "situation.keeper.giveHint": "Dar pista {number}",
+  "situation.keeper.noMoreHints": "No hay más pistas",
+  "situation.keeper.solved": "Resuelto",
+  "situation.keeper.giveUp": "Rendirse",
+  "situation.keeper.modeUnavailable": "Este modo de narrador aún no está disponible.",
+
+  // Situation: end screen
+  "situation.end.solved": "¡Resuelto!",
+  "situation.end.gaveUp": "Esto es lo que pasó",
+  "situation.end.solution": "Solución",
+  "situation.end.time": "Tiempo",
+  "situation.end.questions": "Preguntas",
+  "situation.end.hints": "Pistas",
+  "situation.end.facts": "Hechos",
+  "situation.end.transcript": "Preguntas hechas",
+  "situation.end.next": "Siguiente enigma",
+  "situation.end.finish": "Terminar",
+  "situation.end.choose": "Elegir enigma",
+
+  // Situation: keeper answer vocabulary (spec §6.2)
+  "situation.answer.yes": "Sí",
+  "situation.answer.no": "No",
+  "situation.answer.irrelevant": "Irrelevante",
+  "situation.answer.partly": "En parte",
+  "situation.answer.rephrase": "Reformula",
 };

@@ -14,9 +14,9 @@ import {
 export type { SituationAction } from "./logic";
 
 /**
- * Situation puzzles. Placeholder module (#24): shows each puzzle's warnings
- * and setup so decks can be listed and opened; the human keeper view (#25)
- * replaces the PlayView and extends the session state.
+ * Situation puzzles: puzzle picker → content warnings → setup → keeper
+ * (mode-specific panel, see src/components/situation/keeper-panels.tsx) →
+ * end screen, then the next puzzle along the card stack.
  */
 export const situationModule = defineGameModule<
   SituationSessionState,
@@ -25,7 +25,7 @@ export const situationModule = defineGameModule<
 >({
   type: "situation",
   createSession: (deck, opts) => createSituationSession(deck, opts),
-  reduce: (session, action) => reduceSituation(session, action),
+  reduce: reduceSituation,
   isComplete: isSituationComplete,
   progress: situationProgress,
   cardIds: situationCardIds,

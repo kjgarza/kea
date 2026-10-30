@@ -1,52 +1,89 @@
 "use client";
 
-import { AlertTriangle, ArrowRight, Search, SkipForward } from "lucide-react";
+import { AlertTriangle, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import type { SituationCard } from "@/types/card";
 import type { SituationSessionState } from "@/types/session";
 import type { PlayViewProps } from "@/lib/game/modules/types";
-import type { SituationAction } from "@/lib/game/modules/situation/logic";
+import {
+  getMode,
+  getPuzzle,
+  pickableCardIds,
+  situationPhase,
+  type SituationAction,
+} from "@/lib/game/modules/situation/logic";
 import { useLocale } from "@/lib/i18n";
-import { CardStage } from "@/components/play/card-stage";
-import { ActionBar, ActionButton } from "@/components/play/action-bar";
+import { ContentWarningScreen } from "./content-warning-screen";
+import { SituationEndScreen } from "./end-screen";
+import { KEEPER_PANELS } from "./keeper-panels";
+import { PuzzlePicker } from "./puzzle-picker";
 
 type Props = PlayViewProps<SituationSessionState, SituationCard, SituationAction>;
 
+const now = () => new Date().toISOString();
+
 /**
- * Placeholder situation screen: content warnings first (F5), then the setup
- * to read aloud. The solution is not shown here; the keeper view (#25)
- * replaces this with the reveal flow.
+ * Situation puzzles: picker → content warnings (F5) → mode-specific keeper
+ * panel (setup, reveal, crib sheet; see keeper-panels.tsx) → end screen
+ * (F11) → next puzzle along the card stack. All per-puzzle state lives in the
+ * session, so a reload resumes exactly where the keeper was.
  */
-export function SituationPlayView({ deck, currentCard, dispatch }: Props) {
+export function SituationPlayView({ deck, session, currentCard, dispatch }: Props) {
   const { t } = useLocale(deck.language);
+  const phase = situationPhase(session);
+  const puzzle = getPuzzle(session);
+
+  if (phase === "picker" || !puzzle) {
+    const byId = new Map(deck.cards.map((c) => [c.cardId, c]));
+    const cards = pickableCardIds(session)
+      .map((id) => byId.get(id))
+      .filter((c): c is SituationCard => Boolean(c));
+    return (
+      <PuzzlePicker
+        cards={cards}
+        onPick={(cardId) => dispatch({ type: "pick", cardId, at: now() })}
+        t={t}
+      />
+    );
+  }
+
   if (!currentCard) return null;
 
-  return (
-    <>
-      <CardStage>
-        <SituationSetupCard card={currentCard} language={deck.language} />
-      </CardStage>
-      <p className="px-6 text-center text-sm text-muted-foreground">
-        {t("situation.play.keeperComingSoon")}
-      </p>
-      <ActionBar>
-        <ActionButton
-          variant="pass"
-          onClick={() => dispatch({ type: "skip" })}
-          icon={<SkipForward className="h-5 w-5" />}
-        >
-          {t("situation.play.skip")}
-        </ActionButton>
-        <ActionButton
-          variant="primary"
-          onClick={() => dispatch({ type: "next" })}
-          icon={<ArrowRight className="h-5 w-5" />}
-        >
-          {t("situation.play.nextPuzzle")}
-        </ActionButton>
-      </ActionBar>
-    </>
-  );
+  switch (phase) {
+    case "warnings":
+      return (
+        <ContentWarningScreen
+          card={currentCard}
+          onContinue={() => dispatch({ type: "acceptWarnings", at: now() })}
+          onBack={() => dispatch({ type: "backToPicker" })}
+          t={t}
+        />
+      );
+    case "playing": {
+      const Panel = KEEPER_PANELS[getMode(session)];
+      return (
+        <Panel
+          deck={deck}
+          session={session}
+          puzzle={puzzle}
+          card={currentCard}
+          dispatch={dispatch}
+          t={t}
+        />
+      );
+    }
+    case "ended":
+      return (
+        <SituationEndScreen
+          card={currentCard}
+          puzzle={puzzle}
+          hasMore={session.remainingCardIds.length > 0}
+          onNext={() => dispatch({ type: "next", at: now() })}
+          onChoose={() => dispatch({ type: "next", at: now(), toPicker: true })}
+          t={t}
+        />
+      );
+  }
 }
 
 interface SetupCardProps {
@@ -55,7 +92,10 @@ interface SetupCardProps {
   language?: string;
 }
 
-/** The front of a situation card: title, warnings, setup. */
+/**
+ * Compact card face: title, warnings, setup (no solution). Kept for reuse in
+ * lists/previews; the play flow uses `SetupScreen` for large type.
+ */
 export function SituationSetupCard({ card, language }: SetupCardProps) {
   const { t } = useLocale(language);
   const warnings = card.contentWarnings ?? [];
