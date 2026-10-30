@@ -12,6 +12,9 @@
  * that are ambiguous, go to decks/drafts/<deckId>.json instead of
  * public/decks/. Needs ANTHROPIC_API_KEY (or KEEPER_PROVIDER/SOLVER_PROVIDER);
  * skip it with --skip-solvability.
+ *
+ * Case decks (#36) are validated with the case validator and the generation
+ * limits in scripts/lib/case-generation.ts (text-only evidence).
  */
 
 import { parseArgs } from "util";
@@ -27,8 +30,9 @@ import { DRAFTS_DIR, runSolvabilityStage, type SolvabilityProviders } from "./li
 import { validateCard, deduplicateCards } from "./lib/validators";
 import { createFileAssetExists } from "./lib/case-assets";
 import { finalizeSituationCards } from "./lib/situation-generation";
+import { finalizeCaseCards } from "./lib/case-generation";
 import { buildPrompt, type PromptContext } from "./prompts";
-import type { Card, SituationCard } from "../src/types/card";
+import type { Card, CaseCard, SituationCard } from "../src/types/card";
 import type { Deck } from "../src/types/deck";
 import { updateDeckIndexFile } from "./lib/deck-index";
 
@@ -158,6 +162,16 @@ async function generateDeck(
       uniqueCards as SituationCard[],
       config.situation
     );
+    for (const { cardId, reason } of finalized.rejected) {
+      console.warn(`   ⚠️  Dropped ${cardId}: ${reason}`);
+    }
+    uniqueCards = finalized.cards;
+  }
+
+  // Case files: generation limits (8–15 text-only evidence items, 3–5
+  // questions, unlock chains, walkthrough citing real evidence ids)
+  if (config.gameType === "case") {
+    const finalized = finalizeCaseCards(uniqueCards as CaseCard[]);
     for (const { cardId, reason } of finalized.rejected) {
       console.warn(`   ⚠️  Dropped ${cardId}: ${reason}`);
     }

@@ -173,32 +173,122 @@ describe("toSpanishDeckId", () => {
   });
 });
 
-describe("case decks (not translated until #36)", () => {
+describe("case decks (#36)", () => {
   const caseCard: CaseCard = {
     cardId: "case-001",
     type: "case",
     title: "The Missing Trophy",
     briefing: "The trophy is gone.",
-    evidence: [{ id: "note", title: "Note", kind: "document", content: "Locked at 3." }],
-    questions: [{ id: "who", prompt: "Who?", answer: "Lena", acceptedVariants: [], points: 1 }],
-    walkthrough: "Lena took it.",
+    evidence: [
+      { id: "note", title: "Note", kind: "document", content: "Locked at **15:00**." },
+      { id: "photo", title: "Receipt", kind: "image", src: "receipt.svg", unlockAfter: ["note"] },
+      { id: "calls", title: "Call log", kind: "phone_log", content: "| 16:05 | Engraver |" },
+    ],
+    questions: [
+      { id: "who", prompt: "Who?", answer: "Lena", acceptedVariants: ["the coach"], points: 2 },
+      { id: "where", prompt: "Where?", answer: "The engraver", acceptedVariants: [], points: 1 },
+    ],
+    walkthrough: "Lena called the engraver (`calls`) and kept the receipt (`photo`).",
+    contentWarnings: ["theft"],
+    estMinutes: 15,
   };
 
-  test("case is not a translatable game type", () => {
-    expect(isTranslatableGameType("case")).toBe(false);
-    expect(isTranslatableGameType("situation")).toBe(true);
+  /** A mocked model that translates a case and mangles ids/structure. */
+  function spanishCase(card: Record<string, unknown>): Record<string, unknown> {
+    const c = card as unknown as CaseCard;
+    return {
+      ...card,
+      title: `ES ${c.title}`,
+      briefing: `ES ${c.briefing}`,
+      // Reordered, with a made-up kind/src that must be ignored.
+      evidence: [...c.evidence].reverse().map((e) => ({
+        ...e,
+        title: `ES ${e.title}`,
+        kind: "document",
+        src: "evil.svg",
+        unlockAfter: [],
+        ...(e.content !== undefined ? { content: `ES ${e.content}` } : { content: "invented" }),
+      })),
+      questions: c.questions.map((q) => ({
+        ...q,
+        prompt: `ES ${q.prompt}`,
+        answer: `ES ${q.answer}`,
+        acceptedVariants: q.id === "who" ? ["la entrenadora", "Lena", ""] : [],
+        points: 99,
+      })),
+      walkthrough: "ES Lena llamó al grabador (`calls`) y guardó el recibo (`photo`).",
+      contentWarnings: ["Robo"],
+    };
+  }
+
+  test("case is a translatable game type", () => {
+    expect(isTranslatableGameType("case")).toBe(true);
   });
 
-  test("translateCardsWith refuses case cards with a clear error", async () => {
-    const { translate, prompts } = mockTranslator();
-    await expect(translateCardsWith([caseCard], "case", translate)).rejects.toThrow(
-      /case decks cannot be translated automatically yet/
-    );
-    expect(prompts).toEqual([]);
+  test("extract sends text fields and ids only (no kind, src, unlockAfter or points)", () => {
+    const fields = extractTranslatableFields(caseCard);
+    expect(fields).toEqual({
+      cardId: "case-001",
+      type: "case",
+      title: "The Missing Trophy",
+      briefing: "The trophy is gone.",
+      evidence: [
+        { id: "note", title: "Note", content: "Locked at **15:00**." },
+        { id: "photo", title: "Receipt" },
+        { id: "calls", title: "Call log", content: "| 16:05 | Engraver |" },
+      ],
+      questions: [
+        { id: "who", prompt: "Who?", answer: "Lena", acceptedVariants: ["the coach"] },
+        { id: "where", prompt: "Where?", answer: "The engraver", acceptedVariants: [] },
+      ],
+      walkthrough: caseCard.walkthrough,
+      contentWarnings: ["theft"],
+    });
   });
 
-  test("case cards pass through extract/merge untouched", () => {
-    expect(extractTranslatableFields(caseCard)).toEqual({ cardId: "case-001", type: "case" });
-    expect(mergeTranslation(caseCard, { title: "ES" })).toBe(caseCard);
+  test("translateCardsWith translates a case with a mocked model and keeps ids, kinds, src and unlocks", async () => {
+    const { translate, prompts } = mockTranslator(spanishCase);
+    const { cards, failedBatches } = await translateCardsWith([caseCard], "case", translate);
+    expect(failedBatches).toBe(0);
+    expect(prompts).toHaveLength(1);
+    expect(prompts[0]).toContain("Translate these case game cards to Spanish");
+
+    const out = cards[0] as CaseCard;
+    expect(out.cardId).toBe("case-001");
+    expect(out.title).toBe("ES The Missing Trophy");
+    expect(out.briefing).toBe("ES The trophy is gone.");
+    expect(out.evidence).toEqual([
+      { id: "note", title: "ES Note", kind: "document", content: "ES Locked at **15:00**." },
+      { id: "photo", title: "ES Receipt", kind: "image", src: "receipt.svg", unlockAfter: ["note"] },
+      { id: "calls", title: "ES Call log", kind: "phone_log", content: "ES | 16:05 | Engraver |" },
+    ]);
+    expect(out.questions).toEqual([
+      { id: "who", prompt: "ES Who?", answer: "ES Lena", acceptedVariants: ["la entrenadora", "Lena"], points: 2 },
+      // An empty translated variant list keeps the original variants.
+      { id: "where", prompt: "ES Where?", answer: "ES The engraver", acceptedVariants: [], points: 1 },
+    ]);
+    expect(out.walkthrough).toBe("ES Lena llamó al grabador (`calls`) y guardó el recibo (`photo`).");
+    expect(out.contentWarnings).toEqual(["robo"]);
+    expect(out.estMinutes).toBe(15);
+  });
+
+  test("a walkthrough that drops or invents evidence citations is rejected", () => {
+    const dropped = mergeTranslation(caseCard, { walkthrough: "ES Lena (`calls`)." }) as CaseCard;
+    expect(dropped.walkthrough).toBe(caseCard.walkthrough);
+    const invented = mergeTranslation(caseCard, {
+      walkthrough: "ES (`calls`) (`photo`) (`llamadas`)",
+    }) as CaseCard;
+    expect(invented.walkthrough).toBe(caseCard.walkthrough);
+  });
+
+  test("missing items and non-string fields keep the original", () => {
+    const out = mergeTranslation(caseCard, {
+      title: 42,
+      evidence: [{ id: "note", title: "" }],
+      questions: "nope",
+    }) as CaseCard;
+    expect(out.title).toBe(caseCard.title);
+    expect(out.evidence).toEqual(caseCard.evidence);
+    expect(out.questions).toEqual(caseCard.questions);
   });
 });

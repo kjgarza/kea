@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "deckId": "saltmarsh-bay-es-case",
+  "version": "2026-10-30T18:11:15.765Z",
+  "name": "Expedientes de Saltmarsh Bay",
+  "gameType": "case",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "museo",
+    "robo"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "halden-chronometer",
+      "type": "case",
+      "title": "El cronómetro Halden",
+      "briefing": "A las **09:10 del martes**, la conservadora Ines Duarte abrió la vitrina de la Sala 3 del Museo Marítimo de Saltmarsh Bay para limpiar el tesoro del museo: el **cronómetro Halden**, de latón, que marcó la hora en un barco ballenero. No era el cronómetro Halden. Alguien lo había cambiado por una copia.\n\nEl museo abrió el domingo, estuvo cerrado todo el lunes, y la llave de la vitrina nunca sale de la caja electrónica de llaves del despacho de dirección. No hay nada roto y no saltó ninguna alarma.\n\nLa junta del museo quiere respuestas antes de que llegue la policía: **quién** hizo el cambio, **cuándo**, **de quién era la tarjeta** que abrió la caja de llaves, **cómo** salió el cronómetro auténtico del edificio y **dónde** está ahora.",
+      "evidence": [
+        {
+          "id": "condition-report",
+          "title": "Informe de estado, Sala 3",
+          "kind": "document",
+          "content": "**Museo Marítimo de Saltmarsh Bay — revisión de estado**\n\n**Sábado, 17:30** (I. Duarte): cronómetro Halden, Sala 3. La placa de serie dice **n.º 1847**. Funciona con normalidad. Vitrina cerrada; llave D3 devuelta a la caja de llaves.\n\n**Martes, 09:10** (I. Duarte): el objeto de la vitrina NO es el original. La placa de serie dice **n.º 1874**. No hace tictac.\n\n*Nota:* la copia de los voluntarios para la mesa de tocar del Aula educativa lleva a propósito el número **1874**, para que nunca se puedan confundir. La mesa del Aula educativa está vacía esta mañana."
+        },
+        {
+          "id": "replica-plate",
+          "title": "Foto del objeto hallado en la vitrina",
+          "kind": "image",
+          "src": "replica-plate.svg"
+        },
+        {
+          "id": "floor-plan",
+          "title": "Plano del museo",
+          "kind": "map",
+          "src": "floor-plan.svg"
+        },
+        {
+          "id": "building-log",
+          "title": "Registro de accesos del edificio (exportación)",
+          "kind": "document",
+          "content": "Exportación del sistema de accesos, sábado 17:00 – martes 09:30. Cada tarjeta es personal; las de voluntarios empiezan por VOL-.\n\n| Día | Hora | Puerta / caja | Tarjeta | Evento |\n|---|---|---|---|---|\n| Sáb | 17:28 | Caja de llaves: D3 (vitrina Sala 3) | ID-04 (I. Duarte) | llave retirada |\n| Sáb | 17:34 | Caja de llaves: D3 | ID-04 (I. Duarte) | llave devuelta |\n| Dom | 17:05 | Entrada principal | — | cerrada (cierre) |\n| Lun | 21:06 | Puerta de personal (muelle de carga) | VOL-07 | entrada |\n| Lun | 21:12 | Caja de llaves: D3 | VOL-07 | llave retirada |\n| Lun | 21:38 | Puerta enrollable del muelle de carga | — | abierta |\n| Lun | 21:40 | Puerta enrollable del muelle de carga | — | cerrada |\n| Lun | 21:41 | Caja de llaves: D3 | VOL-07 | llave devuelta |\n| Lun | 21:44 | Puerta de personal (muelle de carga) | VOL-07 | salida |\n| Mar | 08:50 | Entrada principal | ID-04 (I. Duarte) | entrada |"
+        },
+        {
+          "id": "nina-interview",
+          "title": "Entrevista: Nina Osei (vigilante nocturna)",
+          "kind": "interview",
+          "content": "**P:** ¿Cuál fue tu horario el lunes?\n\n**Nina:** De ocho de la tarde a seis de la mañana. El museo cierra los lunes, así que está tranquilo.\n\n**P:** ¿Viste a alguien?\n\n**Nina:** Dentro no. Estuve en recepción haciendo el papeleo semanal más o menos de nueve a diez. Hacia las nueve y media fui a la ventana de la cocina del personal a prepararme un té y vi el coche de la Dra. Lindqvist en el aparcamiento del personal —el familiar verde con la pegatina del ancla—, pegado al muelle de carga y con el maletero abierto. Pensé que otra vez se quedaba a trabajar hasta tarde, así que no salí.\n\n**P:** ¿Oíste la puerta del muelle de carga?\n\n**Nina:** No. Desde recepción no se oye nada de lo que pasa ahí detrás."
+        },
+        {
+          "id": "cctv-note",
+          "title": "Nota de la empresa de seguridad sobre las grabaciones",
+          "kind": "document",
+          "content": "**Harbourside Security — revisión de grabaciones**\n\nEl museo tiene una sola cámara, que cubre la entrada principal y la recepción. No hay cámaras en la parte trasera del edificio.\n\nLunes: la vigilante (N. Osei) aparece en recepción **sin interrupción de 20:55 a 22:10**. Nadie usó la entrada principal entre el domingo a las 17:05 y el martes a las 08:50.",
+          "unlockAfter": [
+            "nina-interview"
+          ]
+        },
+        {
+          "id": "felix-interview",
+          "title": "Entrevista: Felix Marsh (guía voluntario)",
+          "kind": "interview",
+          "content": "**P:** ¿Tú hiciste la copia del cronómetro para la mesa de tocar?\n\n**Felix:** El invierno pasado, sí. Construyo maquetas de barcos. Le grabé el 1874 a propósito, para que nadie pudiera hacerla pasar por la auténtica.\n\n**P:** ¿Dónde estabas el lunes por la noche?\n\n**Felix:** Tocando el violonchelo con la Orquesta Comunitaria de Saltmarsh en el Ayuntamiento, de siete y media a diez. Había medio pueblo.\n\n**P:** ¿Tu tarjeta de voluntario es la VOL-07?\n\n**Felix:** Lo era. La perdí el domingo por la tarde; creo que me la dejé en una mesa de la cafetería del museo hacia las cuatro. El domingo por la noche escribí a la oficina para pedir una nueva y aún no me han contestado."
+        },
+        {
+          "id": "concert-photo",
+          "title": "Recorte de la Saltmarsh Gazette",
+          "kind": "image",
+          "src": "gazette-clipping.svg",
+          "unlockAfter": [
+            "felix-interview"
+          ]
+        },
+        {
+          "id": "lost-property",
+          "title": "Libro de objetos perdidos de la cafetería",
+          "kind": "document",
+          "content": "| Fecha | Objeto encontrado | Dónde | Entregado a | Firma |\n|---|---|---|---|---|\n| Dom 12:10 | Manopla azul de niño | Mesa 2 | Se queda en la cafetería | — |\n| Dom 16:45 | Tarjeta de voluntario **VOL-07** | Mesa 4 | **R. Lindqvist (dirección)** | *R.L.* |\n| Dom 16:50 | Paraguas negro | Perchero | Se queda en la cafetería | — |",
+          "unlockAfter": [
+            "felix-interview",
+            "building-log"
+          ]
+        },
+        {
+          "id": "ruth-interview",
+          "title": "Entrevista: Dra. Ruth Lindqvist (directora del museo)",
+          "kind": "interview",
+          "content": "**P:** ¿Dónde estaba el lunes por la noche?\n\n**Ruth:** El museo estaba cerrado, así que me fui a las seis y pasé la tarde en casa, en Gull Terrace. No volví a salir.\n\n**P:** ¿Sabía que Felix Marsh había perdido su tarjeta?\n\n**Ruth:** No, es la primera noticia. Las tarjetas de los voluntarios son cosa de la oficina, no mía.\n\n**P:** ¿Alguien ha mostrado interés en comprar el cronómetro?\n\n**Ruth:** De vez en cuando pregunta algún coleccionista. La junta nunca lo vendería y yo jamás lo propondría."
+        },
+        {
+          "id": "ruth-phone",
+          "title": "Teléfono del trabajo de la Dra. Lindqvist, registro de llamadas",
+          "kind": "phone_log",
+          "content": "| Día | Hora | Número | Tipo | Duración |\n|---|---|---|---|---|\n| Lun | 18:20 | Casa | saliente | 2 min |\n| Lun | 21:47 | Bay Couriers | saliente | 4 min |\n| Lun | 22:05 | +31 10 … (Kessler Fine Instruments, Róterdam) | saliente | 9 min |\n| Mar | 06:58 | Bay Couriers | entrante | 1 min |\n| Mar | 09:25 | I. Duarte | entrante | 6 min |",
+          "unlockAfter": [
+            "ruth-interview"
+          ]
+        },
+        {
+          "id": "courier-booking",
+          "title": "Confirmación de reserva de Bay Couriers",
+          "kind": "document",
+          "content": "**BAY COURIERS — reserva BC-58213**\n\nReservado: **lunes 21:51**, por teléfono.\nRemitente: R. Lindqvist, **9 Gull Terrace**, Saltmarsh Bay.\nRecogida: **martes 07:00** en la dirección del remitente.\nContenido: 1 × instrumento náutico antiguo de latón, en caja, 4 kg.\nDestinatario: **Kessler Fine Instruments, Róterdam**.\nServicio: contra reembolso; el destinatario paga **38.000 EUR** al remitente.\nEstado: recogido el martes a las 07:02; en tránsito, entrega prevista el jueves.",
+          "unlockAfter": [
+            "ruth-phone"
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "who",
+          "prompt": "¿Quién cambió el cronómetro Halden por la copia?",
+          "answer": "La Dra. Ruth Lindqvist, la directora del museo",
+          "acceptedVariants": [
+            "Ruth Lindqvist",
+            "Ruth",
+            "Lindqvist",
+            "Dra. Lindqvist",
+            "Dra. Ruth Lindqvist",
+            "la directora",
+            "la directora del museo"
+          ],
+          "points": 3
+        },
+        {
+          "id": "when",
+          "prompt": "¿Cuándo se hizo el cambio?",
+          "answer": "El lunes por la noche, entre las 21:12 y las 21:41",
+          "acceptedVariants": [
+            "el lunes por la noche",
+            "lunes por la noche",
+            "el lunes",
+            "lunes",
+            "el lunes a las 21:12",
+            "entre las 21:12 y las 21:41"
+          ],
+          "points": 1
+        },
+        {
+          "id": "badge",
+          "prompt": "¿De quién era la tarjeta que abrió la caja de llaves?",
+          "answer": "La tarjeta de voluntario perdida de Felix Marsh, VOL-07",
+          "acceptedVariants": [
+            "VOL-07",
+            "Felix Marsh",
+            "Felix",
+            "de Felix",
+            "de Felix Marsh",
+            "la tarjeta de Felix",
+            "la tarjeta perdida de Felix"
+          ],
+          "points": 2
+        },
+        {
+          "id": "exit",
+          "prompt": "¿Cómo salió del edificio el cronómetro auténtico?",
+          "answer": "Por el muelle de carga, al coche de la directora",
+          "acceptedVariants": [
+            "muelle de carga",
+            "por el muelle de carga",
+            "por la puerta trasera",
+            "en su coche",
+            "en el coche de Ruth",
+            "en el coche de la directora"
+          ],
+          "points": 1
+        },
+        {
+          "id": "where",
+          "prompt": "¿Dónde está ahora el cronómetro auténtico?",
+          "answer": "Con Bay Couriers, de camino a Kessler Fine Instruments en Róterdam",
+          "acceptedVariants": [
+            "Kessler Fine Instruments",
+            "Kessler",
+            "Róterdam",
+            "Rotterdam",
+            "de camino a Róterdam",
+            "con Bay Couriers",
+            "Bay Couriers",
+            "con la mensajería"
+          ],
+          "points": 3
+        }
+      ],
+      "walkthrough": "**La copia.** El sábado se revisó el cronómetro auténtico (n.º 1847) y se guardó bajo llave (`condition-report`). El martes la vitrina contenía la copia de los voluntarios para la mesa de tocar, con el número 1874 (`replica-plate`), y la mesa del Aula educativa estaba vacía. Alguien tuvo que abrir la vitrina entre el sábado a las 17:34 y el martes por la mañana.\n\n**Cuándo.** La llave D3 solo salió de la caja una vez después del sábado: **el lunes de 21:12 a 21:41**, y la puerta del muelle de carga se abrió a las 21:38 (`building-log`). Nadie usó la entrada principal desde el cierre del domingo hasta el martes (`cctv-note`), así que el cambio se hizo el lunes por la noche.\n\n**De quién era la tarjeta.** La llave se sacó con la tarjeta **VOL-07**, la de Felix Marsh; pero Felix dice que la perdió el domingo (`felix-interview`) y el lunes a las 21:20 estaba en el escenario del Ayuntamiento (`concert-photo`). La vigilante, Nina, salía en cámara en recepción todo ese rato (`cctv-note`). Así que la tarjeta de Felix la tenía otra persona.\n\n**Quién.** El libro de objetos perdidos de la cafetería muestra que la tarjeta se entregó a **R. Lindqvist (dirección)** el domingo a las 16:45, con su firma (`lost-property`). Ruth dice que no sabía que la tarjeta se había perdido y que pasó la tarde en casa (`ruth-interview`), pero a las 21:30 Nina vio su coche familiar verde pegado al muelle de carga con el maletero abierto (`nina-interview`). La directora mintió dos veces.\n\n**Cómo salió.** El muelle de carga está junto a la Sala 3 y fuera del alcance de la cámara (`floor-plan`). Se abrió a las 21:38 (`building-log`), mientras el coche de Ruth esperaba fuera con el maletero abierto (`nina-interview`).\n\n**Dónde está ahora.** Tres minutos después de salir, Ruth llamó a Bay Couriers y luego a un comerciante de Róterdam (`ruth-phone`). La reserva, hecha a las 21:51, envió un instrumento antiguo de latón de 4 kg desde su casa en Gull Terrace a **Kessler Fine Instruments, Róterdam**, contra reembolso de 38.000 EUR (`courier-booking`). Se recogió el martes a las 07:02 y está en tránsito con Bay Couriers.\n\n**Por qué.** Ruth vendió el tesoro del museo a un comerciante privado e intentó culpar al voluntario que había hecho la copia.",
+      "contentWarnings": [
+        "robo"
+      ],
+      "estMinutes": 30
+    }
+  ]
+}

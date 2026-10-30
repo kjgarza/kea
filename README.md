@@ -154,7 +154,68 @@ The workflow at `.github/workflows/generate-decks.yml` automatically regenerates
 
 ### Case File Decks
 
-Case decks (`gameType: "case"`) are written by hand for now (generation and translation arrive with #36; `translate-decks.ts` skips them). Each card has a briefing, evidence items and questions (see `CaseCard` in `src/types/card.ts`). Evidence files (`image`, `pdf`, `map` kinds) go in `public/decks/assets/<deckId>/`, and `src` is the path relative to that folder (e.g. `"src": "receipt.svg"`). `unlockAfter` lists evidence ids that must be opened first. The validator (`validateCaseCard` / `validateCaseDeck` in `scripts/lib/validators.ts`) rejects duplicate ids, unknown or cyclic `unlockAfter` references and missing asset files; `bun test scripts/lib/case-validators.test.ts` checks every committed case deck. See `public/decks/sample-en-case.json` for an example.
+Each case card has a briefing, evidence items and questions (see `CaseCard` in `src/types/card.ts`). Evidence files (`image`, `pdf`, `map` kinds) go in `public/decks/assets/<deckId>/`, and `src` is the path relative to that folder (e.g. `"src": "receipt.svg"`). `unlockAfter` lists evidence ids that must be opened first. The validator (`validateCaseCard` / `validateCaseDeck` in `scripts/lib/validators.ts`) rejects duplicate ids, unknown or cyclic `unlockAfter` references and missing asset files; `bun test scripts/lib/case-validators.test.ts` checks every committed case deck.
+
+- **Seed case:** `saltmarsh-bay-en-case` / `saltmarsh-bay-es-case` ("The Halden Chronometer"), written by hand in `decks/cases/` and imported (see below). `bun test scripts/lib/case-seed.test.ts` checks that it is fair: every question is proved by reachable evidence, the walkthrough cites only real evidence ids, and EN/ES share ids, kinds, asset paths and points.
+- **Generation:** a config with `gameType: case` (and `cardCount` = number of cases) goes through `generate-decks.ts` with the prompt in `scripts/prompts/case.ts`. Generated cases must have 8–15 **text-only** evidence items (`document`, `interview`, `phone_log`; generation cannot create images), 3–5 questions, at least two `unlockAfter` chains and a walkthrough that cites evidence ids in backticks (`scripts/lib/case-generation.ts`); other cases are dropped with the reason.
+- **Translation:** `translate-decks.ts` translates the title, briefing, evidence titles and contents, question prompts, answers and accepted variants, the walkthrough and content warnings. Ids, kinds, `src`, `unlockAfter` and points always come from the English deck, and a translated walkthrough must keep every evidence citation. The evidence files are copied to `public/decks/assets/<es deckId>/` with the same paths (files already there are kept, so you can drop in localised images).
+
+### Importing Hand-Written Case Files
+
+Case files you write yourself are YAML packs at `decks/cases/<pack>-<lang>.yaml`. Evidence files live in `decks/cases/assets/<pack>/`, shared by every language of the pack; a file with the same name in `decks/cases/assets/<pack>/<lang>/` replaces it for that language (e.g. a clipping with a translated caption), so every language keeps the same `src` paths.
+
+```yaml
+pack: saltmarsh-bay          # slug; must match the file name
+language: en                 # must match the file name
+name: Saltmarsh Bay Case Files
+deckId: saltmarsh-bay-en-case   # optional; default <pack>-<language>-case
+difficulty: medium           # optional: easy | medium | hard (default medium)
+topics: [museum, theft]      # optional
+nsfw: false                  # optional (default false)
+recommended: true            # optional (default false)
+
+cases:
+  - id: halden-chronometer   # optional (title slug); set it so translations share it
+    title: The Halden Chronometer
+    briefing: |-             # markdown
+      At **09:10 on Tuesday**, ...
+    evidence:                # every item needs an id (unlockAfter and the walkthrough refer to it)
+      - id: building-log
+        title: Building access log
+        kind: document       # document | interview | phone_log (content) | image | map | pdf (src)
+        content: |-
+          | Day | Time | Door | Badge |
+          |---|---|---|---|
+          | Mon | 21:12 | Key box | VOL-07 |
+      - id: floor-plan
+        title: Museum floor plan
+        kind: map
+        src: floor-plan.svg  # decks/cases/assets/saltmarsh-bay/floor-plan.svg
+      - id: courier-booking
+        title: Courier booking
+        kind: document
+        content: ...
+        unlockAfter: [ruth-phone]
+    questions:
+      - id: who
+        prompt: Who swapped the chronometer?
+        answer: Dr Ruth Lindqvist, the curator
+        acceptedVariants: [Ruth Lindqvist, Ruth, the curator]   # optional (default [])
+        points: 3                                               # optional (default 1)
+        proof: [building-log, lost-property]                    # optional, checked, never shipped
+    walkthrough: |-          # cite evidence ids in backticks
+      The key was taken with badge VOL-07 (`building-log`) ...
+    contentWarnings: [theft]
+    estMinutes: 30
+```
+
+```bash
+bun scripts/import-cases.ts                                    # every pack in decks/cases/
+bun scripts/import-cases.ts --file decks/cases/saltmarsh-bay-es.yaml
+bun scripts/import-cases.ts --dry-run                          # validate only
+```
+
+The importer runs the shared case validator (each error names the case, the evidence item or question, and the field), checks that every backticked id in the walkthrough is an evidence id and that every `proof` id exists and is cited in the walkthrough, then writes `public/decks/<deckId>.json`, copies the referenced files to `public/decks/assets/<deckId>/` and updates `public/decks/index.json`. A pack with any error writes nothing. The output is deterministic: the deck `version` only changes when the deck or one of its files changes, so re-running the import is byte-identical. The manually triggered workflow `.github/workflows/import-cases.yml` runs the same import and commits the result. Note that `translate-decks.ts --force` would overwrite a hand-written Spanish deck.
 
 ### Importing Hand-Written Situation Puzzles
 
@@ -279,6 +340,7 @@ kea/
 ├── decks/
 │   ├── source/                 # YAML deck configs
 │   ├── puzzles/                # Hand-written situation puzzle packs
+│   ├── cases/                  # Hand-written case packs (+ assets/<pack>/)
 │   └── drafts/                 # Generated puzzles that failed the solvability check
 ├── public/
 │   └── decks/                  # Generated JSON decks (committed)

@@ -1,5 +1,6 @@
 import { existsSync, statSync } from "fs";
-import { join } from "path";
+import { mkdir } from "fs/promises";
+import { dirname, join } from "path";
 import type { AssetExists } from "./validators";
 
 /**
@@ -29,4 +30,38 @@ export function createFileAssetExists(root: string = CASE_ASSETS_DIR): AssetExis
       return false;
     }
   };
+}
+
+/**
+ * Copy the evidence files `srcs` from one deck's asset folder to another's,
+ * keeping the same relative paths (translations share `src` values, #36).
+ * Files that already exist at the target are kept (they may be localised)
+ * unless `overwrite` is set. Returns the paths that were copied and the ones
+ * missing at the source.
+ */
+export async function copyDeckAssets(
+  fromDeckId: string,
+  toDeckId: string,
+  srcs: readonly string[],
+  { root = CASE_ASSETS_DIR, overwrite = false }: { root?: string; overwrite?: boolean } = {}
+): Promise<{ copied: string[]; kept: string[]; missing: string[] }> {
+  const copied: string[] = [];
+  const kept: string[] = [];
+  const missing: string[] = [];
+  for (const src of [...new Set(srcs)].sort()) {
+    const from = caseAssetFilePath(fromDeckId, src, root);
+    const to = caseAssetFilePath(toDeckId, src, root);
+    if (!existsSync(from)) {
+      missing.push(src);
+      continue;
+    }
+    if (!overwrite && existsSync(to)) {
+      kept.push(src);
+      continue;
+    }
+    await mkdir(dirname(to), { recursive: true });
+    await Bun.write(to, Bun.file(from));
+    copied.push(src);
+  }
+  return { copied, kept, missing };
 }
