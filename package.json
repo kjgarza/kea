@@ -9,7 +9,11 @@
     "lint": "eslint .",
     "test:unit": "bun test src scripts",
     "generate": "bun scripts/generate-decks.ts --all",
-    "generate:dry": "bun scripts/generate-decks.ts --all --dry-run"
+    "generate:dry": "bun scripts/generate-decks.ts --all --dry-run",
+    "worker:install": "cd worker && bun install",
+    "worker:typecheck": "cd worker && bun run typecheck",
+    "worker:test": "cd worker && bun test",
+    "worker:dev": "cd worker && bun run dev:local"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

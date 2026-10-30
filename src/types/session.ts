@@ -1,4 +1,5 @@
 import type { GameType } from "./game";
+import type { KeeperAnswer } from "../lib/ai/answers";
 
 // Monikers round type (3 rounds total)
 export type MonikersRound = 1 | 2 | 3;
@@ -34,8 +35,8 @@ export interface StandardSessionState extends BaseSessionState {
 // `puzzle` holds the state of the one being played (null = puzzle picker).
 export type SituationMode = "human" | "ai" | "solo";
 
-/** Fixed keeper answer vocabulary (spec §6.2). */
-export type KeeperAnswer = "yes" | "no" | "irrelevant" | "partly" | "rephrase";
+/** Fixed keeper answer vocabulary (spec §6.2); defined in src/lib/ai/answers.ts. */
+export type { KeeperAnswer };
 
 export type SituationOutcome = "solved" | "gave_up";
 

@@ -12,9 +12,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { BackupButtons } from "@/components/history/backup-buttons";
+import { PasscodeSection } from "@/components/settings/passcode-section";
+import { SettingsSection } from "@/components/settings/settings-section";
 import { getStore } from "@/lib/storage";
 import { persistenceState, queryPersisted, useHistoryState } from "@/lib/history";
 import type { TranslateFn } from "@/lib/i18n";
+
+export { SettingsSection };
 
 interface Props {
   t: TranslateFn;
@@ -23,7 +27,8 @@ interface Props {
 
 /**
  * Gear button + app settings sheet. Sections are small components below;
- * #29 adds a `PasscodeSection` to `AppSettingsSheet`.
+ * `PasscodeSection` (AI Worker passcode) renders only when
+ * NEXT_PUBLIC_KEA_API_URL is set.
  */
 export function AppSettingsButton({ t, className = "" }: Props) {
   const [open, setOpen] = useState(false);
@@ -63,6 +68,7 @@ export function AppSettingsSheet({ open, onOpenChange, t }: SheetProps) {
           <DialogDescription>{t("settings.description")}</DialogDescription>
         </DialogHeader>
         {open && <StorageSection t={t} />}
+        {open && <PasscodeSection t={t} />}
         <SettingsSection title={t("settings.backup.title")}>
           <p className="text-sm text-muted-foreground">{t("settings.backup.body")}</p>
           <BackupButtons t={t} />
@@ -75,24 +81,6 @@ export function AppSettingsSheet({ open, onOpenChange, t }: SheetProps) {
         </SettingsSection>
       </DialogContent>
     </Dialog>
-  );
-}
-
-/** A titled block inside the settings sheet. */
-export function SettingsSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="space-y-2">
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        {title}
-      </h3>
-      {children}
-    </section>
   );
 }
 

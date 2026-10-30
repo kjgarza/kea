@@ -37,6 +37,8 @@ jobs:
         env:
           NODE_ENV: production
           NEXT_PUBLIC_REPO_NAME: ${{ github.event.repository.name }}
+          # AI Worker URL (repo variable). Unset = AI features hidden.
+          NEXT_PUBLIC_KEA_API_URL: ${{ vars.NEXT_PUBLIC_KEA_API_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
