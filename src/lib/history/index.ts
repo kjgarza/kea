@@ -26,4 +26,5 @@ export {
 } from "./history-store";
 export { useHistoryState, type HistoryState } from "./use-history";
 export { situationPlayRecord } from "./situation-record";
+export { casePlayRecord } from "./case-record";
 export { downloadJson } from "./download";
