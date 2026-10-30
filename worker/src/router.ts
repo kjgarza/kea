@@ -15,6 +15,7 @@ import { errorResponse, json, withHeaders } from "./http";
 import { handleCaseAsk, handleCaseJudge } from "./case";
 import { handleKeeperGrade } from "./grade";
 import { handleKeeperAsk } from "./keeper";
+import { handleAuthorPhoto } from "./photo";
 import type { RateLimiter, RateLimitResult } from "./rate-limit";
 import { stubRespond } from "../../src/lib/ai/stub-keeper";
 
@@ -48,14 +49,12 @@ interface Route {
   handler?: Handler; // undefined = not implemented yet
 }
 
-const notImplemented: Route = { method: "POST", metered: false };
-
 const ROUTES: Record<string, Route> = {
   [API_ROUTES.keeperAsk]: { method: "POST", metered: true, handler: handleKeeperAsk },
   [API_ROUTES.keeperGrade]: { method: "POST", metered: true, handler: handleKeeperGrade },
   [API_ROUTES.caseAsk]: { method: "POST", metered: true, handler: handleCaseAsk },
   [API_ROUTES.caseJudge]: { method: "POST", metered: true, handler: handleCaseJudge },
-  [API_ROUTES.authorPhoto]: notImplemented, // #38
+  [API_ROUTES.authorPhoto]: { method: "POST", metered: true, handler: handleAuthorPhoto },
   [API_ROUTES.status]: { method: "GET", metered: false },
 };
 

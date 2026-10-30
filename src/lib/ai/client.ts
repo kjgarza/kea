@@ -10,6 +10,8 @@ import type {
   ApiErrorCode,
   ApiRequestMap,
   ApiResponseMap,
+  AuthorPhotoRequest,
+  AuthorPhotoResponse,
   CaseAskRequest,
   CaseAskResponse,
   CaseJudgeRequest,
@@ -167,6 +169,22 @@ export function judgeCaseAnswers(req: CaseJudgeRequest, options: ClientOptions =
     answers: { ...req.answers },
   };
   return postToWorker(API_ROUTES.caseJudge, body, options);
+}
+
+/**
+ * Transcribe photos of a puzzle card into pack YAML (#38). The Worker does
+ * not store the images; only the typed fields are sent.
+ */
+export function transcribePuzzlePhotos(
+  req: AuthorPhotoRequest,
+  options: ClientOptions = {}
+): Promise<AuthorPhotoResponse> {
+  const body: AuthorPhotoRequest = {
+    images: req.images.map(({ mediaType, data }) => ({ mediaType, data })),
+    lang: req.lang,
+    ...(req.pack ? { pack: req.pack } : {}),
+  };
+  return postToWorker(API_ROUTES.authorPhoto, body, options);
 }
 
 /** Check the passcode and read today's remaining quota. */

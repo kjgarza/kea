@@ -10,6 +10,7 @@
  */
 import { INVESTIGATOR_SCHEMA_NAME, JUDGE_SCHEMA_NAME, normalizeCaseAnswer } from "./case";
 import { GRADER_SCHEMA_NAME } from "./grade";
+import { PHOTO_SCHEMA_NAME } from "./config";
 import type { JsonGenerationRequest } from "./provider";
 import { AMBIGUITY_SCHEMA_NAME, SOLVER_SCHEMA_NAME } from "./solver";
 
@@ -135,6 +136,44 @@ export function stubJudgeRespond(request: JsonGenerationRequest) {
   return { results };
 }
 
+/**
+ * Offline photo transcription (#38): ignores the images and returns a fixed,
+ * valid puzzle in the requested language, so /add can be tried locally.
+ */
+export function stubPhotoRespond(request: JsonGenerationRequest) {
+  const prompt = request.messages
+    .map((m) =>
+      typeof m.content === "string"
+        ? m.content
+        : m.content.map((part) => (part.type === "text" ? part.text : "")).join(" ")
+    )
+    .join(" ");
+  const es = /Spanish/.test(prompt);
+  return es
+    ? {
+        readable: true,
+        title: "El paraguas seco",
+        setup: "Llueve a cántaros. Luis sale sin paraguas ni capucha y vuelve a casa con el pelo seco.",
+        solution: "Luis es calvo: no tiene pelo que se pueda mojar.",
+        keyFacts: ["Luis es calvo.", "No tiene pelo que se pueda mojar.", "Sí se mojó, pero no el pelo."],
+        hints: ["Fíjate en la última palabra del enunciado."],
+        difficulty: "easy",
+        contentWarnings: [],
+        ref: "",
+      }
+    : {
+        readable: true,
+        title: "The Dry Hair",
+        setup: "It is pouring with rain. Luis walks home without an umbrella or a hood, yet not a hair on his head gets wet.",
+        solution: "Luis is bald: he has no hair to get wet.",
+        keyFacts: ["Luis is bald.", "He has no hair that could get wet.", "He did get wet, just not his hair."],
+        hints: ["Read the last words of the setup very literally."],
+        difficulty: "easy",
+        contentWarnings: [],
+        ref: "",
+      };
+}
+
 /** Offline provider callback for every Worker endpoint and script prompt, routed by schema name. */
 export function stubRespond(request: JsonGenerationRequest) {
   switch (request.schemaName) {
@@ -148,6 +187,8 @@ export function stubRespond(request: JsonGenerationRequest) {
       return stubInvestigatorRespond(request);
     case JUDGE_SCHEMA_NAME:
       return stubJudgeRespond(request);
+    case PHOTO_SCHEMA_NAME:
+      return stubPhotoRespond(request);
     default:
       return stubKeeperRespond(request);
   }

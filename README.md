@@ -264,6 +264,8 @@ The importer writes `public/decks/<deckId>.json` and updates `public/decks/index
 
 The manually triggered workflow `.github/workflows/import-puzzles.yml` runs the same import and commits the result.
 
+**Photo quick-add.** With the AI Worker configured, `/add` (linked from the settings sheet) turns photos of a physical card's front and back into a pack in this format: photos are downscaled to JPEG on the phone, the Worker transcribes them (never storing them), and the YAML is shown in an editor that validates as you type with the importer's rules. "Open in GitHub" opens a prefilled new `decks/puzzles/<pack>-<lang>.yaml` (or, for an existing pack, tells you to paste the puzzle at the end of its list); very long puzzles fall back to copy-to-clipboard. The repo defaults to `kjgarza/kea` on `main`; override with `NEXT_PUBLIC_KEA_REPO=owner/name` and `NEXT_PUBLIC_KEA_REPO_BRANCH`.
+
 ## AI Features (optional Worker)
 
 The AI keeper (and later the theory grader, case investigator, answer judge and photo import) runs on a small Cloudflare Worker in `worker/`, which holds the model API key. Kea stays a static site: **if `NEXT_PUBLIC_KEA_API_URL` is not set at build time, every AI feature is hidden** and the app looks exactly as without it.

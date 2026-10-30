@@ -124,3 +124,31 @@ export const CASE_AI_LIMITS = {
   /** Longest investigator reply returned to players. */
   replyMaxChars: 1200,
 } as const;
+
+// ---------------------------------------------------------------------------
+// Photo quick-add (#38): POST /author/photo transcribes a photographed card.
+// ---------------------------------------------------------------------------
+
+export const PHOTO_SCHEMA_NAME = "photo_transcription";
+export const PHOTO_MAX_TOKENS = 4000;
+export const PHOTO_EFFORT = "medium" as const;
+/** Bump when the transcription prompt changes. */
+export const PHOTO_PROMPT_VERSION = "photo-v1";
+/** Pack slug used when the request names none. */
+export const PHOTO_DEFAULT_PACK = "quick-add";
+
+export const PHOTO_LIMITS = {
+  /** Front and back. */
+  maxImages: 2,
+  /** Largest decoded image (bytes). The /add page downscales well below this. */
+  maxImageBytes: 5 * 1024 * 1024,
+  /**
+   * Largest request body (bytes): two max-size images as base64 (4/3) plus
+   * room for the JSON around them.
+   */
+  maxBodyBytes: Math.ceil((2 * 5 * 1024 * 1024 * 4) / 3) + 16 * 1024,
+  /** Longest pack slug. */
+  packMaxChars: 40,
+  /** Longest `ref` kept from the photo (book / card number). */
+  refMaxChars: 200,
+} as const;

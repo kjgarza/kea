@@ -1,4 +1,4 @@
-import type { Card } from "@/types/card";
+import type { Card } from "../../types/card";
 
 /**
  * Content warnings ("suicide", "gore", ...) are free-form tags on puzzle
