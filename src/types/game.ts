@@ -5,7 +5,8 @@ export type GameType =
   | "taboo"
   | "justone"
   | "monikers"
-  | "situation";
+  | "situation"
+  | "case";
 
 export type Difficulty = "easy" | "medium" | "hard";
 
@@ -100,6 +101,19 @@ export const GAMES: Record<GameType, GameMetadata> = {
       "Piece together the hidden story. The keeper can give hints when the group is stuck.",
     ],
     icon: "search",
+    passBehavior: "discard",
+    hasReveal: true,
+  },
+  case: {
+    type: "case",
+    name: "Case Files",
+    description: "Crack the case together from the evidence",
+    howToPlay: [
+      "Read the briefing aloud, then pass the phone around and open the evidence one item at a time.",
+      "Some evidence stays locked until you have examined the items it depends on. Keep shared notes on suspects and the timeline.",
+      "When the group agrees, answer the case questions together. Your team scores points for each correct answer, then read the walkthrough.",
+    ],
+    icon: "folder-search",
     passBehavior: "discard",
     hasReveal: true,
   },

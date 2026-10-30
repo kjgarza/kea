@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "deckId": "sample-en-case",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "Sample Case Files",
+  "gameType": "case",
+  "language": "en",
+  "difficulty": "easy",
+  "topics": ["sample", "school"],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "case-001",
+      "type": "case",
+      "title": "The Missing Chess Trophy",
+      "briefing": "The school chess club's trophy has vanished from its glass display case.\n\nThe case was locked at 15:00 on Friday and found open, and empty, at 17:00. Only two people hold a key: Coach Lena Brandt and the caretaker, Marco Ruiz. The head teacher wants to know who took it, why, and where it is now — before Monday's assembly.",
+      "evidence": [
+        {
+          "id": "head-note",
+          "title": "Head teacher's note",
+          "kind": "document",
+          "content": "Display case checked and locked at **15:00** Friday. Found open at **17:00** by the cleaner. No damage to the lock. Keys: Coach Brandt, Mr Ruiz."
+        },
+        {
+          "id": "interview-marco",
+          "title": "Interview: Marco Ruiz (caretaker)",
+          "kind": "interview",
+          "content": "**Q:** Where were you between three and five?\n\n**Marco:** Mopping the main corridor, half three till half four. Around quarter past four I saw the coach heading out with a big sports bag. She looked pleased with herself."
+        },
+        {
+          "id": "interview-lena",
+          "title": "Interview: Lena Brandt (chess coach)",
+          "kind": "interview",
+          "content": "**Q:** When did you leave on Friday?\n\n**Lena:** About quarter to four. I had a dentist appointment, so I went straight there."
+        },
+        {
+          "id": "phone-lena",
+          "title": "Lena Brandt's call log, Friday",
+          "kind": "phone_log",
+          "content": "| Time | Number | Duration |\n|---|---|---|\n| 14:52 | Mum | 3 min |\n| 16:05 | Silverline Engraving | 6 min |\n| 16:58 | Pizza Roma | 2 min |"
+        },
+        {
+          "id": "receipt",
+          "title": "Receipt found in the staff room",
+          "kind": "image",
+          "src": "receipt.svg",
+          "unlockAfter": ["phone-lena"]
+        },
+        {
+          "id": "dentist-reply",
+          "title": "Email from the dentist's office",
+          "kind": "document",
+          "content": "We have no appointment for a Ms Brandt on Friday. Her next check-up is booked for next month.",
+          "unlockAfter": ["interview-lena", "receipt"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "who",
+          "prompt": "Who took the trophy?",
+          "answer": "Coach Lena Brandt",
+          "acceptedVariants": ["Lena Brandt", "Lena", "the coach", "Coach Brandt"],
+          "points": 2
+        },
+        {
+          "id": "why",
+          "prompt": "Why did they take it?",
+          "answer": "To have this year's champions engraved on it as a surprise",
+          "acceptedVariants": ["to get it engraved", "engraving", "to engrave it"],
+          "points": 2
+        },
+        {
+          "id": "where",
+          "prompt": "Where is the trophy now?",
+          "answer": "At Silverline Engraving",
+          "acceptedVariants": ["Silverline Engraving", "the engraver", "the engraving shop"],
+          "points": 1
+        }
+      ],
+      "walkthrough": "Only the coach and the caretaker had keys, and Marco saw Lena leave at 16:15 with a large bag — half an hour after she claimed to have gone. Her call log shows a call to **Silverline Engraving** at 16:05, and the receipt (16:40, \"Champions 2026\", pickup Monday) shows what she did next. The dentist has no appointment for her, so the alibi was a cover story.\n\nLena took the trophy to have the new champions engraved as a surprise for Monday's assembly. It's safe at the engraver's.",
+      "contentWarnings": ["theft"],
+      "estMinutes": 15
+    }
+  ]
+}

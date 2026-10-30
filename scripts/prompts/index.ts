@@ -29,6 +29,10 @@ export function buildPrompt(
       return buildMonikersPrompt(ctx);
     case "situation":
       return buildSituationPrompt(ctx);
+    case "case":
+      throw new Error(
+        "Case file generation is not implemented yet (#36); write case decks by hand"
+      );
     default:
       throw new Error(`Unknown game type: ${gameType}`);
   }

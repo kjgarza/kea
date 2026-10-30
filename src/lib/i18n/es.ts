@@ -253,4 +253,13 @@ export const es: Messages = {
   "settings.passcode.wrong": "Ese código no es válido.",
   "settings.passcode.limited": "Ya se usó el límite de hoy. Vuelve a intentarlo mañana.",
   "settings.passcode.error": "No se pudo conectar con el servicio de IA. Inténtalo más tarde.",
+
+  // Casos (pantalla provisional hasta el tablero del caso, #35)
+  "case.card.badge": "Expediente",
+  "case.card.contentWarnings": "Advertencias de contenido: {warnings}",
+  "case.card.contents": "{evidence} pruebas · {questions} preguntas",
+  "case.play.nextCase": "Siguiente caso",
+  "case.play.skip": "Saltar",
+  "case.play.boardComingSoon": "El tablero del caso llegará pronto. Lee el informe en voz alta al grupo.",
+  "case.complete.title": "¡Todos los casos cerrados!",
 };

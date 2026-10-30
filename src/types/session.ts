@@ -28,7 +28,7 @@ export interface MonikersSessionState extends BaseSessionState {
 
 // Standard session (plain card-stack games)
 export interface StandardSessionState extends BaseSessionState {
-  gameType: Exclude<GameType, "monikers" | "situation">;
+  gameType: Exclude<GameType, "monikers" | "situation" | "case">;
 }
 
 // Situation puzzles (spec §4.4): the card stack picks the next puzzle, and
@@ -90,12 +90,20 @@ export interface SituationSessionState extends BaseSessionState {
   puzzle: SituationPuzzleState | null;
 }
 
+// Case files (spec §4.4). Placeholder (#34): only the card stack ("which
+// case is next"). The case play screen (#35) adds opened evidence, notes,
+// answers and the score.
+export interface CaseSessionState extends BaseSessionState {
+  gameType: "case";
+}
+
 // Union of all session types. New game types add their session state here
 // and register a module in src/lib/game/modules/registry.ts.
 export type SessionState =
   | StandardSessionState
   | MonikersSessionState
-  | SituationSessionState;
+  | SituationSessionState
+  | CaseSessionState;
 
 // Session storage key pattern (logical key inside the `kea.` store, so the
 // raw localStorage key is `kea.session.<deckId>`). Builds before the typed

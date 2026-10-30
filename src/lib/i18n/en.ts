@@ -256,4 +256,13 @@ export const en = {
   "settings.passcode.wrong": "That passcode was not accepted.",
   "settings.passcode.limited": "Today's limit is used up. Try again tomorrow.",
   "settings.passcode.error": "Could not reach the AI service. Try again later.",
+
+  // Case files (placeholder screen until the case board, #35)
+  "case.card.badge": "Case file",
+  "case.card.contentWarnings": "Content warnings: {warnings}",
+  "case.card.contents": "{evidence} evidence items · {questions} questions",
+  "case.play.nextCase": "Next case",
+  "case.play.skip": "Skip",
+  "case.play.boardComingSoon": "The case board is coming soon. Read the briefing aloud to the group.",
+  "case.complete.title": "All cases closed!",
 } as const;

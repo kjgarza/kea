@@ -9,6 +9,7 @@ import {
   Lightbulb,
   Users,
   Search,
+  FolderSearch,
   type LucideIcon,
 } from "lucide-react";
 import type { GameMetadata, GameType } from "@/types/game";
@@ -20,6 +21,7 @@ const iconMap: Record<string, LucideIcon> = {
   lightbulb: Lightbulb,
   users: Users,
   search: Search,
+  "folder-search": FolderSearch,
 };
 
 const gameGradients: Record<GameType, string> = {
@@ -29,6 +31,7 @@ const gameGradients: Record<GameType, string> = {
   justone: "from-justone to-justone-dark",
   monikers: "from-monikers to-monikers-dark",
   situation: "from-situation to-situation-dark",
+  case: "from-case to-case-dark",
 };
 
 const gameShadows: Record<GameType, string> = {
@@ -38,6 +41,7 @@ const gameShadows: Record<GameType, string> = {
   justone: "shadow-justone/40",
   monikers: "shadow-monikers/40",
   situation: "shadow-situation/40",
+  case: "shadow-case/40",
 };
 
 interface GameTileProps {

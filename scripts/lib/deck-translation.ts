@@ -14,6 +14,22 @@ import type { GenerationResult } from "./llm-client";
 
 export const TRANSLATION_BATCH_SIZE = 15;
 
+/**
+ * Game types the translator does not handle yet. Case files (#34) carry
+ * evidence ids, unlock graphs and asset paths that need their own merge
+ * rules; #36 adds them. Until then `translate-decks` skips these decks with
+ * a clear message and `translateCardsWith` refuses them.
+ */
+export const UNTRANSLATABLE_GAME_TYPES: readonly string[] = ["case"];
+
+export function isTranslatableGameType(gameType: string): boolean {
+  return !UNTRANSLATABLE_GAME_TYPES.includes(gameType);
+}
+
+export function untranslatableGameTypeMessage(gameType: string): string {
+  return `${gameType} decks cannot be translated automatically yet (case translation arrives with #36); write the Spanish deck by hand`;
+}
+
 export const TRANSLATION_SYSTEM_PROMPT = `You are a professional translator specializing in English to Latin American Spanish translation for party games.
 Translate the text fields of the provided game cards from English to Spanish.
 Return a JSON object with a "cards" array containing the translated cards.
@@ -67,6 +83,9 @@ export function extractTranslatableFields(card: Card): Record<string, unknown> {
           answerText: card.answerText,
         };
       }
+    case "case":
+      // Not translated yet (see UNTRANSLATABLE_GAME_TYPES): send nothing.
+      return base;
   }
 }
 
@@ -75,6 +94,9 @@ export function extractTranslatableFields(card: Card): Record<string, unknown> {
  */
 export function mergeTranslation(original: Card, translated: Record<string, unknown>): Card {
   switch (original.type) {
+    case "case":
+      // Not translated yet (see UNTRANSLATABLE_GAME_TYPES): pass through untouched.
+      return original;
     case "charades":
       return { ...original, prompt: String(translated.prompt ?? original.prompt) };
     case "justone":
@@ -226,6 +248,9 @@ export async function translateCardsWith(
   translate: BatchTranslator,
   { batchSize = TRANSLATION_BATCH_SIZE, warn = () => {} }: TranslateCardsOptions = {}
 ): Promise<{ cards: Card[]; failedBatches: number }> {
+  if (!isTranslatableGameType(gameType)) {
+    throw new Error(untranslatableGameTypeMessage(gameType));
+  }
   const { batches, prompts } = buildTranslationPrompts(cards, gameType, batchSize);
   const results = await translate(prompts);
 

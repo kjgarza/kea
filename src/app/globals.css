@@ -45,6 +45,8 @@
   --color-monikers-dark: var(--monikers-dark);
   --color-situation: var(--situation);
   --color-situation-dark: var(--situation-dark);
+  --color-case: var(--case);
+  --color-case-dark: var(--case-dark);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -112,6 +114,9 @@
   /* Situation puzzles - midnight teal */
   --situation: oklch(0.55 0.12 220);
   --situation-dark: oklch(0.38 0.1 235);
+  /* Case files - manila / evidence-folder amber-brown */
+  --case: oklch(0.58 0.11 60);
+  --case-dark: oklch(0.4 0.08 45);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
