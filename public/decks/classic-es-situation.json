@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "deckId": "classic-es-situation",
-  "version": "2026-10-30T00:00:00Z",
+  "version": "2026-10-30T18:00:00Z",
   "name": "Clásicos",
   "gameType": "situation",
   "language": "es",
@@ -518,11 +518,11 @@
       "solution": "El locutor quería una coartada para un asesinato. Puso un disco muy largo para que el programa siguiera sonando y salió del estudio a cometer el crimen. El disco se rayó y repitió los mismos tres segundos, demostrando a miles de oyentes que en ese momento no había nadie en el estudio.",
       "keyFacts": [
         {
-          "id": "radio-dj",
+          "id": "long-record-alibi",
           "text": "El locutor puso un disco largo como coartada."
         },
         {
-          "id": "long-record-alibi",
+          "id": "left-studio",
           "text": "Salió del estudio mientras sonaba."
         },
         {
@@ -556,19 +556,19 @@
       "solution": "La figura parecía real porque era una persona real. El dueño del museo había asesinado a un hombre y escondió el cuerpo a la vista de todos, cubriéndolo de cera y exhibiéndolo entre las demás figuras. El comentario de la turista hizo que el vigilante mirara con atención y llamara a la policía.",
       "keyFacts": [
         {
-          "id": "wax-museum",
+          "id": "figure-was-real",
           "text": "La figura tan realista era un cuerpo humano real."
         },
         {
-          "id": "figure-was-real",
+          "id": "owner-killer",
           "text": "El dueño del museo había asesinado al hombre."
         },
         {
-          "id": "owner-killer",
+          "id": "coated-in-wax",
           "text": "Disimuló el cuerpo con una capa de cera."
         },
         {
-          "id": "coated-in-wax",
+          "id": "tourist-remark",
           "text": "El comentario de la turista llevó al descubrimiento."
         }
       ],
@@ -674,11 +674,11 @@
           "text": "Perdió el tren por culpa de la desconocida."
         },
         {
-          "id": "stranger-delayed-him",
+          "id": "train-crashed",
           "text": "El tren descarriló."
         },
         {
-          "id": "train-crashed",
+          "id": "passengers-lost",
           "text": "Muchos pasajeros del tren murieron."
         },
         {

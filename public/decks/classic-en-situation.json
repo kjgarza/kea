@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "deckId": "classic-en-situation",
-  "version": "2026-10-30T00:00:00Z",
+  "version": "2026-10-30T18:00:00Z",
   "name": "Classic",
   "gameType": "situation",
   "language": "en",
@@ -518,11 +518,11 @@
       "solution": "The presenter wanted an alibi for a murder. He put on a very long record so the show would keep running and slipped out of the studio to commit the crime. The record got stuck and repeated the same three seconds, proving to thousands of listeners that nobody was in the studio at that time.",
       "keyFacts": [
         {
-          "id": "radio-dj",
+          "id": "long-record-alibi",
           "text": "The presenter put on a long record as an alibi."
         },
         {
-          "id": "long-record-alibi",
+          "id": "left-studio",
           "text": "He left the studio while it was playing."
         },
         {
@@ -556,19 +556,19 @@
       "solution": "The figure looked real because it was a real person. The museum's owner had killed a man and hidden the body in plain sight by coating it in wax and displaying it among the other figures. The tourist's comment made the guard look closer, and he called the police.",
       "keyFacts": [
         {
-          "id": "wax-museum",
+          "id": "figure-was-real",
           "text": "The realistic figure was a real human body."
         },
         {
-          "id": "figure-was-real",
+          "id": "owner-killer",
           "text": "The owner of the museum had killed the man."
         },
         {
-          "id": "owner-killer",
+          "id": "coated-in-wax",
           "text": "He disguised the body with a coat of wax."
         },
         {
-          "id": "coated-in-wax",
+          "id": "tourist-remark",
           "text": "The tourist's remark led to the discovery."
         }
       ],
@@ -674,11 +674,11 @@
           "text": "He missed the train because of the stranger."
         },
         {
-          "id": "stranger-delayed-him",
+          "id": "train-crashed",
           "text": "The train crashed."
         },
         {
-          "id": "train-crashed",
+          "id": "passengers-lost",
           "text": "Many passengers on the train were lost."
         },
         {
