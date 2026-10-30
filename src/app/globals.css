@@ -43,6 +43,8 @@
   --color-justone-dark: var(--justone-dark);
   --color-monikers: var(--monikers);
   --color-monikers-dark: var(--monikers-dark);
+  --color-situation: var(--situation);
+  --color-situation-dark: var(--situation-dark);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -107,6 +109,9 @@
   --justone-dark: oklch(0.55 0.22 145);
   --monikers: oklch(0.75 0.2 55);
   --monikers-dark: oklch(0.6 0.2 55);
+  /* Situation puzzles - midnight teal */
+  --situation: oklch(0.55 0.12 220);
+  --situation-dark: oklch(0.38 0.1 235);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);

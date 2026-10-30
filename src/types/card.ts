@@ -1,4 +1,4 @@
-import type { GameType } from "./game";
+import type { Difficulty, GameType } from "./game";
 
 // Base card interface
 interface BaseCard {
@@ -52,13 +52,35 @@ export interface MonikersCard extends BaseCard {
   description?: string;
 }
 
+// Situation puzzle card - a lateral-thinking mystery (spec §4.1)
+export interface SituationKeyFact {
+  id: string;
+  text: string;
+}
+
+export type SituationOrigin = "generated" | "original" | "transcribed";
+
+export interface SituationCard extends BaseCard {
+  type: "situation";
+  title: string;
+  setup: string; // the front of the card, read aloud
+  solution: string; // the full story
+  keyFacts: SituationKeyFact[]; // 3–8 atomic facts players must uncover
+  hints: string[]; // ordered, mild → strong; 1–4
+  difficulty?: Difficulty; // overrides the deck difficulty
+  contentWarnings?: string[]; // e.g. "suicide", "child death", "gore"
+  estMinutes?: number;
+  source?: { pack?: string; ref?: string; origin: SituationOrigin };
+}
+
 // Discriminated union of all card types
 export type Card =
   | CharadesCard
   | TriviaCard
   | TabooCard
   | JustOneCard
-  | MonikersCard;
+  | MonikersCard
+  | SituationCard;
 
 // Type guards
 export function isCharadesCard(card: Card): card is CharadesCard {
@@ -89,6 +111,10 @@ export function isMonikersCard(card: Card): card is MonikersCard {
   return card.type === "monikers";
 }
 
+export function isSituationCard(card: Card): card is SituationCard {
+  return card.type === "situation";
+}
+
 // Map game type to card type
 export type CardForGame<T extends GameType> = T extends "charades"
   ? CharadesCard
@@ -100,4 +126,6 @@ export type CardForGame<T extends GameType> = T extends "charades"
         ? JustOneCard
         : T extends "monikers"
           ? MonikersCard
-          : never;
+          : T extends "situation"
+            ? SituationCard
+            : never;

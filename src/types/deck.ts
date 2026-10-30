@@ -5,6 +5,7 @@ import type {
   TabooCard,
   JustOneCard,
   MonikersCard,
+  SituationCard,
 } from "./card";
 import type { GameType, Difficulty } from "./game";
 
@@ -20,6 +21,12 @@ export interface DeckMeta {
   nsfw: boolean;
   version: string; // ISO timestamp
   cardCount: number;
+  /**
+   * Union of the cards' content warnings (normalised, sorted), so the deck
+   * list can show them before a deck is opened. Computed when the index is
+   * written (scripts/lib/deck-index.ts); `[]` for games without warnings.
+   */
+  contentWarnings: string[];
 }
 
 // Deck index file structure (public/decks/index.json)
@@ -48,3 +55,4 @@ export type TriviaDeck = Deck<TriviaCard>;
 export type TabooDeck = Deck<TabooCard>;
 export type JustOneDeck = Deck<JustOneCard>;
 export type MonikersDeck = Deck<MonikersCard>;
+export type SituationDeck = Deck<SituationCard>;

@@ -4,7 +4,8 @@ export type GameType =
   | "trivia"
   | "taboo"
   | "justone"
-  | "monikers";
+  | "monikers"
+  | "situation";
 
 export type Difficulty = "easy" | "medium" | "hard";
 
@@ -88,6 +89,19 @@ export const GAMES: Record<GameType, GameMetadata> = {
     icon: "users",
     passBehavior: "recycle",
     hasReveal: false,
+  },
+  situation: {
+    type: "situation",
+    name: "Situation Puzzles",
+    description: "Solve the mystery with yes/no questions",
+    howToPlay: [
+      "One player is the keeper: they read the strange setup aloud and secretly know the full story.",
+      "Everyone else asks questions the keeper can answer with yes, no or irrelevant.",
+      "Piece together the hidden story. The keeper can give hints when the group is stuck.",
+    ],
+    icon: "search",
+    passBehavior: "discard",
+    hasReveal: true,
   },
 };
 

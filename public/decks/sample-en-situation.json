@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "deckId": "sample-en-situation",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "Sample Situations",
+  "gameType": "situation",
+  "language": "en",
+  "difficulty": "easy",
+  "topics": ["sample", "everyday"],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "sit-001",
+      "type": "situation",
+      "title": "The Bus She Didn't Take",
+      "setup": "Every weekday Anna catches the 8:00 bus to work. One morning the bus arrives exactly on time. Anna lets it go by, waves at it, and walks home happier than she has been in weeks.",
+      "solution": "Anna had taken the day off. Her son had just qualified as a bus driver and the 8:00 was his very first route. She only went to the stop to see him drive past and wave to him, then went home proud.",
+      "keyFacts": [
+        { "id": "day-off", "text": "Anna was not going to work that day." },
+        { "id": "driver-son", "text": "The bus driver was Anna's son." },
+        { "id": "first-day", "text": "It was his first day driving that route." },
+        { "id": "came-to-watch", "text": "She went to the stop only to see him drive past." }
+      ],
+      "hints": [
+        "Anna never meant to get on the bus.",
+        "The person who mattered to her was not a passenger.",
+        "Think about who was behind the wheel."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 10,
+      "source": { "origin": "original" }
+    },
+    {
+      "cardId": "sit-002",
+      "type": "situation",
+      "title": "The Grateful Owner",
+      "setup": "A man smashes the window of a stranger's car with a rock. When the owner arrives a few minutes later and sees what he has done, she thanks him.",
+      "solution": "It was a very hot afternoon and the owner had left her dog in the parked car with the windows closed, thinking she would only be a minute. A passer-by saw the dog struggling in the heat and broke the window to get it out. When the owner came back she realised how dangerous her mistake had been and thanked him for saving her dog.",
+      "keyFacts": [
+        { "id": "hot-day", "text": "It was a very hot day." },
+        { "id": "dog-inside", "text": "A dog was shut inside the car." },
+        { "id": "windows-closed", "text": "The car's windows were closed." },
+        { "id": "rescue", "text": "He broke the window to rescue the dog." },
+        { "id": "owner-mistake", "text": "The owner realised leaving the dog was a mistake." }
+      ],
+      "hints": [
+        "The man was not trying to steal anything.",
+        "Something alive was inside the car.",
+        "Think about the weather."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": ["animal in danger"],
+      "estMinutes": 8,
+      "source": { "origin": "original" }
+    },
+    {
+      "cardId": "sit-003",
+      "type": "situation",
+      "title": "Too Quiet",
+      "setup": "In the middle of a night shift, a nurse realises she cannot hear anything at all from room 12. She immediately runs for help.",
+      "solution": "The patient in room 12 was connected to a monitor and breathing machine that normally make a steady sound all night. The silence meant the machines had lost power. The nurse ran to get help and restore the power, and the patient was fine.",
+      "keyFacts": [
+        { "id": "machine", "text": "The patient was connected to a medical machine." },
+        { "id": "normally-noisy", "text": "The machine normally makes a constant sound." },
+        { "id": "power-cut", "text": "The machine had stopped because it lost power." },
+        { "id": "patient-ok", "text": "The patient survived because she acted quickly." }
+      ],
+      "hints": [
+        "Room 12 is usually never quiet.",
+        "The sound she expected did not come from a person."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": ["medical emergency"],
+      "estMinutes": 10,
+      "source": { "origin": "original" }
+    }
+  ]
+}

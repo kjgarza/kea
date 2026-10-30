@@ -20,7 +20,8 @@ import { generateCards } from "./lib/llm-client";
 import { validateCard, deduplicateCards } from "./lib/validators";
 import { buildPrompt, type PromptContext } from "./prompts";
 import type { Card } from "../src/types/card";
-import type { Deck, DeckIndex, DeckMeta } from "../src/types/deck";
+import type { Deck } from "../src/types/deck";
+import { updateDeckIndexFile } from "./lib/deck-index";
 
 const SOURCE_DIR = "./decks/source";
 const OUTPUT_DIR = "./public/decks";
@@ -164,44 +165,10 @@ async function writeDeck(deck: Deck): Promise<void> {
  */
 async function updateIndex(decks: Deck[]): Promise<void> {
   const indexPath = `${OUTPUT_DIR}/index.json`;
-
-  // Load existing index or create new
-  let index: DeckIndex;
-  try {
-    const existing = await Bun.file(indexPath).json();
-    index = existing as DeckIndex;
-  } catch {
-    index = { schemaVersion: 1, decks: [] };
-  }
-
-  // Update/add deck metadata
-  for (const deck of decks) {
-    const meta: DeckMeta = {
-      deckId: deck.deckId,
-      name: deck.name,
-      gameType: deck.gameType,
-      language: deck.language,
-      difficulty: deck.difficulty,
-      topics: deck.topics,
-      recommended: true, // TODO: get from config
-      nsfw: deck.nsfw,
-      version: deck.version,
-      cardCount: deck.cards.length,
-    };
-
-    // Find and update existing, or add new
-    const existingIdx = index.decks.findIndex((d) => d.deckId === deck.deckId);
-    if (existingIdx >= 0) {
-      index.decks[existingIdx] = meta;
-    } else {
-      index.decks.push(meta);
-    }
-  }
-
-  // Sort by name
-  index.decks.sort((a, b) => a.name.localeCompare(b.name));
-
-  await Bun.write(indexPath, JSON.stringify(index, null, 2));
+  const index = await updateDeckIndexFile(
+    indexPath,
+    decks.map((deck) => ({ deck, recommended: true })) // TODO: get from config
+  );
   console.log(`\n📋 Updated ${indexPath} (${index.decks.length} decks)`);
 }
 

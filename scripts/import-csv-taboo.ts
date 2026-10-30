@@ -16,7 +16,8 @@
 import { parseArgs } from "util";
 import { validateCard, deduplicateCards } from "./lib/validators";
 import type { Card } from "../src/types/card";
-import type { Deck, DeckIndex, DeckMeta } from "../src/types/deck";
+import type { Deck } from "../src/types/deck";
+import { updateDeckIndexFile } from "./lib/deck-index";
 
 const CSV_URL =
   "https://raw.githubusercontent.com/nehasinha/Taboo/master/assets/cards.csv";
@@ -137,38 +138,7 @@ function parseCsv(csv: string): Array<{ target: string; forbidden: string[] }> {
  */
 async function updateIndex(deck: Deck, recommended: boolean): Promise<void> {
   const indexPath = `${OUTPUT_DIR}/index.json`;
-
-  let index: DeckIndex;
-  try {
-    const existing = await Bun.file(indexPath).json();
-    index = existing as DeckIndex;
-  } catch {
-    index = { schemaVersion: 1, decks: [] };
-  }
-
-  const meta: DeckMeta = {
-    deckId: deck.deckId,
-    name: deck.name,
-    gameType: deck.gameType,
-    language: deck.language,
-    difficulty: deck.difficulty,
-    topics: deck.topics,
-    recommended,
-    nsfw: deck.nsfw,
-    version: deck.version,
-    cardCount: deck.cards.length,
-  };
-
-  const existingIdx = index.decks.findIndex((d) => d.deckId === deck.deckId);
-  if (existingIdx >= 0) {
-    index.decks[existingIdx] = meta;
-  } else {
-    index.decks.push(meta);
-  }
-
-  index.decks.sort((a, b) => a.name.localeCompare(b.name));
-
-  await Bun.write(indexPath, JSON.stringify(index, null, 2));
+  const index = await updateDeckIndexFile(indexPath, [{ deck, recommended }]);
   console.log(`\n📋 Updated ${indexPath} (${index.decks.length} decks)`);
 }
 

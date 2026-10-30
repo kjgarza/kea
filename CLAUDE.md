@@ -32,7 +32,7 @@ Use Bun instead of Node.js for all operations:
 Card types use discriminated unions in `src/types/card.ts`:
 
 ```typescript
-type Card = CharadesCard | TriviaCard | TabooCard | JustOneCard | MonikersCard;
+type Card = CharadesCard | TriviaCard | TabooCard | JustOneCard | MonikersCard | SituationCard;
 ```
 
 Each card has a `type` field for narrowing. Use switch statements on `card.type` for exhaustive handling.
