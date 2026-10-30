@@ -1,10 +1,17 @@
 name: Keeper eval
 
-# Runs the AI keeper eval set (evals/keeper) through the shared keeper prompt
-# and posts agreement, leaks and confusion matrices as the job summary.
+# Runs the AI keeper eval set (evals/keeper) through the shared keeper prompt,
+# and the theories in the same files through the shared grader (#32), and
+# posts agreement, leaks and confusion matrices as the job summary.
 on:
   workflow_dispatch:
     inputs:
+      suite:
+        description: "Which evals: keeper answers, theory grading, or both"
+        required: true
+        type: choice
+        default: all
+        options: [all, keeper, grade]
       provider:
         description: "Keeper provider (oracle/saboteur/stub run offline, no keys)"
         required: true
@@ -41,7 +48,7 @@ on:
         required: false
         type: string
       strict:
-        description: "Fail the job unless agreement >= 95% and zero leaks"
+        description: "Fail the job unless agreement >= 95% and zero leaks (per suite and language)"
         required: false
         type: boolean
         default: false
@@ -66,6 +73,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SUITE: ${{ inputs.suite }}
           PROVIDER: ${{ inputs.provider }}
           MODEL: ${{ inputs.model }}
           JUDGE: ${{ inputs.judge }}
@@ -75,7 +83,7 @@ jobs:
           BASELINE: ${{ inputs.baseline }}
           STRICT: ${{ inputs.strict }}
         run: |
-          args=(--provider "$PROVIDER" --judge "$JUDGE" --lang "$LANG_FILTER" --save reports/keeper-eval.json --markdown reports/keeper-eval.md)
+          args=(--suite "$SUITE" --provider "$PROVIDER" --judge "$JUDGE" --lang "$LANG_FILTER" --save reports/keeper-eval.json --save-grade reports/grade-eval.json --markdown reports/keeper-eval.md)
           [ -n "$MODEL" ] && args+=(--model "$MODEL")
           [ -n "$LIMIT" ] && args+=(--limit "$LIMIT")
           [ -n "$CONCURRENCY" ] && args+=(--concurrency "$CONCURRENCY")

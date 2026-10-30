@@ -50,6 +50,12 @@ export interface SituationTranscriptEntry {
 export interface SituationTheory {
   text: string;
   verdict: "solved" | "close" | "not_yet";
+  /** Key-fact ids the grader marked correct (#32). Only these may be shown. */
+  correctFactIds: string[];
+  /** How many key facts the theory still misses (never which). */
+  missingCount: number;
+  /** When it was graded (ISO). */
+  at: string;
 }
 
 export interface SituationPuzzleState {
@@ -67,7 +73,7 @@ export interface SituationPuzzleState {
   hintsUsed: number;
   /** Human mode: the keeper confirmed the reveal and sees the crib sheet. */
   solutionRevealed: boolean;
-  /** Solo mode (#32): submitted theories and their verdicts. */
+  /** AI/solo modes (#32): graded theories, oldest first. */
   theories: SituationTheory[];
   /** Human mode: questions counted by the keeper (+1 button). */
   questionCount: number;

@@ -38,3 +38,10 @@ cases:
     transcript: [{ a: yes, en: "Was the coin a fake?", es: "¿La moneda era falsa?" }, { a: no, en: "Was the coin genuine?", es: "¿La moneda era auténtica?" }]
     en: "Was the coin a fake?"
     es: "¿La moneda era falsa?"
+theories:
+  - { verdict: solved, tag: full, facts: [coin-offered, dated-bc, nobody-knew, fake], en: "The man was trying to sell a fake coin. It was dated 'BC', but nobody in 46 BC could know they were living before Christ, so it had to be a forgery.", es: "El hombre intentaba vender una moneda falsa. Ponía 'a. C.', pero en el 46 a. C. nadie podía saber que vivía antes de Cristo, así que era una falsificación." }
+  - { verdict: close, tag: partial, facts: [dated-bc, fake], en: "The coin was a fake because it was dated BC.", es: "La moneda era falsa porque tenía una fecha a. C." }
+  - { verdict: not_yet, tag: partial, facts: [fake], en: "The coin was a forgery.", es: "La moneda era una falsificación." }
+  - { verdict: not_yet, tag: wrong, en: "The coin was made of chocolate wrapped in foil.", es: "La moneda era de chocolate envuelta en papel de aluminio." }
+  - { verdict: solved, tag: paraphrase, facts: [coin-offered, dated-bc, nobody-knew, fake], en: "Counterfeit! The seller's coin said 'BC', but back then nobody could have known Christ was yet to be born.", es: "¡Falsificación! La moneda que quería venderle decía 'a. C.', pero entonces nadie podía saber que Cristo aún no había nacido." }
+  - { verdict: close, tag: language-switch, facts: [nobody-knew, fake], en: "Era falsa: en el año 46 a. C. nadie sabía que vivía antes de Cristo.", es: "It was fake: in 46 BC nobody knew they were living before Christ." }

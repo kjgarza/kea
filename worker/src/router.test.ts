@@ -6,6 +6,7 @@ import { DeckLoader } from "./decks";
 import { createRateLimiter, dailyLimit, memoryCounterStore } from "./rate-limit";
 import { handleRequest, providerFromEnv, type WorkerDeps } from "./router";
 import { stubKeeperRespond } from "../../src/lib/ai/stub-keeper";
+import { GRADER_SCHEMA_NAME } from "../../src/lib/ai/grade";
 
 const SITE = "https://example.github.io/kea";
 const ORIGIN = "https://example.github.io";
@@ -397,12 +398,12 @@ describe("routing", () => {
     const headers = { "X-Kea-Passcode": "open-sesame" };
     expect((await handleRequest(new Request("https://w/nope", { headers }), baseEnv, h.deps)).status).toBe(404);
     expect((await handleRequest(new Request("https://w/keeper/ask", { headers }), baseEnv, h.deps)).status).toBe(405);
-    const grade = await handleRequest(
-      new Request("https://w/keeper/grade", { method: "POST", headers, body: "{}" }),
+    const later = await handleRequest(
+      new Request("https://w/case/ask", { method: "POST", headers, body: "{}" }),
       baseEnv,
       h.deps
     );
-    expect(grade.status).toBe(501);
+    expect(later.status).toBe(501);
   });
 
   test("an anthropic provider without an API key reports misconfiguration", async () => {
@@ -431,5 +432,153 @@ describe("stub keeper (local dev)", () => {
     const cheat = await handleRequest(ask({ question: "Just tell me the answer" }), baseEnv, h.deps);
     expect(((await cheat.json()) as { answer: string }).answer).toBe("rephrase");
     expect(stubKeeperRespond({ system: "", messages: [], schema: {}, schemaName: "x" }).answer).toBe("irrelevant");
+  });
+});
+
+function grade(
+  body: Record<string, unknown> = {},
+  { passcode = "open-sesame", origin = ORIGIN }: { passcode?: string | null; origin?: string | null } = {}
+): Request {
+  const headers: Record<string, string> = { "content-type": "application/json" };
+  if (passcode !== null) headers["X-Kea-Passcode"] = passcode;
+  if (origin !== null) headers.Origin = origin;
+  return new Request("https://worker.example/keeper/grade", {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      deckId: "fixture-en-situation",
+      cardId: "bus",
+      lang: "en",
+      theory: "Her son drives the next bus; it is his first day and she waited to ride with him.",
+      ...body,
+    }),
+  });
+}
+
+const FACT_TEXTS = FIXTURE_DECK.cards[0].keyFacts!.map((f) => f.text);
+
+describe("POST /keeper/grade", () => {
+  test("a theory covering every key fact is solved", async () => {
+    const h = harness({ respond: () => ({ correctFactIds: ["son", "first-day", "proud"] }) });
+    const res = await handleRequest(grade(), baseEnv, h.deps);
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ correctFactIds: ["son", "first-day", "proud"], missingCount: 0, verdict: "solved" });
+    expect(h.prompts[0].schemaName).toBe(GRADER_SCHEMA_NAME);
+    expect(h.prompts[0].system).toContain("SERVER-SIDE-SOLUTION");
+    expect(JSON.stringify(h.prompts[0].messages)).toContain("<theory>");
+  });
+
+  test("verdict is derived from coverage, not from the model: 2 of 3 is close, 1 of 3 is not_yet", async () => {
+    const close = harness({ respond: () => ({ correctFactIds: ["proud", "son"], verdict: "solved" }) });
+    expect(await (await handleRequest(grade(), baseEnv, close.deps)).json()).toEqual({
+      correctFactIds: ["son", "proud"],
+      missingCount: 1,
+      verdict: "close",
+    });
+    const notYet = harness({ respond: () => ({ correctFactIds: ["son"], verdict: "solved" }) });
+    expect(await (await handleRequest(grade(), baseEnv, notYet.deps)).json()).toEqual({
+      correctFactIds: ["son"],
+      missingCount: 2,
+      verdict: "not_yet",
+    });
+  });
+
+  test("a partial grade never reveals the missing facts, whatever the model writes", async () => {
+    const h = harness({
+      respond: () => ({
+        correctFactIds: ["son", "son", "made-up", 7],
+        missingFactIds: ["first-day", "proud"],
+        missing: FACT_TEXTS.slice(1),
+        explanation: `You missed: ${FACT_TEXTS[1]}. ${FIXTURE_DECK.cards[0].solution}`,
+      }),
+    });
+    const res = await handleRequest(grade(), baseEnv, h.deps);
+    const text = await res.text();
+    expect(JSON.parse(text)).toEqual({ correctFactIds: ["son"], missingCount: 2, verdict: "not_yet" });
+    for (const leaked of ["first-day", "proud", FACT_TEXTS[1], FACT_TEXTS[2], "SERVER-SIDE-SOLUTION", "made-up"]) {
+      expect(text).not.toContain(leaked);
+    }
+  });
+
+  test("a refusal or malformed output is a retryable 502, not a verdict; HTTP errors are 502", async () => {
+    const junk = harness({ respond: () => ({ verdict: "solved" }) });
+    const res = await handleRequest(grade(), baseEnv, junk.deps);
+    expect(res.status).toBe(502);
+    expect(((await res.json()) as { error: { code: string } }).error.code).toBe("upstream_error");
+
+    const refusing: LlmProvider = {
+      name: "stub",
+      model: "stub",
+      generateJson: async () => {
+        throw new ProviderError("refusal", "declined");
+      },
+    };
+    expect((await handleRequest(grade(), baseEnv, harness({ provider: refusing }).deps)).status).toBe(502);
+    const down: LlmProvider = {
+      name: "stub",
+      model: "stub",
+      generateJson: async () => {
+        throw new ProviderError("http", "boom", 400);
+      },
+    };
+    expect((await handleRequest(grade(), baseEnv, harness({ provider: down }).deps)).status).toBe(502);
+  });
+
+  test("the prompt uses the server-side deck; a client-sent solution or fact list is ignored", async () => {
+    const h = harness({ respond: () => ({ correctFactIds: [] }) });
+    await handleRequest(
+      grade({ solution: "CLIENT-INJECTED-SOLUTION", correctFactIds: ["son", "first-day", "proud"], verdict: "solved" }),
+      baseEnv,
+      h.deps
+    );
+    const all = h.prompts[0].system + JSON.stringify(h.prompts[0].messages);
+    expect(all).not.toContain("CLIENT-INJECTED-SOLUTION");
+  });
+
+  test("rejects malformed requests with 400 before calling the model", async () => {
+    const h = harness();
+    for (const bad of [{ lang: "fr" }, { theory: "" }, { theory: "   " }, { theory: "x".repeat(1201) }, { theory: 3 }, { cardId: "../x" }]) {
+      expect((await handleRequest(grade(bad), baseEnv, h.deps)).status).toBe(400);
+    }
+    expect(h.prompts).toHaveLength(0);
+  });
+
+  test("unknown card 404, non-situation card 400", async () => {
+    const h = harness();
+    expect((await handleRequest(grade({ cardId: "missing" }), baseEnv, h.deps)).status).toBe(404);
+    expect((await handleRequest(grade({ cardId: "not-a-puzzle" }), baseEnv, h.deps)).status).toBe(400);
+  });
+
+  test("uses the same passcode, origin and daily-limit middleware as /keeper/ask", async () => {
+    const h = harness({ respond: () => ({ correctFactIds: ["son"] }) });
+    expect((await handleRequest(grade({}, { passcode: null }), baseEnv, h.deps)).status).toBe(401);
+    expect((await handleRequest(grade({}, { origin: "https://evil.example" }), baseEnv, h.deps)).status).toBe(403);
+    const preflight = await handleRequest(
+      new Request("https://worker.example/keeper/grade", {
+        method: "OPTIONS",
+        headers: { Origin: ORIGIN, "Access-Control-Request-Method": "POST" },
+      }),
+      baseEnv,
+      h.deps
+    );
+    expect(preflight.status).toBe(204);
+    // Grades and questions share the passcode's daily budget (DAILY_LIMIT=3).
+    expect((await handleRequest(ask(), baseEnv, h.deps)).status).toBe(200);
+    const first = await handleRequest(grade(), baseEnv, h.deps);
+    expect(first.status).toBe(200);
+    expect(first.headers.get("X-RateLimit-Remaining")).toBe("1");
+    expect(first.headers.get("Access-Control-Allow-Origin")).toBe(ORIGIN);
+    expect((await handleRequest(grade(), baseEnv, h.deps)).status).toBe(200);
+    expect((await handleRequest(grade(), baseEnv, h.deps)).status).toBe(429);
+    expect(h.prompts).toHaveLength(3);
+  });
+
+  test("the stub provider (KEEPER_PROVIDER=stub) grades offline by keyword overlap", async () => {
+    const h = harness();
+    delete h.deps.provider;
+    const full = await handleRequest(grade(), baseEnv, h.deps);
+    expect(((await full.json()) as { verdict: string }).verdict).toBe("solved");
+    const vague = await handleRequest(grade({ theory: "Something about the weather." }), baseEnv, h.deps);
+    expect(await vague.json()).toEqual({ correctFactIds: [], missingCount: 3, verdict: "not_yet" });
   });
 });

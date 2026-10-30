@@ -8,12 +8,13 @@ import type { SituationCard } from "@/types/card";
 import { askKeeper, KeaApiError, type ClientErrorCode } from "@/lib/ai/client";
 import { KEEPER_LIMITS } from "@/lib/ai/config";
 import { questionsAsked, soloScore, SOLO_SCORE } from "@/lib/game/modules/situation/logic";
-import { translate, type PlainMessageKey, type TranslateFn } from "@/lib/i18n";
+import { translate, type TranslateFn } from "@/lib/i18n";
 import { useOnlineStatus } from "@/hooks/use-online-status";
 import { speechLang, useSpeechRecognition } from "@/hooks/use-speech-recognition";
 import { ActionButton } from "@/components/play/action-bar";
 import { AppSettingsButton } from "@/components/settings/app-settings-sheet";
 import type { KeeperPanelProps } from "./keeper-panels";
+import { errorMessageKey } from "./ai-errors";
 import { ElapsedTime } from "./elapsed-time";
 import { HintLadder } from "./hint-ladder";
 import { SituationPanel, SituationShell, SituationStat } from "./situation-shell";
@@ -35,22 +36,6 @@ const ANSWER_STYLES: Record<KeeperAnswer, string> = {
   irrelevant: "bg-slate-500 text-white",
   rephrase: "bg-sky-600 text-white",
 };
-
-function errorMessageKey(code: ClientErrorCode | undefined): PlainMessageKey {
-  switch (code) {
-    case "network":
-      return "situation.ai.error.network";
-    case "missing_passcode":
-    case "unauthorized":
-      return "situation.ai.error.passcode";
-    case "rate_limited":
-      return "situation.ai.error.limited";
-    case "not_configured":
-      return "situation.ai.error.notConfigured";
-    default:
-      return "situation.ai.error.generic";
-  }
-}
 
 /** AI keeper (spec §3, F8/F9): everyone plays, the Worker answers. */
 export function AiKeeperPanel(props: KeeperPanelProps) {

@@ -13,7 +13,7 @@ import { KEEPER_EFFORT, KEEPER_LIMITS, KEEPER_MAX_TOKENS } from "./config";
 import type { JsonGenerationRequest, JsonGenerationResult, JsonSchema, LlmProvider } from "./provider";
 import { ProviderError, generateJsonWithRetry } from "./provider";
 
-const LANGUAGE_NAMES: Record<AiLanguage, string> = { en: "English", es: "Spanish" };
+export const LANGUAGE_NAMES: Record<AiLanguage, string> = { en: "English", es: "Spanish" };
 
 /** Rules shared by every keeper call. Kept stable so it can be cached. */
 export const KEEPER_RULES = `You are the keeper of a lateral-thinking "situation puzzle" (like Black Stories). Players see only the setup and try to reconstruct the hidden story by asking yes/no questions. You know the full solution.
@@ -55,7 +55,7 @@ export function keeperOutputSchema(card?: Pick<SituationCard, "keyFacts">): Json
 
 export const KEEPER_SCHEMA_NAME = "keeper_answer";
 
-function puzzleBlock(card: SituationCard): string {
+export function puzzleBlock(card: SituationCard): string {
   const facts = card.keyFacts.map((fact) => `- [${fact.id}] ${fact.text}`).join("\n");
   return [
     `PUZZLE: ${card.title}`,
@@ -181,7 +181,7 @@ export async function answerKeeperQuestion(
 
 export type ValidationResult<T> = { ok: true; value: T } | { ok: false; error: string };
 
-function isId(value: unknown): value is string {
+export function isId(value: unknown): value is string {
   return (
     typeof value === "string" &&
     value.length > 0 &&

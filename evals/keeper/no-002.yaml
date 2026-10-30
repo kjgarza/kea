@@ -39,3 +39,10 @@ cases:
     transcript: [{ a: yes, en: "Is it a game?", es: "¿Es un juego?" }, { a: no, en: "Was it a real car?", es: "¿Era un coche de verdad?" }]
     en: "Is it a game?"
     es: "¿Es un juego?"
+theories:
+  - { verdict: solved, tag: full, facts: [board-game, token-car, landed-on-hotel, out-of-money], en: "He was playing a property board game. His token was a little car, he landed on a square with a hotel and couldn't pay the rent.", es: "Estaba jugando a un juego de mesa de propiedades. Su ficha era un cochecito, cayó en una casilla con un hotel y no pudo pagar el alquiler." }
+  - { verdict: close, tag: partial, facts: [board-game, landed-on-hotel], en: "It was a board game and he landed on someone's hotel.", es: "Era un juego de mesa y cayó en el hotel de otro jugador." }
+  - { verdict: not_yet, tag: partial, facts: [board-game], en: "They were playing Monopoly.", es: "Estaban jugando al Monopoly." }
+  - { verdict: not_yet, tag: wrong, en: "He owned the hotel and it had just closed down.", es: "Era el dueño del hotel y acababa de cerrar." }
+  - { verdict: solved, tag: paraphrase, facts: [board-game, token-car, landed-on-hotel, out-of-money], en: "Monopoly night! His piece was the little car, he ended up on a space with a rival's hotel, and the rent wiped him out.", es: "¡Noche de Monopoly! Su ficha era el cochecito, acabó en una casilla con el hotel de un rival y el alquiler lo dejó sin blanca." }
+  - { verdict: close, tag: language-switch, facts: [board-game, token-car, landed-on-hotel], en: "Era un juego de mesa, su ficha era un coche y cayó en una casilla con hotel.", es: "It was a board game, his token was a car and he landed on a square with a hotel." }

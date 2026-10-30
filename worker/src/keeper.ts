@@ -1,10 +1,9 @@
 /** POST /keeper/ask */
 import { answerKeeperQuestion, validateKeeperAskRequest } from "../../src/lib/ai/keeper";
 import type { KeeperAskResponse } from "../../src/lib/ai/api";
-import type { SituationCard } from "../../src/types/card";
-import { DeckLoadError } from "./decks";
 import { errorResponse, json } from "./http";
 import type { HandlerContext } from "./router";
+import { loadSituationCard } from "./situation-card";
 
 export async function handleKeeperAsk(ctx: HandlerContext): Promise<Response> {
   let body: unknown;
@@ -17,23 +16,8 @@ export async function handleKeeperAsk(ctx: HandlerContext): Promise<Response> {
   if (!parsed.ok) return errorResponse(400, "bad_request", parsed.error);
   const req = parsed.value;
 
-  let card: SituationCard;
-  try {
-    const deck = await ctx.decks.load(req.deckId);
-    const found = deck.cards.find((c) => c.cardId === req.cardId);
-    if (!found) return errorResponse(404, "not_found", `Card ${req.cardId} is not in deck ${req.deckId}`);
-    if (found.type !== "situation") {
-      return errorResponse(400, "bad_request", `Card ${req.cardId} is not a situation puzzle`);
-    }
-    card = found;
-  } catch (error) {
-    if (error instanceof DeckLoadError) {
-      return error.status === 404
-        ? errorResponse(404, "not_found", error.message)
-        : errorResponse(502, "deck_unavailable", error.message);
-    }
-    throw error;
-  }
+  const card = await loadSituationCard(ctx.decks, req.deckId, req.cardId);
+  if (card instanceof Response) return card;
 
   const limited = await ctx.meter();
   if (limited) return limited;

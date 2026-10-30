@@ -8,6 +8,7 @@ import {
   formatElapsed,
   isSituationComplete,
   pickableCardIds,
+  puzzleEnding,
   puzzleElapsedMs,
   reduceSituation,
   situationCardIds,
@@ -45,6 +46,7 @@ const deck = {
 
 const T0 = "2026-10-30T20:00:00.000Z";
 const T1 = "2026-10-30T20:07:05.000Z";
+const T2 = "2026-10-30T20:09:00.000Z";
 
 function run(s: SituationSessionState, ...actions: SituationAction[]) {
   return actions.reduce((acc, a) => reduceSituation(acc, a, deck), s);
@@ -317,5 +319,65 @@ describe("solo score", () => {
     const p = { ...base(), questionCount: 200 };
     expect(soloScore({ ...p, outcome: "solved" })).toBe(SOLO_SCORE.solvedMin);
     expect(soloScore({ ...p, outcome: "gave_up" })).toBe(0);
+  });
+});
+
+describe("theories (#32)", () => {
+  const playing = () => run(fresh(), { type: "pick", cardId: "a", at: T0, mode: "solo" });
+  const theory = (
+    extra: Partial<Extract<SituationAction, { type: "addTheory" }>> = {}
+  ): SituationAction => ({
+    type: "addTheory",
+    cardId: "a",
+    text: "  It was raining at night.  ",
+    correctFactIds: ["f1"],
+    at: T1,
+    ...extra,
+  });
+
+  test("records the theory with a verdict recomputed from the correct ids (unknown ids dropped)", () => {
+    const s = run(playing(), theory({ correctFactIds: ["f2", "nope", "f1"] }));
+    expect(s.puzzle?.theories).toEqual([
+      { text: "It was raining at night.", verdict: "close", correctFactIds: ["f1", "f2"], missingCount: 1, at: T1 },
+    ]);
+    expect(s.puzzle?.factsRevealed).toEqual(["f1", "f2"]);
+    expect(situationPhase(s)).toBe("playing");
+  });
+
+  test("not_yet keeps playing; theories accumulate oldest first", () => {
+    const s = run(playing(), theory(), theory({ text: "Second", correctFactIds: [] }));
+    expect(s.puzzle?.theories.map((t) => [t.text, t.verdict, t.missingCount])).toEqual([
+      ["It was raining at night.", "not_yet", 2],
+      ["Second", "not_yet", 3],
+    ]);
+  });
+
+  test("a solved theory ends the puzzle as solved", () => {
+    const s = run(playing(), theory({ correctFactIds: ["f1", "f2", "f3"], at: T2 }));
+    expect(s.puzzle?.outcome).toBe("solved");
+    expect(s.puzzle?.endedAt).toBe(T2);
+    expect(situationPhase(s)).toBe("ended");
+    expect(s.puzzle?.theories[0].verdict).toBe("solved");
+  });
+
+  test("ignored for another card, an empty theory, or a puzzle that is not in play", () => {
+    const s = playing();
+    expect(run(s, theory({ cardId: "b" }))).toBe(s);
+    expect(run(s, theory({ text: "   " }))).toBe(s);
+    const ended = run(s, { type: "end", outcome: "gave_up", at: T1 });
+    expect(run(ended, theory())).toBe(ended);
+  });
+
+  test("puzzleEnding reports end and solved theories, nothing else", () => {
+    const s = playing();
+    expect(puzzleEnding(s, theory(), deck)).toBeNull();
+    expect(puzzleEnding(s, theory({ correctFactIds: ["f1", "f2", "f3"], at: T2 }), deck)).toEqual({
+      outcome: "solved",
+      at: T2,
+    });
+    expect(puzzleEnding(s, { type: "end", outcome: "gave_up", at: T1 }, deck)).toEqual({ outcome: "gave_up", at: T1 });
+    expect(puzzleEnding(s, { type: "useHint" }, deck)).toBeNull();
+    const ended = run(s, { type: "end", outcome: "gave_up", at: T1 });
+    expect(puzzleEnding(ended, { type: "end", outcome: "solved", at: T2 }, deck)).toBeNull();
   });
 });

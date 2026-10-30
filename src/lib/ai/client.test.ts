@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, test } from "bun:test";
 import { createMemoryBackend, createStore, setStore } from "@/lib/storage";
-import type { KeeperAskRequest } from "./api";
-import { askKeeper, getKeaApiUrl, getWorkerStatus, isAiConfigured, KeaApiError } from "./client";
+import type { KeeperAskRequest, KeeperGradeRequest } from "./api";
+import { askKeeper, getKeaApiUrl, gradeKeeperTheory, getWorkerStatus, isAiConfigured, KeaApiError } from "./client";
 import { getPasscode, setPasscode } from "./passcode";
 
 afterEach(() => {
@@ -106,5 +106,27 @@ describe("askKeeper", () => {
     });
     expect(calls[0].init.method).toBe("GET");
     expect(calls[0].init.body).toBeUndefined();
+  });
+});
+
+describe("gradeKeeperTheory", () => {
+  test("posts only ids and the theory to /keeper/grade", async () => {
+    setStore(createStore(createMemoryBackend()));
+    setPasscode("open-sesame");
+    process.env.NEXT_PUBLIC_KEA_API_URL = "https://w.example";
+    const { fetch, calls } = recordFetch({ correctFactIds: ["a"], missingCount: 2, verdict: "not_yet" });
+    const sloppy = {
+      deckId: "classic-en-situation",
+      cardId: "cl-001",
+      lang: "en",
+      theory: "The keeper switched off the lamp.",
+      keyFacts: [{ id: "a", text: "SECRET" }],
+    } as unknown as KeeperGradeRequest;
+    const res = await gradeKeeperTheory(sloppy, { fetch });
+    expect(res.verdict).toBe("not_yet");
+    expect(calls[0].url).toBe("https://w.example/keeper/grade");
+    const body = JSON.parse(String(calls[0].init.body));
+    expect(Object.keys(body).sort()).toEqual(["cardId", "deckId", "lang", "theory"]);
+    expect(JSON.stringify(body)).not.toContain("SECRET");
   });
 });

@@ -123,7 +123,8 @@ export function slugifyQuestion(text: string): string {
 
 const CASE_KEYS = new Set(["a", "en", "es", "facts", "allow", "tag", "transcript", "note"]);
 const TURN_KEYS = new Set(["a", "en", "es"]);
-const FILE_KEYS = new Set(["cardId", "decks", "cases"]);
+// `theories` holds the grading cases (#32); scripts/lib/grade-eval.ts reads them.
+const FILE_KEYS = new Set(["cardId", "decks", "cases", "theories"]);
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === "string");

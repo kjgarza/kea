@@ -12,6 +12,8 @@ import type {
   ApiResponseMap,
   KeeperAskRequest,
   KeeperAskResponse,
+  KeeperGradeRequest,
+  KeeperGradeResponse,
   PostRoute,
   StatusResponse,
 } from "./api";
@@ -121,6 +123,20 @@ export function askKeeper(req: KeeperAskRequest, options: ClientOptions = {}): P
     question: req.question,
   };
   return postToWorker(API_ROUTES.keeperAsk, body, options);
+}
+
+/** Grade a theory (F10). Only ids and the theory text are sent. */
+export function gradeKeeperTheory(
+  req: KeeperGradeRequest,
+  options: ClientOptions = {}
+): Promise<KeeperGradeResponse> {
+  const body: KeeperGradeRequest = {
+    deckId: req.deckId,
+    cardId: req.cardId,
+    lang: req.lang,
+    theory: req.theory,
+  };
+  return postToWorker(API_ROUTES.keeperGrade, body, options);
 }
 
 /** Check the passcode and read today's remaining quota. */
