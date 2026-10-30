@@ -50,7 +50,6 @@ export type {
   SessionState,
 } from "./session";
 export {
-  isMonikersSession,
   SESSION_KEY_PREFIX,
   getSessionKey,
   CURRENT_SCHEMA_VERSION,

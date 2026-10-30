@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, RotateCcw, Sparkles, PartyPopper, Play, Shuffle } from "lucide-react";
@@ -15,116 +15,40 @@ import {
 } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CardDisplay } from "./card-display";
-import { ActionBar } from "./action-bar";
-import { RoundIndicator } from "@/components/monikers/round-indicator";
-import { EndTurnOverlay } from "@/components/monikers/end-turn-overlay";
 import { useGameState } from "@/hooks/use-game-state";
-import { GAMES, GameType } from "@/types/game";
-import { isMonikersSession } from "@/types/session";
-import { TABOO_TIMER_SECONDS } from "@/lib/game/constants";
+import { GAMES } from "@/types/game";
+import type { Deck } from "@/types/deck";
+import type { AnyGameModule } from "@/lib/game/modules/types";
 
 interface PlayScreenProps {
   deckId: string;
 }
 
-const gameGradients: Record<GameType, string> = {
-  charades: "from-charades/15 via-charades/8 to-charades/20",
-  trivia: "from-trivia/15 via-trivia/8 to-trivia/20",
-  taboo: "from-taboo/15 via-taboo/8 to-taboo/20",
-  justone: "from-justone/15 via-justone/8 to-justone/20",
-  monikers: "from-monikers/15 via-monikers/8 to-monikers/20",
-};
-
-const gamePatternColors: Record<GameType, string> = {
-  charades: "text-charades",
-  trivia: "text-trivia",
-  taboo: "text-taboo",
-  justone: "text-justone",
-  monikers: "text-monikers",
-};
-
+/**
+ * Shared play-screen chrome: loading/error states, start screen, header
+ * (exit, title, restart), restart dialog and the completion screen. The
+ * in-game body is the deck's module `PlayView` (see
+ * src/lib/game/modules/registry.ts).
+ */
 export function PlayScreen({ deckId }: PlayScreenProps) {
   const {
     deck,
+    gameModule,
     session,
     currentCard,
     isLoading,
     error,
     isNotFound,
     isComplete,
-    isRoundComplete,
     hasSavedSession,
-    monikersRound,
     startGame,
     resumeGame,
-    handleNext,
-    handlePass,
-    handleReveal,
+    dispatch,
     handleRestart,
-    handleMonikersCorrect,
-    handleMonikersEndTurn,
-    handleMonikersNextRound,
   } = useGameState(deckId);
 
   const [showRestartDialog, setShowRestartDialog] = useState(false);
-  const [showEndTurnOverlay, setShowEndTurnOverlay] = useState(false);
   const [shuffleEnabled, setShuffleEnabled] = useState(false);
-
-  const [tabooTimerSeconds, setTabooTimerSeconds] = useState(TABOO_TIMER_SECONDS);
-  const [tabooTimerActive, setTabooTimerActive] = useState(false);
-
-  const audioContextRef = useRef<AudioContext | null>(null);
-
-  const playTabooSound = useCallback((frequency: number) => {
-    try {
-      if (!audioContextRef.current) {
-        audioContextRef.current = new AudioContext();
-      }
-      const ctx = audioContextRef.current;
-      const oscillator = ctx.createOscillator();
-      oscillator.type = "sine";
-      oscillator.frequency.setValueAtTime(frequency, ctx.currentTime);
-      oscillator.connect(ctx.destination);
-      oscillator.start();
-      oscillator.stop(ctx.currentTime + 0.3);
-    } catch {
-      // Ignore errors (e.g. unsupported browser)
-    }
-  }, []);
-
-  // Countdown tick
-  useEffect(() => {
-    if (!tabooTimerActive) return;
-    if (tabooTimerSeconds <= 0) {
-      setTabooTimerActive(false);
-      setTabooTimerSeconds(TABOO_TIMER_SECONDS);
-      playTabooSound(400);
-      return;
-    }
-    const id = setInterval(() => setTabooTimerSeconds((s) => s - 1), 1000);
-    return () => clearInterval(id);
-  }, [tabooTimerActive, tabooTimerSeconds, playTabooSound]);
-
-  // Reset timer on card change
-  useEffect(() => {
-    if (deck?.gameType === "taboo") {
-      setTabooTimerActive(false);
-      setTabooTimerSeconds(TABOO_TIMER_SECONDS);
-    }
-  }, [currentCard, deck?.gameType]);
-
-  const handleTabooStartTimer = useCallback(() => setTabooTimerActive(true), []);
-  const handleTabooAlert = useCallback(() => {
-    playTabooSound(800);
-  }, [playTabooSound]);
-
-  // Calculate cards remaining for Monikers
-  const monikersCardsRemaining = session && isMonikersSession(session)
-    ? session.monikersRemainingCardIds.length +
-      session.monikersPassedCardIds.length +
-      (session.currentCardId ? 1 : 0)
-    : 0;
 
   // Loading state
   if (isLoading) {
@@ -147,7 +71,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   }
 
   // Error state
-  if (error || isNotFound) {
+  if (error || isNotFound || !deck || !gameModule) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-background to-muted/30">
         <motion.div
@@ -172,33 +96,12 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
     );
   }
 
-  // Pre-game: Show start screen
-  if (!session || !currentCard) {
-    // Check if game is complete
-    if (isComplete) {
-      return (
-        <CompleteScreen
-          deck={deck!}
-          onRestart={handleRestart}
-          monikersRound={monikersRound}
-        />
-      );
-    }
-
-    // Monikers round complete (not game complete)
-    if (isRoundComplete && monikersRound && monikersRound < 3) {
-      return (
-        <RoundCompleteScreen
-          round={monikersRound}
-          onNextRound={handleMonikersNextRound}
-        />
-      );
-    }
-
-    // Show start/resume screen
+  // Pre-game: start/resume screen
+  if (!session) {
     return (
       <StartScreen
-        deck={deck!}
+        deck={deck}
+        gameModule={gameModule}
         hasSavedSession={hasSavedSession}
         shuffleEnabled={shuffleEnabled}
         onShuffleChange={setShuffleEnabled}
@@ -208,16 +111,39 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
     );
   }
 
-  const bgGradient = gameGradients[deck!.gameType];
+  if (isComplete) {
+    return (
+      <CompleteScreen
+        deck={deck}
+        gameModule={gameModule}
+        onRestart={handleRestart}
+      />
+    );
+  }
+
+  const { PlayView, HeaderView } = gameModule;
+  const playView = (
+    <PlayView
+      deck={deck}
+      session={session}
+      currentCard={currentCard}
+      dispatch={dispatch}
+    />
+  );
+
+  // Module-controlled full-screen state (e.g. Monikers between rounds)
+  if (gameModule.showChrome && !gameModule.showChrome(session)) {
+    return playView;
+  }
 
   return (
-    <div className={`min-h-screen flex flex-col bg-gradient-to-b ${bgGradient} relative`}>
-      <div className={`game-bg-pattern ${gamePatternColors[deck!.gameType]}`} />
+    <div className={`min-h-screen flex flex-col bg-gradient-to-b ${gameModule.theme.gradient} relative`}>
+      <div className={`game-bg-pattern ${gameModule.theme.pattern}`} />
       {/* Header */}
       <header className="flex items-center justify-between p-4 relative z-10">
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link
-            href={`/game/${deck!.gameType}`}
+            href={`/game/${deck.gameType}`}
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm text-sm font-medium hover:bg-white transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -226,11 +152,11 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
         </motion.div>
 
         <div className="flex items-center gap-2">
-          {monikersRound ? (
-            <RoundIndicator round={monikersRound} />
+          {HeaderView ? (
+            <HeaderView deck={deck} session={session} />
           ) : (
             <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm text-sm font-medium">
-              {deck!.name}
+              {deck.name}
             </div>
           )}
         </div>
@@ -245,48 +171,10 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
         </motion.button>
       </header>
 
-      {/* Card Display */}
+      {/* Game body */}
       <main className="flex-1 flex flex-col min-h-0 relative z-10">
-        <div className="flex items-center justify-center p-4 min-h-0 overflow-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="w-full max-w-lg aspect-[3/4] max-h-[calc(100vh-200px)]"
-          >
-            <CardDisplay
-              card={currentCard}
-              isRevealed={session.isRevealed}
-              onReveal={handleReveal}
-              tabooTimerSeconds={tabooTimerSeconds}
-              tabooTimerActive={tabooTimerActive}
-            />
-          </motion.div>
-        </div>
-
-        {/* Action Bar */}
-        <ActionBar
-          gameType={deck!.gameType}
-          onNext={handleNext}
-          onPass={handlePass}
-          onCorrect={handleMonikersCorrect}
-          onEndTurn={() => setShowEndTurnOverlay(true)}
-          isRevealed={session.isRevealed}
-          tabooTimerActive={tabooTimerActive}
-          onTabooStartTimer={handleTabooStartTimer}
-          onTabooAlert={handleTabooAlert}
-        />
+        {playView}
       </main>
-
-      {/* Monikers End Turn Overlay */}
-      {showEndTurnOverlay && monikersRound && (
-        <EndTurnOverlay
-          cardsRemaining={monikersCardsRemaining}
-          onContinue={() => {
-            handleMonikersEndTurn();
-            setShowEndTurnOverlay(false);
-          }}
-        />
-      )}
 
       {/* Restart Confirmation Dialog */}
       <Dialog open={showRestartDialog} onOpenChange={setShowRestartDialog}>
@@ -325,26 +213,28 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
 // Start Screen Component
 function StartScreen({
   deck,
+  gameModule,
   hasSavedSession,
   shuffleEnabled,
   onShuffleChange,
   onStart,
   onResume,
 }: {
-  deck: { name: string; cards: unknown[]; gameType: string };
+  deck: Deck;
+  gameModule: AnyGameModule;
   hasSavedSession: boolean;
   shuffleEnabled: boolean;
   onShuffleChange: (enabled: boolean) => void;
   onStart: () => void;
   onResume: () => void;
 }) {
-  const game = GAMES[deck.gameType as keyof typeof GAMES];
+  const game = GAMES[deck.gameType];
   const cardCount = deck.cards.length;
-  const bgGradient = gameGradients[deck.gameType as GameType];
+  const bgGradient = gameModule.theme.gradient;
 
   return (
     <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient} relative`}>
-      <div className={`game-bg-pattern ${gamePatternColors[deck.gameType as GameType]}`} />
+      <div className={`game-bg-pattern ${gameModule.theme.pattern}`} />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -416,18 +306,18 @@ function StartScreen({
 // Complete Screen Component
 function CompleteScreen({
   deck,
+  gameModule,
   onRestart,
-  monikersRound,
 }: {
-  deck: { name: string; gameType: string };
+  deck: Deck;
+  gameModule: AnyGameModule;
   onRestart: () => void;
-  monikersRound: number | null;
 }) {
-  const bgGradient = gameGradients[deck.gameType as GameType];
+  const bgGradient = gameModule.theme.gradient;
 
   return (
     <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient} relative`}>
-      <div className={`game-bg-pattern ${gamePatternColors[deck.gameType as GameType]}`} />
+      <div className={`game-bg-pattern ${gameModule.theme.pattern}`} />
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -444,7 +334,7 @@ function CompleteScreen({
           </motion.div>
 
           <h1 className="text-3xl font-bold font-display mb-2">
-            {monikersRound === 3 ? "Game Complete!" : "Deck Complete!"}
+            {gameModule.completeTitle ?? "Deck Complete!"}
           </h1>
           <p className="text-muted-foreground mb-8">{deck.name}</p>
 
@@ -463,74 +353,6 @@ function CompleteScreen({
               <Link href="/">Back to Home</Link>
             </Button>
           </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-// Round Complete Screen (Monikers)
-function RoundCompleteScreen({
-  round,
-  onNextRound,
-}: {
-  round: number;
-  onNextRound: () => void;
-}) {
-  const roundNames = {
-    1: "One Word Only",
-    2: "Act It Out!",
-    3: "Complete!",
-  };
-
-  const roundDescriptions = {
-    1: "Use only ONE word to describe the phrase",
-    2: "Act it out! No words allowed",
-    3: "",
-  };
-
-  const nextRound = (round + 1) as 1 | 2 | 3;
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-monikers/15 via-monikers/8 to-monikers/20 relative">
-      <div className="game-bg-pattern text-monikers" />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md text-center relative z-10"
-      >
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", delay: 0.2 }}
-            className="text-7xl mb-4"
-          >
-            🎉
-          </motion.div>
-
-          <h1 className="text-3xl font-bold font-display mb-6">
-            Round {round} Complete!
-          </h1>
-
-          <div className="p-5 bg-gradient-to-br from-monikers to-monikers-dark rounded-2xl mb-8">
-            <p className="font-bold text-xl text-white font-display">
-              Round {nextRound}: {roundNames[round as keyof typeof roundNames]}
-            </p>
-            {roundDescriptions[round as keyof typeof roundDescriptions] && (
-              <p className="text-sm text-white/80 mt-2">
-                {roundDescriptions[round as keyof typeof roundDescriptions]}
-              </p>
-            )}
-          </div>
-
-          <Button
-            className="w-full h-14 rounded-2xl text-base font-bold"
-            onClick={onNextRound}
-          >
-            <Play className="w-5 h-5 mr-2" />
-            Start Round {nextRound}
-          </Button>
         </div>
       </motion.div>
     </div>

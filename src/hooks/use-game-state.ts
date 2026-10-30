@@ -1,29 +1,21 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useMemo } from "react";
 import type { SessionState } from "@/types/session";
 import type { Deck } from "@/types/deck";
 import type { Card } from "@/types/card";
-import { isMonikersSession } from "@/types/session";
+import type { AnyGameModule, GameActionBase } from "@/lib/game/modules/types";
+import { getGameModule } from "@/lib/game/modules/registry";
+import { getCurrentCard } from "@/lib/game/modules/stack";
 import { useDeck } from "./use-deck";
 import { useSession } from "./use-session";
-import {
-  createInitialSession,
-  getCurrentCard,
-  nextCard,
-  passCard,
-  revealCard,
-  restartSession,
-  isSessionComplete,
-  monikersCorrect,
-  monikersEndTurn,
-  monikersStartNextRound,
-  isRoundComplete,
-} from "@/lib/game/engine";
 
 export interface UseGameStateReturn {
   // Data
   deck: Deck | null;
+  /** The deck's game module (null until the deck loads). */
+  gameModule: AnyGameModule | null;
+  /** Session once the game has started or resumed, else null. */
   session: SessionState | null;
   currentCard: Card | null;
 
@@ -32,27 +24,20 @@ export interface UseGameStateReturn {
   error: Error | null;
   isNotFound: boolean;
   isComplete: boolean;
-  isRoundComplete: boolean;
   hasSavedSession: boolean;
-
-  // Monikers specific
-  monikersRound: 1 | 2 | 3 | null;
 
   // Actions
   startGame: (shuffleEnabled: boolean) => void;
   resumeGame: () => void;
-  handleNext: () => void;
-  handlePass: () => void;
-  handleReveal: () => void;
+  /** Send a module-specific action through the module's reducer. */
+  dispatch: (action: GameActionBase) => void;
   handleRestart: () => void;
-  handleMonikersCorrect: () => void;
-  handleMonikersEndTurn: () => void;
-  handleMonikersNextRound: () => void;
 }
 
 /**
- * Main hook for managing game state on the play screen
- * Combines deck loading, session management, and game actions
+ * Main hook for the play screen: loads the deck and session and routes every
+ * game action through the deck's module from the registry. It has no
+ * knowledge of individual game types.
  */
 export function useGameState(deckId: string): UseGameStateReturn {
   const { deck, isLoading: isDeckLoading, error, isNotFound } = useDeck(deckId);
@@ -65,19 +50,14 @@ export function useGameState(deckId: string): UseGameStateReturn {
 
   const [hasStarted, setHasStarted] = useState(false);
 
-  // Determine current card
-  const currentCard =
-    deck && session ? getCurrentCard(session, deck) : null;
+  const gameModule = useMemo(
+    () => (deck ? getGameModule(deck.gameType) : null),
+    [deck]
+  );
 
-  // Check completion status
-  const isComplete = session ? isSessionComplete(session) : false;
-  const roundComplete =
-    session && isMonikersSession(session) ? isRoundComplete(session) : false;
-
-  // Get Monikers round if applicable
-  const monikersRound = session && isMonikersSession(session)
-    ? session.monikersRound
-    : null;
+  const currentCard = deck && session ? getCurrentCard(session, deck) : null;
+  const isComplete =
+    session && gameModule ? gameModule.isComplete(session) : false;
 
   // Auto-resume if we have a saved session
   useEffect(() => {
@@ -86,94 +66,56 @@ export function useGameState(deckId: string): UseGameStateReturn {
     }
   }, [isDeckLoading, isSessionLoading, hasSavedSession, session]);
 
-  // Start a new game
   const startGame = useCallback(
     (shuffleEnabled: boolean) => {
-      if (!deck) return;
-
-      const shuffleSeed = shuffleEnabled ? `${Date.now()}-${Math.random()}` : undefined;
-      const newSession = createInitialSession(deck, { shuffleEnabled, shuffleSeed });
-      setSession(newSession);
+      if (!deck || !gameModule) return;
+      const shuffleSeed = shuffleEnabled
+        ? `${Date.now()}-${Math.random()}`
+        : undefined;
+      setSession(gameModule.createSession(deck, { shuffleEnabled, shuffleSeed }));
       setHasStarted(true);
     },
-    [deck, setSession]
+    [deck, gameModule, setSession]
   );
 
-  // Resume existing game
   const resumeGame = useCallback(() => {
-    if (session) {
-      setHasStarted(true);
-    }
+    if (session) setHasStarted(true);
   }, [session]);
 
-  // Handle next card action
-  const handleNext = useCallback(() => {
-    if (!session) return;
-    setSession(nextCard(session));
-  }, [session, setSession]);
+  const dispatch = useCallback(
+    (action: GameActionBase) => {
+      if (!session || !deck || !gameModule) return;
+      const next = gameModule.reduce(session, action, deck);
+      if (next !== session) setSession(next);
+    },
+    [session, deck, gameModule, setSession]
+  );
 
-  // Handle pass action
-  const handlePass = useCallback(() => {
-    if (!session) return;
-    setSession(passCard(session));
-  }, [session, setSession]);
-
-  // Handle reveal (trivia only)
-  const handleReveal = useCallback(() => {
-    if (!session) return;
-    setSession(revealCard(session));
-  }, [session, setSession]);
-
-  // Handle restart
   const handleRestart = useCallback(() => {
-    if (!session || !deck) return;
-    setSession(restartSession(session, deck));
-  }, [session, deck, setSession]);
-
-  // Monikers: handle correct
-  const handleMonikersCorrect = useCallback(() => {
-    if (!session || !isMonikersSession(session)) return;
-    setSession(monikersCorrect(session));
-  }, [session, setSession]);
-
-  // Monikers: handle end turn
-  const handleMonikersEndTurn = useCallback(() => {
-    if (!session || !isMonikersSession(session)) return;
-    setSession(monikersEndTurn(session));
-  }, [session, setSession]);
-
-  // Monikers: handle next round
-  const handleMonikersNextRound = useCallback(() => {
-    if (!session || !isMonikersSession(session) || !deck) return;
-    setSession(monikersStartNextRound(session, deck));
-  }, [session, deck, setSession]);
+    if (!session || !deck || !gameModule) return;
+    setSession(
+      gameModule.createSession(deck, {
+        shuffleEnabled: session.shuffleEnabled,
+        shuffleSeed: session.shuffleSeed,
+      })
+    );
+  }, [session, deck, gameModule, setSession]);
 
   return {
-    // Data
     deck,
+    gameModule,
     session: hasStarted ? session : null,
     currentCard: hasStarted ? currentCard : null,
 
-    // Status
     isLoading: isDeckLoading || isSessionLoading,
     error,
     isNotFound,
     isComplete: hasStarted && isComplete,
-    isRoundComplete: hasStarted && roundComplete,
     hasSavedSession,
 
-    // Monikers specific
-    monikersRound: hasStarted ? monikersRound : null,
-
-    // Actions
     startGame,
     resumeGame,
-    handleNext,
-    handlePass,
-    handleReveal,
+    dispatch,
     handleRestart,
-    handleMonikersCorrect,
-    handleMonikersEndTurn,
-    handleMonikersNextRound,
   };
 }
