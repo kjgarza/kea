@@ -8,6 +8,7 @@ export * from "./api";
 export * from "./config";
 export * from "./keeper";
 export * from "./grade";
+export * from "./case";
 export * from "./provider";
 export * from "./stub-keeper";
 export * from "./leak-judge";

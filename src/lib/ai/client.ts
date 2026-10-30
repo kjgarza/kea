@@ -10,6 +10,10 @@ import type {
   ApiErrorCode,
   ApiRequestMap,
   ApiResponseMap,
+  CaseAskRequest,
+  CaseAskResponse,
+  CaseJudgeRequest,
+  CaseJudgeResponse,
   KeeperAskRequest,
   KeeperAskResponse,
   KeeperGradeRequest,
@@ -137,6 +141,32 @@ export function gradeKeeperTheory(
     theory: req.theory,
   };
   return postToWorker(API_ROUTES.keeperGrade, body, options);
+}
+
+/**
+ * Ask the case investigator (#37, F15). Only ids and the question are sent;
+ * the Worker decides which of the opened evidence may be used.
+ */
+export function askCaseInvestigator(req: CaseAskRequest, options: ClientOptions = {}): Promise<CaseAskResponse> {
+  const body: CaseAskRequest = {
+    deckId: req.deckId,
+    cardId: req.cardId,
+    lang: req.lang,
+    openedEvidenceIds: [...req.openedEvidenceIds],
+    question: req.question,
+  };
+  return postToWorker(API_ROUTES.caseAsk, body, options);
+}
+
+/** Ask the answer judge to mark the group's answers (#37, F16). */
+export function judgeCaseAnswers(req: CaseJudgeRequest, options: ClientOptions = {}): Promise<CaseJudgeResponse> {
+  const body: CaseJudgeRequest = {
+    deckId: req.deckId,
+    cardId: req.cardId,
+    lang: req.lang,
+    answers: { ...req.answers },
+  };
+  return postToWorker(API_ROUTES.caseJudge, body, options);
 }
 
 /** Check the passcode and read today's remaining quota. */

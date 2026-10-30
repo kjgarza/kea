@@ -1,6 +1,7 @@
 import type { CaseCard, Evidence } from "@/types/card";
 import type { Deck } from "@/types/deck";
 import type {
+  CaseInvestigatorEntry,
   CaseMark,
   CaseNoteTab,
   CaseNotes,
@@ -49,6 +50,19 @@ export type CaseAction =
    * already marked, or that matched locally, are left alone.
    */
   | { type: "judgeMarks"; results: { questionId: string; correct: boolean }[] }
+  /**
+   * AI investigator (#37): save one answered question. Citations are kept
+   * only for evidence the group has opened. Board phase only.
+   */
+  | {
+      type: "recordInvestigator";
+      cardId: string;
+      q: string;
+      answer: string;
+      citedEvidenceIds: string[];
+      inEvidence: boolean;
+      at: string;
+    }
   /** Every answer is decided: score and reveal the walkthrough. */
   | { type: "reveal"; at: string }
   /** Close a scored case and move to the next one. */
@@ -61,7 +75,19 @@ export type CasePhase = "cover" | "board" | "review" | "closed";
 export const CASE_NOTE_TABS: readonly CaseNoteTab[] = ["suspects", "timeline", "free"];
 
 /** Upper bounds that keep a saved session small. */
-export const CASE_INPUT_LIMITS = { noteMaxChars: 10_000, answerMaxChars: 500 } as const;
+export const CASE_INPUT_LIMITS = {
+  noteMaxChars: 10_000,
+  answerMaxChars: 500,
+  /** Investigator exchanges kept per case (oldest dropped first). */
+  investigatorMaxEntries: 60,
+  investigatorTextMaxChars: 1_500,
+} as const;
+
+/** The case's investigator transcript (empty for sessions saved before #37). */
+export function investigatorTranscript(session: CaseSessionState): CaseInvestigatorEntry[] {
+  const entries = normalizeCaseSession(session).investigator;
+  return Array.isArray(entries) ? entries : [];
+}
 
 export function emptyNotes(): CaseNotes {
   return { suspects: "", timeline: "", free: "" };
@@ -79,6 +105,7 @@ type CaseFields = Pick<
   | "marks"
   | "scored"
   | "endedAt"
+  | "investigator"
 >;
 
 function freshCase(cardId: string | null): CaseFields {
@@ -92,6 +119,7 @@ function freshCase(cardId: string | null): CaseFields {
     marks: {},
     scored: undefined,
     endedAt: null,
+    investigator: [],
   };
 }
 
@@ -215,6 +243,22 @@ export function reduceCase(
         changed = true;
       }
       return changed ? { ...session, marks } : input;
+    }
+
+    case "recordInvestigator": {
+      if (phase !== "board" || action.cardId !== card.cardId) return input;
+      const q = action.q.trim().slice(0, CASE_INPUT_LIMITS.investigatorTextMaxChars);
+      if (!q) return input;
+      const opened = new Set(session.opened);
+      const entry: CaseInvestigatorEntry = {
+        q,
+        answer: action.answer.slice(0, CASE_INPUT_LIMITS.investigatorTextMaxChars),
+        citedEvidenceIds: Array.from(new Set(action.citedEvidenceIds.filter((id) => opened.has(id)))),
+        inEvidence: action.inEvidence,
+        at: action.at,
+      };
+      const investigator = [...investigatorTranscript(session), entry].slice(-CASE_INPUT_LIMITS.investigatorMaxEntries);
+      return { ...session, investigator };
     }
 
     case "reveal": {

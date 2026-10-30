@@ -11,6 +11,7 @@ import {
   caseProgress,
   createCaseSession,
   isCaseComplete,
+  investigatorTranscript,
   isEvidenceUnlocked,
   missingUnlocks,
   normalizeCaseSession,
@@ -276,5 +277,46 @@ describe("case logic: accusation and scoring", () => {
     expect(
       casePlayRecord({ deckId: deck.deckId, session: solved, card: deck.cards[0], group: { id: "g", name: "Crew", hidePlayed: false } })
     ).toMatchObject({ outcome: "solved", score: 5, groupName: "Crew" });
+  });
+});
+
+describe("recordInvestigator (#37)", () => {
+  const entry = (extra: Partial<Extract<CaseAction, { type: "recordInvestigator" }>> = {}): CaseAction => ({
+    type: "recordInvestigator",
+    cardId: "c1",
+    q: "What does A say?",
+    answer: "A says x (`a`).",
+    citedEvidenceIds: ["a", "b"],
+    inEvidence: true,
+    at: LATER,
+    ...extra,
+  });
+
+  test("saves the exchange on the board, keeping only opened citations", () => {
+    const s = play([{ type: "start", at: AT }, { type: "open", evidenceId: "a" }, entry()]);
+    expect(investigatorTranscript(s)).toEqual([
+      { q: "What does A say?", answer: "A says x (`a`).", citedEvidenceIds: ["a"], inEvidence: true, at: LATER },
+    ]);
+  });
+
+  test("ignored on the cover, in review, for another card, or with an empty question", () => {
+    const cover = play([entry()]);
+    expect(investigatorTranscript(cover)).toEqual([]);
+    const board = play([{ type: "start", at: AT }]);
+    expect(investigatorTranscript(reduceCase(board, entry({ cardId: "c2" }), deck))).toEqual([]);
+    expect(investigatorTranscript(reduceCase(board, entry({ q: "  " }), deck))).toEqual([]);
+    const review = play([{ type: "accuse", at: LATER }], board);
+    expect(investigatorTranscript(reduceCase(review, entry(), deck))).toEqual([]);
+  });
+
+  test("survives answers and accusation, resets for the next case, tolerates old sessions", () => {
+    const s = play([{ type: "start", at: AT }, entry(), { type: "accuse", at: LATER }]);
+    expect(investigatorTranscript(s)).toHaveLength(1);
+    const skipped = reduceCase(play([{ type: "start", at: AT }, entry()]), { type: "skip" }, deck);
+    expect(investigatorTranscript(skipped)).toEqual([]);
+    const old = { ...play([{ type: "start", at: AT }]) };
+    delete old.investigator;
+    expect(investigatorTranscript(old)).toEqual([]);
+    expect(investigatorTranscript(reduceCase(old, entry(), deck))).toHaveLength(1);
   });
 });

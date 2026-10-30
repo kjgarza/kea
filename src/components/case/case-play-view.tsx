@@ -6,6 +6,7 @@ import type { CaseCard, Evidence } from "@/types/card";
 import type { CaseSessionState } from "@/types/session";
 import type { PlayViewProps } from "@/lib/game/modules/types";
 import {
+  investigatorTranscript,
   caseClosing,
   caseMaxPoints,
   casePhase,
@@ -15,19 +16,21 @@ import {
 } from "@/lib/game/modules/case/logic";
 import { totalPoints, unmatchedQuestionIds } from "@/lib/game/modules/case/scoring";
 import { useLocale } from "@/lib/i18n";
+import { useAiAvailability } from "@/hooks/use-ai-availability";
 import { casePlayRecord, getGroups, recordPlay, selectedGroup } from "@/lib/history";
 import { AfterPuzzleNotices } from "@/components/history/after-puzzle-notices";
 import { AccusationSheet } from "./accusation-sheet";
 import { BoardButton, CaseBoard, CaseCoverScreen } from "./case-screens";
 import { EvidenceDrawer } from "./evidence-drawer";
 import { EvidenceViewer } from "./evidence-viewer";
+import { InvestigatorPanel, InvestigatorSheet } from "./investigator-sheet";
 import { JudgeSlot } from "./judge-slot";
 import { NotesSheet } from "./notes-sheet";
 import { CaseClosedScreen, CaseReviewScreen } from "./verdict-screens";
 
 type Props = PlayViewProps<CaseSessionState, CaseCard, CaseAction>;
 
-type Sheet = "evidence" | "notes" | "accuse" | null;
+type Sheet = "evidence" | "notes" | "accuse" | "investigator" | null;
 
 const now = () => new Date().toISOString();
 
@@ -40,7 +43,9 @@ const now = () => new Date().toISOString();
  * the session; only which sheet is open lives here.
  */
 export function CasePlayView({ deck, session: rawSession, currentCard, dispatch }: Props) {
-  const { t } = useLocale(deck.language);
+  const { t, locale } = useLocale(deck.language);
+  // The AI investigator (#37) shows only with a Worker URL and a passcode.
+  const aiAvailable = useAiAvailability() === "available";
   const [sheet, setSheet] = useState<Sheet>(null);
   const [viewingId, setViewingId] = useState<string | null>(null);
 
@@ -121,7 +126,28 @@ export function CasePlayView({ deck, session: rawSession, currentCard, dispatch 
                 />
               </div>
             }
-          />
+          >
+            {aiAvailable && (
+              <InvestigatorPanel
+                count={investigatorTranscript(session).length}
+                onOpen={() => setSheet("investigator")}
+                t={t}
+              />
+            )}
+          </CaseBoard>
+          {aiAvailable && (
+            <InvestigatorSheet
+              open={sheet === "investigator"}
+              onOpenChange={(open) => setSheet(open ? "investigator" : null)}
+              deckId={deck.deckId}
+              card={currentCard}
+              session={session}
+              language={locale}
+              dispatch={dispatch}
+              onViewEvidence={view}
+              t={t}
+            />
+          )}
           <EvidenceDrawer
             open={sheet === "evidence"}
             onOpenChange={(open) => setSheet(open ? "evidence" : null)}
@@ -175,6 +201,7 @@ export function CasePlayView({ deck, session: rawSession, currentCard, dispatch 
               session={session}
               card={currentCard}
               unmatchedIds={unmatchedQuestionIds(currentCard, session.answers)}
+              language={locale}
               dispatch={dispatch}
               t={t}
             />

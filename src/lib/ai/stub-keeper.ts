@@ -8,6 +8,7 @@
  * theory contains at least half of its longer words), and `stubRespond`
  * routes a request to the right one by schema name.
  */
+import { INVESTIGATOR_SCHEMA_NAME, JUDGE_SCHEMA_NAME, normalizeCaseAnswer } from "./case";
 import { GRADER_SCHEMA_NAME } from "./grade";
 import type { JsonGenerationRequest } from "./provider";
 import { AMBIGUITY_SCHEMA_NAME, SOLVER_SCHEMA_NAME } from "./solver";
@@ -86,6 +87,54 @@ export function stubAmbiguityRespond() {
   return { ambiguous: false, alternative: "", reason: "" };
 }
 
+/**
+ * Offline investigator (#37): picks the opened evidence item sharing the most
+ * longer words with the question and quotes its first line; otherwise says
+ * the answer is not in the opened evidence. It can only see what the prompt
+ * holds, like the real investigator.
+ */
+export function stubInvestigatorRespond(request: JsonGenerationRequest) {
+  const question = userText(request).match(/<question>\n([\s\S]*?)\n<\/question>/)?.[1] ?? "";
+  if (ASK_FOR_ANSWER.test(question)) return { inEvidence: false, answer: "", citedEvidenceIds: [] };
+  const asked = words(question);
+  const start = request.system.lastIndexOf("\nOPENED EVIDENCE (");
+  const opened = start >= 0 ? request.system.slice(start) : "";
+  const items = Array.from(
+    opened.matchAll(/^--- EVIDENCE \[([^\]]+)\] [a-z_]+: (.*)\n([\s\S]*?)(?=\n\n--- |\n--- END)/gm),
+    (m) => ({ id: m[1], title: m[2], body: m[3] })
+  );
+  let best: { id: string; title: string; body: string; score: number } | null = null;
+  for (const item of items) {
+    const score = Array.from(words(`${item.title} ${item.body}`)).filter((w) => asked.has(w)).length;
+    if (score > 0 && (!best || score > best.score)) best = { ...item, score };
+  }
+  if (!best) return { inEvidence: false, answer: "", citedEvidenceIds: [] };
+  const line = best.body.split("\n").find((l) => l.trim().length > 0)?.trim() ?? best.title;
+  return { inEvidence: true, answer: `\`${best.id}\` (${best.title}): ${line.slice(0, 200)}`, citedEvidenceIds: [best.id] };
+}
+
+/**
+ * Offline judge (#37): an answer is correct when it shares at least half of
+ * the longer words of the answer or of a variant.
+ */
+export function stubJudgeRespond(request: JsonGenerationRequest) {
+  const user = userText(request);
+  const blocks = user.split(/\n(?=QUESTION \[)/).filter((b) => b.startsWith("QUESTION ["));
+  const results = blocks.map((block) => {
+    const questionId = block.match(/^QUESTION \[([^\]]+)\]/)?.[1] ?? "";
+    const correctAnswer = block.match(/^CORRECT ANSWER: (.*)$/m)?.[1] ?? "";
+    const variants = (block.match(/^ACCEPTED VARIANTS: (.*)$/m)?.[1] ?? "").split("; ");
+    const given = words(normalizeCaseAnswer(block.match(/<answer id="[^"]*">\n([\s\S]*?)\n<\/answer>/)?.[1] ?? ""));
+    const correct = [correctAnswer, ...variants].some((target) => {
+      const targetWords = Array.from(words(normalizeCaseAnswer(target)));
+      const hits = targetWords.filter((w) => given.has(w)).length;
+      return targetWords.length > 0 && hits * 2 >= targetWords.length;
+    });
+    return { questionId, correct };
+  });
+  return { results };
+}
+
 /** Offline provider callback for every Worker endpoint and script prompt, routed by schema name. */
 export function stubRespond(request: JsonGenerationRequest) {
   switch (request.schemaName) {
@@ -95,6 +144,10 @@ export function stubRespond(request: JsonGenerationRequest) {
       return stubSolverRespond(request);
     case AMBIGUITY_SCHEMA_NAME:
       return stubAmbiguityRespond();
+    case INVESTIGATOR_SCHEMA_NAME:
+      return stubInvestigatorRespond(request);
+    case JUDGE_SCHEMA_NAME:
+      return stubJudgeRespond(request);
     default:
       return stubKeeperRespond(request);
   }

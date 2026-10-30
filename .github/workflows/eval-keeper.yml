@@ -2,16 +2,17 @@ name: Keeper eval
 
 # Runs the AI keeper eval set (evals/keeper) through the shared keeper prompt,
 # and the theories in the same files through the shared grader (#32), and
-# posts agreement, leaks and confusion matrices as the job summary.
+# posts agreement, leaks and confusion matrices as the job summary. The case
+# suites (#37) run evals/case through the investigator and the answer judge.
 on:
   workflow_dispatch:
     inputs:
       suite:
-        description: "Which evals: keeper answers, theory grading, or both"
+        description: "Which evals: keeper answers, theory grading, case investigator, case judge, both case suites, or all"
         required: true
         type: choice
         default: all
-        options: [all, keeper, grade]
+        options: [all, keeper, grade, case-ask, case-judge, case]
       provider:
         description: "Keeper provider (oracle/saboteur/stub run offline, no keys)"
         required: true
@@ -83,7 +84,7 @@ jobs:
           BASELINE: ${{ inputs.baseline }}
           STRICT: ${{ inputs.strict }}
         run: |
-          args=(--suite "$SUITE" --provider "$PROVIDER" --judge "$JUDGE" --lang "$LANG_FILTER" --save reports/keeper-eval.json --save-grade reports/grade-eval.json --markdown reports/keeper-eval.md)
+          args=(--suite "$SUITE" --provider "$PROVIDER" --judge "$JUDGE" --lang "$LANG_FILTER" --save reports/keeper-eval.json --save-grade reports/grade-eval.json --save-case reports/case-eval.json --markdown reports/keeper-eval.md)
           [ -n "$MODEL" ] && args+=(--model "$MODEL")
           [ -n "$LIMIT" ] && args+=(--limit "$LIMIT")
           [ -n "$CONCURRENCY" ] && args+=(--concurrency "$CONCURRENCY")

@@ -18,8 +18,8 @@ Errors are `{ "error": { "code", "message" } }`.
 |---|---|---|---|---|
 | POST | `/keeper/ask` | `{ deckId, cardId, lang: "en"\|"es", transcript: [{ q, a }], question }` | `{ answer: "yes"\|"no"\|"irrelevant"\|"partly"\|"rephrase", factIds: string[], confidence: 0..1 }` | implemented (#29) |
 | POST | `/keeper/grade` | `{ deckId, cardId, lang, theory }` (theory ≤ 1200 chars) | `{ correctFactIds: string[], missingCount: number, verdict: "solved"\|"close"\|"not_yet" }` | implemented (#32) |
-| POST | `/case/ask` | `{ deckId, cardId, lang, openedEvidenceIds, question }` | `{ answer, citedEvidenceIds }` | 501 until #37 |
-| POST | `/case/judge` | `{ deckId, cardId, lang, answers }` | `{ results: [{ questionId, correct }] }` | 501 until #37 |
+| POST | `/case/ask` | `{ deckId, cardId, lang, openedEvidenceIds, question }` | `{ answer, citedEvidenceIds, inEvidence }` | #37: uses only opened, unlocked evidence; 502 on bad model output |
+| POST | `/case/judge` | `{ deckId, cardId, lang, answers }` | `{ results: [{ questionId, correct }] }` | #37: only submitted questions; blank/exact/variant decided locally; 502 on bad model output |
 | POST | `/author/photo` | `{ images: [{ mediaType, data }], lang }` | `{ yaml }` | 501 until #38 |
 | GET | `/status` | none | `{ ok, remaining, limit }` (does not use quota) | implemented |
 

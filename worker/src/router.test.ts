@@ -399,7 +399,7 @@ describe("routing", () => {
     expect((await handleRequest(new Request("https://w/nope", { headers }), baseEnv, h.deps)).status).toBe(404);
     expect((await handleRequest(new Request("https://w/keeper/ask", { headers }), baseEnv, h.deps)).status).toBe(405);
     const later = await handleRequest(
-      new Request("https://w/case/ask", { method: "POST", headers, body: "{}" }),
+      new Request("https://w/author/photo", { method: "POST", headers, body: "{}" }),
       baseEnv,
       h.deps
     );

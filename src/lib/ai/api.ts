@@ -83,8 +83,16 @@ export interface CaseAskRequest {
 }
 
 export interface CaseAskResponse {
+  /**
+   * The investigator's reply, from opened evidence only. When the opened
+   * evidence does not answer the question this is the localised "not in the
+   * opened evidence" reply and `inEvidence` is false.
+   */
   answer: string;
+  /** Opened evidence ids the reply relies on (never an unopened id). */
   citedEvidenceIds: string[];
+  /** False when the opened evidence does not answer the question. */
+  inEvidence: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -99,8 +107,14 @@ export interface CaseJudgeRequest {
   answers: Record<string, string>;
 }
 
+export interface CaseJudgeResult {
+  questionId: string;
+  correct: boolean;
+}
+
+/** One result per submitted (known) question. Never contains answer text. */
 export interface CaseJudgeResponse {
-  results: { questionId: string; correct: boolean }[];
+  results: CaseJudgeResult[];
 }
 
 // ---------------------------------------------------------------------------
