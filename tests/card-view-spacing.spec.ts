@@ -1,4 +1,15 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
+
+// The deck page renders after the deck JSON loads, so wait for either the
+// "Start Game" button or an in-progress game before deciding what to click.
+async function startGameIfNeeded(page: Page) {
+  const startButton = page.getByRole('button', { name: /start game/i });
+  const passButton = page.getByRole('button', { name: /pass/i });
+  await expect(startButton.or(passButton).first()).toBeVisible();
+  if (await startButton.isVisible()) {
+    await startButton.click();
+  }
+}
 
 test.describe('Card View Spacing', () => {
   test('action buttons should be visible without scrolling on desktop', async ({ page }) => {
@@ -6,10 +17,7 @@ test.describe('Card View Spacing', () => {
     await page.goto('/play/animals-en-charades');
 
     // Click "Start Game" button if present
-    const startButton = page.getByRole('button', { name: /start game/i });
-    if (await startButton.isVisible()) {
-      await startButton.click();
-    }
+    await startGameIfNeeded(page);
 
     // Wait for the play screen to load
     await page.waitForSelector('main', { state: 'visible' });
@@ -53,10 +61,7 @@ test.describe('Card View Spacing', () => {
     await page.goto('/play/animals-en-charades');
 
     // Click "Start Game" button if present
-    const startButton = page.getByRole('button', { name: /start game/i });
-    if (await startButton.isVisible()) {
-      await startButton.click();
-    }
+    await startGameIfNeeded(page);
 
     // Wait for the play screen to load
     await page.waitForSelector('main', { state: 'visible' });
@@ -106,10 +111,7 @@ test.describe('Card View Spacing', () => {
       await page.goto('/play/animals-en-charades');
 
       // Click "Start Game" button if present
-      const startButton = page.getByRole('button', { name: /start game/i });
-      if (await startButton.isVisible()) {
-        await startButton.click();
-      }
+      await startGameIfNeeded(page);
 
       await page.waitForSelector('main', { state: 'visible' });
 

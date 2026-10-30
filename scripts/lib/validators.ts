@@ -22,8 +22,6 @@ export function validateCard(
   gameType: GameType,
   cardId: string
 ): ValidationResult {
-  const errors: string[] = [];
-
   if (!raw || typeof raw !== "object") {
     return { valid: false, errors: ["Card is not an object"] };
   }

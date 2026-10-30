@@ -40,6 +40,11 @@ generate-dry:
 generate-deck deck:
     bun scripts/generate-decks.ts --deck {{deck}}
 
+# Unit tests (bun test)
+
+test-unit:
+    bun run test:unit
+
 # Playwright tests
 
 test:

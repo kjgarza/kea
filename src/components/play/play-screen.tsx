@@ -208,7 +208,6 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
     );
   }
 
-  const game = GAMES[deck!.gameType];
   const bgGradient = gameGradients[deck!.gameType];
 
   return (

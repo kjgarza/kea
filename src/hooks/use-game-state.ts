@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import type { SessionState, MonikersSessionState } from "@/types/session";
+import type { SessionState } from "@/types/session";
 import type { Deck } from "@/types/deck";
 import type { Card } from "@/types/card";
 import { isMonikersSession } from "@/types/session";
@@ -61,7 +61,6 @@ export function useGameState(deckId: string): UseGameStateReturn {
     isLoading: isSessionLoading,
     hasSavedSession,
     setSession,
-    clear: clearSession,
   } = useSession(deckId, deck);
 
   const [hasStarted, setHasStarted] = useState(false);

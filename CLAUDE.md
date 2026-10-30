@@ -10,6 +10,11 @@ Use Bun instead of Node.js for all operations:
 - `bun run dev` - Start Next.js dev server
 - `bun run build` - Build static export
 - `bun scripts/generate-decks.ts` - Run deck generator
+- `bun run lint` - ESLint CLI with flat config (`eslint.config.mjs`, `eslint-config-next`)
+- `bunx tsc --noEmit` - Type check
+- `bun run lint && bunx tsc --noEmit` - What `just check` runs (`just` may not be installed; run the commands directly)
+- `bun run test:unit` - Unit tests via `bun test` (`*.test.ts` under `src/` and `scripts/`)
+- `bunx playwright test --project=chromium` - E2E tests in `tests/` (starts `bun run dev`). If the preinstalled browser revision does not match, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to a local chromium/headless-shell binary
 - Bun auto-loads `.env` files (no dotenv needed)
 
 ## Architecture
@@ -17,6 +22,7 @@ Use Bun instead of Node.js for all operations:
 ### Frontend (Next.js 16)
 
 - **Static export** - All pages pre-rendered, decks load as JSON at runtime
+- **basePath** - Production builds serve under `/${NEXT_PUBLIC_REPO_NAME}` (default `kea`); see `next.config.ts` and `src/lib/utils/base-path.ts`
 - **App Router** - Pages in `src/app/`, layouts cascade
 - **Tailwind v4** - CSS-based config in `src/app/globals.css`
 - **shadcn/ui** - Components in `src/components/ui/`
@@ -35,26 +41,32 @@ Each card has a `type` field for narrowing. Use switch statements on `card.type`
 
 State machine in `src/lib/game/engine.ts` handles all game logic:
 
-- `nextCard()` - Advance to next card
-- `passCard()` - Skip current card (recycles for Monikers, discards for others)
-- `correctCard()` - Mark card correct and advance
-- `advanceRound()` - Monikers only: move to next round
-- `resetGame()` - Start over with same deck
+- `createInitialSession(deck, { shuffleEnabled, shuffleSeed? })` - Build a fresh session
+- `nextCard(session)` - Mark current card done and advance
+- `passCard(session)` - Skip current card. Behaviour comes from `GAMES[gameType].passBehavior` in `src/types/game.ts`: Charades, Taboo and Monikers **recycle** passed cards (they come back later); Trivia and Just One **discard** them
+- `revealCard(session)` - Reveal the answer (Trivia)
+- `monikersCorrect(session)` - Monikers only: mark card guessed, removing it from the current round
+- `monikersEndTurn(session)` - Monikers only: put passed cards back for the next turn
+- `monikersStartNextRound(session, deck)` - Monikers only: move to the next of 3 rounds with all cards
+- `restartSession(session, deck)` - Start over with the same deck and shuffle settings
+- `isSessionComplete`, `isRoundComplete`, `getSessionProgress(session, deck)` - Status helpers (`completed` = deck size minus remaining, passed and current)
 
 ### Session Persistence
 
 Sessions stored in localStorage via `src/lib/session/`:
 
-- Sessions keyed by `gameType-deckId`
+- Sessions keyed by `cg.session.<deckId>` (`getSessionKey()` / `SESSION_KEY_PREFIX` in `src/types/session.ts`)
 - Deterministic shuffle using seeded PRNG (same seed = same order)
-- Session includes: current index, seen cards, scores, round (Monikers)
+- Session includes: `currentCardId`, `remainingCardIds`, `passedCardIds`, `isRevealed`, shuffle settings, deck version; Monikers adds `monikersRound`, `monikersRemainingCardIds`, `monikersPassedCardIds`
+- `session-validator.ts` checks a saved session still matches the deck
 
 ### Deck Loading
 
 Decks loaded from `public/decks/*.json` via `src/lib/data/deck-loader.ts`:
 
-- `getDeckIndex()` - Returns list of all available decks
-- `getDeck(deckId)` - Loads specific deck JSON
+- `loadDeckIndex()` - Returns list of all available decks
+- `loadDeck(deckId)` - Loads specific deck JSON
+- `getDecksForGame(gameType)`, `getDeckMeta(deckId)` - Index helpers
 - Results cached in memory
 
 ## Generation Pipeline
@@ -135,5 +147,5 @@ Edit components in `src/components/play/`:
 
 Check localStorage in browser devtools. Sessions stored as:
 ```
-session-{gameType}-{deckId}
+cg.session.{deckId}
 ```

@@ -231,7 +231,7 @@ async function main() {
     try {
       const config = await loadConfig(configPath);
       configs = new Map([[args.deck, config]]);
-    } catch (error) {
+    } catch {
       console.error(`❌ Could not load config: ${configPath}`);
       process.exit(1);
     }

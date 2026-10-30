@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "test:unit": "bun test src scripts",
     "generate": "bun scripts/generate-decks.ts --all",
     "generate:dry": "bun scripts/generate-decks.ts --all --dry-run"
   },
@@ -36,6 +37,8 @@
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
     "playwright": "^1.57.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",

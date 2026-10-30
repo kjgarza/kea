@@ -387,46 +387,52 @@ export function isRoundComplete(session: MonikersSessionState): boolean {
 }
 
 /**
- * Get progress stats for session
+ * Get progress stats for session.
+ *
+ * `completed` is derived from the deck size: every card that is not still
+ * upcoming (remaining), waiting to be retried (passed) or on screen (current)
+ * has been played. For discard games this includes cards that were passed.
+ * For Monikers the counts are per round.
  */
-export function getSessionProgress(session: SessionState): {
+export function getSessionProgress(
+  session: SessionState,
+  deck: Deck
+): {
   completed: number;
   remaining: number;
   passed: number;
   total: number;
 } {
-  if (isMonikersSession(session)) {
-    const remaining =
-      session.monikersRemainingCardIds.length +
-      session.monikersPassedCardIds.length +
-      (session.currentCardId ? 1 : 0);
+  const total = deck.cards.length;
+  const current = session.currentCardId ? 1 : 0;
 
-    // For Monikers, we don't track completed cards the same way
+  if (isMonikersSession(session)) {
+    const passed = session.monikersPassedCardIds.length;
+    const remaining = session.monikersRemainingCardIds.length + current;
     return {
-      completed: 0, // Cards removed via "correct"
+      completed: countCompletedCards(total, remaining, passed),
       remaining,
-      passed: session.monikersPassedCardIds.length,
-      total: remaining, // Total in current round
+      passed,
+      total,
     };
   }
 
-  const remaining =
-    session.remainingCardIds.length + (session.currentCardId ? 1 : 0);
-  const total =
-    remaining + session.passedCardIds.length + countCompletedCards(session);
-
+  const passed = session.passedCardIds.length;
+  const remaining = session.remainingCardIds.length + current;
   return {
-    completed: countCompletedCards(session),
+    completed: countCompletedCards(total, remaining, passed),
     remaining,
-    passed: session.passedCardIds.length,
+    passed,
     total,
   };
 }
 
-function countCompletedCards(session: SessionState): number {
-  // Completed cards are not stored, we need deck info to calculate
-  // For now, return 0 - this will be calculated in UI with deck context
-  return 0;
+function countCompletedCards(
+  deckSize: number,
+  remaining: number,
+  passed: number
+): number {
+  return Math.max(0, deckSize - remaining - passed);
 }
 
 /**
