@@ -1,11 +1,5 @@
 /** POST /keeper/ask */
-import {
-  FALLBACK_KEEPER_RESPONSE,
-  buildKeeperRequest,
-  parseKeeperOutput,
-  validateKeeperAskRequest,
-} from "../../src/lib/ai/keeper";
-import { ProviderError, generateJsonWithRetry } from "../../src/lib/ai/provider";
+import { answerKeeperQuestion, validateKeeperAskRequest } from "../../src/lib/ai/keeper";
 import type { KeeperAskResponse } from "../../src/lib/ai/api";
 import type { SituationCard } from "../../src/types/card";
 import { DeckLoadError } from "./decks";
@@ -45,26 +39,19 @@ export async function handleKeeperAsk(ctx: HandlerContext): Promise<Response> {
   if (limited) return limited;
 
   const provider = ctx.provider();
-  const request = buildKeeperRequest({
-    card,
-    lang: req.lang,
-    transcript: req.transcript,
-    question: req.question,
-  });
-
   let result: KeeperAskResponse;
   try {
-    const output = await generateJsonWithRetry(provider, request, { attempts: 2, delayMs: 250 });
-    result = parseKeeperOutput(output.data, card);
+    const turn = await answerKeeperQuestion(provider, {
+      card,
+      lang: req.lang,
+      transcript: req.transcript,
+      question: req.question,
+    });
+    if (turn.fallback) console.warn("keeper fallback", turn.fallback);
+    result = turn.response;
   } catch (error) {
-    if (error instanceof ProviderError && error.kind !== "http") {
-      // Declined, truncated or malformed: ask the player to rephrase.
-      console.warn("keeper fallback", error.kind, error.message);
-      result = FALLBACK_KEEPER_RESPONSE;
-    } else {
-      console.error("keeper upstream error", String(error));
-      return errorResponse(502, "upstream_error", "The keeper is unavailable. Try again.");
-    }
+    console.error("keeper upstream error", String(error));
+    return errorResponse(502, "upstream_error", "The keeper is unavailable. Try again.");
   }
   return json(result);
 }

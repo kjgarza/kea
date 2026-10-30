@@ -14,7 +14,7 @@ import type { Env } from "./env";
 import { errorResponse, json, withHeaders } from "./http";
 import { handleKeeperAsk } from "./keeper";
 import type { RateLimiter, RateLimitResult } from "./rate-limit";
-import { stubKeeperRespond } from "./stub-keeper";
+import { stubKeeperRespond } from "../../src/lib/ai/stub-keeper";
 
 export interface WorkerDeps {
   decks: DeckLoader;

@@ -190,6 +190,27 @@ Setup, in short (details, API and local development in [worker/README.md](worker
 
 Shared prompts, schemas and API types live in `src/lib/ai/` (pure, imported by the Worker and the scripts). Scripts get a provider via `scripts/lib/llm-client.ts` (`getKeeperProvider()`: Anthropic by default; `KEEPER_PROVIDER`, `KEEPER_MODEL`, `ANTHROPIC_API_KEY`). Deck generation stays on OpenAI.
 
+### Keeper evals
+
+`evals/keeper/<cardId>.yaml` holds the keeper eval set: 20 seed puzzles (referenced by deck and card id) with about 30 scripted questions each, written in English and Spanish side by side so both languages share one expected answer. Each case is `{ a, en, es, facts?, allow?, tag?, transcript?, note? }`:
+
+- `a`: expected answer (`yes | no | irrelevant | partly | rephrase`). Use `irrelevant` only when the solution and key facts do not settle the question; demands for the answer, prompt injection and non-yes/no questions are `rephrase`.
+- `facts`: key-fact ids the reply should list; `allow`: ids it may also list without counting as a leak. Any other fact id in a reply is a leak.
+- `tag`: `fact` (default) or a red-team set: `demand`, `leading`, `non-yes-no`, `injection`, `language-switch` (the question is in the other language), `consistency` (with a `transcript` of earlier turns).
+
+`bun run test:unit` checks every file against the decks (cards, facts, vocabulary, EN/ES parity). Run the eval with:
+
+```bash
+bun scripts/eval-keeper.ts                         # Anthropic keeper + leak judge (needs ANTHROPIC_API_KEY)
+bun scripts/eval-keeper.ts --lang es --limit 50    # a quick Spanish sample
+bun scripts/eval-keeper.ts --save evals/keeper/baselines/keeper-v1.json
+bun scripts/eval-keeper.ts --baseline evals/keeper/baselines/keeper-v1.json   # delta after a prompt change
+bun scripts/eval-keeper.ts --provider oracle       # offline: perfect keeper (100%, no leaks)
+bun scripts/eval-keeper.ts --provider saboteur     # offline: broken keeper (errors and leaks are reported)
+```
+
+Each case goes through `answerKeeperQuestion` in `src/lib/ai/keeper.ts`, the same code the Worker runs. The report gives agreement, leaks (unasked fact ids, fact or solution text in the reply, extra output, and a judge model's verdict from `src/lib/ai/leak-judge.ts`), off-vocabulary replies and a confusion matrix per language, and is appended to `$GITHUB_STEP_SUMMARY` in CI. The **Keeper eval** workflow (`.github/workflows/eval-keeper.yml`, manual) runs it and uploads the JSON report, which can be committed as a baseline. Target before the AI keeper is on by default: ≥ 95% agreement and zero leaks per language.
+
 ## Project Structure
 
 ```
