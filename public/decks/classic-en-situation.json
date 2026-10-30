@@ -1,0 +1,780 @@
+{
+  "schemaVersion": 1,
+  "deckId": "classic-en-situation",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "Classic",
+  "gameType": "situation",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "classic",
+    "macabre"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "cl-001",
+      "type": "situation",
+      "title": "Lights Out",
+      "setup": "A man switched off the lights, went to bed and slept soundly. When he read the morning paper, he was filled with horror and guilt.",
+      "solution": "The man was a lighthouse keeper. Tired and careless, he switched off the lighthouse lamp before going to bed. In the dark, a ship ran onto the rocks and several sailors drowned. The morning paper reported the wreck, and he knew it was his fault.",
+      "keyFacts": [
+        {
+          "id": "lighthouse-keeper",
+          "text": "The man was a lighthouse keeper."
+        },
+        {
+          "id": "light-off",
+          "text": "The light he switched off was the lighthouse lamp."
+        },
+        {
+          "id": "ship-wrecked",
+          "text": "A ship crashed onto the rocks in the dark."
+        },
+        {
+          "id": "sailors-lost",
+          "text": "People on the ship lost their lives."
+        }
+      ],
+      "hints": [
+        "The lights were not only for him.",
+        "His job was to keep a light burning all night.",
+        "Think about what was out at sea that night."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-002",
+      "type": "situation",
+      "title": "The Unopened Pack",
+      "setup": "A man lies lifeless in the middle of a freshly ploughed field. There is an unopened pack strapped to his back, and not a single footprint anywhere around him.",
+      "solution": "The man had jumped from a plane. The pack on his back was his parachute, but it failed to open and he fell straight into the field. Because he came from the sky, there were no footprints leading to him.",
+      "keyFacts": [
+        {
+          "id": "fell-from-sky",
+          "text": "He fell from the sky."
+        },
+        {
+          "id": "parachute",
+          "text": "The pack was a parachute."
+        },
+        {
+          "id": "failed-to-open",
+          "text": "The parachute did not open."
+        },
+        {
+          "id": "no-footprints",
+          "text": "Nobody walked to where he lay, so there are no footprints."
+        }
+      ],
+      "hints": [
+        "He did not walk into the field.",
+        "The pack was supposed to save him.",
+        "He was not on the ground when his trouble started."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-003",
+      "type": "situation",
+      "title": "The Vanishing Blade",
+      "setup": "A man is found stabbed in a locked garden shed on a winter morning. Police search everywhere but find no weapon, only a small puddle of water beside him.",
+      "solution": "The killer stabbed the man with a large, sharp icicle snapped from the roof of the shed on a freezing night. After the attack, the shed warmed up as the sun rose and the icicle melted, leaving only a puddle of water where the weapon had fallen.",
+      "keyFacts": [
+        {
+          "id": "stabbed",
+          "text": "The man was stabbed."
+        },
+        {
+          "id": "icicle",
+          "text": "The weapon was an icicle."
+        },
+        {
+          "id": "melted",
+          "text": "The weapon melted into the puddle."
+        },
+        {
+          "id": "cold-night",
+          "text": "It was cold enough outside for ice to form."
+        }
+      ],
+      "hints": [
+        "The weapon was in the shed all along.",
+        "The puddle matters.",
+        "Winter provides its own daggers."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "murder"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-004",
+      "type": "situation",
+      "title": "Nothing to Stand On",
+      "setup": "A man is found hanging from a beam in the middle of an empty barn. His feet are high above the floor, there is no ladder, chair or box, and the floor beneath him is wet.",
+      "solution": "The man took his own life. He climbed onto a large block of ice that had been stored in the barn, tied the rope to the beam and stepped off. Over the next hours the block melted, leaving only a wet patch on the floor and nothing he could have stood on.",
+      "keyFacts": [
+        {
+          "id": "hanged",
+          "text": "The man was hanged from the beam."
+        },
+        {
+          "id": "took-own-life",
+          "text": "Nobody else was involved; he did it himself."
+        },
+        {
+          "id": "block-of-ice",
+          "text": "He stood on a block of ice."
+        },
+        {
+          "id": "ice-melted",
+          "text": "The ice melted and left the floor wet."
+        }
+      ],
+      "hints": [
+        "Nobody else was in the barn.",
+        "He did have something to stand on.",
+        "Whatever it was is still on the floor, in a different form."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "suicide"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-005",
+      "type": "situation",
+      "title": "The Party Punch",
+      "setup": "Two friends at a party drank the same punch from the same bowl. One drank a glass quickly and went home feeling fine. The other sipped slowly all evening and was poisoned.",
+      "solution": "The poison had been frozen inside the ice cubes. The friend who drank quickly finished before the ice had time to melt, so he swallowed almost no poison. The friend who sipped slowly let the ice melt into his drink, releasing the poison.",
+      "keyFacts": [
+        {
+          "id": "same-drink",
+          "text": "Both drank the same punch."
+        },
+        {
+          "id": "poison-in-ice",
+          "text": "The poison was inside the ice cubes."
+        },
+        {
+          "id": "drank-fast",
+          "text": "The friend who survived drank very quickly."
+        },
+        {
+          "id": "ice-melted-slowly",
+          "text": "The poison was released as the ice melted."
+        }
+      ],
+      "hints": [
+        "The punch itself was safe at first.",
+        "Speed was the difference.",
+        "Something in the glass changed over time."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "murder"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-006",
+      "type": "situation",
+      "title": "The Short Straw",
+      "setup": "A man lies lifeless in the middle of the desert. He is fully dressed and clutches half a matchstick in his hand.",
+      "solution": "The man had been one of several passengers in a hot-air balloon that was losing height over the desert. After throwing out everything they could, they realised one person had to go. They drew lots using matchsticks, and he drew the broken one, so he jumped.",
+      "keyFacts": [
+        {
+          "id": "balloon",
+          "text": "He was travelling in a hot-air balloon."
+        },
+        {
+          "id": "losing-height",
+          "text": "The balloon was losing height."
+        },
+        {
+          "id": "drew-lots",
+          "text": "The passengers drew lots with matches."
+        },
+        {
+          "id": "short-match",
+          "text": "He drew the short, broken match."
+        },
+        {
+          "id": "jumped",
+          "text": "He jumped to save the others."
+        }
+      ],
+      "hints": [
+        "He did not walk into the desert.",
+        "He was not alone before he arrived there.",
+        "The match was used to make a decision, not a fire."
+      ],
+      "difficulty": "hard",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 15,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-007",
+      "type": "situation",
+      "title": "Broken Glass at Midnight",
+      "setup": "Romeo and Juliet are found lifeless on the living-room floor, surrounded by broken glass and a puddle of water. The front door is locked and nobody else is home except the cat.",
+      "solution": "Romeo and Juliet were two goldfish. During the night the cat jumped onto the shelf and knocked their glass bowl to the floor. The bowl shattered, the water spilled, and the fish could not survive out of the water.",
+      "keyFacts": [
+        {
+          "id": "goldfish",
+          "text": "Romeo and Juliet were goldfish."
+        },
+        {
+          "id": "bowl-knocked",
+          "text": "Their glass bowl fell and broke."
+        },
+        {
+          "id": "cat",
+          "text": "The cat knocked the bowl over."
+        },
+        {
+          "id": "out-of-water",
+          "text": "They could not survive out of water."
+        }
+      ],
+      "hints": [
+        "Romeo and Juliet were not people.",
+        "The glass held their home.",
+        "The only one at home is the culprit."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "animal death"
+      ],
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-008",
+      "type": "situation",
+      "title": "The Snowman Who Kept a Secret",
+      "setup": "For the first time ever, Mr Holm built a huge snowman in his garden, all by himself, right in one corner. When it finally melted in spring, he was arrested within a week.",
+      "solution": "Mr Holm had killed a man and buried him in the corner of his garden in winter. The freshly dug earth would have been obvious, so he built an enormous snowman on top of it. In spring the snowman melted, the neighbours noticed the strange patch of disturbed ground and called the police.",
+      "keyFacts": [
+        {
+          "id": "buried-victim",
+          "text": "Mr Holm had buried someone he killed."
+        },
+        {
+          "id": "fresh-earth",
+          "text": "The digging left an obvious patch of fresh earth."
+        },
+        {
+          "id": "snowman-cover",
+          "text": "He built the snowman to hide the patch."
+        },
+        {
+          "id": "melted-in-spring",
+          "text": "When the snow melted, the patch was discovered."
+        }
+      ],
+      "hints": [
+        "The snowman was not built for fun.",
+        "The important thing was under the snowman.",
+        "He needed to hide some recent digging."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "murder"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-009",
+      "type": "situation",
+      "title": "The Diver in the Forest",
+      "setup": "After a forest fire, rescuers find a man in a wetsuit, flippers and diving mask lying lifeless among the burnt trees, many kilometres from the nearest sea.",
+      "solution": "The man had been scuba diving in a lake near the forest. A firefighting plane swooped down to fill its tank with lake water and scooped him up along with the water. It then dropped the whole load onto the fire, and the diver fell into the burning forest.",
+      "keyFacts": [
+        {
+          "id": "diving-in-lake",
+          "text": "He had been diving in a nearby lake."
+        },
+        {
+          "id": "firefighting-plane",
+          "text": "Planes were fighting the fire with water."
+        },
+        {
+          "id": "scooped-up",
+          "text": "A plane scooped him up with the water."
+        },
+        {
+          "id": "dropped-on-fire",
+          "text": "He was dropped onto the fire."
+        }
+      ],
+      "hints": [
+        "He really was diving that day.",
+        "There was more than one body of water nearby.",
+        "Firefighters need lots of water, fast."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-010",
+      "type": "situation",
+      "title": "A Single Ticket",
+      "setup": "A man came home alone from a mountain holiday and told everyone his wife had slipped and fallen. A travel agent who heard the news went straight to the police.",
+      "solution": "The travel agent had sold the man the tickets for the trip: a return ticket for himself but only a one-way ticket for his wife. He had planned all along that she would not come back, because he intended to push her off the mountain.",
+      "keyFacts": [
+        {
+          "id": "climbing-trip",
+          "text": "The couple went on a mountain trip."
+        },
+        {
+          "id": "wife-fell",
+          "text": "The wife fell from the mountain."
+        },
+        {
+          "id": "one-way-ticket",
+          "text": "He had bought her a one-way ticket only."
+        },
+        {
+          "id": "travel-agent",
+          "text": "The travel agent had sold him the tickets."
+        }
+      ],
+      "hints": [
+        "The travel agent knew something about the journey.",
+        "It is about the tickets.",
+        "He only expected one of them to come home."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "murder"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-011",
+      "type": "situation",
+      "title": "A Shout of Joy",
+      "setup": "A man reached the place he had dreamed of for years and shouted with joy at the top of his voice. Moments later he was gone.",
+      "solution": "The man was a skier who had finally reached a remote snowy peak. His loud shout set off an avalanche, which swept down the slope and buried him.",
+      "keyFacts": [
+        {
+          "id": "snowy-mountain",
+          "text": "He was on a snowy mountain."
+        },
+        {
+          "id": "shouted",
+          "text": "He shouted very loudly."
+        },
+        {
+          "id": "avalanche",
+          "text": "The noise triggered an avalanche."
+        },
+        {
+          "id": "buried",
+          "text": "The avalanche buried him."
+        }
+      ],
+      "hints": [
+        "The place was cold and high.",
+        "The shout itself caused the problem.",
+        "Snow can be unstable."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-012",
+      "type": "situation",
+      "title": "The Bell in the Graveyard",
+      "setup": "In 1890 a gravedigger was walking home past the cemetery late at night when he heard a small bell ringing among the graves. He dropped his lantern and ran for help.",
+      "solution": "At the time, people feared being buried alive, so some coffins had a string running from the hand of the person inside to a bell above the grave. A woman buried that afternoon had only been in a deep faint. She woke up in her coffin and pulled the string, ringing the bell.",
+      "keyFacts": [
+        {
+          "id": "old-custom",
+          "text": "Some coffins were connected to a bell above ground."
+        },
+        {
+          "id": "coffin-bell",
+          "text": "The bell was rung from inside a coffin."
+        },
+        {
+          "id": "buried-alive",
+          "text": "A woman had been buried alive by mistake."
+        },
+        {
+          "id": "rang-at-night",
+          "text": "She had woken up and pulled the string."
+        }
+      ],
+      "hints": [
+        "Nobody was standing in the graveyard.",
+        "The bell was there on purpose, for an old fear.",
+        "Someone had been buried too soon."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-013",
+      "type": "situation",
+      "title": "The Exploding Oven",
+      "setup": "During an ordinary service at a crematorium, there was a loud bang from the furnace and the door was damaged. Afterwards the staff blamed the hospital.",
+      "solution": "The deceased man had a heart pacemaker. Pacemakers contain a battery that can explode in great heat, so they must be removed before cremation. The hospital forgot to remove it and did not record it, so it exploded in the furnace.",
+      "keyFacts": [
+        {
+          "id": "crematorium",
+          "text": "The bang came during a cremation."
+        },
+        {
+          "id": "pacemaker",
+          "text": "The deceased man had a pacemaker."
+        },
+        {
+          "id": "battery-exploded",
+          "text": "The pacemaker's battery exploded in the heat."
+        },
+        {
+          "id": "not-removed",
+          "text": "The hospital should have removed it."
+        }
+      ],
+      "hints": [
+        "Nothing was wrong with the furnace itself.",
+        "The cause was inside the coffin.",
+        "It was a medical device."
+      ],
+      "difficulty": "hard",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 15,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-014",
+      "type": "situation",
+      "title": "Three Seconds, Over and Over",
+      "setup": "One night a radio station played the same three seconds of a song again and again for ten minutes. The next day, the night presenter was arrested for something that happened across town.",
+      "solution": "The presenter wanted an alibi for a murder. He put on a very long record so the show would keep running and slipped out of the studio to commit the crime. The record got stuck and repeated the same three seconds, proving to thousands of listeners that nobody was in the studio at that time.",
+      "keyFacts": [
+        {
+          "id": "radio-dj",
+          "text": "The presenter put on a long record as an alibi."
+        },
+        {
+          "id": "long-record-alibi",
+          "text": "He left the studio while it was playing."
+        },
+        {
+          "id": "record-stuck",
+          "text": "The record got stuck."
+        },
+        {
+          "id": "murder-across-town",
+          "text": "He committed a murder across town."
+        }
+      ],
+      "hints": [
+        "Nobody fixed the problem for ten minutes.",
+        "The presenter wanted listeners to think he was there.",
+        "A crime was committed while the music played."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "murder"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-015",
+      "type": "situation",
+      "title": "Too Lifelike",
+      "setup": "A tourist at a small wax museum told the guard that one figure looked far more realistic than the others. A week later the museum was closed and its owner was in prison.",
+      "solution": "The figure looked real because it was a real person. The museum's owner had killed a man and hidden the body in plain sight by coating it in wax and displaying it among the other figures. The tourist's comment made the guard look closer, and he called the police.",
+      "keyFacts": [
+        {
+          "id": "wax-museum",
+          "text": "The realistic figure was a real human body."
+        },
+        {
+          "id": "figure-was-real",
+          "text": "The owner of the museum had killed the man."
+        },
+        {
+          "id": "owner-killer",
+          "text": "He disguised the body with a coat of wax."
+        },
+        {
+          "id": "coated-in-wax",
+          "text": "The tourist's remark led to the discovery."
+        }
+      ],
+      "hints": [
+        "The tourist was right.",
+        "The figure was not made by an artist.",
+        "The best hiding place is in plain sight."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "murder"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-016",
+      "type": "situation",
+      "title": "The Mushroom Dinner",
+      "setup": "Halfway through a dinner party, the host whispered something to the guests and they all rushed to hospital to have their stomachs pumped. The doctors found absolutely nothing wrong with the food.",
+      "solution": "The host had picked wild mushrooms and, to be safe, fed some to the cat before cooking them. The cat was fine. During dinner a neighbour told the host the cat was lying lifeless in the road, so everyone panicked and went to hospital. In fact, the cat had been hit by a car.",
+      "keyFacts": [
+        {
+          "id": "wild-mushrooms",
+          "text": "The meal contained wild mushrooms."
+        },
+        {
+          "id": "tested-on-cat",
+          "text": "The host had tested the mushrooms on the cat first."
+        },
+        {
+          "id": "cat-found-lifeless",
+          "text": "The cat was found lifeless during dinner."
+        },
+        {
+          "id": "hit-by-car",
+          "text": "The cat had been hit by a car, not poisoned."
+        }
+      ],
+      "hints": [
+        "The guests feared poisoning.",
+        "An animal was used as a taster.",
+        "Bad news arrived from the street."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "animal death"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-017",
+      "type": "situation",
+      "title": "Quarter Past Three",
+      "setup": "When Ana arrived at her grandparents' farmhouse, every clock in the house had been stopped at exactly 3:15. She burst into tears before anyone said a word.",
+      "solution": "In her family's village there was an old custom of stopping all the clocks in a house at the moment someone in it died. Seeing the stopped clocks, Ana understood at once that her grandfather had passed away at 3:15.",
+      "keyFacts": [
+        {
+          "id": "clocks-stopped",
+          "text": "The clocks were stopped on purpose."
+        },
+        {
+          "id": "old-custom",
+          "text": "It is an old custom when someone in the house dies."
+        },
+        {
+          "id": "grandfather-passed-away",
+          "text": "Her grandfather had passed away."
+        },
+        {
+          "id": "time-of-passing",
+          "text": "He passed away at 3:15."
+        }
+      ],
+      "hints": [
+        "Nothing was broken.",
+        "It is a tradition.",
+        "The time marks a moment in someone's life."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-018",
+      "type": "situation",
+      "title": "Ten Seconds Late",
+      "setup": "A man missed his train by ten seconds because a stranger asked him for directions, and he swore at her. That evening he went looking for the stranger to thank her.",
+      "solution": "The train he missed crashed later that morning and many passengers were lost. Because the stranger had held him up, he was not on board. That evening he wanted to thank her for saving his life.",
+      "keyFacts": [
+        {
+          "id": "missed-train",
+          "text": "He missed the train because of the stranger."
+        },
+        {
+          "id": "stranger-delayed-him",
+          "text": "The train crashed."
+        },
+        {
+          "id": "train-crashed",
+          "text": "Many passengers on the train were lost."
+        },
+        {
+          "id": "survived",
+          "text": "Missing the train saved his life."
+        }
+      ],
+      "hints": [
+        "Something happened to the train.",
+        "Being late was lucky.",
+        "He learned the news later that day."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-019",
+      "type": "situation",
+      "title": "The Cursed Boots",
+      "setup": "Three men, years apart, each fell ill and never recovered shortly after starting to wear the same pair of fine leather boots. People said the boots were cursed.",
+      "solution": "The first owner had been bitten through the boot by a rattlesnake. The snake's fang broke off and stayed lodged in the leather, still carrying venom. Each later owner who pulled the boots on was scratched by the hidden fang and poisoned.",
+      "keyFacts": [
+        {
+          "id": "same-boots",
+          "text": "All three men wore the same boots."
+        },
+        {
+          "id": "snake-fang",
+          "text": "A snake's fang was stuck in the leather."
+        },
+        {
+          "id": "poison-in-fang",
+          "text": "The fang still carried venom."
+        },
+        {
+          "id": "scratched-foot",
+          "text": "Putting on the boots scratched the wearer's foot."
+        }
+      ],
+      "hints": [
+        "There is no curse.",
+        "Something was hidden inside the boots.",
+        "It came from an animal."
+      ],
+      "difficulty": "hard",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 15,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-020",
+      "type": "situation",
+      "title": "The Dream That Came True",
+      "setup": "A night guard told the factory owner he had dreamt the owner's plane would crash, so the owner cancelled his flight. The plane did crash. The owner thanked the guard and then fired him.",
+      "solution": "The plane crashed and everyone on it was lost, so the owner was grateful the dream had saved him. But the guard worked the night shift, and he could only have dreamt it by sleeping on duty, so the owner fired him.",
+      "keyFacts": [
+        {
+          "id": "night-guard",
+          "text": "The guard worked at night."
+        },
+        {
+          "id": "dreamt-crash",
+          "text": "He dreamt the plane would crash."
+        },
+        {
+          "id": "plane-crashed",
+          "text": "The plane really crashed."
+        },
+        {
+          "id": "asleep-on-duty",
+          "text": "He was fired for sleeping on duty."
+        }
+      ],
+      "hints": [
+        "The owner was truly grateful.",
+        "Think about when the guard had the dream.",
+        "What should a night guard be doing at night?"
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "death"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    }
+  ]
+}

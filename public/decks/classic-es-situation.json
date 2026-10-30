@@ -1,0 +1,780 @@
+{
+  "schemaVersion": 1,
+  "deckId": "classic-es-situation",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "Clásicos",
+  "gameType": "situation",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "clásico",
+    "macabro"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "cl-001",
+      "type": "situation",
+      "title": "Apagón",
+      "setup": "Un hombre apagó las luces, se fue a la cama y durmió profundamente. Cuando leyó el periódico de la mañana, sintió horror y culpa.",
+      "solution": "El hombre era farero. Cansado y descuidado, apagó la lámpara del faro antes de acostarse. A oscuras, un barco chocó contra las rocas y varios marineros se ahogaron. El periódico de la mañana contaba el naufragio y él supo que había sido culpa suya.",
+      "keyFacts": [
+        {
+          "id": "lighthouse-keeper",
+          "text": "El hombre era farero."
+        },
+        {
+          "id": "light-off",
+          "text": "La luz que apagó era la lámpara del faro."
+        },
+        {
+          "id": "ship-wrecked",
+          "text": "Un barco chocó contra las rocas en la oscuridad."
+        },
+        {
+          "id": "sailors-lost",
+          "text": "Varias personas del barco perdieron la vida."
+        }
+      ],
+      "hints": [
+        "Las luces no eran solo para él.",
+        "Su trabajo era mantener una luz encendida toda la noche.",
+        "Piensa en lo que había en el mar esa noche."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-002",
+      "type": "situation",
+      "title": "La mochila cerrada",
+      "setup": "Un hombre yace sin vida en medio de un campo recién arado. Lleva una mochila cerrada atada a la espalda y no hay ni una sola huella a su alrededor.",
+      "solution": "El hombre había saltado de un avión. La mochila era su paracaídas, pero no se abrió y cayó directamente sobre el campo. Como llegó desde el cielo, no había huellas que llevaran hasta él.",
+      "keyFacts": [
+        {
+          "id": "fell-from-sky",
+          "text": "Cayó desde el cielo."
+        },
+        {
+          "id": "parachute",
+          "text": "La mochila era un paracaídas."
+        },
+        {
+          "id": "failed-to-open",
+          "text": "El paracaídas no se abrió."
+        },
+        {
+          "id": "no-footprints",
+          "text": "Nadie caminó hasta donde estaba, por eso no hay huellas."
+        }
+      ],
+      "hints": [
+        "No llegó caminando al campo.",
+        "La mochila debía salvarlo.",
+        "No estaba en el suelo cuando empezó su problema."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-003",
+      "type": "situation",
+      "title": "El arma que desapareció",
+      "setup": "Una mañana de invierno encuentran a un hombre apuñalado dentro de un cobertizo cerrado con llave. La policía busca por todas partes, pero no hay ningún arma, solo un pequeño charco de agua a su lado.",
+      "solution": "El asesino apuñaló al hombre con un carámbano grande y afilado arrancado del tejado del cobertizo en una noche helada. Después del ataque, el cobertizo se calentó al salir el sol y el carámbano se derritió, dejando solo un charco de agua donde había caído el arma.",
+      "keyFacts": [
+        {
+          "id": "stabbed",
+          "text": "Al hombre lo apuñalaron."
+        },
+        {
+          "id": "icicle",
+          "text": "El arma era un carámbano."
+        },
+        {
+          "id": "melted",
+          "text": "El arma se derritió y formó el charco."
+        },
+        {
+          "id": "cold-night",
+          "text": "Afuera hacía suficiente frío para que se formara hielo."
+        }
+      ],
+      "hints": [
+        "El arma estuvo en el cobertizo todo el tiempo.",
+        "El charco es importante.",
+        "El invierno fabrica sus propias dagas."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "asesinato"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-004",
+      "type": "situation",
+      "title": "Nada en qué apoyarse",
+      "setup": "Encuentran a un hombre colgado de una viga en medio de un granero vacío. Sus pies están muy por encima del suelo, no hay escalera, silla ni caja, y el suelo bajo él está mojado.",
+      "solution": "El hombre se quitó la vida. Se subió a un gran bloque de hielo que estaba guardado en el granero, ató la cuerda a la viga y se dejó caer. En las horas siguientes el bloque se derritió y solo quedó una mancha mojada en el suelo, sin nada sobre lo que pudiera haberse subido.",
+      "keyFacts": [
+        {
+          "id": "hanged",
+          "text": "El hombre murió colgado de la viga."
+        },
+        {
+          "id": "took-own-life",
+          "text": "No hubo nadie más involucrado; lo hizo él mismo."
+        },
+        {
+          "id": "block-of-ice",
+          "text": "Se subió a un bloque de hielo."
+        },
+        {
+          "id": "ice-melted",
+          "text": "El hielo se derritió y dejó el suelo mojado."
+        }
+      ],
+      "hints": [
+        "No había nadie más en el granero.",
+        "Sí tenía algo en qué apoyarse.",
+        "Ese objeto sigue en el suelo, pero de otra forma."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "suicidio"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-005",
+      "type": "situation",
+      "title": "El ponche de la fiesta",
+      "setup": "Dos amigos bebieron en una fiesta el mismo ponche de la misma ponchera. Uno se tomó un vaso de golpe y se fue a casa tan tranquilo. El otro lo bebió a sorbitos toda la noche y acabó envenenado.",
+      "solution": "El veneno estaba congelado dentro de los cubitos de hielo. El amigo que bebió rápido terminó antes de que el hielo se derritiera, así que apenas tragó veneno. El que bebió despacio dejó que el hielo se derritiera en su vaso y liberara el veneno.",
+      "keyFacts": [
+        {
+          "id": "same-drink",
+          "text": "Los dos bebieron el mismo ponche."
+        },
+        {
+          "id": "poison-in-ice",
+          "text": "El veneno estaba dentro de los cubitos de hielo."
+        },
+        {
+          "id": "drank-fast",
+          "text": "El amigo que se salvó bebió muy rápido."
+        },
+        {
+          "id": "ice-melted-slowly",
+          "text": "El veneno se liberó al derretirse el hielo."
+        }
+      ],
+      "hints": [
+        "Al principio, el ponche en sí no era peligroso.",
+        "La velocidad marcó la diferencia.",
+        "Algo dentro del vaso cambió con el tiempo."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "asesinato"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-006",
+      "type": "situation",
+      "title": "La cerilla corta",
+      "setup": "Un hombre yace sin vida en medio del desierto. Está completamente vestido y aprieta media cerilla en la mano.",
+      "solution": "El hombre viajaba con otros pasajeros en un globo aerostático que perdía altura sobre el desierto. Tras tirar todo lo que pudieron, comprendieron que alguien tenía que saltar. Lo echaron a suertes con cerillas, a él le tocó la rota y saltó.",
+      "keyFacts": [
+        {
+          "id": "balloon",
+          "text": "Viajaba en un globo aerostático."
+        },
+        {
+          "id": "losing-height",
+          "text": "El globo estaba perdiendo altura."
+        },
+        {
+          "id": "drew-lots",
+          "text": "Los pasajeros lo echaron a suertes con cerillas."
+        },
+        {
+          "id": "short-match",
+          "text": "A él le tocó la cerilla corta y rota."
+        },
+        {
+          "id": "jumped",
+          "text": "Saltó para salvar a los demás."
+        }
+      ],
+      "hints": [
+        "No llegó caminando al desierto.",
+        "Antes de llegar allí no estaba solo.",
+        "La cerilla sirvió para decidir algo, no para hacer fuego."
+      ],
+      "difficulty": "hard",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 15,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-007",
+      "type": "situation",
+      "title": "Cristales a medianoche",
+      "setup": "Romeo y Julieta aparecen sin vida en el suelo del salón, rodeados de cristales rotos y un charco de agua. La puerta está cerrada con llave y en casa no hay nadie más que el gato.",
+      "solution": "Romeo y Julieta eran dos peces de colores. Durante la noche el gato saltó a la estantería y tiró su pecera de cristal al suelo. La pecera se rompió, el agua se derramó y los peces no pudieron sobrevivir fuera del agua.",
+      "keyFacts": [
+        {
+          "id": "goldfish",
+          "text": "Romeo y Julieta eran peces de colores."
+        },
+        {
+          "id": "bowl-knocked",
+          "text": "Su pecera de cristal se cayó y se rompió."
+        },
+        {
+          "id": "cat",
+          "text": "El gato tiró la pecera."
+        },
+        {
+          "id": "out-of-water",
+          "text": "No pudieron sobrevivir fuera del agua."
+        }
+      ],
+      "hints": [
+        "Romeo y Julieta no eran personas.",
+        "El cristal era su casa.",
+        "El único que estaba en casa es el culpable."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "muerte de un animal"
+      ],
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-008",
+      "type": "situation",
+      "title": "El muñeco de nieve que guardaba un secreto",
+      "setup": "Por primera vez en su vida, el señor Holm construyó solo un enorme muñeco de nieve en una esquina de su jardín. Cuando por fin se derritió en primavera, lo detuvieron en menos de una semana.",
+      "solution": "El señor Holm había asesinado a un hombre y lo había enterrado en invierno en una esquina del jardín. La tierra recién removida habría llamado la atención, así que construyó encima un muñeco de nieve enorme. En primavera el muñeco se derritió, los vecinos vieron aquella mancha extraña de tierra removida y llamaron a la policía.",
+      "keyFacts": [
+        {
+          "id": "buried-victim",
+          "text": "El señor Holm había enterrado a alguien a quien asesinó."
+        },
+        {
+          "id": "fresh-earth",
+          "text": "Al cavar quedó una mancha evidente de tierra removida."
+        },
+        {
+          "id": "snowman-cover",
+          "text": "Construyó el muñeco de nieve para tapar esa mancha."
+        },
+        {
+          "id": "melted-in-spring",
+          "text": "Al derretirse la nieve, descubrieron la mancha."
+        }
+      ],
+      "hints": [
+        "El muñeco no lo hizo por diversión.",
+        "Lo importante estaba debajo del muñeco.",
+        "Necesitaba ocultar que había cavado hace poco."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "asesinato"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-009",
+      "type": "situation",
+      "title": "El buceador del bosque",
+      "setup": "Tras un incendio forestal, los equipos de rescate encuentran a un hombre con traje de neopreno, aletas y gafas de buceo tendido sin vida entre los árboles quemados, a muchos kilómetros del mar.",
+      "solution": "El hombre estaba buceando en un lago cerca del bosque. Un avión antiincendios bajó a cargar agua del lago y lo recogió junto con el agua. Después soltó toda la carga sobre el incendio y el buceador cayó en el bosque en llamas.",
+      "keyFacts": [
+        {
+          "id": "diving-in-lake",
+          "text": "Estaba buceando en un lago cercano."
+        },
+        {
+          "id": "firefighting-plane",
+          "text": "Había aviones apagando el incendio con agua."
+        },
+        {
+          "id": "scooped-up",
+          "text": "Un avión lo recogió junto con el agua."
+        },
+        {
+          "id": "dropped-on-fire",
+          "text": "Lo soltaron sobre el incendio."
+        }
+      ],
+      "hints": [
+        "Ese día de verdad estaba buceando.",
+        "Cerca había otra masa de agua además del mar.",
+        "Los bomberos necesitan mucha agua y rápido."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-010",
+      "type": "situation",
+      "title": "Billete de ida",
+      "setup": "Un hombre volvió solo de unas vacaciones en la montaña y contó a todos que su esposa había resbalado y caído. Una agente de viajes que se enteró de la noticia fue directamente a la policía.",
+      "solution": "La agente de viajes le había vendido los billetes del viaje: uno de ida y vuelta para él, pero solo uno de ida para su esposa. Él había planeado desde el principio que ella no volviera, porque pensaba empujarla montaña abajo.",
+      "keyFacts": [
+        {
+          "id": "climbing-trip",
+          "text": "La pareja hizo un viaje a la montaña."
+        },
+        {
+          "id": "wife-fell",
+          "text": "La esposa cayó desde la montaña."
+        },
+        {
+          "id": "one-way-ticket",
+          "text": "Él le había comprado a ella solo un billete de ida."
+        },
+        {
+          "id": "travel-agent",
+          "text": "La agente de viajes le había vendido los billetes."
+        }
+      ],
+      "hints": [
+        "La agente sabía algo del viaje.",
+        "Tiene que ver con los billetes.",
+        "Él solo esperaba que volviera uno de los dos."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "asesinato"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-011",
+      "type": "situation",
+      "title": "Un grito de alegría",
+      "setup": "Un hombre llegó por fin al lugar con el que había soñado durante años y gritó de alegría con todas sus fuerzas. Momentos después, había desaparecido.",
+      "solution": "El hombre era un esquiador que por fin había llegado a una cumbre nevada y remota. Su fuerte grito provocó una avalancha que bajó por la ladera y lo sepultó.",
+      "keyFacts": [
+        {
+          "id": "snowy-mountain",
+          "text": "Estaba en una montaña nevada."
+        },
+        {
+          "id": "shouted",
+          "text": "Gritó muy fuerte."
+        },
+        {
+          "id": "avalanche",
+          "text": "El ruido provocó una avalancha."
+        },
+        {
+          "id": "buried",
+          "text": "La avalancha lo sepultó."
+        }
+      ],
+      "hints": [
+        "El lugar era alto y frío.",
+        "El propio grito causó el problema.",
+        "La nieve puede ser inestable."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-012",
+      "type": "situation",
+      "title": "La campana del cementerio",
+      "setup": "En 1890, un sepulturero volvía a casa de madrugada junto al cementerio cuando oyó una campanilla sonar entre las tumbas. Soltó el farol y corrió a pedir ayuda.",
+      "solution": "En aquella época se temía ser enterrado vivo, así que algunos ataúdes tenían un cordel que iba de la mano del difunto a una campanilla sobre la tumba. Una mujer enterrada esa tarde solo había sufrido un desmayo profundo. Despertó dentro del ataúd, tiró del cordel e hizo sonar la campana.",
+      "keyFacts": [
+        {
+          "id": "old-custom",
+          "text": "Algunos ataúdes estaban conectados a una campana sobre la tumba."
+        },
+        {
+          "id": "coffin-bell",
+          "text": "La campana se tocaba desde dentro de un ataúd."
+        },
+        {
+          "id": "buried-alive",
+          "text": "Una mujer había sido enterrada viva por error."
+        },
+        {
+          "id": "rang-at-night",
+          "text": "Se despertó y tiró del cordel."
+        }
+      ],
+      "hints": [
+        "No había nadie de pie en el cementerio.",
+        "La campana estaba allí a propósito, por un viejo miedo.",
+        "Alguien había sido enterrado demasiado pronto."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-013",
+      "type": "situation",
+      "title": "El horno que estalló",
+      "setup": "Durante una ceremonia normal en un crematorio, se oyó un fuerte estallido en el horno y la puerta quedó dañada. Después, el personal culpó al hospital.",
+      "solution": "El difunto llevaba un marcapasos. Los marcapasos tienen una batería que puede explotar con el calor, por eso hay que retirarlos antes de la cremación. El hospital se olvidó de quitarlo y no lo anotó, así que explotó en el horno.",
+      "keyFacts": [
+        {
+          "id": "crematorium",
+          "text": "El estallido ocurrió durante una cremación."
+        },
+        {
+          "id": "pacemaker",
+          "text": "El difunto llevaba un marcapasos."
+        },
+        {
+          "id": "battery-exploded",
+          "text": "La batería del marcapasos explotó por el calor."
+        },
+        {
+          "id": "not-removed",
+          "text": "El hospital debería haberlo retirado."
+        }
+      ],
+      "hints": [
+        "El horno no tenía ningún problema.",
+        "La causa estaba dentro del ataúd.",
+        "Era un aparato médico."
+      ],
+      "difficulty": "hard",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 15,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-014",
+      "type": "situation",
+      "title": "Tres segundos, una y otra vez",
+      "setup": "Una noche, una emisora de radio repitió los mismos tres segundos de una canción durante diez minutos. Al día siguiente detuvieron al locutor nocturno por algo que había pasado en la otra punta de la ciudad.",
+      "solution": "El locutor quería una coartada para un asesinato. Puso un disco muy largo para que el programa siguiera sonando y salió del estudio a cometer el crimen. El disco se rayó y repitió los mismos tres segundos, demostrando a miles de oyentes que en ese momento no había nadie en el estudio.",
+      "keyFacts": [
+        {
+          "id": "radio-dj",
+          "text": "El locutor puso un disco largo como coartada."
+        },
+        {
+          "id": "long-record-alibi",
+          "text": "Salió del estudio mientras sonaba."
+        },
+        {
+          "id": "record-stuck",
+          "text": "El disco se rayó."
+        },
+        {
+          "id": "murder-across-town",
+          "text": "Cometió un asesinato en la otra punta de la ciudad."
+        }
+      ],
+      "hints": [
+        "Nadie arregló el problema en diez minutos.",
+        "El locutor quería que los oyentes creyeran que estaba allí.",
+        "Se cometió un crimen mientras sonaba la música."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "asesinato"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-015",
+      "type": "situation",
+      "title": "Demasiado real",
+      "setup": "En un pequeño museo de cera, una turista le comentó al vigilante que una de las figuras parecía mucho más real que las demás. Una semana después, el museo estaba cerrado y su dueño en la cárcel.",
+      "solution": "La figura parecía real porque era una persona real. El dueño del museo había asesinado a un hombre y escondió el cuerpo a la vista de todos, cubriéndolo de cera y exhibiéndolo entre las demás figuras. El comentario de la turista hizo que el vigilante mirara con atención y llamara a la policía.",
+      "keyFacts": [
+        {
+          "id": "wax-museum",
+          "text": "La figura tan realista era un cuerpo humano real."
+        },
+        {
+          "id": "figure-was-real",
+          "text": "El dueño del museo había asesinado al hombre."
+        },
+        {
+          "id": "owner-killer",
+          "text": "Disimuló el cuerpo con una capa de cera."
+        },
+        {
+          "id": "coated-in-wax",
+          "text": "El comentario de la turista llevó al descubrimiento."
+        }
+      ],
+      "hints": [
+        "La turista tenía razón.",
+        "La figura no la hizo ningún artista.",
+        "El mejor escondite está a la vista de todos."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "asesinato"
+      ],
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-016",
+      "type": "situation",
+      "title": "La cena de setas",
+      "setup": "A mitad de una cena, el anfitrión les susurró algo a los invitados y todos corrieron al hospital para que les hicieran un lavado de estómago. Los médicos no encontraron absolutamente nada malo en la comida.",
+      "solution": "El anfitrión había recogido setas silvestres y, por precaución, le dio unas cuantas al gato antes de cocinarlas. El gato estaba bien. Durante la cena, un vecino le avisó de que el gato estaba sin vida en la calle, así que todos se asustaron y fueron al hospital. En realidad, al gato lo había atropellado un coche.",
+      "keyFacts": [
+        {
+          "id": "wild-mushrooms",
+          "text": "La comida llevaba setas silvestres."
+        },
+        {
+          "id": "tested-on-cat",
+          "text": "El anfitrión había probado las setas primero con el gato."
+        },
+        {
+          "id": "cat-found-lifeless",
+          "text": "Encontraron al gato sin vida durante la cena."
+        },
+        {
+          "id": "hit-by-car",
+          "text": "Al gato lo atropelló un coche; no estaba envenenado."
+        }
+      ],
+      "hints": [
+        "Los invitados temían haberse envenenado.",
+        "Un animal hizo de catador.",
+        "Las malas noticias llegaron desde la calle."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "muerte de un animal"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-017",
+      "type": "situation",
+      "title": "Las tres y cuarto",
+      "setup": "Cuando Ana llegó a la granja de sus abuelos, todos los relojes de la casa estaban parados exactamente a las 3:15. Se echó a llorar antes de que nadie dijera una palabra.",
+      "solution": "En el pueblo de su familia existía la vieja costumbre de parar todos los relojes de una casa en el momento en que moría alguien de ella. Al ver los relojes parados, Ana comprendió enseguida que su abuelo había fallecido a las 3:15.",
+      "keyFacts": [
+        {
+          "id": "clocks-stopped",
+          "text": "Los relojes se pararon a propósito."
+        },
+        {
+          "id": "old-custom",
+          "text": "Es una vieja costumbre cuando muere alguien de la casa."
+        },
+        {
+          "id": "grandfather-passed-away",
+          "text": "Su abuelo había fallecido."
+        },
+        {
+          "id": "time-of-passing",
+          "text": "Falleció a las 3:15."
+        }
+      ],
+      "hints": [
+        "No se había roto nada.",
+        "Es una tradición.",
+        "La hora marca un momento en la vida de alguien."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-018",
+      "type": "situation",
+      "title": "Diez segundos tarde",
+      "setup": "Un hombre perdió el tren por diez segundos porque una desconocida le pidió indicaciones, y le soltó una palabrota. Esa noche salió a buscar a la desconocida para darle las gracias.",
+      "solution": "El tren que perdió descarriló esa misma mañana y muchos pasajeros murieron. Como la desconocida lo había entretenido, él no iba a bordo. Esa noche quería agradecerle que le hubiera salvado la vida.",
+      "keyFacts": [
+        {
+          "id": "missed-train",
+          "text": "Perdió el tren por culpa de la desconocida."
+        },
+        {
+          "id": "stranger-delayed-him",
+          "text": "El tren descarriló."
+        },
+        {
+          "id": "train-crashed",
+          "text": "Muchos pasajeros del tren murieron."
+        },
+        {
+          "id": "survived",
+          "text": "Perder el tren le salvó la vida."
+        }
+      ],
+      "hints": [
+        "Algo le pasó al tren.",
+        "Llegar tarde fue una suerte.",
+        "Se enteró de la noticia más tarde ese día."
+      ],
+      "difficulty": "easy",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-019",
+      "type": "situation",
+      "title": "Las botas malditas",
+      "setup": "Tres hombres, con años de diferencia, enfermaron y nunca se recuperaron poco después de empezar a usar el mismo par de botas de cuero. La gente decía que las botas estaban malditas.",
+      "solution": "A su primer dueño lo había mordido una serpiente de cascabel a través de la bota. El colmillo se partió y se quedó clavado en el cuero, todavía con veneno. Cada nuevo dueño que se ponía las botas se arañaba con el colmillo escondido y se envenenaba.",
+      "keyFacts": [
+        {
+          "id": "same-boots",
+          "text": "Los tres hombres usaron las mismas botas."
+        },
+        {
+          "id": "snake-fang",
+          "text": "Había un colmillo de serpiente clavado en el cuero."
+        },
+        {
+          "id": "poison-in-fang",
+          "text": "El colmillo todavía tenía veneno."
+        },
+        {
+          "id": "scratched-foot",
+          "text": "Al ponerse las botas, el colmillo arañaba el pie."
+        }
+      ],
+      "hints": [
+        "No hay ninguna maldición.",
+        "Había algo escondido dentro de las botas.",
+        "Venía de un animal."
+      ],
+      "difficulty": "hard",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 15,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "cl-020",
+      "type": "situation",
+      "title": "El sueño que se cumplió",
+      "setup": "Un vigilante nocturno le contó al dueño de la fábrica que había soñado que su avión se estrellaría, así que el dueño canceló el vuelo. El avión se estrelló. El dueño le dio las gracias al vigilante y después lo despidió.",
+      "solution": "El avión se estrelló y no hubo supervivientes, así que el dueño agradeció que aquel sueño lo hubiera salvado. Pero el vigilante trabajaba de noche y solo podía haberlo soñado si se había dormido en su turno, así que lo despidió.",
+      "keyFacts": [
+        {
+          "id": "night-guard",
+          "text": "El vigilante trabajaba de noche."
+        },
+        {
+          "id": "dreamt-crash",
+          "text": "Soñó que el avión se estrellaría."
+        },
+        {
+          "id": "plane-crashed",
+          "text": "El avión se estrelló de verdad."
+        },
+        {
+          "id": "asleep-on-duty",
+          "text": "Lo despidieron por dormirse en el trabajo."
+        }
+      ],
+      "hints": [
+        "El dueño estaba agradecido de verdad.",
+        "Piensa en cuándo tuvo el sueño el vigilante.",
+        "¿Qué debería hacer un vigilante nocturno por la noche?"
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "muerte"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    }
+  ]
+}

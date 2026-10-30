@@ -18,8 +18,9 @@ import {
 import { buildContext, truncateContext } from "./lib/context-fetcher";
 import { generateCards } from "./lib/llm-client";
 import { validateCard, deduplicateCards } from "./lib/validators";
+import { finalizeSituationCards } from "./lib/situation-generation";
 import { buildPrompt, type PromptContext } from "./prompts";
-import type { Card } from "../src/types/card";
+import type { Card, SituationCard } from "../src/types/card";
 import type { Deck } from "../src/types/deck";
 import { updateDeckIndexFile } from "./lib/deck-index";
 
@@ -66,6 +67,10 @@ async function generateDeck(
   const deckId = generateDeckIdFromConfig(config);
   console.log(`\n📦 Generating deck: ${deckId}`);
   console.log(`   Game: ${config.gameType}, Cards: ${config.cardCount}`);
+  if (config.situation) {
+    const { tone, allowDeath } = config.situation;
+    console.log(`   Tone: ${tone}, allowDeath: ${allowDeath}`);
+  }
 
   // Build context from markdown + URLs (in parallel)
   console.log("   Fetching context...");
@@ -118,10 +123,22 @@ async function generateDeck(
   }
 
   // Deduplicate
-  const uniqueCards = deduplicateCards(validCards);
+  let uniqueCards = deduplicateCards(validCards);
   const dupeCount = validCards.length - uniqueCards.length;
   if (dupeCount > 0) {
     console.log(`   Removed ${dupeCount} duplicates`);
+  }
+
+  // Situation puzzles: origin, deck-level warnings and the no-death filter
+  if (config.gameType === "situation" && config.situation) {
+    const finalized = finalizeSituationCards(
+      uniqueCards as SituationCard[],
+      config.situation
+    );
+    for (const { cardId, reason } of finalized.rejected) {
+      console.warn(`   ⚠️  Dropped ${cardId}: ${reason}`);
+    }
+    uniqueCards = finalized.cards;
   }
 
   console.log(`   ✅ ${uniqueCards.length} valid unique cards`);

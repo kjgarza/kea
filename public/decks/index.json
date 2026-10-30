@@ -65,6 +65,48 @@
       "contentWarnings": []
     },
     {
+      "deckId": "classic-es-situation",
+      "name": "Clásicos",
+      "gameType": "situation",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "clásico",
+        "macabro"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 20,
+      "contentWarnings": [
+        "asesinato",
+        "muerte",
+        "muerte de un animal",
+        "suicidio"
+      ]
+    },
+    {
+      "deckId": "classic-en-situation",
+      "name": "Classic",
+      "gameType": "situation",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "classic",
+        "macabre"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 20,
+      "contentWarnings": [
+        "animal death",
+        "death",
+        "murder",
+        "suicide"
+      ]
+    },
+    {
       "deckId": "classic-en-justone",
       "name": "Classic Just One",
       "gameType": "justone",
@@ -273,6 +315,24 @@
       "contentWarnings": []
     },
     {
+      "deckId": "lateral-thinking-en-situation",
+      "name": "Lateral Thinking",
+      "gameType": "situation",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "lateral thinking",
+        "logic"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 20,
+      "contentWarnings": [
+        "murder"
+      ]
+    },
+    {
       "deckId": "music-1990s-en-charades",
       "name": "Music 1990s",
       "gameType": "charades",
@@ -341,6 +401,22 @@
       "contentWarnings": []
     },
     {
+      "deckId": "no-death-en-situation",
+      "name": "No Death",
+      "gameType": "situation",
+      "language": "en",
+      "difficulty": "easy",
+      "topics": [
+        "family",
+        "everyday"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 20,
+      "contentWarnings": []
+    },
+    {
       "deckId": "everyday-words-es-taboo",
       "name": "Palabras Cotidianas",
       "gameType": "taboo",
@@ -387,6 +463,24 @@
       "version": "2026-03-14T09:16:32.925Z",
       "cardCount": 49,
       "contentWarnings": []
+    },
+    {
+      "deckId": "lateral-thinking-es-situation",
+      "name": "Pensamiento lateral",
+      "gameType": "situation",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "pensamiento lateral",
+        "lógica"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 20,
+      "contentWarnings": [
+        "asesinato"
+      ]
     },
     {
       "deckId": "pop-culture-en-monikers",
@@ -453,6 +547,22 @@
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
       "cardCount": 10,
+      "contentWarnings": []
+    },
+    {
+      "deckId": "no-death-es-situation",
+      "name": "Sin muertes",
+      "gameType": "situation",
+      "language": "es",
+      "difficulty": "easy",
+      "topics": [
+        "familia",
+        "vida cotidiana"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 20,
       "contentWarnings": []
     },
     {

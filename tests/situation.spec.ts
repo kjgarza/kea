@@ -44,6 +44,23 @@ test.describe('situation puzzles', () => {
       'Content warnings: animal in danger, medical emergency'
     );
   });
+
+  test('seed decks (#26) are listed; the no-death deck has no warnings', async ({ page }) => {
+    await page.goto('/game/situation');
+    await expect(page.getByRole('link', { name: /^Classic/ })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Lateral Thinking/ })).toBeVisible();
+    const noDeath = page.getByRole('link', { name: /No Death/ });
+    await expect(noDeath).toBeVisible();
+    await expect(noDeath.getByTestId('deck-content-warnings')).toHaveCount(0);
+  });
+
+  test('the Spanish classic deck plays in Spanish with the same puzzle ids', async ({ page }) => {
+    await page.goto('/play/classic-es-situation');
+    await page.getByRole('button', { name: 'Empezar partida' }).click();
+    await expect(page.getByRole('heading', { name: 'Elige un enigma' })).toBeVisible();
+    await expect(page.getByTestId('situation-pick-cl-001')).toContainText('Apagón');
+    await expect(page.getByTestId('situation-pick-cl-001')).toContainText('Advertencias: muerte');
+  });
 });
 
 test.describe('situation human keeper (375px)', () => {

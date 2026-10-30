@@ -1,0 +1,25 @@
+name: Classic
+gameType: situation
+language: en
+topics:
+  - classic
+  - macabre
+difficulty: medium
+cardCount: 25
+nsfw: false
+recommended: true
+# Situation puzzle settings (see scripts/lib/config-loader.ts)
+tone: macabre
+allowDeath: true
+contentWarnings: []
+context:
+  markdown: |
+    Classic dark "yes/no" mysteries in the spirit of Black Stories: a strange,
+    often grim scene (someone found lifeless, an odd arrest, a curse) with a
+    surprising but logical explanation.
+
+    - Deaths, murders and accidents are allowed, but always off-stage and never gory.
+    - Tag every puzzle with its themes (death, murder, suicide, animal death).
+    - Mix easy openers with a few harder chains of events.
+    - Folk lateral-thinking riddles may be retold in fresh words; do not copy
+      published puzzles.

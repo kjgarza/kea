@@ -12,11 +12,15 @@
 import { parseArgs } from "util";
 import { generateBatch, generateWithRetry } from "./lib/llm-client";
 import type { Card } from "../src/types/card";
+import {
+  TRANSLATION_BATCH_SIZE,
+  toSpanishDeckId,
+  translateCardsWith,
+} from "./lib/deck-translation";
 import type { Deck, DeckIndex } from "../src/types/deck";
 import { updateDeckIndexFile } from "./lib/deck-index";
 
 const OUTPUT_DIR = "./public/decks";
-const BATCH_SIZE = 15;
 const TRANSLATION_TEMPERATURE = 0.3;
 const TRANSLATION_MODEL = "gpt-4o-mini";
 
@@ -51,159 +55,6 @@ Examples:
   process.exit(0);
 }
 
-const SYSTEM_PROMPT = `You are a professional translator specializing in English to Latin American Spanish translation for party games.
-Translate the text fields of the provided game cards from English to Spanish.
-Return a JSON object with a "cards" array containing the translated cards.
-Preserve all cardId and type fields exactly as-is — never change them.
-Only translate the text content fields (prompts, targets, phrases, questions, choices, answers, forbidden words, titles, setups, solutions, key fact texts, hints). Never change key fact ids.
-Never add, remove, or reorder items in any arrays (for example: choices, forbidden, keyFacts, hints). Only translate the text of existing items.
-Preserve any index fields such as answerIndex exactly as provided. For multiple-choice (mcq) trivia cards, do not reorder the choices array; only translate the text of each choice so that the existing answerIndex continues to point to the same logical answer.
-Keep proper nouns (names of people, brands, specific places) untranslated unless they have a well-known standard Spanish form.
-Ensure the translations are natural and appropriate for a party game context.`;
-
-/**
- * Extract just the translatable fields from a card (to minimize context sent to LLM)
- */
-function extractTranslatableFields(card: Card): Record<string, unknown> {
-  const base = { cardId: card.cardId, type: card.type };
-
-  switch (card.type) {
-    case "charades":
-      return { ...base, prompt: card.prompt };
-    case "justone":
-      return { ...base, target: card.target };
-    case "monikers":
-      return { ...base, phrase: card.phrase };
-    case "taboo":
-      return { ...base, target: card.target, forbidden: card.forbidden };
-    case "situation":
-      return {
-        ...base,
-        title: card.title,
-        setup: card.setup,
-        solution: card.solution,
-        keyFacts: card.keyFacts,
-        hints: card.hints,
-      };
-    case "trivia":
-      if (card.format === "mcq") {
-        return {
-          ...base,
-          format: card.format,
-          question: card.question,
-          choices: card.choices,
-          answerText: card.answerText,
-          answerIndex: card.answerIndex,
-        };
-      } else {
-        return {
-          ...base,
-          format: card.format,
-          question: card.question,
-          answerText: card.answerText,
-        };
-      }
-  }
-}
-
-/**
- * Merge translated fields back into the original card structure
- */
-function mergeTranslation(original: Card, translated: Record<string, unknown>): Card {
-  switch (original.type) {
-    case "charades":
-      return { ...original, prompt: String(translated.prompt ?? original.prompt) };
-    case "justone":
-      return { ...original, target: String(translated.target ?? original.target) };
-    case "monikers":
-      return { ...original, phrase: String(translated.phrase ?? original.phrase) };
-    case "taboo":
-      // Safely merge Taboo translations: keep forbidden words schema and count intact.
-      {
-        let mergedForbidden = original.forbidden;
-
-        if (Array.isArray(translated.forbidden)) {
-          const candidateForbidden = (translated.forbidden as unknown[]).filter(
-            (w) => typeof w === "string"
-          ) as string[];
-
-          // Only accept translated forbidden words if all are strings and length matches.
-          if (candidateForbidden.length === original.forbidden.length) {
-            mergedForbidden = candidateForbidden;
-          }
-        }
-
-        return {
-          ...original,
-          target: String(translated.target ?? original.target),
-          forbidden: mergedForbidden,
-        };
-      }
-    case "situation": {
-      // Keep fact ids and array lengths; only accept translated text that
-      // lines up with the original structure.
-      const t = translated as {
-        keyFacts?: unknown;
-        hints?: unknown;
-      };
-      let keyFacts = original.keyFacts;
-      if (Array.isArray(t.keyFacts) && t.keyFacts.length === original.keyFacts.length) {
-        keyFacts = original.keyFacts.map((fact, i) => {
-          const candidate = (t.keyFacts as unknown[])[i] as { text?: unknown } | null;
-          return typeof candidate?.text === "string" ? { ...fact, text: candidate.text } : fact;
-        });
-      }
-      let hints = original.hints;
-      if (
-        Array.isArray(t.hints) &&
-        t.hints.length === original.hints.length &&
-        t.hints.every((h) => typeof h === "string")
-      ) {
-        hints = t.hints as string[];
-      }
-      return {
-        ...original,
-        title: String(translated.title ?? original.title),
-        setup: String(translated.setup ?? original.setup),
-        solution: String(translated.solution ?? original.solution),
-        keyFacts,
-        hints,
-      };
-    }
-    case "trivia":
-      if (original.format === "mcq") {
-        // Safely merge MCQ translations while keeping answerIndex consistent.
-        let mergedChoices = original.choices;
-        const mergedAnswerIndex = original.answerIndex;
-
-        if (Array.isArray(translated.choices)) {
-          const candidateChoices = (translated.choices as unknown[]).filter(
-            (c) => typeof c === "string"
-          ) as string[];
-
-          // Only accept translated choices if they are all strings and the length matches.
-          if (candidateChoices.length === original.choices.length) {
-            mergedChoices = candidateChoices;
-          }
-        }
-
-        return {
-          ...original,
-          question: String(translated.question ?? original.question),
-          choices: mergedChoices,
-          answerIndex: mergedAnswerIndex,
-          answerText: String(translated.answerText ?? original.answerText),
-        };
-      } else {
-        return {
-          ...original,
-          question: String(translated.question ?? original.question),
-          answerText: String(translated.answerText ?? original.answerText),
-        };
-      }
-  }
-}
-
 /**
  * Translate the deck name to Spanish
  */
@@ -232,94 +83,39 @@ async function translateCards(
   gameType: string,
   dryRun: boolean
 ): Promise<Card[]> {
-  // Split into batches of BATCH_SIZE
-  const batches: Card[][] = [];
-  for (let i = 0; i < cards.length; i += BATCH_SIZE) {
-    batches.push(cards.slice(i, i + BATCH_SIZE));
-  }
-
-  console.log(`   Translating ${cards.length} cards in ${batches.length} batch(es)...`);
+  const batchCount = Math.ceil(cards.length / TRANSLATION_BATCH_SIZE);
+  console.log(`   Translating ${cards.length} cards in ${batchCount} batch(es)...`);
 
   if (dryRun) {
-    console.log(`   [DRY RUN] Would send ${batches.length} batch(es) of up to ${BATCH_SIZE} cards each`);
+    console.log(
+      `   [DRY RUN] Would send ${batchCount} batch(es) of up to ${TRANSLATION_BATCH_SIZE} cards each`
+    );
     return cards; // Return original cards unchanged
   }
 
-  // Build prompts for all batches
-  const prompts = batches.map((batch, i) => ({
-    systemPrompt: SYSTEM_PROMPT,
-    prompt: `Translate these ${gameType} game cards to Spanish:\n\n${JSON.stringify(
-      batch.map(extractTranslatableFields)
-    )}\n\nReturn: { "cards": [...] }`,
-    batchIndex: i,
-    originalBatch: batch,
-  }));
-
   // Run batches in parallel (concurrency 5)
-  const results = await generateBatch(
-    prompts.map(({ systemPrompt, prompt }) => ({ systemPrompt, prompt })),
-    (content) => {
-      const parsed = JSON.parse(content);
-      const translatedCards = Array.isArray(parsed.cards) ? parsed.cards : [];
-      return translatedCards as Record<string, unknown>[];
-    },
-    5,
-    TRANSLATION_TEMPERATURE,
-    TRANSLATION_MODEL
+  const { cards: translatedCards, failedBatches } = await translateCardsWith(
+    cards,
+    gameType,
+    (prompts) =>
+      generateBatch(
+        prompts,
+        (content) => {
+          const parsed = JSON.parse(content);
+          return (Array.isArray(parsed.cards) ? parsed.cards : []) as Record<string, unknown>[];
+        },
+        5,
+        TRANSLATION_TEMPERATURE,
+        TRANSLATION_MODEL
+      ),
+    { warn: (message) => console.warn(`   ⚠️  ${message}`) }
   );
-
-  // Merge results back
-  const translatedCards: Card[] = [];
-  let failedBatches = 0;
-
-  for (let i = 0; i < results.length; i++) {
-    const result = results[i];
-    const originalBatch = batches[i];
-
-    if (!result.success || !result.data) {
-      console.warn(`   ⚠️  Batch ${i + 1} failed: ${result.error} — keeping originals`);
-      failedBatches++;
-      translatedCards.push(...originalBatch);
-      continue;
-    }
-
-    const translatedBatch = result.data as Array<{ cardId?: string } & Record<string, unknown>>;
-
-    // Build a lookup map from cardId -> translated card so we don't depend on order
-    const translatedById = new Map<string, (typeof translatedBatch)[number]>();
-    for (const translated of translatedBatch) {
-      if (translated && typeof translated.cardId === "string") {
-        translatedById.set(translated.cardId, translated);
-      }
-    }
-
-    for (const original of originalBatch) {
-      const translated = translatedById.get(original.cardId);
-
-      if (translated) {
-        translatedCards.push(mergeTranslation(original, translated));
-      } else {
-        // No matching translation for this cardId — keep original to avoid data loss
-        console.warn(
-          `   ⚠️  No matching translated card for cardId ${original.cardId} in batch ${i + 1} — keeping original`
-        );
-        translatedCards.push(original);
-      }
-    }
-  }
 
   if (failedBatches > 0) {
     console.warn(`   ⚠️  ${failedBatches} batch(es) failed — those cards kept in English`);
   }
 
   return translatedCards;
-}
-
-/**
- * Derive the Spanish deck ID from an English deck ID
- */
-function toSpanishDeckId(deckId: string): string {
-  return deckId.replace("-en-", "-es-");
 }
 
 /**
