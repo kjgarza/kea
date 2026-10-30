@@ -32,7 +32,7 @@ export const monikersModule = defineGameModule<
   HeaderView: MonikersHeaderView,
   // The between-rounds screen is full-screen, without header/background.
   showChrome: (session) => !isMonikersRoundComplete(session),
-  completeTitle: "Game Complete!",
+  completeTitle: "play.complete.gameTitle",
   theme: {
     gradient: "from-monikers/15 via-monikers/8 to-monikers/20",
     pattern: "text-monikers",

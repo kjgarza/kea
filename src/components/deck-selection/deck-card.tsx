@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useLocale } from "@/lib/i18n";
 import type { DeckMeta } from "@/types/deck";
 
 interface DeckCardProps {
@@ -8,6 +11,8 @@ interface DeckCardProps {
 }
 
 export function DeckCard({ deck }: DeckCardProps) {
+  // Deck list labels follow the manual switch (or English), not each deck.
+  const { t } = useLocale();
   return (
     <Link href={`/play/${deck.deckId}`}>
       <Card className="h-full transition-all hover:shadow-lg hover:border-primary cursor-pointer">
@@ -16,7 +21,7 @@ export function DeckCard({ deck }: DeckCardProps) {
             <CardTitle className="text-lg">{deck.name}</CardTitle>
             {deck.recommended && (
               <Badge variant="secondary" className="shrink-0">
-                Recommended
+                {t("decks.recommended")}
               </Badge>
             )}
           </div>
@@ -27,7 +32,7 @@ export function DeckCard({ deck }: DeckCardProps) {
             <Badge variant="outline" className="capitalize">
               {deck.difficulty}
             </Badge>
-            <Badge variant="outline">{deck.cardCount} cards</Badge>
+            <Badge variant="outline">{t("common.cardCount", { count: deck.cardCount })}</Badge>
           </div>
           {deck.topics.length > 0 && (
             <div className="flex flex-wrap gap-1">

@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { isGameType, GAMES, GAME_TYPES } from "@/types";
+import { isGameType, GAME_TYPES } from "@/types";
 import { DeckList } from "@/components/deck-selection/deck-list";
-import { Button } from "@/components/ui/button";
+import { ChooseDeckHeading, GameIntro } from "@/components/deck-selection/game-intro";
 
 interface GamePageProps {
   params: Promise<{
@@ -18,38 +16,13 @@ export default async function GamePage({ params }: GamePageProps) {
     notFound();
   }
 
-  const game = GAMES[gameType];
-
   return (
     <main className="min-h-screen p-6 md:p-8">
       <div className="max-w-4xl mx-auto">
-        <header className="mb-8">
-          <Button variant="ghost" size="sm" asChild className="mb-4">
-            <Link href="/">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to games
-            </Link>
-          </Button>
-          <h1 className="text-3xl font-bold mb-2">{game.name}</h1>
-          <p className="text-muted-foreground">{game.description}</p>
-        </header>
-
-        <section className="mb-8">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-            How to Play
-          </h2>
-          <ol className="space-y-1">
-            {game.howToPlay.map((step, i) => (
-              <li key={i} className="flex gap-3 text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground shrink-0">{i + 1}.</span>
-                <span>{step}</span>
-              </li>
-            ))}
-          </ol>
-        </section>
+        <GameIntro gameType={gameType} />
 
         <section>
-          <h2 className="text-xl font-semibold mb-4">Choose a Deck</h2>
+          <ChooseDeckHeading />
           <DeckList gameType={gameType} />
         </section>
       </div>

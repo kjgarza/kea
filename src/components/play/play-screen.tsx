@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, RotateCcw, Sparkles, PartyPopper, Play, Shuffle } from "lucide-react";
@@ -15,7 +15,9 @@ import {
 } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Skeleton } from "@/components/ui/skeleton";
+import { LocaleSwitch } from "@/components/i18n/locale-switch";
 import { useGameState } from "@/hooks/use-game-state";
+import { useLocale, type TranslateFn } from "@/lib/i18n";
 import { GAMES } from "@/types/game";
 import type { Deck } from "@/types/deck";
 import type { AnyGameModule } from "@/lib/game/modules/types";
@@ -49,6 +51,16 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
 
   const [showRestartDialog, setShowRestartDialog] = useState(false);
   const [shuffleEnabled, setShuffleEnabled] = useState(false);
+  const { locale, t } = useLocale(deck?.language);
+
+  // Keep <html lang> in step with the UI language while on this screen.
+  useEffect(() => {
+    const previous = document.documentElement.lang;
+    document.documentElement.lang = locale;
+    return () => {
+      document.documentElement.lang = previous;
+    };
+  }, [locale]);
 
   // Loading state
   if (isLoading) {
@@ -81,15 +93,15 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
         >
           <div className="text-6xl mb-4">😕</div>
           <h1 className="text-2xl font-bold mb-2 font-display">
-            {isNotFound ? "Deck Not Found" : "Oops!"}
+            {isNotFound ? t("play.error.notFoundTitle") : t("play.error.title")}
           </h1>
           <p className="text-muted-foreground mb-6">
             {isNotFound
-              ? "This deck doesn't exist."
-              : "Something went wrong loading the deck."}
+              ? t("play.error.notFoundBody")
+              : t("play.error.body")}
           </p>
           <Button asChild size="lg" className="rounded-full">
-            <Link href="/">Back to Home</Link>
+            <Link href="/">{t("common.backToHome")}</Link>
           </Button>
         </motion.div>
       </div>
@@ -107,6 +119,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
         onShuffleChange={setShuffleEnabled}
         onStart={() => startGame(shuffleEnabled)}
         onResume={resumeGame}
+        t={t}
       />
     );
   }
@@ -117,6 +130,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
         deck={deck}
         gameModule={gameModule}
         onRestart={handleRestart}
+        t={t}
       />
     );
   }
@@ -147,7 +161,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm text-sm font-medium hover:bg-white transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            Exit
+            {t("play.header.exit")}
           </Link>
         </motion.div>
 
@@ -161,14 +175,19 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
           )}
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setShowRestartDialog(true)}
-          className="p-2.5 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm hover:bg-white transition-colors"
-        >
-          <RotateCcw className="h-4 w-4" />
-        </motion.button>
+        <div className="flex items-center gap-2">
+          <LocaleSwitch deckLanguage={deck.language} />
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setShowRestartDialog(true)}
+            aria-label={t("play.header.restart")}
+            title={t("play.header.restart")}
+            className="p-2.5 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm hover:bg-white transition-colors"
+          >
+            <RotateCcw className="h-4 w-4" />
+          </motion.button>
+        </div>
       </header>
 
       {/* Game body */}
@@ -180,9 +199,9 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
       <Dialog open={showRestartDialog} onOpenChange={setShowRestartDialog}>
         <DialogContent className="rounded-3xl">
           <DialogHeader>
-            <DialogTitle className="font-display">Restart Game?</DialogTitle>
+            <DialogTitle className="font-display">{t("play.restart.title")}</DialogTitle>
             <DialogDescription>
-              This will reset your progress and start from the beginning.
+              {t("play.restart.body")}
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2 sm:gap-0">
@@ -191,7 +210,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
               onClick={() => setShowRestartDialog(false)}
               className="rounded-full"
             >
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button
               variant="destructive"
@@ -201,7 +220,7 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
               }}
               className="rounded-full"
             >
-              Restart
+              {t("play.restart.confirm")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -219,6 +238,7 @@ function StartScreen({
   onShuffleChange,
   onStart,
   onResume,
+  t,
 }: {
   deck: Deck;
   gameModule: AnyGameModule;
@@ -227,6 +247,7 @@ function StartScreen({
   onShuffleChange: (enabled: boolean) => void;
   onStart: () => void;
   onResume: () => void;
+  t: TranslateFn;
 }) {
   const game = GAMES[deck.gameType];
   const cardCount = deck.cards.length;
@@ -235,6 +256,7 @@ function StartScreen({
   return (
     <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient} relative`}>
       <div className={`game-bg-pattern ${gameModule.theme.pattern}`} />
+      <LocaleSwitch deckLanguage={deck.language} className="absolute top-4 right-4 z-20" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -252,12 +274,12 @@ function StartScreen({
           </motion.div>
 
           <h1 className="text-3xl font-bold font-display mb-2">{deck.name}</h1>
-          <p className="text-muted-foreground mb-8">{cardCount} cards</p>
+          <p className="text-muted-foreground mb-8">{t("common.cardCount", { count: cardCount })}</p>
 
           <div className="flex items-center justify-between p-4 bg-muted/50 rounded-2xl mb-6">
             <div className="flex items-center gap-2">
               <Shuffle className="w-4 h-4 text-muted-foreground" />
-              <span className="text-sm font-medium">Shuffle cards</span>
+              <span className="text-sm font-medium">{t("play.start.shuffle")}</span>
             </div>
             <Switch
               checked={shuffleEnabled}
@@ -273,14 +295,14 @@ function StartScreen({
                   onClick={onResume}
                 >
                   <Play className="w-5 h-5 mr-2" />
-                  Resume Game
+                  {t("play.start.resume")}
                 </Button>
                 <Button
                   variant="outline"
                   className="w-full h-12 rounded-2xl"
                   onClick={onStart}
                 >
-                  Start New Game
+                  {t("play.start.startNew")}
                 </Button>
               </>
             ) : (
@@ -289,13 +311,13 @@ function StartScreen({
                 onClick={onStart}
               >
                 <Play className="w-5 h-5 mr-2" />
-                Start Game
+                {t("play.start.start")}
               </Button>
             )}
           </div>
 
           <Button variant="ghost" className="w-full mt-4 rounded-full" asChild>
-            <Link href={`/game/${deck.gameType}`}>Choose Different Deck</Link>
+            <Link href={`/game/${deck.gameType}`}>{t("common.chooseDifferentDeck")}</Link>
           </Button>
         </div>
       </motion.div>
@@ -308,10 +330,12 @@ function CompleteScreen({
   deck,
   gameModule,
   onRestart,
+  t,
 }: {
   deck: Deck;
   gameModule: AnyGameModule;
   onRestart: () => void;
+  t: TranslateFn;
 }) {
   const bgGradient = gameModule.theme.gradient;
 
@@ -334,7 +358,7 @@ function CompleteScreen({
           </motion.div>
 
           <h1 className="text-3xl font-bold font-display mb-2">
-            {gameModule.completeTitle ?? "Deck Complete!"}
+            {t(gameModule.completeTitle ?? "play.complete.deckTitle")}
           </h1>
           <p className="text-muted-foreground mb-8">{deck.name}</p>
 
@@ -344,13 +368,13 @@ function CompleteScreen({
               onClick={onRestart}
             >
               <PartyPopper className="w-5 h-5 mr-2" />
-              Play Again
+              {t("play.complete.playAgain")}
             </Button>
             <Button variant="outline" className="w-full h-12 rounded-2xl" asChild>
-              <Link href={`/game/${deck.gameType}`}>Choose Different Deck</Link>
+              <Link href={`/game/${deck.gameType}`}>{t("common.chooseDifferentDeck")}</Link>
             </Button>
             <Button variant="ghost" className="w-full rounded-full" asChild>
-              <Link href="/">Back to Home</Link>
+              <Link href="/">{t("common.backToHome")}</Link>
             </Button>
           </div>
         </div>
