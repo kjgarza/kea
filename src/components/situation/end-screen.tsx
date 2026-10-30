@@ -16,11 +16,21 @@ interface Props {
   hasMore: boolean;
   onNext: () => void;
   onChoose: () => void;
+  /** Install prompt / export reminder (#28), shown under the stats. */
+  notices?: React.ReactNode;
   t: TranslateFn;
 }
 
 /** F11: full solution, time, questions, hints (and transcript in AI modes). */
-export function SituationEndScreen({ card, puzzle, hasMore, onNext, onChoose, t }: Props) {
+export function SituationEndScreen({
+  card,
+  puzzle,
+  hasMore,
+  onNext,
+  onChoose,
+  notices,
+  t,
+}: Props) {
   const found = new Set(puzzle.factsRevealed);
   const solved = puzzle.outcome === "solved";
   const questions = Math.max(puzzle.questionCount, puzzle.transcript.length);
@@ -80,6 +90,8 @@ export function SituationEndScreen({ card, puzzle, hasMore, onNext, onChoose, t 
           </span>
         </EndStat>
       </dl>
+
+      {notices}
 
       <SituationPanel>
         <h2 className="text-sm font-semibold uppercase tracking-wide text-situation mb-2">
