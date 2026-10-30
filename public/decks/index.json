@@ -315,6 +315,22 @@
       "contentWarnings": []
     },
     {
+      "deckId": "kitchen-table-en-situation",
+      "name": "Kitchen Table Mysteries",
+      "gameType": "situation",
+      "language": "en",
+      "difficulty": "easy",
+      "topics": [
+        "everyday",
+        "family"
+      ],
+      "recommended": false,
+      "nsfw": false,
+      "version": "2026-10-30T16:06:41.837Z",
+      "cardCount": 4,
+      "contentWarnings": []
+    },
+    {
       "deckId": "lateral-thinking-en-situation",
       "name": "Lateral Thinking",
       "gameType": "situation",
