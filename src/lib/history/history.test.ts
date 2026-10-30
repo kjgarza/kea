@@ -350,6 +350,26 @@ describe("situationPlayRecord", () => {
     });
   });
 
+  test("AI and solo records count transcript questions; solo adds a score", () => {
+    const transcript = Array.from({ length: 9 }, () => ({ q: "q", a: "no", factIds: [], at: "x" }));
+    const group = DEFAULT_GROUPS.groups[0];
+    const args = { deckId: "d", card, group, endedAt: "2026-10-30T20:12:00.000Z" };
+    const ai = situationPlayRecord({
+      ...args,
+      outcome: "solved",
+      session: { ...session, mode: "ai", puzzle: { ...puzzle, transcript } } as SituationSessionState,
+    });
+    expect(ai?.mode).toBe("ai");
+    expect(ai?.questions).toBe(9);
+    expect(ai?.score).toBeUndefined();
+
+    const soloSession = { ...session, mode: "solo", puzzle: { ...puzzle, transcript } } as SituationSessionState;
+    const solved = situationPlayRecord({ ...args, outcome: "solved", session: soloSession });
+    expect(solved?.score).toBe(100 - 9 * 2 - 2 * 10);
+    const gaveUp = situationPlayRecord({ ...args, outcome: "gave_up", session: soloSession });
+    expect(gaveUp?.score).toBe(0);
+  });
+
   test("returns null when the puzzle is not active", () => {
     const ended = { ...session, puzzle: { ...puzzle, outcome: "solved" } } as SituationSessionState;
     const group = DEFAULT_GROUPS.groups[0];

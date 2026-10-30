@@ -4,6 +4,7 @@ import type { Deck } from "@/types/deck";
 import type { SituationSessionState } from "@/types/session";
 import {
   createSituationSession,
+  factProgress,
   formatElapsed,
   isSituationComplete,
   pickableCardIds,
@@ -12,6 +13,8 @@ import {
   situationCardIds,
   situationPhase,
   situationProgress,
+  soloScore,
+  SOLO_SCORE,
   type SituationAction,
 } from "./logic";
 
@@ -219,5 +222,100 @@ describe("formatElapsed", () => {
     expect(formatElapsed(0)).toBe("0:00");
     expect(formatElapsed(65_000)).toBe("1:05");
     expect(formatElapsed(3_725_000)).toBe("1:02:05");
+  });
+});
+
+describe("AI keeper answers (#31)", () => {
+  const playing = () => run(fresh(), { type: "pick", cardId: "a", at: T0, mode: "ai" });
+  const answer = (
+    extra: Partial<Extract<SituationAction, { type: "recordAnswer" }>> = {}
+  ): SituationAction => ({
+    type: "recordAnswer",
+    cardId: "a",
+    q: "Was it raining?",
+    a: "yes",
+    factIds: ["f1"],
+    at: T1,
+    ...extra,
+  });
+
+  test("pick can switch the mode in the same step", () => {
+    const s = playing();
+    expect(s.mode).toBe("ai");
+    expect(situationPhase(s)).toBe("playing");
+  });
+
+  test("appends to the transcript (latest last) and unions fact ids", () => {
+    const s = run(
+      playing(),
+      answer(),
+      answer({ q: "Was it night?", a: "partly", factIds: ["f1", "f2"] })
+    );
+    expect(s.puzzle?.transcript).toEqual([
+      { q: "Was it raining?", a: "yes", factIds: ["f1"], at: T1 },
+      { q: "Was it night?", a: "partly", factIds: ["f1", "f2"], at: T1 },
+    ]);
+    expect(s.puzzle?.factsRevealed).toEqual(["f1", "f2"]);
+    expect(factProgress(s.puzzle!, deck.cards[0])).toBeCloseTo(2 / 3);
+  });
+
+  test("drops unknown fact ids and facts on irrelevant/rephrase", () => {
+    const s = run(
+      playing(),
+      answer({ factIds: ["nope", "f3", "f3"] }),
+      answer({ a: "irrelevant", factIds: ["f1"] }),
+      answer({ a: "rephrase", factIds: ["f2"] })
+    );
+    expect(s.puzzle?.transcript.map((e) => e.factIds)).toEqual([["f3"], [], []]);
+    expect(s.puzzle?.factsRevealed).toEqual(["f3"]);
+  });
+
+  test("normalises odd answers to rephrase and trims the question", () => {
+    const s = run(
+      playing(),
+      answer({ a: "maybe" as never, q: "  " + "x".repeat(400) + "  " })
+    );
+    const entry = s.puzzle!.transcript[0];
+    expect(entry.a).toBe("rephrase");
+    expect(entry.q.length).toBe(300);
+  });
+
+  test("ignores blank questions, other cards and ended puzzles", () => {
+    const s = playing();
+    expect(run(s, answer({ q: "   " }))).toBe(s);
+    expect(run(s, answer({ cardId: "c" }))).toBe(s);
+    const ended = run(s, { type: "end", outcome: "gave_up", at: T1 });
+    expect(run(ended, answer())).toBe(ended);
+    // Not started (warnings still up): no transcript yet.
+    const warned = run(fresh(), { type: "pick", cardId: "b", at: T0, mode: "solo" });
+    expect(run(warned, answer({ cardId: "b" }))).toBe(warned);
+  });
+
+  test("hints work in AI mode and transcript survives other actions", () => {
+    const s = run(playing(), answer(), { type: "useHint" }, answer({ q: "Again?" }));
+    expect(s.puzzle?.hintsUsed).toBe(1);
+    expect(s.puzzle?.transcript).toHaveLength(2);
+  });
+});
+
+describe("solo score", () => {
+  const base = () =>
+    run(fresh(), { type: "pick", cardId: "a", at: T0, mode: "solo" }).puzzle!;
+
+  test("starts at the maximum and drops per question and hint", () => {
+    const p = base();
+    expect(soloScore(p)).toBe(SOLO_SCORE.start);
+    const asked = {
+      ...p,
+      hintsUsed: 1,
+      transcript: Array.from({ length: 5 }, () => ({ q: "q", a: "no" as const, factIds: [], at: T1 })),
+    };
+    expect(soloScore(asked)).toBe(100 - 5 * 2 - 10);
+  });
+
+  test("has a floor when solved and is 0 after giving up", () => {
+    const p = { ...base(), questionCount: 200 };
+    expect(soloScore({ ...p, outcome: "solved" })).toBe(SOLO_SCORE.solvedMin);
+    expect(soloScore({ ...p, outcome: "gave_up" })).toBe(0);
   });
 });

@@ -5,6 +5,7 @@ import { ArrowRight, Check, List } from "lucide-react";
 import type { SituationCard } from "@/types/card";
 import type { SituationPuzzleState } from "@/types/session";
 import type { TranslateFn } from "@/lib/i18n";
+import { questionsAsked } from "@/lib/game/modules/situation/logic";
 import { ActionButton } from "@/components/play/action-bar";
 import { ElapsedTime } from "./elapsed-time";
 import { SituationPanel, SituationShell } from "./situation-shell";
@@ -16,6 +17,8 @@ interface Props {
   hasMore: boolean;
   onNext: () => void;
   onChoose: () => void;
+  /** Solo mode: the final score. */
+  score?: number;
   /** Install prompt / export reminder (#28), shown under the stats. */
   notices?: React.ReactNode;
   t: TranslateFn;
@@ -28,12 +31,13 @@ export function SituationEndScreen({
   hasMore,
   onNext,
   onChoose,
+  score,
   notices,
   t,
 }: Props) {
   const found = new Set(puzzle.factsRevealed);
   const solved = puzzle.outcome === "solved";
-  const questions = Math.max(puzzle.questionCount, puzzle.transcript.length);
+  const questions = questionsAsked(puzzle);
 
   return (
     <SituationShell
@@ -72,6 +76,14 @@ export function SituationEndScreen({
           {solved ? t("situation.end.solved") : t("situation.end.gaveUp")}
         </h1>
         <p className="text-muted-foreground">{card.title}</p>
+        {score !== undefined && (
+          <p
+            className="mt-3 inline-block rounded-full bg-situation px-5 py-1.5 text-lg font-bold text-white"
+            data-testid="situation-end-score"
+          >
+            {t("situation.end.score", { score })}
+          </p>
+        )}
       </motion.div>
 
       <dl className="grid grid-cols-4 gap-2 text-center" data-testid="situation-end-stats">
