@@ -230,7 +230,9 @@ difficulty: easy             # optional: easy | medium | hard (default medium)
 topics: [everyday, family]   # optional
 nsfw: false                  # optional (default false)
 recommended: false           # optional (default false)
-origin: original             # optional default for puzzles: original | transcribed | generated
+origin: original             # optional default for puzzles: original | transcribed | generated | adapted
+license: CC-BY-SA-4.0        # optional deck licence (see "Content Sources and Licences")
+attribution: "Adapted from …" # optional credit line shown on the deck page
 
 puzzles:
   - id: wet-letter           # optional; generated from the title when missing
@@ -250,7 +252,13 @@ puzzles:
     estMinutes: 8            # optional
     origin: transcribed      # optional, overrides the pack origin
     ref: "Book title, p. 12" # optional source reference
+    license: CC-BY-SA-4.0    # optional; required (with url) for origin: adapted
+    author: Jane Doe         # optional; required by attribution licences
+    url: https://…           # optional link to the original
+    modified: true           # optional; true when the text was changed
 ```
+
+Case packs (`decks/cases/*.yaml`) take the same pack-level `license`/`attribution` and the same per-case `origin`, `ref`, `license`, `author`, `url` and `modified` fields.
 
 Import every pack, or one file:
 
@@ -265,6 +273,41 @@ The importer writes `public/decks/<deckId>.json` and updates `public/decks/index
 The manually triggered workflow `.github/workflows/import-puzzles.yml` runs the same import and commits the result.
 
 **Photo quick-add.** With the AI Worker configured, `/add` (linked from the settings sheet) turns photos of a physical card's front and back into a pack in this format: photos are downscaled to JPEG on the phone, the Worker transcribes them (never storing them), and the YAML is shown in an editor that validates as you type with the importer's rules. "Open in GitHub" opens a prefilled new `decks/puzzles/<pack>-<lang>.yaml` (or, for an existing pack, tells you to paste the puzzle at the end of its list); very long puzzles fall back to copy-to-clipboard. The repo defaults to `kjgarza/kea` on `main`; override with `NEXT_PUBLIC_KEA_REPO=owner/name` and `NEXT_PUBLIC_KEA_REPO_BRANCH`.
+
+### Content Sources and Licences
+
+Most published situation puzzles and detective games are copyrighted; Kea only imports content under an allowed licence, records where every card came from, and shows the credit in the app. The research behind the rules (what was checked, what is green / amber / red, and the licences still to verify on the live pages) is in [docs/content-sources.md](docs/content-sources.md).
+
+**Rules** (enforced by the importers and validators; `src/lib/content/licenses.ts`):
+
+- Allowed licences: `PDM-1.0` (public domain), `CC0-1.0`, `CC-BY-3.0`, `CC-BY-4.0`, `CC-BY-SA-2.5`, `CC-BY-SA-3.0`, `CC-BY-SA-4.0`, `MIT`. Anything else (including NC/ND licences) is rejected.
+- `origin: adapted` (rewritten from an external source) needs `license` and `url`; CC BY, CC BY-SA and MIT need an `author`.
+- Share-alike content lives in its own decks: if any card is CC BY-SA, every card in the deck must be CC BY-SA and the deck `license` must be that licence (an older version is accepted under a later deck licence only as an adaptation, `modified: true`). Mixing is a validation error.
+- `translate-decks.ts` keeps source and licence fields and marks external cards `modified: true`.
+- Never import from commercial games or books (Black Stories, Paul Sloane, Detective Stories…), not even through photo quick-add.
+
+**Credits in the app:** the deck page shows the deck licence and attribution; the situation end screen and the case walkthrough show the card's author, a link to the original and its licence.
+
+**Pipeline** (raw → draft → review → import). Raw items and drafts are git-ignored; only reviewed packs are committed.
+
+```bash
+# 1. Fetch raw items (decks/sources/<source>/*.json)
+bun scripts/import-stackexchange.ts --max 30 --min-score 10      # Puzzling SE, tag lateral-thinking, via the API
+bun scripts/import-story.ts --file story.txt --url <page> --author "G. K. Chesterton" --license PDM-1.0
+
+# 2. Normalise into a draft pack with the LLM (decks/drafts/sources/<pack>-<lang>.yaml)
+bun scripts/normalize-sources.ts --input decks/sources/stackexchange --pack pse-lateral --name "Puzzling Stack Exchange"
+bun scripts/normalize-sources.ts --input decks/sources/stories/the-blue-cross.json --pack father-brown --name "Father Brown"
+
+# 3. Review the draft (licence and author on the live page, wording, warnings), then move it
+mv decks/drafts/sources/pse-lateral-en.yaml decks/puzzles/
+
+# 4. Import as usual (validation includes the licence rules), then check solvability
+bun scripts/import-puzzles.ts --file decks/puzzles/pse-lateral-en.yaml
+bun scripts/check-solvability.ts --deck pse-lateral-en-situation
+```
+
+`--replay <file>` makes `normalize-sources.ts` replay recorded model output instead of calling a provider, and `import-stackexchange.ts --recorded <dir>` serves recorded API responses; the fixtures in `scripts/fixtures/sources/` (original text written for the tests) use both to build the two fixture decks `sample-cc-by-sa-en-situation` and `sample-public-domain-en-case`.
 
 ## AI Features (optional Worker)
 
@@ -448,7 +491,7 @@ No additional services are needed to run the app locally. Deck generation requir
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for details.
+MIT — see [LICENSE](LICENSE) for details. The code licence does not cover deck content from external sources: such decks carry their own `license` (shown in the app), e.g. CC BY-SA for decks adapted from Stack Exchange posts.
 
 ## Citation
 
