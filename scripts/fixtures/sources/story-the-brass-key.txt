@@ -1,0 +1,23 @@
+The Brass Key
+
+Kea test fixture: an original story written for Kea's test suite. It is not a real public-domain work; it stands in for one.
+
+Elias Wren, clockmaker of Hollin Street, kept the savings of the Clockmakers' Guild in an iron chest at the back of his workshop. By day the chest key hung on a chain round his neck. At night he hung it on a nail inside the case of the tall clock by the workbench, because the chain chafed when he slept.
+
+On Tuesday morning Elias came down to find the chest open, the brass key still in its lock, and forty guild crowns gone. The workshop door was locked, as he had left it. The window was latched on the inside. Only the little transom window above the door, no wider than a loaf of bread, stood open, as it always did in summer.
+
+Inspector Hale came at nine. He found the tall clock stopped at twenty minutes to midnight. "Someone opened the case and set the pendulum swinging against the side," he said, "and it stopped. That is when the key was taken."
+
+There were three people Elias could think of. Tobias Grey, his apprentice, had the only other door key and owed money to half the street. Abel Crane, the carter, had delivered a crate of brass on Monday evening and had shouted that the guild never paid him on time. And Martha Pell, the housekeeper, knew where the key was kept at night; it was she who wound the tall clock every Sunday.
+
+Tobias said he had spent the night walking the rounds with old Simms, the night watchman, as he often did when he could not sleep. Simms agreed: the boy had been with him from eleven until after one, and at twenty to midnight they had been standing together under the lamp at the end of Hollin Street, a hundred yards from the workshop, sharing a pie.
+
+Abel said he had been at the Three Bells until midnight. The landlady remembered him well; he had sung, badly, and paid for nobody's drink but his own.
+
+Martha said she had been at home with her son Jem, who was nine and had been ill all spring. She said she had paid the doctor at last on Monday with every penny she had saved, and had nothing left until quarter day. The inspector looked at the soot on the transom sill. In it were the prints of a small hand, and on the frame a thread of blue wool.
+
+At the baker's that afternoon, the inspector asked to see the coins taken that morning. Among them was a crown stamped on the reverse with a tiny hammer: the guild's mark, punched into every coin in the chest. The baker said Mrs Pell had paid with it for a cake for Jem.
+
+"The door was locked and the window latched," said Hale, when they were all together in the workshop. "No grown man could pass through that transom. A child could. Jem climbed in, took the key from the clock case, jarring the pendulum as he did, opened the chest and passed the coins out to his mother. The blue wool is from his jersey. Mrs Pell had nothing left after paying the doctor on Monday, yet on Tuesday morning she spent a guild crown."
+
+Martha Pell did not deny it. Elias, who had known Jem since he was born, paid the rest of the doctor's bill himself, and the guild never heard the whole of the story.

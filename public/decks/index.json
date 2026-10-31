@@ -605,6 +605,37 @@
       ]
     },
     {
+      "deckId": "sample-cc-by-sa-en-situation",
+      "name": "Sample: CC BY-SA source (fixture)",
+      "gameType": "situation",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [],
+      "recommended": false,
+      "nsfw": false,
+      "version": "2026-10-31T11:38:32.226Z",
+      "cardCount": 1,
+      "contentWarnings": [],
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Puzzles adapted from Puzzling Stack Exchange posts under CC BY-SA 4.0. Each puzzle credits its authors and links to the original post."
+    },
+    {
+      "deckId": "sample-public-domain-en-case",
+      "name": "Sample: public-domain story (fixture)",
+      "gameType": "case",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [],
+      "recommended": false,
+      "nsfw": false,
+      "version": "2026-10-31T11:38:38.334Z",
+      "cardCount": 1,
+      "contentWarnings": [
+        "theft"
+      ],
+      "attribution": "Adapted from “The Brass Key” by Kea test fixture (CC0 1.0)."
+    },
+    {
       "deckId": "simple-words-en-justone",
       "name": "Simple Words",
       "gameType": "justone",

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "deckId": "sample-public-domain-en-case",
+  "version": "2026-10-31T11:38:38.334Z",
+  "name": "Sample: public-domain story (fixture)",
+  "gameType": "case",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [],
+  "nsfw": false,
+  "attribution": "Adapted from “The Brass Key” by Kea test fixture (CC0 1.0).",
+  "cards": [
+    {
+      "cardId": "the-brass-key",
+      "type": "case",
+      "title": "The Brass Key",
+      "briefing": "The savings of the Clockmakers' Guild have vanished from an iron chest in Elias Wren's workshop on Hollin Street. The chest was opened with its own brass key, and forty guild crowns are gone.\n\nThe workshop door was still locked in the morning and the window latched. Find out who took the money, how they got in, and when.",
+      "evidence": [
+        {
+          "id": "workshop-report",
+          "title": "Inspector Hale's notes on the workshop",
+          "kind": "document",
+          "content": "**Tuesday, 9 a.m.**\n\n- Chest open, brass key in the lock. No marks of force.\n- Door locked. Window latched on the inside.\n- Transom above the door open (always open in summer). About the width of a loaf of bread.\n- At night Mr Wren hangs the key on a nail inside the case of the tall clock."
+        },
+        {
+          "id": "tall-clock",
+          "title": "The tall clock",
+          "kind": "document",
+          "content": "The tall clock by the workbench has stopped at **11:40**. The pendulum has scraped the side of the case, as if the case was opened and the pendulum knocked.\n\nMrs Pell, the housekeeper, winds this clock every Sunday.",
+          "unlockAfter": [
+            "workshop-report"
+          ]
+        },
+        {
+          "id": "transom-sill",
+          "title": "Soot on the transom sill",
+          "kind": "document",
+          "content": "In the soot on the transom sill: the prints of a **small hand**, much smaller than an adult's. Caught on the frame: a thread of **blue wool**.",
+          "unlockAfter": [
+            "workshop-report"
+          ]
+        },
+        {
+          "id": "tobias-interview",
+          "title": "Interview: Tobias Grey (apprentice)",
+          "kind": "interview",
+          "content": "**Hale:** You have the only other door key.\n\n**Tobias:** I do, and I owe money, everyone knows that. But I wasn't here. I couldn't sleep, so I walked the rounds with old Simms, the night watchman, from eleven till after one."
+        },
+        {
+          "id": "watchman-statement",
+          "title": "Statement: Simms (night watchman)",
+          "kind": "interview",
+          "content": "**Simms:** The boy was with me from eleven until past one. At twenty to midnight we were under the lamp at the end of Hollin Street, a hundred yards from the workshop, sharing a pie.",
+          "unlockAfter": [
+            "tobias-interview"
+          ]
+        },
+        {
+          "id": "abel-interview",
+          "title": "Interview: Abel Crane (carter)",
+          "kind": "interview",
+          "content": "**Abel:** Aye, I delivered the brass on Monday evening, and aye, I told Wren the guild never pays on time. Then I went to the Three Bells and stayed till midnight."
+        },
+        {
+          "id": "landlady-statement",
+          "title": "Statement: the landlady of the Three Bells",
+          "kind": "interview",
+          "content": "**Landlady:** Abel Crane? He was here all evening till midnight. Sang, badly. Paid for nobody's drink but his own.",
+          "unlockAfter": [
+            "abel-interview"
+          ]
+        },
+        {
+          "id": "martha-interview",
+          "title": "Interview: Martha Pell (housekeeper)",
+          "kind": "interview",
+          "content": "**Martha:** I was at home all night with my boy Jem. He's nine, and he's been ill all spring. I paid the doctor at last on Monday, with every penny I'd saved. I've nothing left until quarter day."
+        },
+        {
+          "id": "baker-statement",
+          "title": "The baker's Tuesday takings",
+          "kind": "document",
+          "content": "Among the coins taken on Tuesday morning: one crown stamped on the reverse with a tiny **hammer**, the guild's mark punched into every coin in the chest.\n\nThe baker remembers who paid with it: **Mrs Pell**, for a cake for Jem.",
+          "unlockAfter": [
+            "martha-interview"
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "who",
+          "prompt": "Who planned the theft?",
+          "answer": "Martha Pell",
+          "acceptedVariants": [
+            "Martha",
+            "Mrs Pell",
+            "the housekeeper"
+          ],
+          "points": 3
+        },
+        {
+          "id": "how",
+          "prompt": "How did the thief get into the locked workshop?",
+          "answer": "Her son Jem climbed in through the transom",
+          "acceptedVariants": [
+            "through the transom",
+            "Jem climbed through the transom",
+            "a child through the transom",
+            "the transom window"
+          ],
+          "points": 2
+        },
+        {
+          "id": "when",
+          "prompt": "At what time was the key taken?",
+          "answer": "11:40",
+          "acceptedVariants": [
+            "twenty to midnight",
+            "11.40",
+            "11:40 pm"
+          ],
+          "points": 1
+        }
+      ],
+      "walkthrough": "The chest was opened with its own key, and the room was locked (`workshop-report`), so the thief came through the only opening: the transom. The small handprints and the blue wool on the sill (`transom-sill`) show it was a child.\n\nThe clock stopped when its case was opened to take the key, at 11:40 (`tall-clock`). At that moment Tobias was with the watchman (`watchman-statement`) and Abel was singing at the Three Bells (`landlady-statement`).\n\nMartha Pell knew where the key hung at night and has a nine-year-old son, Jem. She said she had nothing left after paying the doctor (`martha-interview`), yet on Tuesday morning she paid the baker with a coin bearing the guild's hammer mark (`baker-statement`). Jem climbed through the transom, took the key, opened the chest and passed the coins out to his mother.",
+      "contentWarnings": [
+        "theft"
+      ],
+      "estMinutes": 20,
+      "source": {
+        "origin": "adapted",
+        "pack": "sample-public-domain",
+        "ref": "The Brass Key",
+        "license": "CC0-1.0",
+        "author": "Kea test fixture",
+        "url": "https://example.org/kea-fixture/stories/the-brass-key",
+        "modified": true
+      }
+    }
+  ]
+}

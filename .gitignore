@@ -41,3 +41,7 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # keeper eval reports (scripts/eval-keeper.ts --save/--markdown in CI)
 /reports/
+
+# Raw external content and unreviewed drafts from the source importers (#58)
+/decks/sources/
+/decks/drafts/sources/
