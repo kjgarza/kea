@@ -28,6 +28,10 @@ export interface DeckMeta {
    * written (scripts/lib/deck-index.ts); `[]` for games without warnings.
    */
   contentWarnings: string[];
+  /** Deck licence (#58), only when the deck sets one. */
+  license?: string;
+  /** Deck attribution line (#58), only when the deck sets one. */
+  attribution?: string;
 }
 
 // Deck index file structure (public/decks/index.json)
@@ -47,6 +51,13 @@ export interface Deck<C extends Card = Card> {
   difficulty: Difficulty;
   topics: string[];
   nsfw: boolean;
+  /**
+   * Content licence of the deck (#58; id from src/lib/content/licenses.ts).
+   * Absent for Kea's own decks. Share-alike cards force a share-alike deck.
+   */
+  license?: string;
+  /** Free-text credit shown on the deck page, e.g. "Adapted from …". */
+  attribution?: string;
   cards: C[];
 }
 

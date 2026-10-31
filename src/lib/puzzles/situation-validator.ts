@@ -3,9 +3,10 @@
  * imports) so the scripts, the app (/add, #38) and the Worker share it.
  * `scripts/lib/validators.ts` re-exports it.
  */
-import type { SituationCard, SituationKeyFact, SituationOrigin } from "../../types/card";
+import type { SituationCard, SituationKeyFact } from "../../types/card";
 import type { Difficulty } from "../../types/game";
 import { normalizeContentWarning } from "../data/content-warnings";
+import { contentSourceErrors, normalizeContentSource } from "../content/licenses";
 
 export interface SituationValidationResult {
   valid: boolean;
@@ -23,11 +24,6 @@ export const SITUATION_LIMITS = {
 } as const;
 
 const DIFFICULTIES: readonly Difficulty[] = ["easy", "medium", "hard"];
-const SITUATION_ORIGINS: readonly SituationOrigin[] = [
-  "generated",
-  "original",
-  "transcribed",
-];
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
@@ -149,19 +145,7 @@ export function validateSituationCard(
   }
 
   if (obj.source !== undefined) {
-    const source = obj.source as Record<string, unknown> | null;
-    if (!source || typeof source !== "object" || Array.isArray(source)) {
-      fail(`'source' must be an object with an 'origin'`);
-    } else {
-      if (!SITUATION_ORIGINS.includes(source.origin as SituationOrigin)) {
-        fail(`'source.origin' must be one of ${SITUATION_ORIGINS.join(", ")}`);
-      }
-      for (const field of ["pack", "ref"] as const) {
-        if (source[field] !== undefined && typeof source[field] !== "string") {
-          fail(`'source.${field}' must be a string`);
-        }
-      }
-    }
+    contentSourceErrors(obj.source).forEach(fail);
   }
 
   if (obj.solvability !== undefined) {
@@ -211,15 +195,7 @@ export function validateSituationCard(
     ...(obj.estMinutes !== undefined
       ? { estMinutes: obj.estMinutes as number }
       : {}),
-    ...(source
-      ? {
-          source: {
-            origin: source.origin,
-            ...(source.pack !== undefined ? { pack: source.pack } : {}),
-            ...(source.ref !== undefined ? { ref: source.ref } : {}),
-          },
-        }
-      : {}),
+    ...(source ? { source: normalizeContentSource(source) } : {}),
     ...(solvability
       ? {
           solvability: {

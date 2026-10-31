@@ -58,7 +58,30 @@ export interface SituationKeyFact {
   text: string;
 }
 
-export type SituationOrigin = "generated" | "original" | "transcribed";
+/**
+ * Where a card's text came from (#58): `original` (written for Kea),
+ * `generated` (LLM-written for Kea), `transcribed` (verbatim from elsewhere),
+ * `adapted` (rewritten from an openly licensed source; needs `license` + `url`).
+ */
+export type ContentOrigin = "generated" | "original" | "transcribed" | "adapted";
+
+/** Kept as the situation name for the origin type. */
+export type SituationOrigin = ContentOrigin;
+
+/**
+ * Provenance and licence of a card (#58). Every field but `origin` is
+ * optional, so Kea-original cards carry only `{ origin, pack? }`.
+ * Licence ids come from the allow-list in src/lib/content/licenses.ts.
+ */
+export interface ContentSource {
+  origin: ContentOrigin;
+  pack?: string;
+  ref?: string; // e.g. book + page, or a post/revision id
+  license?: string; // e.g. "CC-BY-SA-4.0", "PDM-1.0"
+  author?: string; // credit line, e.g. "Jane Doe"
+  url?: string; // where the original lives
+  modified?: boolean; // true when Kea changed the text (adapted, translated)
+}
 
 /**
  * Result of the generation-time solvability check (#33): a solver model
@@ -81,7 +104,7 @@ export interface SituationCard extends BaseCard {
   difficulty?: Difficulty; // overrides the deck difficulty
   contentWarnings?: string[]; // e.g. "suicide", "child death", "gore"
   estMinutes?: number;
-  source?: { pack?: string; ref?: string; origin: SituationOrigin };
+  source?: ContentSource;
   solvability?: SituationSolvability;
 }
 
@@ -133,6 +156,7 @@ export interface CaseCard extends BaseCard {
   walkthrough: string; // markdown, shown after the accusation
   contentWarnings?: string[];
   estMinutes?: number;
+  source?: ContentSource;
 }
 
 // Discriminated union of all card types

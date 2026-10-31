@@ -7,6 +7,13 @@ import type {
 } from "../../types/card";
 import type { SituationDeck } from "../../types/deck";
 import { validateSituationCard } from "./situation-validator";
+import {
+  CONTENT_ORIGINS,
+  LICENSE_IDS,
+  deckLicenseErrors,
+  isAllowedLicense,
+  isHttpUrl,
+} from "../content/licenses";
 
 /**
  * Hand-written situation puzzle packs (issue #27, spec §5.4 F20).
@@ -32,7 +39,7 @@ import { validateSituationCard } from "./situation-validator";
 export const PUZZLE_PACK_DIR = "decks/puzzles";
 
 const DIFFICULTIES: readonly Difficulty[] = ["easy", "medium", "hard"];
-const ORIGINS: readonly SituationOrigin[] = ["generated", "original", "transcribed"];
+const ORIGINS: readonly SituationOrigin[] = CONTENT_ORIGINS;
 
 /** A key fact as written in YAML: a bare string, or `{ id?, text }`. */
 export type PuzzleKeyFactInput = string | { id?: string; text: string };
@@ -49,7 +56,12 @@ export interface PuzzleInput {
   contentWarnings?: string[];
   estMinutes?: number;
   origin?: SituationOrigin; // defaults to the pack origin
-  ref?: string; // e.g. book + page for transcribed puzzles
+  ref?: string; // e.g. book + page for transcribed puzzles, or a post id
+  // Provenance (#58); required for `origin: adapted` (license + url)
+  license?: string; // licence id, e.g. "CC-BY-SA-4.0"
+  author?: string;
+  url?: string;
+  modified?: boolean;
 }
 
 /** A whole pack (one YAML file). */
@@ -63,6 +75,8 @@ export interface PuzzlePack {
   nsfw?: boolean; // default false
   recommended?: boolean; // default false
   origin?: SituationOrigin; // default for puzzles; default "original"
+  license?: string; // deck licence (#58); share-alike puzzles require it
+  attribution?: string; // deck credit line shown on the deck page
   puzzles: PuzzleInput[];
 }
 
@@ -189,6 +203,12 @@ export function parsePuzzlePack(text: string, opts: { fileName?: string } = {}):
   if (doc.origin !== undefined && !ORIGINS.includes(doc.origin as SituationOrigin)) {
     errors.push(`'origin' must be one of ${ORIGINS.join(", ")}`);
   }
+  if (doc.license !== undefined && !isAllowedLicense(doc.license)) {
+    errors.push(`'license' "${String(doc.license)}" is not allowed; use one of ${LICENSE_IDS.join(", ")}`);
+  }
+  if (doc.attribution !== undefined && (typeof doc.attribution !== "string" || !doc.attribution.trim())) {
+    errors.push(`'attribution' must be a non-empty string`);
+  }
   if (!Array.isArray(doc.puzzles) || doc.puzzles.length === 0) {
     errors.push(`'puzzles' is required and must be a non-empty list`);
   } else {
@@ -204,8 +224,16 @@ export function parsePuzzlePack(text: string, opts: { fileName?: string } = {}):
       if (p.origin !== undefined && !ORIGINS.includes(p.origin as SituationOrigin)) {
         errors.push(`${label}: 'origin' must be one of ${ORIGINS.join(", ")}`);
       }
-      if (p.ref !== undefined && typeof p.ref !== "string") {
-        errors.push(`${label}: 'ref' must be a string`);
+      for (const field of ["ref", "author", "license"] as const) {
+        if (p[field] !== undefined && typeof p[field] !== "string") {
+          errors.push(`${label}: '${field}' must be a string`);
+        }
+      }
+      if (p.url !== undefined && !isHttpUrl(p.url)) {
+        errors.push(`${label}: 'url' must be an http(s) URL`);
+      }
+      if (p.modified !== undefined && typeof p.modified !== "boolean") {
+        errors.push(`${label}: 'modified' must be true or false`);
       }
       if (Array.isArray(p.keyFacts)) {
         p.keyFacts.forEach((f: unknown, j: number) => {
@@ -283,6 +311,10 @@ export function puzzlePackToDeck(pack: PuzzlePack, opts: { version: string }): P
         origin: puzzle.origin ?? packOrigin,
         pack: pack.pack,
         ...(puzzle.ref !== undefined ? { ref: puzzle.ref } : {}),
+        ...(puzzle.license !== undefined ? { license: puzzle.license } : {}),
+        ...(puzzle.author !== undefined ? { author: puzzle.author } : {}),
+        ...(puzzle.url !== undefined ? { url: puzzle.url } : {}),
+        ...(puzzle.modified !== undefined ? { modified: puzzle.modified } : {}),
       },
     };
     const prefix = `situation card "${cardId}": `;
@@ -316,8 +348,12 @@ export function puzzlePackToDeck(pack: PuzzlePack, opts: { version: string }): P
     difficulty: pack.difficulty ?? "medium",
     topics: pack.topics ?? [],
     nsfw: pack.nsfw ?? false,
+    ...(pack.license !== undefined ? { license: pack.license } : {}),
+    ...(pack.attribution !== undefined ? { attribution: pack.attribution.trim() } : {}),
     cards,
   };
+  const licenseErrors = deckLicenseErrors(deck);
+  if (licenseErrors.length > 0) return { deck: null, recommended: false, errors: licenseErrors };
   return { deck, recommended: pack.recommended ?? false, errors: [] };
 }
 
@@ -351,6 +387,8 @@ export function serializePuzzlePack(pack: PuzzlePack): string {
     nsfw: pack.nsfw,
     recommended: pack.recommended,
     origin: pack.origin,
+    license: pack.license,
+    attribution: pack.attribution,
     puzzles: pack.puzzles.map((p) =>
       clean({
         id: p.id,
@@ -364,6 +402,10 @@ export function serializePuzzlePack(pack: PuzzlePack): string {
         estMinutes: p.estMinutes,
         origin: p.origin,
         ref: p.ref,
+        license: p.license,
+        author: p.author,
+        url: p.url,
+        modified: p.modified,
       })
     ),
   });
@@ -385,5 +427,9 @@ export function cardToPuzzleInput(card: SituationCard): PuzzleInput {
     estMinutes: card.estMinutes,
     origin: card.source?.origin,
     ref: card.source?.ref,
+    license: card.source?.license,
+    author: card.source?.author,
+    url: card.source?.url,
+    modified: card.source?.modified,
   };
 }
