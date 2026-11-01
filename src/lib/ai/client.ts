@@ -24,7 +24,7 @@ import type {
   StatusResponse,
 } from "./api";
 import { API_ROUTES } from "./api";
-import { PASSCODE_HEADER } from "./config";
+import { CLIENT_PHOTO_TIMEOUT_MS, CLIENT_TIMEOUT_MS, PASSCODE_HEADER } from "./config";
 import { getPasscode } from "./passcode";
 
 /** The Worker base URL, without a trailing slash, or null when AI is off. */
@@ -59,7 +59,10 @@ export interface ClientOptions {
   /** Defaults to the stored passcode. */
   passcode?: string | null;
   fetch?: (input: string, init?: RequestInit) => Promise<Response>;
+  /** Caller abort; combined with the request timeout. */
   signal?: AbortSignal;
+  /** Request timeout in ms (default CLIENT_TIMEOUT_MS; the photo route uses a longer one). */
+  timeoutMs?: number;
 }
 
 function resolve(options: ClientOptions) {
@@ -88,23 +91,48 @@ async function request<T>(
   options: ClientOptions
 ): Promise<T> {
   const { baseUrl, passcode, doFetch } = resolve(options);
-  let response: Response;
+  const timeoutMs = options.timeoutMs ?? (path === API_ROUTES.authorPhoto ? CLIENT_PHOTO_TIMEOUT_MS : CLIENT_TIMEOUT_MS);
+  const timeoutError = () =>
+    new KeaApiError("network", `The AI Worker did not answer within ${Math.round(timeoutMs / 1000)} s`);
+
+  // One controller for both the caller's signal and the timeout.
+  const controller = new AbortController();
+  let timedOut = false;
+  const timer = setTimeout(() => {
+    timedOut = true;
+    controller.abort();
+  }, timeoutMs);
+  const onCallerAbort = () => controller.abort();
+  if (options.signal?.aborted) controller.abort();
+  else options.signal?.addEventListener("abort", onCallerAbort, { once: true });
+
   try {
-    response = await doFetch(`${baseUrl}${path}`, {
-      method,
-      headers: {
-        [PASSCODE_HEADER]: passcode,
-        ...(body === undefined ? {} : { "content-type": "application/json" }),
-      },
-      body: body === undefined ? undefined : JSON.stringify(body),
-      signal: options.signal,
-    });
+    let response: Response;
+    try {
+      response = await doFetch(`${baseUrl}${path}`, {
+        method,
+        headers: {
+          [PASSCODE_HEADER]: passcode,
+          ...(body === undefined ? {} : { "content-type": "application/json" }),
+        },
+        body: body === undefined ? undefined : JSON.stringify(body),
+        signal: controller.signal,
+      });
+    } catch (error) {
+      if (timedOut) throw timeoutError();
+      if (error instanceof DOMException && error.name === "AbortError") throw error;
+      throw new KeaApiError("network", `Could not reach the AI Worker: ${String(error)}`);
+    }
+    if (!response.ok) throw await toError(response);
+    return (await response.json()) as T;
   } catch (error) {
-    if (error instanceof DOMException && error.name === "AbortError") throw error;
-    throw new KeaApiError("network", `Could not reach the AI Worker: ${String(error)}`);
+    // The timeout can also fire while the body is being read.
+    if (timedOut && !(error instanceof KeaApiError)) throw timeoutError();
+    throw error;
+  } finally {
+    clearTimeout(timer);
+    options.signal?.removeEventListener("abort", onCallerAbort);
   }
-  if (!response.ok) throw await toError(response);
-  return (await response.json()) as T;
 }
 
 /** POST a typed request to a Worker route. */

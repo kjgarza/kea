@@ -24,7 +24,7 @@ import type { Deck, DeckIndex } from "../src/types/deck";
 import { updateDeckIndexFile } from "./lib/deck-index";
 import { copyDeckAssets, createFileAssetExists } from "./lib/case-assets";
 import { deckAssetPaths } from "./lib/case-pack";
-import { validateCaseDeck } from "./lib/validators";
+import { validateCaseDeck, validateSituationDeck } from "./lib/validators";
 
 const OUTPUT_DIR = "./public/decks";
 const TRANSLATION_TEMPERATURE = 0.3;
@@ -217,6 +217,17 @@ async function prepareCaseDeck(source: Deck, translated: Deck): Promise<boolean>
   return true;
 }
 
+/** Situation decks: run the situation validator on the translated deck. */
+function validateTranslatedSituationDeck(translated: Deck): boolean {
+  const errors = validateSituationDeck(translated);
+  if (errors.length > 0) {
+    console.error(`   ❌ ${translated.deckId} is not a valid situation deck; not written:`);
+    for (const e of errors) console.error(`      - ${e}`);
+    return false;
+  }
+  return true;
+}
+
 /**
  * Write deck to file
  */
@@ -294,6 +305,9 @@ async function main() {
 
     const result = await translateDeck(sourceDeck, force, dryRun);
     if (result && result.gameType === "case" && !(await prepareCaseDeck(sourceDeck, result))) {
+      continue;
+    }
+    if (result && result.gameType === "situation" && !validateTranslatedSituationDeck(result)) {
       continue;
     }
     if (result) {

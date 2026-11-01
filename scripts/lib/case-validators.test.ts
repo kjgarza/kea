@@ -12,6 +12,7 @@ import {
   validateCaseDeck,
   type AssetExists,
 } from "./validators";
+import { ID_MAX_CHARS, ID_PATTERN } from "../../src/lib/ai/config";
 import { createFileAssetExists } from "./case-assets";
 import { buildDeckMeta } from "./deck-index";
 
@@ -107,6 +108,27 @@ describe("validateCaseCard", () => {
     });
     expect(errors).toEqual([
       `case card "c-1": evidence[1] ("note").id "note" is a duplicate; evidence ids must be unique`,
+    ]);
+  });
+
+  test("rejects evidence and question ids the Worker would reject", () => {
+    const badEvidence = errorsFor({
+      evidence: [
+        { id: "has space", title: "A", kind: "document", content: "x" },
+        { id: "ünï", title: "B", kind: "document", content: "x" },
+        { id: "a".repeat(121), title: "C", kind: "document", content: "x" },
+        { id: "ok_id-1.2", title: "D", kind: "document", content: "x" },
+      ],
+    });
+    expect(badEvidence.filter((e) => e.includes("the Worker rejects"))).toHaveLength(3);
+    const badQuestion = errorsFor({
+      questions: [
+        { id: "who?", prompt: "Who?", answer: "Lena", acceptedVariants: [], points: 1 },
+        { id: "why", prompt: "Why?", answer: "Engraving", acceptedVariants: [], points: 1 },
+      ],
+    });
+    expect(badQuestion).toEqual([
+      `case card "c-1": questions[0] ("who?").id "who?" must match ${ID_PATTERN} and be at most ${ID_MAX_CHARS} characters (the Worker rejects other ids)`,
     ]);
   });
 

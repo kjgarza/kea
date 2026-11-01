@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Check, CheckCircle2, Eye, Pencil, Trophy, X, XCircle } from "lucide-react";
+import { ArrowRight, Check, CheckCircle2, Eye, Trophy, X, XCircle } from "lucide-react";
 import type { CaseCard, CaseQuestion } from "@/types/card";
 import type { CaseMark, CaseScoredAnswer } from "@/types/session";
 import type { TranslateFn } from "@/lib/i18n";
@@ -16,7 +16,6 @@ interface ReviewProps {
   marks: Record<string, CaseMark>;
   onMark: (questionId: string, correct: boolean) => void;
   onReveal: () => void;
-  onEdit: () => void;
   /** The answer judge slot (#37). */
   judge?: React.ReactNode;
   t: TranslateFn;
@@ -27,7 +26,7 @@ interface ReviewProps {
  * accepted variant score on their own; the group compares the others with
  * the solution and marks them right or wrong before the walkthrough.
  */
-export function CaseReviewScreen({ card, answers, marks, onMark, onReveal, onEdit, judge, t }: ReviewProps) {
+export function CaseReviewScreen({ card, answers, marks, onMark, onReveal, judge, t }: ReviewProps) {
   const pending = card.questions.filter(
     (q) => matchAnswer(q, answers[q.id]) === null && !marks[q.id]
   ).length;
@@ -49,14 +48,6 @@ export function CaseReviewScreen({ card, answers, marks, onMark, onReveal, onEdi
             icon={<Eye className="h-5 w-5" />}
           >
             {t("case.review.reveal")}
-          </ActionButton>
-          <ActionButton
-            variant="pass"
-            className="w-full"
-            onClick={onEdit}
-            icon={<Pencil className="h-5 w-5" />}
-          >
-            {t("case.review.edit")}
           </ActionButton>
         </>
       }

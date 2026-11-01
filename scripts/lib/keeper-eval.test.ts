@@ -151,7 +151,7 @@ describe("validateEvalFile", () => {
     expect(text).toContain('deck "missing-es-situation" does not exist');
     expect(text).toContain("a must be one of yes, no, irrelevant, partly, rephrase");
     expect(text).toContain('fact "zzz" is not a key fact');
-    expect(text).toContain("facts/allow only make sense for yes, no or partly");
+    expect(text).toContain("facts only make sense for yes or partly");
     expect(text).toContain("has es text but decks.es is missing or invalid");
     expect(text).toContain("tag must be one of");
     expect(text).toContain('duplicate en question "Q2?"');
@@ -245,6 +245,23 @@ describe("runKeeperEval", () => {
     expect(report.summary.en!.agree).toBe(0);
     expect(report.cases[0].error).toContain("boom");
     expect(report.summary.en!.confusion[report.cases[0].expected].error).toBeGreaterThan(0);
+  });
+});
+
+describe("provider fallbacks in the eval gate", () => {
+  test("a refusal fallback (rephrase, raw null) is not agreement, even when rephrase was expected", async () => {
+    const rephraseCases = suite.cases.filter((c) => c.expected === "rephrase" && c.lang === "en").slice(0, 4);
+    expect(rephraseCases.length).toBe(4);
+    const provider = createStubProvider(() => {
+      throw new ProviderError("refusal", "declined");
+    });
+    const report = await runKeeperEval(rephraseCases, { provider, retry: { attempts: 1, delayMs: 0 } });
+    const s = report.summary.en!;
+    expect(report.cases.every((r) => r.actual === "rephrase" && r.fallback === "refusal")).toBe(true);
+    expect(s.fallbacks).toBe(4);
+    expect(s.agree).toBe(0);
+    expect(s.agreement).toBe(0);
+    expect(meetsTarget(s)).toBe(false);
   });
 });
 

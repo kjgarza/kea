@@ -3,7 +3,7 @@
  * handler. Dependencies are injected so tests can mock fetch and the model.
  */
 import { API_ROUTES } from "../../src/lib/ai/api";
-import { PASSCODE_HEADER } from "../../src/lib/ai/config";
+import { FAILED_PASSCODE_DAILY_LIMIT, PASSCODE_HEADER } from "../../src/lib/ai/config";
 import type { LlmProvider } from "../../src/lib/ai/provider";
 import { createProvider, isProviderName } from "../../src/lib/ai/provider";
 import type { StatusResponse } from "../../src/lib/ai/api";
@@ -103,11 +103,24 @@ export async function handleRequest(request: Request, env: Env, deps: WorkerDeps
     return respond(errorResponse(500, "misconfigured", "KEA_PASSCODES is not set"));
   }
   const passcode = request.headers.get(PASSCODE_HEADER);
+  const now = deps.now?.() ?? new Date();
+
+  // Throttle guessing: wrong attempts are counted per client IP; past the cap
+  // the passcode is not even checked.
+  const failKey = `fail:${request.headers.get("CF-Connecting-IP")?.trim() || "unknown"}`;
+  const failures = await deps.rateLimiter.peek(failKey, now, FAILED_PASSCODE_DAILY_LIMIT);
+  if (!failures.allowed) {
+    return respond(
+      errorResponse(429, "rate_limited", "Too many failed passcode attempts", {
+        "Retry-After": String(failures.retryAfter),
+      })
+    );
+  }
   if (!(await isPasscodeValid(passcode, env))) {
+    await deps.rateLimiter.consume(failKey, now, FAILED_PASSCODE_DAILY_LIMIT);
     return respond(errorResponse(401, "unauthorized", "Missing or wrong passcode"));
   }
   const id = await passcodeId(passcode!);
-  const now = deps.now?.() ?? new Date();
 
   if (path === API_ROUTES.status) {
     const state = await deps.rateLimiter.peek(id, now);

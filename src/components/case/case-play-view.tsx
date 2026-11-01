@@ -16,7 +16,7 @@ import {
 } from "@/lib/game/modules/case/logic";
 import { totalPoints, unmatchedQuestionIds } from "@/lib/game/modules/case/scoring";
 import { useLocale } from "@/lib/i18n";
-import { useAiAvailability } from "@/hooks/use-ai-availability";
+import { useAiPlayAvailability } from "@/hooks/use-ai-play-availability";
 import { casePlayRecord, getGroups, recordPlay, selectedGroup } from "@/lib/history";
 import { AfterPuzzleNotices } from "@/components/history/after-puzzle-notices";
 import { AccusationSheet } from "./accusation-sheet";
@@ -44,8 +44,11 @@ const now = () => new Date().toISOString();
  */
 export function CasePlayView({ deck, session: rawSession, currentCard, dispatch }: Props) {
   const { t, locale } = useLocale(deck.language);
-  // The AI investigator (#37) shows only with a Worker URL and a passcode.
-  const aiAvailable = useAiAvailability() === "available";
+  // The AI investigator (#37) works only with a Worker URL and a passcode.
+  // While AI play is deferred it is shown disabled with a "coming later" hint.
+  const aiPlay = useAiPlayAvailability();
+  const aiAvailable = aiPlay === "available";
+  const aiDeferred = aiPlay === "deferred";
   const [sheet, setSheet] = useState<Sheet>(null);
   const [viewingId, setViewingId] = useState<string | null>(null);
 
@@ -127,10 +130,11 @@ export function CasePlayView({ deck, session: rawSession, currentCard, dispatch 
               </div>
             }
           >
-            {aiAvailable && (
+            {(aiAvailable || aiDeferred) && (
               <InvestigatorPanel
                 count={investigatorTranscript(session).length}
                 onOpen={() => setSheet("investigator")}
+                deferred={aiDeferred}
                 t={t}
               />
             )}
@@ -194,7 +198,6 @@ export function CasePlayView({ deck, session: rawSession, currentCard, dispatch 
           marks={session.marks ?? {}}
           onMark={(questionId, correct) => dispatch({ type: "mark", questionId, correct })}
           onReveal={() => dispatchAndRecord({ type: "reveal", at: now() })}
-          onEdit={() => dispatch({ type: "editAnswers" })}
           judge={
             <JudgeSlot
               deck={deck}

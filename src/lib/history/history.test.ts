@@ -37,6 +37,7 @@ import {
   type PlayRecord,
   type RandomFilters,
 } from "./index";
+import { historyVersion } from "./history-store";
 
 function record(overrides: Partial<PlayRecord> = {}): PlayRecord {
   return {
@@ -201,6 +202,16 @@ describe("history store", () => {
     recordPlay(record()); // duplicate
     setStore(createStore(backend));
     expect(getHistory()).toEqual([record()]);
+  });
+
+  test("every write bumps the version even with no subscriber (stale-snapshot fix)", () => {
+    useMemoryStore();
+    const before = historyVersion();
+    recordPlay(record()); // nothing is subscribed here
+    const afterFirst = historyVersion();
+    expect(afterFirst).toBeGreaterThan(before);
+    recordPlay(record({ cardId: "cl-002" }));
+    expect(historyVersion()).toBeGreaterThan(afterFirst);
   });
 
   test("records are written through the store under kea.history", () => {

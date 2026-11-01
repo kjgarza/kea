@@ -18,6 +18,7 @@ import {
   SOLO_SCORE,
   type SituationAction,
 } from "./logic";
+import { restartSession } from "../../engine";
 
 function card(cardId: string, extra: Partial<SituationCard> = {}): SituationCard {
   return {
@@ -194,6 +195,31 @@ describe("situation session", () => {
     expect(picker.currentCardId).toBe("b");
     expect(situationPhase(picker)).toBe("picker");
     expect(pickableCardIds(picker)).toEqual(["b", "c"]);
+  });
+
+  test("next can skip to a given card and switch mode (hide-played, AI fallback)", () => {
+    const ended = run(
+      { ...fresh(), mode: "ai" },
+      { type: "pick", cardId: "a", at: T0 },
+      { type: "end", outcome: "solved", at: T1 }
+    );
+    const skipped = run(ended, { type: "next", at: T1, cardId: "c", mode: "human" });
+    expect(skipped.currentCardId).toBe("c");
+    expect(skipped.mode).toBe("human");
+    expect(situationPhase(skipped)).toBe("playing");
+    expect(skipped.remainingCardIds).toEqual(["b"]); // b is still to come
+
+    // An id that isn't on the stack opens the picker rather than guessing.
+    const unknown = run(ended, { type: "next", at: T1, cardId: "zzz" });
+    expect(situationPhase(unknown)).toBe("picker");
+  });
+
+  test("restart keeps the keeper mode and starts over", () => {
+    const played = run({ ...fresh(), mode: "solo" }, { type: "pick", cardId: "b", at: T0 });
+    const restarted = restartSession(played, deck) as SituationSessionState;
+    expect(restarted.mode).toBe("solo");
+    expect(restarted.puzzle).toBeNull();
+    expect(restarted.currentCardId).toBe("a");
   });
 
   test("plays through the whole deck and completes", () => {

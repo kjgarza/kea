@@ -13,6 +13,11 @@ import {
   type ValidationResult,
 } from "@/lib/session/session-validator";
 
+/** A new session, or an updater over the latest one (null = no session). */
+export type SessionUpdate =
+  | SessionState
+  | ((prev: SessionState | null) => SessionState | null);
+
 export interface UseSessionOptions {
   /** Auto-save session on changes */
   autoSave?: boolean;
@@ -27,8 +32,11 @@ export interface UseSessionReturn {
   validationError: ValidationResult | null;
   /** Whether a saved session exists for this deck */
   hasSavedSession: boolean;
-  /** Update session state */
-  setSession: (session: SessionState) => void;
+  /**
+   * Update session state: a new session, or an updater that receives the
+   * latest one (use this when the next state depends on the previous one).
+   */
+  setSession: (session: SessionUpdate) => void;
   /** Clear the session */
   clear: () => void;
   /** Force reload session from storage */
@@ -100,7 +108,7 @@ export function useSession(
     }
   }, [autoSave, session]);
 
-  const setSession = useCallback((newSession: SessionState) => {
+  const setSession = useCallback((newSession: SessionUpdate) => {
     setSessionState(newSession);
     setValidationError(null);
     setHasSavedSession(true);

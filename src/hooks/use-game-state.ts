@@ -7,6 +7,7 @@ import type { Card } from "@/types/card";
 import type { AnyGameModule, GameActionBase } from "@/lib/game/modules/types";
 import { getGameModule } from "@/lib/game/modules/registry";
 import { getCurrentCard } from "@/lib/game/modules/stack";
+import { restartSession } from "@/lib/game/engine";
 import { useDeck } from "./use-deck";
 import { useSession } from "./use-session";
 
@@ -82,24 +83,21 @@ export function useGameState(deckId: string): UseGameStateReturn {
     if (session) setHasStarted(true);
   }, [session]);
 
+  // Reduce the latest session, not the one captured at render: two async
+  // results (e.g. a keeper answer and a theory grade) can land before React
+  // re-renders, and the second must build on the first.
   const dispatch = useCallback(
     (action: GameActionBase) => {
-      if (!session || !deck || !gameModule) return;
-      const next = gameModule.reduce(session, action, deck);
-      if (next !== session) setSession(next);
+      if (!deck || !gameModule) return;
+      setSession((prev) => (prev ? gameModule.reduce(prev, action, deck) : prev));
     },
-    [session, deck, gameModule, setSession]
+    [deck, gameModule, setSession]
   );
 
   const handleRestart = useCallback(() => {
-    if (!session || !deck || !gameModule) return;
-    setSession(
-      gameModule.createSession(deck, {
-        shuffleEnabled: session.shuffleEnabled,
-        shuffleSeed: session.shuffleSeed,
-      })
-    );
-  }, [session, deck, gameModule, setSession]);
+    if (!session || !deck) return;
+    setSession(restartSession(session, deck));
+  }, [session, deck, setSession]);
 
   return {
     deck,

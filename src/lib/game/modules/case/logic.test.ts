@@ -158,11 +158,10 @@ describe("case logic: board", () => {
     expect(reduceCase(s, { type: "setAnswer", questionId: "nope", text: "x" }, deck)).toBe(s);
     s = play([{ type: "accuse", at: LATER }], s);
     expect(casePhase(s)).toBe("review");
+    // Answers lock at the accusation: the review shows the solutions.
     expect(reduceCase(s, { type: "setAnswer", questionId: "q1", text: "Marco" }, deck)).toBe(s);
-    s = play([{ type: "editAnswers" }], s);
-    expect(casePhase(s)).toBe("board");
-    s = play([{ type: "setAnswer", questionId: "q1", text: "Marco" }], s);
-    expect(s.answers.q1).toBe("Marco");
+    expect(reduceCase(s, { type: "accuse", at: LATER }, deck)).toBe(s);
+    expect(s.answers).toEqual({ q1: "Lena" });
   });
 });
 
@@ -225,12 +224,6 @@ describe("case logic: accusation and scoring", () => {
     expect(s.marks?.q2).toEqual({ correct: false, by: "group" });
   });
 
-  test("editing answers clears marks", () => {
-    let s = play([{ type: "mark", questionId: "q2", correct: true }], accused("Lena", "x"));
-    s = play([{ type: "editAnswers" }, { type: "accuse", at: LATER }], s);
-    expect(s.marks).toEqual({});
-  });
-
   test("next moves on only after the reveal and resets the case", () => {
     let s = accused("Lena", "engraving");
     expect(reduceCase(s, { type: "next" }, deck)).toBe(s);
@@ -272,8 +265,7 @@ describe("case logic: accusation and scoring", () => {
       score: 2,
       title: "Case c1",
     });
-    const all = play([{ type: "editAnswers" }, { type: "setAnswer", questionId: "q2", text: "engraving" }, { type: "accuse", at: LATER }], marked);
-    const solved = caseClosing(all, { type: "reveal", at: LATER }, deck)!;
+    const solved = caseClosing(accused("Lena", "engraving"), { type: "reveal", at: LATER }, deck)!;
     expect(
       casePlayRecord({ deckId: deck.deckId, session: solved, card: deck.cards[0], group: { id: "g", name: "Crew", hidePlayed: false } })
     ).toMatchObject({ outcome: "solved", score: 5, groupName: "Crew" });

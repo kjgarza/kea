@@ -5,6 +5,8 @@ import type { Env } from "./env";
 import { DeckLoader } from "./decks";
 import { createRateLimiter, dailyLimit, memoryCounterStore } from "./rate-limit";
 import { handleRequest, providerFromEnv, type WorkerDeps } from "./router";
+import { passcodeId } from "./auth";
+import { FAILED_PASSCODE_DAILY_LIMIT, JSON_BODY_MAX_BYTES } from "../../src/lib/ai/config";
 import { stubKeeperRespond } from "../../src/lib/ai/stub-keeper";
 import { GRADER_SCHEMA_NAME } from "../../src/lib/ai/grade";
 
@@ -581,5 +583,100 @@ describe("POST /keeper/grade", () => {
     expect(((await full.json()) as { verdict: string }).verdict).toBe("solved");
     const vague = await handleRequest(grade({ theory: "Something about the weather." }), baseEnv, h.deps);
     expect(await vague.json()).toEqual({ correctFactIds: [], missingCount: 3, verdict: "not_yet" });
+  });
+});
+
+describe("failed passcode throttling", () => {
+  const withIp = (ip: string, passcode: string) => {
+    const req = ask({}, { passcode });
+    req.headers.set("CF-Connecting-IP", ip);
+    return req;
+  };
+
+  test("after FAILED_PASSCODE_DAILY_LIMIT wrong guesses an IP gets 429 without the passcode being checked", async () => {
+    const h = harness();
+    for (let i = 0; i < FAILED_PASSCODE_DAILY_LIMIT; i++) {
+      expect((await handleRequest(withIp("1.2.3.4", "wrong"), baseEnv, h.deps)).status).toBe(401);
+    }
+    const blocked = await handleRequest(withIp("1.2.3.4", "wrong"), baseEnv, h.deps);
+    expect(blocked.status).toBe(429);
+    expect(((await blocked.json()) as { error: { code: string } }).error.code).toBe("rate_limited");
+    // Even the right passcode is not checked once the IP is over the cap.
+    expect((await handleRequest(withIp("1.2.3.4", "open-sesame"), baseEnv, h.deps)).status).toBe(429);
+    // Another IP is unaffected.
+    expect((await handleRequest(withIp("5.6.7.8", "open-sesame"), baseEnv, h.deps)).status).toBe(200);
+    expect(h.prompts).toHaveLength(1);
+  });
+
+  test("a missing CF-Connecting-IP falls back to a shared 'unknown' bucket", async () => {
+    const h = harness();
+    for (let i = 0; i < FAILED_PASSCODE_DAILY_LIMIT; i++) await handleRequest(ask({}, { passcode: "wrong" }), baseEnv, h.deps);
+    expect((await handleRequest(ask(), baseEnv, h.deps)).status).toBe(429);
+  });
+});
+
+describe("meter after provider", () => {
+  const NOW = new Date("2026-10-30T12:00:00Z");
+
+  test("a Worker whose provider cannot be built does not burn quota (keeper)", async () => {
+    const h = harness();
+    h.deps.provider = () => {
+      throw new Error("ANTHROPIC_API_KEY is not set");
+    };
+    const res = await handleRequest(ask(), baseEnv, h.deps);
+    expect(res.status).toBe(500);
+    expect(((await res.json()) as { error: { code: string } }).error.code).toBe("misconfigured");
+    expect((await h.deps.rateLimiter.peek(await passcodeId("open-sesame"), NOW)).remaining).toBe(3);
+  });
+
+  test("a Worker whose provider cannot be built does not burn quota (grade)", async () => {
+    const h = harness();
+    h.deps.provider = () => {
+      throw new Error("ANTHROPIC_API_KEY is not set");
+    };
+    const req = new Request("https://worker.example/keeper/grade", {
+      method: "POST",
+      headers: { "X-Kea-Passcode": "open-sesame", Origin: ORIGIN },
+      body: JSON.stringify({ deckId: "fixture-en-situation", cardId: "bus", lang: "en", theory: "her son drives" }),
+    });
+    expect((await handleRequest(req, baseEnv, h.deps)).status).toBe(500);
+    expect((await h.deps.rateLimiter.peek(await passcodeId("open-sesame"), NOW)).remaining).toBe(3);
+  });
+});
+
+describe("JSON body size cap", () => {
+  const big = (n: number) => JSON.stringify({ deckId: "fixture-en-situation", cardId: "bus", lang: "en", theory: "x".repeat(n) });
+  const post = (path: string, body: string, extra: Record<string, string> = {}) =>
+    new Request(`https://worker.example${path}`, {
+      method: "POST",
+      headers: { "X-Kea-Passcode": "open-sesame", Origin: ORIGIN, ...extra },
+      body,
+    });
+
+  test("a declared content-length over the cap is 413 before the body is parsed or metered", async () => {
+    const h = harness();
+    const res = await handleRequest(
+      post("/keeper/ask", "{}", { "content-length": String(JSON_BODY_MAX_BYTES + 1) }),
+      baseEnv,
+      h.deps
+    );
+    expect(res.status).toBe(413);
+    expect(((await res.json()) as { error: { code: string } }).error.code).toBe("payload_too_large");
+    expect(h.prompts).toHaveLength(0);
+  });
+
+  test("an actual body over the cap is 413 on keeper/ask, keeper/grade and case routes", async () => {
+    const h = harness();
+    const body = big(JSON_BODY_MAX_BYTES + 10);
+    for (const path of ["/keeper/ask", "/keeper/grade", "/case/ask", "/case/judge"]) {
+      expect((await handleRequest(post(path, body), baseEnv, h.deps)).status).toBe(413);
+    }
+    expect(h.prompts).toHaveLength(0);
+  });
+
+  test("a body under the cap still parses", async () => {
+    const h = harness();
+    const body = JSON.stringify({ deckId: "fixture-en-situation", cardId: "bus", lang: "en", question: "Is it her son?", pad: "x".repeat(100) });
+    expect((await handleRequest(post("/keeper/ask", body), baseEnv, h.deps)).status).toBe(200);
   });
 });

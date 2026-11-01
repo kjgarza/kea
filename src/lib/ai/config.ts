@@ -35,11 +35,29 @@ export const KEEPER_LIMITS = {
   idMaxChars: 120,
 } as const;
 
+/**
+ * The one id rule: deck, card, evidence and question ids. Used by the Worker's
+ * request validation and by the case validator, so a card the validator
+ * accepts can never be rejected by the Worker.
+ */
+export const ID_PATTERN = /^[A-Za-z0-9._-]+$/;
+export const ID_MAX_CHARS = KEEPER_LIMITS.idMaxChars;
+
+/** Largest JSON body the keeper, grader and case routes accept (bytes/chars). */
+export const JSON_BODY_MAX_BYTES = 64 * 1024;
+
+/** Browser client timeouts (ms). Photos upload megabytes and wait on a vision model. */
+export const CLIENT_TIMEOUT_MS = 20_000;
+export const CLIENT_PHOTO_TIMEOUT_MS = 60_000;
+
+/** Wrong passcode attempts allowed per client IP per UTC day before 429. */
+export const FAILED_PASSCODE_DAILY_LIMIT = 20;
+
 /** Header carrying the shared passcode from the client to the Worker. */
 export const PASSCODE_HEADER = "X-Kea-Passcode";
 
 /** Bump when the keeper prompt changes in a way evals should notice. */
-export const KEEPER_PROMPT_VERSION = "keeper-v1";
+export const KEEPER_PROMPT_VERSION = "keeper-v2";
 
 /** Theory grader (POST /keeper/grade, #32). */
 export const GRADER_MAX_TOKENS = 4000;
@@ -140,13 +158,19 @@ export const PHOTO_DEFAULT_PACK = "quick-add";
 export const PHOTO_LIMITS = {
   /** Front and back. */
   maxImages: 2,
-  /** Largest decoded image (bytes). The /add page downscales well below this. */
-  maxImageBytes: 5 * 1024 * 1024,
   /**
-   * Largest request body (bytes): two max-size images as base64 (4/3) plus
-   * room for the JSON around them.
+   * Largest image as sent: the cap applies to the base64 string length (chars).
+   * Anthropic's per-image limit (5 MB) applies to the encoded payload, per
+   * their docs; not verified against the live API.
    */
-  maxBodyBytes: Math.ceil((2 * 5 * 1024 * 1024 * 4) / 3) + 16 * 1024,
+  maxImageBytes: 5 * 1024 * 1024,
+  /** The largest decoded image that still fits `maxImageBytes` once base64-encoded (3/4). */
+  maxImageDecodedBytes: Math.floor((5 * 1024 * 1024 * 3) / 4),
+  /**
+   * Largest request body (bytes): two max-size base64 images plus room for
+   * the JSON around them.
+   */
+  maxBodyBytes: 2 * 5 * 1024 * 1024 + 16 * 1024,
   /** Longest pack slug. */
   packMaxChars: 40,
   /** Longest `ref` kept from the photo (book / card number). */

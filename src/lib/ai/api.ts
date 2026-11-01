@@ -129,7 +129,7 @@ export interface AuthorPhotoImage {
    * every photo to JPEG in the browser before upload.
    */
   mediaType: AuthorPhotoMediaType;
-  /** Base64 data, no `data:` prefix. At most PHOTO_LIMITS.maxImageBytes decoded. */
+  /** Base64 data, no `data:` prefix. At most PHOTO_LIMITS.maxImageBytes characters long. */
   data: string;
 }
 

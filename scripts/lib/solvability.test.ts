@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, test } from "bun:test";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import type { SituationCard } from "../../src/types/card";
@@ -146,7 +146,7 @@ describe("checkPuzzleSolvability", () => {
     const p = providers();
     await checkPuzzleSolvability(makeCard("a"), { providers: p, lang: "en", retry: FAST });
     const lastKeeperPrompt = String(p.keeper.requests[4].messages[0].content);
-    expect(lastKeeperPrompt).toContain("4. Q: Question 4?\n   A: irrelevant");
+    expect(lastKeeperPrompt).toContain("<turn><q>Question 4?</q><a>irrelevant</a></turn>");
     expect(lastKeeperPrompt).toContain("<question>\nQuestion 5?\n</question>");
   });
 
@@ -336,6 +336,52 @@ describe("runSolvabilityStage", () => {
     expect(stage.report.lang).toBe("es");
     expect(String(p.keeper.requests[0].messages[0].content)).toContain("Spanish");
     expect(renderSolvabilitySummary(stage.report, null)[1]).toBe("   Questions to solve: min 5, median 5, max 5");
+  });
+});
+
+describe("stale drafts", () => {
+  const deckWith = (cards: SituationCard[]): Deck => ({
+    schemaVersion: 1,
+    deckId: "stale-deck",
+    version: "v",
+    name: "D",
+    gameType: "situation",
+    language: "en",
+    difficulty: "easy",
+    topics: [],
+    nsfw: false,
+    cards,
+  });
+
+  test("a clean run deletes a stale drafts file; a failing run writes one with generatedAt", async () => {
+    const dir = await mkdtemp(path.join(tmpdir(), "kea-drafts-"));
+    const file = path.join(dir, "stale-deck.json");
+    try {
+      await writeFile(file, '{"old":true}');
+      const clean = await runSolvabilityStage(deckWith([makeCard("x")]), { providers: providers(), retry: FAST, draftsDir: dir });
+      expect(clean.draftsPath).toBeNull();
+      await expect(readFile(file, "utf8")).rejects.toThrow();
+
+      // Nothing to delete is fine.
+      const again = await runSolvabilityStage(deckWith([makeCard("x")]), { providers: providers(), retry: FAST, draftsDir: dir });
+      expect(again.draftsPath).toBeNull();
+
+      // A failing run overwrites a stale file with a timestamped one.
+      await writeFile(file, '{"old":true}');
+      const neverSolves = scripted("solver", () => ({ action: "ask", text: "Q?" }));
+      const failing = await runSolvabilityStage(deckWith([makeCard("hard")]), {
+        providers: providers({ solver: neverSolves }),
+        retry: FAST,
+        draftsDir: dir,
+        now: FIXED_NOW,
+      });
+      expect(failing.draftsPath).toBe(file);
+      const written = JSON.parse(await readFile(file, "utf8")) as DraftsFile;
+      expect(written.generatedAt).toBe("2026-10-30T12:00:00.000Z");
+      expect(written.drafts.map((d) => d.card.cardId)).toEqual(["hard"]);
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
   });
 });
 

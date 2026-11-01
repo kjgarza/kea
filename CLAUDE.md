@@ -15,7 +15,7 @@ Use Bun instead of Node.js for all operations:
 - `bun run lint && bunx tsc --noEmit` - What `just check` runs (`just` may not be installed; run the commands directly)
 - `bun run test:unit` - Unit tests via `bun test` (`*.test.ts` under `src/` and `scripts/`)
 - `bun run worker:install|worker:typecheck|worker:test|worker:dev` - AI Worker in `worker/` (own package; also needs the root `bun install`)
-- `bunx playwright test --project=chromium` - E2E tests in `tests/` (starts `bun run dev`). If the preinstalled browser revision does not match, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to a local chromium/headless-shell binary. AI specs need `NEXT_PUBLIC_KEA_API_URL=https://kea-worker.test` exported for both the dev server and Playwright (kill a reused dev server first); they mock the Worker with `page.route`
+- `bunx playwright test --project=chromium` - E2E tests in `tests/` (starts `bun run dev`). If the preinstalled browser revision does not match, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to a local chromium/headless-shell binary. AI play specs need `NEXT_PUBLIC_KEA_API_URL=https://kea-worker.test` and `NEXT_PUBLIC_KEA_AI_PLAY=1` exported for both the dev server and Playwright (kill a reused dev server first); they mock the Worker with `page.route`
 - `bun run build` modifies `next-env.d.ts`; don't commit that
 - Bun auto-loads `.env` files (no dotenv needed)
 
@@ -91,6 +91,8 @@ All UI strings live in `src/lib/i18n/en.ts` and `es.ts` (flat dotted keys, `{pla
 ### AI Worker (optional)
 
 Kea stays static; AI features call a Cloudflare Worker in `worker/` that holds the model key. **Every AI UI is hidden unless `NEXT_PUBLIC_KEA_API_URL` is set** (`isAiConfigured()`, `useAiAvailability()`).
+
+**AI-assisted play is deferred**: AI keeper, solo, theory grading, the case investigator and the judge are shown disabled with a "coming later" hint (`ComingLaterHint`) unless `NEXT_PUBLIC_KEA_AI_PLAY=1` is set at build time (`isAiPlayEnabled()` in `src/lib/features.ts`, `useAiPlayAvailability()` returns `deferred`). Photo quick-add (authoring) is not affected and still uses `useAiAvailability()`.
 
 - Shared pure code in `src/lib/ai/` (relative imports only, so the Worker can bundle it): `api.ts` (request/response types for every route), `config.ts` (the one place for model ids, limits, prompt versions, prices), `provider.ts` (fetch-based Anthropic/OpenAI/stub providers with JSON-schema output and image content), one module per feature with `buildXRequest` / `parseXOutput` / `validateXRequest` and a top-level helper: `keeper.ts` (`answerKeeperQuestion`), `grade.ts` (`gradeTheory`), `solver.ts` (solvability), `case.ts` (investigator + judge), `photo.ts` (photo transcription). Offline stubs in `stub-keeper.ts` (`stubRespond`, routed by schema name). Browser-only: `client.ts` (`postToWorker`, typed helpers, `KeaApiError`) and `passcode.ts`
 - Worker routes: `worker/src/router.ts` `ROUTES` (passcode → origin/CORS → daily limit via `ctx.meter()` right before the model call). Endpoints: `/keeper/ask`, `/keeper/grade`, `/case/ask`, `/case/judge`, `/author/photo`, `/status`. Responses are rebuilt field by field from validated data; solutions never reach players. Tests: `worker/src/*.test.ts` with injected deck fetch + stub provider

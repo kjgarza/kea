@@ -70,6 +70,12 @@ export interface GameModule<
   type: GameType;
 
   createSession(deck: Deck<C>, opts: StartOptions): S;
+  /**
+   * Optional: start over from `session`, keeping per-game preferences (e.g.
+   * the situation keeper mode). Default: `createSession` with the same
+   * shuffle settings.
+   */
+  restart?(session: S, deck: Deck<C>): S;
   reduce(session: S, action: A, deck: Deck<C>): S;
   isComplete(session: S): boolean;
   progress(session: S, deck: Deck<C>): Progress;

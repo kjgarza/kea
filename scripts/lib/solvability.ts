@@ -19,7 +19,7 @@
  * Passed cards get `solvability: { questions, checkedAt, model }`; failed
  * cards go to `decks/drafts/<deckId>.json` with their reasons.
  */
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { Card, SituationCard } from "../../src/types/card";
 import type { Deck } from "../../src/types/deck";
@@ -289,6 +289,8 @@ export interface DraftsFile {
   schemaVersion: 1;
   deckId: string;
   createdAt: string;
+  /** Same instant as `createdAt`; tells a reader how fresh the failures are. */
+  generatedAt: string;
   solverPromptVersion: string;
   deck: Pick<Deck, "name" | "gameType" | "language" | "difficulty" | "topics" | "nsfw">;
   drafts: DraftEntry[];
@@ -318,6 +320,7 @@ export function buildDraftsFile(deck: Deck, report: SolvabilityReport, createdAt
     schemaVersion: 1,
     deckId: deck.deckId,
     createdAt,
+    generatedAt: createdAt,
     solverPromptVersion: report.solverPromptVersion,
     deck: {
       name: deck.name,
@@ -329,6 +332,18 @@ export function buildDraftsFile(deck: Deck, report: SolvabilityReport, createdAt
     },
     drafts,
   };
+}
+
+/** Remove a stale drafts file (a clean run must not leave old failures behind). */
+export async function removeDraftsFile(dir: string, deckId: string): Promise<boolean> {
+  const file = path.join(dir, `${deckId}.json`);
+  try {
+    await rm(file);
+    return true;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return false;
+    throw error;
+  }
 }
 
 export async function writeDraftsFile(dir: string, drafts: DraftsFile): Promise<string> {
@@ -360,7 +375,8 @@ export interface SolvabilityStageResult {
 /**
  * Check every situation card of a freshly generated deck. Passed cards stay
  * in the deck (with `solvability` metadata); failed and errored cards are
- * removed and written to `<draftsDir>/<deckId>.json` with their reasons.
+ * removed and written to `<draftsDir>/<deckId>.json` with their reasons and a
+ * `generatedAt` timestamp. A run with no failures deletes a stale file.
  * Non-situation cards are left untouched.
  */
 export async function runSolvabilityStage(
@@ -388,9 +404,12 @@ export async function runSolvabilityStage(
   });
 
   let draftsPath: string | null = null;
+  const draftsDir = options.draftsDir ?? DRAFTS_DIR;
   if (report.counts.failed + report.counts.error > 0) {
     const createdAt = (options.now ?? (() => new Date()))().toISOString();
-    draftsPath = await writeDraftsFile(options.draftsDir ?? DRAFTS_DIR, buildDraftsFile(deck, report, createdAt));
+    draftsPath = await writeDraftsFile(draftsDir, buildDraftsFile(deck, report, createdAt));
+  } else if (await removeDraftsFile(draftsDir, deck.deckId)) {
+    log(`   Removed stale drafts file for ${deck.deckId} (all puzzles passed)`);
   }
 
   for (const line of renderSolvabilitySummary(report, draftsPath)) log(line);

@@ -20,7 +20,7 @@ Errors are `{ "error": { "code", "message" } }`.
 | POST | `/keeper/grade` | `{ deckId, cardId, lang, theory }` (theory ≤ 1200 chars) | `{ correctFactIds: string[], missingCount: number, verdict: "solved"\|"close"\|"not_yet" }` | implemented (#32) |
 | POST | `/case/ask` | `{ deckId, cardId, lang, openedEvidenceIds, question }` | `{ answer, citedEvidenceIds, inEvidence }` | #37: uses only opened, unlocked evidence; 502 on bad model output |
 | POST | `/case/judge` | `{ deckId, cardId, lang, answers }` | `{ results: [{ questionId, correct }] }` | #37: only submitted questions; blank/exact/variant decided locally; 502 on bad model output |
-| POST | `/author/photo` | `{ images: [{ mediaType, data }], lang, pack? }` | `{ yaml, fileName, errors }` | #38: 1–2 base64 images (JPEG/PNG/WebP/GIF, ≤ 5 MB each; HEIC is re-encoded to JPEG by /add); 413 too large, 422 `unreadable_image`, 502 on bad model output |
+| POST | `/author/photo` | `{ images: [{ mediaType, data }], lang, pack? }` | `{ yaml, fileName, errors }` | #38: 1–2 base64 images (JPEG/PNG/WebP/GIF, base64 ≤ 5 MB each; HEIC is re-encoded to JPEG by /add); 413 too large, 422 `unreadable_image`, 502 on bad model output |
 | GET | `/status` | none | `{ ok, remaining, limit }` (does not use quota) | implemented |
 
 Status codes: 400 `bad_request`, 401 `unauthorized` (missing or wrong
@@ -73,7 +73,23 @@ other field in the body.
   `RATE_LIMIT` KV namespace when bound; KV is eventually consistent, so the
   limit is approximate. Without KV it falls back to a per-isolate in-memory
   counter (resets when the isolate is recycled). If KV fails, requests are
-  allowed and the error is logged.
+  allowed and the error is logged. Within one isolate, concurrent requests for
+  the same passcode are serialised (a per-key promise chain), so a burst
+  cannot all pass the check. **Across isolates and locations the KV limit
+  stays approximate**: KV has no atomic increment, so a hard limit would need
+  Durable Objects.
+- **Failed passcodes**: wrong attempts are counted per client IP
+  (`CF-Connecting-IP`, else `unknown`) in the same store, capped at
+  `FAILED_PASSCODE_DAILY_LIMIT` (20) per UTC day. Past the cap the Worker
+  answers 429 `rate_limited` without checking the passcode.
+- **Metering order**: handlers build the model provider first and meter right
+  before the model call, so a misconfigured Worker burns no quota; `/case/judge`
+  meters only when at least one answer needs the model.
+- **Body size**: keeper, grade and case routes reject bodies over
+  `JSON_BODY_MAX_BYTES` (64 KiB) with 413 `payload_too_large` before parsing.
+- **Photo size**: the 5 MB cap per image is measured on the base64 string
+  (Anthropic's per-image limit applies to the encoded payload, per their docs;
+  not verified against the live API).
 
 ## Setup
 

@@ -135,7 +135,8 @@ export function translatedDeckLicensing(deck: Pick<Deck, "license" | "attributio
 
 /**
  * Merge translated fields back into the original card structure. Source
- * fields come from the original (see `translatedSource`).
+ * fields come from the original (see `translatedSource`). Situation cards
+ * throw on unusable title/setup/solution/keyFacts.
  */
 export function mergeTranslation(original: Card, translated: Record<string, unknown>): Card {
   const merged = mergeTranslatedFields(original, translated);
@@ -178,20 +179,43 @@ function mergeTranslatedFields(original: Card, translated: Record<string, unknow
         };
       }
     case "situation": {
-      // Keep fact ids and array lengths; only accept translated text that
-      // lines up with the original structure.
+      // Structure comes from the original. Title, setup, solution and key
+      // facts must come back as usable text with the same fact ids: a bad
+      // reply is an error (naming card and field), never a silent fallback to
+      // the English text inside a "Spanish" deck.
       const t = translated as {
         keyFacts?: unknown;
         hints?: unknown;
         contentWarnings?: unknown;
       };
-      let keyFacts = original.keyFacts;
-      if (Array.isArray(t.keyFacts) && t.keyFacts.length === original.keyFacts.length) {
-        keyFacts = original.keyFacts.map((fact, i) => {
-          const candidate = (t.keyFacts as unknown[])[i] as { text?: unknown } | null;
-          return typeof candidate?.text === "string" ? { ...fact, text: candidate.text } : fact;
-        });
+      const where = `situation card "${original.cardId}"`;
+      const requireText = (field: "title" | "setup" | "solution"): string => {
+        const value = translated[field];
+        if (!nonEmptyString(value)) {
+          throw new Error(`${where}: translated ${field} must be a non-empty string`);
+        }
+        return value.trim();
+      };
+      const title = requireText("title");
+      const setup = requireText("setup");
+      const solution = requireText("solution");
+      if (!Array.isArray(t.keyFacts) || t.keyFacts.length !== original.keyFacts.length) {
+        throw new Error(
+          `${where}: translated keyFacts must be a list of ${original.keyFacts.length} facts`
+        );
       }
+      const keyFacts = original.keyFacts.map((fact, i) => {
+        const candidate = (t.keyFacts as unknown[])[i] as { id?: unknown; text?: unknown } | null;
+        if (candidate?.id !== fact.id) {
+          throw new Error(
+            `${where}: translated keyFacts[${i}].id must be "${fact.id}" (got ${JSON.stringify(candidate?.id)})`
+          );
+        }
+        if (!nonEmptyString(candidate.text)) {
+          throw new Error(`${where}: translated keyFacts[${i}] ("${fact.id}").text must be a non-empty string`);
+        }
+        return { ...fact, text: candidate.text.trim() };
+      });
       let hints = original.hints;
       if (
         Array.isArray(t.hints) &&
@@ -212,9 +236,9 @@ function mergeTranslatedFields(original: Card, translated: Record<string, unknow
       return {
         ...original,
         ...(contentWarnings ? { contentWarnings } : {}),
-        title: String(translated.title ?? original.title),
-        setup: String(translated.setup ?? original.setup),
-        solution: String(translated.solution ?? original.solution),
+        title,
+        setup,
+        solution,
         keyFacts,
         hints,
       };

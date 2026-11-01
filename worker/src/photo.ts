@@ -40,12 +40,14 @@ export async function handleAuthorPhoto(ctx: HandlerContext): Promise<Response> 
     return errorResponse(parsed.status, parsed.status === 413 ? "payload_too_large" : "bad_request", parsed.error);
   }
 
+  // Build the provider first: a misconfigured Worker must not burn quota.
+  const provider = ctx.provider();
   const limited = await ctx.meter();
   if (limited) return limited;
 
   let result;
   try {
-    result = await transcribePuzzlePhoto(ctx.provider(), parsed.value);
+    result = await transcribePuzzlePhoto(provider, parsed.value);
   } catch (error) {
     // Provider errors carry the HTTP status and the provider's message only.
     console.error("photo upstream error", error instanceof Error ? error.message : "unknown");

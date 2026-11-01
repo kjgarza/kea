@@ -79,11 +79,14 @@ export type SituationAction =
   | { type: "end"; outcome: SituationOutcome; at: string }
   /**
    * Discard the ended puzzle and move along the stack. With `toPicker` the
-   * picker opens; otherwise the next puzzle starts right away.
+   * picker opens; otherwise the next puzzle starts right away: `cardId` if
+   * given (moved to the front of the stack), else the top of the stack, in
+   * `mode` if given.
    */
-  | { type: "next"; at: string; toPicker?: boolean };
+  | { type: "next"; at: string; toPicker?: boolean; cardId?: string; mode?: SituationMode };
 
-const FACT_ANSWERS: ReadonlySet<KeeperAnswer> = new Set<KeeperAnswer>(["yes", "no", "partly"]);
+// Only answers that confirm something can reveal a key fact (matches the Worker).
+const FACT_ANSWERS: ReadonlySet<KeeperAnswer> = new Set<KeeperAnswer>(["yes", "partly"]);
 
 export type SituationPhase = "picker" | "warnings" | "playing" | "ended";
 
@@ -298,9 +301,15 @@ export function reduceSituation(
         isRevealed: false,
         puzzle: null,
       };
-      const nextCard = findCard(deck, advanced.currentCardId);
-      if (action.toPicker || !nextCard) return advanced;
-      return { ...advanced, puzzle: newPuzzleState(nextCard, action.at) };
+      if (action.toPicker) return advanced;
+      // `cardId` lets the caller skip puzzles (e.g. ones the group has
+      // played); an unknown id opens the picker instead.
+      const target = action.cardId ? bringToFront(advanced, action.cardId) : advanced;
+      if (action.cardId && target.currentCardId !== action.cardId) return advanced;
+      const nextCard = findCard(deck, target.currentCardId);
+      if (!nextCard) return advanced;
+      const withMode = action.mode ? { ...target, mode: action.mode } : target;
+      return { ...withMode, puzzle: newPuzzleState(nextCard, action.at) };
     }
   }
 }

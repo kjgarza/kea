@@ -128,6 +128,8 @@ export const en = {
   "situation.mode.notConfigured": "The AI keeper isn't set up for this site, so only the human keeper is available.",
   "situation.mode.missingPasscode": "Enter the AI passcode in settings to play with the AI keeper or solo.",
   "situation.mode.openSettings": "Open settings",
+  "situation.mode.deferred": "AI keeper and solo play are coming in a later release. Play with a human keeper for now.",
+  "ai.comingLater": "Coming in a later release",
 
   // Situation: AI keeper and solo play (#31)
   "situation.ai.setup": "The puzzle",
@@ -326,7 +328,6 @@ export const en = {
   "case.review.incorrect": "Incorrect",
   "case.review.pending": "Still to mark: {count}",
   "case.review.reveal": "Reveal the walkthrough",
-  "case.review.edit": "Change answers",
   "case.closed.title": "Case closed",
   "case.closed.solved": "Case solved!",
   "case.closed.score": "Team score",

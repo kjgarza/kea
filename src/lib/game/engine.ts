@@ -31,6 +31,8 @@ export function applyAction(
 
 /** Start over with the same deck and shuffle settings. */
 export function restartSession(session: SessionState, deck: Deck): SessionState {
+  const gameModule = getGameModule(session.gameType);
+  if (gameModule.restart) return gameModule.restart(session, deck);
   return createInitialSession(deck, {
     shuffleEnabled: session.shuffleEnabled,
     shuffleSeed: session.shuffleSeed,

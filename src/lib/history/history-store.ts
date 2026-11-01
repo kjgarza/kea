@@ -50,8 +50,18 @@ export function getSettings(): AppSettings {
 
 const listeners = new Set<() => void>();
 let storageListening = false;
+let version = 0;
+
+/**
+ * Bumped on every change, whether or not anyone is subscribed, so cached
+ * snapshots (see `useHistoryState`) can tell they are stale.
+ */
+export function historyVersion(): number {
+  return version;
+}
 
 function notify(): void {
+  version++;
   listeners.forEach((l) => l());
 }
 

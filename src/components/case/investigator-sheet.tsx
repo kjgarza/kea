@@ -9,6 +9,7 @@ import { askCaseInvestigator, KeaApiError, type ClientErrorCode } from "@/lib/ai
 import { CASE_AI_LIMITS } from "@/lib/ai/config";
 import { investigatorTranscript, type CaseAction } from "@/lib/game/modules/case/logic";
 import type { PlainMessageKey, TranslateFn } from "@/lib/i18n";
+import { ComingLaterHint } from "@/components/ui/coming-later-hint";
 import { CasePanel } from "./case-screens";
 import { CaseSheet } from "./case-sheet";
 import { EVIDENCE_ICONS } from "./evidence-drawer";
@@ -36,25 +37,49 @@ function errorKey(code: ClientErrorCode | undefined): PlainMessageKey {
   }
 }
 
-/** Board panel that opens the investigator sheet (shown only when AI is available). */
-export function InvestigatorPanel({ count, onOpen, t }: { count: number; onOpen: () => void; t: TranslateFn }) {
+/**
+ * Board panel that opens the investigator sheet. Shown when AI is available,
+ * and shown disabled with a "coming later" hint while AI play is deferred.
+ */
+export function InvestigatorPanel({
+  count,
+  onOpen,
+  t,
+  deferred = false,
+}: {
+  count: number;
+  onOpen: () => void;
+  t: TranslateFn;
+  deferred?: boolean;
+}) {
+  const button = (
+    <button
+      type="button"
+      onClick={onOpen}
+      disabled={deferred}
+      aria-disabled={deferred}
+      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border-2 border-case/40 bg-white px-4 text-base font-semibold text-case-dark hover:bg-case/5 disabled:opacity-45 disabled:hover:bg-white"
+      data-testid="case-investigator-open"
+    >
+      <Search className="h-5 w-5" />
+      {t("case.investigator.open")}
+      {count > 0 && (
+        <span className="ml-1 text-xs font-medium text-muted-foreground">
+          ({t("case.investigator.count", { count })})
+        </span>
+      )}
+    </button>
+  );
   return (
     <CasePanel data-testid="case-investigator-panel">
       <p className="mb-3 text-sm text-muted-foreground">{t("case.investigator.panelBody")}</p>
-      <button
-        type="button"
-        onClick={onOpen}
-        className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border-2 border-case/40 bg-white px-4 text-base font-semibold text-case-dark hover:bg-case/5"
-        data-testid="case-investigator-open"
-      >
-        <Search className="h-5 w-5" />
-        {t("case.investigator.open")}
-        {count > 0 && (
-          <span className="ml-1 text-xs font-medium text-muted-foreground">
-            ({t("case.investigator.count", { count })})
-          </span>
-        )}
-      </button>
+      {deferred ? (
+        <ComingLaterHint message={t("ai.comingLater")} testId="case-investigator-hint">
+          {button}
+        </ComingLaterHint>
+      ) : (
+        button
+      )}
     </CasePanel>
   );
 }
