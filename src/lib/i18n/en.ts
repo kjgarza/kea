@@ -52,4 +52,13 @@ export const en = {
   "decks.recommended": "Recommended",
   "decks.loadError": "Failed to load decks",
   "decks.empty": "No decks available for this game yet.",
+  "decks.contentWarnings": "Content warnings: {warnings}",
+
+  // Situation puzzles (placeholder screen until the keeper view, #25)
+  "situation.card.badge": "Situation",
+  "situation.card.contentWarnings": "Content warnings: {warnings}",
+  "situation.play.nextPuzzle": "Next puzzle",
+  "situation.play.skip": "Skip",
+  "situation.play.keeperComingSoon": "The keeper view is coming soon. Read the setup aloud and answer yes/no questions.",
+  "situation.complete.title": "All puzzles played!",
 } as const;

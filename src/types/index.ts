@@ -17,6 +17,9 @@ export type {
   TabooCard,
   JustOneCard,
   MonikersCard,
+  SituationCard,
+  SituationKeyFact,
+  SituationOrigin,
   CardForGame,
 } from "./card";
 export {
@@ -27,6 +30,7 @@ export {
   isTabooCard,
   isJustOneCard,
   isMonikersCard,
+  isSituationCard,
 } from "./card";
 
 // Deck types
@@ -39,6 +43,7 @@ export type {
   TabooDeck,
   JustOneDeck,
   MonikersDeck,
+  SituationDeck,
 } from "./deck";
 
 // Session types
@@ -47,6 +52,7 @@ export type {
   BaseSessionState,
   MonikersSessionState,
   StandardSessionState,
+  SituationSessionState,
   SessionState,
 } from "./session";
 export {

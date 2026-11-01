@@ -14,7 +14,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:14:31.714Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "animals-en-charades",
@@ -29,7 +30,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "community-taboo-es-taboo",
@@ -44,7 +46,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:16:00.145Z",
-      "cardCount": 125
+      "cardCount": 125,
+      "contentWarnings": []
     },
     {
       "deckId": "classic-es-justone",
@@ -58,7 +61,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:15:23.185Z",
-      "cardCount": 550
+      "cardCount": 550,
+      "contentWarnings": []
     },
     {
       "deckId": "classic-en-justone",
@@ -72,7 +76,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T07:35:59.165Z",
-      "cardCount": 550
+      "cardCount": 550,
+      "contentWarnings": []
     },
     {
       "deckId": "community-celebrity-en-monikers",
@@ -87,7 +92,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-11-01T00:20:55.464Z",
-      "cardCount": 125
+      "cardCount": 125,
+      "contentWarnings": []
     },
     {
       "deckId": "community-etcetera-en-monikers",
@@ -102,7 +108,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-11-01T00:20:55.465Z",
-      "cardCount": 102
+      "cardCount": 102,
+      "contentWarnings": []
     },
     {
       "deckId": "community-fictional-en-monikers",
@@ -117,7 +124,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-11-01T00:20:55.466Z",
-      "cardCount": 133
+      "cardCount": 133,
+      "contentWarnings": []
     },
     {
       "deckId": "community-historical-en-monikers",
@@ -132,7 +140,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-11-01T00:20:55.467Z",
-      "cardCount": 99
+      "cardCount": 99,
+      "contentWarnings": []
     },
     {
       "deckId": "community-taboo-en-taboo",
@@ -147,7 +156,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-11-01T00:18:53.893Z",
-      "cardCount": 125
+      "cardCount": 125,
+      "contentWarnings": []
     },
     {
       "deckId": "random-concepts-es-justone",
@@ -163,7 +173,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:17:17.554Z",
-      "cardCount": 50
+      "cardCount": 50,
+      "contentWarnings": []
     },
     {
       "deckId": "general-knowledge-es-trivia",
@@ -177,7 +188,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:16:49.238Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "stranger-things-es-taboo",
@@ -193,7 +205,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:17:51.242Z",
-      "cardCount": 28
+      "cardCount": 28,
+      "contentWarnings": []
     },
     {
       "deckId": "pop-culture-es-monikers",
@@ -208,7 +221,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:17:10.515Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "everyday-words-en-taboo",
@@ -222,7 +236,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "films-1990s-en-taboo",
@@ -239,7 +254,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-10T15:31:55.944Z",
-      "cardCount": 49
+      "cardCount": 49,
+      "contentWarnings": []
     },
     {
       "deckId": "general-knowledge-en-trivia",
@@ -253,7 +269,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "music-1990s-en-charades",
@@ -269,7 +286,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-10T15:27:53.916Z",
-      "cardCount": 43
+      "cardCount": 42,
+      "contentWarnings": []
     },
     {
       "deckId": "music-2010s-en-charades",
@@ -285,7 +303,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-10T15:28:09.363Z",
-      "cardCount": 49
+      "cardCount": 49,
+      "contentWarnings": []
     },
     {
       "deckId": "music-2010s-es-charades",
@@ -301,7 +320,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:17:05.621Z",
-      "cardCount": 49
+      "cardCount": 49,
+      "contentWarnings": []
     },
     {
       "deckId": "music-1990s-es-charades",
@@ -317,7 +337,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:16:57.554Z",
-      "cardCount": 42
+      "cardCount": 42,
+      "contentWarnings": []
     },
     {
       "deckId": "everyday-words-es-taboo",
@@ -331,7 +352,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:16:12.058Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "simple-words-es-justone",
@@ -345,7 +367,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:17:22.502Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "films-1990s-es-taboo",
@@ -362,7 +385,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-03-14T09:16:32.925Z",
-      "cardCount": 49
+      "cardCount": 49,
+      "contentWarnings": []
     },
     {
       "deckId": "pop-culture-en-monikers",
@@ -377,7 +401,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "random-concepts-en-justone",
@@ -393,7 +418,27 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-10T15:37:54.455Z",
-      "cardCount": 50
+      "cardCount": 50,
+      "contentWarnings": []
+    },
+    {
+      "deckId": "sample-en-situation",
+      "name": "Sample Situations",
+      "gameType": "situation",
+      "language": "en",
+      "difficulty": "easy",
+      "topics": [
+        "sample",
+        "everyday"
+      ],
+      "recommended": false,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 3,
+      "contentWarnings": [
+        "animal in danger",
+        "medical emergency"
+      ]
     },
     {
       "deckId": "simple-words-en-justone",
@@ -407,7 +452,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-07T00:00:00Z",
-      "cardCount": 10
+      "cardCount": 10,
+      "contentWarnings": []
     },
     {
       "deckId": "stranger-things-en-taboo",
@@ -423,7 +469,8 @@
       "recommended": true,
       "nsfw": false,
       "version": "2026-01-08T13:15:07.268Z",
-      "cardCount": 28
+      "cardCount": 28,
+      "contentWarnings": []
     }
   ]
 }

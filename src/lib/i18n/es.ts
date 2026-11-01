@@ -49,4 +49,13 @@ export const es: Messages = {
   "decks.recommended": "Recomendada",
   "decks.loadError": "No se pudieron cargar las barajas",
   "decks.empty": "Todavía no hay barajas para este juego.",
+  "decks.contentWarnings": "Advertencias de contenido: {warnings}",
+
+  // Situation puzzles (placeholder screen until the keeper view, #25)
+  "situation.card.badge": "Enigma",
+  "situation.card.contentWarnings": "Advertencias de contenido: {warnings}",
+  "situation.play.nextPuzzle": "Siguiente enigma",
+  "situation.play.skip": "Saltar",
+  "situation.play.keeperComingSoon": "La vista del narrador llegará pronto. Lee la situación en voz alta y responde sí o no a las preguntas.",
+  "situation.complete.title": "¡Has jugado todos los enigmas!",
 };

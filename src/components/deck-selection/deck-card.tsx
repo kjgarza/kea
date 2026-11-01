@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AlertTriangle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLocale } from "@/lib/i18n";
@@ -13,6 +14,8 @@ interface DeckCardProps {
 export function DeckCard({ deck }: DeckCardProps) {
   // Deck list labels follow the manual switch (or English), not each deck.
   const { t } = useLocale();
+  // Older index files may predate `contentWarnings`.
+  const warnings = deck.contentWarnings ?? [];
   return (
     <Link href={`/play/${deck.deckId}`}>
       <Card className="h-full transition-all hover:shadow-lg hover:border-primary cursor-pointer">
@@ -34,6 +37,15 @@ export function DeckCard({ deck }: DeckCardProps) {
             </Badge>
             <Badge variant="outline">{t("common.cardCount", { count: deck.cardCount })}</Badge>
           </div>
+          {warnings.length > 0 && (
+            <p
+              className="flex items-start gap-1.5 text-xs text-amber-700 dark:text-amber-400 mb-3"
+              data-testid="deck-content-warnings"
+            >
+              <AlertTriangle className="h-3.5 w-3.5 shrink-0 mt-0.5" aria-hidden="true" />
+              <span>{t("decks.contentWarnings", { warnings: warnings.join(", ") })}</span>
+            </p>
+          )}
           {deck.topics.length > 0 && (
             <div className="flex flex-wrap gap-1">
               {deck.topics.map((topic) => (

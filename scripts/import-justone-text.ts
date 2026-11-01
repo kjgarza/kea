@@ -12,7 +12,8 @@
 
 import { parseArgs } from "util";
 import type { JustOneCard } from "../src/types/card";
-import type { Deck, DeckIndex, DeckMeta } from "../src/types/deck";
+import type { Deck } from "../src/types/deck";
+import { updateDeckIndexFile } from "./lib/deck-index";
 
 const OUTPUT_DIR = "./public/decks";
 
@@ -68,37 +69,9 @@ async function parseWordFile(filePath: string): Promise<string[]> {
 
 async function updateIndex(deck: Deck): Promise<void> {
   const indexPath = `${OUTPUT_DIR}/index.json`;
-
-  let index: DeckIndex;
-  try {
-    index = await Bun.file(indexPath).json();
-  } catch {
-    index = { schemaVersion: 1, decks: [] };
-  }
-
-  const meta: DeckMeta = {
-    deckId: deck.deckId,
-    name: deck.name,
-    gameType: deck.gameType,
-    language: deck.language,
-    difficulty: deck.difficulty,
-    topics: deck.topics,
-    recommended: DECK_RECOMMENDED,
-    nsfw: deck.nsfw,
-    version: deck.version,
-    cardCount: deck.cards.length,
-  };
-
-  const existingIdx = index.decks.findIndex((d) => d.deckId === deck.deckId);
-  if (existingIdx >= 0) {
-    index.decks[existingIdx] = meta;
-  } else {
-    index.decks.push(meta);
-  }
-
-  index.decks.sort((a, b) => a.name.localeCompare(b.name));
-
-  await Bun.write(indexPath, JSON.stringify(index, null, 2));
+  const index = await updateDeckIndexFile(indexPath, [
+    { deck, recommended: DECK_RECOMMENDED },
+  ]);
   console.log(`Updated ${indexPath} (${index.decks.length} decks)`);
 }
 
