@@ -85,6 +85,56 @@ export interface SituationCard extends BaseCard {
   solvability?: SituationSolvability;
 }
 
+// Case file card - a cooperative investigation (spec §4.2)
+export const EVIDENCE_KINDS = [
+  "document",
+  "image",
+  "interview",
+  "phone_log",
+  "map",
+  "pdf",
+] as const;
+
+export type EvidenceKind = (typeof EVIDENCE_KINDS)[number];
+
+/** Kinds whose body is markdown in `content`. */
+export const TEXT_EVIDENCE_KINDS: readonly EvidenceKind[] = [
+  "document",
+  "interview",
+  "phone_log",
+];
+
+/** Kinds whose body is a file in `src` (under public/decks/assets/<deckId>/). */
+export const FILE_EVIDENCE_KINDS: readonly EvidenceKind[] = ["image", "pdf", "map"];
+
+export interface Evidence {
+  id: string;
+  title: string;
+  kind: EvidenceKind;
+  content?: string; // markdown for text kinds
+  src?: string; // path under public/decks/assets/<deckId>/
+  unlockAfter?: string[]; // evidence ids that must be opened first
+}
+
+export interface CaseQuestion {
+  id: string;
+  prompt: string;
+  answer: string;
+  acceptedVariants: string[];
+  points: number;
+}
+
+export interface CaseCard extends BaseCard {
+  type: "case";
+  title: string;
+  briefing: string; // markdown
+  evidence: Evidence[];
+  questions: CaseQuestion[];
+  walkthrough: string; // markdown, shown after the accusation
+  contentWarnings?: string[];
+  estMinutes?: number;
+}
+
 // Discriminated union of all card types
 export type Card =
   | CharadesCard
@@ -92,7 +142,8 @@ export type Card =
   | TabooCard
   | JustOneCard
   | MonikersCard
-  | SituationCard;
+  | SituationCard
+  | CaseCard;
 
 // Type guards
 export function isCharadesCard(card: Card): card is CharadesCard {
@@ -127,6 +178,10 @@ export function isSituationCard(card: Card): card is SituationCard {
   return card.type === "situation";
 }
 
+export function isCaseCard(card: Card): card is CaseCard {
+  return card.type === "case";
+}
+
 // Map game type to card type
 export type CardForGame<T extends GameType> = T extends "charades"
   ? CharadesCard
@@ -140,4 +195,6 @@ export type CardForGame<T extends GameType> = T extends "charades"
           ? MonikersCard
           : T extends "situation"
             ? SituationCard
-            : never;
+            : T extends "case"
+              ? CaseCard
+              : never;

@@ -20,6 +20,10 @@ export type {
   SituationCard,
   SituationKeyFact,
   SituationOrigin,
+  CaseCard,
+  Evidence,
+  EvidenceKind,
+  CaseQuestion,
   CardForGame,
 } from "./card";
 export {
@@ -31,6 +35,10 @@ export {
   isJustOneCard,
   isMonikersCard,
   isSituationCard,
+  isCaseCard,
+  EVIDENCE_KINDS,
+  TEXT_EVIDENCE_KINDS,
+  FILE_EVIDENCE_KINDS,
 } from "./card";
 
 // Deck types
@@ -44,6 +52,7 @@ export type {
   JustOneDeck,
   MonikersDeck,
   SituationDeck,
+  CaseDeck,
 } from "./deck";
 
 // Session types
@@ -53,6 +62,7 @@ export type {
   MonikersSessionState,
   StandardSessionState,
   SituationSessionState,
+  CaseSessionState,
   SessionState,
 } from "./session";
 export {

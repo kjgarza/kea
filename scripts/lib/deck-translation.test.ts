@@ -1,8 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import type { Card, SituationCard } from "../../src/types/card";
+import type { Card, CaseCard, SituationCard } from "../../src/types/card";
 import {
   buildTranslationPrompts,
   extractTranslatableFields,
+  isTranslatableGameType,
+  mergeTranslation,
   toSpanishDeckId,
   translateCardsWith,
   type BatchTranslator,
@@ -168,5 +170,35 @@ describe("translateCardsWith (mocked LLM)", () => {
 describe("toSpanishDeckId", () => {
   test("swaps the language segment", () => {
     expect(toSpanishDeckId("classic-en-situation")).toBe("classic-es-situation");
+  });
+});
+
+describe("case decks (not translated until #36)", () => {
+  const caseCard: CaseCard = {
+    cardId: "case-001",
+    type: "case",
+    title: "The Missing Trophy",
+    briefing: "The trophy is gone.",
+    evidence: [{ id: "note", title: "Note", kind: "document", content: "Locked at 3." }],
+    questions: [{ id: "who", prompt: "Who?", answer: "Lena", acceptedVariants: [], points: 1 }],
+    walkthrough: "Lena took it.",
+  };
+
+  test("case is not a translatable game type", () => {
+    expect(isTranslatableGameType("case")).toBe(false);
+    expect(isTranslatableGameType("situation")).toBe(true);
+  });
+
+  test("translateCardsWith refuses case cards with a clear error", async () => {
+    const { translate, prompts } = mockTranslator();
+    await expect(translateCardsWith([caseCard], "case", translate)).rejects.toThrow(
+      /case decks cannot be translated automatically yet/
+    );
+    expect(prompts).toEqual([]);
+  });
+
+  test("case cards pass through extract/merge untouched", () => {
+    expect(extractTranslatableFields(caseCard)).toEqual({ cardId: "case-001", type: "case" });
+    expect(mergeTranslation(caseCard, { title: "ES" })).toBe(caseCard);
   });
 });

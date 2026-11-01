@@ -152,6 +152,10 @@ bun scripts/check-solvability.ts --deck sample-en-situation --provider stub
 
 The workflow at `.github/workflows/generate-decks.yml` automatically regenerates decks when YAML source configs change. Add `OPENAI_API_KEY` to your repository secrets to enable it, and `ANTHROPIC_API_KEY` for the situation-deck solvability check (or run it manually with `skip_solvability`). The workflow commits `decks/drafts/` together with `public/decks/`.
 
+### Case File Decks
+
+Case decks (`gameType: "case"`) are written by hand for now (generation and translation arrive with #36; `translate-decks.ts` skips them). Each card has a briefing, evidence items and questions (see `CaseCard` in `src/types/card.ts`). Evidence files (`image`, `pdf`, `map` kinds) go in `public/decks/assets/<deckId>/`, and `src` is the path relative to that folder (e.g. `"src": "receipt.svg"`). `unlockAfter` lists evidence ids that must be opened first. The validator (`validateCaseCard` / `validateCaseDeck` in `scripts/lib/validators.ts`) rejects duplicate ids, unknown or cyclic `unlockAfter` references and missing asset files; `bun test scripts/lib/case-validators.test.ts` checks every committed case deck. See `public/decks/sample-en-case.json` for an example.
+
 ### Importing Hand-Written Situation Puzzles
 
 Situation puzzles you write or transcribe yourself can be imported without running generation. Each pack is a YAML file at `decks/puzzles/<pack>-<lang>.yaml` (for example `decks/puzzles/kitchen-table-en.yaml`):

@@ -25,6 +25,7 @@ import { buildContext, truncateContext } from "./lib/context-fetcher";
 import { generateCards, getSolvabilityProviders } from "./lib/llm-client";
 import { DRAFTS_DIR, runSolvabilityStage, type SolvabilityProviders } from "./lib/solvability";
 import { validateCard, deduplicateCards } from "./lib/validators";
+import { createFileAssetExists } from "./lib/case-assets";
 import { finalizeSituationCards } from "./lib/situation-generation";
 import { buildPrompt, type PromptContext } from "./prompts";
 import type { Card, SituationCard } from "../src/types/card";
@@ -125,7 +126,10 @@ async function generateDeck(
 
   for (let i = 0; i < result.data.length; i++) {
     const cardId = generateCardId(deckId, i);
-    const validation = validateCard(result.data[i], config.gameType, cardId);
+    const validation = validateCard(result.data[i], config.gameType, cardId, {
+      deckId,
+      assetExists: createFileAssetExists(),
+    });
 
     if (validation.valid && validation.card) {
       validCards.push(validation.card);

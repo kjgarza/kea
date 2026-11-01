@@ -9,8 +9,18 @@ import type {
   SituationCard,
   SituationKeyFact,
   SituationOrigin,
+  CaseCard,
+  CaseQuestion,
+  Evidence,
+  EvidenceKind,
+} from "../../src/types/card";
+import {
+  EVIDENCE_KINDS,
+  FILE_EVIDENCE_KINDS,
+  TEXT_EVIDENCE_KINDS,
 } from "../../src/types/card";
 import { normalizeContentWarning } from "../../src/lib/data/content-warnings";
+import { isSafeAssetPath } from "../../src/lib/data/case-assets";
 
 export interface ValidationResult {
   valid: boolean;
@@ -24,7 +34,8 @@ export interface ValidationResult {
 export function validateCard(
   raw: unknown,
   gameType: GameType,
-  cardId: string
+  cardId: string,
+  options: CaseValidationOptions = {}
 ): ValidationResult {
   if (!raw || typeof raw !== "object") {
     return { valid: false, errors: ["Card is not an object"] };
@@ -43,6 +54,8 @@ export function validateCard(
       return validateMonikersCard(raw, cardId);
     case "situation":
       return validateSituationCard(raw, cardId);
+    case "case":
+      return validateCaseCard(raw, cardId, options);
     default:
       return { valid: false, errors: [`Unknown game type: ${gameType}`] };
   }
@@ -484,6 +497,346 @@ export function validateSituationCard(
 }
 
 /**
+ * Whether an evidence file exists. `src` is relative to
+ * `public/decks/assets/<deckId>/`. Injected so the validator stays pure:
+ * scripts pass `createFileAssetExists()` (scripts/lib/case-assets.ts), tests
+ * pass a fake.
+ */
+export type AssetExists = (deckId: string, src: string) => boolean;
+
+export interface CaseValidationOptions {
+  /** The deck the card belongs to; needed to check `src` files. */
+  deckId?: string;
+  /**
+   * Checks that each `src` file exists. When omitted, `src` paths are only
+   * checked for shape (safe relative path), not existence.
+   */
+  assetExists?: AssetExists;
+}
+
+/** Case file limits (spec §4.2, issue #34). */
+export const CASE_LIMITS = {
+  minEvidence: 1,
+  minQuestions: 1,
+} as const;
+
+/**
+ * Find a cycle in the evidence unlock graph (`unlockAfter` edges). Returns
+ * the cycle as a path that starts and ends on the same id (e.g.
+ * `["a", "b", "a"]`), or null when the graph is acyclic. Ids that are not
+ * evidence ids are ignored here (the validator reports them separately).
+ */
+export function findUnlockCycle(
+  evidence: readonly { id: string; unlockAfter?: readonly string[] }[]
+): string[] | null {
+  const edges = new Map<string, readonly string[]>();
+  for (const item of evidence) {
+    if (!edges.has(item.id)) edges.set(item.id, item.unlockAfter ?? []);
+  }
+  const state = new Map<string, "visiting" | "done">();
+  const stack: string[] = [];
+
+  const visit = (id: string): string[] | null => {
+    state.set(id, "visiting");
+    stack.push(id);
+    for (const next of edges.get(id) ?? []) {
+      if (!edges.has(next)) continue;
+      const nextState = state.get(next);
+      if (nextState === "visiting") {
+        return [...stack.slice(stack.indexOf(next)), next];
+      }
+      if (nextState === undefined) {
+        const found = visit(next);
+        if (found) return found;
+      }
+    }
+    stack.pop();
+    state.set(id, "done");
+    return null;
+  };
+
+  for (const id of edges.keys()) {
+    if (state.get(id) === undefined) {
+      const found = visit(id);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+/**
+ * Validate a case file. Every error names the card id, the evidence or
+ * question (index and id) and the field, e.g.
+ * `case card "c-001": evidence[2] ("photo").src "photo.png" was not found in public/decks/assets/<deckId>/`.
+ * All problems are reported at once.
+ */
+export function validateCaseCard(
+  raw: unknown,
+  cardId: string,
+  { deckId, assetExists }: CaseValidationOptions = {}
+): ValidationResult {
+  const label = `case card "${cardId}"`;
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    return { valid: false, errors: [`${label}: card is not an object`] };
+  }
+  const obj = raw as Record<string, unknown>;
+  const errors: string[] = [];
+  const fail = (message: string) => errors.push(`${label}: ${message}`);
+
+  for (const field of ["title", "briefing", "walkthrough"] as const) {
+    if (!isNonEmptyString(obj[field])) {
+      fail(`'${field}' is required and must be a non-empty string`);
+    }
+  }
+
+  if (assetExists && !isNonEmptyString(deckId)) {
+    fail(`cannot check evidence files without the deck id`);
+  }
+
+  // Evidence
+  const evidence: Evidence[] = [];
+  if (!Array.isArray(obj.evidence)) {
+    fail(`'evidence' is required and must be an array`);
+  } else {
+    if (obj.evidence.length < CASE_LIMITS.minEvidence) {
+      fail(`'evidence' must have at least ${CASE_LIMITS.minEvidence} item`);
+    }
+    const ids = new Set<string>();
+    for (const item of obj.evidence as unknown[]) {
+      const id = (item as Record<string, unknown> | null)?.id;
+      if (isNonEmptyString(id)) ids.add(id.trim());
+    }
+    const seenIds = new Set<string>();
+
+    obj.evidence.forEach((item: unknown, i: number) => {
+      const rawId = (item as Record<string, unknown> | null)?.id;
+      const where = isNonEmptyString(rawId)
+        ? `evidence[${i}] ("${rawId.trim()}")`
+        : `evidence[${i}]`;
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        fail(`${where} must be an object with 'id', 'title' and 'kind'`);
+        return;
+      }
+      const e = item as Record<string, unknown>;
+      let ok = true;
+      const bad = (message: string) => {
+        fail(`${where}.${message}`);
+        ok = false;
+      };
+
+      if (!isNonEmptyString(e.id)) {
+        bad(`id is required and must be a non-empty string`);
+      } else if (seenIds.has(e.id.trim())) {
+        bad(`id "${e.id.trim()}" is a duplicate; evidence ids must be unique`);
+      } else {
+        seenIds.add(e.id.trim());
+      }
+      if (!isNonEmptyString(e.title)) {
+        bad(`title is required and must be a non-empty string`);
+      }
+
+      const kind = e.kind as EvidenceKind;
+      if (!EVIDENCE_KINDS.includes(kind)) {
+        bad(`kind must be one of ${EVIDENCE_KINDS.join(", ")}`);
+      }
+
+      if (e.content !== undefined && !isNonEmptyString(e.content)) {
+        bad(`content must be a non-empty string`);
+      } else if (TEXT_EVIDENCE_KINDS.includes(kind) && e.content === undefined) {
+        bad(`content is required for ${kind} evidence`);
+      }
+
+      if (e.src !== undefined) {
+        if (typeof e.src !== "string" || !isSafeAssetPath(e.src)) {
+          bad(
+            `src must be a relative path inside public/decks/assets/<deckId>/ (no leading "/", "..", or URLs)`
+          );
+        } else if (assetExists && isNonEmptyString(deckId) && !assetExists(deckId, e.src)) {
+          bad(`src "${e.src}" was not found at public/decks/assets/${deckId}/${e.src}`);
+        }
+      } else if (FILE_EVIDENCE_KINDS.includes(kind)) {
+        bad(`src is required for ${kind} evidence`);
+      }
+
+      const unlockAfter: string[] = [];
+      if (e.unlockAfter !== undefined) {
+        if (!Array.isArray(e.unlockAfter)) {
+          bad(`unlockAfter must be an array of evidence ids`);
+        } else {
+          e.unlockAfter.forEach((ref: unknown, j: number) => {
+            if (!isNonEmptyString(ref)) {
+              bad(`unlockAfter[${j}] must be a non-empty string`);
+            } else if (!ids.has(ref.trim())) {
+              bad(`unlockAfter[${j}] "${ref.trim()}" is not an evidence id in this case`);
+            } else if (!unlockAfter.includes(ref.trim())) {
+              unlockAfter.push(ref.trim());
+            }
+          });
+        }
+      }
+
+      if (ok) {
+        evidence.push({
+          id: (e.id as string).trim(),
+          title: (e.title as string).trim(),
+          kind,
+          ...(e.content !== undefined ? { content: (e.content as string).trim() } : {}),
+          ...(e.src !== undefined ? { src: e.src as string } : {}),
+          ...(unlockAfter.length > 0 ? { unlockAfter } : {}),
+        });
+      }
+    });
+
+    const cycle = findUnlockCycle(evidence);
+    if (cycle) {
+      fail(
+        `evidence unlockAfter forms a cycle (${cycle.join(" -> ")}); that evidence could never be opened`
+      );
+    }
+  }
+
+  // Questions
+  const questions: CaseQuestion[] = [];
+  if (!Array.isArray(obj.questions)) {
+    fail(`'questions' is required and must be an array`);
+  } else {
+    if (obj.questions.length < CASE_LIMITS.minQuestions) {
+      fail(`'questions' must have at least ${CASE_LIMITS.minQuestions} item`);
+    }
+    const seenIds = new Set<string>();
+    obj.questions.forEach((item: unknown, i: number) => {
+      const rawId = (item as Record<string, unknown> | null)?.id;
+      const where = isNonEmptyString(rawId)
+        ? `questions[${i}] ("${rawId.trim()}")`
+        : `questions[${i}]`;
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        fail(`${where} must be an object with 'id', 'prompt', 'answer' and 'points'`);
+        return;
+      }
+      const q = item as Record<string, unknown>;
+      let ok = true;
+      const bad = (message: string) => {
+        fail(`${where}.${message}`);
+        ok = false;
+      };
+
+      if (!isNonEmptyString(q.id)) {
+        bad(`id is required and must be a non-empty string`);
+      } else if (seenIds.has(q.id.trim())) {
+        bad(`id "${q.id.trim()}" is a duplicate; question ids must be unique`);
+      } else {
+        seenIds.add(q.id.trim());
+      }
+      for (const field of ["prompt", "answer"] as const) {
+        if (!isNonEmptyString(q[field])) {
+          bad(`${field} is required and must be a non-empty string`);
+        }
+      }
+      if (!Array.isArray(q.acceptedVariants)) {
+        bad(`acceptedVariants is required and must be an array of strings (may be empty)`);
+      } else {
+        q.acceptedVariants.forEach((v: unknown, j: number) => {
+          if (!isNonEmptyString(v)) bad(`acceptedVariants[${j}] must be a non-empty string`);
+        });
+      }
+      if (
+        typeof q.points !== "number" ||
+        !Number.isFinite(q.points) ||
+        q.points <= 0
+      ) {
+        bad(`points must be a number greater than 0`);
+      }
+
+      if (ok) {
+        questions.push({
+          id: (q.id as string).trim(),
+          prompt: (q.prompt as string).trim(),
+          answer: (q.answer as string).trim(),
+          acceptedVariants: [
+            ...new Set((q.acceptedVariants as string[]).map((v) => v.trim())),
+          ],
+          points: q.points as number,
+        });
+      }
+    });
+  }
+
+  if (obj.contentWarnings !== undefined) {
+    if (!Array.isArray(obj.contentWarnings)) {
+      fail(`'contentWarnings' must be an array of strings`);
+    } else {
+      obj.contentWarnings.forEach((w: unknown, i: number) => {
+        if (!isNonEmptyString(w)) fail(`contentWarnings[${i}] must be a non-empty string`);
+      });
+    }
+  }
+
+  if (
+    obj.estMinutes !== undefined &&
+    (typeof obj.estMinutes !== "number" ||
+      !Number.isFinite(obj.estMinutes) ||
+      obj.estMinutes <= 0)
+  ) {
+    fail(`'estMinutes' must be a positive number`);
+  }
+
+  if (errors.length > 0) {
+    return { valid: false, errors };
+  }
+
+  const contentWarnings = [
+    ...new Set(
+      ((obj.contentWarnings as string[] | undefined) ?? []).map(normalizeContentWarning)
+    ),
+  ];
+
+  const card: CaseCard = {
+    cardId,
+    type: "case",
+    title: (obj.title as string).trim(),
+    briefing: (obj.briefing as string).trim(),
+    evidence,
+    questions,
+    walkthrough: (obj.walkthrough as string).trim(),
+    ...(contentWarnings.length > 0 ? { contentWarnings } : {}),
+    ...(obj.estMinutes !== undefined ? { estMinutes: obj.estMinutes as number } : {}),
+  };
+
+  return { valid: true, errors: [], card };
+}
+
+/**
+ * Validate every card of a case deck (and that card ids are unique). Returns
+ * all errors; empty means the deck is valid.
+ */
+export function validateCaseDeck(
+  deck: { deckId: string; gameType: string; cards: readonly unknown[] },
+  { assetExists }: Pick<CaseValidationOptions, "assetExists"> = {}
+): string[] {
+  if (deck.gameType !== "case") {
+    return [`deck "${deck.deckId}": gameType is "${deck.gameType}", expected "case"`];
+  }
+  const errors: string[] = [];
+  const seen = new Set<string>();
+  deck.cards.forEach((raw, i) => {
+    const cardId = (raw as { cardId?: unknown } | null)?.cardId;
+    if (!isNonEmptyString(cardId)) {
+      errors.push(`deck "${deck.deckId}": cards[${i}].cardId is required`);
+      return;
+    }
+    if (seen.has(cardId)) {
+      errors.push(`deck "${deck.deckId}": cardId "${cardId}" is a duplicate`);
+    }
+    seen.add(cardId);
+    if ((raw as { type?: unknown }).type !== "case") {
+      errors.push(`case card "${cardId}": 'type' must be "case"`);
+    }
+    errors.push(...validateCaseCard(raw, cardId, { deckId: deck.deckId, assetExists }).errors);
+  });
+  return errors;
+}
+
+/**
  * Deduplicate cards based on content
  */
 export function deduplicateCards<T extends Card>(cards: T[]): T[] {
@@ -515,5 +868,7 @@ function getCardContentKey(card: Card): string {
       return `monikers:${card.phrase.toLowerCase()}`;
     case "situation":
       return `situation:${card.setup.toLowerCase()}`;
+    case "case":
+      return `case:${card.title.toLowerCase()}`;
   }
 }

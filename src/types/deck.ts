@@ -6,6 +6,7 @@ import type {
   JustOneCard,
   MonikersCard,
   SituationCard,
+  CaseCard,
 } from "./card";
 import type { GameType, Difficulty } from "./game";
 
@@ -56,3 +57,4 @@ export type TabooDeck = Deck<TabooCard>;
 export type JustOneDeck = Deck<JustOneCard>;
 export type MonikersDeck = Deck<MonikersCard>;
 export type SituationDeck = Deck<SituationCard>;
+export type CaseDeck = Deck<CaseCard>;

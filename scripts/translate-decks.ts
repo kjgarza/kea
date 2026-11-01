@@ -14,8 +14,10 @@ import { generateBatch, generateWithRetry } from "./lib/llm-client";
 import type { Card } from "../src/types/card";
 import {
   TRANSLATION_BATCH_SIZE,
+  isTranslatableGameType,
   toSpanishDeckId,
   translateCardsWith,
+  untranslatableGameTypeMessage,
 } from "./lib/deck-translation";
 import type { Deck, DeckIndex } from "../src/types/deck";
 import { updateDeckIndexFile } from "./lib/deck-index";
@@ -126,6 +128,11 @@ async function translateDeck(
   force: boolean,
   dryRun: boolean
 ): Promise<Deck | null> {
+  if (!isTranslatableGameType(sourceDeck.gameType)) {
+    console.log(`   ⚠️  Skipping ${sourceDeck.deckId} — ${untranslatableGameTypeMessage(sourceDeck.gameType)}`);
+    return null;
+  }
+
   const spanishDeckId = toSpanishDeckId(sourceDeck.deckId);
 
   if (spanishDeckId === sourceDeck.deckId) {

@@ -15,6 +15,7 @@ export function normalizeContentWarning(warning: string): string {
 export function cardContentWarnings(card: Card): string[] {
   switch (card.type) {
     case "situation":
+    case "case":
       return card.contentWarnings ?? [];
     case "charades":
     case "trivia":

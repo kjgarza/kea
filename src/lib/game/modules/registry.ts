@@ -6,6 +6,7 @@ import type { AnyGameModule } from "./types";
 import { createStandardStackModule } from "./standard-stack";
 import { monikersModule } from "./monikers";
 import { situationModule } from "./situation";
+import { caseModule } from "./case";
 
 /**
  * GameType -> GameModule. The only place that knows which module plays which
@@ -47,6 +48,7 @@ export const GAME_MODULES: Record<GameType, AnyGameModule> = {
   }),
   monikers: monikersModule,
   situation: situationModule,
+  case: caseModule,
 };
 
 export function getGameModule(gameType: GameType): AnyGameModule {

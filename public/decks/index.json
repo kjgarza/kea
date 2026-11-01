@@ -532,6 +532,24 @@
       "contentWarnings": []
     },
     {
+      "deckId": "sample-en-case",
+      "name": "Sample Case Files",
+      "gameType": "case",
+      "language": "en",
+      "difficulty": "easy",
+      "topics": [
+        "sample",
+        "school"
+      ],
+      "recommended": false,
+      "nsfw": false,
+      "version": "2026-10-30T00:00:00Z",
+      "cardCount": 1,
+      "contentWarnings": [
+        "theft"
+      ]
+    },
+    {
       "deckId": "sample-en-situation",
       "name": "Sample Situations",
       "gameType": "situation",
