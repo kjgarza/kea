@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "deckId": "no-death-es-situation",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "Sin muertes",
+  "gameType": "situation",
+  "language": "es",
+  "difficulty": "easy",
+  "topics": [
+    "familia",
+    "vida cotidiana"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "no-001",
+      "type": "situation",
+      "title": "Una gran caída",
+      "setup": "Un limpiacristales trabajaba en una torre de oficinas de 40 pisos cuando resbaló y se cayó de la escalera. Llegó a la acera sin un solo rasguño.",
+      "solution": "Acababa de empezar a trabajar y estaba en el primer peldaño de la escalera, a pocos centímetros de la acera, cuando resbaló. Simplemente puso los pies en el suelo.",
+      "keyFacts": [
+        {
+          "id": "window-cleaner",
+          "text": "Era limpiacristales."
+        },
+        {
+          "id": "ladder",
+          "text": "Se cayó de una escalera, no del edificio."
+        },
+        {
+          "id": "bottom-rung",
+          "text": "Estaba en el primer peldaño."
+        },
+        {
+          "id": "short-fall",
+          "text": "La caída fue de solo unos centímetros."
+        }
+      ],
+      "hints": [
+        "La altura del edificio no importa.",
+        "Piensa en qué parte de la escalera estaba.",
+        "Todavía no había subido mucho."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-002",
+      "type": "situation",
+      "title": "El hotel carísimo",
+      "setup": "Un hombre empujó su coche hasta un hotel, se detuvo delante y supo al instante que estaba en bancarrota.",
+      "solution": "Estaba jugando a un juego de mesa de comprar propiedades. Su ficha era un cochecito y la movió a una casilla donde otro jugador había construido un hotel. No podía pagar el alquiler, así que quedó eliminado.",
+      "keyFacts": [
+        {
+          "id": "board-game",
+          "text": "Estaba jugando a un juego de mesa."
+        },
+        {
+          "id": "token-car",
+          "text": "Su ficha era un coche de juguete."
+        },
+        {
+          "id": "landed-on-hotel",
+          "text": "Cayó en una casilla con un hotel."
+        },
+        {
+          "id": "out-of-money",
+          "text": "No pudo pagar el alquiler y se quedó sin dinero."
+        }
+      ],
+      "hints": [
+        "El coche era muy pequeño.",
+        "El hotel no era un hotel de verdad.",
+        "Todos estaban sentados alrededor de una mesa."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-003",
+      "type": "situation",
+      "title": "Piso siete",
+      "setup": "Lucía vive en el piso 12. Cada mañana baja en ascensor. Al volver, solo sube hasta el piso 7 y sigue por las escaleras, salvo los días de lluvia o cuando hay alguien más en el ascensor.",
+      "solution": "Lucía es una niña pequeña. No llega a los botones por encima del 7. Los días de lluvia lleva su paraguas y pulsa el 12 con él, y cuando hay alguien más en el ascensor, simplemente le pide que lo pulse.",
+      "keyFacts": [
+        {
+          "id": "short-girl",
+          "text": "Lucía es demasiado bajita para llegar a los botones altos."
+        },
+        {
+          "id": "cannot-reach",
+          "text": "Llega al botón del piso 7."
+        },
+        {
+          "id": "umbrella",
+          "text": "Los días de lluvia pulsa el 12 con el paraguas."
+        },
+        {
+          "id": "other-people",
+          "text": "Otros pasajeros pulsan el botón por ella."
+        }
+      ],
+      "hints": [
+        "Preferiría no subir por las escaleras.",
+        "Tiene que ver con los botones.",
+        "Los días de lluvia lleva algo largo."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-004",
+      "type": "situation",
+      "title": "No son gemelas",
+      "setup": "Dos niñas nacieron de la misma madre, el mismo día del mismo año, y sin embargo no son gemelas.",
+      "solution": "Son dos de unos trillizos. Su hermano es el tercer bebé, así que las niñas no son gemelas sino trillizas.",
+      "keyFacts": [
+        {
+          "id": "same-mother",
+          "text": "Las niñas tienen la misma madre."
+        },
+        {
+          "id": "same-birthday",
+          "text": "Nacieron el mismo día."
+        },
+        {
+          "id": "triplets",
+          "text": "Son trillizas."
+        },
+        {
+          "id": "third-sibling",
+          "text": "Hay un tercer hermano nacido ese mismo día."
+        }
+      ],
+      "hints": [
+        "Son hermanas de verdad.",
+        "Vuelve a contar los bebés.",
+        "Ese día nació alguien más."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-005",
+      "type": "situation",
+      "title": "¡Bu!",
+      "setup": "Un hombre entró en una cafetería y pidió un vaso de agua. El camarero se inclinó sobre la barra y le gritó \"¡BU!\". El hombre le dio las gracias y se marchó sin beber nada.",
+      "solution": "El hombre tenía hipo y quería agua para quitárselo. El camarero se dio cuenta y en lugar de agua le dio un susto repentino, que le curó el hipo, así que ya no necesitaba el agua.",
+      "keyFacts": [
+        {
+          "id": "hiccups",
+          "text": "El hombre tenía hipo."
+        },
+        {
+          "id": "asked-for-water",
+          "text": "Quería el agua para quitárselo."
+        },
+        {
+          "id": "sudden-shout",
+          "text": "El camarero lo asustó a propósito."
+        },
+        {
+          "id": "scare-cured",
+          "text": "El susto le quitó el hipo."
+        }
+      ],
+      "hints": [
+        "El hombre no tenía sed.",
+        "Tenía un problema pequeño y molesto.",
+        "Hay más de una forma de curarlo."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-006",
+      "type": "situation",
+      "title": "Atascado bajo el puente",
+      "setup": "Un camión se quedó encajado bajo un puente bajo. Los ingenieros discutieron durante una hora si cortar el puente o el camión. Un niño de siete años que miraba desde la acera lo resolvió en un minuto.",
+      "solution": "El niño propuso desinflar un poco las ruedas del camión. Con las ruedas más blandas, el camión bajó unos centímetros y pudo salir de debajo del puente sin dañar nada.",
+      "keyFacts": [
+        {
+          "id": "lorry-stuck",
+          "text": "El camión era demasiado alto para el puente."
+        },
+        {
+          "id": "low-bridge",
+          "text": "La idea fue de un niño."
+        },
+        {
+          "id": "child-idea",
+          "text": "Desinflaron las ruedas."
+        },
+        {
+          "id": "let-air-out",
+          "text": "El camión quedó lo bastante bajo para salir."
+        }
+      ],
+      "hints": [
+        "No hubo que cortar nada.",
+        "El camión solo tenía que bajar un poco.",
+        "Mira las ruedas."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-007",
+      "type": "situation",
+      "title": "El problema de la vainilla",
+      "setup": "Cada vez que Tomás va en coche a la heladería y compra helado de vainilla, el coche no arranca al salir. Cuando compra cualquier otro sabor, arranca perfectamente.",
+      "solution": "La vainilla es tan popular que la heladería la tiene ya envasada junto a la puerta, así que Tomás vuelve al coche en un minuto, cuando el motor sigue muy caliente y no arranca. Los demás sabores se sirven al momento al fondo de la tienda, así que espera más y el motor tiene tiempo de enfriarse.",
+      "keyFacts": [
+        {
+          "id": "vanilla-quick",
+          "text": "Comprar vainilla es mucho más rápido."
+        },
+        {
+          "id": "other-flavours-slow",
+          "text": "Los demás sabores tardan más en servirse."
+        },
+        {
+          "id": "hot-engine",
+          "text": "El coche no arranca cuando el motor está muy caliente."
+        },
+        {
+          "id": "engine-cooled",
+          "text": "La espera extra deja que el motor se enfríe."
+        }
+      ],
+      "hints": [
+        "El helado en sí no le hace nada al coche.",
+        "El tiempo importa.",
+        "El coche falla cuando está demasiado caliente."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-008",
+      "type": "situation",
+      "title": "El pájaro que sabía el camino",
+      "setup": "Un pájaro perdido, sin anilla, chapa ni chip, apareció en una tienda de mascotas. Esa misma tarde, el dueño de la tienda lo llevó directamente a su casa.",
+      "solution": "El pájaro era un loro. Sus dueños le habían enseñado a repetir su calle y número, y no paraba de decirlos. El dueño de la tienda lo escuchó, apuntó la dirección y lo llevó a casa.",
+      "keyFacts": [
+        {
+          "id": "lost-parrot",
+          "text": "El pájaro era un loro."
+        },
+        {
+          "id": "no-tag",
+          "text": "No llevaba chapa ni chip."
+        },
+        {
+          "id": "repeated-address",
+          "text": "Repetía una y otra vez su propia dirección."
+        },
+        {
+          "id": "shop-owner-listened",
+          "text": "El dueño de la tienda hizo caso de lo que decía."
+        }
+      ],
+      "hints": [
+        "El pájaro ayudó.",
+        "Es un pájaro que habla.",
+        "Le habían enseñado algo útil."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-009",
+      "type": "situation",
+      "title": "El gol feliz",
+      "setup": "En el último minuto de un partido, un portero se apartó y dejó que un tiro flojito entrara en su portería. Todo su equipo lo celebró y lo abrazó.",
+      "solution": "Era un partido benéfico amistoso entre un equipo de adultos y otro de niños de siete años. Los adultos iban ganando de sobra, así que el portero dejó marcar a los niños. Sus compañeros lo celebraron porque los niños estaban felices.",
+      "keyFacts": [
+        {
+          "id": "charity-match",
+          "text": "Era un partido benéfico amistoso."
+        },
+        {
+          "id": "children-team",
+          "text": "El otro equipo eran niños pequeños."
+        },
+        {
+          "id": "let-in-on-purpose",
+          "text": "Dejó entrar el balón a propósito."
+        },
+        {
+          "id": "made-their-day",
+          "text": "El gol hizo muy felices a los niños."
+        }
+      ],
+      "hints": [
+        "Ganar no era lo importante.",
+        "Los rivales eran muy jóvenes.",
+        "Fue un gesto amable."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-010",
+      "type": "situation",
+      "title": "La cena está servida",
+      "setup": "Dieciséis años después de perder su anillo de boda, una mujer lo encontró mientras cenaba.",
+      "solution": "Había perdido el anillo mientras quitaba malas hierbas en su huerto. Años más tarde, una zanahoria creció justo a través del anillo. Cuando arrancó las zanahorias y las cocinó, encontró el anillo rodeando una de ellas en su plato.",
+      "keyFacts": [
+        {
+          "id": "lost-in-garden",
+          "text": "Perdió el anillo en su huerto."
+        },
+        {
+          "id": "years-later",
+          "text": "Pasaron muchos años."
+        },
+        {
+          "id": "carrot-grew-through",
+          "text": "Una zanahoria creció a través del anillo."
+        },
+        {
+          "id": "found-at-dinner",
+          "text": "Lo encontró en la zanahoria durante la cena."
+        }
+      ],
+      "hints": [
+        "El anillo estuvo al aire libre todo el tiempo.",
+        "Algo creció.",
+        "La verdura era naranja."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-011",
+      "type": "situation",
+      "title": "No le hizo falta abrirlo",
+      "setup": "Nora recogió un sobre del felpudo, lo apretó y se puso a bailar por la cocina sin abrirlo.",
+      "solution": "Nora esperaba saber si la universidad de sus sueños la había admitido. Las cartas de rechazo son una sola hoja, pero las de admisión llegan con un grueso paquete de bienvenida. El sobre era muy grueso, así que supo que la habían admitido.",
+      "keyFacts": [
+        {
+          "id": "university-letter",
+          "text": "La carta era de una universidad."
+        },
+        {
+          "id": "thick-envelope",
+          "text": "El sobre era muy grueso."
+        },
+        {
+          "id": "welcome-pack",
+          "text": "Las cartas de admisión llevan un paquete de bienvenida."
+        },
+        {
+          "id": "accepted",
+          "text": "A Nora la habían admitido."
+        }
+      ],
+      "hints": [
+        "Sabía quién lo enviaba.",
+        "El tamaño del sobre le dio la noticia.",
+        "Para decir \"no\" basta con una hoja."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-012",
+      "type": "situation",
+      "title": "El barbero despeinado",
+      "setup": "En un pueblo solo hay dos barberos. Uno lleva un corte de pelo impecable; el otro tiene el pelo hecho un desastre. Un visitante los mira a los dos y elige al despeinado.",
+      "solution": "Los barberos no pueden cortarse su propio pelo, así que se lo cortan el uno al otro. El corte impecable es obra del barbero despeinado, y el desastroso lo hizo el barbero impecable. Por eso el despeinado es el mejor peluquero.",
+      "keyFacts": [
+        {
+          "id": "two-barbers",
+          "text": "En el pueblo solo hay dos barberos."
+        },
+        {
+          "id": "messy-barber",
+          "text": "Cada barbero le corta el pelo al otro."
+        },
+        {
+          "id": "cut-each-other",
+          "text": "El barbero despeinado hizo el corte impecable."
+        },
+        {
+          "id": "skill",
+          "text": "Por tanto, el despeinado es más hábil."
+        }
+      ],
+      "hints": [
+        "El visitante pensó con cuidado.",
+        "¿Quién le corta el pelo a un barbero?",
+        "Cada corte muestra la habilidad de otra persona."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-013",
+      "type": "situation",
+      "title": "En dirección prohibida",
+      "setup": "Un camionero fue en dirección contraria por una calle de sentido único, justo delante de un policía. El policía lo vio todo y no hizo nada.",
+      "solution": "El camionero no estaba conduciendo en ese momento. Iba andando por la acera en su descanso para comer, y a pie se puede ir en cualquier dirección, así que no incumplió ninguna norma.",
+      "keyFacts": [
+        {
+          "id": "lorry-driver",
+          "text": "El hombre es camionero de profesión."
+        },
+        {
+          "id": "one-way-street",
+          "text": "La calle era de sentido único."
+        },
+        {
+          "id": "walking",
+          "text": "Iba andando, no conduciendo."
+        },
+        {
+          "id": "no-rule-broken",
+          "text": "No incumplió ninguna norma."
+        }
+      ],
+      "hints": [
+        "El policía hizo bien su trabajo.",
+        "¿Dónde estaba el camión?",
+        "Los peatones pueden ir en cualquier dirección."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-014",
+      "type": "situation",
+      "title": "El apagón feliz",
+      "setup": "Una noche se apagaron a la vez todas las luces de un pequeño pueblo. En vez de quejarse, la gente salió de sus casas y empezó a aplaudir.",
+      "solution": "El pueblo había acordado apagar todas las luces durante una hora para que todos pudieran ver una lluvia de estrellas. Cuando se apagaron las luces, el cielo quedó lo bastante oscuro para ver las estrellas fugaces, y la gente aplaudía cada vez que aparecía una.",
+      "keyFacts": [
+        {
+          "id": "planned-switch-off",
+          "text": "Las luces se apagaron a propósito."
+        },
+        {
+          "id": "meteor-shower",
+          "text": "Esa noche había una lluvia de estrellas."
+        },
+        {
+          "id": "dark-sky",
+          "text": "La oscuridad permitía ver mejor el cielo."
+        },
+        {
+          "id": "watched-together",
+          "text": "La gente salió a mirar todos juntos."
+        }
+      ],
+      "hints": [
+        "No se había estropeado nada.",
+        "Todos miraban hacia arriba.",
+        "Algunas cosas se ven mejor a oscuras."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-015",
+      "type": "situation",
+      "title": "El reloj al revés",
+      "setup": "El reloj de la pared de la barbería de Pablo tiene los números impresos al revés y sus agujas giran en sentido contrario. Todos los clientes leen la hora perfectamente.",
+      "solution": "El reloj está colgado en la pared detrás de los sillones. Los clientes solo lo ven reflejado en el gran espejo que tienen delante, que lo vuelve a invertir, así que parece un reloj completamente normal.",
+      "keyFacts": [
+        {
+          "id": "barber-shop",
+          "text": "El reloj está en una barbería."
+        },
+        {
+          "id": "mirror",
+          "text": "Los clientes miran hacia un espejo grande."
+        },
+        {
+          "id": "reversed-clock",
+          "text": "El reloj está hecho al revés a propósito."
+        },
+        {
+          "id": "reads-correctly",
+          "text": "En el espejo se lee con normalidad."
+        }
+      ],
+      "hints": [
+        "El reloj no está roto.",
+        "Los clientes nunca lo miran directamente.",
+        "Piensa en qué miran los clientes mientras les cortan el pelo."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-016",
+      "type": "situation",
+      "title": "Nacidos con un año de diferencia",
+      "setup": "Leo es mayor que su hermana gemela Mía, pero cada año el cumpleaños de Mía llega antes, y nacieron en años distintos.",
+      "solution": "Los gemelos nacieron en Nochevieja. Leo llegó unos minutos antes de la medianoche del 31 de diciembre y Mía unos minutos después de la medianoche, el 1 de enero, así que ella nació al año siguiente y su cumpleaños llega antes en el calendario.",
+      "keyFacts": [
+        {
+          "id": "twins",
+          "text": "Leo y Mía son gemelos de verdad."
+        },
+        {
+          "id": "new-year",
+          "text": "Nacieron en torno a Año Nuevo."
+        },
+        {
+          "id": "before-midnight",
+          "text": "Leo nació justo antes de la medianoche."
+        },
+        {
+          "id": "after-midnight",
+          "text": "Mía nació justo después de la medianoche, ya en el año nuevo."
+        }
+      ],
+      "hints": [
+        "Nacieron con minutos de diferencia.",
+        "La fecha importa.",
+        "Piensa en la última noche del año."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-017",
+      "type": "situation",
+      "title": "Ni un pelo mojado",
+      "setup": "Un hombre volvió a casa bajo un aguacero sin paraguas, gorro ni capucha. Su ropa quedó empapada, pero ni un solo pelo de su cabeza se mojó.",
+      "solution": "El hombre era completamente calvo, así que no tenía ningún pelo en la cabeza que pudiera mojarse.",
+      "keyFacts": [
+        {
+          "id": "heavy-rain",
+          "text": "Llovía muchísimo."
+        },
+        {
+          "id": "no-umbrella",
+          "text": "No llevaba nada en la cabeza."
+        },
+        {
+          "id": "clothes-soaked",
+          "text": "El resto de su cuerpo se empapó."
+        },
+        {
+          "id": "bald",
+          "text": "Era calvo."
+        }
+      ],
+      "hints": [
+        "Su cabeza sí se mojó.",
+        "Lee la situación con atención.",
+        "No tenía nada que peinar."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-018",
+      "type": "situation",
+      "title": "La misma taza",
+      "setup": "Sara encontró una mosca en su café y lo devolvió. El camarero volvió con \"una taza nueva\". Al primer sorbo, Sara dijo: \"¡Este es el mismo café!\".",
+      "solution": "Antes de ver la mosca, Sara ya le había echado azúcar al café. La taza \"nueva\" estaba dulce aunque no le había echado azúcar, así que supo que el camarero solo había quitado la mosca y le había traído el mismo café.",
+      "keyFacts": [
+        {
+          "id": "fly-in-coffee",
+          "text": "Había una mosca en el primer café."
+        },
+        {
+          "id": "sent-back",
+          "text": "Sara ya le había echado azúcar."
+        },
+        {
+          "id": "already-sugared",
+          "text": "La taza que le devolvieron estaba dulce."
+        },
+        {
+          "id": "tasted-sweet",
+          "text": "El camarero solo quitó la mosca."
+        }
+      ],
+      "hints": [
+        "No tiene que ver con el aspecto del café.",
+        "Se dio cuenta por el sabor.",
+        "Ya le había hecho algo a la primera taza."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-019",
+      "type": "situation",
+      "title": "Seguir leyendo",
+      "setup": "Leo entregó una redacción preciosa escrita a mano. Su profesora la leyó una vez y supo al instante que la había copiado de una página web.",
+      "solution": "Leo había copiado el texto de una web palabra por palabra, sin pensar. Al final de la redacción también copió el texto del botón de la web, \"Haz clic aquí para seguir leyendo\", que en papel no tenía ningún sentido.",
+      "keyFacts": [
+        {
+          "id": "handwritten",
+          "text": "La redacción estaba escrita a mano."
+        },
+        {
+          "id": "copied-website",
+          "text": "Leo la copió de una página web."
+        },
+        {
+          "id": "copied-everything",
+          "text": "Copió cada palabra sin pensar."
+        },
+        {
+          "id": "click-here",
+          "text": "Terminaba con \"Haz clic aquí para seguir leyendo\"."
+        }
+      ],
+      "hints": [
+        "La profesora no buscó nada en internet.",
+        "La prueba estaba escrita en la propia redacción.",
+        "Algunas palabras solo tienen sentido en una pantalla."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-020",
+      "type": "situation",
+      "title": "El timbre silencioso",
+      "setup": "Los amigos de María llamaron a su timbre. Dentro del piso no sonó absolutamente nada, pero María abrió la puerta a los pocos segundos y dijo: \"¡Sabía que erais vosotros!\".",
+      "solution": "María es sorda. Su timbre está conectado a unas luces en todas las habitaciones que parpadean en lugar de sonar. Vio parpadear las luces y además esperaba a sus amigos a esa hora.",
+      "keyFacts": [
+        {
+          "id": "deaf",
+          "text": "María es sorda."
+        },
+        {
+          "id": "light-doorbell",
+          "text": "Su timbre no hace ruido."
+        },
+        {
+          "id": "flashing-lights",
+          "text": "Hace parpadear unas luces dentro del piso."
+        },
+        {
+          "id": "saw-not-heard",
+          "text": "Esperaba a sus amigos."
+        }
+      ],
+      "hints": [
+        "El timbre funciona perfectamente.",
+        "Está pensado para María.",
+        "Se dio cuenta con los ojos."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    }
+  ]
+}

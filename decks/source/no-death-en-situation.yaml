@@ -1,0 +1,25 @@
+name: No Death
+gameType: situation
+language: en
+topics:
+  - family
+  - everyday
+difficulty: easy
+cardCount: 25
+nsfw: false
+recommended: true
+# Situation puzzle settings (see scripts/lib/config-loader.ts)
+# The no-death tone always forces allowDeath to false; generated puzzles that
+# mention death are dropped.
+tone: no-death
+allowDeath: false
+contentWarnings: []
+context:
+  markdown: |
+    Family-safe lateral-thinking puzzles for mixed ages. Nobody dies, gets hurt
+    badly or commits a crime worse than a white lie.
+
+    - Twists come from everyday life: jobs, games, school, weather, animals,
+      families, shops and objects used in an unusual way.
+    - Setups should make kids and adults say "that's impossible!"
+    - Keep the language simple enough for a ten-year-old to read aloud.

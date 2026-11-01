@@ -1,0 +1,719 @@
+{
+  "schemaVersion": 1,
+  "deckId": "lateral-thinking-es-situation",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "Pensamiento lateral",
+  "gameType": "situation",
+  "language": "es",
+  "difficulty": "medium",
+  "topics": [
+    "pensamiento lateral",
+    "lógica"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "la-001",
+      "type": "situation",
+      "title": "La moneda antigua",
+      "setup": "Un hombre le ofreció a la conservadora de un museo una moneda de bronce con la fecha \"46 a. C.\". La conservadora se echó a reír y le enseñó la puerta.",
+      "solution": "La moneda era claramente falsa. Nadie en el año 46 a. C. podía saber que Cristo nacería 46 años después, así que ninguna moneda auténtica de esa época podía llevar la indicación \"a. C.\".",
+      "keyFacts": [
+        {
+          "id": "coin-offered",
+          "text": "El hombre quería vender la moneda."
+        },
+        {
+          "id": "dated-bc",
+          "text": "La moneda tenía una fecha \"a. C.\"."
+        },
+        {
+          "id": "nobody-knew",
+          "text": "En aquella época nadie podía saber que vivía \"antes de Cristo\"."
+        },
+        {
+          "id": "fake",
+          "text": "La moneda era una falsificación."
+        }
+      ],
+      "hints": [
+        "La conservadora no necesitó analizar el metal.",
+        "Lee la fecha con atención.",
+        "¿Qué significa \"a. C.\"?"
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-002",
+      "type": "situation",
+      "title": "Cinco partidas, seis victorias",
+      "setup": "Ana y Pablo jugaron cinco partidas de ajedrez. Ana ganó tres y Pablo ganó tres. No hubo tablas ni se anuló ninguna partida.",
+      "solution": "Ana y Pablo no jugaron el uno contra el otro. Cada uno jugó cinco partidas contra otros rivales en un club de ajedrez y ganó tres.",
+      "keyFacts": [
+        {
+          "id": "five-games",
+          "text": "Cada uno jugó cinco partidas."
+        },
+        {
+          "id": "each-won-three",
+          "text": "Cada uno ganó tres partidas."
+        },
+        {
+          "id": "no-draws",
+          "text": "No hubo tablas."
+        },
+        {
+          "id": "different-opponents",
+          "text": "Jugaban contra otros rivales, no entre ellos."
+        }
+      ],
+      "hints": [
+        "Todos los números son correctos.",
+        "¿Quiénes eran sus rivales?",
+        "Puede que ni siquiera se sentaran frente a frente."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-003",
+      "type": "situation",
+      "title": "La guardia",
+      "setup": "Un niño se rompió el brazo jugando al fútbol mientras su padre lo miraba desde la grada. En el hospital, la persona de guardia lo miró y dijo \"No puedo atender a este paciente. Es mi hijo\".",
+      "solution": "Quien estaba de guardia era la madre del niño, que es médica. Los médicos no deben tratar a sus propios hijos, así que le pidió a un compañero que lo atendiera.",
+      "keyFacts": [
+        {
+          "id": "broken-arm",
+          "text": "El niño se rompió el brazo."
+        },
+        {
+          "id": "father-watching",
+          "text": "Su padre estaba en el partido, no en el hospital."
+        },
+        {
+          "id": "doctor-is-mother",
+          "text": "La persona de guardia es la madre del niño."
+        },
+        {
+          "id": "cannot-treat-own-child",
+          "text": "Los médicos evitan tratar a su propia familia."
+        }
+      ],
+      "hints": [
+        "El padre no mintió.",
+        "No des nada por supuesto sobre quién estaba de guardia.",
+        "Un niño tiene dos progenitores."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-004",
+      "type": "situation",
+      "title": "Casado otra vez",
+      "setup": "En un pueblo pequeño, un hombre ha casado a más de doscientas mujeres. Nunca se ha divorciado, ninguna lo ha abandonado y no ha incumplido ninguna ley.",
+      "solution": "El hombre es el cura del pueblo. Ha \"casado\" a las mujeres celebrando sus bodas con otros hombres, no convirtiéndose en su marido.",
+      "keyFacts": [
+        {
+          "id": "many-weddings",
+          "text": "Participó en más de doscientas bodas."
+        },
+        {
+          "id": "never-divorced",
+          "text": "Nunca se ha divorciado."
+        },
+        {
+          "id": "legal",
+          "text": "No incumplió ninguna ley."
+        },
+        {
+          "id": "officiant",
+          "text": "Él celebraba las bodas; no era el novio."
+        }
+      ],
+      "hints": [
+        "Todo el pueblo lo conoce.",
+        "Estuvo en todas esas bodas.",
+        "No era él quien decía \"sí, quiero\"."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-005",
+      "type": "situation",
+      "title": "El guardia del puente",
+      "setup": "Un guardia hace volver a quien cruza sin papeles un largo puente fronterizo. Sale de su caseta cada cinco minutos y cruzar lleva ocho. Una mujer sin papeles cruzó sin problemas.",
+      "solution": "La mujer caminó por el puente durante casi cinco minutos, luego se dio la vuelta y empezó a caminar hacia el lado del que venía. Cuando el guardia salió, la vio aparentemente yendo hacia él sin papeles, así que la mandó de vuelta al otro lado, que era justo adonde ella quería ir.",
+      "keyFacts": [
+        {
+          "id": "sentry-turns-back",
+          "text": "El guardia hace volver a la gente por donde vino."
+        },
+        {
+          "id": "five-minute-checks",
+          "text": "Revisa cada cinco minutos."
+        },
+        {
+          "id": "crossing-takes-longer",
+          "text": "Cruzar lleva más de cinco minutos."
+        },
+        {
+          "id": "turned-around",
+          "text": "Ella se dio la vuelta justo antes de que él saliera."
+        }
+      ],
+      "hints": [
+        "No corrió ni se escondió.",
+        "El guardia hizo exactamente lo de siempre.",
+        "¿Hacia dónde parecía ir ella cuando la vio?"
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-006",
+      "type": "situation",
+      "title": "Diez cumpleaños",
+      "setup": "Marco acaba de cumplir cuarenta años y, sin embargo, hoy celebra solo su décima fiesta de cumpleaños.",
+      "solution": "Marco nació el 29 de febrero, que solo existe en los años bisiestos, una vez cada cuatro años. En cuarenta años solo ha tenido diez cumpleaños de verdad.",
+      "keyFacts": [
+        {
+          "id": "age-forty",
+          "text": "Marco tiene cuarenta años."
+        },
+        {
+          "id": "ten-birthdays",
+          "text": "Solo ha tenido diez cumpleaños reales."
+        },
+        {
+          "id": "leap-day",
+          "text": "Nació el 29 de febrero."
+        },
+        {
+          "id": "every-four-years",
+          "text": "Esa fecha solo llega una vez cada cuatro años."
+        }
+      ],
+      "hints": [
+        "Lo celebra el día exacto de su cumpleaños.",
+        "La clave está en el calendario.",
+        "Algunas fechas son poco frecuentes."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-007",
+      "type": "situation",
+      "title": "De Viernes a Viernes",
+      "setup": "Un viajero llegó a un pueblo montado en Viernes, se quedó exactamente tres noches y se marchó otra vez montado en Viernes.",
+      "solution": "El caballo del viajero se llamaba Viernes. Llegó montado en Viernes, su caballo, se quedó tres noches y se fue montado en el mismo caballo.",
+      "keyFacts": [
+        {
+          "id": "three-days",
+          "text": "Se quedó tres noches."
+        },
+        {
+          "id": "arrived-friday",
+          "text": "Llegó \"en Viernes\"."
+        },
+        {
+          "id": "left-friday",
+          "text": "Se fue \"en Viernes\"."
+        },
+        {
+          "id": "horse-named-friday",
+          "text": "Viernes era el nombre de su caballo."
+        }
+      ],
+      "hints": [
+        "Aquí Viernes no es un día.",
+        "Sí llegó y se fue cabalgando.",
+        "¿En qué iba montado?"
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-008",
+      "type": "situation",
+      "title": "¿De qué color era el oso?",
+      "setup": "Una exploradora caminó un kilómetro hacia el sur, luego un kilómetro hacia el este y luego un kilómetro hacia el norte, y acabó exactamente donde había empezado. Allí vio un oso y supo al instante de qué color era.",
+      "solution": "El lugar conocido donde ese paseo te devuelve al punto de partida es el Polo Norte. Allí solo hay osos polares, así que el oso era blanco.",
+      "keyFacts": [
+        {
+          "id": "walked-square",
+          "text": "Su paseo la devolvió al punto de partida."
+        },
+        {
+          "id": "back-to-start",
+          "text": "Empezó en el Polo Norte."
+        },
+        {
+          "id": "north-pole",
+          "text": "Allí solo viven osos polares."
+        },
+        {
+          "id": "polar-bear",
+          "text": "El oso era blanco."
+        }
+      ],
+      "hints": [
+        "¿En qué lugar de la Tierra funciona ese paseo?",
+        "Allí hace muchísimo frío.",
+        "Cerca de la parte de arriba del globo, las líneas este-oeste son muy cortas."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-009",
+      "type": "situation",
+      "title": "Arena todos los días",
+      "setup": "Durante un año, un hombre cruzó la frontera cada día en bicicleta con un saco de arena a la espalda. El aduanero registraba la arena cada vez y no encontraba nada. Años después, el hombre confesó que había hecho contrabando todo el tiempo.",
+      "solution": "El hombre hacía contrabando de bicicletas. Cada día cruzaba la frontera con una bicicleta nueva y la vendía al otro lado. El saco de arena solo era una distracción para tener ocupado al aduanero.",
+      "keyFacts": [
+        {
+          "id": "daily-crossing",
+          "text": "Cruzaba la frontera todos los días."
+        },
+        {
+          "id": "searched-sacks",
+          "text": "El aduanero siempre registraba el saco."
+        },
+        {
+          "id": "only-sand",
+          "text": "El saco solo contenía arena."
+        },
+        {
+          "id": "smuggling-bicycles",
+          "text": "El contrabando eran las propias bicicletas."
+        }
+      ],
+      "hints": [
+        "La arena era exactamente lo que parecía.",
+        "El aduanero buscaba en el sitio equivocado.",
+        "¿Qué otra cosa cruzaba cada día?"
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-010",
+      "type": "situation",
+      "title": "El caballo más lento",
+      "setup": "Un granjero rico dejó su fortuna a aquel de sus dos hijos cuyo caballo cruzara la meta en último lugar. Durante horas los hijos cabalgaron lo más despacio posible. Entonces una mujer sabia les susurró tres palabras y ambos salieron al galope.",
+      "solution": "Les dijo \"Cambiaos de caballo\". Cada hijo montó entonces el caballo de su hermano, así que al llevarlo primero a la meta se aseguraba de que su propio caballo llegara el último.",
+      "keyFacts": [
+        {
+          "id": "slowest-horse-wins",
+          "text": "Heredaría el dueño del último caballo."
+        },
+        {
+          "id": "sons-stalling",
+          "text": "Los dos hijos iban lo más lento posible."
+        },
+        {
+          "id": "swapped-horses",
+          "text": "Los hijos se cambiaron de caballo."
+        },
+        {
+          "id": "race-to-finish",
+          "text": "Cada uno quería ahora que el caballo de su hermano llegara primero."
+        }
+      ],
+      "hints": [
+        "Las reglas no cambiaron.",
+        "El premio es para el dueño del caballo, no para el jinete.",
+        "Ya no montaban sus propios caballos."
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-011",
+      "type": "situation",
+      "title": "Patas secas",
+      "setup": "Un perro cruzó un río ancho de una orilla a la otra. No había puente ni barca, nadie lo llevó y sus patas no se mojaron en absoluto.",
+      "solution": "Era pleno invierno y el río estaba completamente congelado. El perro simplemente cruzó caminando sobre el hielo.",
+      "keyFacts": [
+        {
+          "id": "river-crossing",
+          "text": "El perro cruzó el río solo."
+        },
+        {
+          "id": "dog-dry",
+          "text": "No había puente ni barca."
+        },
+        {
+          "id": "no-bridge",
+          "text": "El río estaba congelado."
+        },
+        {
+          "id": "frozen",
+          "text": "El perro cruzó caminando sobre el hielo."
+        }
+      ],
+      "hints": [
+        "El perro caminó.",
+        "Piensa en la estación del año.",
+        "El agua no estaba líquida."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-012",
+      "type": "situation",
+      "title": "Dos padres, dos hijos",
+      "setup": "Dos padres y dos hijos fueron a pescar. Cada uno pescó exactamente un pez y volvieron a casa con tres peces en total. No perdieron ni se comieron ninguno.",
+      "solution": "Solo había tres personas: un abuelo, su hijo y su nieto. El abuelo y el padre son los dos padres; el padre y el nieto son los dos hijos.",
+      "keyFacts": [
+        {
+          "id": "three-fish",
+          "text": "Llevaron tres peces a casa."
+        },
+        {
+          "id": "two-fathers-two-sons",
+          "text": "Cada persona pescó un pez."
+        },
+        {
+          "id": "three-people",
+          "text": "Solo había tres personas."
+        },
+        {
+          "id": "three-generations",
+          "text": "Eran abuelo, padre y nieto."
+        }
+      ],
+      "hints": [
+        "Nadie miente.",
+        "Cuenta las personas, no los títulos.",
+        "Alguien puede ser padre e hijo a la vez."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-013",
+      "type": "situation",
+      "title": "Número equivocado",
+      "setup": "A las 3 de la madrugada, un hombre marcó un número equivocado. La mujer que contestó estaba furiosa, pero al día siguiente buscó su número y le dio las gracias con lágrimas en los ojos.",
+      "solution": "Se había declarado un incendio en casa de la mujer mientras su familia dormía, y el detector de humo no tenía pilas. La llamada la despertó, olió el humo y sacó a todos a tiempo. El número equivocado salvó a su familia.",
+      "keyFacts": [
+        {
+          "id": "wrong-number",
+          "text": "La llamada fue un error."
+        },
+        {
+          "id": "woke-her",
+          "text": "El teléfono la despertó."
+        },
+        {
+          "id": "smoke-in-house",
+          "text": "Su casa se estaba llenando de humo."
+        },
+        {
+          "id": "family-escaped",
+          "text": "Sacó a su familia porque estaba despierta."
+        }
+      ],
+      "hints": [
+        "El que llamó nunca quiso ayudar.",
+        "Que la despertaran fue lo importante.",
+        "Esa noche pasaba algo en su casa."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-014",
+      "type": "situation",
+      "title": "Dos cafés",
+      "setup": "Cada domingo a las diez, Diego pide dos cafés en la misma cafetería, pone uno al otro lado de la mesa y solo se bebe el suyo. Nunca se sienta nadie con él, pero se pasa todo el rato hablando y riendo.",
+      "solution": "El hermano gemelo de Diego emigró a otro país. Cada domingo, los dos piden dos cafés a la vez y desayunan juntos por videollamada, con el móvil apoyado en la segunda taza.",
+      "keyFacts": [
+        {
+          "id": "two-coffees",
+          "text": "Diego está hablando con su hermano."
+        },
+        {
+          "id": "brother-abroad",
+          "text": "Su hermano vive en otro país."
+        },
+        {
+          "id": "video-call",
+          "text": "Hablan por videollamada."
+        },
+        {
+          "id": "same-time",
+          "text": "La segunda taza sostiene el móvil y mantiene el ritual."
+        }
+      ],
+      "hints": [
+        "Diego no se imagina a nadie.",
+        "La persona con la que habla está lejos.",
+        "Fíjate en lo que está apoyado en la segunda taza."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-015",
+      "type": "situation",
+      "title": "Un as de más",
+      "setup": "Durante una partida de cartas en un viejo salón del Oeste, a un jugador le dispararon. El sheriff miró las cartas sobre la mesa y entendió al instante por qué.",
+      "solution": "Al contar las cartas, el sheriff encontró cinco ases. Uno de los jugadores hacía trampa con un as extra escondido. Otro jugador se dio cuenta y le disparó.",
+      "keyFacts": [
+        {
+          "id": "card-game",
+          "text": "Estaban jugando a las cartas."
+        },
+        {
+          "id": "player-shot",
+          "text": "Al hombre le dispararon durante la partida."
+        },
+        {
+          "id": "five-aces",
+          "text": "Había cinco ases sobre la mesa."
+        },
+        {
+          "id": "cheating",
+          "text": "El hombre hacía trampa."
+        }
+      ],
+      "hints": [
+        "El motivo estaba sobre la mesa.",
+        "Cuenta algo en las cartas.",
+        "Una baraja normal no puede dar esa jugada."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "asesinato"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-016",
+      "type": "situation",
+      "title": "Hecho humo",
+      "setup": "Un coleccionista pagó una fortuna por un sello rarísimo en una subasta y después le prendió fuego delante de los demás pujadores, sonriendo.",
+      "solution": "Solo existían dos ejemplares del sello y el coleccionista ya tenía el otro. Al quemar el que acababa de comprar, convirtió el suyo en el único del mundo y en mucho más valioso.",
+      "keyFacts": [
+        {
+          "id": "two-stamps",
+          "text": "Solo existían dos ejemplares."
+        },
+        {
+          "id": "bought-one",
+          "text": "Él ya tenía el otro ejemplar."
+        },
+        {
+          "id": "burned-it",
+          "text": "Quemó a propósito el que compró."
+        },
+        {
+          "id": "value-rose",
+          "text": "Su sello pasó a ser único y más valioso."
+        }
+      ],
+      "hints": [
+        "Fue un buen negocio.",
+        "¿Cuántos ejemplares había?",
+        "Lo raro vale más cuanto más raro es."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-017",
+      "type": "situation",
+      "title": "El parche del marinero",
+      "setup": "Un viejo marinero siempre llevaba un parche en un ojo en cubierta, aunque tenía los dos ojos perfectamente sanos. Cada vez que bajaba a la bodega, se cambiaba el parche al otro ojo.",
+      "solution": "Al pasar de la luz del sol a la oscuridad de la bodega, los ojos necesitan tiempo para adaptarse. Con un ojo tapado en cubierta, siempre tenía un ojo listo para la oscuridad. Abajo destapaba ese ojo y tapaba el otro, acostumbrado a la luz.",
+      "keyFacts": [
+        {
+          "id": "both-eyes-fine",
+          "text": "Tenía los dos ojos sanos."
+        },
+        {
+          "id": "below-deck",
+          "text": "Pasaba a menudo de la luz del día a lugares oscuros."
+        },
+        {
+          "id": "dark-adapted",
+          "text": "El ojo tapado seguía acostumbrado a la oscuridad."
+        },
+        {
+          "id": "switched-patch",
+          "text": "Cambiaba el parche para ver enseguida en cualquier sitio."
+        }
+      ],
+      "hints": [
+        "El parche le ayudaba a ver mejor.",
+        "Tiene que ver con la luz y la oscuridad.",
+        "Los ojos tardan en adaptarse."
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-018",
+      "type": "situation",
+      "title": "Sin autógrafo, por favor",
+      "setup": "Un coleccionista de libros pagó diez veces el precio normal por un ejemplar de una novela famosa precisamente porque el autor no lo había firmado.",
+      "solution": "El autor era famoso por firmar a mano todos los ejemplares de la primera edición. Los ejemplares firmados abundan, pero uno sin firmar es un error poco común, así que los coleccionistas lo valoran mucho más.",
+      "keyFacts": [
+        {
+          "id": "author-signed-all",
+          "text": "El comprador era coleccionista."
+        },
+        {
+          "id": "unsigned-rare",
+          "text": "El autor firmó casi todos los ejemplares."
+        },
+        {
+          "id": "paid-more",
+          "text": "Un ejemplar sin firmar es rarísimo."
+        },
+        {
+          "id": "collector",
+          "text": "La rareza lo hacía más valioso."
+        }
+      ],
+      "hints": [
+        "El coleccionista sabía muy bien lo que hacía.",
+        "Normalmente una firma añade valor.",
+        "¿Y si casi todos los ejemplares la tienen?"
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-019",
+      "type": "situation",
+      "title": "Escribir al revés",
+      "setup": "Un rotulista pasa el día pintando letras al revés. Su jefe elogia su trabajo y miles de personas lo leen correctamente cada día.",
+      "solution": "Pinta la palabra \"AMBULANCIA\" en escritura de espejo en la parte delantera de las ambulancias. Los conductores que van delante la ven al derecho en su espejo retrovisor y se apartan.",
+      "keyFacts": [
+        {
+          "id": "backwards-letters",
+          "text": "Escribe las letras como en un espejo."
+        },
+        {
+          "id": "ambulances",
+          "text": "Ese rótulo va en las ambulancias."
+        },
+        {
+          "id": "rear-view-mirror",
+          "text": "Los conductores lo leen en el retrovisor."
+        },
+        {
+          "id": "praised",
+          "text": "Se hace a propósito y es correcto."
+        }
+      ],
+      "hints": [
+        "No comete ningún error.",
+        "Casi todos leen su trabajo en un espejo.",
+        "El vehículo necesita abrirse paso en el tráfico."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-020",
+      "type": "situation",
+      "title": "El retrato",
+      "setup": "Un hombre mira un retrato y dice \"No tengo hermanos ni hermanas, pero el padre de este hombre es el hijo de mi padre\". ¿De quién es el retrato?",
+      "solution": "Como el hombre no tiene hermanos, \"el hijo de mi padre\" solo puede ser él mismo. Así que el padre del hombre del retrato es quien habla, y por tanto el retrato es de su hijo.",
+      "keyFacts": [
+        {
+          "id": "portrait",
+          "text": "Quien habla es hijo único."
+        },
+        {
+          "id": "only-child",
+          "text": "\"El hijo de mi padre\" es él mismo."
+        },
+        {
+          "id": "father-son-is-him",
+          "text": "Quien habla es el padre del hombre del retrato."
+        },
+        {
+          "id": "his-son",
+          "text": "El retrato es de su hijo."
+        }
+      ],
+      "hints": [
+        "No es un retrato de quien habla.",
+        "Para un hijo único, ¿quién es \"el hijo de mi padre\"?",
+        "Baja una generación, no subas."
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    }
+  ]
+}

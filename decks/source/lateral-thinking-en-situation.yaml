@@ -1,0 +1,25 @@
+name: Lateral Thinking
+gameType: situation
+language: en
+topics:
+  - lateral thinking
+  - logic
+difficulty: medium
+cardCount: 25
+nsfw: false
+recommended: true
+# Situation puzzle settings (see scripts/lib/config-loader.ts)
+tone: funny
+allowDeath: true
+contentWarnings: []
+context:
+  markdown: |
+    Lateral-thinking puzzles in the style of Paul Sloane's books: short, clever
+    setups that challenge assumptions (about words, roles, numbers, time or
+    what an object is for) rather than shock.
+
+    - Most puzzles should involve no death at all; when one does, tag it.
+    - Favour puzzles where one hidden assumption unlocks everything.
+    - Include a few logic-style riddles (family relations, calendars, geography)
+      that can still be solved with yes/no questions.
+    - Write original puzzles; do not reproduce published ones.

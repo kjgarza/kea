@@ -5,6 +5,7 @@ import { buildTriviaPrompt } from "./trivia";
 import { buildTabooPrompt } from "./taboo";
 import { buildJustOnePrompt } from "./justone";
 import { buildMonikersPrompt } from "./monikers";
+import { buildSituationPrompt } from "./situation";
 
 export type { PromptContext } from "./base";
 
@@ -26,6 +27,8 @@ export function buildPrompt(
       return buildJustOnePrompt(ctx);
     case "monikers":
       return buildMonikersPrompt(ctx);
+    case "situation":
+      return buildSituationPrompt(ctx);
     default:
       throw new Error(`Unknown game type: ${gameType}`);
   }

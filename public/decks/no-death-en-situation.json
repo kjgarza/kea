@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "deckId": "no-death-en-situation",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "No Death",
+  "gameType": "situation",
+  "language": "en",
+  "difficulty": "easy",
+  "topics": [
+    "family",
+    "everyday"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "no-001",
+      "type": "situation",
+      "title": "A Long Way Down",
+      "setup": "A window cleaner was working on a 40-storey office tower when he slipped and fell off his ladder. He landed on the pavement without a single scratch.",
+      "solution": "He had only just started work and was standing on the bottom rung of his ladder, a few centimetres above the pavement, when he slipped. He simply stepped down onto the ground.",
+      "keyFacts": [
+        {
+          "id": "window-cleaner",
+          "text": "He was a window cleaner."
+        },
+        {
+          "id": "ladder",
+          "text": "He fell off a ladder, not out of the building."
+        },
+        {
+          "id": "bottom-rung",
+          "text": "He was on the bottom rung."
+        },
+        {
+          "id": "short-fall",
+          "text": "The fall was only a few centimetres."
+        }
+      ],
+      "hints": [
+        "The height of the building does not matter.",
+        "Think about where on the ladder he was.",
+        "He had not climbed very far yet."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-002",
+      "type": "situation",
+      "title": "The Expensive Hotel",
+      "setup": "A man pushed his car up to a hotel, stopped in front of it, and immediately knew he was bankrupt.",
+      "solution": "He was playing a property-trading board game. His playing piece was a little car, and he moved it onto a square where another player had built a hotel. He could not afford the rent, so he was out of the game.",
+      "keyFacts": [
+        {
+          "id": "board-game",
+          "text": "He was playing a board game."
+        },
+        {
+          "id": "token-car",
+          "text": "His playing piece was a toy car."
+        },
+        {
+          "id": "landed-on-hotel",
+          "text": "He landed on a square with a hotel."
+        },
+        {
+          "id": "out-of-money",
+          "text": "He could not pay the rent and was out of money."
+        }
+      ],
+      "hints": [
+        "The car was very small.",
+        "The hotel was not a real hotel.",
+        "Everyone was sitting around a table."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-003",
+      "type": "situation",
+      "title": "Floor Seven",
+      "setup": "Lucía lives on the 12th floor. Every morning she takes the lift down. Coming home, she rides only to the 7th floor and climbs the stairs, except on rainy days or when someone else is in the lift.",
+      "solution": "Lucía is a small child. She cannot reach the buttons above 7. On rainy days she has her umbrella and uses it to press 12, and when someone else is in the lift she simply asks them to press it.",
+      "keyFacts": [
+        {
+          "id": "short-girl",
+          "text": "Lucía is too short to reach the higher buttons."
+        },
+        {
+          "id": "cannot-reach",
+          "text": "She can reach the button for floor 7."
+        },
+        {
+          "id": "umbrella",
+          "text": "On rainy days she presses 12 with her umbrella."
+        },
+        {
+          "id": "other-people",
+          "text": "Other passengers press the button for her."
+        }
+      ],
+      "hints": [
+        "She would rather not climb the stairs.",
+        "It is about the buttons.",
+        "On rainy days she carries something long."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-004",
+      "type": "situation",
+      "title": "Not Twins",
+      "setup": "Two girls were born to the same mother on the same day of the same year, yet they are not twins.",
+      "solution": "They are two of a set of triplets. Their brother is the third baby, so the two girls are not twins but triplets.",
+      "keyFacts": [
+        {
+          "id": "same-mother",
+          "text": "The girls have the same mother."
+        },
+        {
+          "id": "same-birthday",
+          "text": "They were born on the same day."
+        },
+        {
+          "id": "triplets",
+          "text": "They are triplets."
+        },
+        {
+          "id": "third-sibling",
+          "text": "There is a third sibling born the same day."
+        }
+      ],
+      "hints": [
+        "They really are sisters.",
+        "Count the babies again.",
+        "Someone else was born that day too."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-005",
+      "type": "situation",
+      "title": "Boo!",
+      "setup": "A man walked into a café and asked for a glass of water. The barista leaned over the counter and shouted \"BOO!\" at him. The man said thank you and left without drinking anything.",
+      "solution": "The man had hiccups and wanted water to stop them. The barista realised and gave him a sudden fright instead, which cured the hiccups, so he no longer needed the water.",
+      "keyFacts": [
+        {
+          "id": "hiccups",
+          "text": "The man had hiccups."
+        },
+        {
+          "id": "asked-for-water",
+          "text": "He wanted the water to cure them."
+        },
+        {
+          "id": "sudden-shout",
+          "text": "The barista scared him on purpose."
+        },
+        {
+          "id": "scare-cured",
+          "text": "The fright cured his hiccups."
+        }
+      ],
+      "hints": [
+        "The man was not thirsty.",
+        "He had a small, annoying problem.",
+        "There is more than one way to cure it."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-006",
+      "type": "situation",
+      "title": "Stuck Under the Bridge",
+      "setup": "A lorry got wedged under a low bridge. Engineers argued for an hour about cutting the bridge or the lorry. A seven-year-old watching from the pavement solved it in one minute.",
+      "solution": "The child suggested letting some air out of the lorry's tyres. With the tyres softer, the lorry sat a few centimetres lower and could be driven out from under the bridge without damaging anything.",
+      "keyFacts": [
+        {
+          "id": "lorry-stuck",
+          "text": "The lorry was too tall for the bridge."
+        },
+        {
+          "id": "low-bridge",
+          "text": "A child had the idea."
+        },
+        {
+          "id": "child-idea",
+          "text": "They let air out of the tyres."
+        },
+        {
+          "id": "let-air-out",
+          "text": "The lorry became low enough to drive out."
+        }
+      ],
+      "hints": [
+        "Nothing had to be cut.",
+        "The lorry only needed to be a little lower.",
+        "Look at the wheels."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-007",
+      "type": "situation",
+      "title": "The Vanilla Problem",
+      "setup": "Every time Tom drives to the ice-cream shop and buys vanilla, his car will not start afterwards. When he buys any other flavour, it starts perfectly.",
+      "solution": "Vanilla is so popular that the shop keeps it ready-packed by the door, so Tom is back at the car within a minute, while the engine is still very hot and will not restart. Other flavours are scooped to order at the back, so he waits longer and the engine has time to cool down.",
+      "keyFacts": [
+        {
+          "id": "vanilla-quick",
+          "text": "Buying vanilla is much quicker."
+        },
+        {
+          "id": "other-flavours-slow",
+          "text": "Other flavours take longer to serve."
+        },
+        {
+          "id": "hot-engine",
+          "text": "The car will not start while the engine is very hot."
+        },
+        {
+          "id": "engine-cooled",
+          "text": "The extra waiting time lets the engine cool."
+        }
+      ],
+      "hints": [
+        "The ice cream itself does nothing to the car.",
+        "Time matters.",
+        "The car has a problem when it is too hot."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-008",
+      "type": "situation",
+      "title": "The Bird Who Knew the Way",
+      "setup": "A lost bird with no ring, tag or chip turned up in a pet shop. The same afternoon, the owner of the shop took it straight back to its home.",
+      "solution": "The bird was a parrot. Its owners had taught it to repeat their street and house number, and it kept saying them over and over. The shop owner listened, wrote the address down and took it home.",
+      "keyFacts": [
+        {
+          "id": "lost-parrot",
+          "text": "The bird was a parrot."
+        },
+        {
+          "id": "no-tag",
+          "text": "It had no tag or chip."
+        },
+        {
+          "id": "repeated-address",
+          "text": "It kept repeating its own address."
+        },
+        {
+          "id": "shop-owner-listened",
+          "text": "The shop owner followed what it said."
+        }
+      ],
+      "hints": [
+        "The bird helped.",
+        "It is a bird that can talk.",
+        "It had been taught something useful."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-009",
+      "type": "situation",
+      "title": "The Happy Own Goal",
+      "setup": "In the last minute of a match, a goalkeeper stepped aside and let an easy shot roll into his net. His whole team cheered and hugged him.",
+      "solution": "It was a friendly charity match between a team of adults and a team of seven-year-olds. The adults were winning easily, so the goalkeeper let the children score. His teammates cheered because the kids were thrilled.",
+      "keyFacts": [
+        {
+          "id": "charity-match",
+          "text": "It was a friendly charity match."
+        },
+        {
+          "id": "children-team",
+          "text": "The other team were young children."
+        },
+        {
+          "id": "let-in-on-purpose",
+          "text": "He let the ball in on purpose."
+        },
+        {
+          "id": "made-their-day",
+          "text": "The goal made the children very happy."
+        }
+      ],
+      "hints": [
+        "Winning was not important.",
+        "The opponents were very young.",
+        "It was a kind gesture."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-010",
+      "type": "situation",
+      "title": "Dinner Is Served",
+      "setup": "Sixteen years after losing her wedding ring, a woman found it again while she was eating dinner.",
+      "solution": "She had lost the ring while weeding her vegetable patch. Years later, a carrot grew right through the ring. When she pulled up the carrots and cooked them, she found the ring wrapped around one of them on her plate.",
+      "keyFacts": [
+        {
+          "id": "lost-in-garden",
+          "text": "She lost the ring in her vegetable garden."
+        },
+        {
+          "id": "years-later",
+          "text": "Many years passed."
+        },
+        {
+          "id": "carrot-grew-through",
+          "text": "A carrot grew through the ring."
+        },
+        {
+          "id": "found-at-dinner",
+          "text": "She found it on the carrot at dinner."
+        }
+      ],
+      "hints": [
+        "The ring was outdoors all along.",
+        "Something grew.",
+        "The vegetable was orange."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-011",
+      "type": "situation",
+      "title": "She Didn't Need to Open It",
+      "setup": "Nora picked up an envelope from the doormat, squeezed it, and started dancing around the kitchen without opening it.",
+      "solution": "Nora was waiting to hear whether her dream university had accepted her. Rejection letters are a single sheet, but acceptance letters come with a thick welcome pack. The envelope was very thick, so she knew she had been accepted.",
+      "keyFacts": [
+        {
+          "id": "university-letter",
+          "text": "The letter was from a university."
+        },
+        {
+          "id": "thick-envelope",
+          "text": "The envelope was very thick."
+        },
+        {
+          "id": "welcome-pack",
+          "text": "Acceptance letters come with a welcome pack."
+        },
+        {
+          "id": "accepted",
+          "text": "Nora had been accepted."
+        }
+      ],
+      "hints": [
+        "She knew who had sent it.",
+        "The size of the envelope told her the news.",
+        "A \"no\" needs only one page."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-012",
+      "type": "situation",
+      "title": "The Scruffy Barber",
+      "setup": "A town has only two barbers. One has a neat, perfect haircut; the other's hair is a terrible mess. A visitor looks at both and chooses the scruffy one.",
+      "solution": "The barbers cannot cut their own hair, so they cut each other's. The neat haircut is the work of the scruffy barber, and the terrible one was done by the neat barber. So the scruffy barber is the better hairdresser.",
+      "keyFacts": [
+        {
+          "id": "two-barbers",
+          "text": "There are only two barbers in town."
+        },
+        {
+          "id": "messy-barber",
+          "text": "Each barber cuts the other's hair."
+        },
+        {
+          "id": "cut-each-other",
+          "text": "The scruffy barber gave the neat haircut."
+        },
+        {
+          "id": "skill",
+          "text": "So the scruffy barber is more skilled."
+        }
+      ],
+      "hints": [
+        "The visitor reasoned carefully.",
+        "Who cuts a barber's hair?",
+        "Each haircut shows the skill of someone else."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-013",
+      "type": "situation",
+      "title": "The Wrong Way",
+      "setup": "A lorry driver went the wrong way down a one-way street, right past a police officer. The officer saw everything and did nothing.",
+      "solution": "The lorry driver was not driving at that moment. He was walking down the pavement on his lunch break, which is allowed in any direction, so he broke no rule.",
+      "keyFacts": [
+        {
+          "id": "lorry-driver",
+          "text": "The man is a lorry driver by profession."
+        },
+        {
+          "id": "one-way-street",
+          "text": "The street was one-way."
+        },
+        {
+          "id": "walking",
+          "text": "He was walking, not driving."
+        },
+        {
+          "id": "no-rule-broken",
+          "text": "He did not break any rule."
+        }
+      ],
+      "hints": [
+        "The officer did his job properly.",
+        "Where was the lorry?",
+        "Pedestrians may go either way."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-014",
+      "type": "situation",
+      "title": "The Happy Blackout",
+      "setup": "One night every light in a small town went out at the same moment. Instead of complaining, people poured out of their houses and cheered.",
+      "solution": "The town had agreed to switch off all its lights for one hour so everyone could watch a meteor shower. When the lights went out, the sky became dark enough to see the shooting stars, and people cheered as they appeared.",
+      "keyFacts": [
+        {
+          "id": "planned-switch-off",
+          "text": "The lights were switched off on purpose."
+        },
+        {
+          "id": "meteor-shower",
+          "text": "There was a meteor shower that night."
+        },
+        {
+          "id": "dark-sky",
+          "text": "Darkness made the sky easier to see."
+        },
+        {
+          "id": "watched-together",
+          "text": "People went outside to watch together."
+        }
+      ],
+      "hints": [
+        "Nothing was broken.",
+        "Everyone was looking up.",
+        "Some things are easier to see in the dark."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-015",
+      "type": "situation",
+      "title": "The Backwards Clock",
+      "setup": "The clock on the wall of Pablo's barber shop has its numbers printed backwards, and its hands run anticlockwise. Every customer can read the time perfectly.",
+      "solution": "The clock hangs on the wall behind the customers' chairs. Customers see it only in the big mirror in front of them, which reverses it again, so it looks like a perfectly normal clock.",
+      "keyFacts": [
+        {
+          "id": "barber-shop",
+          "text": "The clock is in a barber shop."
+        },
+        {
+          "id": "mirror",
+          "text": "Customers face a large mirror."
+        },
+        {
+          "id": "reversed-clock",
+          "text": "The clock is made backwards on purpose."
+        },
+        {
+          "id": "reads-correctly",
+          "text": "In the mirror it reads normally."
+        }
+      ],
+      "hints": [
+        "The clock is not broken.",
+        "Customers never look straight at it.",
+        "Think about what customers look at while their hair is cut."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-016",
+      "type": "situation",
+      "title": "Born a Year Apart",
+      "setup": "Leo is older than his twin sister Mia, but Mia's birthday comes first every year, and they were born in different years.",
+      "solution": "The twins were born on New Year's Eve. Leo arrived a few minutes before midnight on 31 December, and Mia a few minutes after midnight on 1 January, so she was born in the next year and her birthday comes first in the calendar.",
+      "keyFacts": [
+        {
+          "id": "twins",
+          "text": "Leo and Mia really are twins."
+        },
+        {
+          "id": "new-year",
+          "text": "They were born around New Year."
+        },
+        {
+          "id": "before-midnight",
+          "text": "Leo was born just before midnight."
+        },
+        {
+          "id": "after-midnight",
+          "text": "Mia was born just after midnight, in the new year."
+        }
+      ],
+      "hints": [
+        "They were born minutes apart.",
+        "The date matters.",
+        "Think about the very last night of the year."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-017",
+      "type": "situation",
+      "title": "Not a Wet Hair",
+      "setup": "A man walked home through a downpour with no umbrella, hat or hood. His clothes were soaked, but not a single hair on his head got wet.",
+      "solution": "The man was completely bald, so there was no hair on his head to get wet.",
+      "keyFacts": [
+        {
+          "id": "heavy-rain",
+          "text": "It was raining heavily."
+        },
+        {
+          "id": "no-umbrella",
+          "text": "He had nothing covering his head."
+        },
+        {
+          "id": "clothes-soaked",
+          "text": "The rest of him got soaked."
+        },
+        {
+          "id": "bald",
+          "text": "He was bald."
+        }
+      ],
+      "hints": [
+        "His head did get wet.",
+        "Read the setup carefully.",
+        "He had nothing to comb."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-018",
+      "type": "situation",
+      "title": "The Same Cup",
+      "setup": "Sara found a fly in her coffee and sent it back. The waiter returned with \"a fresh cup\". After one sip, Sara said, \"This is the same coffee!\"",
+      "solution": "Before she noticed the fly, Sara had already stirred sugar into her coffee. The \"fresh\" cup tasted sweet even though she had not added any sugar to it, so she knew the waiter had just removed the fly and brought back the same coffee.",
+      "keyFacts": [
+        {
+          "id": "fly-in-coffee",
+          "text": "There was a fly in the first coffee."
+        },
+        {
+          "id": "sent-back",
+          "text": "Sara had already put sugar in it."
+        },
+        {
+          "id": "already-sugared",
+          "text": "The returned cup was sweet."
+        },
+        {
+          "id": "tasted-sweet",
+          "text": "The waiter only removed the fly."
+        }
+      ],
+      "hints": [
+        "It was not about the look of the coffee.",
+        "She noticed the taste.",
+        "She had already done something to the first cup."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-019",
+      "type": "situation",
+      "title": "Read More",
+      "setup": "Leo handed in a beautiful handwritten essay. His teacher read it once and knew immediately that he had copied it from a website.",
+      "solution": "Leo had copied the text from a website word for word, without thinking. At the end of the essay he had also copied the website's button text, \"Click here to read more\", which made no sense on paper.",
+      "keyFacts": [
+        {
+          "id": "handwritten",
+          "text": "The essay was handwritten."
+        },
+        {
+          "id": "copied-website",
+          "text": "Leo copied it from a website."
+        },
+        {
+          "id": "copied-everything",
+          "text": "He copied every single word, without thinking."
+        },
+        {
+          "id": "click-here",
+          "text": "It ended with \"Click here to read more\"."
+        }
+      ],
+      "hints": [
+        "The teacher did not search online.",
+        "The proof was written in the essay itself.",
+        "Some words only make sense on a screen."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "no-020",
+      "type": "situation",
+      "title": "The Silent Doorbell",
+      "setup": "Maria's friends pressed her doorbell. No sound came from inside the flat at all, yet Maria opened the door a few seconds later and said, \"I knew it was you!\"",
+      "solution": "Maria is deaf. Her doorbell is connected to lights in every room, which flash instead of ringing. She saw the lights flash, and she was expecting her friends at that time.",
+      "keyFacts": [
+        {
+          "id": "deaf",
+          "text": "Maria is deaf."
+        },
+        {
+          "id": "light-doorbell",
+          "text": "Her doorbell makes no sound."
+        },
+        {
+          "id": "flashing-lights",
+          "text": "It makes lights flash inside the flat."
+        },
+        {
+          "id": "saw-not-heard",
+          "text": "She was expecting her friends."
+        }
+      ],
+      "hints": [
+        "The doorbell works perfectly.",
+        "It was designed for Maria.",
+        "She noticed it with her eyes."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    }
+  ]
+}

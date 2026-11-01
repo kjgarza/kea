@@ -1,0 +1,719 @@
+{
+  "schemaVersion": 1,
+  "deckId": "lateral-thinking-en-situation",
+  "version": "2026-10-30T00:00:00Z",
+  "name": "Lateral Thinking",
+  "gameType": "situation",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "lateral thinking",
+    "logic"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "la-001",
+      "type": "situation",
+      "title": "The Ancient Coin",
+      "setup": "A man offered a museum curator a bronze coin stamped with the date \"46 BC\". The curator laughed and showed him the door.",
+      "solution": "The coin was obviously a fake. Nobody living in 46 BC could have known that Christ would be born 46 years later, so no real coin from that time could carry the label \"BC\".",
+      "keyFacts": [
+        {
+          "id": "coin-offered",
+          "text": "The man wanted to sell the coin."
+        },
+        {
+          "id": "dated-bc",
+          "text": "The coin was dated \"BC\"."
+        },
+        {
+          "id": "nobody-knew",
+          "text": "People at the time could not know they were living \"before Christ\"."
+        },
+        {
+          "id": "fake",
+          "text": "The coin was a forgery."
+        }
+      ],
+      "hints": [
+        "The curator did not need to test the metal.",
+        "Read the date carefully.",
+        "What does \"BC\" mean?"
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-002",
+      "type": "situation",
+      "title": "Five Games, Six Wins",
+      "setup": "Ana and Pablo played five games of chess. Ana won three and Pablo won three. There were no draws and no games were cancelled.",
+      "solution": "Ana and Pablo did not play against each other. Each played five games against other opponents at a chess club and won three of them.",
+      "keyFacts": [
+        {
+          "id": "five-games",
+          "text": "Each played five games."
+        },
+        {
+          "id": "each-won-three",
+          "text": "Each won three games."
+        },
+        {
+          "id": "no-draws",
+          "text": "There were no draws."
+        },
+        {
+          "id": "different-opponents",
+          "text": "They were playing different opponents, not each other."
+        }
+      ],
+      "hints": [
+        "The numbers are all correct.",
+        "Who were their opponents?",
+        "They might not have met across the board at all."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-003",
+      "type": "situation",
+      "title": "The Doctor on Call",
+      "setup": "A boy broke his arm at football while his father watched from the stands. At the hospital, the doctor on call looked at him and said, \"I can't treat this patient. He's my son.\"",
+      "solution": "The doctor on call was the boy's mother. Doctors are not supposed to treat their own children, so she asked a colleague to do it.",
+      "keyFacts": [
+        {
+          "id": "broken-arm",
+          "text": "The boy broke his arm."
+        },
+        {
+          "id": "father-watching",
+          "text": "His father was at the match, not at the hospital."
+        },
+        {
+          "id": "doctor-is-mother",
+          "text": "The doctor is the boy's mother."
+        },
+        {
+          "id": "cannot-treat-own-child",
+          "text": "Doctors avoid treating their own family."
+        }
+      ],
+      "hints": [
+        "The father did not lie.",
+        "Do not assume anything about the doctor.",
+        "A boy has two parents."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-004",
+      "type": "situation",
+      "title": "Married Again",
+      "setup": "In one small town, a man has married more than two hundred women. He has never been divorced, none of the women has left him, and he has broken no law.",
+      "solution": "The man is the town's priest. He has \"married\" the women by performing their weddings to other men, not by becoming their husband.",
+      "keyFacts": [
+        {
+          "id": "many-weddings",
+          "text": "He took part in over two hundred weddings."
+        },
+        {
+          "id": "never-divorced",
+          "text": "He has never been divorced."
+        },
+        {
+          "id": "legal",
+          "text": "He broke no law."
+        },
+        {
+          "id": "officiant",
+          "text": "He performed the weddings; he was not the groom."
+        }
+      ],
+      "hints": [
+        "Everybody in town knows him.",
+        "He was at every one of those weddings.",
+        "He was not the one saying \"I do\"."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-005",
+      "type": "situation",
+      "title": "The Bridge Guard",
+      "setup": "A guard sends back anyone crossing a long border bridge without papers. He comes out of his hut every five minutes, and the crossing takes eight. A woman with no papers crossed safely.",
+      "solution": "The woman walked onto the bridge for just under five minutes, then turned around and started walking back towards where she had come from. When the guard came out, he saw her apparently heading towards him without papers, so he sent her back the other way, which is where she wanted to go.",
+      "keyFacts": [
+        {
+          "id": "sentry-turns-back",
+          "text": "The guard sends people back the way they came."
+        },
+        {
+          "id": "five-minute-checks",
+          "text": "He checks every five minutes."
+        },
+        {
+          "id": "crossing-takes-longer",
+          "text": "The crossing takes longer than five minutes."
+        },
+        {
+          "id": "turned-around",
+          "text": "She turned around just before he came out."
+        }
+      ],
+      "hints": [
+        "She did not run or hide.",
+        "The guard did exactly what he always does.",
+        "Which way did she seem to be going when he saw her?"
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-006",
+      "type": "situation",
+      "title": "Ten Birthdays",
+      "setup": "Marco has just turned forty, yet today he is celebrating only his tenth birthday party.",
+      "solution": "Marco was born on 29 February, which exists only in leap years, once every four years. In forty years he has had only ten real birthdays.",
+      "keyFacts": [
+        {
+          "id": "age-forty",
+          "text": "Marco is forty years old."
+        },
+        {
+          "id": "ten-birthdays",
+          "text": "He has had only ten actual birthdays."
+        },
+        {
+          "id": "leap-day",
+          "text": "He was born on 29 February."
+        },
+        {
+          "id": "every-four-years",
+          "text": "That date comes only once every four years."
+        }
+      ],
+      "hints": [
+        "He celebrates on his real birthday.",
+        "The calendar is the key.",
+        "Some dates are rare."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 6,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-007",
+      "type": "situation",
+      "title": "Friday to Friday",
+      "setup": "A traveller rode into a village on Friday, stayed exactly three nights and rode out again on Friday.",
+      "solution": "The traveller's horse was called Friday. He rode in on Friday, the horse, stayed three nights, and rode out again on the same horse.",
+      "keyFacts": [
+        {
+          "id": "three-days",
+          "text": "He stayed three nights."
+        },
+        {
+          "id": "arrived-friday",
+          "text": "He arrived \"on Friday\"."
+        },
+        {
+          "id": "left-friday",
+          "text": "He left \"on Friday\"."
+        },
+        {
+          "id": "horse-named-friday",
+          "text": "Friday was the name of his horse."
+        }
+      ],
+      "hints": [
+        "Friday is not a day here.",
+        "He did ride in and out.",
+        "What was he riding?"
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-008",
+      "type": "situation",
+      "title": "What Colour Was the Bear?",
+      "setup": "An explorer walked one kilometre south, then one kilometre east, then one kilometre north, and ended up exactly where she had started. There she saw a bear and knew at once what colour it was.",
+      "solution": "The only common place where that walk brings you back to your starting point is the North Pole. The only bears there are polar bears, so the bear was white.",
+      "keyFacts": [
+        {
+          "id": "walked-square",
+          "text": "Her walk brought her back to her start."
+        },
+        {
+          "id": "back-to-start",
+          "text": "She started at the North Pole."
+        },
+        {
+          "id": "north-pole",
+          "text": "Only polar bears live there."
+        },
+        {
+          "id": "polar-bear",
+          "text": "The bear was white."
+        }
+      ],
+      "hints": [
+        "Where on Earth does that walk work?",
+        "It is very cold there.",
+        "East-west lines get very short near the top of the globe."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-009",
+      "type": "situation",
+      "title": "Sand Every Day",
+      "setup": "Every day for a year, a man cycled across the border with a sack of sand on his back. The customs officer searched the sand every time and found nothing. Years later, the man admitted he had been smuggling all along.",
+      "solution": "The man was smuggling bicycles. Every day he rode a new bicycle across the border and sold it on the other side. The sack of sand was just a distraction to keep the officer busy.",
+      "keyFacts": [
+        {
+          "id": "daily-crossing",
+          "text": "He crossed the border every day."
+        },
+        {
+          "id": "searched-sacks",
+          "text": "The officer always searched the sack."
+        },
+        {
+          "id": "only-sand",
+          "text": "The sack only ever contained sand."
+        },
+        {
+          "id": "smuggling-bicycles",
+          "text": "He was smuggling the bicycles themselves."
+        }
+      ],
+      "hints": [
+        "The sand was exactly what it seemed.",
+        "The officer was looking in the wrong place.",
+        "What else did he bring across each day?"
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-010",
+      "type": "situation",
+      "title": "The Slowest Horse",
+      "setup": "A rich farmer left his fortune to whichever of his two sons' horses crossed the finish line last. For hours the sons rode as slowly as they could. Then a wise woman whispered two words, and both galloped off at full speed.",
+      "solution": "She told them \"Swap horses.\" Each son then rode his brother's horse, so by getting it to the finish line first, he made sure his own horse was the last to arrive.",
+      "keyFacts": [
+        {
+          "id": "slowest-horse-wins",
+          "text": "The owner of the last horse would inherit."
+        },
+        {
+          "id": "sons-stalling",
+          "text": "Both sons were stalling."
+        },
+        {
+          "id": "swapped-horses",
+          "text": "The sons swapped horses."
+        },
+        {
+          "id": "race-to-finish",
+          "text": "Each now wanted his brother's horse to finish first."
+        }
+      ],
+      "hints": [
+        "The rules did not change.",
+        "The prize goes to the owner of the horse, not the rider.",
+        "They did not ride their own horses any more."
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-011",
+      "type": "situation",
+      "title": "Dry Paws",
+      "setup": "A dog crossed a wide river from one bank to the other. There was no bridge or boat, nobody carried it, and its paws stayed completely dry.",
+      "solution": "It was the middle of winter and the river was frozen solid. The dog simply walked across the ice.",
+      "keyFacts": [
+        {
+          "id": "river-crossing",
+          "text": "The dog crossed the river on its own."
+        },
+        {
+          "id": "dog-dry",
+          "text": "There was no bridge or boat."
+        },
+        {
+          "id": "no-bridge",
+          "text": "The river was frozen."
+        },
+        {
+          "id": "frozen",
+          "text": "The dog walked across the ice."
+        }
+      ],
+      "hints": [
+        "The dog walked.",
+        "Think about the season.",
+        "The water was not liquid."
+      ],
+      "difficulty": "easy",
+      "estMinutes": 5,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-012",
+      "type": "situation",
+      "title": "Two Fathers, Two Sons",
+      "setup": "Two fathers and two sons went fishing. Each of them caught exactly one fish, and they came home with three fish in total. None were lost or eaten.",
+      "solution": "There were only three people on the trip: a grandfather, his son and his grandson. The grandfather and the father are the two fathers; the father and the grandson are the two sons.",
+      "keyFacts": [
+        {
+          "id": "three-fish",
+          "text": "They brought home three fish."
+        },
+        {
+          "id": "two-fathers-two-sons",
+          "text": "Each person caught one fish."
+        },
+        {
+          "id": "three-people",
+          "text": "There were only three people."
+        },
+        {
+          "id": "three-generations",
+          "text": "They were grandfather, father and grandson."
+        }
+      ],
+      "hints": [
+        "Nobody is lying.",
+        "Count the people, not the titles.",
+        "Someone can be both a father and a son."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 8,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-013",
+      "type": "situation",
+      "title": "Wrong Number",
+      "setup": "At 3 a.m. a man dialled a wrong number. The woman who answered was furious, but the next day she found his number and thanked him with tears in her eyes.",
+      "solution": "A fire had started in the woman's house while her family slept, and the smoke alarm's battery was flat. The phone call woke her up, she smelled the smoke and got everyone out safely. The wrong number saved her family.",
+      "keyFacts": [
+        {
+          "id": "wrong-number",
+          "text": "The call was a mistake."
+        },
+        {
+          "id": "woke-her",
+          "text": "The phone woke her up."
+        },
+        {
+          "id": "smoke-in-house",
+          "text": "Her house was filling with smoke."
+        },
+        {
+          "id": "family-escaped",
+          "text": "She got her family out because she was awake."
+        }
+      ],
+      "hints": [
+        "The caller never meant to help.",
+        "Being woken up mattered.",
+        "Something was happening in her house that night."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-014",
+      "type": "situation",
+      "title": "Two Coffees",
+      "setup": "Every Sunday at ten, Diego orders two coffees at the same café, puts one across the table and drinks only his own. Nobody ever joins him, yet he talks and laughs the whole time.",
+      "solution": "Diego's twin brother emigrated to another country. Every Sunday they each order two coffees at the same moment and have breakfast together on a video call, with the phone propped up against the second cup.",
+      "keyFacts": [
+        {
+          "id": "two-coffees",
+          "text": "Diego is talking to his brother."
+        },
+        {
+          "id": "brother-abroad",
+          "text": "His brother lives in another country."
+        },
+        {
+          "id": "video-call",
+          "text": "They talk on a video call."
+        },
+        {
+          "id": "same-time",
+          "text": "The second cup holds up the phone and keeps the ritual."
+        }
+      ],
+      "hints": [
+        "Diego is not imagining anyone.",
+        "The person he talks to is far away.",
+        "Look at what is leaning against the second cup."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-015",
+      "type": "situation",
+      "title": "One Ace Too Many",
+      "setup": "During a card game in an old saloon, a player was shot. The sheriff looked at the cards on the table and immediately understood why.",
+      "solution": "When the sheriff counted the cards, he found five aces. One of the players had been cheating with a hidden extra ace. Another player noticed and shot him.",
+      "keyFacts": [
+        {
+          "id": "card-game",
+          "text": "They were playing cards."
+        },
+        {
+          "id": "player-shot",
+          "text": "The victim was shot during the game."
+        },
+        {
+          "id": "five-aces",
+          "text": "There were five aces on the table."
+        },
+        {
+          "id": "cheating",
+          "text": "The victim had been cheating."
+        }
+      ],
+      "hints": [
+        "The motive was on the table.",
+        "Count something in the cards.",
+        "A normal deck can't produce that hand."
+      ],
+      "difficulty": "medium",
+      "contentWarnings": [
+        "murder"
+      ],
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-016",
+      "type": "situation",
+      "title": "Up in Smoke",
+      "setup": "A collector paid a fortune for a rare stamp at an auction, then set fire to it in front of the other bidders, smiling.",
+      "solution": "Only two copies of the stamp existed, and the collector already owned the other one. By burning the one he had just bought, he made his own stamp the only one in the world and far more valuable.",
+      "keyFacts": [
+        {
+          "id": "two-stamps",
+          "text": "Only two copies existed."
+        },
+        {
+          "id": "bought-one",
+          "text": "He already owned the other copy."
+        },
+        {
+          "id": "burned-it",
+          "text": "He burned the one he bought on purpose."
+        },
+        {
+          "id": "value-rose",
+          "text": "His remaining stamp became unique and more valuable."
+        }
+      ],
+      "hints": [
+        "It was a smart business move.",
+        "How many copies were there?",
+        "Rare things become more valuable when they are rarer."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-017",
+      "type": "situation",
+      "title": "The Sailor's Eye Patch",
+      "setup": "An old sailor always wore an eye patch on deck, although both of his eyes were perfectly healthy. Every time he went below deck, he moved it to the other eye.",
+      "solution": "Going from bright sunlight into the dark hold, eyes need time to adjust. By keeping one eye covered on deck, he always had one eye ready for the dark. Below deck he uncovered that eye and covered the other, which was used to the light.",
+      "keyFacts": [
+        {
+          "id": "both-eyes-fine",
+          "text": "Both of his eyes were healthy."
+        },
+        {
+          "id": "below-deck",
+          "text": "He often went from bright daylight into dark rooms."
+        },
+        {
+          "id": "dark-adapted",
+          "text": "The covered eye stayed used to the dark."
+        },
+        {
+          "id": "switched-patch",
+          "text": "He switched the patch to see at once in either place."
+        }
+      ],
+      "hints": [
+        "The patch helped him see better.",
+        "It is about light and darkness.",
+        "Eyes take time to adjust."
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-018",
+      "type": "situation",
+      "title": "No Autograph, Please",
+      "setup": "A book collector paid ten times the normal price for a copy of a famous novel precisely because the author had not signed it.",
+      "solution": "The author was famous for signing every single copy of the first edition by hand. Signed copies are common, but an unsigned one is a rare mistake, so collectors value it much more.",
+      "keyFacts": [
+        {
+          "id": "author-signed-all",
+          "text": "The buyer was a collector."
+        },
+        {
+          "id": "unsigned-rare",
+          "text": "The author signed almost every copy."
+        },
+        {
+          "id": "paid-more",
+          "text": "An unsigned copy is very rare."
+        },
+        {
+          "id": "collector",
+          "text": "Rarity made it more valuable."
+        }
+      ],
+      "hints": [
+        "The collector knew exactly what he was doing.",
+        "Normally a signature adds value.",
+        "What if almost every copy has one?"
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-019",
+      "type": "situation",
+      "title": "Writing Backwards",
+      "setup": "A sign painter spends his days painting letters backwards. His boss praises his work, and thousands of people read it correctly every day.",
+      "solution": "He paints the word \"AMBULANCE\" in mirror writing on the front of ambulances. Drivers ahead see it the right way round in their rear-view mirrors and move out of the way.",
+      "keyFacts": [
+        {
+          "id": "backwards-letters",
+          "text": "He writes the letters in mirror image."
+        },
+        {
+          "id": "ambulances",
+          "text": "The writing goes on ambulances."
+        },
+        {
+          "id": "rear-view-mirror",
+          "text": "Drivers read it in their rear-view mirrors."
+        },
+        {
+          "id": "praised",
+          "text": "It is done on purpose and is correct."
+        }
+      ],
+      "hints": [
+        "He makes no mistakes.",
+        "Most people read his work in a mirror.",
+        "The vehicle needs to get through traffic."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "original"
+      }
+    },
+    {
+      "cardId": "la-020",
+      "type": "situation",
+      "title": "The Portrait",
+      "setup": "A man stands looking at a portrait and says, \"I have no brothers or sisters, but this man's father is my father's son.\" Whose portrait is it?",
+      "solution": "Since the man has no brothers, \"my father's son\" can only be himself. So the father of the man in the portrait is the speaker, which means the portrait shows his son.",
+      "keyFacts": [
+        {
+          "id": "portrait",
+          "text": "The speaker is an only child."
+        },
+        {
+          "id": "only-child",
+          "text": "\"My father's son\" is the speaker himself."
+        },
+        {
+          "id": "father-son-is-him",
+          "text": "The speaker is the father of the man in the portrait."
+        },
+        {
+          "id": "his-son",
+          "text": "The portrait shows the speaker's son."
+        }
+      ],
+      "hints": [
+        "It is not a portrait of the speaker.",
+        "Who is \"my father's son\" for an only child?",
+        "Go down one generation, not up."
+      ],
+      "difficulty": "hard",
+      "estMinutes": 12,
+      "source": {
+        "origin": "original"
+      }
+    }
+  ]
+}
