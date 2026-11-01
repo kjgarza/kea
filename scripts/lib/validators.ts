@@ -413,6 +413,24 @@ export function validateSituationCard(
     }
   }
 
+  if (obj.solvability !== undefined) {
+    const solvability = obj.solvability as Record<string, unknown> | null;
+    if (!solvability || typeof solvability !== "object" || Array.isArray(solvability)) {
+      fail(`'solvability' must be an object with 'questions' and 'checkedAt'`);
+    } else {
+      const { questions, checkedAt, model } = solvability;
+      if (typeof questions !== "number" || !Number.isInteger(questions) || questions < 0) {
+        fail(`'solvability.questions' must be a non-negative integer`);
+      }
+      if (!isNonEmptyString(checkedAt) || Number.isNaN(Date.parse(checkedAt))) {
+        fail(`'solvability.checkedAt' must be an ISO date string`);
+      }
+      if (model !== undefined && !isNonEmptyString(model)) {
+        fail(`'solvability.model' must be a non-empty string`);
+      }
+    }
+  }
+
   if (errors.length > 0) {
     return { valid: false, errors };
   }
@@ -425,6 +443,7 @@ export function validateSituationCard(
     ),
   ];
   const source = obj.source as SituationCard["source"] | undefined;
+  const solvability = obj.solvability as SituationCard["solvability"] | undefined;
 
   const card: SituationCard = {
     cardId,
@@ -447,6 +466,15 @@ export function validateSituationCard(
             origin: source.origin,
             ...(source.pack !== undefined ? { pack: source.pack } : {}),
             ...(source.ref !== undefined ? { ref: source.ref } : {}),
+          },
+        }
+      : {}),
+    ...(solvability
+      ? {
+          solvability: {
+            questions: solvability.questions,
+            checkedAt: solvability.checkedAt,
+            ...(solvability.model !== undefined ? { model: solvability.model.trim() } : {}),
           },
         }
       : {}),

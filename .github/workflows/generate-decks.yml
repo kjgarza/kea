@@ -20,6 +20,11 @@ on:
         required: false
         type: boolean
         default: false
+      skip_solvability:
+        description: 'Skip the solvability check for situation decks'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   generate:
@@ -43,6 +48,9 @@ jobs:
       - name: Generate decks
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # Solvability check for situation decks (keeper, grader, solver)
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SKIP_SOLVABILITY: ${{ inputs.skip_solvability && '--skip-solvability' || '' }}
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             echo "Running in dry-run mode..."
@@ -53,22 +61,23 @@ jobs:
             fi
           else
             if [ -n "${{ inputs.deck }}" ]; then
-              bun scripts/generate-decks.ts --deck "${{ inputs.deck }}"
+              bun scripts/generate-decks.ts --deck "${{ inputs.deck }}" $SKIP_SOLVABILITY
             else
-              bun scripts/generate-decks.ts --all
+              bun scripts/generate-decks.ts --all $SKIP_SOLVABILITY
             fi
           fi
 
       - name: Check for changes
         id: changes
         run: |
-          git diff --quiet public/decks/ || echo "has_changes=true" >> $GITHUB_OUTPUT
+          git add -N public/decks/ decks/drafts/
+          git diff --quiet public/decks/ decks/drafts/ || echo "has_changes=true" >> $GITHUB_OUTPUT
 
       - name: Commit and push changes
         if: steps.changes.outputs.has_changes == 'true' && inputs.dry_run != true
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add public/decks/
+          git add public/decks/ decks/drafts/
           git commit -m "chore: regenerate decks [skip ci]"
           git push

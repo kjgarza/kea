@@ -123,9 +123,34 @@ The generated deck is written to `public/decks/<deck-id>.json` and the deck inde
 | Simple Words | Just One |
 | Pop Culture | Monikers |
 
+### Solvability Check (Situation Decks)
+
+Generated situation puzzles must pass a solvability check before they reach `public/decks/`:
+
+1. **Ambiguity check.** A reviewer model reads the setup and the solution and asks whether the setup admits another coherent story that the keeper's yes/no answers would not rule out. Ambiguous puzzles fail.
+2. **Solver run.** A solver model sees **only the title and setup** (never the solution or key facts) and asks up to 40 questions. Each one is answered by the same keeper code players use (`answerKeeperQuestion`). It can submit a theory at any point (3 attempts) and must submit one when the questions run out; theories are graded by the player grader (`gradeTheory`). A "solved" grade passes.
+
+Passed puzzles keep a `solvability: { questions, checkedAt, model }` field (questions to solve, a difficulty signal). Failed puzzles, and puzzles whose check errored, are written to `decks/drafts/<deckId>.json` with the reasons, the solver transcript and the cost, so they can be fixed by hand and re-imported (for example as a YAML pack). The generator prints passed/failed counts, the reasons, and the tokens and estimated cost per puzzle (prices live in `MODEL_PRICING` in `src/lib/ai/config.ts`).
+
+```bash
+# Needs ANTHROPIC_API_KEY (keeper/grader: KEEPER_PROVIDER/KEEPER_MODEL, solver: SOLVER_PROVIDER/SOLVER_MODEL)
+bun scripts/generate-decks.ts --deck classic-en-situation
+
+# Skip the check (every valid puzzle is written to public/decks/)
+bun scripts/generate-decks.ts --deck classic-en-situation --skip-solvability
+
+# Re-check an existing deck (e.g. a hand-written seed deck) and write a report to reports/
+bun scripts/check-solvability.ts --deck classic-en-situation [--puzzle cl-001] [--limit 5] [--skip-ambiguity] [--strict]
+
+# Offline smoke test of the pipeline (the stub solver cannot solve anything)
+bun scripts/check-solvability.ts --deck sample-en-situation --provider stub
+```
+
+`check-solvability.ts` never modifies the deck.
+
 ### Automated Deck Generation (CI)
 
-The workflow at `.github/workflows/generate-decks.yml` automatically regenerates decks when YAML source configs change. Add `OPENAI_API_KEY` to your repository secrets to enable it.
+The workflow at `.github/workflows/generate-decks.yml` automatically regenerates decks when YAML source configs change. Add `OPENAI_API_KEY` to your repository secrets to enable it, and `ANTHROPIC_API_KEY` for the situation-deck solvability check (or run it manually with `skip_solvability`). The workflow commits `decks/drafts/` together with `public/decks/`.
 
 ### Importing Hand-Written Situation Puzzles
 
@@ -249,7 +274,8 @@ kea/
 │   └── prompts/                # Game-specific prompt templates
 ├── decks/
 │   ├── source/                 # YAML deck configs
-│   └── puzzles/                # Hand-written situation puzzle packs
+│   ├── puzzles/                # Hand-written situation puzzle packs
+│   └── drafts/                 # Generated puzzles that failed the solvability check
 ├── public/
 │   └── decks/                  # Generated JSON decks (committed)
 └── .github/

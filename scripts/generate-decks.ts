@@ -6,6 +6,12 @@
  *   bun scripts/generate-decks.ts --all              # Generate all decks
  *   bun scripts/generate-decks.ts --deck animals     # Generate specific deck
  *   bun scripts/generate-decks.ts --dry-run          # Preview without calling API
+ *
+ * Situation decks also run the solvability check (#33): puzzles that a
+ * solver model cannot solve within 40 questions against the AI keeper, or
+ * that are ambiguous, go to decks/drafts/<deckId>.json instead of
+ * public/decks/. Needs ANTHROPIC_API_KEY (or KEEPER_PROVIDER/SOLVER_PROVIDER);
+ * skip it with --skip-solvability.
  */
 
 import { parseArgs } from "util";
@@ -16,7 +22,8 @@ import {
   type DeckSourceConfig,
 } from "./lib/config-loader";
 import { buildContext, truncateContext } from "./lib/context-fetcher";
-import { generateCards } from "./lib/llm-client";
+import { generateCards, getSolvabilityProviders } from "./lib/llm-client";
+import { DRAFTS_DIR, runSolvabilityStage, type SolvabilityProviders } from "./lib/solvability";
 import { validateCard, deduplicateCards } from "./lib/validators";
 import { finalizeSituationCards } from "./lib/situation-generation";
 import { buildPrompt, type PromptContext } from "./prompts";
@@ -34,6 +41,8 @@ const { values: args } = parseArgs({
     all: { type: "boolean", default: false },
     deck: { type: "string" },
     "dry-run": { type: "boolean", default: false },
+    "skip-solvability": { type: "boolean", default: false },
+    "solvability-concurrency": { type: "string", default: "4" },
     help: { type: "boolean", default: false },
   },
 });
@@ -47,6 +56,15 @@ Usage:
   bun scripts/generate-decks.ts --deck <name>      Generate specific deck (without .yaml)
   bun scripts/generate-decks.ts --dry-run          Preview without calling API
   bun scripts/generate-decks.ts --help             Show this help
+
+Situation decks:
+  --skip-solvability             Do not run the solvability check (every valid
+                                 puzzle is written to public/decks/)
+  --solvability-concurrency <n>  Puzzles checked in parallel (default 4)
+
+  The check needs ANTHROPIC_API_KEY (keeper/grader: KEEPER_PROVIDER/KEEPER_MODEL;
+  solver/ambiguity: SOLVER_PROVIDER/SOLVER_MODEL). Failed puzzles are written
+  to ${DRAFTS_DIR}/<deckId>.json with the reasons.
 
 Examples:
   bun scripts/generate-decks.ts --all
@@ -62,7 +80,8 @@ Examples:
 async function generateDeck(
   configName: string,
   config: DeckSourceConfig,
-  dryRun: boolean
+  dryRun: boolean,
+  solvability: SolvabilityProviders | null
 ): Promise<Deck | null> {
   const deckId = generateDeckIdFromConfig(config);
   console.log(`\n📦 Generating deck: ${deckId}`);
@@ -157,7 +176,31 @@ async function generateDeck(
     cards: uniqueCards,
   };
 
+  if (config.gameType === "situation") {
+    if (!solvability) {
+      console.warn("   ⚠️  Solvability check skipped (--skip-solvability)");
+      return deck;
+    }
+    console.log(`   Checking solvability of ${deck.cards.length} puzzles...`);
+    const stage = await runSolvabilityStage(deck, {
+      providers: solvability,
+      concurrency: solvabilityConcurrency(),
+      draftsDir: DRAFTS_DIR,
+      log: (line) => console.log(line),
+    });
+    if (stage.deck.cards.length === 0) {
+      console.error(`   ❌ No puzzle passed the solvability check; ${deck.deckId} not written`);
+      return null;
+    }
+    return stage.deck;
+  }
+
   return deck;
+}
+
+function solvabilityConcurrency(): number {
+  const n = Number.parseInt(args["solvability-concurrency"] ?? "4", 10);
+  return Number.isFinite(n) && n > 0 ? n : 4;
 }
 
 /**
@@ -229,10 +272,24 @@ async function main() {
     process.exit(1);
   }
 
+  // Solvability check providers (situation decks only), resolved up front so
+  // a missing key fails before any generation spend.
+  let solvability: SolvabilityProviders | null = null;
+  const hasSituation = Array.from(configs.values()).some((c) => c.gameType === "situation");
+  if (hasSituation && !dryRun && !args["skip-solvability"]) {
+    try {
+      solvability = getSolvabilityProviders();
+    } catch (error) {
+      console.error(`❌ Solvability check unavailable: ${(error as Error).message}`);
+      console.error("   Set ANTHROPIC_API_KEY, or pass --skip-solvability for a dry run");
+      process.exit(1);
+    }
+  }
+
   // Generate decks in parallel
   const configEntries = Array.from(configs.entries());
   const results = await Promise.all(
-    configEntries.map(([name, config]) => generateDeck(name, config, dryRun))
+    configEntries.map(([name, config]) => generateDeck(name, config, dryRun, solvability))
   );
 
   // Filter successful decks
