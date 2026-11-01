@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { History, Settings } from "lucide-react";
+import { Camera, History, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,6 +14,7 @@ import {
 import { BackupButtons } from "@/components/history/backup-buttons";
 import { PasscodeSection } from "@/components/settings/passcode-section";
 import { SettingsSection } from "@/components/settings/settings-section";
+import { isAiConfigured } from "@/lib/ai/client";
 import { getStore } from "@/lib/storage";
 import { persistenceState, queryPersisted, useHistoryState } from "@/lib/history";
 import type { TranslateFn } from "@/lib/i18n";
@@ -69,6 +70,7 @@ export function AppSettingsSheet({ open, onOpenChange, t }: SheetProps) {
         </DialogHeader>
         {open && <StorageSection t={t} />}
         {open && <PasscodeSection t={t} />}
+        {open && <AuthoringSection t={t} />}
         <SettingsSection title={t("settings.backup.title")}>
           <p className="text-sm text-muted-foreground">{t("settings.backup.body")}</p>
           <BackupButtons t={t} />
@@ -81,6 +83,22 @@ export function AppSettingsSheet({ open, onOpenChange, t }: SheetProps) {
         </SettingsSection>
       </DialogContent>
     </Dialog>
+  );
+}
+
+/** Link to photo quick-add (#38); hidden when the AI Worker is not configured. */
+function AuthoringSection({ t }: { t: TranslateFn }) {
+  if (!isAiConfigured()) return null;
+  return (
+    <SettingsSection title={t("add.settingsLink")}>
+      <p className="text-sm text-muted-foreground">{t("add.settingsBody")}</p>
+      <Button asChild variant="outline" className="w-full rounded-full">
+        <Link href="/add" data-testid="settings-add-puzzle">
+          <Camera className="h-4 w-4" />
+          {t("add.settingsLink")}
+        </Link>
+      </Button>
+    </SettingsSection>
   );
 }
 

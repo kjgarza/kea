@@ -121,19 +121,34 @@ export interface CaseJudgeResponse {
 // POST /author/photo (#38)
 // ---------------------------------------------------------------------------
 
+export type AuthorPhotoMediaType = "image/jpeg" | "image/png" | "image/webp" | "image/gif";
+
 export interface AuthorPhotoImage {
-  mediaType: "image/jpeg" | "image/png" | "image/webp" | "image/gif";
-  /** Base64 data, no `data:` prefix. */
+  /**
+   * Media type of `data`. HEIC is not accepted: the /add page re-encodes
+   * every photo to JPEG in the browser before upload.
+   */
+  mediaType: AuthorPhotoMediaType;
+  /** Base64 data, no `data:` prefix. At most PHOTO_LIMITS.maxImageBytes decoded. */
   data: string;
 }
 
 export interface AuthorPhotoRequest {
+  /** 1–2 photos: the front of the card, then (optionally) the back. */
   images: AuthorPhotoImage[];
+  /** Language of the pack the puzzle goes into (the output is written in it). */
   lang: AiLanguage;
+  /** Pack slug, e.g. "kitchen-table"; default PHOTO_DEFAULT_PACK. */
+  pack?: string;
 }
 
 export interface AuthorPhotoResponse {
+  /** A one-puzzle pack in the YAML import format (`decks/puzzles/<pack>-<lang>.yaml`). */
   yaml: string;
+  /** Where the YAML goes, e.g. "decks/puzzles/kitchen-table-en.yaml". */
+  fileName: string;
+  /** Shared-validator problems to fix in the editor before importing ([] = imports cleanly). */
+  errors: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -153,6 +168,8 @@ export interface StatusResponse {
 
 export type ApiErrorCode =
   | "bad_request"
+  | "payload_too_large"
+  | "unreadable_image"
   | "unauthorized"
   | "forbidden_origin"
   | "rate_limited"

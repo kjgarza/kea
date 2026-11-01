@@ -20,7 +20,7 @@ Errors are `{ "error": { "code", "message" } }`.
 | POST | `/keeper/grade` | `{ deckId, cardId, lang, theory }` (theory ≤ 1200 chars) | `{ correctFactIds: string[], missingCount: number, verdict: "solved"\|"close"\|"not_yet" }` | implemented (#32) |
 | POST | `/case/ask` | `{ deckId, cardId, lang, openedEvidenceIds, question }` | `{ answer, citedEvidenceIds, inEvidence }` | #37: uses only opened, unlocked evidence; 502 on bad model output |
 | POST | `/case/judge` | `{ deckId, cardId, lang, answers }` | `{ results: [{ questionId, correct }] }` | #37: only submitted questions; blank/exact/variant decided locally; 502 on bad model output |
-| POST | `/author/photo` | `{ images: [{ mediaType, data }], lang }` | `{ yaml }` | 501 until #38 |
+| POST | `/author/photo` | `{ images: [{ mediaType, data }], lang, pack? }` | `{ yaml, fileName, errors }` | #38: 1–2 base64 images (JPEG/PNG/WebP/GIF, ≤ 5 MB each; HEIC is re-encoded to JPEG by /add); 413 too large, 422 `unreadable_image`, 502 on bad model output |
 | GET | `/status` | none | `{ ok, remaining, limit }` (does not use quota) | implemented |
 
 Status codes: 400 `bad_request`, 401 `unauthorized` (missing or wrong
@@ -49,6 +49,17 @@ other field in the body.
   The response is rebuilt from known correct ids plus a count, so missing
   fact ids or texts are never returned. A refusal or malformed output returns
   502 `upstream_error` (retryable) instead of a verdict.
+- **Photo quick-add** (`/author/photo`): the vision model transcribes the
+  card (title, setup, solution) and derives 3–8 key facts and 1–4 hints
+  (structured output). The result becomes a one-puzzle pack
+  (`origin: transcribed`), is checked with the shared situation validator and
+  serialised with `src/lib/puzzles/puzzle-pack.ts`, so it imports with
+  `bun scripts/import-puzzles.ts`. Validator problems come back in `errors`
+  (200) for the author to fix in the /add editor. Image bytes are checked
+  against the declared type (magic bytes). **Images are never stored or
+  logged**: no KV/R2/cache writes (only the daily counter), and log lines carry
+  only error kinds. The Worker bundle now imports the `yaml` package from the
+  repo root, so run `bun install` at the root before `wrangler dev/deploy`.
 - **Decks** are cached in memory per isolate and in the Workers Cache API per
   data centre for `DECK_CACHE_TTL` seconds (default 600). After publishing a
   deck change, answers can use the old deck for up to that long.

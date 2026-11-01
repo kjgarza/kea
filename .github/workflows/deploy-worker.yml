@@ -13,6 +13,8 @@ on:
       - "worker/**"
       - "src/lib/ai/**"
       - "src/types/**"
+      - "src/lib/puzzles/**"
+      - "src/lib/data/**"
       - ".github/workflows/deploy-worker.yml"
 
 concurrency:
@@ -36,6 +38,12 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+
+      # The Worker bundles shared modules from src/ (the photo quick-add
+      # imports the `yaml` package from the root node_modules).
+      - name: Install shared dependencies
+        working-directory: .
+        run: bun install --frozen-lockfile
 
       - name: Install worker dependencies
         run: bun install --frozen-lockfile

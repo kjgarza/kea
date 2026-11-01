@@ -393,7 +393,7 @@ describe("keeper answers", () => {
 });
 
 describe("routing", () => {
-  test("unknown route 404, wrong method 405, later endpoints 501", async () => {
+  test("unknown route 404, wrong method 405, /author/photo validates its body", async () => {
     const h = harness();
     const headers = { "X-Kea-Passcode": "open-sesame" };
     expect((await handleRequest(new Request("https://w/nope", { headers }), baseEnv, h.deps)).status).toBe(404);
@@ -403,7 +403,8 @@ describe("routing", () => {
       baseEnv,
       h.deps
     );
-    expect(later.status).toBe(501);
+    expect(later.status).toBe(400);
+    expect(h.prompts).toHaveLength(0);
   });
 
   test("an anthropic provider without an API key reports misconfiguration", async () => {
