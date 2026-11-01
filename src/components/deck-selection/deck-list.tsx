@@ -5,6 +5,7 @@ import { DeckCard } from "./deck-card";
 import type { DeckMeta } from "@/types/deck";
 import type { GameType } from "@/types/game";
 import { getDecksForGame } from "@/lib/data/deck-loader";
+import { useLocale } from "@/lib/i18n";
 
 interface DeckListProps {
   gameType: GameType;
@@ -13,7 +14,8 @@ interface DeckListProps {
 export function DeckList({ gameType }: DeckListProps) {
   const [decks, setDecks] = useState<DeckMeta[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false);
+  const { t } = useLocale();
 
   useEffect(() => {
     async function loadDecks() {
@@ -27,9 +29,9 @@ export function DeckList({ gameType }: DeckListProps) {
           return a.name.localeCompare(b.name);
         });
         setDecks(loadedDecks);
-        setError(null);
+        setError(false);
       } catch (err) {
-        setError("Failed to load decks");
+        setError(true);
         console.error(err);
       } finally {
         setIsLoading(false);
@@ -55,7 +57,7 @@ export function DeckList({ gameType }: DeckListProps) {
   if (error) {
     return (
       <div className="text-center py-10">
-        <p className="text-destructive">{error}</p>
+        <p className="text-destructive">{t("decks.loadError")}</p>
       </div>
     );
   }
@@ -64,7 +66,7 @@ export function DeckList({ gameType }: DeckListProps) {
     return (
       <div className="text-center py-10">
         <p className="text-muted-foreground">
-          No decks available for this game yet.
+          {t("decks.empty")}
         </p>
       </div>
     );

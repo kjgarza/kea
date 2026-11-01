@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import type { Card } from "@/types/card";
 import type { Deck } from "@/types/deck";
 import type { GameType } from "@/types/game";
+import type { PlainMessageKey } from "@/lib/i18n/types";
 import type { BaseSessionState } from "@/types/session";
 
 /** Options chosen on the start screen. */
@@ -92,8 +93,11 @@ export interface GameModule<
    */
   showChrome?(session: S): boolean;
 
-  /** Completion screen heading. Default "Deck Complete!". */
-  completeTitle?: string;
+  /**
+   * Completion screen heading, as an i18n message key (src/lib/i18n/en.ts).
+   * Default "play.complete.deckTitle".
+   */
+  completeTitle?: PlainMessageKey;
 
   /**
    * Tailwind classes for the play/start/complete screens. Written out in full
