@@ -133,7 +133,7 @@ function mergeTranslation(original: Card, translated: Record<string, unknown>): 
       if (original.format === "mcq") {
         // Safely merge MCQ translations while keeping answerIndex consistent.
         let mergedChoices = original.choices;
-        let mergedAnswerIndex = original.answerIndex;
+        const mergedAnswerIndex = original.answerIndex;
 
         if (Array.isArray(translated.choices)) {
           const candidateChoices = (translated.choices as unknown[]).filter(

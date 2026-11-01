@@ -14,7 +14,7 @@ export function getBasePath(): string {
 
   // Fallback to environment variable or empty string
   const isProd = process.env.NODE_ENV === "production";
-  const repoName = process.env.NEXT_PUBLIC_REPO_NAME || "cards-game";
+  const repoName = process.env.NEXT_PUBLIC_REPO_NAME || "kea";
   return isProd ? `/${repoName}` : "";
 }
 
