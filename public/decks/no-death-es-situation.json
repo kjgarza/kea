@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "deckId": "no-death-es-situation",
-  "version": "2026-10-30T00:00:00Z",
+  "version": "2026-10-30T18:00:00Z",
   "name": "Sin muertes",
   "gameType": "situation",
   "language": "es",
@@ -94,7 +94,7 @@
           "text": "Lucía es demasiado bajita para llegar a los botones altos."
         },
         {
-          "id": "cannot-reach",
+          "id": "reaches-seven",
           "text": "Llega al botón del piso 7."
         },
         {
@@ -195,19 +195,19 @@
       "solution": "El niño propuso desinflar un poco las ruedas del camión. Con las ruedas más blandas, el camión bajó unos centímetros y pudo salir de debajo del puente sin dañar nada.",
       "keyFacts": [
         {
-          "id": "lorry-stuck",
+          "id": "lorry-too-tall",
           "text": "El camión era demasiado alto para el puente."
         },
         {
-          "id": "low-bridge",
+          "id": "child-idea",
           "text": "La idea fue de un niño."
         },
         {
-          "id": "child-idea",
+          "id": "let-air-out",
           "text": "Desinflaron las ruedas."
         },
         {
-          "id": "let-air-out",
+          "id": "low-enough",
           "text": "El camión quedó lo bastante bajo para salir."
         }
       ],
@@ -409,15 +409,15 @@
           "text": "En el pueblo solo hay dos barberos."
         },
         {
-          "id": "messy-barber",
+          "id": "cut-each-other",
           "text": "Cada barbero le corta el pelo al otro."
         },
         {
-          "id": "cut-each-other",
+          "id": "scruffy-cut-neat",
           "text": "El barbero despeinado hizo el corte impecable."
         },
         {
-          "id": "skill",
+          "id": "more-skilled",
           "text": "Por tanto, el despeinado es más hábil."
         }
       ],
@@ -619,15 +619,15 @@
           "text": "Había una mosca en el primer café."
         },
         {
-          "id": "sent-back",
+          "id": "already-sugared",
           "text": "Sara ya le había echado azúcar."
         },
         {
-          "id": "already-sugared",
+          "id": "tasted-sweet",
           "text": "La taza que le devolvieron estaba dulce."
         },
         {
-          "id": "tasted-sweet",
+          "id": "fly-removed",
           "text": "El camarero solo quitó la mosca."
         }
       ],
@@ -689,7 +689,7 @@
           "text": "María es sorda."
         },
         {
-          "id": "light-doorbell",
+          "id": "silent-doorbell",
           "text": "Su timbre no hace ruido."
         },
         {
@@ -697,7 +697,7 @@
           "text": "Hace parpadear unas luces dentro del piso."
         },
         {
-          "id": "saw-not-heard",
+          "id": "expecting-friends",
           "text": "Esperaba a sus amigos."
         }
       ],

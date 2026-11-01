@@ -10,8 +10,10 @@ import {
   getPuzzle,
   pickableCardIds,
   situationPhase,
+  soloScore,
   type SituationAction,
 } from "@/lib/game/modules/situation/logic";
+import { useAiAvailability } from "@/hooks/use-ai-availability";
 import { useLocale } from "@/lib/i18n";
 import { getGroups, recordPlay, selectedGroup, situationPlayRecord } from "@/lib/history";
 import { AfterPuzzleNotices } from "@/components/history/after-puzzle-notices";
@@ -34,6 +36,11 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
   const { t } = useLocale(deck.language);
   const phase = situationPhase(session);
   const puzzle = getPuzzle(session);
+  const aiAvailability = useAiAvailability();
+  const mode = getMode(session);
+  // A saved AI/solo mode falls back to the human keeper in the picker when
+  // AI is not usable here (no Worker URL in this build, or no passcode).
+  const pickerMode = mode !== "human" && aiAvailability !== "available" ? "human" : mode;
 
   // Every finished puzzle is written to `kea.history` (#28) for the group
   // currently selected in the picker.
@@ -62,7 +69,17 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
       <PuzzlePicker
         deckId={deck.deckId}
         cards={cards}
-        onPick={(cardId) => dispatch({ type: "pick", cardId, at: now() })}
+        onPick={(cardId) =>
+          dispatch({
+            type: "pick",
+            cardId,
+            at: now(),
+            ...(pickerMode !== mode ? { mode: pickerMode } : {}),
+          })
+        }
+        mode={pickerMode}
+        onModeChange={(next) => dispatch({ type: "setMode", mode: next })}
+        aiAvailability={aiAvailability}
         t={t}
       />
     );
@@ -81,7 +98,7 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
         />
       );
     case "playing": {
-      const Panel = KEEPER_PANELS[getMode(session)];
+      const Panel = KEEPER_PANELS[mode];
       return (
         <Panel
           deck={deck}
@@ -101,6 +118,7 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
           hasMore={session.remainingCardIds.length > 0}
           onNext={() => dispatch({ type: "next", at: now() })}
           onChoose={() => dispatch({ type: "next", at: now(), toPicker: true })}
+          score={mode === "solo" ? soloScore(puzzle) : undefined}
           notices={<AfterPuzzleNotices t={t} />}
           t={t}
         />

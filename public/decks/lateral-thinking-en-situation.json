@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "deckId": "lateral-thinking-en-situation",
-  "version": "2026-10-30T00:00:00Z",
+  "version": "2026-10-30T18:00:00Z",
   "name": "Lateral Thinking",
   "gameType": "situation",
   "language": "en",
@@ -265,19 +265,19 @@
       "solution": "The only common place where that walk brings you back to your starting point is the North Pole. The only bears there are polar bears, so the bear was white.",
       "keyFacts": [
         {
-          "id": "walked-square",
+          "id": "back-to-start",
           "text": "Her walk brought her back to her start."
         },
         {
-          "id": "back-to-start",
+          "id": "north-pole",
           "text": "She started at the North Pole."
         },
         {
-          "id": "north-pole",
+          "id": "polar-bear",
           "text": "Only polar bears live there."
         },
         {
-          "id": "polar-bear",
+          "id": "white-bear",
           "text": "The bear was white."
         }
       ],
@@ -370,19 +370,19 @@
       "solution": "It was the middle of winter and the river was frozen solid. The dog simply walked across the ice.",
       "keyFacts": [
         {
-          "id": "river-crossing",
+          "id": "dog-crossed-alone",
           "text": "The dog crossed the river on its own."
         },
         {
-          "id": "dog-dry",
+          "id": "no-bridge",
           "text": "There was no bridge or boat."
         },
         {
-          "id": "no-bridge",
+          "id": "frozen",
           "text": "The river was frozen."
         },
         {
-          "id": "frozen",
+          "id": "walked-on-ice",
           "text": "The dog walked across the ice."
         }
       ],
@@ -409,7 +409,7 @@
           "text": "They brought home three fish."
         },
         {
-          "id": "two-fathers-two-sons",
+          "id": "one-fish-each",
           "text": "Each person caught one fish."
         },
         {
@@ -475,7 +475,7 @@
       "solution": "Diego's twin brother emigrated to another country. Every Sunday they each order two coffees at the same moment and have breakfast together on a video call, with the phone propped up against the second cup.",
       "keyFacts": [
         {
-          "id": "two-coffees",
+          "id": "talking-to-brother",
           "text": "Diego is talking to his brother."
         },
         {
@@ -487,7 +487,7 @@
           "text": "They talk on a video call."
         },
         {
-          "id": "same-time",
+          "id": "holds-phone",
           "text": "The second cup holds up the phone and keeps the ritual."
         }
       ],
@@ -618,19 +618,19 @@
       "solution": "The author was famous for signing every single copy of the first edition by hand. Signed copies are common, but an unsigned one is a rare mistake, so collectors value it much more.",
       "keyFacts": [
         {
-          "id": "author-signed-all",
+          "id": "collector",
           "text": "The buyer was a collector."
         },
         {
-          "id": "unsigned-rare",
+          "id": "author-signed-all",
           "text": "The author signed almost every copy."
         },
         {
-          "id": "paid-more",
+          "id": "unsigned-rare",
           "text": "An unsigned copy is very rare."
         },
         {
-          "id": "collector",
+          "id": "rarity-value",
           "text": "Rarity made it more valuable."
         }
       ],
@@ -688,19 +688,19 @@
       "solution": "Since the man has no brothers, \"my father's son\" can only be himself. So the father of the man in the portrait is the speaker, which means the portrait shows his son.",
       "keyFacts": [
         {
-          "id": "portrait",
+          "id": "only-child",
           "text": "The speaker is an only child."
         },
         {
-          "id": "only-child",
+          "id": "father-son-is-him",
           "text": "\"My father's son\" is the speaker himself."
         },
         {
-          "id": "father-son-is-him",
+          "id": "speaker-is-father",
           "text": "The speaker is the father of the man in the portrait."
         },
         {
-          "id": "his-son",
+          "id": "portrait-is-son",
           "text": "The portrait shows the speaker's son."
         }
       ],

@@ -1,0 +1,13 @@
+# The Portrait: "my father's son" is the speaker, so the portrait shows his son.
+# Added in #31 after the key-fact id fix: checks fact ids line up with their text.
+cardId: la-020
+decks: { en: lateral-thinking-en-situation, es: lateral-thinking-es-situation }
+cases:
+  - { a: yes, facts: [only-child], en: "Is the speaker an only child?", es: "¿Quien habla es hijo único?" }
+  - { a: yes, facts: [father-son-is-him], en: "Is \"my father's son\" the speaker himself?", es: "¿\"El hijo de mi padre\" es él mismo?" }
+  - { a: yes, facts: [speaker-is-father], en: "Is the speaker the father of the man in the portrait?", es: "¿Quien habla es el padre del hombre del retrato?" }
+  - { a: yes, facts: [portrait-is-son], en: "Is it a portrait of his son?", es: "¿Es un retrato de su hijo?" }
+  - { a: no, allow: [only-child], en: "Does the speaker have a brother?", es: "¿Quien habla tiene un hermano?" }
+  - { a: no, allow: [portrait-is-son], en: "Is it a portrait of the speaker himself?", es: "¿Es un retrato de él mismo?" }
+  - { a: irrelevant, en: "Is the portrait painted in oils?", es: "¿El retrato está pintado al óleo?" }
+  - { a: rephrase, tag: non-yes-no, en: "Who is in the portrait?", es: "¿Quién sale en el retrato?" }

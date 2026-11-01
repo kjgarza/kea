@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "deckId": "lateral-thinking-es-situation",
-  "version": "2026-10-30T00:00:00Z",
+  "version": "2026-10-30T18:00:00Z",
   "name": "Pensamiento lateral",
   "gameType": "situation",
   "language": "es",
@@ -265,19 +265,19 @@
       "solution": "El lugar conocido donde ese paseo te devuelve al punto de partida es el Polo Norte. Allí solo hay osos polares, así que el oso era blanco.",
       "keyFacts": [
         {
-          "id": "walked-square",
+          "id": "back-to-start",
           "text": "Su paseo la devolvió al punto de partida."
         },
         {
-          "id": "back-to-start",
+          "id": "north-pole",
           "text": "Empezó en el Polo Norte."
         },
         {
-          "id": "north-pole",
+          "id": "polar-bear",
           "text": "Allí solo viven osos polares."
         },
         {
-          "id": "polar-bear",
+          "id": "white-bear",
           "text": "El oso era blanco."
         }
       ],
@@ -370,19 +370,19 @@
       "solution": "Era pleno invierno y el río estaba completamente congelado. El perro simplemente cruzó caminando sobre el hielo.",
       "keyFacts": [
         {
-          "id": "river-crossing",
+          "id": "dog-crossed-alone",
           "text": "El perro cruzó el río solo."
         },
         {
-          "id": "dog-dry",
+          "id": "no-bridge",
           "text": "No había puente ni barca."
         },
         {
-          "id": "no-bridge",
+          "id": "frozen",
           "text": "El río estaba congelado."
         },
         {
-          "id": "frozen",
+          "id": "walked-on-ice",
           "text": "El perro cruzó caminando sobre el hielo."
         }
       ],
@@ -409,7 +409,7 @@
           "text": "Llevaron tres peces a casa."
         },
         {
-          "id": "two-fathers-two-sons",
+          "id": "one-fish-each",
           "text": "Cada persona pescó un pez."
         },
         {
@@ -475,7 +475,7 @@
       "solution": "El hermano gemelo de Diego emigró a otro país. Cada domingo, los dos piden dos cafés a la vez y desayunan juntos por videollamada, con el móvil apoyado en la segunda taza.",
       "keyFacts": [
         {
-          "id": "two-coffees",
+          "id": "talking-to-brother",
           "text": "Diego está hablando con su hermano."
         },
         {
@@ -487,7 +487,7 @@
           "text": "Hablan por videollamada."
         },
         {
-          "id": "same-time",
+          "id": "holds-phone",
           "text": "La segunda taza sostiene el móvil y mantiene el ritual."
         }
       ],
@@ -618,19 +618,19 @@
       "solution": "El autor era famoso por firmar a mano todos los ejemplares de la primera edición. Los ejemplares firmados abundan, pero uno sin firmar es un error poco común, así que los coleccionistas lo valoran mucho más.",
       "keyFacts": [
         {
-          "id": "author-signed-all",
+          "id": "collector",
           "text": "El comprador era coleccionista."
         },
         {
-          "id": "unsigned-rare",
+          "id": "author-signed-all",
           "text": "El autor firmó casi todos los ejemplares."
         },
         {
-          "id": "paid-more",
+          "id": "unsigned-rare",
           "text": "Un ejemplar sin firmar es rarísimo."
         },
         {
-          "id": "collector",
+          "id": "rarity-value",
           "text": "La rareza lo hacía más valioso."
         }
       ],
@@ -688,19 +688,19 @@
       "solution": "Como el hombre no tiene hermanos, \"el hijo de mi padre\" solo puede ser él mismo. Así que el padre del hombre del retrato es quien habla, y por tanto el retrato es de su hijo.",
       "keyFacts": [
         {
-          "id": "portrait",
+          "id": "only-child",
           "text": "Quien habla es hijo único."
         },
         {
-          "id": "only-child",
+          "id": "father-son-is-him",
           "text": "\"El hijo de mi padre\" es él mismo."
         },
         {
-          "id": "father-son-is-him",
+          "id": "speaker-is-father",
           "text": "Quien habla es el padre del hombre del retrato."
         },
         {
-          "id": "his-son",
+          "id": "portrait-is-son",
           "text": "El retrato es de su hijo."
         }
       ],

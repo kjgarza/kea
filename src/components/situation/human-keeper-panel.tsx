@@ -1,14 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import {
   ArrowLeft,
   Check,
-  CircleHelp,
   Eye,
   Flag,
-  Lightbulb,
   Plus,
   Trophy,
   Undo2,
@@ -25,8 +22,9 @@ import {
 import { ActionButton } from "@/components/play/action-bar";
 import type { KeeperPanelProps } from "./keeper-panels";
 import { ElapsedTime } from "./elapsed-time";
+import { HintLadder } from "./hint-ladder";
 import { SetupScreen } from "./setup-screen";
-import { SituationPanel, SituationShell } from "./situation-shell";
+import { SituationPanel, SituationShell, SituationStat } from "./situation-shell";
 
 const now = () => new Date().toISOString();
 
@@ -104,8 +102,6 @@ function KeeperSetup({ card, dispatch, t }: KeeperPanelProps) {
 
 function KeeperCribSheet({ card, puzzle, dispatch, t }: KeeperPanelProps) {
   const found = new Set(puzzle.factsRevealed);
-  const usedHints = card.hints.slice(0, puzzle.hintsUsed);
-  const hintsLeft = puzzle.hintsUsed < card.hints.length;
 
   return (
     <SituationShell
@@ -152,14 +148,14 @@ function KeeperCribSheet({ card, puzzle, dispatch, t }: KeeperPanelProps) {
     >
       {/* Stats: time + questions */}
       <div className="grid grid-cols-2 gap-3">
-        <Stat label={t("situation.keeper.time")}>
+        <SituationStat label={t("situation.keeper.time")}>
           <ElapsedTime puzzle={puzzle} />
-        </Stat>
-        <Stat label={t("situation.keeper.questions")}>
+        </SituationStat>
+        <SituationStat label={t("situation.keeper.questions")}>
           <span className="tabular-nums" data-testid="situation-question-count">
             {puzzle.questionCount}
           </span>
-        </Stat>
+        </SituationStat>
       </div>
 
       <SituationPanel className="py-3">
@@ -212,48 +208,13 @@ function KeeperCribSheet({ card, puzzle, dispatch, t }: KeeperPanelProps) {
         </ul>
       </SituationPanel>
 
-      <SituationPanel>
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-situation mb-3">
-          {t("situation.keeper.hints")}
-        </h2>
-        {usedHints.length > 0 && (
-          <ol className="space-y-2 mb-3" data-testid="situation-hints">
-            {usedHints.map((hint, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl bg-amber-50 border border-amber-200 px-3 py-2"
-              >
-                <span className="block text-xs font-semibold text-amber-800">
-                  {t("situation.keeper.hint", { number: i + 1 })}
-                </span>
-                {hint}
-              </motion.li>
-            ))}
-          </ol>
-        )}
-        <Button
-          variant="outline"
-          className="w-full h-12 rounded-2xl"
-          disabled={!hintsLeft}
-          onClick={() => dispatch({ type: "useHint" })}
-        >
-          {hintsLeft ? <Lightbulb className="h-4 w-4 mr-2" /> : <CircleHelp className="h-4 w-4 mr-2" />}
-          {hintsLeft
-            ? t("situation.keeper.giveHint", { number: puzzle.hintsUsed + 1 })
-            : t("situation.keeper.noMoreHints")}
-        </Button>
-      </SituationPanel>
+      <HintLadder
+        card={card}
+        puzzle={puzzle}
+        onHint={() => dispatch({ type: "useHint" })}
+        nextLabel={(number) => t("situation.keeper.giveHint", { number })}
+        t={t}
+      />
     </SituationShell>
-  );
-}
-
-function Stat({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl bg-white/90 border shadow-sm px-4 py-2 text-center">
-      <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</div>
-      <div className="text-2xl font-bold font-display">{children}</div>
-    </div>
   );
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "deckId": "no-death-en-situation",
-  "version": "2026-10-30T00:00:00Z",
+  "version": "2026-10-30T18:00:00Z",
   "name": "No Death",
   "gameType": "situation",
   "language": "en",
@@ -94,7 +94,7 @@
           "text": "Lucía is too short to reach the higher buttons."
         },
         {
-          "id": "cannot-reach",
+          "id": "reaches-seven",
           "text": "She can reach the button for floor 7."
         },
         {
@@ -195,19 +195,19 @@
       "solution": "The child suggested letting some air out of the lorry's tyres. With the tyres softer, the lorry sat a few centimetres lower and could be driven out from under the bridge without damaging anything.",
       "keyFacts": [
         {
-          "id": "lorry-stuck",
+          "id": "lorry-too-tall",
           "text": "The lorry was too tall for the bridge."
         },
         {
-          "id": "low-bridge",
+          "id": "child-idea",
           "text": "A child had the idea."
         },
         {
-          "id": "child-idea",
+          "id": "let-air-out",
           "text": "They let air out of the tyres."
         },
         {
-          "id": "let-air-out",
+          "id": "low-enough",
           "text": "The lorry became low enough to drive out."
         }
       ],
@@ -409,15 +409,15 @@
           "text": "There are only two barbers in town."
         },
         {
-          "id": "messy-barber",
+          "id": "cut-each-other",
           "text": "Each barber cuts the other's hair."
         },
         {
-          "id": "cut-each-other",
+          "id": "scruffy-cut-neat",
           "text": "The scruffy barber gave the neat haircut."
         },
         {
-          "id": "skill",
+          "id": "more-skilled",
           "text": "So the scruffy barber is more skilled."
         }
       ],
@@ -619,15 +619,15 @@
           "text": "There was a fly in the first coffee."
         },
         {
-          "id": "sent-back",
+          "id": "already-sugared",
           "text": "Sara had already put sugar in it."
         },
         {
-          "id": "already-sugared",
+          "id": "tasted-sweet",
           "text": "The returned cup was sweet."
         },
         {
-          "id": "tasted-sweet",
+          "id": "fly-removed",
           "text": "The waiter only removed the fly."
         }
       ],
@@ -689,7 +689,7 @@
           "text": "Maria is deaf."
         },
         {
-          "id": "light-doorbell",
+          "id": "silent-doorbell",
           "text": "Her doorbell makes no sound."
         },
         {
@@ -697,7 +697,7 @@
           "text": "It makes lights flash inside the flat."
         },
         {
-          "id": "saw-not-heard",
+          "id": "expecting-friends",
           "text": "She was expecting her friends."
         }
       ],

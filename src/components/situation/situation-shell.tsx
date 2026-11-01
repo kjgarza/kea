@@ -42,3 +42,13 @@ export function SituationPanel({
     </div>
   );
 }
+
+/** Small labelled stat tile (time, questions, score). */
+export function SituationStat({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-2xl bg-white/90 border shadow-sm px-4 py-2 text-center">
+      <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className="text-2xl font-bold font-display">{children}</div>
+    </div>
+  );
+}

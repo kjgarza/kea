@@ -4,12 +4,15 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { AlertTriangle, Check, ChevronRight, Clock, History, Shuffle } from "lucide-react";
 import type { SituationCard } from "@/types/card";
+import type { SituationMode } from "@/types/session";
+import type { AiAvailability } from "@/hooks/use-ai-availability";
 import type { TranslateFn } from "@/lib/i18n";
 import { playedCardIds, selectedGroup, useHistoryState } from "@/lib/history";
 import { ActionButton } from "@/components/play/action-bar";
 import { GroupPicker } from "@/components/history/group-picker";
 import { RandomPickDialog } from "@/components/history/random-pick-dialog";
 import { AppSettingsButton } from "@/components/settings/app-settings-sheet";
+import { ModePicker } from "./mode-picker";
 import { SituationShell } from "./situation-shell";
 
 interface Props {
@@ -17,6 +20,11 @@ interface Props {
   /** Upcoming puzzles, current first. */
   cards: SituationCard[];
   onPick: (cardId: string) => void;
+  /** Keeper mode the next puzzle will be played in. */
+  mode: SituationMode;
+  onModeChange: (mode: SituationMode) => void;
+  /** Whether the AI modes can be chosen (Worker URL + passcode). */
+  aiAvailability: AiAvailability;
   t: TranslateFn;
 }
 
@@ -25,7 +33,15 @@ interface Props {
  * never the setup's answer, solution, facts or hints. Also: who is playing
  * (group, F3), hiding puzzles that group has played, and random pick (F4).
  */
-export function PuzzlePicker({ deckId, cards, onPick, t }: Props) {
+export function PuzzlePicker({
+  deckId,
+  cards,
+  onPick,
+  mode,
+  onModeChange,
+  aiAvailability,
+  t,
+}: Props) {
   const { history, groups, settings } = useHistoryState();
   const group = selectedGroup(groups);
   const played = useMemo(
@@ -68,12 +84,14 @@ export function PuzzlePicker({ deckId, cards, onPick, t }: Props) {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-1">
-          {t("situation.picker.subtitle")}{" "}
+          {t(`situation.mode.${mode}.desc`)}{" "}
           <span className="whitespace-nowrap">
             {t("situation.picker.left", { count: cards.length })}
           </span>
         </p>
       </div>
+
+      <ModePicker mode={mode} onChange={onModeChange} availability={aiAvailability} t={t} />
 
       <GroupPicker groups={groups} t={t} />
 

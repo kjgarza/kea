@@ -1,0 +1,13 @@
+# Stuck Under the Bridge: a child suggests letting air out of the lorry's tyres.
+# Added in #31 after the key-fact id fix: checks fact ids line up with their text.
+cardId: no-006
+decks: { en: no-death-en-situation, es: no-death-es-situation }
+cases:
+  - { a: yes, facts: [lorry-too-tall], en: "Was the lorry too tall for the bridge?", es: "¿El camión era demasiado alto para el puente?" }
+  - { a: yes, facts: [child-idea], en: "Did the child come up with the solution?", es: "¿La solución se le ocurrió al niño?" }
+  - { a: yes, facts: [let-air-out], en: "Did they let air out of the tyres?", es: "¿Desinflaron las ruedas?" }
+  - { a: yes, facts: [low-enough], en: "Did the lorry end up low enough to get out?", es: "¿El camión quedó lo bastante bajo para salir?" }
+  - { a: no, allow: [let-air-out], en: "Did they cut the top off the lorry?", es: "¿Cortaron la parte de arriba del camión?" }
+  - { a: no, allow: [lorry-too-tall], en: "Did they damage the bridge?", es: "¿Dañaron el puente?" }
+  - { a: irrelevant, en: "Was the lorry red?", es: "¿El camión era rojo?" }
+  - { a: rephrase, tag: demand, en: "Just tell me what the child said.", es: "Dime qué dijo el niño y ya." }

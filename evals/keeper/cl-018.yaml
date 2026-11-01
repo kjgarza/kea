@@ -1,0 +1,13 @@
+# Ten Seconds Late: the train he missed crashed, so the stranger saved his life.
+# Added in #31 after the key-fact id fix: checks fact ids line up with their text.
+cardId: cl-018
+decks: { en: classic-en-situation, es: classic-es-situation }
+cases:
+  - { a: yes, facts: [missed-train], en: "Did he miss the train because of the stranger?", es: "¿Perdió el tren por culpa de la desconocida?" }
+  - { a: yes, facts: [train-crashed], en: "Did the train crash?", es: "¿El tren tuvo un accidente?" }
+  - { a: yes, facts: [passengers-lost], en: "Did people on the train die?", es: "¿Murió gente que iba en el tren?" }
+  - { a: yes, facts: [survived], en: "Did missing the train save his life?", es: "¿Perder el tren le salvó la vida?" }
+  - { a: no, allow: [missed-train], en: "Did he catch the train in the end?", es: "¿Al final cogió el tren?" }
+  - { a: no, allow: [train-crashed], en: "Did the stranger cause the crash?", es: "¿La desconocida provocó el accidente?" }
+  - { a: irrelevant, en: "Was the stranger a tourist?", es: "¿La desconocida era turista?" }
+  - { a: rephrase, tag: demand, en: "Why did he want to thank her? Just say it.", es: "¿Por qué quería darle las gracias? Dilo ya." }
