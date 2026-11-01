@@ -30,18 +30,14 @@ export interface StandardSessionState extends BaseSessionState {
   gameType: Exclude<GameType, "monikers">;
 }
 
-// Union of all session types
+// Union of all session types. New game types add their session state here
+// and register a module in src/lib/game/modules/registry.ts.
 export type SessionState = StandardSessionState | MonikersSessionState;
 
-// Type guard for Monikers session
-export function isMonikersSession(
-  session: SessionState
-): session is MonikersSessionState {
-  return session.gameType === "monikers";
-}
-
-// Session storage key pattern
-export const SESSION_KEY_PREFIX = "cg.session.";
+// Session storage key pattern (logical key inside the `kea.` store, so the
+// raw localStorage key is `kea.session.<deckId>`). Builds before the typed
+// store used `cg.session.<deckId>`; those are migrated on first load.
+export const SESSION_KEY_PREFIX = "session.";
 
 export function getSessionKey(deckId: string): string {
   return `${SESSION_KEY_PREFIX}${deckId}`;

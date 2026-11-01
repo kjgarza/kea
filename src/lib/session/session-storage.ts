@@ -1,161 +1,94 @@
 import type { SessionState } from "@/types/session";
-import { getSessionKey, SESSION_KEY_PREFIX } from "@/types/session";
+import { SESSION_KEY_PREFIX } from "@/types/session";
+import { defineStoredCollection, getStore } from "@/lib/storage";
 
 /**
- * Load session from localStorage
- * Returns null if no session exists or if parsing fails
+ * Game sessions, one per deck, stored at `kea.session.<deckId>`.
+ *
+ * Envelope version 1 holds a SessionState exactly as before the typed store
+ * existed (the session's own `schemaVersion` field is unchanged), so legacy
+ * `cg.session.*` values are copied across as-is.
  */
+const SESSION_STORAGE_VERSION = 1;
+
+function isSessionLike(value: unknown): value is SessionState {
+  if (typeof value !== "object" || value === null) return false;
+  const s = value as Partial<SessionState>;
+  return Boolean(s.deckId && s.deckVersion && s.gameType);
+}
+
+const sessions = defineStoredCollection<SessionState>(SESSION_KEY_PREFIX, {
+  version: SESSION_STORAGE_VERSION,
+  validate: isSessionLike,
+});
+
+/** Load a session. Returns null if none exists or it is malformed. */
 export function loadSession(deckId: string): SessionState | null {
-  if (typeof window === "undefined") return null;
-
-  try {
-    const key = getSessionKey(deckId);
-    const data = localStorage.getItem(key);
-    if (!data) return null;
-
-    const session = JSON.parse(data) as SessionState;
-
-    // Basic validation - ensure required fields exist
-    if (!session.deckId || !session.deckVersion || !session.gameType) {
-      console.warn("Invalid session data, clearing");
-      clearSession(deckId);
-      return null;
-    }
-
-    return session;
-  } catch (error) {
-    console.error("Failed to load session:", error);
-    clearSession(deckId);
-    return null;
-  }
+  return sessions.get(deckId);
 }
 
-/**
- * Save session to localStorage
- */
+/** Save a session (in memory only if storage is blocked or full). */
 export function saveSession(session: SessionState): void {
-  if (typeof window === "undefined") return;
-
-  try {
-    const key = getSessionKey(session.deckId);
-    localStorage.setItem(key, JSON.stringify(session));
-  } catch (error) {
-    console.error("Failed to save session:", error);
-    // Could be quota exceeded - try to clear old sessions
-    if (error instanceof DOMException && error.name === "QuotaExceededError") {
-      clearOldSessions();
-      // Retry once
-      try {
-        const key = getSessionKey(session.deckId);
-        localStorage.setItem(key, JSON.stringify(session));
-      } catch {
-        console.error("Failed to save session after clearing old sessions");
-      }
-    }
+  if (!sessions.set(session.deckId, session)) {
+    // Not persisted: likely quota. Make room and retry once.
+    clearOldSessions(session.deckId);
+    sessions.set(session.deckId, session);
   }
 }
 
-/**
- * Clear session from localStorage
- */
 export function clearSession(deckId: string): void {
-  if (typeof window === "undefined") return;
-
-  try {
-    const key = getSessionKey(deckId);
-    localStorage.removeItem(key);
-  } catch (error) {
-    console.error("Failed to clear session:", error);
-  }
+  sessions.remove(deckId);
 }
 
-/**
- * Check if a session exists for a deck
- */
 export function hasSession(deckId: string): boolean {
-  if (typeof window === "undefined") return false;
-
-  const key = getSessionKey(deckId);
-  return localStorage.getItem(key) !== null;
+  return sessions.get(deckId) !== null;
 }
 
-/**
- * List all saved session deck IDs
- */
+/** All deck IDs that have a saved session. */
 export function listSavedSessions(): string[] {
-  if (typeof window === "undefined") return [];
-
-  const sessions: string[] = [];
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key?.startsWith(SESSION_KEY_PREFIX)) {
-      sessions.push(key.replace(SESSION_KEY_PREFIX, ""));
-    }
-  }
-
-  return sessions;
+  return sessions.ids();
 }
 
-/**
- * Get count of saved sessions
- */
 export function getSessionCount(): number {
   return listSavedSessions().length;
 }
 
-/**
- * Clear all game sessions from localStorage
- */
 export function clearAllSessions(): void {
-  if (typeof window === "undefined") return;
-
-  const sessions = listSavedSessions();
-  for (const deckId of sessions) {
+  for (const deckId of listSavedSessions()) {
     clearSession(deckId);
   }
 }
 
-/**
- * Clear old sessions to free up storage
- * Keeps the 10 most recently accessed sessions
- */
-function clearOldSessions(): void {
-  const sessions = listSavedSessions();
-
-  // Sort by last access time if we had timestamps
-  // For now, just keep first 10 and remove the rest
-  const toRemove = sessions.slice(10);
-
+/** Free space by keeping only the first 10 sessions (besides `keep`). */
+function clearOldSessions(keep: string): void {
+  const toRemove = listSavedSessions()
+    .filter((id) => id !== keep)
+    .slice(10);
   for (const deckId of toRemove) {
     clearSession(deckId);
   }
 }
 
-/**
- * Export all sessions as JSON (for backup/debug)
- */
+/** Export all sessions as JSON (for backup/debug). */
 export function exportSessions(): Record<string, SessionState> {
-  const sessions = listSavedSessions();
   const result: Record<string, SessionState> = {};
-
-  for (const deckId of sessions) {
+  for (const deckId of listSavedSessions()) {
     const session = loadSession(deckId);
-    if (session) {
-      result[deckId] = session;
-    }
+    if (session) result[deckId] = session;
   }
-
   return result;
 }
 
-/**
- * Import sessions from JSON (for restore/debug)
- */
+/** Import sessions from JSON (for restore/debug). */
 export function importSessions(data: Record<string, SessionState>): void {
   for (const [deckId, session] of Object.entries(data)) {
     if (session.deckId === deckId) {
       saveSession(session);
     }
   }
+}
+
+/** Whether sessions survive a reload (false when storage is blocked/full). */
+export function isSessionStoragePersistent(): boolean {
+  return getStore().isPersistent();
 }

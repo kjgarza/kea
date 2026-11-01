@@ -37,28 +37,44 @@ type Card = CharadesCard | TriviaCard | TabooCard | JustOneCard | MonikersCard;
 
 Each card has a `type` field for narrowing. Use switch statements on `card.type` for exhaustive handling.
 
-### Game Engine
+### Game Engine (module registry)
 
-State machine in `src/lib/game/engine.ts` handles all game logic:
+Each game type is a `GameModule` (`src/lib/game/modules/types.ts`) registered in `src/lib/game/modules/registry.ts` (`GAME_MODULES: Record<GameType, AnyGameModule>`, `getGameModule(type)`). Shared code never branches on game type; it calls the module:
 
-- `createInitialSession(deck, { shuffleEnabled, shuffleSeed? })` - Build a fresh session
-- `nextCard(session)` - Mark current card done and advance
-- `passCard(session)` - Skip current card. Behaviour comes from `GAMES[gameType].passBehavior` in `src/types/game.ts`: Charades, Taboo and Monikers **recycle** passed cards (they come back later); Trivia and Just One **discard** them
-- `revealCard(session)` - Reveal the answer (Trivia)
-- `monikersCorrect(session)` - Monikers only: mark card guessed, removing it from the current round
-- `monikersEndTurn(session)` - Monikers only: put passed cards back for the next turn
-- `monikersStartNextRound(session, deck)` - Monikers only: move to the next of 3 rounds with all cards
-- `restartSession(session, deck)` - Start over with the same deck and shuffle settings
-- `isSessionComplete`, `isRoundComplete`, `getSessionProgress(session, deck)` - Status helpers (`completed` = deck size minus remaining, passed and current)
+- `createSession(deck, { shuffleEnabled, shuffleSeed? })` - fresh session
+- `reduce(session, action, deck)` - pure state transition for the module's own action union (returns the same object for a no-op)
+- `isComplete(session)`, `progress(session, deck)` (`completed` = deck size minus remaining, passed and current), `cardIds(session)` (used by the session validator)
+- `PlayView` - in-game body (card + controls + overlays); gets `{ deck, session, currentCard, dispatch }`
+- optional `HeaderView` (header centre, default deck name), `showChrome(session)` (false = PlayView renders full-screen), `completeTitle`; required `theme` (`gradient`, `pattern` Tailwind classes)
+
+Modules today:
+
+- `standard-stack/` - Charades, Trivia, Taboo, Just One via `createStandardStackModule({ type, PlayView, theme })`. Actions `next | pass | reveal`. Pass behaviour comes from `GAMES[type].passBehavior` (`src/types/game.ts`): Charades and Taboo **recycle**, Trivia and Just One **discard**. Views: `src/components/play/views/{standard,trivia,taboo}-play-view.tsx` (the Taboo timer lives in the Taboo view)
+- `monikers/` - actions `next | pass | correct | endTurn | nextRound`; three rounds, round-complete interstitial, end-turn overlay. View: `src/components/monikers/monikers-play-view.tsx`
+
+Pure logic lives in `modules/*/logic.ts` (unit-testable); `modules/stack.ts` has shared card-stack helpers (`createBaseSession`, `orderCardIds`, `getCurrentCard`). `src/lib/game/engine.ts` is a thin facade (`createInitialSession`, `applyAction`, `restartSession`, `isSessionComplete`, `getSessionProgress`) that routes through the registry.
+
+`useGameState` (`src/hooks/use-game-state.ts`) exposes `gameModule`, `session`, `currentCard`, `dispatch(action)`, `startGame`, `resumeGame`, `handleRestart`. `PlayScreen` keeps only shared chrome: loading/error, start screen, header (exit/restart), restart dialog, completion screen.
+
+### Storage
+
+All browser storage goes through `src/lib/storage/` (no direct `localStorage` anywhere else):
+
+- `getStore()` returns the app-wide `KeaStore`: `get(key, schema?)`, `set(key, value, schema?)` (returns false if only kept in memory), `remove`, `list(prefix)`, `exportAll`, `importAll`, `isPersistent()`
+- Logical keys are namespaced under `kea.` and every value is stored as `{ v, data }`. A `StorageSchema { version, migrate?, validate? }` migrates older `v` on read and writes the result back
+- Typed helpers: `defineStoredValue<T>(key, schema)` and `defineStoredCollection<T>(prefix, schema)` (`get/set/remove(id)`, `ids()`)
+- Every call is wrapped in try/catch. If localStorage is missing, blocked or full, values are kept in memory (games still play; progress just isn't kept across reloads)
+- Legacy keys (`cg.session.<deckId>`) are migrated to `kea.session.<deckId>` when the store is first created (`legacy.ts`)
+- Tests inject a backend with `setStore(createStore(backend))` / `createMemoryBackend()`
 
 ### Session Persistence
 
-Sessions stored in localStorage via `src/lib/session/`:
+Sessions are stored via `src/lib/session/session-storage.ts` on top of the store:
 
-- Sessions keyed by `cg.session.<deckId>` (`getSessionKey()` / `SESSION_KEY_PREFIX` in `src/types/session.ts`)
+- Key `kea.session.<deckId>` (`getSessionKey()` / `SESSION_KEY_PREFIX = "session."` in `src/types/session.ts`), envelope version 1, session `schemaVersion` = `CURRENT_SCHEMA_VERSION` (1)
 - Deterministic shuffle using seeded PRNG (same seed = same order)
 - Session includes: `currentCardId`, `remainingCardIds`, `passedCardIds`, `isRevealed`, shuffle settings, deck version; Monikers adds `monikersRound`, `monikersRemainingCardIds`, `monikersPassedCardIds`
-- `session-validator.ts` checks a saved session still matches the deck
+- `session-validator.ts` checks a saved session still matches the deck (card IDs come from the module's `cardIds`)
 
 ### Deck Loading
 
@@ -80,12 +96,12 @@ Scripts in `scripts/` generate deck content from YAML configs:
 
 ### Adding New Game Types
 
-1. Add type to `src/types/game.ts`
+1. Add type to `src/types/game.ts` (and `GAMES` metadata)
 2. Add card type to `src/types/card.ts`
-3. Add validation in `scripts/lib/validators.ts`
-4. Create prompt template in `scripts/prompts/`
-5. Add UI in `src/components/play/card-display.tsx`
-6. Update game engine if needed
+3. Add the session state type to the `SessionState` union in `src/types/session.ts`
+4. Create a module in `src/lib/game/modules/<type>/` (`logic.ts` + `index.ts` using `defineGameModule`) with its PlayView, and register it in `registry.ts`
+5. Add validation in `scripts/lib/validators.ts`
+6. Create prompt template in `scripts/prompts/`
 
 ## Conventions
 
@@ -119,9 +135,11 @@ export function MyComponent({ deck, onStart }: Props) {
 
 | File | Purpose |
 |------|---------|
-| `src/lib/game/engine.ts` | All game state transitions |
+| `src/lib/game/modules/registry.ts` | GameType -> GameModule |
+| `src/lib/game/modules/types.ts` | `GameModule` interface |
 | `src/types/card.ts` | Card type definitions |
-| `src/lib/session/session-storage.ts` | localStorage operations |
+| `src/lib/storage/index.ts` | Typed `kea.` store (only place that touches localStorage) |
+| `src/lib/session/session-storage.ts` | Session load/save on top of the store |
 | `scripts/generate-decks.ts` | Deck generation CLI |
 | `scripts/lib/validators.ts` | Card validation rules |
 
@@ -140,12 +158,14 @@ Edit `scripts/lib/validators.ts` - each game type has its own validation functio
 
 Edit components in `src/components/play/`:
 - `card-display.tsx` - Card rendering
-- `action-bar.tsx` - Pass/correct buttons
-- `play-screen.tsx` - Overall orchestration
+- `action-bar.tsx` - `ActionBar`, `ActionButton`, `PassButton` building blocks
+- `views/*-play-view.tsx` - Per-game controls (Monikers: `src/components/monikers/`)
+- `play-screen.tsx` - Shared chrome (header, restart dialog, start/complete screens)
 
 ### Debug session issues
 
 Check localStorage in browser devtools. Sessions stored as:
 ```
-cg.session.{deckId}
+kea.session.{deckId}  ->  { "v": 1, "data": <SessionState> }
 ```
+Older builds used `cg.session.{deckId}`; these are migrated on first load.

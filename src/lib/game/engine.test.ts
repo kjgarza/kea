@@ -1,14 +1,20 @@
 import { describe, expect, test } from "bun:test";
 import type { Deck } from "@/types/deck";
 import type { GameType } from "@/types/game";
+import type { SessionState } from "@/types/session";
 import {
+  applyAction,
   createInitialSession,
   getSessionProgress,
-  monikersCorrect,
-  nextCard,
-  passCard,
 } from "./engine";
-import type { MonikersSessionState } from "@/types/session";
+
+function makeTestHelpers(deck: Deck) {
+  return {
+    nextCard: (s: SessionState) => applyAction(s, { type: "next" }, deck),
+    passCard: (s: SessionState) => applyAction(s, { type: "pass" }, deck),
+    correct: (s: SessionState) => applyAction(s, { type: "correct" }, deck),
+  };
+}
 
 function makeDeck(gameType: GameType, size: number): Deck {
   return {
@@ -36,6 +42,7 @@ describe("getSessionProgress", () => {
 
   test("counts completed cards after advancing (recycle game)", () => {
     const deck = makeDeck("charades", 5);
+    const { nextCard, passCard } = makeTestHelpers(deck);
     let session = createInitialSession(deck, { shuffleEnabled: false });
     session = nextCard(session); // c1 done
     session = passCard(session); // c2 passed
@@ -50,6 +57,7 @@ describe("getSessionProgress", () => {
 
   test("discard game counts passed cards as played", () => {
     const deck = makeDeck("trivia", 4);
+    const { nextCard, passCard } = makeTestHelpers(deck);
     let session = createInitialSession(deck, { shuffleEnabled: false });
     session = passCard(session);
     session = nextCard(session);
@@ -63,6 +71,7 @@ describe("getSessionProgress", () => {
 
   test("finished deck is fully completed", () => {
     const deck = makeDeck("taboo", 3);
+    const { nextCard } = makeTestHelpers(deck);
     let session = createInitialSession(deck, { shuffleEnabled: false });
     for (let i = 0; i < 3; i++) session = nextCard(session);
     expect(getSessionProgress(session, deck).completed).toBe(3);
@@ -70,11 +79,10 @@ describe("getSessionProgress", () => {
 
   test("monikers counts correct cards in the current round", () => {
     const deck = makeDeck("monikers", 4);
-    let session = createInitialSession(deck, {
-      shuffleEnabled: false,
-    }) as MonikersSessionState;
-    session = monikersCorrect(session);
-    session = passCard(session) as MonikersSessionState;
+    const { correct, passCard } = makeTestHelpers(deck);
+    let session = createInitialSession(deck, { shuffleEnabled: false });
+    session = correct(session);
+    session = passCard(session);
     expect(getSessionProgress(session, deck)).toEqual({
       completed: 1,
       remaining: 2,

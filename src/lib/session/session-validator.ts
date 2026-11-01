@@ -1,6 +1,7 @@
 import type { SessionState } from "@/types/session";
 import type { Deck } from "@/types/deck";
-import { CURRENT_SCHEMA_VERSION, isMonikersSession } from "@/types/session";
+import { CURRENT_SCHEMA_VERSION } from "@/types/session";
+import { getGameModule } from "@/lib/game/modules/registry";
 
 export type ValidationReason =
   | "version_mismatch"
@@ -52,20 +53,8 @@ export function validateSessionAgainstDeck(
   // Verify all card IDs in session exist in deck
   const deckCardIds = new Set(deck.cards.map((c) => c.cardId));
 
-  // Collect all card IDs from session
-  const sessionCardIds = [
-    ...session.remainingCardIds,
-    ...session.passedCardIds,
-    ...(session.currentCardId ? [session.currentCardId] : []),
-  ];
-
-  // For Monikers, also check round-specific card IDs
-  if (isMonikersSession(session)) {
-    sessionCardIds.push(
-      ...session.monikersRemainingCardIds,
-      ...session.monikersPassedCardIds
-    );
-  }
+  // Every card ID the session refers to, as reported by its game module
+  const sessionCardIds = getGameModule(session.gameType).cardIds(session);
 
   // Check each card ID exists in deck
   for (const cardId of sessionCardIds) {
@@ -111,18 +100,7 @@ export function migrateSession(
  * Checks for internal consistency (e.g., no duplicate card IDs)
  */
 export function validateSessionIntegrity(session: SessionState): ValidationResult {
-  const allCardIds = [
-    ...session.remainingCardIds,
-    ...session.passedCardIds,
-    ...(session.currentCardId ? [session.currentCardId] : []),
-  ];
-
-  if (isMonikersSession(session)) {
-    allCardIds.push(
-      ...session.monikersRemainingCardIds,
-      ...session.monikersPassedCardIds
-    );
-  }
+  const allCardIds = getGameModule(session.gameType).cardIds(session);
 
   // Check for duplicates
   const seen = new Set<string>();
