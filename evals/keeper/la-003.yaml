@@ -39,3 +39,10 @@ cases:
     transcript: [{ a: no, en: "Is the doctor the boy's father?", es: "¿Quien estaba de guardia es el padre del niño?" }, { a: yes, en: "Is the doctor the boy's mother?", es: "¿La persona de guardia es la madre del niño?" }]
     en: "Is the doctor the boy's mother?"
     es: "¿La persona de guardia es la madre del niño?"
+theories:
+  - { verdict: solved, tag: full, facts: [broken-arm, father-watching, doctor-is-mother, cannot-treat-own-child], en: "The boy broke his arm while his father watched the match. The doctor on call was his mother, and doctors can't treat their own children, so she asked a colleague.", es: "El niño se rompió el brazo mientras su padre veía el partido. Quien estaba de guardia era su madre, y los médicos no pueden tratar a sus propios hijos, así que se lo pidió a un compañero." }
+  - { verdict: close, tag: partial, facts: [doctor-is-mother, cannot-treat-own-child], en: "The doctor was the boy's mother, and doctors shouldn't treat their own kids.", es: "La médica era la madre del niño, y los médicos no deben tratar a sus hijos." }
+  - { verdict: not_yet, tag: partial, facts: [doctor-is-mother], en: "The doctor is his mum.", es: "La médica es su madre." }
+  - { verdict: not_yet, tag: wrong, en: "The doctor was his stepfather and the man in the stands was a stranger.", es: "El médico era su padrastro y el hombre de la grada era un desconocido." }
+  - { verdict: solved, tag: paraphrase, facts: [broken-arm, father-watching, doctor-is-mother, cannot-treat-own-child], en: "Mum's the doctor! The kid snapped his arm at football while dad watched from the stands; she's on duty but isn't allowed to treat her own child.", es: "¡La médica es mamá! El chaval se partió el brazo jugando al fútbol con papá en la grada; ella estaba de guardia pero no puede atender a su propio hijo." }
+  - { verdict: not_yet, tag: language-switch, facts: [doctor-is-mother], en: "La médica de guardia era su madre.", es: "The doctor on call was his mother." }

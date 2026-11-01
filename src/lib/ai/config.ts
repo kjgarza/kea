@@ -40,3 +40,15 @@ export const PASSCODE_HEADER = "X-Kea-Passcode";
 
 /** Bump when the keeper prompt changes in a way evals should notice. */
 export const KEEPER_PROMPT_VERSION = "keeper-v1";
+
+/** Theory grader (POST /keeper/grade, #32). */
+export const GRADER_MAX_TOKENS = 4000;
+export const GRADER_EFFORT = "low" as const;
+
+/** Bump when the grader prompt or verdict rules change in a way evals should notice. */
+export const GRADER_PROMPT_VERSION = "grader-v1";
+
+export const THEORY_LIMITS = {
+  /** Longest theory the Worker accepts (characters, after trimming). */
+  theoryMaxChars: 1200,
+} as const;

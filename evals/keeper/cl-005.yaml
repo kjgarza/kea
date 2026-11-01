@@ -38,3 +38,10 @@ cases:
     transcript: [{ a: yes, en: "Was the poison in the ice?", es: "¿El veneno estaba en el hielo?" }]
     en: "Was the poison in the ice?"
     es: "¿El veneno estaba en el hielo?"
+theories:
+  - { verdict: solved, tag: full, facts: [same-drink, poison-in-ice, drank-fast, ice-melted-slowly], en: "Both drank the same punch, but the poison was in the ice cubes. The first friend drank fast before the ice melted; the slow sipper let the ice melt and release the poison.", es: "Los dos bebieron el mismo ponche, pero el veneno estaba en los cubitos de hielo. El primero bebió rápido antes de que se derritiera; el que bebía despacio dejó que el hielo se derritiera y liberara el veneno." }
+  - { verdict: close, tag: partial, facts: [poison-in-ice, ice-melted-slowly], en: "The poison was frozen in the ice and came out as the ice melted.", es: "El veneno estaba congelado en el hielo y salió al derretirse." }
+  - { verdict: not_yet, tag: partial, facts: [poison-in-ice], en: "The poison was in the ice.", es: "El veneno estaba en el hielo." }
+  - { verdict: not_yet, tag: wrong, en: "The first friend was immune because he had built up a tolerance to the poison.", es: "El primer amigo era inmune porque se había acostumbrado al veneno." }
+  - { verdict: solved, tag: paraphrase, facts: [same-drink, poison-in-ice, drank-fast, ice-melted-slowly], en: "Same bowl, same punch, but the toxin was hidden in the frozen cubes: gulp it down and you're fine, nurse your glass and the thawing cubes dose you.", es: "Mismo ponche de la misma ponchera, pero la toxina iba escondida en los cubitos: si te lo bebes de un trago no pasa nada; si lo alargas, el hielo al fundirse te envenena." }
+  - { verdict: close, tag: language-switch, facts: [poison-in-ice, ice-melted-slowly], en: "El veneno estaba en los cubitos de hielo y se liberó al derretirse.", es: "The poison was inside the ice cubes and was released as they melted." }

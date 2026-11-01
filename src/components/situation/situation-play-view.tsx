@@ -9,6 +9,7 @@ import {
   getMode,
   getPuzzle,
   pickableCardIds,
+  puzzleEnding,
   situationPhase,
   soloScore,
   type SituationAction,
@@ -45,15 +46,17 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
   // Every finished puzzle is written to `kea.history` (#28) for the group
   // currently selected in the picker.
   const dispatchAndRecord = (action: SituationAction) => {
-    if (action.type === "end" && phase === "playing" && currentCard) {
+    // `end`, or a theory graded solved (#32).
+    const ending = currentCard ? puzzleEnding(session, action, deck) : null;
+    if (ending && currentCard) {
       const record = situationPlayRecord({
         deckId: deck.deckId,
         deckName: deck.name,
         session,
         card: currentCard,
         group: selectedGroup(getGroups()),
-        outcome: action.outcome,
-        endedAt: action.at,
+        outcome: ending.outcome,
+        endedAt: ending.at,
       });
       if (record) recordPlay(record);
     }

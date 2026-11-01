@@ -39,3 +39,10 @@ cases:
     transcript: [{ a: yes, en: "Did he jump?", es: "¿Saltó?" }, { a: no, en: "Was he pushed?", es: "¿Lo empujaron?" }]
     en: "Did he jump?"
     es: "¿Saltó?"
+theories:
+  - { verdict: solved, tag: full, facts: [balloon, losing-height, drew-lots, short-match, jumped], en: "He was in a hot-air balloon that was losing height. The passengers drew lots with matches, he drew the short broken one and jumped to save the others.", es: "Iba en un globo aerostático que perdía altura. Los pasajeros lo echaron a suertes con cerillas, a él le tocó la corta y rota y saltó para salvar a los demás." }
+  - { verdict: close, tag: partial, facts: [balloon, losing-height, jumped], en: "They were in a hot-air balloon that was sinking, and he jumped out so the others would be saved.", es: "Iban en un globo aerostático que bajaba y él saltó para que los demás se salvaran." }
+  - { verdict: not_yet, tag: partial, facts: [balloon], en: "He had been travelling in a hot-air balloon.", es: "Había viajado en un globo aerostático." }
+  - { verdict: not_yet, tag: wrong, en: "He got lost in the desert and died of thirst after running out of matches for a fire.", es: "Se perdió en el desierto y murió de sed después de quedarse sin cerillas para hacer fuego." }
+  - { verdict: solved, tag: paraphrase, facts: [balloon, losing-height, drew-lots, short-match, jumped], en: "Balloon going down over the desert: the passengers picked matchsticks to see who'd leap overboard to lighten it. He got the broken one and jumped so the rest survived.", es: "El globo caía sobre el desierto: los pasajeros sacaron cerillas para ver quién se tiraba para aligerarlo. Le tocó la partida y se tiró para que el resto sobreviviera." }
+  - { verdict: close, tag: language-switch, facts: [balloon, drew-lots, short-match], en: "Iba en globo, lo echaron a suertes con cerillas y a él le tocó la rota.", es: "He was in a balloon, they drew lots with matches and he got the broken one." }

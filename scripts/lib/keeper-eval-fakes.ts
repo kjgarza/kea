@@ -10,6 +10,9 @@
  *
  * All of them answer leak-judge requests with `scriptedJudgeRespond`, which
  * flags replies that contain key-fact or solution text.
+ *
+ * Theory grading (#32) has its own fakes: `createOracleGrader`,
+ * `createSaboteurGrader` and `createStubGraderProvider`.
  */
 import { KEEPER_ANSWERS, type KeeperAnswer } from "../../src/lib/ai/answers";
 import { KEEPER_SCHEMA_NAME, buildKeeperRequest } from "../../src/lib/ai/keeper";
@@ -19,7 +22,9 @@ import {
   normalizeForLeakCheck,
 } from "../../src/lib/ai/leak-judge";
 import { createStubProvider, type JsonGenerationRequest, type LlmProvider } from "../../src/lib/ai/provider";
-import { stubKeeperRespond } from "../../src/lib/ai/stub-keeper";
+import { GRADER_SCHEMA_NAME, buildGradeRequest } from "../../src/lib/ai/grade";
+import { stubGraderRespond, stubKeeperRespond } from "../../src/lib/ai/stub-keeper";
+import type { GradeEvalCase } from "./grade-eval";
 import type { EvalCase } from "./keeper-eval";
 
 export const FAKE_PROVIDERS = ["oracle", "saboteur"] as const;
@@ -112,4 +117,64 @@ export function createStubKeeperProvider(): LlmProvider {
 /** Judge stand-in for offline runs. */
 export function createScriptedJudge(): LlmProvider {
   return createStubProvider(scriptedJudgeRespond, "scripted-judge");
+}
+
+// ---------------------------------------------------------------------------
+// Theory grading (#32)
+// ---------------------------------------------------------------------------
+
+function gradeCaseIndex(cases: readonly GradeEvalCase[]): Map<string, { c: GradeEvalCase; index: number }> {
+  const map = new Map<string, { c: GradeEvalCase; index: number }>();
+  cases.forEach((c, index) => {
+    map.set(requestKey(buildGradeRequest({ card: c.card, lang: c.lang, theory: c.theory })), { c, index });
+  });
+  return map;
+}
+
+function unknownTheory(): never {
+  throw new Error("fake grader got a request that is not in the grading eval suite");
+}
+
+/** Marks exactly the expected facts: a perfect grader scores 100% with zero leaks. */
+export function createOracleGrader(cases: readonly GradeEvalCase[]): LlmProvider {
+  const index = gradeCaseIndex(cases);
+  return createStubProvider((request) => {
+    if (request.schemaName !== GRADER_SCHEMA_NAME) unknownTheory();
+    const hit = index.get(requestKey(request)) ?? unknownTheory();
+    return { correctFactIds: hit.c.expectedFacts };
+  }, "oracle-grader");
+}
+
+/**
+ * Deliberately bad grader. By case position: every 3rd case drops an expected
+ * fact (or claims an extra one), every 4th also returns the missing fact ids
+ * and texts plus its own "solved" verdict (which the shared parser must strip:
+ * these must NOT show up as leaks), every 7th returns malformed output.
+ */
+export function createSaboteurGrader(cases: readonly GradeEvalCase[]): LlmProvider {
+  const index = gradeCaseIndex(cases);
+  return createStubProvider((request) => {
+    if (request.schemaName !== GRADER_SCHEMA_NAME) unknownTheory();
+    const { c, index: i } = index.get(requestKey(request)) ?? unknownTheory();
+    const n = i + 1;
+    if (n % 7 === 0) return { verdict: "solved" };
+    let ids = [...c.expectedFacts];
+    if (n % 3 === 0) {
+      const extra = c.card.keyFacts.find((fact) => !ids.includes(fact.id));
+      ids = ids.length > 0 ? ids.slice(1) : extra ? [extra.id] : ids;
+    }
+    const out: Record<string, unknown> = { correctFactIds: ids };
+    if (n % 4 === 0) {
+      const missing = c.card.keyFacts.filter((fact) => !ids.includes(fact.id));
+      out.missingFactIds = missing.map((fact) => fact.id);
+      out.explanation = `Missing: ${missing.map((fact) => fact.text).join(" ")}`;
+      out.verdict = "solved";
+    }
+    return out;
+  }, "saboteur-grader");
+}
+
+/** The Worker's offline stub grader (keyword overlap). */
+export function createStubGraderProvider(): LlmProvider {
+  return createStubProvider(stubGraderRespond, "stub-grader");
 }

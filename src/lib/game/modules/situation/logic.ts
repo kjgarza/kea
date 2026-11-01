@@ -9,7 +9,8 @@ import type {
 } from "@/types/session";
 import { localeFromLanguage } from "@/lib/i18n/translate";
 import { normalizeKeeperAnswer } from "@/lib/ai/answers";
-import { KEEPER_LIMITS } from "@/lib/ai/config";
+import { KEEPER_LIMITS, THEORY_LIMITS } from "@/lib/ai/config";
+import { toGradeResponse } from "@/lib/ai/grade";
 import { countCompletedCards, createBaseSession } from "../stack";
 import type { Progress, StartOptions } from "../types";
 
@@ -59,6 +60,19 @@ export type SituationAction =
       q: string;
       a: KeeperAnswer;
       factIds: string[];
+      at: string;
+    }
+  /**
+   * AI / solo (#32): the grader returned which key facts a theory gets
+   * right. The verdict and missing count are recomputed from those ids with
+   * the shared rules (src/lib/ai/grade.ts); unknown ids are dropped. Correct
+   * facts count as found. A `solved` verdict ends the puzzle as solved.
+   */
+  | {
+      type: "addTheory";
+      cardId: string;
+      text: string;
+      correctFactIds: string[];
       at: string;
     }
   /** Solved or gave up: ends the puzzle and shows the end screen. */
@@ -245,6 +259,27 @@ export function reduceSituation(
       }));
     }
 
+    case "addTheory": {
+      const card = findCard(deck, session.currentCardId);
+      if (!card || action.cardId !== card.cardId) return session;
+      const text = action.text.trim().slice(0, THEORY_LIMITS.theoryMaxChars);
+      if (!text) return session;
+      const grade = toGradeResponse(card, action.correctFactIds);
+      return updatePuzzle(session, (p) => {
+        const theorized: SituationPuzzleState = {
+          ...p,
+          theories: [...(p.theories ?? []), { text, ...grade, at: action.at }],
+          factsRevealed: [
+            ...p.factsRevealed,
+            ...grade.correctFactIds.filter((id) => !p.factsRevealed.includes(id)),
+          ],
+        };
+        return grade.verdict === "solved"
+          ? { ...theorized, outcome: "solved", endedAt: action.at, solutionRevealed: true }
+          : theorized;
+      });
+    }
+
     case "end":
       return updatePuzzle(session, (p) => ({
         ...p,
@@ -268,6 +303,23 @@ export function reduceSituation(
       return { ...advanced, puzzle: newPuzzleState(nextCard, action.at) };
     }
   }
+}
+
+/**
+ * How the puzzle ends if `action` is applied, or null if it keeps going.
+ * Covers `end` and a theory graded `solved`, so callers (history) record
+ * every ending the same way.
+ */
+export function puzzleEnding(
+  session: SituationSessionState,
+  action: SituationAction,
+  deck: Deck<SituationCard>
+): { outcome: SituationOutcome; at: string } | null {
+  if (situationPhase(session) !== "playing") return null;
+  if (action.type !== "end" && action.type !== "addTheory") return null;
+  const after = getPuzzle(reduceSituation(session, action, deck));
+  if (!after?.outcome || !after.endedAt) return null;
+  return { outcome: after.outcome, at: after.endedAt };
 }
 
 /** Questions asked so far: the human counter, or the AI transcript. */

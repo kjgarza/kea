@@ -211,6 +211,18 @@ bun scripts/eval-keeper.ts --provider saboteur     # offline: broken keeper (err
 
 Each case goes through `answerKeeperQuestion` in `src/lib/ai/keeper.ts`, the same code the Worker runs. The report gives agreement, leaks (unasked fact ids, fact or solution text in the reply, extra output, and a judge model's verdict from `src/lib/ai/leak-judge.ts`), off-vocabulary replies and a confusion matrix per language, and is appended to `$GITHUB_STEP_SUMMARY` in CI. The **Keeper eval** workflow (`.github/workflows/eval-keeper.yml`, manual) runs it and uploads the JSON report, which can be committed as a baseline. Target before the AI keeper is on by default: ≥ 95% agreement and zero leaks per language.
 
+#### Theory grading evals
+
+Ten of the eval files also have `theories:` (#32), graded by `gradeTheory` in `src/lib/ai/grade.ts`, the same code as `POST /keeper/grade`. Each is `{ verdict, facts?, tag, en, es, note? }`: `facts` are the key facts the theory states correctly, and `verdict` must match the shared rules (`solved` = every key fact, `close` = at least half of them rounded up, `not_yet` = fewer), so a file cannot disagree with the grader. Tags: `full`, `partial`, `wrong`, `paraphrase`, `language-switch` (theory in the other language), `injection`.
+
+```bash
+bun scripts/eval-keeper.ts --suite grade                     # grading only (default --suite all runs both)
+bun scripts/eval-keeper.ts --suite grade --provider oracle   # offline: perfect grader
+bun scripts/eval-keeper.ts --suite grade --provider saboteur # offline: wrong grades and leaky output are caught/stripped
+```
+
+The grading report gives verdict agreement, exact-fact agreement, a verdict confusion matrix and leaks: a leak is any missing fact's id or text in the response the player would see. Target: ≥ 95% verdict agreement and zero leaks per language.
+
 ## Project Structure
 
 ```

@@ -17,7 +17,7 @@ Errors are `{ "error": { "code", "message" } }`.
 | Method | Path | Body | Response | Status |
 |---|---|---|---|---|
 | POST | `/keeper/ask` | `{ deckId, cardId, lang: "en"\|"es", transcript: [{ q, a }], question }` | `{ answer: "yes"\|"no"\|"irrelevant"\|"partly"\|"rephrase", factIds: string[], confidence: 0..1 }` | implemented (#29) |
-| POST | `/keeper/grade` | `{ deckId, cardId, lang, theory }` | `{ correctFactIds, missingCount, verdict }` | 501 until #32 |
+| POST | `/keeper/grade` | `{ deckId, cardId, lang, theory }` (theory ≤ 1200 chars) | `{ correctFactIds: string[], missingCount: number, verdict: "solved"\|"close"\|"not_yet" }` | implemented (#32) |
 | POST | `/case/ask` | `{ deckId, cardId, lang, openedEvidenceIds, question }` | `{ answer, citedEvidenceIds }` | 501 until #37 |
 | POST | `/case/judge` | `{ deckId, cardId, lang, answers }` | `{ results: [{ questionId, correct }] }` | 501 until #37 |
 | POST | `/author/photo` | `{ images: [{ mediaType, data }], lang }` | `{ yaml }` | 501 until #38 |
@@ -41,6 +41,14 @@ other field in the body.
   `rephrase`, unknown fact ids are dropped, confidence is clamped to 0..1. A
   model refusal or malformed output also returns `rephrase`; an upstream HTTP
   error returns 502.
+- **Grader**: the model only lists which key facts the theory states
+  correctly (structured output constrained to the card's fact ids). The
+  verdict is computed from that coverage, not by the model (see
+  `GRADE_THRESHOLDS` in `src/lib/ai/grade.ts`): `solved` = every key fact,
+  `close` = at least half of them (rounded up) but not all, `not_yet` = fewer.
+  The response is rebuilt from known correct ids plus a count, so missing
+  fact ids or texts are never returned. A refusal or malformed output returns
+  502 `upstream_error` (retryable) instead of a verdict.
 - **Decks** are cached in memory per isolate and in the Workers Cache API per
   data centre for `DECK_CACHE_TTL` seconds (default 600). After publishing a
   deck change, answers can use the old deck for up to that long.
