@@ -108,6 +108,9 @@ function HistoryItem({ record, group, date, t }: ItemProps) {
         <span className="font-medium text-foreground">{name}</span>
         <span>{t("history.item.questions", { count: record.questions })}</span>
         <span>{t("history.item.hints", { count: record.hintsUsed })}</span>
+        {record.score !== undefined && (
+          <span>{t("history.item.score", { score: record.score })}</span>
+        )}
       </p>
     </li>
   );

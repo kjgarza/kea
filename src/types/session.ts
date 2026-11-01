@@ -90,11 +90,55 @@ export interface SituationSessionState extends BaseSessionState {
   puzzle: SituationPuzzleState | null;
 }
 
-// Case files (spec §4.4). Placeholder (#34): only the card stack ("which
-// case is next"). The case play screen (#35) adds opened evidence, notes,
-// answers and the score.
+// Case files (spec §4.4). The card stack picks the next case; the fields
+// below hold the state of the case being played (`caseCardId`) and are reset
+// when the group moves on to the next case.
+export type CaseNoteTab = "suspects" | "timeline" | "free";
+
+export type CaseNotes = Record<CaseNoteTab, string>;
+
+/**
+ * How an accusation answer was decided: matched locally against the answer
+ * or an accepted variant, left blank, or marked by the group or the judge.
+ */
+export type CaseMatch = "exact" | "variant" | "blank" | "group" | "judge";
+
+/** A group/judge decision for an answer that did not match locally. */
+export interface CaseMark {
+  correct: boolean;
+  by: "group" | "judge";
+}
+
+/** Final per-question score (spec §4.4), set when the walkthrough is revealed. */
+export interface CaseScoredAnswer {
+  questionId: string;
+  correct: boolean;
+  points: number;
+  /** How it was decided (extension of the spec shape). */
+  by?: CaseMatch;
+}
+
 export interface CaseSessionState extends BaseSessionState {
   gameType: "case";
+  /** Card the per-case fields belong to (null before the first case opens). */
+  caseCardId?: string | null;
+  /**
+   * When the briefing was first shown (ISO). Null while the content-warning
+   * interstitial is waiting to be accepted.
+   */
+  startedAt?: string | null;
+  /** Evidence ids, in the order they were opened. */
+  opened: string[];
+  notes: CaseNotes;
+  /** questionId → answer text. */
+  answers: Record<string, string>;
+  /** Accusation submitted (answers locked, group marks unmatched ones). */
+  accusedAt?: string | null;
+  /** questionId → decision for answers that did not match locally. */
+  marks?: Record<string, CaseMark>;
+  /** Set when the walkthrough is revealed (the case is closed). */
+  scored?: CaseScoredAnswer[];
+  endedAt?: string | null;
 }
 
 // Union of all session types. New game types add their session state here

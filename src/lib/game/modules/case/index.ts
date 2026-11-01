@@ -14,14 +14,13 @@ import {
 export type { CaseAction } from "./logic";
 
 /**
- * Case files. Placeholder module (#34): shows each case's warnings and
- * briefing so decks can be listed and opened; the case board (#35) replaces
- * the PlayView and extends the session state.
+ * Case files (#35): cooperative case board — briefing, evidence drawer and
+ * viewer, shared notes, joint accusation, walkthrough and team score.
  */
 export const caseModule = defineGameModule<CaseSessionState, CaseCard, CaseAction>({
   type: "case",
   createSession: (deck, opts) => createCaseSession(deck, opts),
-  reduce: (session, action) => reduceCase(session, action),
+  reduce: (session, action, deck) => reduceCase(session, action, deck),
   isComplete: isCaseComplete,
   progress: caseProgress,
   cardIds: caseCardIds,
