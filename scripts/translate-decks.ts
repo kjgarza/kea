@@ -11,7 +11,7 @@
 
 import { parseArgs } from "util";
 import { generateBatch, generateWithRetry } from "./lib/llm-client";
-import type { Card } from "../src/types/card";
+import type { Card, CaseCard } from "../src/types/card";
 import {
   TRANSLATION_BATCH_SIZE,
   isTranslatableGameType,
@@ -21,6 +21,9 @@ import {
 } from "./lib/deck-translation";
 import type { Deck, DeckIndex } from "../src/types/deck";
 import { updateDeckIndexFile } from "./lib/deck-index";
+import { copyDeckAssets, createFileAssetExists } from "./lib/case-assets";
+import { deckAssetPaths } from "./lib/case-pack";
+import { validateCaseDeck } from "./lib/validators";
 
 const OUTPUT_DIR = "./public/decks";
 const TRANSLATION_TEMPERATURE = 0.3;
@@ -193,6 +196,26 @@ async function loadDeck(deckId: string): Promise<Deck | null> {
 }
 
 /**
+ * Case decks: copy the evidence files to the Spanish deck's asset folder
+ * (same `src` paths; files already there are kept, so hand-localised images
+ * survive) and validate the result. Returns false when the deck is invalid.
+ */
+async function prepareCaseDeck(source: Deck, translated: Deck): Promise<boolean> {
+  const srcs = deckAssetPaths({ cards: translated.cards as CaseCard[] });
+  const { copied, kept, missing } = await copyDeckAssets(source.deckId, translated.deckId, srcs);
+  if (copied.length > 0) console.log(`   Copied ${copied.length} asset(s) to assets/${translated.deckId}/`);
+  if (kept.length > 0) console.log(`   Kept ${kept.length} existing asset(s) in assets/${translated.deckId}/`);
+  if (missing.length > 0) console.warn(`   ⚠️  Missing source assets: ${missing.join(", ")}`);
+  const errors = validateCaseDeck(translated, { assetExists: createFileAssetExists() });
+  if (errors.length > 0) {
+    console.error(`   ❌ ${translated.deckId} is not a valid case deck; not written:`);
+    for (const e of errors) console.error(`      - ${e}`);
+    return false;
+  }
+  return true;
+}
+
+/**
  * Write deck to file
  */
 async function writeDeck(deck: Deck): Promise<void> {
@@ -268,6 +291,9 @@ async function main() {
     console.log(`   Game: ${sourceDeck.gameType}, Cards: ${sourceDeck.cards.length}`);
 
     const result = await translateDeck(sourceDeck, force, dryRun);
+    if (result && result.gameType === "case" && !(await prepareCaseDeck(sourceDeck, result))) {
+      continue;
+    }
     if (result) {
       await writeDeck(result);
       translated.push(result);

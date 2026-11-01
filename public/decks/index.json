@@ -282,6 +282,24 @@
       "contentWarnings": []
     },
     {
+      "deckId": "saltmarsh-bay-es-case",
+      "name": "Expedientes de Saltmarsh Bay",
+      "gameType": "case",
+      "language": "es",
+      "difficulty": "medium",
+      "topics": [
+        "museo",
+        "robo"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T18:11:15.765Z",
+      "cardCount": 1,
+      "contentWarnings": [
+        "robo"
+      ]
+    },
+    {
       "deckId": "films-1990s-en-taboo",
       "name": "Films 1990s",
       "gameType": "taboo",
@@ -530,6 +548,24 @@
       "version": "2026-01-10T15:37:54.455Z",
       "cardCount": 50,
       "contentWarnings": []
+    },
+    {
+      "deckId": "saltmarsh-bay-en-case",
+      "name": "Saltmarsh Bay Case Files",
+      "gameType": "case",
+      "language": "en",
+      "difficulty": "medium",
+      "topics": [
+        "museum",
+        "theft"
+      ],
+      "recommended": true,
+      "nsfw": false,
+      "version": "2026-10-30T18:04:33.441Z",
+      "cardCount": 1,
+      "contentWarnings": [
+        "theft"
+      ]
     },
     {
       "deckId": "sample-en-case",

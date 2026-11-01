@@ -1,0 +1,63 @@
+name: Import Case Files
+
+on:
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      pack_file:
+        description: 'Pack YAML to import, e.g. decks/cases/saltmarsh-bay-en.yaml (leave empty for all packs)'
+        required: false
+        type: string
+      dry_run:
+        description: 'Dry run (validate only, no files written)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Import case packs
+        env:
+          PACK_FILE: ${{ inputs.pack_file }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          ARGS=()
+          if [ -n "$PACK_FILE" ]; then
+            ARGS+=(--file "$PACK_FILE")
+          fi
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          bun scripts/import-cases.ts "${ARGS[@]}"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -N public/decks/
+          git diff --quiet public/decks/ || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.has_changes == 'true' && inputs.dry_run != true
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/decks/
+          git commit -m "chore: import case packs [skip ci]"
+          git push

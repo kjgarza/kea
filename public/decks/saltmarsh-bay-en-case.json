@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "deckId": "saltmarsh-bay-en-case",
+  "version": "2026-10-30T18:04:33.441Z",
+  "name": "Saltmarsh Bay Case Files",
+  "gameType": "case",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [
+    "museum",
+    "theft"
+  ],
+  "nsfw": false,
+  "cards": [
+    {
+      "cardId": "halden-chronometer",
+      "type": "case",
+      "title": "The Halden Chronometer",
+      "briefing": "At **09:10 on Tuesday**, conservator Ines Duarte opened the display case in Gallery 3 of the Saltmarsh Bay Maritime Museum to dust the museum's treasure: the brass **Halden chronometer** that once kept time on a whaling ship. It was not the Halden chronometer. Someone had swapped it for a copy.\n\nThe museum was open on Sunday, closed all day Monday, and the display key never leaves the electronic key box in the curator's office. Nothing is broken and no alarm went off.\n\nThe museum board wants answers before the police arrive: **who** made the swap, **when**, **whose badge** opened the key box, **how** the real chronometer left the building, and **where** it is now.",
+      "evidence": [
+        {
+          "id": "condition-report",
+          "title": "Condition report, Gallery 3",
+          "kind": "document",
+          "content": "**Saltmarsh Bay Maritime Museum — condition check**\n\n**Saturday, 17:30** (I. Duarte): Halden chronometer, Gallery 3. Serial plate reads **No. 1847**. Ticking normally. Case locked, display key D3 returned to the key box.\n\n**Tuesday, 09:10** (I. Duarte): Object in the case is NOT the original. Serial plate reads **No. 1874**. It does not tick.\n\n*Note:* the volunteers' touch-table copy in the Education Room was deliberately stamped **No. 1874** so the two could never be confused. The Education Room touch table is empty this morning."
+        },
+        {
+          "id": "replica-plate",
+          "title": "Photo of the object found in the case",
+          "kind": "image",
+          "src": "replica-plate.svg"
+        },
+        {
+          "id": "floor-plan",
+          "title": "Museum floor plan",
+          "kind": "map",
+          "src": "floor-plan.svg"
+        },
+        {
+          "id": "building-log",
+          "title": "Building access log (export)",
+          "kind": "document",
+          "content": "Access system export, Saturday 17:00 – Tuesday 09:30. Every badge is personal; volunteer badges start with VOL-.\n\n| Day | Time | Door / box | Badge | Event |\n|---|---|---|---|---|\n| Sat | 17:28 | Key box: D3 (Gallery 3 display) | ID-04 (I. Duarte) | key out |\n| Sat | 17:34 | Key box: D3 | ID-04 (I. Duarte) | key returned |\n| Sun | 17:05 | Main entrance | — | locked (closing) |\n| Mon | 21:06 | Staff door (loading dock) | VOL-07 | entry |\n| Mon | 21:12 | Key box: D3 | VOL-07 | key out |\n| Mon | 21:38 | Loading dock roller door | — | opened |\n| Mon | 21:40 | Loading dock roller door | — | closed |\n| Mon | 21:41 | Key box: D3 | VOL-07 | key returned |\n| Mon | 21:44 | Staff door (loading dock) | VOL-07 | exit |\n| Tue | 08:50 | Main entrance | ID-04 (I. Duarte) | entry |"
+        },
+        {
+          "id": "nina-interview",
+          "title": "Interview: Nina Osei (night guard)",
+          "kind": "interview",
+          "content": "**Q:** What were your hours on Monday?\n\n**Nina:** Eight in the evening to six in the morning. The museum is closed on Mondays, so it's quiet.\n\n**Q:** Did you see anyone?\n\n**Nina:** Not inside. I was at the front desk doing the weekly paperwork from about nine to ten. Around half past nine I went to the window of the staff kitchen to make tea, and I saw Dr Lindqvist's car in the staff car park — the green estate with the anchor sticker — backed right up to the loading dock with its boot open. I thought she was working late again, so I didn't go out.\n\n**Q:** Did you hear the loading dock door?\n\n**Nina:** No. From the front desk you hear nothing back there."
+        },
+        {
+          "id": "cctv-note",
+          "title": "Security company note on the camera footage",
+          "kind": "document",
+          "content": "**Harbourside Security — footage review**\n\nThe museum has one camera, covering the main entrance and the front desk. There are no cameras at the back of the building.\n\nMonday: the guard (N. Osei) is visible at the front desk **without a break from 20:55 to 22:10**. Nobody used the main entrance between Sunday 17:05 and Tuesday 08:50.",
+          "unlockAfter": [
+            "nina-interview"
+          ]
+        },
+        {
+          "id": "felix-interview",
+          "title": "Interview: Felix Marsh (volunteer guide)",
+          "kind": "interview",
+          "content": "**Q:** You made the touch-table copy of the chronometer?\n\n**Felix:** Last winter, yes. I build ship models. I stamped it 1874 on purpose, so nobody could pass it off as the real thing.\n\n**Q:** Where were you on Monday evening?\n\n**Felix:** Playing the cello with the Saltmarsh Community Orchestra at the Town Hall, half past seven to ten. Half the town was there.\n\n**Q:** Your volunteer badge is VOL-07?\n\n**Felix:** It was. I lost it on Sunday afternoon — I think I left it on a table in the museum café around four. I emailed the office on Sunday evening to ask for a new one and haven't heard back."
+        },
+        {
+          "id": "concert-photo",
+          "title": "Saltmarsh Gazette clipping",
+          "kind": "image",
+          "src": "gazette-clipping.svg",
+          "unlockAfter": [
+            "felix-interview"
+          ]
+        },
+        {
+          "id": "lost-property",
+          "title": "Museum café lost-property book",
+          "kind": "document",
+          "content": "| Date | Item found | Where | Handed to | Signed |\n|---|---|---|---|---|\n| Sun 12:10 | Child's blue mitten | Table 2 | Kept at café | — |\n| Sun 16:45 | Volunteer badge **VOL-07** | Table 4 | **R. Lindqvist (curator)** | *R.L.* |\n| Sun 16:50 | Umbrella, black | Coat stand | Kept at café | — |",
+          "unlockAfter": [
+            "felix-interview",
+            "building-log"
+          ]
+        },
+        {
+          "id": "ruth-interview",
+          "title": "Interview: Dr Ruth Lindqvist (curator)",
+          "kind": "interview",
+          "content": "**Q:** Where were you on Monday evening?\n\n**Ruth:** The museum was closed, so I left at six and spent the evening at home on Gull Terrace. I didn't go out again.\n\n**Q:** Did you know Felix Marsh had lost his badge?\n\n**Ruth:** No, this is the first I've heard of it. Volunteer badges are the office's business, not mine.\n\n**Q:** Has anyone shown an interest in buying the chronometer?\n\n**Ruth:** Collectors ask now and then. The board would never sell it, and I would never suggest it."
+        },
+        {
+          "id": "ruth-phone",
+          "title": "Dr Lindqvist's work phone, call log",
+          "kind": "phone_log",
+          "content": "| Day | Time | Number | Direction | Duration |\n|---|---|---|---|---|\n| Mon | 18:20 | Home | outgoing | 2 min |\n| Mon | 21:47 | Bay Couriers | outgoing | 4 min |\n| Mon | 22:05 | +31 10 … (Kessler Fine Instruments, Rotterdam) | outgoing | 9 min |\n| Tue | 06:58 | Bay Couriers | incoming | 1 min |\n| Tue | 09:25 | I. Duarte | incoming | 6 min |",
+          "unlockAfter": [
+            "ruth-interview"
+          ]
+        },
+        {
+          "id": "courier-booking",
+          "title": "Bay Couriers booking confirmation",
+          "kind": "document",
+          "content": "**BAY COURIERS — booking BC-58213**\n\nBooked: **Monday 21:51**, by phone.\nSender: R. Lindqvist, **9 Gull Terrace**, Saltmarsh Bay.\nCollection: **Tuesday 07:00** from the sender's address.\nContents: 1 × antique brass marine instrument, boxed, 4 kg.\nRecipient: **Kessler Fine Instruments, Rotterdam**.\nService: cash on delivery — recipient pays **EUR 38,000** to the sender.\nStatus: collected 07:02 Tuesday — in transit, expected Thursday.",
+          "unlockAfter": [
+            "ruth-phone"
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "who",
+          "prompt": "Who swapped the Halden chronometer for the copy?",
+          "answer": "Dr Ruth Lindqvist, the curator",
+          "acceptedVariants": [
+            "Ruth Lindqvist",
+            "Ruth",
+            "Lindqvist",
+            "Dr Lindqvist",
+            "Dr Ruth Lindqvist",
+            "the curator"
+          ],
+          "points": 3
+        },
+        {
+          "id": "when",
+          "prompt": "When was the swap made?",
+          "answer": "Monday night, between 21:12 and 21:41",
+          "acceptedVariants": [
+            "Monday night",
+            "Monday evening",
+            "Monday",
+            "Monday at 21:12",
+            "between 21:12 and 21:41",
+            "Monday between 21:12 and 21:41"
+          ],
+          "points": 1
+        },
+        {
+          "id": "badge",
+          "prompt": "Whose badge opened the key box?",
+          "answer": "Felix Marsh's lost volunteer badge, VOL-07",
+          "acceptedVariants": [
+            "VOL-07",
+            "Felix Marsh",
+            "Felix",
+            "Felix's badge",
+            "Felix Marsh's badge",
+            "Felix's lost badge"
+          ],
+          "points": 2
+        },
+        {
+          "id": "exit",
+          "prompt": "How did the real chronometer leave the building?",
+          "answer": "Through the loading dock, into the curator's car",
+          "acceptedVariants": [
+            "loading dock",
+            "through the loading dock",
+            "via the loading dock",
+            "the back door",
+            "in her car",
+            "in Ruth's car",
+            "in the curator's car"
+          ],
+          "points": 1
+        },
+        {
+          "id": "where",
+          "prompt": "Where is the real chronometer now?",
+          "answer": "With Bay Couriers, on its way to Kessler Fine Instruments in Rotterdam",
+          "acceptedVariants": [
+            "Kessler Fine Instruments",
+            "Kessler",
+            "Rotterdam",
+            "on its way to Rotterdam",
+            "with Bay Couriers",
+            "Bay Couriers",
+            "with the courier"
+          ],
+          "points": 3
+        }
+      ],
+      "walkthrough": "**The copy.** On Saturday the real chronometer (No. 1847) was checked and locked away (`condition-report`). On Tuesday the case held the volunteers' touch-table copy, stamped No. 1874 (`replica-plate`), and the Education Room table was empty. Someone had to open the case between Saturday 17:34 and Tuesday morning.\n\n**When.** The display key D3 left the key box only once after Saturday: **Monday 21:12 to 21:41**, with the loading dock door opening at 21:38 (`building-log`). Nobody used the main entrance from Sunday's closing until Tuesday (`cctv-note`), so the swap happened on Monday night.\n\n**Whose badge.** The key was taken with badge **VOL-07**, Felix Marsh's — but Felix says he lost it on Sunday (`felix-interview`), and at 21:20 on Monday he was on stage at the Town Hall (`concert-photo`). The guard, Nina, was on camera at the front desk the whole time (`cctv-note`). So someone else had Felix's badge.\n\n**Who.** The café's lost-property book shows the badge was handed to **R. Lindqvist (curator)** on Sunday at 16:45 and signed for (`lost-property`). Ruth says she never knew the badge was lost and was at home all evening (`ruth-interview`), but at 21:30 Nina saw her green estate backed up to the loading dock with its boot open (`nina-interview`). The curator lied twice.\n\n**How it left.** The loading dock is next to Gallery 3 and out of the camera's view (`floor-plan`). It opened at 21:38 (`building-log`), while Ruth's car waited outside with the boot open (`nina-interview`).\n\n**Where it is now.** Three minutes after leaving, Ruth called Bay Couriers and then a dealer in Rotterdam (`ruth-phone`). The booking, made at 21:51, sent a 4 kg antique brass instrument from her home on Gull Terrace to **Kessler Fine Instruments, Rotterdam**, cash on delivery for EUR 38,000 (`courier-booking`). It was collected on Tuesday at 07:02 and is in transit with Bay Couriers.\n\n**Why.** Ruth sold the museum's treasure to a private dealer and framed the volunteer who had made the copy.",
+      "contentWarnings": [
+        "theft"
+      ],
+      "estMinutes": 30
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import { buildTabooPrompt } from "./taboo";
 import { buildJustOnePrompt } from "./justone";
 import { buildMonikersPrompt } from "./monikers";
 import { buildSituationPrompt } from "./situation";
+import { buildCasePrompt } from "./case";
 
 export type { PromptContext } from "./base";
 
@@ -30,9 +31,7 @@ export function buildPrompt(
     case "situation":
       return buildSituationPrompt(ctx);
     case "case":
-      throw new Error(
-        "Case file generation is not implemented yet (#36); write case decks by hand"
-      );
+      return buildCasePrompt(ctx);
     default:
       throw new Error(`Unknown game type: ${gameType}`);
   }
