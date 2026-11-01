@@ -1,11 +1,19 @@
 "use client";
 
-import { AlertTriangle, ChevronRight, Clock } from "lucide-react";
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { AlertTriangle, Check, ChevronRight, Clock, History, Shuffle } from "lucide-react";
 import type { SituationCard } from "@/types/card";
 import type { TranslateFn } from "@/lib/i18n";
+import { playedCardIds, selectedGroup, useHistoryState } from "@/lib/history";
+import { ActionButton } from "@/components/play/action-bar";
+import { GroupPicker } from "@/components/history/group-picker";
+import { RandomPickDialog } from "@/components/history/random-pick-dialog";
+import { AppSettingsButton } from "@/components/settings/app-settings-sheet";
 import { SituationShell } from "./situation-shell";
 
 interface Props {
+  deckId: string;
   /** Upcoming puzzles, current first. */
   cards: SituationCard[];
   onPick: (cardId: string) => void;
@@ -14,24 +22,73 @@ interface Props {
 
 /**
  * Puzzle picker (F2): title, content warnings and estimated minutes only —
- * never the setup's answer, solution, facts or hints.
+ * never the setup's answer, solution, facts or hints. Also: who is playing
+ * (group, F3), hiding puzzles that group has played, and random pick (F4).
  */
-export function PuzzlePicker({ cards, onPick, t }: Props) {
+export function PuzzlePicker({ deckId, cards, onPick, t }: Props) {
+  const { history, groups, settings } = useHistoryState();
+  const group = selectedGroup(groups);
+  const played = useMemo(
+    () => playedCardIds(history, deckId, group.id),
+    [history, deckId, group.id]
+  );
+  const [randomOpen, setRandomOpen] = useState(false);
+  const visible = group.hidePlayed ? cards.filter((c) => !played.has(c.cardId)) : cards;
+  const hiddenCount = cards.length - visible.length;
+
   return (
-    <SituationShell testId="situation-picker">
+    <SituationShell
+      testId="situation-picker"
+      footer={
+        cards.length > 0 && (
+          <ActionButton
+            variant="pass"
+            className="w-full"
+            onClick={() => setRandomOpen(true)}
+            icon={<Shuffle className="h-5 w-5" />}
+          >
+            {t("history.random.button")}
+          </ActionButton>
+        )
+      }
+    >
       <div className="pt-2">
-        <div className="flex items-baseline justify-between gap-3">
+        <div className="flex items-center justify-between gap-3">
           <h1 className="text-2xl font-bold font-display">{t("situation.picker.title")}</h1>
-          <span className="text-sm text-muted-foreground shrink-0">
+          <div className="flex items-center shrink-0">
+            <Link
+              href="/history"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent"
+              aria-label={t("history.link")}
+              title={t("history.link")}
+            >
+              <History className="h-5 w-5" />
+            </Link>
+            <AppSettingsButton t={t} />
+          </div>
+        </div>
+        <p className="text-sm text-muted-foreground mt-1">
+          {t("situation.picker.subtitle")}{" "}
+          <span className="whitespace-nowrap">
             {t("situation.picker.left", { count: cards.length })}
           </span>
-        </div>
-        <p className="text-sm text-muted-foreground mt-1">{t("situation.picker.subtitle")}</p>
+        </p>
       </div>
 
+      <GroupPicker groups={groups} t={t} />
+
+      {hiddenCount > 0 && (
+        <p className="text-sm text-muted-foreground" data-testid="situation-hidden-count">
+          {visible.length === 0
+            ? t("history.picker.allPlayed")
+            : t("history.picker.hiddenCount", { count: hiddenCount })}
+        </p>
+      )}
+
       <ul className="space-y-3">
-        {cards.map((card, index) => {
+        {visible.map((card, index) => {
           const warnings = card.contentWarnings ?? [];
+          const wasPlayed = played.has(card.cardId);
           return (
             <li key={card.cardId}>
               <button
@@ -52,6 +109,15 @@ export function PuzzlePicker({ cards, onPick, t }: Props) {
                     {card.title}
                   </span>
                   <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                    {wasPlayed && (
+                      <span
+                        className="inline-flex items-center gap-1 text-situation font-medium"
+                        data-testid="situation-played-badge"
+                      >
+                        <Check className="h-3.5 w-3.5" />
+                        {t("history.picker.played")}
+                      </span>
+                    )}
                     {card.estMinutes !== undefined && (
                       <span className="inline-flex items-center gap-1">
                         <Clock className="h-3.5 w-3.5" />
@@ -72,6 +138,16 @@ export function PuzzlePicker({ cards, onPick, t }: Props) {
           );
         })}
       </ul>
+
+      <RandomPickDialog
+        open={randomOpen}
+        onOpenChange={setRandomOpen}
+        cards={cards}
+        played={played}
+        filters={settings.randomFilters}
+        onPick={(card) => onPick(card.cardId)}
+        t={t}
+      />
     </SituationShell>
   );
 }

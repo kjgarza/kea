@@ -13,6 +13,8 @@ import {
   type SituationAction,
 } from "@/lib/game/modules/situation/logic";
 import { useLocale } from "@/lib/i18n";
+import { getGroups, recordPlay, selectedGroup, situationPlayRecord } from "@/lib/history";
+import { AfterPuzzleNotices } from "@/components/history/after-puzzle-notices";
 import { ContentWarningScreen } from "./content-warning-screen";
 import { SituationEndScreen } from "./end-screen";
 import { KEEPER_PANELS } from "./keeper-panels";
@@ -33,6 +35,24 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
   const phase = situationPhase(session);
   const puzzle = getPuzzle(session);
 
+  // Every finished puzzle is written to `kea.history` (#28) for the group
+  // currently selected in the picker.
+  const dispatchAndRecord = (action: SituationAction) => {
+    if (action.type === "end" && phase === "playing" && currentCard) {
+      const record = situationPlayRecord({
+        deckId: deck.deckId,
+        deckName: deck.name,
+        session,
+        card: currentCard,
+        group: selectedGroup(getGroups()),
+        outcome: action.outcome,
+        endedAt: action.at,
+      });
+      if (record) recordPlay(record);
+    }
+    dispatch(action);
+  };
+
   if (phase === "picker" || !puzzle) {
     const byId = new Map(deck.cards.map((c) => [c.cardId, c]));
     const cards = pickableCardIds(session)
@@ -40,6 +60,7 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
       .filter((c): c is SituationCard => Boolean(c));
     return (
       <PuzzlePicker
+        deckId={deck.deckId}
         cards={cards}
         onPick={(cardId) => dispatch({ type: "pick", cardId, at: now() })}
         t={t}
@@ -67,7 +88,7 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
           session={session}
           puzzle={puzzle}
           card={currentCard}
-          dispatch={dispatch}
+          dispatch={dispatchAndRecord}
           t={t}
         />
       );
@@ -80,6 +101,7 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
           hasMore={session.remainingCardIds.length > 0}
           onNext={() => dispatch({ type: "next", at: now() })}
           onChoose={() => dispatch({ type: "next", at: now(), toPicker: true })}
+          notices={<AfterPuzzleNotices t={t} />}
           t={t}
         />
       );

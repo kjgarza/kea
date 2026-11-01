@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Nunito } from "next/font/google";
+import { InstallPromptListener } from "@/components/pwa/install-prompt-listener";
 import "./globals.css";
 
 const inter = Inter({
@@ -62,6 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${nunito.variable} font-sans antialiased min-h-screen`}>
+        <InstallPromptListener />
         {children}
       </body>
     </html>

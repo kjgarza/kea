@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import Link from "next/link";
 import { GameGrid } from "@/components/home/game-grid";
+import { useLocale } from "@/lib/i18n";
 
 export default function Home() {
+  const { t } = useLocale();
   return (
     <main className="min-h-screen p-6 md:p-8 relative overflow-hidden">
       {/* Decorative background shapes */}
@@ -53,8 +55,14 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 text-center"
+          className="mt-12 flex justify-center gap-6"
         >
+          <Link
+            href="/history"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
+          >
+            {t("history.link")}
+          </Link>
           <Link
             href="/about"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
