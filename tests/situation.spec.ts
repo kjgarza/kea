@@ -61,6 +61,18 @@ test.describe('situation puzzles', () => {
     await expect(page.getByTestId('situation-pick-cl-001')).toContainText('Apagón');
     await expect(page.getByTestId('situation-pick-cl-001')).toContainText('Advertencias: muerte');
   });
+
+  test('the YAML-imported sample pack (#27) is playable', async ({ page }) => {
+    await page.goto('/play/kitchen-table-en-situation');
+    await page.getByRole('button', { name: /start game/i }).click();
+    await page.getByTestId('situation-pick-wet-letter').click();
+    await expect(page.getByTestId('situation-setup-text')).toContainText(
+      'Maria receives a letter'
+    );
+    await page.getByRole('button', { name: 'Keeper: show solution' }).click();
+    await page.getByRole('button', { name: "I'm the keeper, show it" }).click();
+    await expect(page.getByRole('checkbox', { name: /ink that only appears when wet/ })).toBeVisible();
+  });
 });
 
 test.describe('situation human keeper (375px)', () => {

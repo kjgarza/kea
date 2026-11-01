@@ -1,0 +1,90 @@
+# Hand-written situation puzzles (imported by scripts/import-puzzles.ts).
+# Format: see README → "Importing hand-written situation puzzles".
+pack: kitchen-table
+language: en
+name: Kitchen Table Mysteries
+difficulty: easy
+topics:
+  - everyday
+  - family
+nsfw: false
+recommended: false
+origin: original
+
+puzzles:
+  - title: The Silent Alarm
+    setup: >-
+      Every night Tom sets three alarms on his phone. One morning none of them
+      ring, he wakes up two hours late, and he is delighted.
+    solution: >-
+      Tom works in a bakery and the alarms are for his early shift. The night
+      before, his daughter had secretly swapped shifts with his colleague so he
+      could sleep in on his birthday, and she turned the alarms off. He woke up
+      late to breakfast already on the table.
+    keyFacts:
+      - The alarms were for an early work shift.
+      - It was Tom's birthday.
+      - His daughter turned the alarms off on purpose.
+      - Someone else covered his shift.
+    hints:
+      - Tom was not in trouble for being late.
+      - Somebody else touched his phone.
+      - Think about what day it was.
+    estMinutes: 10
+
+  - id: wet-letter
+    title: The Wet Letter
+    setup: >-
+      Maria receives a letter, reads it, and immediately puts it under a running
+      tap. Afterwards she smiles and pins it to the fridge.
+    solution: >-
+      Her nephew had written the letter with a "magic" pen whose ink only shows
+      up when wet, as part of a game they play. Under the tap the hidden message
+      appeared: a drawing and the words "Coming to visit on Sunday!".
+    keyFacts:
+      - id: invisible-ink
+        text: The letter was written in ink that only appears when wet.
+      - id: from-nephew
+        text: The letter came from a child in her family.
+      - The message was good news about a visit.
+    hints:
+      - Maria wasn't trying to destroy the letter.
+      - The letter looked blank at first.
+    difficulty: easy
+    estMinutes: 8
+
+  - title: Two Tickets, One Seat
+    setup: >-
+      A woman buys two cinema tickets for herself, sits in one seat for the
+      whole film, and leaves the other seat empty. She says it was the best
+      money she spent all year.
+    solution: >-
+      She had broken her leg skiing and it was in a cast that would not bend.
+      In a normal cinema row she could not sit at all, so she bought the seat
+      next to hers as well and rested her leg across it for the whole film.
+    keyFacts:
+      - She had a broken leg in a cast.
+      - She needed to keep the leg stretched out.
+      - The second ticket was for the seat next to her.
+    hints:
+      - The empty seat was not empty for nothing.
+      - Think about something she couldn't bend.
+    difficulty: medium
+
+  - title: The Overdue Book
+    setup: >-
+      A library book is returned forty years late. Instead of charging a fine,
+      the librarian frames the book and hangs it on the wall.
+    solution: >-
+      The book was returned by a now-famous author, who had borrowed it as a
+      child and credited it with making them want to write. They returned it
+      with a handwritten note on the inside cover, which made it a treasure for
+      the small town library.
+    keyFacts:
+      - The borrower had become a famous author.
+      - The book inspired them as a child.
+      - They added a handwritten note inside the book.
+    hints:
+      - Who returned it mattered more than when.
+      - Something was added to the book before it came back.
+    estMinutes: 12

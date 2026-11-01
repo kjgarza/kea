@@ -127,6 +127,53 @@ The generated deck is written to `public/decks/<deck-id>.json` and the deck inde
 
 The workflow at `.github/workflows/generate-decks.yml` automatically regenerates decks when YAML source configs change. Add `OPENAI_API_KEY` to your repository secrets to enable it.
 
+### Importing Hand-Written Situation Puzzles
+
+Situation puzzles you write or transcribe yourself can be imported without running generation. Each pack is a YAML file at `decks/puzzles/<pack>-<lang>.yaml` (for example `decks/puzzles/kitchen-table-en.yaml`):
+
+```yaml
+pack: kitchen-table          # slug; must match the file name
+language: en                 # must match the file name
+name: Kitchen Table Mysteries
+deckId: kitchen-table-en-situation   # optional; default <pack>-<language>-situation
+difficulty: easy             # optional: easy | medium | hard (default medium)
+topics: [everyday, family]   # optional
+nsfw: false                  # optional (default false)
+recommended: false           # optional (default false)
+origin: original             # optional default for puzzles: original | transcribed | generated
+
+puzzles:
+  - id: wet-letter           # optional; generated from the title when missing
+    title: The Wet Letter
+    setup: Maria receives a letter, reads it, and puts it under a running tap...   # max 400 characters
+    solution: Her nephew had written it in ink that only shows up when wet...
+    keyFacts:                # 3–8 facts; a plain string or { id, text }
+      - id: invisible-ink
+        text: The letter was written in ink that only appears when wet.
+      - The letter came from a child in her family.   # id generated from the text
+      - The message was good news about a visit.
+    hints:                   # 1–4, mild → strong
+      - Maria wasn't trying to destroy the letter.
+      - The letter looked blank at first.
+    difficulty: easy         # optional, overrides the deck difficulty
+    contentWarnings: []      # optional, e.g. [death, animal death]
+    estMinutes: 8            # optional
+    origin: transcribed      # optional, overrides the pack origin
+    ref: "Book title, p. 12" # optional source reference
+```
+
+Import every pack, or one file:
+
+```bash
+bun scripts/import-puzzles.ts
+bun scripts/import-puzzles.ts --file decks/puzzles/kitchen-table-en.yaml
+bun scripts/import-puzzles.ts --dry-run    # validate only
+```
+
+The importer writes `public/decks/<deckId>.json` and updates `public/decks/index.json`. Puzzles are checked with the same validator as generated decks; each error names the puzzle (position, title and id) and the field, and a pack with any error is not written. Missing ids are derived from the content (card id from the title, key-fact id from the fact text, with `-2`, `-3`… on clashes), and the deck `version` only changes when the content does, so re-running the import produces no diff. Give puzzles explicit ids if you plan to retitle them later or want matching ids across languages.
+
+The manually triggered workflow `.github/workflows/import-puzzles.yml` runs the same import and commits the result.
+
 ## Project Structure
 
 ```
@@ -152,7 +199,8 @@ kea/
 │   ├── lib/                    # Config loader, LLM client, validators
 │   └── prompts/                # Game-specific prompt templates
 ├── decks/
-│   └── source/                 # YAML deck configs
+│   ├── source/                 # YAML deck configs
+│   └── puzzles/                # Hand-written situation puzzle packs
 ├── public/
 │   └── decks/                  # Generated JSON decks (committed)
 └── .github/
