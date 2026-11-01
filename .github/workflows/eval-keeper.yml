@@ -1,0 +1,92 @@
+name: Keeper eval
+
+# Runs the AI keeper eval set (evals/keeper) through the shared keeper prompt
+# and posts agreement, leaks and confusion matrices as the job summary.
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: "Keeper provider (oracle/saboteur/stub run offline, no keys)"
+        required: true
+        type: choice
+        default: anthropic
+        options: [anthropic, openai, stub, oracle, saboteur]
+      model:
+        description: "Model override (empty = config default / KEEPER_MODEL)"
+        required: false
+        type: string
+      judge:
+        description: "Leak judge"
+        required: true
+        type: choice
+        default: same
+        options: [same, anthropic, openai, scripted, none]
+      lang:
+        description: "Languages"
+        required: true
+        type: choice
+        default: all
+        options: [all, en, es]
+      limit:
+        description: "Max cases per language (empty = all)"
+        required: false
+        type: string
+      concurrency:
+        description: "Parallel keeper calls"
+        required: false
+        type: string
+        default: "4"
+      baseline:
+        description: "Baseline report to diff against (path in the repo, e.g. evals/keeper/baselines/keeper-v1.json)"
+        required: false
+        type: string
+      strict:
+        description: "Fail the job unless agreement >= 95% and zero leaks"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install
+
+      - name: Run keeper eval
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          PROVIDER: ${{ inputs.provider }}
+          MODEL: ${{ inputs.model }}
+          JUDGE: ${{ inputs.judge }}
+          LANG_FILTER: ${{ inputs.lang }}
+          LIMIT: ${{ inputs.limit }}
+          CONCURRENCY: ${{ inputs.concurrency }}
+          BASELINE: ${{ inputs.baseline }}
+          STRICT: ${{ inputs.strict }}
+        run: |
+          args=(--provider "$PROVIDER" --judge "$JUDGE" --lang "$LANG_FILTER" --save reports/keeper-eval.json --markdown reports/keeper-eval.md)
+          [ -n "$MODEL" ] && args+=(--model "$MODEL")
+          [ -n "$LIMIT" ] && args+=(--limit "$LIMIT")
+          [ -n "$CONCURRENCY" ] && args+=(--concurrency "$CONCURRENCY")
+          [ -n "$BASELINE" ] && args+=(--baseline "$BASELINE")
+          [ "$STRICT" = "true" ] && args+=(--strict)
+          bun scripts/eval-keeper.ts "${args[@]}" > /dev/null
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: keeper-eval-${{ inputs.provider }}-${{ github.run_number }}
+          path: reports/
+          if-no-files-found: ignore

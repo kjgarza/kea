@@ -38,3 +38,6 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Playwright
 /test-results/
 /playwright-report/
+
+# keeper eval reports (scripts/eval-keeper.ts --save/--markdown in CI)
+/reports/

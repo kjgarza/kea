@@ -5,7 +5,7 @@ import type { Env } from "./env";
 import { DeckLoader } from "./decks";
 import { createRateLimiter, dailyLimit, memoryCounterStore } from "./rate-limit";
 import { handleRequest, providerFromEnv, type WorkerDeps } from "./router";
-import { stubKeeperRespond } from "./stub-keeper";
+import { stubKeeperRespond } from "../../src/lib/ai/stub-keeper";
 
 const SITE = "https://example.github.io/kea";
 const ORIGIN = "https://example.github.io";

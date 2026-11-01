@@ -4,7 +4,7 @@
  * shares a word with a fact, "rephrase" when it asks for the answer, and
  * "irrelevant" otherwise. Good enough to click through the UI; NOT a keeper.
  */
-import type { JsonGenerationRequest } from "../../src/lib/ai/provider";
+import type { JsonGenerationRequest } from "./provider";
 
 const ASK_FOR_ANSWER = /\b(answer|solution|tell me|respuesta|soluci[oó]n|dime)\b/i;
 

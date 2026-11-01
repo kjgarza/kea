@@ -1,8 +1,11 @@
 import { describe, expect, test } from "bun:test";
 import type { SituationCard } from "@/types/card";
 import { KEEPER_ANSWERS, normalizeKeeperAnswer } from "./answers";
+import { ProviderError, createStubProvider } from "./provider";
 import {
+  FALLBACK_KEEPER_RESPONSE,
   KEEPER_RULES,
+  answerKeeperQuestion,
   buildKeeperPrompt,
   buildKeeperRequest,
   keeperOutputSchema,
@@ -127,5 +130,32 @@ describe("validateKeeperAskRequest", () => {
     ]) {
       expect(validateKeeperAskRequest(bad).ok).toBe(false);
     }
+  });
+});
+
+describe("answerKeeperQuestion (shared by the Worker and the evals)", () => {
+  const input = { card, lang: "en" as const, transcript: [], question: "Is it her son?" };
+
+  test("validates the model output", async () => {
+    const provider = createStubProvider(() => ({ answer: "YES", factIds: ["son", "x"], confidence: 3 }));
+    const turn = await answerKeeperQuestion(provider, input);
+    expect(turn.response).toEqual({ answer: "yes", factIds: ["son"], confidence: 1 });
+    expect(turn.fallback).toBeNull();
+    expect(turn.raw?.text).toContain("YES");
+  });
+
+  test("falls back to rephrase when the model declines", async () => {
+    const provider = createStubProvider(() => {
+      throw new ProviderError("refusal", "no");
+    });
+    const turn = await answerKeeperQuestion(provider, input, { attempts: 1 });
+    expect(turn).toEqual({ response: FALLBACK_KEEPER_RESPONSE, raw: null, fallback: "refusal" });
+  });
+
+  test("re-throws HTTP errors", async () => {
+    const provider = createStubProvider(() => {
+      throw new ProviderError("http", "down", 400);
+    });
+    await expect(answerKeeperQuestion(provider, input, { attempts: 1 })).rejects.toThrow("down");
   });
 });

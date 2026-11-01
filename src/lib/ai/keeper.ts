@@ -10,7 +10,8 @@ import { KEEPER_ANSWERS, normalizeKeeperAnswer } from "./answers";
 import type { AiLanguage, KeeperAskRequest, KeeperAskResponse, KeeperTranscriptTurn } from "./api";
 import { AI_LANGUAGES } from "./api";
 import { KEEPER_EFFORT, KEEPER_LIMITS, KEEPER_MAX_TOKENS } from "./config";
-import type { JsonGenerationRequest, JsonSchema } from "./provider";
+import type { JsonGenerationRequest, JsonGenerationResult, JsonSchema, LlmProvider } from "./provider";
+import { ProviderError, generateJsonWithRetry } from "./provider";
 
 const LANGUAGE_NAMES: Record<AiLanguage, string> = { en: "English", es: "Spanish" };
 
@@ -139,6 +140,40 @@ export const FALLBACK_KEEPER_RESPONSE: KeeperAskResponse = {
   factIds: [],
   confidence: 0,
 };
+
+export interface KeeperTurnResult {
+  /** What the player sees. */
+  response: KeeperAskResponse;
+  /** Raw model output, or null when the fallback was used. */
+  raw: JsonGenerationResult | null;
+  /** Why the fallback answer was used (declined, truncated, malformed), else null. */
+  fallback: Exclude<ProviderError["kind"], "http"> | null;
+}
+
+/**
+ * One keeper turn: build the request, call the provider (with retries),
+ * validate the output. Declined/truncated/malformed output becomes the
+ * fallback answer; HTTP errors are re-thrown for the caller to report.
+ *
+ * The Worker (POST /keeper/ask) and the eval harness both call this, so the
+ * evals measure exactly what players get.
+ */
+export async function answerKeeperQuestion(
+  provider: LlmProvider,
+  input: KeeperPromptInput,
+  retry: { attempts?: number; delayMs?: number } = { attempts: 2, delayMs: 250 }
+): Promise<KeeperTurnResult> {
+  const request = buildKeeperRequest(input);
+  try {
+    const raw = await generateJsonWithRetry(provider, request, retry);
+    return { response: parseKeeperOutput(raw.data, input.card), raw, fallback: null };
+  } catch (error) {
+    if (error instanceof ProviderError && error.kind !== "http") {
+      return { response: FALLBACK_KEEPER_RESPONSE, raw: null, fallback: error.kind };
+    }
+    throw error;
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Request validation (Worker side)
