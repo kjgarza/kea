@@ -11,6 +11,7 @@ import { test, expect, type Page, type Route } from '@playwright/test';
 test.use({ viewport: { width: 375, height: 667 }, hasTouch: true });
 
 const API_URL = process.env.NEXT_PUBLIC_KEA_API_URL?.replace(/\/$/, '');
+const AI_PLAY = process.env.NEXT_PUBLIC_KEA_AI_PLAY === '1';
 const DECK_ID = 'saltmarsh-bay-en-case';
 const CORS = { 'access-control-allow-origin': '*' };
 
@@ -71,8 +72,32 @@ async function accuse(page: Page, answers: Record<string, string>) {
   await expect(page.getByTestId('case-review')).toBeVisible();
 }
 
+test.describe('case: AI play deferred', () => {
+  test.skip(AI_PLAY, 'NEXT_PUBLIC_KEA_AI_PLAY=1');
+
+  test('the investigator is shown disabled with a hint; no judge, the group marks by hand', async ({ page }) => {
+    await seedPasscode(page);
+    await openCase(page);
+    await expect(page.getByTestId('case-investigator-open')).toBeDisabled();
+    const hint = page.getByTestId('case-investigator-hint');
+    await expect(hint).toHaveAttribute('title', 'Coming in a later release');
+    await hint.hover();
+    await expect(hint.getByRole('tooltip')).toBeVisible();
+    await accuse(page, { who: 'the museum curator, Dr Lindqvist', when: 'Monday night' });
+    await expect(page.getByTestId('case-judge-status')).toHaveCount(0);
+    await page.getByTestId('case-mark-correct-who').click();
+    await expect(page.getByTestId('case-mark-correct-who')).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  test('answers lock at the accusation: the review has no way back to the board', async ({ page }) => {
+    await openCase(page);
+    await accuse(page, { who: 'nobody' });
+    await expect(page.getByRole('button', { name: 'Change answers' })).toHaveCount(0);
+  });
+});
+
 test.describe('case without a Worker', () => {
-  test.skip(!!API_URL, 'Runs only when no Worker URL is configured');
+  test.skip(!!API_URL || !AI_PLAY, 'needs NEXT_PUBLIC_KEA_AI_PLAY=1 and no Worker URL');
 
   test('no investigator, and the group marks unmatched answers by hand', async ({ page }) => {
     await seedPasscode(page);
@@ -90,7 +115,7 @@ test.describe('case without a Worker', () => {
 });
 
 test.describe('case with the AI Worker (mocked)', () => {
-  test.skip(!API_URL, 'Set NEXT_PUBLIC_KEA_API_URL (e.g. https://kea-worker.test) for the dev server and tests');
+  test.skip(!API_URL || !AI_PLAY, 'Set NEXT_PUBLIC_KEA_API_URL (e.g. https://kea-worker.test) and NEXT_PUBLIC_KEA_AI_PLAY=1 for the dev server and tests');
 
   test('the investigator is hidden without a passcode', async ({ page }) => {
     await openCase(page);

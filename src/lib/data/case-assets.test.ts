@@ -18,4 +18,10 @@ describe("case assets", () => {
       "/decks/assets/sample-en-case/receipt.svg"
     );
   });
+
+  test("percent-encodes each segment but keeps the slashes", () => {
+    expect(caseAssetPath("sample-en-case", "photo#2.png")).toBe("/decks/assets/sample-en-case/photo%232.png");
+    expect(caseAssetPath("sample-en-case", "plan 50%.pdf")).toBe("/decks/assets/sample-en-case/plan%2050%25.pdf");
+    expect(caseAssetPath("sample-en-case", "maps/a b?.png")).toBe("/decks/assets/sample-en-case/maps/a%20b%3F.png");
+  });
 });

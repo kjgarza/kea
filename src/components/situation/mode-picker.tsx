@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Bot, KeyRound, User, Users } from "lucide-react";
+import { Bot, Clock, KeyRound, User, Users } from "lucide-react";
 import type { SituationMode } from "@/types/session";
-import type { AiAvailability } from "@/hooks/use-ai-availability";
+import type { AiPlayAvailability } from "@/hooks/use-ai-play-availability";
 import type { TranslateFn } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
+import { ComingLaterHint } from "@/components/ui/coming-later-hint";
 import { AppSettingsSheet } from "@/components/settings/app-settings-sheet";
 
 interface Props {
   mode: SituationMode;
   onChange: (mode: SituationMode) => void;
-  availability: AiAvailability;
+  availability: AiPlayAvailability;
   t: TranslateFn;
 }
 
@@ -29,6 +30,7 @@ const MODES: { mode: SituationMode; icon: typeof Users; needsAi: boolean }[] = [
 export function ModePicker({ mode, onChange, availability, t }: Props) {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const aiOk = availability === "available";
+  const deferred = availability === "deferred";
 
   return (
     <div className="rounded-3xl border bg-white/90 shadow-sm p-4 space-y-3" data-testid="mode-picker">
@@ -43,7 +45,7 @@ export function ModePicker({ mode, onChange, availability, t }: Props) {
         {MODES.map(({ mode: option, icon: Icon, needsAi }) => {
           const selected = option === mode;
           const disabled = needsAi && !aiOk;
-          return (
+          const button = (
             <button
               key={option}
               type="button"
@@ -53,7 +55,7 @@ export function ModePicker({ mode, onChange, availability, t }: Props) {
               disabled={disabled}
               onClick={() => onChange(option)}
               data-testid={`mode-${option}`}
-              className={`min-h-16 rounded-2xl border-2 px-2 py-2 flex flex-col items-center justify-center gap-1 text-sm font-semibold leading-tight transition disabled:opacity-45 ${
+              className={`w-full min-h-16 rounded-2xl border-2 px-2 py-2 flex flex-col items-center justify-center gap-1 text-sm font-semibold leading-tight transition disabled:opacity-45 ${
                 selected
                   ? "bg-situation text-white border-situation"
                   : "bg-white text-foreground border-border"
@@ -63,16 +65,29 @@ export function ModePicker({ mode, onChange, availability, t }: Props) {
               {t(`situation.mode.${option}`)}
             </button>
           );
+          return deferred && needsAi ? (
+            <ComingLaterHint key={option} message={t("ai.comingLater")} testId={`mode-${option}-hint`}>
+              {button}
+            </ComingLaterHint>
+          ) : (
+            button
+          );
         })}
       </div>
       {!aiOk && (
         <div className="flex items-start gap-2 text-sm text-muted-foreground" data-testid="mode-unavailable">
-          <KeyRound className="h-4 w-4 shrink-0 mt-0.5" />
+          {deferred ? (
+            <Clock className="h-4 w-4 shrink-0 mt-0.5" />
+          ) : (
+            <KeyRound className="h-4 w-4 shrink-0 mt-0.5" />
+          )}
           <div className="space-y-2">
             <p>
-              {availability === "not_configured"
-                ? t("situation.mode.notConfigured")
-                : t("situation.mode.missingPasscode")}
+              {deferred
+                ? t("situation.mode.deferred")
+                : availability === "not_configured"
+                  ? t("situation.mode.notConfigured")
+                  : t("situation.mode.missingPasscode")}
             </p>
             {availability === "missing_passcode" && (
               <>

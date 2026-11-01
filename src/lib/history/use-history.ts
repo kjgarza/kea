@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { DEFAULT_GROUPS } from "./groups";
-import { getGroups, getHistory, getSettings, subscribeHistory } from "./history-store";
+import { getGroups, getHistory, getSettings, historyVersion, subscribeHistory } from "./history-store";
 import { DEFAULT_SETTINGS } from "./settings";
 import type { AppSettings, GroupsState, PlayRecord } from "./types";
 
@@ -19,20 +19,21 @@ const SERVER_STATE: HistoryState = {
 };
 
 // useSyncExternalStore needs a stable snapshot: re-read only after a change.
-let cached: HistoryState | null = null;
+// The cache is keyed by the store's version, so writes made while nothing is
+// subscribed (e.g. recording a play after the picker unmounted) are seen by
+// the next mount.
+let cached: { version: number; state: HistoryState } | null = null;
 
 function getSnapshot(): HistoryState {
-  if (!cached) {
-    cached = { history: getHistory(), groups: getGroups(), settings: getSettings() };
+  const version = historyVersion();
+  if (!cached || cached.version !== version) {
+    cached = { version, state: { history: getHistory(), groups: getGroups(), settings: getSettings() } };
   }
-  return cached;
+  return cached.state;
 }
 
 function subscribe(listener: () => void): () => void {
-  return subscribeHistory(() => {
-    cached = null;
-    listener();
-  });
+  return subscribeHistory(listener);
 }
 
 /** History, groups and settings, kept in sync with the store. */

@@ -46,14 +46,17 @@ const LEADING_ARTICLES = new Set(["the", "a", "an", "el", "la", "los", "las", "u
 
 /**
  * Normalise an answer for comparison: Unicode-decompose and drop accents,
- * lower-case, turn punctuation into spaces, collapse whitespace and drop a
- * leading article ("The coach" == "coach", "Él" == "el").
+ * lower-case, drop apostrophes ("Felix's" == "Felixs"), turn other
+ * punctuation into spaces, collapse whitespace and drop a leading article
+ * ("The coach" == "coach", "Él" == "el"). `localAnswerMatch` also compares
+ * with the spaces removed, so "VOL-07" == "VOL07".
  */
 export function normalizeCaseAnswer(text: string): string {
   const words = text
     .normalize("NFKD")
     .replace(/\p{M}+/gu, "")
     .toLowerCase()
+    .replace(/['\u2019\u2018\u02bc`]/g, "")
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .trim()
     .split(" ")
@@ -72,8 +75,13 @@ export function localAnswerMatch(
 ): "blank" | "exact" | "variant" | null {
   const given = normalizeCaseAnswer(answer ?? "");
   if (!given) return "blank";
-  if (given === normalizeCaseAnswer(question.answer)) return "exact";
-  if (question.acceptedVariants.some((v) => normalizeCaseAnswer(v) === given)) return "variant";
+  // Second check on the compact form, so "vol 07" == "VOL-07" == "vol07".
+  const compact = (text: string) => normalizeCaseAnswer(text).replace(/ /g, "");
+  const givenCompact = given.replace(/ /g, "");
+  if (given === normalizeCaseAnswer(question.answer) || givenCompact === compact(question.answer)) return "exact";
+  if (question.acceptedVariants.some((v) => normalizeCaseAnswer(v) === given || compact(v) === givenCompact)) {
+    return "variant";
+  }
   return null;
 }
 

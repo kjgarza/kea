@@ -84,7 +84,7 @@ function readDataUrl(blob: Blob): Promise<string> {
 
 /** Downscale and re-encode one photo as JPEG. */
 export async function preparePhoto(file: Blob, options: PrepareOptions = {}): Promise<PreparedPhoto> {
-  const maxBytes = options.maxBytes ?? PHOTO_LIMITS.maxImageBytes;
+  const maxBytes = options.maxBytes ?? PHOTO_LIMITS.maxImageDecodedBytes;
   let maxDimension = options.maxDimension ?? PHOTO_PREPARE_DEFAULTS.maxDimension;
   let quality = options.quality ?? PHOTO_PREPARE_DEFAULTS.quality;
   const image = await decode(file);

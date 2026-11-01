@@ -20,7 +20,12 @@ export function isSafeAssetPath(src: string): boolean {
   return src.split("/").every((part) => part !== "" && part !== "." && part !== "..");
 }
 
-/** Site-relative URL of an evidence file (prefix it with `withBasePath`). */
+/**
+ * Site-relative URL of an evidence file (prefix it with `withBasePath`). Each
+ * path segment is percent-encoded, so "photo#2.png" or "plan 50%.pdf" are not
+ * read as a fragment or a bad escape.
+ */
 export function caseAssetPath(deckId: string, src: string): string {
-  return `${CASE_ASSETS_URL_PREFIX}/${deckId}/${src}`;
+  const encoded = src.split("/").map(encodeURIComponent).join("/");
+  return `${CASE_ASSETS_URL_PREFIX}/${encodeURIComponent(deckId)}/${encoded}`;
 }

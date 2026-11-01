@@ -64,6 +64,20 @@ describe("photo request validation", () => {
     expect(validateAuthorPhotoRequest({ images: [{ mediaType: "image/heic", data: JPEG }], lang: "en" })).toMatchObject({ ok: false, status: 400 });
   });
 
+  test("the 5 MB cap is on the base64 string length, not the decoded bytes", () => {
+    const atCap = "/9j/" + "A".repeat(PHOTO_LIMITS.maxImageBytes - 4);
+    expect(atCap.length).toBe(PHOTO_LIMITS.maxImageBytes);
+    expect(validateAuthorPhotoRequest({ images: [{ mediaType: "image/jpeg", data: atCap }], lang: "en" }).ok).toBe(true);
+    // ~4.2 MB decoded would pass a decoded-bytes cap but is >5 MB once encoded.
+    const overCap = "/9j/" + "A".repeat(PHOTO_LIMITS.maxImageBytes);
+    expect(overCap.length % 4).toBe(0);
+    expect(validateAuthorPhotoRequest({ images: [{ mediaType: "image/jpeg", data: overCap }], lang: "en" })).toMatchObject({
+      ok: false,
+      status: 413,
+    });
+    expect(PHOTO_LIMITS.maxImageDecodedBytes * 4).toBeLessThanOrEqual(PHOTO_LIMITS.maxImageBytes * 3);
+  });
+
   test("pack slugs", () => {
     expect(isPackSlug("kitchen-table")).toBe(true);
     expect(isPackSlug("Kitchen")).toBe(false);

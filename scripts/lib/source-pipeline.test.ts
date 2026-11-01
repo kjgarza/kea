@@ -288,7 +288,13 @@ describe("licence rules in the importers", () => {
 describe("translation keeps sources", () => {
   test("external cards are marked modified; Kea's own are untouched", async () => {
     const deck = await committedDeck<SituationDeck>("sample-cc-by-sa-en-situation");
-    const merged = mergeTranslation(deck.cards[0], { title: "El faro" }) as SituationCard;
+    const original = deck.cards[0] as SituationCard;
+    const merged = mergeTranslation(original, {
+      title: "El faro",
+      setup: "Preparación",
+      solution: "Solución",
+      keyFacts: original.keyFacts.map((f) => ({ id: f.id, text: `ES ${f.text}` })),
+    }) as SituationCard;
     expect(merged.title).toBe("El faro");
     expect(merged.source).toEqual({ ...deck.cards[0].source!, modified: true });
     expect(translatedSource({ origin: "original" as const, pack: "x" })).toEqual({ origin: "original", pack: "x" });

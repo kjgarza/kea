@@ -44,7 +44,10 @@ export const EVAL_TAGS = [
 ] as const;
 export type EvalTag = (typeof EVAL_TAGS)[number];
 
-const FACT_ANSWERS: readonly KeeperAnswer[] = ["yes", "no", "partly"];
+/** Only these answers may carry fact ids (a `no` citing a fact would leak it). */
+const FACT_ANSWERS: readonly KeeperAnswer[] = ["yes", "partly"];
+/** `allow` is harmless on a `no`: it only excuses ids from the leak check. */
+const ALLOW_ANSWERS: readonly KeeperAnswer[] = ["yes", "no", "partly"];
 
 // ---------------------------------------------------------------------------
 // File format
@@ -60,7 +63,7 @@ export interface EvalTurnInput extends LocalizedText {
 export interface EvalCaseInput extends LocalizedText {
   /** Expected answer. */
   a: KeeperAnswer;
-  /** Key-fact ids the reply should list (only for yes/no/partly). */
+  /** Key-fact ids the reply should list (only for yes/partly). */
   facts?: string[];
   /** Extra fact ids the reply may list without counting as a leak. */
   allow?: string[];
@@ -217,8 +220,11 @@ export async function validateEvalFile(raw: unknown, fileName: string, loadDeck:
     if (!isStringArray(facts)) fail(`${label}: facts must be a list of fact ids`);
     if (!isStringArray(allow)) fail(`${label}: allow must be a list of fact ids`);
     if (!isStringArray(facts) || !isStringArray(allow)) return;
-    if ((facts.length > 0 || allow.length > 0) && !FACT_ANSWERS.includes(expected)) {
-      fail(`${label}: facts/allow only make sense for yes, no or partly (got ${expected})`);
+    if (facts.length > 0 && !FACT_ANSWERS.includes(expected)) {
+      fail(`${label}: facts only make sense for yes or partly (got ${expected}); use allow for a no`);
+    }
+    if (allow.length > 0 && !ALLOW_ANSWERS.includes(expected)) {
+      fail(`${label}: allow only makes sense for yes, no or partly (got ${expected})`);
     }
     if (c.note !== undefined && typeof c.note !== "string") fail(`${label}: note must be text`);
 
@@ -544,7 +550,9 @@ async function runCase(c: EvalCase, options: RunOptions): Promise<CaseResult> {
   return {
     ...base,
     actual: response.answer,
-    agree: response.answer === c.expected,
+    // A provider fallback (refusal/malformed -> rephrase) is not agreement,
+    // even when "rephrase" happens to be the expected answer.
+    agree: fallback === null && response.answer === c.expected,
     factIds: response.factIds,
     factsMatched,
     outOfVocab: check.outOfVocab,

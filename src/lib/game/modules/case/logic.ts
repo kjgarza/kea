@@ -38,8 +38,6 @@ export type CaseAction =
   | { type: "setAnswer"; questionId: string; text: string }
   /** Submit the joint accusation (answers lock). */
   | { type: "accuse"; at: string }
-  /** Back from the review to the board to change answers. */
-  | { type: "editAnswers" }
   /**
    * Mark an unmatched answer right/wrong (`correct: null` clears it). The
    * group can always override a judge mark.
@@ -216,10 +214,6 @@ export function reduceCase(
     case "accuse":
       if (phase !== "board") return input;
       return { ...session, accusedAt: action.at, marks: {} };
-
-    case "editAnswers":
-      if (phase !== "review") return input;
-      return { ...session, accusedAt: null, marks: {} };
 
     case "mark": {
       if (phase !== "review") return input;

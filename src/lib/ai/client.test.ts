@@ -130,3 +130,40 @@ describe("gradeKeeperTheory", () => {
     expect(JSON.stringify(body)).not.toContain("SECRET");
   });
 });
+
+describe("request timeout", () => {
+  const hangingFetch = (_url: string, init?: RequestInit) =>
+    new Promise<Response>((_resolve, reject) => {
+      const abort = () => reject(new DOMException("aborted", "AbortError"));
+      if (init?.signal?.aborted) abort();
+      else init?.signal?.addEventListener("abort", abort);
+    });
+  const base = { baseUrl: "https://w.example", passcode: "p" };
+
+  test("a hung Worker surfaces as KeaApiError network after the timeout", async () => {
+    const started = Date.now();
+    await expect(askKeeper(req, { ...base, fetch: hangingFetch, timeoutMs: 20 })).rejects.toMatchObject({
+      name: "KeaApiError",
+      code: "network",
+    });
+    expect(Date.now() - started).toBeLessThan(2000);
+  });
+
+  test("a caller abort still surfaces as AbortError, not a timeout", async () => {
+    const controller = new AbortController();
+    const pending = askKeeper(req, { ...base, fetch: hangingFetch, timeoutMs: 5000, signal: controller.signal });
+    controller.abort();
+    await expect(pending).rejects.toMatchObject({ name: "AbortError" });
+    const already = new AbortController();
+    already.abort();
+    await expect(askKeeper(req, { ...base, fetch: hangingFetch, signal: already.signal })).rejects.toMatchObject({
+      name: "AbortError",
+    });
+  });
+
+  test("a fast answer is unaffected and the timer is cleared", async () => {
+    const { fetch } = recordFetch({ answer: "yes", factIds: [], confidence: 1 });
+    await expect(askKeeper(req, { ...base, fetch, timeoutMs: 20 })).resolves.toMatchObject({ answer: "yes" });
+    await new Promise((r) => setTimeout(r, 40));
+  });
+});

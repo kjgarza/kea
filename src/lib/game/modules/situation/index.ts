@@ -4,6 +4,7 @@ import { SituationPlayView } from "@/components/situation/situation-play-view";
 import { defineGameModule } from "../types";
 import {
   createSituationSession,
+  getMode,
   isSituationComplete,
   reduceSituation,
   situationCardIds,
@@ -25,6 +26,14 @@ export const situationModule = defineGameModule<
 >({
   type: "situation",
   createSession: (deck, opts) => createSituationSession(deck, opts),
+  // Restart keeps the chosen keeper mode (human / AI / solo).
+  restart: (session, deck) => ({
+    ...createSituationSession(deck, {
+      shuffleEnabled: session.shuffleEnabled,
+      shuffleSeed: session.shuffleSeed,
+    }),
+    mode: getMode(session),
+  }),
   reduce: reduceSituation,
   isComplete: isSituationComplete,
   progress: situationProgress,

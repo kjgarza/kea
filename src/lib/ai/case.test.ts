@@ -7,6 +7,7 @@ import {
   buildJudgeRequest,
   judgeAnswers,
   localAnswerMatch,
+  normalizeCaseAnswer,
   NOT_IN_EVIDENCE_REPLY,
   parseInvestigatorOutput,
   parseJudgeOutput,
@@ -134,5 +135,24 @@ describe("request validation", () => {
     expect(validateCaseJudgeRequest({ deckId: "d", cardId: "k", lang: "en", answers: {} }).ok).toBe(false);
     expect(validateCaseJudgeRequest({ deckId: "d", cardId: "k", lang: "en", answers: { who: 1 } }).ok).toBe(false);
     expect(validateCaseJudgeRequest({ deckId: "d", cardId: "k", lang: "es", answers: { who: "Lena" } }).ok).toBe(true);
+  });
+});
+
+describe("answer normalisation: separators inside words", () => {
+  test('"VOL-07" == "VOL07" == "vol 07" and "Felix\'s badge" == "Felixs badge"', () => {
+    expect(normalizeCaseAnswer("VOL-07")).toBe("vol 07");
+    expect(normalizeCaseAnswer("Felix's badge")).toBe(normalizeCaseAnswer("Felixs badge"));
+    expect(normalizeCaseAnswer("Felix\u2019s badge")).toBe("felixs badge");
+    const q = { answer: "VOL-07", acceptedVariants: ["Felix's badge"] };
+    expect(localAnswerMatch(q, "VOL07")).toBe("exact");
+    expect(localAnswerMatch(q, "vol 07")).toBe("exact");
+    expect(localAnswerMatch(q, "Felixs badge")).toBe("variant");
+    expect(localAnswerMatch(q, "VOL-08")).toBeNull();
+  });
+
+  test("keeps accent and article behaviour", () => {
+    expect(normalizeCaseAnswer("The Coach")).toBe("coach");
+    expect(normalizeCaseAnswer("Él")).toBe("el");
+    expect(normalizeCaseAnswer("La   Cañada!")).toBe("canada");
   });
 });

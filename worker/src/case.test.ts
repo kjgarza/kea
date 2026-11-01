@@ -4,6 +4,7 @@ import { ProviderError, createStubProvider } from "../../src/lib/ai/provider";
 import { INVESTIGATOR_SCHEMA_NAME, JUDGE_SCHEMA_NAME, NOT_IN_EVIDENCE_REPLY } from "../../src/lib/ai/case";
 import type { CaseCard } from "../../src/types/card";
 import type { Env } from "./env";
+import { passcodeId } from "./auth";
 import { DeckLoader } from "./decks";
 import { createRateLimiter, dailyLimit, memoryCounterStore } from "./rate-limit";
 import { handleRequest, type WorkerDeps } from "./router";
@@ -236,6 +237,30 @@ describe("POST /case/ask", () => {
 });
 
 describe("POST /case/judge", () => {
+  test("meters only when a model call will happen; local-only answers cost no quota", async () => {
+    const h = harness();
+    const id = await passcodeId("open-sesame");
+    const now = new Date("2026-10-30T12:00:00Z");
+    const local = await handleRequest(judge({ answers: { who: "Dr Ruth Lindqvist, the curator", badge: "" } }), baseEnv, h.deps);
+    expect(local.status).toBe(200);
+    expect(h.prompts).toHaveLength(0);
+    expect((await h.deps.rateLimiter.peek(id, now)).remaining).toBe(50);
+    await handleRequest(judge({ answers: { who: "the boss" } }), baseEnv, h.deps);
+    expect(h.prompts).toHaveLength(1);
+    expect((await h.deps.rateLimiter.peek(id, now)).remaining).toBe(49);
+  });
+
+  test("an unbuildable provider does not burn quota", async () => {
+    const h = harness();
+    h.deps.provider = () => {
+      throw new Error("ANTHROPIC_API_KEY is not set");
+    };
+    expect((await handleRequest(judge({ answers: { who: "the boss" } }), baseEnv, h.deps)).status).toBe(500);
+    expect((await handleRequest(ask(), baseEnv, h.deps)).status).toBe(500);
+    const status = await h.deps.rateLimiter.peek(await passcodeId("open-sesame"), new Date("2026-10-30T12:00:00Z"));
+    expect(status.remaining).toBe(50);
+  });
+
   test("judges only unmatched submitted answers; returns ids and booleans only", async () => {
     const h = harness({ respond: () => ({ results: [{ questionId: "who", correct: true }, { questionId: "where", correct: true }] }) });
     const res = await handleRequest(

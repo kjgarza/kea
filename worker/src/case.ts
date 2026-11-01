@@ -6,25 +6,28 @@
 import type { CaseAskResponse, CaseJudgeResponse } from "../../src/lib/ai/api";
 import {
   answerInvestigatorQuestion,
+  buildJudgeRequest,
   judgeAnswers,
   validateCaseAskRequest,
   validateCaseJudgeRequest,
 } from "../../src/lib/ai/case";
+import type { LlmProvider } from "../../src/lib/ai/provider";
 import { loadCaseCard } from "./case-card";
-import { errorResponse, json } from "./http";
+import { errorResponse, json, readJsonBody } from "./http";
 import type { HandlerContext } from "./router";
 
-async function readJson(request: Request): Promise<{ ok: true; body: unknown } | { ok: false }> {
-  try {
-    return { ok: true, body: await request.json() };
-  } catch {
-    return { ok: false };
-  }
-}
+/** Passed to `judgeAnswers` when every answer is decided locally; never called. */
+const LOCAL_ONLY_PROVIDER: LlmProvider = {
+  name: "stub",
+  model: "none",
+  async generateJson() {
+    throw new Error("judge: no model call expected");
+  },
+};
 
 export async function handleCaseAsk(ctx: HandlerContext): Promise<Response> {
-  const read = await readJson(ctx.request);
-  if (!read.ok) return errorResponse(400, "bad_request", "Body must be JSON");
+  const read = await readJsonBody(ctx.request);
+  if (!read.ok) return read.response;
   const parsed = validateCaseAskRequest(read.body);
   if (!parsed.ok) return errorResponse(400, "bad_request", parsed.error);
   const req = parsed.value;
@@ -32,6 +35,8 @@ export async function handleCaseAsk(ctx: HandlerContext): Promise<Response> {
   const card = await loadCaseCard(ctx.decks, req.deckId, req.cardId);
   if (card instanceof Response) return card;
 
+  // Build the provider first: a misconfigured Worker must not burn quota.
+  const provider = ctx.provider();
   const limited = await ctx.meter();
   if (limited) return limited;
 
@@ -39,7 +44,7 @@ export async function handleCaseAsk(ctx: HandlerContext): Promise<Response> {
   try {
     // The prompt is built from the server-side card and only the evidence
     // that is opened, exists and is unlocked (`allowedEvidenceIds`).
-    result = await answerInvestigatorQuestion(ctx.provider(), {
+    result = await answerInvestigatorQuestion(provider, {
       card,
       lang: req.lang,
       openedEvidenceIds: req.openedEvidenceIds,
@@ -62,8 +67,8 @@ export async function handleCaseAsk(ctx: HandlerContext): Promise<Response> {
 }
 
 export async function handleCaseJudge(ctx: HandlerContext): Promise<Response> {
-  const read = await readJson(ctx.request);
-  if (!read.ok) return errorResponse(400, "bad_request", "Body must be JSON");
+  const read = await readJsonBody(ctx.request);
+  if (!read.ok) return read.response;
   const parsed = validateCaseJudgeRequest(read.body);
   if (!parsed.ok) return errorResponse(400, "bad_request", parsed.error);
   const req = parsed.value;
@@ -78,12 +83,18 @@ export async function handleCaseJudge(ctx: HandlerContext): Promise<Response> {
     return errorResponse(400, "bad_request", `None of the answers is for a question of ${req.cardId}`);
   }
 
-  const limited = await ctx.meter();
-  if (limited) return limited;
+  // Blank, exact and variant answers are decided locally: only meter (and
+  // build the provider) when a model call will actually happen.
+  let provider: LlmProvider = LOCAL_ONLY_PROVIDER;
+  if (buildJudgeRequest({ card, lang: req.lang, answers }) !== null) {
+    provider = ctx.provider();
+    const limited = await ctx.meter();
+    if (limited) return limited;
+  }
 
   let result;
   try {
-    result = await judgeAnswers(ctx.provider(), { card, lang: req.lang, answers });
+    result = await judgeAnswers(provider, { card, lang: req.lang, answers });
   } catch (error) {
     console.error("judge upstream error", String(error));
     return errorResponse(502, "upstream_error", "The judge is unavailable. Try again.");

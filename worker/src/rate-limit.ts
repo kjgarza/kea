@@ -6,6 +6,11 @@
  * several edge locations can overshoot it a little); that is fine for cost
  * control. Without KV it falls back to a per-isolate in-memory counter, which
  * resets whenever the isolate is recycled. KV errors fail open (logged).
+ *
+ * Within one isolate, `consume` calls for the same key are serialised (a
+ * per-key promise chain), so concurrent requests cannot all read the same
+ * count and pass. Across isolates/locations KV has no atomic increment, so the
+ * limit stays approximate; a hard limit would need a Durable Object.
  */
 import type { KVNamespace } from "@cloudflare/workers-types";
 import type { Env } from "./env";
@@ -69,12 +74,30 @@ export interface RateLimitResult {
 
 export interface RateLimiter {
   /** Read today's state without counting a request. */
-  peek(id: string, now: Date): Promise<RateLimitResult>;
-  /** Count one request; `allowed: false` once the limit is reached. */
-  consume(id: string, now: Date): Promise<RateLimitResult>;
+  peek(id: string, now: Date, limitOverride?: number | null): Promise<RateLimitResult>;
+  /**
+   * Count one request; `allowed: false` once the limit is reached.
+   * `limitOverride` replaces the limiter's limit for this key family (used for
+   * the failed-passcode counter).
+   */
+  consume(id: string, now: Date, limitOverride?: number | null): Promise<RateLimitResult>;
 }
 
-export function createRateLimiter(store: CounterStore, limit: number | null): RateLimiter {
+export function createRateLimiter(store: CounterStore, defaultLimit: number | null): RateLimiter {
+  /** Tail of the pending consume chain per key (isolate-local mutex). */
+  const chains = new Map<string, Promise<unknown>>();
+
+  function serialise<T>(key: string, task: () => Promise<T>): Promise<T> {
+    const previous = chains.get(key) ?? Promise.resolve();
+    const run = previous.then(task, task);
+    const tail = run.catch(() => undefined);
+    chains.set(key, tail);
+    void tail.then(() => {
+      if (chains.get(key) === tail) chains.delete(key);
+    });
+    return run;
+  }
+
   const keyFor = (id: string, now: Date) => `rl:${utcDay(now)}:${id}`;
 
   async function read(id: string, now: Date): Promise<number | null> {
@@ -87,24 +110,29 @@ export function createRateLimiter(store: CounterStore, limit: number | null): Ra
   }
 
   return {
-    async peek(id, now) {
+    async peek(id, now, limitOverride) {
+      const limit = limitOverride === undefined ? defaultLimit : limitOverride;
       const retryAfter = secondsUntilReset(now);
       if (limit === null) return { allowed: true, limit, remaining: null, retryAfter };
       const used = (await read(id, now)) ?? 0;
       return { allowed: used < limit, limit, remaining: Math.max(0, limit - used), retryAfter };
     },
-    async consume(id, now) {
+    async consume(id, now, limitOverride) {
+      const limit = limitOverride === undefined ? defaultLimit : limitOverride;
       const retryAfter = secondsUntilReset(now);
       if (limit === null) return { allowed: true, limit, remaining: null, retryAfter };
-      const used = await read(id, now);
-      if (used === null) return { allowed: true, limit, remaining: null, retryAfter };
-      if (used >= limit) return { allowed: false, limit, remaining: 0, retryAfter };
-      try {
-        await store.put(keyFor(id, now), used + 1, retryAfter + 3600);
-      } catch (error) {
-        console.warn("rate-limit write failed; allowing request", String(error));
-      }
-      return { allowed: true, limit, remaining: Math.max(0, limit - used - 1), retryAfter };
+      const key = keyFor(id, now);
+      return serialise(key, async () => {
+        const used = await read(id, now);
+        if (used === null) return { allowed: true, limit, remaining: null, retryAfter };
+        if (used >= limit) return { allowed: false, limit, remaining: 0, retryAfter };
+        try {
+          await store.put(key, used + 1, retryAfter + 3600);
+        } catch (error) {
+          console.warn("rate-limit write failed; allowing request", String(error));
+        }
+        return { allowed: true, limit, remaining: Math.max(0, limit - used - 1), retryAfter };
+      });
     },
   };
 }

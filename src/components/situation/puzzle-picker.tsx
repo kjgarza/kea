@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AlertTriangle, Check, ChevronRight, Clock, History, Shuffle } from "lucide-react";
 import type { SituationCard } from "@/types/card";
 import type { SituationMode } from "@/types/session";
-import type { AiAvailability } from "@/hooks/use-ai-availability";
+import type { AiPlayAvailability } from "@/hooks/use-ai-play-availability";
 import type { TranslateFn } from "@/lib/i18n";
 import { playedCardIds, selectedGroup, useHistoryState } from "@/lib/history";
 import { ActionButton } from "@/components/play/action-bar";
@@ -24,7 +24,7 @@ interface Props {
   mode: SituationMode;
   onModeChange: (mode: SituationMode) => void;
   /** Whether the AI modes can be chosen (Worker URL + passcode). */
-  aiAvailability: AiAvailability;
+  aiAvailability: AiPlayAvailability;
   t: TranslateFn;
 }
 

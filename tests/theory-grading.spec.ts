@@ -11,6 +11,7 @@ import kitchenDeck from '../public/decks/kitchen-table-en-situation.json';
 test.use({ viewport: { width: 375, height: 667 }, hasTouch: true });
 
 const API_URL = process.env.NEXT_PUBLIC_KEA_API_URL?.replace(/\/$/, '');
+const AI_PLAY = process.env.NEXT_PUBLIC_KEA_AI_PLAY === '1';
 const DECK_ID = 'kitchen-table-en-situation';
 const CARD = kitchenDeck.cards.find((c) => c.cardId === 'wet-letter')!;
 const FACT_IDS = CARD.keyFacts.map((f) => f.id);
@@ -66,7 +67,7 @@ async function submitTheory(page: Page, text: string) {
 }
 
 test.describe('theory grading with a mocked Worker (375px)', () => {
-  test.skip(!API_URL, 'NEXT_PUBLIC_KEA_API_URL is not set');
+  test.skip(!API_URL || !AI_PLAY, 'needs NEXT_PUBLIC_KEA_API_URL and NEXT_PUBLIC_KEA_AI_PLAY=1');
 
   test('solved theory ends the puzzle and records a solved play', async ({ page }) => {
     await seedPasscode(page);

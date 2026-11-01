@@ -57,8 +57,7 @@ function spanish(card: Record<string, unknown>): Record<string, unknown> {
     title: `ES ${c.title}`,
     setup: `ES ${c.setup}`,
     solution: `ES ${c.solution}`,
-    // A sloppy model "translates" the ids too; they must be ignored.
-    keyFacts: c.keyFacts.map((f) => ({ id: `es-${f.id}`, text: `ES ${f.text}` })),
+    keyFacts: c.keyFacts.map((f) => ({ id: f.id, text: `ES ${f.text}` })),
     hints: c.hints.map((h) => `ES ${h}`),
     contentWarnings: (c.contentWarnings ?? []).map(() => "Muerte"),
   };
@@ -103,17 +102,46 @@ describe("translateCardsWith (mocked LLM)", () => {
     expect("contentWarnings" in second).toBe(false);
   });
 
-  test("ignores translated arrays whose length changed", async () => {
-    const { translate } = mockTranslator((card) => ({
-      ...spanish(card),
-      keyFacts: [{ id: "x", text: "only one" }],
-      hints: ["one", "two", "three"],
-    }));
+  test("hints of a different length are ignored, the rest still translates", async () => {
+    const { translate } = mockTranslator((card) => ({ ...spanish(card), hints: ["one", "two", "three"] }));
     const [card] = (await translateCardsWith([puzzle("cl-001")], "situation", translate))
       .cards as SituationCard[];
     expect(card.title).toBe("ES The Bus");
-    expect(card.keyFacts).toEqual(puzzle("cl-001").keyFacts);
     expect(card.hints).toEqual(puzzle("cl-001").hints);
+  });
+
+  test("a non-string or empty title/setup/solution throws an error naming the card and field", () => {
+    const original = puzzle("cl-009");
+    const good = spanish(extractTranslatableFields(original));
+    expect(() => mergeTranslation(original, { ...good, title: 42 })).toThrow('situation card "cl-009": translated title');
+    expect(() => mergeTranslation(original, { ...good, setup: "   " })).toThrow('situation card "cl-009": translated setup');
+    expect(() => mergeTranslation(original, { ...good, solution: undefined })).toThrow(
+      'situation card "cl-009": translated solution'
+    );
+    expect(() => mergeTranslation(original, { ...good, solution: null })).toThrow("translated solution");
+  });
+
+  test("keyFacts must keep length, ids and non-empty text", () => {
+    const original = puzzle("cl-009");
+    const good = spanish(extractTranslatableFields(original));
+    const facts = good.keyFacts as { id: string; text: string }[];
+    expect(() => mergeTranslation(original, { ...good, keyFacts: facts.slice(1) })).toThrow(
+      'situation card "cl-009": translated keyFacts must be a list of 3 facts'
+    );
+    expect(() => mergeTranslation(original, { ...good, keyFacts: undefined })).toThrow("translated keyFacts");
+    expect(() =>
+      mergeTranslation(original, { ...good, keyFacts: [{ ...facts[0], id: "es-son" }, facts[1], facts[2]] })
+    ).toThrow('keyFacts[0].id must be "son"');
+    expect(() =>
+      mergeTranslation(original, { ...good, keyFacts: [facts[0], { id: "first-day", text: "" }, facts[2]] })
+    ).toThrow('keyFacts[1] ("first-day").text');
+    const merged = mergeTranslation(original, good) as SituationCard;
+    expect(merged.keyFacts.map((f) => f.id)).toEqual(["son", "first-day", "watching"]);
+  });
+
+  test("a bad situation reply aborts translateCardsWith instead of leaving English text in the deck", async () => {
+    const { translate } = mockTranslator((card) => ({ ...spanish(card), title: "" }));
+    await expect(translateCardsWith([puzzle("cl-001")], "situation", translate)).rejects.toThrow("cl-001");
   });
 
   test("matches replies by cardId, not order, and keeps originals for missing cards", async () => {

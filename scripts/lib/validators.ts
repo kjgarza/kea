@@ -18,6 +18,7 @@ import {
 } from "../../src/types/card";
 import { normalizeContentWarning } from "../../src/lib/data/content-warnings";
 import { isSafeAssetPath } from "../../src/lib/data/case-assets";
+import { ID_MAX_CHARS, ID_PATTERN } from "../../src/lib/ai/config";
 import {
   contentSourceErrors,
   deckLicenseErrors,
@@ -27,6 +28,11 @@ import {
   SITUATION_LIMITS,
   validateSituationCard,
 } from "../../src/lib/puzzles/situation-validator";
+
+/** The Worker's id rule (src/lib/ai/config.ts), so a card the validator accepts is never rejected at runtime. */
+function isWorkerId(id: string): boolean {
+  return id.length <= ID_MAX_CHARS && ID_PATTERN.test(id);
+}
 
 export {
   LICENSES,
@@ -427,6 +433,8 @@ export function validateCaseCard(
 
       if (!isNonEmptyString(e.id)) {
         bad(`id is required and must be a non-empty string`);
+      } else if (!isWorkerId(e.id)) {
+        bad(`id "${e.id}" must match ${ID_PATTERN} and be at most ${ID_MAX_CHARS} characters (the Worker rejects other ids)`);
       } else if (seenIds.has(e.id.trim())) {
         bad(`id "${e.id.trim()}" is a duplicate; evidence ids must be unique`);
       } else {
@@ -523,6 +531,8 @@ export function validateCaseCard(
 
       if (!isNonEmptyString(q.id)) {
         bad(`id is required and must be a non-empty string`);
+      } else if (!isWorkerId(q.id)) {
+        bad(`id "${q.id}" must match ${ID_PATTERN} and be at most ${ID_MAX_CHARS} characters (the Worker rejects other ids)`);
       } else if (seenIds.has(q.id.trim())) {
         bad(`id "${q.id.trim()}" is a duplicate; question ids must be unique`);
       } else {
@@ -649,6 +659,33 @@ export function validateCaseDeck(
   if (errors.length === 0) {
     errors.push(...deckLicenseErrors(deck as Parameters<typeof deckLicenseErrors>[0]));
   }
+  return errors;
+}
+
+/**
+ * Validate every card of a situation deck with the shared situation
+ * validator. Returns error strings (empty = valid).
+ */
+export function validateSituationDeck(deck: {
+  deckId: string;
+  gameType: string;
+  cards: readonly unknown[];
+}): string[] {
+  if (deck.gameType !== "situation") {
+    return [`deck "${deck.deckId}": gameType is "${deck.gameType}", expected "situation"`];
+  }
+  const errors: string[] = [];
+  const seen = new Set<string>();
+  deck.cards.forEach((raw, i) => {
+    const cardId = (raw as { cardId?: unknown } | null)?.cardId;
+    if (!isNonEmptyString(cardId)) {
+      errors.push(`deck "${deck.deckId}": cards[${i}].cardId is required`);
+      return;
+    }
+    if (seen.has(cardId)) errors.push(`deck "${deck.deckId}": cardId "${cardId}" is a duplicate`);
+    seen.add(cardId);
+    errors.push(...validateSituationCard(raw, cardId).errors.map((e) => `situation card "${cardId}": ${e}`));
+  });
   return errors;
 }
 

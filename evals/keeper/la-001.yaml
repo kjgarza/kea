@@ -4,7 +4,7 @@ decks: { en: lateral-thinking-en-situation, es: lateral-thinking-es-situation }
 cases:
   - { a: yes, facts: [coin-offered], en: "Did the man want to sell the coin?", es: "¿El hombre quería vender la moneda?" }
   - { a: yes, facts: [dated-bc], en: "Is the date on the coin important?", es: "¿La fecha de la moneda es importante?" }
-  - { a: no, facts: [nobody-knew], en: "Could people in 46 BC know they were living before Christ?", es: "¿La gente del año 46 a. C. podía saber que vivía antes de Cristo?" }
+  - { a: no, allow: [nobody-knew], en: "Could people in 46 BC know they were living before Christ?", es: "¿La gente del año 46 a. C. podía saber que vivía antes de Cristo?" }
   - { a: yes, facts: [fake], en: "Was the coin a fake?", es: "¿La moneda era falsa?" }
   - { a: yes, facts: [fake], en: "Was the coin a forgery?", es: "¿La moneda era una falsificación?" }
   - { a: yes, allow: [dated-bc, nobody-knew], en: "Is the problem the letters BC?", es: "¿El problema son las letras a. C.?" }

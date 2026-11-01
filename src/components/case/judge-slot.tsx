@@ -9,7 +9,7 @@ import type { AiLanguage } from "@/lib/ai/api";
 import { judgeCaseAnswers } from "@/lib/ai/client";
 import type { CaseAction } from "@/lib/game/modules/case/logic";
 import type { TranslateFn } from "@/lib/i18n";
-import { useAiAvailability } from "@/hooks/use-ai-availability";
+import { useAiPlayAvailability } from "@/hooks/use-ai-play-availability";
 
 export interface JudgeSlotProps {
   deck: Deck<CaseCard>;
@@ -38,7 +38,7 @@ type JudgeStatus =
  * nothing and the group marks everything by hand, as before.
  */
 export function JudgeSlot({ deck, session, card, unmatchedIds, language, dispatch, t }: JudgeSlotProps) {
-  const available = useAiAvailability() === "available";
+  const available = useAiPlayAvailability() === "available";
   const [status, setStatus] = useState<JudgeStatus>({ state: "idle" });
   const attempted = useRef<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);

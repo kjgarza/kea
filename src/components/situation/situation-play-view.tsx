@@ -14,9 +14,16 @@ import {
   soloScore,
   type SituationAction,
 } from "@/lib/game/modules/situation/logic";
-import { useAiAvailability } from "@/hooks/use-ai-availability";
+import { useAiPlayAvailability } from "@/hooks/use-ai-play-availability";
 import { useLocale } from "@/lib/i18n";
-import { getGroups, recordPlay, selectedGroup, situationPlayRecord } from "@/lib/history";
+import {
+  getGroups,
+  getHistory,
+  playedCardIds,
+  recordPlay,
+  selectedGroup,
+  situationPlayRecord,
+} from "@/lib/history";
 import { AfterPuzzleNotices } from "@/components/history/after-puzzle-notices";
 import { ContentWarningScreen } from "./content-warning-screen";
 import { SituationEndScreen } from "./end-screen";
@@ -37,11 +44,33 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
   const { t } = useLocale(deck.language);
   const phase = situationPhase(session);
   const puzzle = getPuzzle(session);
-  const aiAvailability = useAiAvailability();
+  const aiAvailability = useAiPlayAvailability();
   const mode = getMode(session);
-  // A saved AI/solo mode falls back to the human keeper in the picker when
-  // AI is not usable here (no Worker URL in this build, or no passcode).
-  const pickerMode = mode !== "human" && aiAvailability !== "available" ? "human" : mode;
+  // A saved AI/solo mode falls back to the human keeper when AI is not usable
+  // here (AI play deferred, no Worker URL in this build, or no passcode): in
+  // the picker, for a resumed puzzle, and for "Next puzzle".
+  const playMode = mode !== "human" && aiAvailability !== "available" ? "human" : mode;
+  const pickerMode = playMode;
+
+  // "Next puzzle" honours the selected group's hide-played setting, read
+  // fresh from the store (the puzzle that just ended is already recorded).
+  const startNextPuzzle = () => {
+    const group = selectedGroup(getGroups());
+    const played = group.hidePlayed
+      ? playedCardIds(getHistory(), deck.deckId, group.id)
+      : new Set<string>();
+    const cardId = session.remainingCardIds.find((id) => !played.has(id));
+    if (!cardId) {
+      dispatch({ type: "next", at: now(), toPicker: true });
+      return;
+    }
+    dispatch({
+      type: "next",
+      at: now(),
+      cardId,
+      ...(playMode !== mode ? { mode: playMode } : {}),
+    });
+  };
 
   // Every finished puzzle is written to `kea.history` (#28) for the group
   // currently selected in the picker.
@@ -101,7 +130,7 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
         />
       );
     case "playing": {
-      const Panel = KEEPER_PANELS[mode];
+      const Panel = KEEPER_PANELS[playMode];
       return (
         <Panel
           deck={deck}
@@ -119,9 +148,9 @@ export function SituationPlayView({ deck, session, currentCard, dispatch }: Prop
           card={currentCard}
           puzzle={puzzle}
           hasMore={session.remainingCardIds.length > 0}
-          onNext={() => dispatch({ type: "next", at: now() })}
+          onNext={startNextPuzzle}
           onChoose={() => dispatch({ type: "next", at: now(), toPicker: true })}
-          score={mode === "solo" ? soloScore(puzzle) : undefined}
+          score={playMode === "solo" ? soloScore(puzzle) : undefined}
           notices={<AfterPuzzleNotices t={t} />}
           t={t}
         />

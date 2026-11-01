@@ -125,6 +125,8 @@ export const es: Messages = {
   "situation.mode.notConfigured": "El narrador IA no está configurado en este sitio, así que solo se puede jugar con narrador humano.",
   "situation.mode.missingPasscode": "Introduce el código de IA en los ajustes para jugar con el narrador IA o en solitario.",
   "situation.mode.openSettings": "Abrir ajustes",
+  "situation.mode.deferred": "El narrador IA y el modo en solitario llegarán en una versión posterior. De momento, jugad con un narrador humano.",
+  "ai.comingLater": "Llegará en una versión posterior",
 
   // Situation: AI keeper and solo play (#31)
   "situation.ai.setup": "El enigma",
@@ -323,7 +325,6 @@ export const es: Messages = {
   "case.review.incorrect": "Incorrecta",
   "case.review.pending": "Por marcar: {count}",
   "case.review.reveal": "Revelar la resolución",
-  "case.review.edit": "Cambiar respuestas",
   "case.closed.title": "Caso cerrado",
   "case.closed.solved": "¡Caso resuelto!",
   "case.closed.score": "Puntuación del equipo",

@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import type { Deck } from "../../src/types/deck";
 import type { SituationCard } from "../../src/types/card";
-import { SITUATION_LIMITS, validateCard, validateSituationCard } from "./validators";
+import { SITUATION_LIMITS, validateCard, validateSituationCard, validateSituationDeck } from "./validators";
 
 function validPuzzle(overrides: Record<string, unknown> = {}): Record<string, unknown> {
   return {
@@ -168,6 +168,33 @@ describe("sample situation deck", () => {
       const result = validateCard(card, "situation", card.cardId);
       expect(result.errors).toEqual([]);
       expect(result.card).toEqual(card);
+    }
+  });
+});
+
+describe("validateSituationDeck (translated decks)", () => {
+  test("accepts a valid deck and names the card and problem of an invalid one", () => {
+    const good = { cardId: "p-1", ...validPuzzle() };
+    expect(validateSituationDeck({ deckId: "x-es-situation", gameType: "situation", cards: [good] })).toEqual([]);
+    const errors = validateSituationDeck({
+      deckId: "x-es-situation",
+      gameType: "situation",
+      cards: [good, { ...good, cardId: "p-2", solution: "" }, { ...good, cardId: "p-1" }],
+    });
+    expect(errors.some((e) => e.startsWith('situation card "p-2":'))).toBe(true);
+    expect(errors).toContain('deck "x-es-situation": cardId "p-1" is a duplicate');
+    expect(validateSituationDeck({ deckId: "d", gameType: "case", cards: [] })[0]).toContain("expected");
+  });
+
+  test("every committed Spanish situation deck passes", async () => {
+    const index = (await Bun.file("public/decks/index.json").json()) as {
+      decks: { deckId: string; gameType: string; language: string }[];
+    };
+    const ids = index.decks.filter((d) => d.gameType === "situation" && d.language === "es").map((d) => d.deckId);
+    expect(ids.length).toBeGreaterThan(0);
+    for (const id of ids) {
+      const deck = (await Bun.file(`public/decks/${id}.json`).json()) as Deck;
+      expect(validateSituationDeck(deck)).toEqual([]);
     }
   });
 });

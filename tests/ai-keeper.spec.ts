@@ -7,11 +7,15 @@ import kitchenDeck from '../public/decks/kitchen-table-en-situation.json';
  * need NEXT_PUBLIC_KEA_API_URL=https://kea-worker.test exported for BOTH the
  * dev server and Playwright (see tests/ai-settings.spec.ts). Without it only
  * the "not configured" test runs.
+ *
+ * AI-assisted play is deferred unless NEXT_PUBLIC_KEA_AI_PLAY=1 is also exported
+ * for both; without it only the "coming later" tests run.
  */
 
 test.use({ viewport: { width: 375, height: 667 }, hasTouch: true });
 
 const API_URL = process.env.NEXT_PUBLIC_KEA_API_URL?.replace(/\/$/, '');
+const AI_PLAY = process.env.NEXT_PUBLIC_KEA_AI_PLAY === '1';
 const DECK_ID = 'kitchen-table-en-situation';
 const CARD = kitchenDeck.cards.find((c) => c.cardId === 'wet-letter')!;
 const CORS = { 'access-control-allow-origin': '*' };
@@ -76,9 +80,47 @@ async function mockKeeper(page: Page, replies: Reply[]) {
   return bodies;
 }
 
+test.describe('AI play deferred', () => {
+  test.skip(AI_PLAY, 'NEXT_PUBLIC_KEA_AI_PLAY=1');
+
+  test('AI and solo are disabled with a "coming later" hint; human keeper works', async ({ page }) => {
+    await seedPasscode(page);
+    await openPicker(page);
+    await expect(page.getByTestId('mode-human')).toHaveAttribute('aria-checked', 'true');
+    await expect(page.getByTestId('mode-ai')).toBeDisabled();
+    await expect(page.getByTestId('mode-solo')).toBeDisabled();
+    await expect(page.getByTestId('mode-unavailable')).toContainText('coming in a later release');
+    await expect(page.getByTestId('mode-open-settings')).toHaveCount(0);
+
+    const hint = page.getByTestId('mode-ai-hint');
+    await expect(hint).toHaveAttribute('title', 'Coming in a later release');
+    await hint.hover();
+    await expect(hint.getByRole('tooltip')).toBeVisible();
+    await expect(hint.getByRole('tooltip')).toHaveText('Coming in a later release');
+
+    await page.getByTestId(`situation-pick-${CARD.cardId}`).click();
+    await expect(page.getByRole('button', { name: 'Keeper: show solution' })).toBeVisible();
+  });
+
+  test('a saved AI-mode session resumes with the human keeper', async ({ page }) => {
+    await openPicker(page);
+    await page.evaluate((deckId) => {
+      const key = `kea.session.${deckId}`;
+      const saved = JSON.parse(localStorage.getItem(key)!);
+      saved.data.mode = 'ai';
+      localStorage.setItem(key, JSON.stringify(saved));
+    }, DECK_ID);
+    await page.reload();
+    await expect(page.getByTestId('situation-picker')).toBeVisible();
+    await expect(page.getByTestId('mode-human')).toHaveAttribute('aria-checked', 'true');
+    await page.getByTestId(`situation-pick-${CARD.cardId}`).click();
+    await expect(page.getByRole('button', { name: 'Keeper: show solution' })).toBeVisible();
+  });
+});
+
 test.describe('AI keeper without a Worker', () => {
   test('AI and solo are disabled with an explanation', async ({ page }) => {
-    test.skip(Boolean(API_URL), 'NEXT_PUBLIC_KEA_API_URL is set');
+    test.skip(Boolean(API_URL) || !AI_PLAY, 'needs NEXT_PUBLIC_KEA_AI_PLAY=1 and no Worker URL');
     await openPicker(page);
     await expect(page.getByTestId('mode-human')).toHaveAttribute('aria-checked', 'true');
     await expect(page.getByTestId('mode-ai')).toBeDisabled();
@@ -92,7 +134,7 @@ test.describe('AI keeper without a Worker', () => {
 });
 
 test.describe('AI keeper with a mocked Worker (375px)', () => {
-  test.skip(!API_URL, 'NEXT_PUBLIC_KEA_API_URL is not set');
+  test.skip(!API_URL || !AI_PLAY, 'needs NEXT_PUBLIC_KEA_API_URL and NEXT_PUBLIC_KEA_AI_PLAY=1');
 
   test('without a passcode AI is disabled until one is saved in settings', async ({ page }) => {
     await openPicker(page);

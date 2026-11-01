@@ -139,7 +139,8 @@ function validateImage(raw: unknown, i: number): { ok: true; value: AuthorPhotoI
   if (data.length % 4 !== 0 || !BASE64.test(data)) {
     return { ok: false, status: 400, error: `${label}.data is not valid base64` };
   }
-  if (base64DecodedBytes(data) > PHOTO_LIMITS.maxImageBytes) {
+  // The cap is on the base64 string length (see PHOTO_LIMITS.maxImageBytes).
+  if (data.length > PHOTO_LIMITS.maxImageBytes) {
     return {
       ok: false,
       status: 413,
