@@ -1,0 +1,36 @@
+# Kea AI Worker. Setup steps: worker/README.md.
+name = "kea-worker"
+main = "src/index.ts"
+compatibility_date = "2025-09-01"
+
+# Optional: send logs to Workers Logs.
+[observability]
+enabled = true
+
+[vars]
+# Base URL of the deployed site; decks are fetched from ${SITE_ORIGIN}/decks/<deckId>.json.
+SITE_ORIGIN = "https://kjgarza.github.io/kea"
+# CORS allow-list (comma-separated). Empty = the origin of SITE_ORIGIN.
+ALLOWED_ORIGINS = ""
+# Requests per passcode per UTC day ("0" = unlimited).
+DAILY_LIMIT = "200"
+# anthropic | openai | stub (stub = offline keyword keeper for local dev only).
+KEEPER_PROVIDER = "anthropic"
+# Empty = default model id from src/lib/ai/config.ts.
+KEEPER_MODEL = ""
+# Deck cache lifetime in seconds.
+DECK_CACHE_TTL = "600"
+
+# Secrets (never in this file):
+#   wrangler secret put KEA_PASSCODES       # comma-separated passcodes, required
+#   wrangler secret put ANTHROPIC_API_KEY   # required for KEEPER_PROVIDER=anthropic
+#   wrangler secret put OPENAI_API_KEY      # only for KEEPER_PROVIDER=openai
+
+# Per-passcode daily limit storage. Create the namespace once with
+#   wrangler kv namespace create RATE_LIMIT
+# and paste the id below, then uncomment. Without it the Worker still runs and
+# falls back to a per-isolate in-memory counter (resets when the isolate is
+# recycled, so the limit is only approximate).
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "<namespace id>"

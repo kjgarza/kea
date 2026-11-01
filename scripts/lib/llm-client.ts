@@ -1,4 +1,20 @@
 import OpenAI from "openai";
+import {
+  ProviderError,
+  createAnthropicProvider,
+  createStubProvider,
+  generateJsonWithRetry,
+  isProviderName,
+  type ChatMessage,
+  type JsonGenerationRequest,
+  type JsonGenerationResult,
+  type LlmProvider,
+  type ProviderName,
+} from "../../src/lib/ai/provider";
+import { DEFAULT_ANTHROPIC_MODEL, DEFAULT_OPENAI_MODEL } from "../../src/lib/ai/config";
+
+export type { JsonGenerationRequest, JsonGenerationResult, LlmProvider, ProviderName };
+export { ProviderError, generateJsonWithRetry };
 
 let _openai: OpenAI | null = null;
 
@@ -124,5 +140,109 @@ export async function generateSingleCard(
   return generateWithRetry(systemPrompt, userPrompt, (content) => {
     const parsed = JSON.parse(content);
     return parsed;
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Provider interface (spec §6.3)
+//
+// Deck generation above stays on the OpenAI SDK. Structured-output callers
+// (keeper evals #30, solvability #33, grading/judging) use an `LlmProvider`,
+// which is the same interface the Worker uses, so scripts exercise the same
+// prompts and schemas as players.
+// ---------------------------------------------------------------------------
+
+function toOpenAIMessageContent(content: ChatMessage["content"]) {
+  if (typeof content === "string") return content;
+  return content.map((part) =>
+    part.type === "text"
+      ? { type: "text" as const, text: part.text }
+      : {
+          type: "image_url" as const,
+          image_url: { url: `data:${part.mediaType};base64,${part.data}` },
+        }
+  );
+}
+
+/** OpenAI provider backed by the existing OpenAI SDK client. */
+export function createOpenAISdkProvider(model: string = DEFAULT_OPENAI_MODEL): LlmProvider {
+  return {
+    name: "openai",
+    model,
+    async generateJson(request: JsonGenerationRequest): Promise<JsonGenerationResult> {
+      let response;
+      try {
+        response = await getClient().chat.completions.create({
+          model,
+          max_tokens: request.maxTokens ?? 4000,
+          messages: [
+            { role: "system", content: request.system },
+            ...request.messages.map((m) =>
+              m.role === "user"
+                ? { role: "user" as const, content: toOpenAIMessageContent(m.content) }
+                : {
+                    role: "assistant" as const,
+                    content: typeof m.content === "string" ? m.content : JSON.stringify(m.content),
+                  }
+            ),
+          ],
+          response_format: {
+            type: "json_schema",
+            json_schema: { name: request.schemaName, schema: request.schema, strict: true },
+          },
+        });
+      } catch (error) {
+        const status = (error as { status?: number }).status;
+        throw new ProviderError("http", `OpenAI request failed: ${String(error)}`, status);
+      }
+      const message = response.choices[0]?.message;
+      if (message?.refusal) throw new ProviderError("refusal", "Model declined the request");
+      const text = message?.content ?? "";
+      if (!text.trim()) throw new ProviderError("empty", "Model returned no text");
+      try {
+        return { data: JSON.parse(text), text, model: response.model ?? model, provider: "openai" };
+      } catch {
+        throw new ProviderError("invalid_json", "Model output is not valid JSON");
+      }
+    },
+  };
+}
+
+export interface ProviderOptions {
+  model?: string;
+  /** Only for `stub`. */
+  respond?: (request: JsonGenerationRequest) => unknown;
+}
+
+/**
+ * Build a provider by name. Keys come from the environment
+ * (ANTHROPIC_API_KEY / OPENAI_API_KEY; Bun loads .env).
+ */
+export function createLlmProvider(name: ProviderName, options: ProviderOptions = {}): LlmProvider {
+  switch (name) {
+    case "anthropic": {
+      const apiKey = process.env.ANTHROPIC_API_KEY;
+      if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not set");
+      return createAnthropicProvider({ apiKey, model: options.model ?? DEFAULT_ANTHROPIC_MODEL });
+    }
+    case "openai":
+      if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not set");
+      return createOpenAISdkProvider(options.model ?? DEFAULT_OPENAI_MODEL);
+    case "stub":
+      return createStubProvider(options.respond ?? (() => ({})), options.model);
+  }
+}
+
+/**
+ * The keeper's provider for scripts: Anthropic by default, overridable with
+ * KEEPER_PROVIDER (anthropic|openai|stub) and KEEPER_MODEL, the same
+ * variables the Worker reads.
+ */
+export function getKeeperProvider(options: ProviderOptions = {}): LlmProvider {
+  const name = process.env.KEEPER_PROVIDER?.trim() || "anthropic";
+  if (!isProviderName(name)) throw new Error(`Unknown KEEPER_PROVIDER "${name}"`);
+  return createLlmProvider(name, {
+    ...options,
+    model: options.model ?? (process.env.KEEPER_MODEL?.trim() || undefined),
   });
 }

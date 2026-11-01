@@ -1,0 +1,64 @@
+name: Deploy AI Worker
+
+# Deploys worker/ to Cloudflare. Needs repo secrets CLOUDFLARE_API_TOKEN
+# (template "Edit Cloudflare Workers") and CLOUDFLARE_ACCOUNT_ID. Worker
+# secrets (KEA_PASSCODES, ANTHROPIC_API_KEY) are set once with
+# `wrangler secret put`; see worker/README.md.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "worker/**"
+      - "src/lib/ai/**"
+      - "src/types/**"
+      - ".github/workflows/deploy-worker.yml"
+
+concurrency:
+  group: "worker"
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: worker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install worker dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type-check
+        run: bun run typecheck
+
+      - name: Test
+        run: bun test
+
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Optional repo variable overriding SITE_ORIGIN in wrangler.toml.
+          KEA_SITE_ORIGIN: ${{ vars.KEA_SITE_ORIGIN }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN secret is not set"
+            exit 1
+          fi
+          if [ -n "$KEA_SITE_ORIGIN" ]; then
+            bunx wrangler deploy --var "SITE_ORIGIN:$KEA_SITE_ORIGIN"
+          else
+            bunx wrangler deploy
+          fi

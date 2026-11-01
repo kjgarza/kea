@@ -1,0 +1,8 @@
+# Copy to .dev.vars for `wrangler dev`. Never commit .dev.vars.
+KEA_PASSCODES=local-dev
+ANTHROPIC_API_KEY=
+# Point at a local Next server so decks load from it (bun run dev in the repo root).
+SITE_ORIGIN=http://localhost:3000/kea
+ALLOWED_ORIGINS=http://localhost:3000
+# stub = offline keyword keeper, no API key needed.
+KEEPER_PROVIDER=stub

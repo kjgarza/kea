@@ -22,5 +22,7 @@ export default defineConfig([
     "test-results/**",
     "public/**",
     "justone/**",
+    "worker/node_modules/**",
+    "worker/.wrangler/**",
   ]),
 ]);

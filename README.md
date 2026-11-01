@@ -174,6 +174,22 @@ The importer writes `public/decks/<deckId>.json` and updates `public/decks/index
 
 The manually triggered workflow `.github/workflows/import-puzzles.yml` runs the same import and commits the result.
 
+## AI Features (optional Worker)
+
+The AI keeper (and later the theory grader, case investigator, answer judge and photo import) runs on a small Cloudflare Worker in `worker/`, which holds the model API key. Kea stays a static site: **if `NEXT_PUBLIC_KEA_API_URL` is not set at build time, every AI feature is hidden** and the app looks exactly as without it.
+
+Setup, in short (details, API and local development in [worker/README.md](worker/README.md)):
+
+1. `cd worker && bun install && bunx wrangler login`
+2. Secrets: `bunx wrangler secret put KEA_PASSCODES` (comma-separated shared passcodes) and `bunx wrangler secret put ANTHROPIC_API_KEY`.
+3. Optional but recommended: `bunx wrangler kv namespace create RATE_LIMIT` and paste the id into `worker/wrangler.toml` (per-passcode daily limit; without it the limit is per-isolate and approximate).
+4. Check `SITE_ORIGIN` in `worker/wrangler.toml` (decks are read from `${SITE_ORIGIN}/decks/<deckId>.json`; CORS allows its origin).
+5. Deploy with `bunx wrangler deploy`, or via the **Deploy AI Worker** workflow (`.github/workflows/deploy-worker.yml`; repo secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`).
+6. Set the repo variable `NEXT_PUBLIC_KEA_API_URL` to the Worker URL; the Pages workflow passes it to the build.
+7. Players enter the passcode once in the settings sheet (gear icon); it stays on the phone and is not exported in backups.
+
+Shared prompts, schemas and API types live in `src/lib/ai/` (pure, imported by the Worker and the scripts). Scripts get a provider via `scripts/lib/llm-client.ts` (`getKeeperProvider()`: Anthropic by default; `KEEPER_PROVIDER`, `KEEPER_MODEL`, `ANTHROPIC_API_KEY`). Deck generation stays on OpenAI.
+
 ## Project Structure
 
 ```
@@ -224,6 +240,8 @@ bun run build        # Build static export to out/
 bun run start        # Serve the built output
 bun run lint         # Run ESLint
 bunx tsc --noEmit    # Type-check without emitting
+bun run test:unit    # Unit tests (src, scripts)
+bun run worker:typecheck && bun run worker:test   # AI Worker (after bun run worker:install)
 ```
 
 If you have [just](https://github.com/casey/just) installed, all commands are also available as recipes:
