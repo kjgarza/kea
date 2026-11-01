@@ -118,6 +118,17 @@ export interface CaseScoredAnswer {
   by?: CaseMatch;
 }
 
+/** One exchange with the AI investigator (#37), saved with the case. */
+export interface CaseInvestigatorEntry {
+  q: string;
+  answer: string;
+  /** Opened evidence ids the reply cites. */
+  citedEvidenceIds: string[];
+  /** False when the opened evidence did not answer the question. */
+  inEvidence: boolean;
+  at: string;
+}
+
 export interface CaseSessionState extends BaseSessionState {
   gameType: "case";
   /** Card the per-case fields belong to (null before the first case opens). */
@@ -138,6 +149,8 @@ export interface CaseSessionState extends BaseSessionState {
   marks?: Record<string, CaseMark>;
   /** Set when the walkthrough is revealed (the case is closed). */
   scored?: CaseScoredAnswer[];
+  /** AI investigator transcript for this case (#37). */
+  investigator?: CaseInvestigatorEntry[];
   endedAt?: string | null;
 }
 

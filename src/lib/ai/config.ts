@@ -97,3 +97,30 @@ export const MODEL_PRICING: Readonly<Record<string, ModelPricing>> = {
   },
   [DEFAULT_OPENAI_MODEL]: { inputPerMTok: 2.5, outputPerMTok: 10, cacheReadPerMTok: 1.25 },
 };
+
+// ---------------------------------------------------------------------------
+// Case files (#37): AI investigator (POST /case/ask) and answer judge
+// (POST /case/judge).
+// ---------------------------------------------------------------------------
+
+export const INVESTIGATOR_MAX_TOKENS = 4000;
+export const INVESTIGATOR_EFFORT = "low" as const;
+export const JUDGE_MAX_TOKENS = 4000;
+export const JUDGE_EFFORT = "low" as const;
+
+/** Bump when the investigator or judge prompts change in a way evals should notice. */
+export const INVESTIGATOR_PROMPT_VERSION = "investigator-v1";
+export const JUDGE_PROMPT_VERSION = "judge-v1";
+
+export const CASE_AI_LIMITS = {
+  /** Longest investigator question (characters, after trimming). */
+  questionMaxChars: 300,
+  /** Most opened evidence ids a request may list. */
+  openedMaxEntries: 100,
+  /** Most answers one judge request may carry. */
+  answersMaxEntries: 20,
+  /** Longest answer the judge accepts (mirrors CASE_INPUT_LIMITS.answerMaxChars). */
+  answerMaxChars: 500,
+  /** Longest investigator reply returned to players. */
+  replyMaxChars: 1200,
+} as const;

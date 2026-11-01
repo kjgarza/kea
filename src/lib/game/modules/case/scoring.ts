@@ -1,4 +1,5 @@
 import type { CaseCard, CaseQuestion } from "@/types/card";
+import { localAnswerMatch, normalizeCaseAnswer } from "@/lib/ai/case";
 import type { CaseMark, CaseMatch, CaseScoredAnswer } from "@/types/session";
 
 /**
@@ -11,40 +12,19 @@ import type { CaseMark, CaseMatch, CaseScoredAnswer } from "@/types/session";
  * judge pre-marks it when AI is configured).
  */
 
-/** Leading articles dropped before comparing (EN + ES). */
-const LEADING_ARTICLES = new Set([
-  "the", "a", "an",
-  "el", "la", "los", "las", "un", "una", "unos", "unas",
-]);
-
 /**
- * Normalise an answer for comparison: Unicode-decompose and drop accents,
- * lower-case, turn punctuation into spaces, collapse whitespace and drop a
- * leading article ("The coach" == "coach", "Él" == "el").
+ * Normalise an answer for comparison (accents, case, punctuation, a leading
+ * article). Shared with the answer judge (#37) so the Worker and the play
+ * screen agree on what is an exact or variant match.
  */
-export function normalizeAnswer(text: string): string {
-  const words = text
-    .normalize("NFKD")
-    .replace(/\p{M}+/gu, "")
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .trim()
-    .split(" ")
-    .filter(Boolean);
-  if (words.length > 1 && LEADING_ARTICLES.has(words[0])) words.shift();
-  return words.join(" ");
-}
+export const normalizeAnswer = normalizeCaseAnswer;
 
 /** Local match for one answer, or null when the group/judge must decide. */
 export function matchAnswer(
   question: CaseQuestion,
   answer: string | undefined
 ): Exclude<CaseMatch, "group" | "judge"> | null {
-  const given = normalizeAnswer(answer ?? "");
-  if (!given) return "blank";
-  if (given === normalizeAnswer(question.answer)) return "exact";
-  if (question.acceptedVariants.some((v) => normalizeAnswer(v) === given)) return "variant";
-  return null;
+  return localAnswerMatch(question, answer);
 }
 
 /** Ids of questions whose answers need a group/judge decision. */

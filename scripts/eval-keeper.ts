@@ -9,11 +9,17 @@
  * through the shared grader (`gradeTheory` in src/lib/ai/grade.ts) and are
  * scored on verdict agreement, exact facts and leaks of missing facts.
  *
+ * Case files (#37): `--suite case-ask` runs evals/case/*.yaml `ask:` cases
+ * through the shared investigator (`answerInvestigatorQuestion`, the same
+ * code path as POST /case/ask) and `--suite case-judge` runs the `judge:`
+ * cases through `judgeAnswers` (POST /case/judge). Offline providers:
+ * oracle | saboteur | stub.
+ *
  * Usage:
  *   bun scripts/eval-keeper.ts [options]
  *
  * Options:
- *   --suite <name>        keeper | grade | all (default all)
+ *   --suite <name>        keeper | grade | case-ask | case-judge | case | all (default all)
  *   --provider <name>     anthropic (default) | openai | stub | oracle | saboteur
  *                         (oracle/saboteur/stub run offline, no API keys)
  *   --model <id>          Override the keeper model (default: KEEPER_MODEL or config)
@@ -29,6 +35,7 @@
  *   --concurrency <n>     Parallel keeper calls (default 4)
  *   --save <file>         Write the keeper JSON report (use as a baseline later)
  *   --save-grade <file>   Write the grading JSON report
+ *   --save-case <file>    Write the case JSON reports ({ ask, judge })
  *   --baseline <file>     Compare with an earlier JSON report and show the delta
  *   --markdown <file>     Also write the markdown report to this file
  *   --strict              Exit 1 unless every language meets the target (each suite run)
@@ -78,6 +85,26 @@ import {
   type TheoryTag,
 } from "./lib/grade-eval";
 import { diffReports, renderReportMarkdown } from "./lib/keeper-eval-report";
+import {
+  ASK_TAGS,
+  JUDGE_TAGS,
+  createOracleInvestigator,
+  createOracleJudge,
+  createSaboteurInvestigator,
+  createSaboteurJudge,
+  createStubCaseProvider,
+  filterCaseCases,
+  loadCaseEvalSuite,
+  meetsCaseTarget,
+  renderCaseReportMarkdown,
+  runCaseAskEval,
+  runCaseJudgeEval,
+  type AskCaseResult,
+  type AskEvalCase,
+  type CaseEvalReport,
+  type JudgeCaseResult,
+  type JudgeEvalCase,
+} from "./lib/case-eval";
 
 function fail(message: string): never {
   console.error(`eval-keeper: ${message}`);
@@ -124,6 +151,28 @@ function graderProvider(name: string, cases: GradeEvalCase[], keeper: LlmProvide
   }
 }
 
+function caseProvider(
+  name: string,
+  kind: "ask" | "judge",
+  cases: { ask: AskEvalCase[]; judge: JudgeEvalCase[] },
+  shared: LlmProvider | null,
+  model?: string
+): LlmProvider {
+  switch (name) {
+    case "oracle":
+      return kind === "ask" ? createOracleInvestigator(cases.ask) : createOracleJudge(cases.judge);
+    case "saboteur":
+      return kind === "ask" ? createSaboteurInvestigator(cases.ask) : createSaboteurJudge(cases.judge);
+    case "stub":
+      return createStubCaseProvider();
+    case "anthropic":
+    case "openai":
+      return shared ?? createLlmProvider(name, { model: model ?? (process.env.KEEPER_MODEL?.trim() || undefined) });
+    default:
+      fail(`unknown provider "${name}"`);
+  }
+}
+
 function judgeProvider(name: string, keeper: LlmProvider, providerName: string, model?: string): LlmProvider | null {
   if (name === "none") return null;
   if (name === "scripted") return createScriptedJudge();
@@ -152,6 +201,7 @@ async function main() {
       concurrency: { type: "string", default: "4" },
       save: { type: "string" },
       "save-grade": { type: "string" },
+      "save-case": { type: "string" },
       baseline: { type: "string" },
       markdown: { type: "string" },
       strict: { type: "boolean", default: false },
@@ -165,27 +215,33 @@ async function main() {
   }
 
   const suiteName = values.suite!;
-  if (!["keeper", "grade", "all"].includes(suiteName)) fail("--suite must be keeper, grade or all");
-  const runKeeper = suiteName !== "grade";
-  const runGrade = suiteName !== "keeper";
+  const SUITES = ["keeper", "grade", "case-ask", "case-judge", "case", "all"];
+  if (!SUITES.includes(suiteName)) fail(`--suite must be one of ${SUITES.join(", ")}`);
+  const runKeeper = suiteName === "keeper" || suiteName === "all";
+  const runGrade = suiteName === "grade" || suiteName === "all";
+  const runCaseAsk = ["case-ask", "case", "all"].includes(suiteName);
+  const runCaseJudge = ["case-judge", "case", "all"].includes(suiteName);
 
   const suite = await loadEvalSuite();
   const gradeSuite = await loadGradeSuite();
-  const errors = [...suite.errors, ...gradeSuite.errors];
+  const caseSuite = await loadCaseEvalSuite();
+  const errors = [...suite.errors, ...gradeSuite.errors, ...caseSuite.errors];
   if (errors.length > 0) {
     for (const error of errors) console.error(`  ${error}`);
-    fail(`${errors.length} problem(s) in evals/keeper`);
+    fail(`${errors.length} problem(s) in evals/keeper or evals/case`);
   }
   const perLang = EVAL_LANGUAGES.map((lang) => `${lang} ${suite.cases.filter((c) => c.lang === lang).length}`);
   const gradePerLang = EVAL_LANGUAGES.map((lang) => `${lang} ${gradeSuite.cases.filter((c) => c.lang === lang).length}`);
   console.error(`Loaded ${suite.files.length} eval files: ${perLang.join(", ")} keeper cases; ${gradePerLang.join(", ")} theories.`);
+  console.error(`Loaded ${caseSuite.files.length} case eval files: ${caseSuite.ask.length} investigator and ${caseSuite.judge.length} judge cases.`);
   if (values.validate) return;
 
   const langs: AiLanguage[] =
     values.lang === "all" ? [...EVAL_LANGUAGES] : EVAL_LANGUAGES.includes(values.lang as AiLanguage) ? [values.lang as AiLanguage] : fail(`--lang must be en, es or all`);
   const tags = values.tag ?? [];
   for (const tag of tags) {
-    if (!EVAL_TAGS.includes(tag as EvalTag) && !THEORY_TAGS.includes(tag as TheoryTag)) fail(`unknown tag "${tag}"`);
+    const known = [...EVAL_TAGS, ...THEORY_TAGS, ...ASK_TAGS, ...JUDGE_TAGS] as readonly string[];
+    if (!known.includes(tag)) fail(`unknown tag "${tag}"`);
   }
   const limit = positiveInt(values.limit, "--limit");
   const keeperTags = tags.filter((tag): tag is EvalTag => EVAL_TAGS.includes(tag as EvalTag));
@@ -195,7 +251,13 @@ async function main() {
   const gradeFilter = { langs, cardIds: values.puzzle ?? [], tags: theoryTags, limit };
   const doKeeper = runKeeper && !(tags.length > 0 && keeperTags.length === 0) && filterCases(suite.cases, filter).length > 0;
   const doGrade = runGrade && !(tags.length > 0 && theoryTags.length === 0) && filterGradeCases(gradeSuite.cases, gradeFilter).length > 0;
-  if (!doKeeper && !doGrade) fail("no cases match the filters");
+  const askTags = tags.filter((tag) => (ASK_TAGS as readonly string[]).includes(tag));
+  const judgeTags = tags.filter((tag) => (JUDGE_TAGS as readonly string[]).includes(tag));
+  const askFilter = { langs, cardIds: values.puzzle ?? [], tags: askTags, limit };
+  const judgeFilter = { langs, cardIds: values.puzzle ?? [], tags: judgeTags, limit };
+  const doCaseAsk = runCaseAsk && !(tags.length > 0 && askTags.length === 0) && filterCaseCases(caseSuite.ask, askFilter).length > 0;
+  const doCaseJudge = runCaseJudge && !(tags.length > 0 && judgeTags.length === 0) && filterCaseCases(caseSuite.judge, judgeFilter).length > 0;
+  if (!doKeeper && !doGrade && !doCaseAsk && !doCaseJudge) fail("no cases match the filters");
 
   const offline = ["oracle", "saboteur", "stub"].includes(values.provider!);
   const retry = offline ? { attempts: 1, delayMs: 0 } : { attempts: 3, delayMs: 1500 };
@@ -211,12 +273,16 @@ async function main() {
   let provider: LlmProvider | null = null;
   let judge: LlmProvider | null = null;
   let grader: LlmProvider | null = null;
+  let investigator: LlmProvider | null = null;
+  let caseJudge: LlmProvider | null = null;
   try {
     if (doKeeper) {
       provider = keeperProvider(values.provider!, suite.cases, values.model);
       judge = judgeProvider(values.judge!, provider, values.provider!, values["judge-model"]);
     }
     if (doGrade) grader = graderProvider(values.provider!, gradeSuite.cases, offline ? null : provider, values.model);
+    if (doCaseAsk) investigator = caseProvider(values.provider!, "ask", caseSuite, offline ? null : (provider ?? grader), values.model);
+    if (doCaseJudge) caseJudge = caseProvider(values.provider!, "judge", caseSuite, offline ? null : (provider ?? grader ?? investigator), values.model);
   } catch (error) {
     fail(error instanceof Error ? error.message : String(error));
   }
@@ -243,6 +309,19 @@ async function main() {
     sections.push(renderGradeReportMarkdown(gradeReport));
   }
 
+  let askReport: CaseEvalReport<AskCaseResult> | null = null;
+  if (doCaseAsk && investigator) {
+    console.error("Running case investigator cases…");
+    askReport = await runCaseAskEval(caseSuite.ask, { provider: investigator, filter: askFilter, concurrency, retry, onProgress });
+    sections.push(renderCaseReportMarkdown(askReport));
+  }
+  let judgeReport: CaseEvalReport<JudgeCaseResult> | null = null;
+  if (doCaseJudge && caseJudge) {
+    console.error("Running case judge cases…");
+    judgeReport = await runCaseJudgeEval(caseSuite.judge, { provider: caseJudge, filter: judgeFilter, concurrency, retry, onProgress });
+    sections.push(renderCaseReportMarkdown(judgeReport));
+  }
+
   const markdown = sections.join("\n\n");
   console.log(markdown);
   if (values.markdown) {
@@ -261,11 +340,19 @@ async function main() {
     console.error(`Saved grading report to ${values["save-grade"]}`);
   }
 
+  if (values["save-case"] && (askReport || judgeReport)) {
+    await mkdir(path.dirname(values["save-case"]), { recursive: true });
+    await writeFile(values["save-case"], `${JSON.stringify({ ask: askReport, judge: judgeReport }, null, 2)}\n`);
+    console.error(`Saved case reports to ${values["save-case"]}`);
+  }
+
   if (values.strict) {
     const missed: string[] = [];
     for (const lang of langs) {
       if (report && !(report.summary[lang] && meetsTarget(report.summary[lang]!))) missed.push(`keeper ${lang}`);
       if (gradeReport && !(gradeReport.summary[lang] && meetsGradeTarget(gradeReport.summary[lang]!))) missed.push(`grading ${lang}`);
+      if (askReport && !(askReport.summary[lang] && meetsCaseTarget(askReport.summary[lang]!))) missed.push(`case-ask ${lang}`);
+      if (judgeReport && !(judgeReport.summary[lang] && meetsCaseTarget(judgeReport.summary[lang]!))) missed.push(`case-judge ${lang}`);
     }
     if (missed.length > 0) {
       console.error(`Target not met for: ${missed.join(", ")}`);
