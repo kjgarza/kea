@@ -54,11 +54,67 @@ export const en = {
   "decks.empty": "No decks available for this game yet.",
   "decks.contentWarnings": "Content warnings: {warnings}",
 
-  // Situation puzzles (placeholder screen until the keeper view, #25)
+  // Situation puzzles
   "situation.card.badge": "Situation",
   "situation.card.contentWarnings": "Content warnings: {warnings}",
-  "situation.play.nextPuzzle": "Next puzzle",
-  "situation.play.skip": "Skip",
-  "situation.play.keeperComingSoon": "The keeper view is coming soon. Read the setup aloud and answer yes/no questions.",
   "situation.complete.title": "All puzzles played!",
+
+  // Situation: puzzle picker (never shows solutions)
+  "situation.picker.title": "Choose a puzzle",
+  "situation.picker.subtitle": "The keeper reads the setup aloud; players ask yes/no questions.",
+  "situation.picker.left": "{count} left",
+  "situation.picker.nextUp": "Next up",
+  "situation.picker.minutes": "~{minutes} min",
+  "situation.picker.warnings": "Warnings: {warnings}",
+
+  // Situation: content-warning interstitial
+  "situation.warnings.title": "Content warning",
+  "situation.warnings.body": "This puzzle deals with:",
+  "situation.warnings.continue": "Show the setup",
+  "situation.warnings.choose": "Choose another puzzle",
+
+  // Situation: setup + reveal confirmation
+  "situation.setup.readAloud": "Read aloud",
+  "situation.setup.reveal": "Keeper: show solution",
+  "situation.setup.back": "Other puzzle",
+  "situation.reveal.title": "Show the solution?",
+  "situation.reveal.body": "Only the keeper should look. Make sure the players can't see the screen.",
+  "situation.reveal.confirm": "I'm the keeper, show it",
+
+  // Situation: human keeper crib sheet
+  "situation.keeper.time": "Time",
+  "situation.keeper.questions": "Questions",
+  "situation.keeper.addQuestion": "+1 question",
+  "situation.keeper.removeQuestion": "Undo last question",
+  "situation.keeper.setup": "Setup",
+  "situation.keeper.solution": "Solution",
+  "situation.keeper.facts": "Key facts {found}/{total}",
+  "situation.keeper.factsHelp": "Tap a fact when the players uncover it.",
+  "situation.keeper.hints": "Hints",
+  "situation.keeper.hint": "Hint {number}",
+  "situation.keeper.giveHint": "Give hint {number}",
+  "situation.keeper.noMoreHints": "No more hints",
+  "situation.keeper.solved": "Solved",
+  "situation.keeper.giveUp": "Give up",
+  "situation.keeper.modeUnavailable": "This keeper mode is not available yet.",
+
+  // Situation: end screen
+  "situation.end.solved": "Solved!",
+  "situation.end.gaveUp": "Here's what happened",
+  "situation.end.solution": "Solution",
+  "situation.end.time": "Time",
+  "situation.end.questions": "Questions",
+  "situation.end.hints": "Hints",
+  "situation.end.facts": "Facts",
+  "situation.end.transcript": "Questions asked",
+  "situation.end.next": "Next puzzle",
+  "situation.end.finish": "Finish",
+  "situation.end.choose": "Choose puzzle",
+
+  // Situation: keeper answer vocabulary (spec §6.2)
+  "situation.answer.yes": "Yes",
+  "situation.answer.no": "No",
+  "situation.answer.irrelevant": "Irrelevant",
+  "situation.answer.partly": "Partly",
+  "situation.answer.rephrase": "Rephrase",
 } as const;
