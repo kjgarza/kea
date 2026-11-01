@@ -1,4 +1,5 @@
-import type { Card, CaseCard } from "../../src/types/card";
+import type { Card, CaseCard, ContentSource } from "../../src/types/card";
+import type { Deck } from "../../src/types/deck";
 import { normalizeContentWarning } from "../../src/lib/data/content-warnings";
 import { walkthroughEvidenceRefs } from "./case-pack";
 import type { GenerationResult } from "./llm-client";
@@ -109,9 +110,42 @@ export function extractTranslatableFields(card: Card): Record<string, unknown> {
 }
 
 /**
- * Merge translated fields back into the original card structure
+ * Source fields after translation (#58): everything is kept unchanged, and
+ * external content (a card with a licence, or `adapted`/`transcribed`) is
+ * marked `modified: true`, because a translation is an adaptation. Kea's own
+ * cards keep their source exactly as it was.
+ */
+export function translatedSource<S extends ContentSource | undefined>(source: S): S {
+  if (!source) return source;
+  const external =
+    source.license !== undefined || source.origin === "adapted" || source.origin === "transcribed";
+  return external ? ({ ...source, modified: true } as S) : source;
+}
+
+/**
+ * Deck-level licence fields a translated deck inherits (#58): the licence and
+ * attribution are copied unchanged (a translation of CC BY-SA stays CC BY-SA).
+ */
+export function translatedDeckLicensing(deck: Pick<Deck, "license" | "attribution">): Pick<Deck, "license" | "attribution"> {
+  return {
+    ...(deck.license !== undefined ? { license: deck.license } : {}),
+    ...(deck.attribution !== undefined ? { attribution: deck.attribution } : {}),
+  };
+}
+
+/**
+ * Merge translated fields back into the original card structure. Source
+ * fields come from the original (see `translatedSource`).
  */
 export function mergeTranslation(original: Card, translated: Record<string, unknown>): Card {
+  const merged = mergeTranslatedFields(original, translated);
+  if ((merged.type === "situation" || merged.type === "case") && merged.source) {
+    return { ...merged, source: translatedSource(merged.source) };
+  }
+  return merged;
+}
+
+function mergeTranslatedFields(original: Card, translated: Record<string, unknown>): Card {
   switch (original.type) {
     case "case":
       return mergeCaseTranslation(original, translated);

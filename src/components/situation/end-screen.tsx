@@ -9,6 +9,7 @@ import { questionsAsked } from "@/lib/game/modules/situation/logic";
 import { ActionButton } from "@/components/play/action-bar";
 import { ElapsedTime } from "./elapsed-time";
 import { SituationPanel, SituationShell } from "./situation-shell";
+import { SourceCredit } from "@/components/credits/source-credit";
 
 interface Props {
   card: SituationCard;
@@ -124,6 +125,7 @@ export function SituationEndScreen({
             </li>
           ))}
         </ul>
+        <SourceCredit source={card.source} t={t} className="mt-4 border-t pt-3" />
       </SituationPanel>
 
       {puzzle.transcript.length > 0 && (

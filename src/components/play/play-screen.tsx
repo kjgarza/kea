@@ -21,6 +21,7 @@ import { useLocale, type TranslateFn } from "@/lib/i18n";
 import { GAMES } from "@/types/game";
 import type { Deck } from "@/types/deck";
 import type { AnyGameModule } from "@/lib/game/modules/types";
+import { DeckCredits } from "@/components/credits/source-credit";
 
 interface PlayScreenProps {
   deckId: string;
@@ -275,6 +276,8 @@ function StartScreen({
 
           <h1 className="text-3xl font-bold font-display mb-2">{deck.name}</h1>
           <p className="text-muted-foreground mb-8">{t("common.cardCount", { count: cardCount })}</p>
+
+          <DeckCredits deck={deck} t={t} className="mb-6" />
 
           <div className="flex items-center justify-between p-4 bg-muted/50 rounded-2xl mb-6">
             <div className="flex items-center gap-2">

@@ -1,0 +1,24 @@
+{
+  "puzzling-1001": {
+    "isSituationPuzzle": true,
+    "rejectReason": "",
+    "title": "The Lighthouse That Stayed Dark",
+    "setup": "For twenty years, Mara climbed her tower every evening and lit the lamp. On the night of the worst storm in memory, she climbed the tower and deliberately left the lamp dark. Because of what she did, forty people came home alive. What happened?",
+    "solution": "A fishing boat had broken up on the reef, and its crew of forty were in lifeboats, rowing blind through the storm towards the only light they could see: Mara's lamp. But the lighthouse stands on sheer rocks with nowhere to land. The only safe beach was in the bay below the village, where the villagers had lit a bonfire. With the lamp dark, the bonfire was the brightest light on the coast, so the lifeboats steered for it and landed safely.",
+    "keyFacts": [
+      "A boat was wrecked and its crew were in lifeboats",
+      "The lifeboats were rowing towards the brightest light",
+      "The lighthouse stands on rocks where no boat can land",
+      "Villagers had lit a bonfire above the only safe beach",
+      "With the lamp dark, the lifeboats steered for the bonfire"
+    ],
+    "hints": [
+      "The forty people were not on land that night.",
+      "Lights at sea are not only warnings; people also steer by them.",
+      "There was another light on the coast that night."
+    ],
+    "difficulty": "medium",
+    "estMinutes": 10,
+    "contentWarnings": []
+  }
+}

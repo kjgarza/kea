@@ -8,6 +8,7 @@ import { matchAnswer } from "@/lib/game/modules/case/scoring";
 import { ActionButton } from "@/components/play/action-bar";
 import { Markdown } from "@/components/markdown/markdown";
 import { CasePanel, CaseShell } from "./case-screens";
+import { SourceCredit } from "@/components/credits/source-credit";
 
 interface ReviewProps {
   card: CaseCard;
@@ -271,6 +272,7 @@ export function CaseClosedScreen({ card, answers, scored, score, max, hasMore, o
           {t("case.closed.walkthrough")}
         </h2>
         <Markdown source={card.walkthrough} data-testid="case-walkthrough" />
+        <SourceCredit source={card.source} t={t} className="mt-4 border-t pt-3" />
       </CasePanel>
       {notices}
     </CaseShell>

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "deckId": "sample-cc-by-sa-en-situation",
+  "version": "2026-10-31T11:38:32.226Z",
+  "name": "Sample: CC BY-SA source (fixture)",
+  "gameType": "situation",
+  "language": "en",
+  "difficulty": "medium",
+  "topics": [],
+  "nsfw": false,
+  "license": "CC-BY-SA-4.0",
+  "attribution": "Puzzles adapted from Puzzling Stack Exchange posts under CC BY-SA 4.0. Each puzzle credits its authors and links to the original post.",
+  "cards": [
+    {
+      "cardId": "puzzling-1001",
+      "type": "situation",
+      "title": "The Lighthouse That Stayed Dark",
+      "setup": "For twenty years, Mara climbed her tower every evening and lit the lamp. On the night of the worst storm in memory, she climbed the tower and deliberately left the lamp dark. Because of what she did, forty people came home alive. What happened?",
+      "solution": "A fishing boat had broken up on the reef, and its crew of forty were in lifeboats, rowing blind through the storm towards the only light they could see: Mara's lamp. But the lighthouse stands on sheer rocks with nowhere to land. The only safe beach was in the bay below the village, where the villagers had lit a bonfire. With the lamp dark, the bonfire was the brightest light on the coast, so the lifeboats steered for it and landed safely.",
+      "keyFacts": [
+        {
+          "id": "a-boat-was-wrecked-and-its-crew",
+          "text": "A boat was wrecked and its crew were in lifeboats"
+        },
+        {
+          "id": "the-lifeboats-were-rowing",
+          "text": "The lifeboats were rowing towards the brightest light"
+        },
+        {
+          "id": "the-lighthouse-stands-on-rocks",
+          "text": "The lighthouse stands on rocks where no boat can land"
+        },
+        {
+          "id": "villagers-had-lit-a-bonfire",
+          "text": "Villagers had lit a bonfire above the only safe beach"
+        },
+        {
+          "id": "with-the-lamp-dark-the-lifeboats",
+          "text": "With the lamp dark, the lifeboats steered for the bonfire"
+        }
+      ],
+      "hints": [
+        "The forty people were not on land that night.",
+        "Lights at sea are not only warnings; people also steer by them.",
+        "There was another light on the coast that night."
+      ],
+      "difficulty": "medium",
+      "estMinutes": 10,
+      "source": {
+        "origin": "adapted",
+        "pack": "sample-cc-by-sa",
+        "ref": "puzzling:q1001/a1003",
+        "license": "CC-BY-SA-4.0",
+        "author": "Fixture Asker (question), Fixture Solver (answer)",
+        "url": "https://example.org/kea-fixture/questions/1001/the-lighthouse-that-stayed-dark",
+        "modified": true
+      }
+    }
+  ]
+}

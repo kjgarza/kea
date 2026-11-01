@@ -19,9 +19,22 @@ import {
 import { normalizeContentWarning } from "../../src/lib/data/content-warnings";
 import { isSafeAssetPath } from "../../src/lib/data/case-assets";
 import {
+  contentSourceErrors,
+  deckLicenseErrors,
+  normalizeContentSource,
+} from "../../src/lib/content/licenses";
+import {
   SITUATION_LIMITS,
   validateSituationCard,
 } from "../../src/lib/puzzles/situation-validator";
+
+export {
+  LICENSES,
+  LICENSE_IDS,
+  contentSourceErrors,
+  deckLicenseErrors,
+  getLicense,
+} from "../../src/lib/content/licenses";
 
 export interface ValidationResult {
   valid: boolean;
@@ -568,6 +581,10 @@ export function validateCaseCard(
     fail(`'estMinutes' must be a positive number`);
   }
 
+  if (obj.source !== undefined) {
+    contentSourceErrors(obj.source).forEach(fail);
+  }
+
   if (errors.length > 0) {
     return { valid: false, errors };
   }
@@ -577,6 +594,7 @@ export function validateCaseCard(
       ((obj.contentWarnings as string[] | undefined) ?? []).map(normalizeContentWarning)
     ),
   ];
+  const source = obj.source as CaseCard["source"] | undefined;
 
   const card: CaseCard = {
     cardId,
@@ -588,6 +606,7 @@ export function validateCaseCard(
     walkthrough: (obj.walkthrough as string).trim(),
     ...(contentWarnings.length > 0 ? { contentWarnings } : {}),
     ...(obj.estMinutes !== undefined ? { estMinutes: obj.estMinutes as number } : {}),
+    ...(source ? { source: normalizeContentSource(source) } : {}),
   };
 
   return { valid: true, errors: [], card };
@@ -598,7 +617,13 @@ export function validateCaseCard(
  * all errors; empty means the deck is valid.
  */
 export function validateCaseDeck(
-  deck: { deckId: string; gameType: string; cards: readonly unknown[] },
+  deck: {
+    deckId: string;
+    gameType: string;
+    cards: readonly unknown[];
+    license?: string;
+    attribution?: string;
+  },
   { assetExists }: Pick<CaseValidationOptions, "assetExists"> = {}
 ): string[] {
   if (deck.gameType !== "case") {
@@ -621,6 +646,9 @@ export function validateCaseDeck(
     }
     errors.push(...validateCaseCard(raw, cardId, { deckId: deck.deckId, assetExists }).errors);
   });
+  if (errors.length === 0) {
+    errors.push(...deckLicenseErrors(deck as Parameters<typeof deckLicenseErrors>[0]));
+  }
   return errors;
 }
 

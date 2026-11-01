@@ -26,6 +26,9 @@ export function buildDeckMeta(deck: Deck, recommended: boolean): DeckMeta {
     version: deck.version,
     cardCount: deck.cards.length,
     contentWarnings: deckContentWarnings(deck.cards),
+    // Only when set, so decks without a licence keep their index entry as is.
+    ...(deck.license !== undefined ? { license: deck.license } : {}),
+    ...(deck.attribution !== undefined ? { attribution: deck.attribution } : {}),
   };
 }
 

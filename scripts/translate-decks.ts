@@ -16,6 +16,7 @@ import {
   TRANSLATION_BATCH_SIZE,
   isTranslatableGameType,
   toSpanishDeckId,
+  translatedDeckLicensing,
   translateCardsWith,
   untranslatableGameTypeMessage,
 } from "./lib/deck-translation";
@@ -176,6 +177,7 @@ async function translateDeck(
     difficulty: sourceDeck.difficulty,
     topics: sourceDeck.topics,
     nsfw: sourceDeck.nsfw,
+    ...translatedDeckLicensing(sourceDeck),
     cards: translatedCards,
   };
 

@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "tags": ["lateral-thinking", "situation-puzzle"],
+      "owner": {
+        "user_type": "registered",
+        "display_name": "Fixture Asker",
+        "user_id": 1,
+        "link": "https://example.org/kea-fixture/users/1/fixture-asker"
+      },
+      "is_answered": true,
+      "accepted_answer_id": 1003,
+      "score": 42,
+      "creation_date": 1496275200,
+      "question_id": 1001,
+      "content_license": "CC BY-SA 3.0",
+      "link": "https://example.org/kea-fixture/questions/1001/the-lighthouse-that-stayed-dark",
+      "title": "The lighthouse that stayed dark",
+      "body": "<p>For twenty years, Mara climbed her tower every evening and lit the lamp. On the night of the worst storm in memory, she climbed the tower and deliberately left the lamp dark.</p>\n\n<p>Because of what she did, forty people came home alive.</p>\n\n<p>What happened?</p>\n\n<p><em>Kea test fixture: an original puzzle written for Kea&#39;s test suite, not a real post.</em></p>\n"
+    },
+    {
+      "tags": ["lateral-thinking", "riddle"],
+      "owner": {
+        "user_type": "registered",
+        "display_name": "Fixture Asker",
+        "user_id": 1,
+        "link": "https://example.org/kea-fixture/users/1/fixture-asker"
+      },
+      "is_answered": false,
+      "score": 30,
+      "creation_date": 1600000000,
+      "question_id": 1002,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://example.org/kea-fixture/questions/1002/an-unanswered-riddle",
+      "title": "An unanswered riddle",
+      "body": "<p>Kea test fixture: a question without an accepted answer, which the importer skips.</p>\n"
+    },
+    {
+      "tags": ["lateral-thinking"],
+      "owner": {
+        "user_type": "registered",
+        "display_name": "Fixture Solver",
+        "user_id": 2,
+        "link": "https://example.org/kea-fixture/users/2/fixture-solver"
+      },
+      "is_answered": true,
+      "accepted_answer_id": 1005,
+      "score": 2,
+      "creation_date": 1610000000,
+      "question_id": 1004,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://example.org/kea-fixture/questions/1004/a-low-scoring-question",
+      "title": "A low-scoring question",
+      "body": "<p>Kea test fixture: a question below the score threshold, which the importer skips.</p>\n"
+    }
+  ],
+  "has_more": false,
+  "quota_max": 300,
+  "quota_remaining": 297
+}

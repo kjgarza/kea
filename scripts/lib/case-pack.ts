@@ -1,9 +1,16 @@
 import { parse, stringify } from "yaml";
 import type { Difficulty } from "../../src/types/game";
-import type { CaseCard, Evidence, EvidenceKind } from "../../src/types/card";
+import type { CaseCard, ContentOrigin, ContentSource, Evidence, EvidenceKind } from "../../src/types/card";
 import type { CaseDeck } from "../../src/types/deck";
 import { validateCaseCard, type AssetExists } from "./validators";
 import { generateId, packNameFromFileName } from "./puzzle-pack";
+import {
+  CONTENT_ORIGINS,
+  LICENSE_IDS,
+  deckLicenseErrors,
+  isAllowedLicense,
+  isHttpUrl,
+} from "./licenses";
 
 /**
  * Hand-written case packs (issue #36, spec §5.4 F20).
@@ -64,6 +71,31 @@ export interface CaseInput {
   walkthrough: string;
   contentWarnings?: string[];
   estMinutes?: number;
+  // Provenance (#58). A card `source` is written only when one of these is
+  // set; `origin` then defaults to "original". `adapted` needs license + url.
+  origin?: ContentOrigin;
+  ref?: string;
+  license?: string;
+  author?: string;
+  url?: string;
+  modified?: boolean;
+}
+
+/** Pack-level provenance fields of a case, in YAML order. */
+const CASE_SOURCE_FIELDS = ["origin", "ref", "license", "author", "url", "modified"] as const;
+
+/** The card `source` for a case input, or undefined when it has none. */
+export function caseInputSource(input: CaseInput, pack: string): ContentSource | undefined {
+  if (CASE_SOURCE_FIELDS.every((f) => input[f] === undefined)) return undefined;
+  return {
+    origin: input.origin ?? "original",
+    pack,
+    ...(input.ref !== undefined ? { ref: input.ref } : {}),
+    ...(input.license !== undefined ? { license: input.license } : {}),
+    ...(input.author !== undefined ? { author: input.author } : {}),
+    ...(input.url !== undefined ? { url: input.url } : {}),
+    ...(input.modified !== undefined ? { modified: input.modified } : {}),
+  };
 }
 
 export interface CasePack {
@@ -75,6 +107,8 @@ export interface CasePack {
   topics?: string[];
   nsfw?: boolean;
   recommended?: boolean;
+  license?: string; // deck licence (#58)
+  attribution?: string; // deck credit line
   cases: CaseInput[];
 }
 
@@ -176,6 +210,13 @@ export function parseCasePack(text: string, opts: { fileName?: string } = {}): P
     }
   }
 
+  if (doc.license !== undefined && !isAllowedLicense(doc.license)) {
+    errors.push(`'license' "${String(doc.license)}" is not allowed; use one of ${LICENSE_IDS.join(", ")}`);
+  }
+  if (doc.attribution !== undefined && (typeof doc.attribution !== "string" || !doc.attribution.trim())) {
+    errors.push(`'attribution' must be a non-empty string`);
+  }
+
   if (!Array.isArray(doc.cases) || doc.cases.length === 0) {
     errors.push(`'cases' is required and must be a non-empty list`);
   } else {
@@ -187,6 +228,20 @@ export function parseCasePack(text: string, opts: { fileName?: string } = {}): P
       }
       if (c.id !== undefined && (typeof c.id !== "string" || !SLUG.test(c.id))) {
         errors.push(`${label}: 'id' must be a lower-case slug`);
+      }
+      if (c.origin !== undefined && !CONTENT_ORIGINS.includes(c.origin as ContentOrigin)) {
+        errors.push(`${label}: 'origin' must be one of ${CONTENT_ORIGINS.join(", ")}`);
+      }
+      for (const field of ["ref", "author", "license"] as const) {
+        if (c[field] !== undefined && typeof c[field] !== "string") {
+          errors.push(`${label}: '${field}' must be a string`);
+        }
+      }
+      if (c.url !== undefined && !isHttpUrl(c.url)) {
+        errors.push(`${label}: 'url' must be an http(s) URL`);
+      }
+      if (c.modified !== undefined && typeof c.modified !== "boolean") {
+        errors.push(`${label}: 'modified' must be true or false`);
       }
       if (Array.isArray(c.evidence)) {
         c.evidence.forEach((e: unknown, j: number) => {
@@ -303,6 +358,7 @@ export function casePackToDeck(pack: CasePack, opts: CasePackToDeckOptions): Cas
       walkthrough: input.walkthrough,
       contentWarnings: input.contentWarnings,
       estMinutes: input.estMinutes,
+      source: caseInputSource(input, pack.pack),
     };
     const prefix = `case card "${cardId}": `;
     const result = validateCaseCard(candidate, cardId, {
@@ -351,8 +407,12 @@ export function casePackToDeck(pack: CasePack, opts: CasePackToDeckOptions): Cas
     difficulty: pack.difficulty ?? "medium",
     topics: pack.topics ?? [],
     nsfw: pack.nsfw ?? false,
+    ...(pack.license !== undefined ? { license: pack.license } : {}),
+    ...(pack.attribution !== undefined ? { attribution: pack.attribution.trim() } : {}),
     cards,
   };
+  const licenseErrors = deckLicenseErrors(deck);
+  if (licenseErrors.length > 0) return { deck: null, recommended: false, errors: licenseErrors };
   return { deck, recommended: pack.recommended ?? false, errors: [] };
 }
 
@@ -383,6 +443,8 @@ export function serializeCasePack(pack: CasePack): string {
       topics: pack.topics,
       nsfw: pack.nsfw,
       recommended: pack.recommended,
+      license: pack.license,
+      attribution: pack.attribution,
       cases: pack.cases.map((c) =>
         clean({
           id: c.id,
@@ -404,6 +466,12 @@ export function serializeCasePack(pack: CasePack): string {
           walkthrough: c.walkthrough,
           contentWarnings: c.contentWarnings,
           estMinutes: c.estMinutes,
+          origin: c.origin,
+          ref: c.ref,
+          license: c.license,
+          author: c.author,
+          url: c.url,
+          modified: c.modified,
         })
       ),
     }),
@@ -422,6 +490,12 @@ export function cardToCaseInput(card: CaseCard): CaseInput {
     walkthrough: card.walkthrough,
     contentWarnings: card.contentWarnings,
     estMinutes: card.estMinutes,
+    origin: card.source?.origin,
+    ref: card.source?.ref,
+    license: card.source?.license,
+    author: card.source?.author,
+    url: card.source?.url,
+    modified: card.source?.modified,
   };
 }
 
