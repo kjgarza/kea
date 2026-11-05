@@ -1,17 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Nunito } from "next/font/google";
+import { Anybody, Lexend } from "next/font/google";
 import { InstallPromptListener } from "@/components/pwa/install-prompt-listener";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+// Lexend was drawn for reading ease, which is what reading in sunlight needs.
+const lexend = Lexend({
+  subsets: ["latin", "latin-ext"],
   variable: "--font-body",
 });
 
-const nunito = Nunito({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "600", "700", "800", "900"],
+// Anybody's width axis lets big type fill a card, whatever the word's length.
+const anybody = Anybody({
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
+  variable: "--font-kea-display",
 });
 
 const isProd = process.env.NODE_ENV === "production";
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
   manifest: `${basePath}/manifest.json`,
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
     title: "Kea",
   },
   openGraph: {
@@ -49,10 +51,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  viewportFit: "cover",
+  themeColor: "#1d3026",
 };
 
 export default function RootLayout({
@@ -62,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${nunito.variable} font-sans antialiased min-h-screen`}>
+      <body className={`${lexend.variable} ${anybody.variable} font-sans antialiased`}>
         <InstallPromptListener />
         {children}
       </body>

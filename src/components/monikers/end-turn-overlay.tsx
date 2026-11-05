@@ -1,34 +1,33 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play } from "lucide-react";
+import { useLocale } from "@/lib/i18n";
 
 interface EndTurnOverlayProps {
   onContinue: () => void;
   cardsRemaining: number;
+  language?: string;
 }
 
-export function EndTurnOverlay({ onContinue, cardsRemaining }: EndTurnOverlayProps) {
+/** Covers the card so the next team doesn't see it when the phone changes hands. */
+export function EndTurnOverlay({ onContinue, cardsRemaining, language }: EndTurnOverlayProps) {
+  const { t } = useLocale(language);
   return (
-    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center p-6 z-50">
-      <Card className="w-full max-w-sm text-center">
-        <CardHeader>
-          <CardTitle className="text-xl">Turn Ended!</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            {cardsRemaining} card{cardsRemaining !== 1 ? "s" : ""} remaining
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Pass the phone to the next team
-          </p>
-          <Button size="lg" className="w-full" onClick={onContinue}>
-            <Play className="h-5 w-5 mr-2" />
-            Start Turn
-          </Button>
-        </CardContent>
-      </Card>
+    <div className="card-back pt-safe fixed inset-0 z-50 flex flex-col justify-between">
+      <div className="px-6 pt-16">
+        <h2 className="display-type text-[4.5rem] [--type-width:84%]">{t("monikers.turnEnded")}</h2>
+        <p className="mt-6 text-2xl font-bold">
+          {cardsRemaining === 1
+            ? t("monikers.cardRemaining")
+            : t("monikers.cardsRemaining", { count: cardsRemaining })}
+        </p>
+        <p className="mt-1 text-xl font-bold">{t("monikers.passPhone")}</p>
+      </div>
+      <div className="pb-safe-5 px-4">
+        <Button size="lg" className="h-16 w-full bg-ink text-xl text-paper" onClick={onContinue}>
+          {t("monikers.startTurn")}
+        </Button>
+      </div>
     </div>
   );
 }

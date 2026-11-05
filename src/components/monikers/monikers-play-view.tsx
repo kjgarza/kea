@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Check, Clock } from "lucide-react";
+import { Hourglass } from "lucide-react";
 import type { MonikersCard } from "@/types/card";
 import type { MonikersSessionState } from "@/types/session";
 import type { HeaderViewProps, PlayViewProps } from "@/lib/game/modules/types";
@@ -11,7 +10,9 @@ import {
   monikersCardsLeft,
   type MonikersAction,
 } from "@/lib/game/modules/monikers/logic";
+import { useLocale } from "@/lib/i18n";
 import { CardDisplay } from "@/components/play/card-display";
+import { useCardFlight } from "@/hooks/use-card-flight";
 import { CardStage } from "@/components/play/card-stage";
 import { ActionBar, ActionButton, PassButton } from "@/components/play/action-bar";
 import { EndTurnOverlay } from "./end-turn-overlay";
@@ -20,13 +21,16 @@ import { RoundIndicator } from "./round-indicator";
 
 type Props = PlayViewProps<MonikersSessionState, MonikersCard, MonikersAction>;
 
-export function MonikersPlayView({ session, currentCard, dispatch }: Props) {
+export function MonikersPlayView({ deck, session, currentCard, dispatch }: Props) {
+  const { t } = useLocale(deck.language);
+  const { direction, fly } = useCardFlight();
   const [showEndTurnOverlay, setShowEndTurnOverlay] = useState(false);
 
   if (isMonikersRoundComplete(session)) {
     return (
       <RoundCompleteScreen
         round={session.monikersRound}
+        language={deck.language}
         onNextRound={() => dispatch({ type: "nextRound" })}
       />
     );
@@ -34,34 +38,41 @@ export function MonikersPlayView({ session, currentCard, dispatch }: Props) {
 
   if (!currentCard) return null;
 
+  const onPass = () => dispatch({ type: "pass" });
+  const onCorrect = () => dispatch({ type: "correct" });
+
   return (
     <>
-      <CardStage>
-        <CardDisplay card={currentCard} />
+      <CardStage
+        cardKey={currentCard.cardId}
+        direction={direction}
+        fly={fly}
+        onSwipeLeft={onPass}
+        onSwipeRight={onCorrect}
+        leftLabel={t("actions.pass")}
+        rightLabel={t("actions.correct")}
+      >
+        <CardDisplay card={currentCard} language={deck.language} />
       </CardStage>
       <ActionBar>
-        <PassButton onClick={() => dispatch({ type: "pass" })} />
-        <ActionButton
-          variant="primary"
-          onClick={() => dispatch({ type: "correct" })}
-          icon={<Check className="h-5 w-5" />}
-        >
-          Correct!
+        <PassButton onClick={fly(-1, onPass)} language={deck.language} />
+        <ActionButton variant="primary" onClick={fly(1, onCorrect)}>
+          {t("actions.correct")}
         </ActionButton>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <button
+          type="button"
           onClick={() => setShowEndTurnOverlay(true)}
-          aria-label="End turn"
-          className="h-14 w-14 rounded-2xl bg-secondary text-secondary-foreground flex items-center justify-center hover:bg-secondary/80"
+          aria-label={t("monikers.endTurn")}
+          className="flex h-16 w-14 shrink-0 items-center justify-center rounded-2xl bg-foreground/12 transition-transform active:scale-[0.97]"
         >
-          <Clock className="h-5 w-5" />
-        </motion.button>
+          <Hourglass className="size-5" aria-hidden />
+        </button>
       </ActionBar>
 
       {showEndTurnOverlay && (
         <EndTurnOverlay
           cardsRemaining={monikersCardsLeft(session)}
+          language={deck.language}
           onContinue={() => {
             dispatch({ type: "endTurn" });
             setShowEndTurnOverlay(false);
@@ -73,7 +84,8 @@ export function MonikersPlayView({ session, currentCard, dispatch }: Props) {
 }
 
 export function MonikersHeaderView({
+  deck,
   session,
 }: HeaderViewProps<MonikersSessionState, MonikersCard>) {
-  return <RoundIndicator round={session.monikersRound} />;
+  return <RoundIndicator round={session.monikersRound} language={deck.language} />;
 }

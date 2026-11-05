@@ -2,9 +2,19 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:is(.dark *));
-
+/*
+ * Kea design tokens. The app is a phone passed around outdoors.
+ *
+ * Two surfaces, each a scope that redefines the same tokens:
+ *   default  Paper: bright and high contrast, for anything people read.
+ *   .on-table  Moss: the table the cards sit on (home, deck lists, card play).
+ *
+ * [data-game] sets one saturated colour per game and points --primary at it,
+ * so buttons on a game's screens take that game's colour with no extra props.
+ */
 @theme inline {
+  --font-sans: var(--font-body), system-ui, sans-serif;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -12,6 +22,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -32,164 +43,248 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  /* Game-specific colors */
-  --color-charades: var(--charades);
-  --color-charades-dark: var(--charades-dark);
-  --color-trivia: var(--trivia);
-  --color-trivia-dark: var(--trivia-dark);
-  --color-taboo: var(--taboo);
-  --color-taboo-dark: var(--taboo-dark);
-  --color-justone: var(--justone);
-  --color-justone-dark: var(--justone-dark);
-  --color-monikers: var(--monikers);
-  --color-monikers-dark: var(--monikers-dark);
-  --color-situation: var(--situation);
-  --color-situation-dark: var(--situation-dark);
-  --color-case: var(--case);
-  --color-case-dark: var(--case-dark);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-flash: var(--flash);
+
+  /* The current game's colours, set by [data-game]. */
+  --color-game: var(--game);
+  --color-game-deep: var(--game-deep);
+  --color-game-ink: var(--game-ink);
+
+  /* Named game colours, for screens that always belong to one game. */
+  --color-monikers: #11a893;
+  --color-monikers-dark: #0a6e60;
+  --color-situation: #5a2bb8;
+  --color-situation-dark: #38187a;
+  --color-case: #ddb978;
+  --color-case-dark: #6f5020;
+  --color-case-ink: #2a1c06;
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.625rem;
 
-  /* Vibrant Party Colors */
-  --background: oklch(0.98 0.01 85);
-  --foreground: oklch(0.25 0.02 290);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 290);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 290);
+  --paper: #fdfdf8;
+  --ink: #15211a;
+  --flash: #ff5f1f;
+  --moss: #1d3026;
+  --moss-deep: #14231b;
 
-  /* Primary - Electric Purple */
-  --primary: oklch(0.65 0.28 290);
-  --primary-foreground: oklch(0.98 0 0);
+  --background: #f3f5ec;
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--flash);
+  --primary-foreground: #1c0a02;
+  --secondary: #e4e8db;
+  --secondary-foreground: var(--ink);
+  --muted: #e8ebdf;
+  --muted-foreground: #53605a;
+  --accent: #e4e8db;
+  --accent-foreground: var(--ink);
+  --destructive: #c8200f;
+  --success: #c9f25b;
+  --success-foreground: #17240a;
+  --border: #d5dacb;
+  --input: #c9cfbf;
+  --ring: var(--flash);
 
-  /* Secondary - Warm Coral */
-  --secondary: oklch(0.94 0.02 290);
-  --secondary-foreground: oklch(0.3 0.05 290);
-
-  /* Muted - Lavender tint */
-  --muted: oklch(0.94 0.02 290);
-  --muted-foreground: oklch(0.5 0.05 290);
-
-  /* Accent - Bright Teal */
-  --accent: oklch(0.7 0.15 180);
-  --accent-foreground: oklch(0.2 0 0);
-
-  /* Destructive - Fiery Red */
-  --destructive: oklch(0.6 0.25 25);
-
-  /* Success - Lime Green */
-  --success: oklch(0.75 0.2 140);
-  --success-foreground: oklch(0.2 0 0);
-
-  --border: oklch(0.9 0.02 290);
-  --input: oklch(0.9 0.02 290);
-  --ring: oklch(0.65 0.28 290);
-
-  /* Game-specific colors */
-  --charades: oklch(0.7 0.25 350);
-  --charades-dark: oklch(0.55 0.25 350);
-  --trivia: oklch(0.55 0.22 260);
-  --trivia-dark: oklch(0.45 0.22 260);
-  --taboo: oklch(0.6 0.25 25);
-  --taboo-dark: oklch(0.5 0.25 25);
-  --justone: oklch(0.7 0.22 145);
-  --justone-dark: oklch(0.55 0.22 145);
-  --monikers: oklch(0.75 0.2 55);
-  --monikers-dark: oklch(0.6 0.2 55);
-  /* Situation puzzles - midnight teal */
-  --situation: oklch(0.55 0.12 220);
-  --situation-dark: oklch(0.38 0.1 235);
-  /* Case files - manila / evidence-folder amber-brown */
-  --case: oklch(0.58 0.11 60);
-  --case-dark: oklch(0.4 0.08 45);
-
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.65 0.28 290);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.94 0.02 290);
-  --sidebar-accent-foreground: oklch(0.3 0.05 290);
-  --sidebar-border: oklch(0.9 0.02 290);
-  --sidebar-ring: oklch(0.65 0.28 290);
+  /* Defaults so game-aware components work outside a game screen. */
+  --game: var(--flash);
+  --game-deep: #a83408;
+  --game-ink: #1c0a02;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+.on-table {
+  --background: var(--moss);
+  --foreground: #f4f6ea;
+  --card: #294033;
+  --card-foreground: #f4f6ea;
+  --secondary: #2f4839;
+  --secondary-foreground: #f4f6ea;
+  --muted: #2a4133;
+  --muted-foreground: #b7c4b6;
+  --accent: #2f4839;
+  --accent-foreground: #f4f6ea;
+  --border: rgb(255 255 255 / 0.16);
+  --input: rgb(255 255 255 / 0.24);
+  background-color: var(--moss);
+  color: var(--foreground);
+}
+
+[data-game] {
+  --primary: var(--game);
+  --primary-foreground: var(--game-ink);
+  --ring: var(--game);
+}
+
+[data-game="charades"] {
+  --game: #d6125f;
+  --game-deep: #7d0a38;
+  --game-ink: #fffdf7;
+  --title-width: 96%;
+}
+[data-game="trivia"] {
+  --game: #2438c9;
+  --game-deep: #131f7f;
+  --game-ink: #fffdf7;
+  --title-width: 125%;
+}
+[data-game="taboo"] {
+  --game: #db2a1b;
+  --game-deep: #8e1409;
+  --game-ink: #fffdf7;
+  --title-width: 62%;
+}
+[data-game="justone"] {
+  --game: #ffd426;
+  --game-deep: #8a6d00;
+  --game-ink: #1e1a05;
+  --title-width: 104%;
+}
+[data-game="monikers"] {
+  --game: #11a893;
+  --game-deep: #0a6e60;
+  --game-ink: #04231e;
+  --title-width: 90%;
+}
+[data-game="situation"] {
+  --game: #5a2bb8;
+  --game-deep: #38187a;
+  --game-ink: #fffdf7;
+  --title-width: 58%;
+}
+[data-game="case"] {
+  --game: #ddb978;
+  --game-deep: #6f5020;
+  --game-ink: #2a1c06;
+  --title-width: 80%;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* The ground behind overscroll and either side of the column on a tablet. */
+    background-color: var(--moss-deep);
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior: none;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body), system-ui, sans-serif;
+    width: 100%;
+    max-width: 520px;
+    min-height: 100dvh;
+    margin-inline: auto;
+    -webkit-tap-highlight-color: transparent;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  a,
+  button,
+  [role="button"],
+  [role="switch"],
+  summary {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
   }
-  .font-display {
-    font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-kea-display), var(--font-body), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
   }
 }
 
-/* Geometric dot pattern overlay for game backgrounds */
-.game-bg-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: 0;
+/*
+ * The installed iOS app draws a white status bar over the page, so that band
+ * stays moss on every screen, including paper and the light game colours.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--moss);
+  z-index: 60;
+}
+
+@utility font-display {
+  font-family: var(--font-kea-display), var(--font-body), system-ui, sans-serif;
+}
+
+/* Big type: heavy, tight, and as wide as --title-width (or the fit-type value). */
+@utility display-type {
+  font-family: var(--font-kea-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: var(--type-width, 100%);
+  line-height: 0.94;
+  letter-spacing: -0.012em;
+  overflow-wrap: anywhere;
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+@utility pb-safe-3 {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+}
+@utility pb-safe-5 {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.25rem);
+}
+
+/*
+ * Kea feathers: the bird's scalloped olive plumage, kept faint enough to read
+ * as a surface rather than a pattern.
+ */
+.feathers {
+  background-image:
+    radial-gradient(circle at 50% 100%, transparent 62%, rgb(0 0 0 / 0.1) 63%, rgb(0 0 0 / 0.1) 68%, transparent 69%),
+    radial-gradient(circle at 50% 100%, transparent 62%, rgb(0 0 0 / 0.1) 63%, rgb(0 0 0 / 0.1) 68%, transparent 69%);
+  background-size: 44px 26px;
+  background-position:
+    0 0,
+    22px 13px;
+}
+
+/* Each game's card back. Used on deck stacks and the start screen. */
+.card-back {
+  background-color: var(--game);
+  color: var(--game-ink);
+}
+[data-game="charades"] .card-back {
+  background-image: radial-gradient(circle at 78% -10%, rgb(255 255 255 / 0.28), transparent 52%);
+}
+[data-game="trivia"] .card-back {
+  background-image: conic-gradient(rgb(255 255 255 / 0.05) 25%, transparent 0 50%, rgb(255 255 255 / 0.05) 0 75%, transparent 0);
+  background-size: 28px 28px;
+}
+[data-game="taboo"] .card-back {
+  background-image: repeating-linear-gradient(-45deg, transparent 0 14px, rgb(255 255 255 / 0.1) 14px 18px);
+}
+[data-game="justone"] .card-back {
+  background-image: linear-gradient(transparent 27px, rgb(30 26 5 / 0.1) 27px 28px);
+  background-size: 100% 28px;
+}
+[data-game="situation"] .card-back {
+  background-image: radial-gradient(circle at 80% 30%, rgb(255 255 255 / 0.16), transparent 34%);
+}
+[data-game="case"] .card-back {
+  background-image: linear-gradient(rgb(42 28 6 / 0.08), rgb(42 28 6 / 0.08));
+  background-size: 100% 26px;
+  background-repeat: no-repeat;
 }

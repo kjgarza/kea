@@ -69,7 +69,7 @@ export function PhotoQuickAddScreen({ packFiles, deckIds }: Props) {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-8">
+    <main className="pt-safe min-h-dvh px-4 pb-safe-5">
       <div className="max-w-lg mx-auto space-y-4 pb-16">
         <header className="flex items-center justify-between gap-2">
           <Button variant="ghost" className="rounded-full gap-2 -ml-2" onClick={goBack}>

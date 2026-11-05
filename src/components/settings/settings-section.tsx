@@ -8,7 +8,7 @@ export function SettingsSection({
 }) {
   return (
     <section className="space-y-2">
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+      <h3 className="text-sm font-semibold text-muted-foreground">
         {title}
       </h3>
       {children}

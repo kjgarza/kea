@@ -48,17 +48,16 @@ export function CaseCoverScreen({ card, onOpen, onSkip, t }: CoverProps) {
       }
     >
       <div
-        className="mt-4 relative overflow-hidden rounded-3xl bg-gradient-to-br from-case to-case-dark p-6 text-white shadow-2xl shadow-case/30"
+        className="mt-4 relative overflow-hidden rounded-3xl bg-case p-6 text-case-ink"
         data-testid="case-card"
       >
-        <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-white/10" />
         <div className="relative space-y-3">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 text-xs font-semibold">
             <FolderSearch className="h-4 w-4" />
             {t("case.card.badge")}
           </span>
           <h1 className="text-2xl font-bold font-display">{card.title}</h1>
-          <p className="flex flex-wrap gap-x-3 text-sm text-white/85" data-testid="case-contents">
+          <p className="flex flex-wrap gap-x-3 text-sm text-case-ink/85" data-testid="case-contents">
             <span>
               {t("case.card.contents", {
                 evidence: card.evidence.length,
@@ -112,14 +111,14 @@ export function CaseBoard({ card, opened, onView, footer, children, t }: BoardPr
     <CaseShell testId="case-board" footer={footer}>
       <h1 className="pt-2 text-2xl font-bold font-display leading-tight">{card.title}</h1>
       <CasePanel>
-        <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        <h2 className="mb-1 text-xs font-semibold text-muted-foreground">
           {t("case.board.briefing")}
         </h2>
         <Markdown source={card.briefing} data-testid="case-briefing" />
       </CasePanel>
 
       <CasePanel>
-        <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        <h2 className="mb-2 text-xs font-semibold text-muted-foreground">
           {t("case.board.opened")} ({opened.length}/{card.evidence.length})
         </h2>
         {opened.length === 0 ? (
@@ -173,14 +172,14 @@ export function BoardButton({
       data-testid={testId}
       className={`relative flex h-16 flex-col items-center justify-center gap-1 rounded-2xl text-sm font-bold transition-colors ${
         primary
-          ? "bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25"
+          ? "bg-primary text-primary-foreground"
           : "border-2 bg-white/80 hover:bg-white"
       }`}
     >
       {icon}
       {label}
       {badge && (
-        <span className="absolute top-1.5 right-2 rounded-full bg-case px-1.5 text-[11px] font-semibold text-white">
+        <span className="absolute top-1.5 right-2 rounded-full bg-case px-1.5 text-[11px] font-semibold text-case-ink">
           {badge}
         </span>
       )}

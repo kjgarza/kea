@@ -51,7 +51,7 @@ export function SourceCredit({ source, t, className = "" }: SourceCreditProps) {
       data-testid="source-credit"
       aria-label={t("credits.source")}
     >
-      <span className="font-semibold uppercase tracking-wide">{t("credits.source")}</span>
+      <span className="font-semibold">{t("credits.source")}</span>
       {": "}
       {source.author && <span data-testid="source-credit-author">{t("credits.by", { author: source.author })}</span>}
       {url && (
@@ -100,7 +100,7 @@ export function DeckCredits({ deck, t, className = "" }: DeckCreditsProps) {
       className={`rounded-2xl bg-muted/50 p-3 text-left text-xs leading-relaxed text-muted-foreground ${className}`}
       data-testid="deck-credits"
     >
-      <p className="font-semibold uppercase tracking-wide">{t("credits.title")}</p>
+      <p className="font-semibold">{t("credits.title")}</p>
       {license && (
         <p>
           {t("credits.licenseLabel")}{" "}

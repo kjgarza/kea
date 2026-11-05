@@ -223,7 +223,7 @@ export function CaseClosedScreen({ card, answers, scored, score, max, hasMore, o
         <p className="text-sm text-muted-foreground">{card.title}</p>
       </div>
       <CasePanel className="text-center">
-        <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+        <div className="text-xs font-medium text-muted-foreground">
           {t("case.closed.score")}
         </div>
         <div className="text-3xl font-bold font-display" data-testid="case-score" data-score={score} data-max={max}>
@@ -259,7 +259,7 @@ export function CaseClosedScreen({ card, answers, scored, score, max, hasMore, o
       </ul>
 
       <CasePanel>
-        <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        <h2 className="mb-1 text-xs font-semibold text-muted-foreground">
           {t("case.closed.walkthrough")}
         </h2>
         <Markdown source={card.walkthrough} data-testid="case-walkthrough" />

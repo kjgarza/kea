@@ -107,7 +107,7 @@ export function SituationEndScreen({
       {notices}
 
       <SituationPanel>
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-situation mb-2">
+        <h2 className="text-sm font-semibold text-situation mb-2">
           {t("situation.end.solution")}
         </h2>
         <p className="text-lg leading-relaxed" data-testid="situation-end-solution">
@@ -130,7 +130,7 @@ export function SituationEndScreen({
 
       {puzzle.transcript.length > 0 && (
         <SituationPanel>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-situation mb-2">
+          <h2 className="text-sm font-semibold text-situation mb-2">
             {t("situation.end.transcript")}
           </h2>
           <ol className="space-y-1 text-sm">
@@ -150,7 +150,7 @@ export function SituationEndScreen({
 function EndStat({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="rounded-2xl bg-white/90 border shadow-sm px-1 py-2">
-      <dt className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground truncate">
+      <dt className="text-[11px] font-medium text-muted-foreground truncate">
         {label}
       </dt>
       <dd className="text-xl font-bold font-display tabular-nums">{children}</dd>

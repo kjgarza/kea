@@ -8,10 +8,52 @@
  */
 export const en = {
   // Shared
-  "common.backToHome": "Back to Home",
-  "common.chooseDifferentDeck": "Choose Different Deck",
+  "common.backToHome": "Back to home",
+  "common.chooseDifferentDeck": "Choose different deck",
   "common.cancel": "Cancel",
   "common.cardCount": "{count} cards",
+
+  // Redesigned screens
+  "home.tagline": "Pick a game, then pass the phone.",
+  "home.about": "About",
+  "games.charades.teaser": "Act out Kangaroo. No talking.",
+  "games.trivia.teaser": "Which planet is the Red Planet?",
+  "games.taboo.teaser": "Say Titanic without saying ship.",
+  "games.justone.teaser": "One-word clues. Duplicates cancel.",
+  "games.monikers.teaser": "Same names, fewer words each round.",
+  "games.situation.teaser": "Ask yes or no until it makes sense.",
+  "games.case.teaser": "Open the evidence. Name who did it.",
+  "decks.meta": "{count} cards, {difficulty}",
+  "decks.difficulty.easy": "easy",
+  "decks.difficulty.medium": "medium",
+  "decks.difficulty.hard": "hard",
+  "decks.otherLanguage": "Also in {language}",
+  "play.progress": "{done} of {total}",
+  "card.actItOut": "Act it out!",
+  "card.forbidden": "Don't say",
+  "card.reveal": "Reveal answer",
+  "card.answer": "Answer",
+  "card.oneClue": "Everyone else writes one clue. Guesser, look away.",
+  "actions.pass": "Pass",
+  "actions.gotIt": "Got it!",
+  "actions.next": "Next",
+  "actions.correct": "Correct!",
+  "actions.startTimer": "Start timer",
+  "actions.alert": "Taboo word said!",
+  "monikers.round": "Round {round}/3",
+  "monikers.hint.1": "Say anything except the name",
+  "monikers.hint.2": "Only one word",
+  "monikers.hint.3": "Act it out, no words",
+  "monikers.next.2": "Round 2 is one word only",
+  "monikers.next.3": "Round 3 is acting only, no words",
+  "monikers.roundComplete": "Round {round} complete!",
+  "monikers.startRound": "Start round {round}",
+  "monikers.endTurn": "End turn",
+  "monikers.turnEnded": "Turn ended!",
+  "monikers.cardsRemaining": "{count} cards remaining",
+  "monikers.cardRemaining": "1 card remaining",
+  "monikers.passPhone": "Pass the phone to the next team.",
+  "monikers.startTurn": "Start turn",
 
   // Language switch
   "locale.switchLabel": "Language: {language}. Switch to {other}",
@@ -19,16 +61,16 @@ export const en = {
   "locale.name.es": "Español",
 
   // Play: loading / error
-  "play.error.notFoundTitle": "Deck Not Found",
+  "play.error.notFoundTitle": "Deck not found",
   "play.error.notFoundBody": "This deck doesn't exist.",
   "play.error.title": "Oops!",
   "play.error.body": "Something went wrong loading the deck.",
 
   // Play: start screen
   "play.start.shuffle": "Shuffle cards",
-  "play.start.start": "Start Game",
-  "play.start.resume": "Resume Game",
-  "play.start.startNew": "Start New Game",
+  "play.start.start": "Start game",
+  "play.start.resume": "Resume game",
+  "play.start.startNew": "Start new game",
 
   // Play: header
   // NB: no accessible name may contain "start game" (tests/card-view-spacing.spec.ts).
@@ -36,20 +78,19 @@ export const en = {
   "play.header.restart": "Restart",
 
   // Play: restart dialog
-  "play.restart.title": "Restart Game?",
+  "play.restart.title": "Restart game?",
   "play.restart.body": "This will reset your progress and start from the beginning.",
   "play.restart.confirm": "Restart",
 
   // Play: completion screen
-  "play.complete.deckTitle": "Deck Complete!",
-  "play.complete.gameTitle": "Game Complete!",
-  "play.complete.playAgain": "Play Again",
+  "play.complete.deckTitle": "Deck complete!",
+  "play.complete.gameTitle": "Game complete!",
+  "play.complete.playAgain": "Play again",
 
   // Deck list (/game/[gameType])
   "decks.backToGames": "Back to games",
-  "decks.howToPlay": "How to Play",
-  "decks.chooseDeck": "Choose a Deck",
-  "decks.recommended": "Recommended",
+  "decks.howToPlay": "How to play",
+  "decks.chooseDeck": "Choose a deck",
   "decks.loadError": "Failed to load decks",
   "decks.empty": "No decks available for this game yet.",
   "decks.contentWarnings": "Content warnings: {warnings}",

@@ -26,7 +26,7 @@ export function HintLadder({ card, puzzle, onHint, nextLabel, note, t }: Props) 
 
   return (
     <SituationPanel>
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-situation mb-3">
+      <h2 className="text-sm font-semibold text-situation mb-3">
         {t("situation.keeper.hints")}
       </h2>
       {note}

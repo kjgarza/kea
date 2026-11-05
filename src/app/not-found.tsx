@@ -1,23 +1,19 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6">
-      <div className="text-center">
-        <h1 className="text-6xl font-bold text-muted-foreground mb-4">404</h1>
-        <h2 className="text-2xl font-semibold mb-2">Page Not Found</h2>
-        <p className="text-muted-foreground mb-8">
+    <main className="on-table feathers pt-safe flex min-h-dvh flex-col justify-between px-5 pb-safe-5">
+      <div className="pt-16">
+        <h1 className="display-type text-[7rem] text-flash [--type-width:120%]">404</h1>
+        <h2 className="mt-4 text-3xl font-extrabold">Page not found</h2>
+        <p className="mt-2 text-lg text-muted-foreground">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <Button asChild>
-          <Link href="/">
-            <Home className="h-4 w-4 mr-2" />
-            Back to Home
-          </Link>
-        </Button>
       </div>
+      <Button asChild size="lg" className="w-full">
+        <Link href="/">Back to home</Link>
+      </Button>
     </main>
   );
 }

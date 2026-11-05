@@ -26,8 +26,5 @@ export const caseModule = defineGameModule<CaseSessionState, CaseCard, CaseActio
   cardIds: caseCardIds,
   PlayView: CasePlayView,
   completeTitle: "case.complete.title",
-  theme: {
-    gradient: "from-case/15 via-case/8 to-case/20",
-    pattern: "text-case",
-  },
+  surface: "paper",
 });

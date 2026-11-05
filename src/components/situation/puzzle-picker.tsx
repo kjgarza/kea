@@ -119,7 +119,7 @@ export function PuzzlePicker({
               >
                 <div className="flex-1 min-w-0 space-y-1">
                   {index === 0 && (
-                    <span className="inline-block text-xs font-semibold uppercase tracking-wide text-situation">
+                    <span className="inline-block text-xs font-semibold text-situation">
                       {t("situation.picker.nextUp")}
                     </span>
                   )}

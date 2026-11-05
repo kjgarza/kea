@@ -19,10 +19,10 @@ export function SetupScreen({ card, footer, children, t }: Props) {
   return (
     <SituationShell testId="situation-setup" footer={footer}>
       <div
-        className="rounded-3xl bg-gradient-to-br from-situation to-situation-dark text-white shadow-xl shadow-situation/30 p-6 space-y-4"
+        className="rounded-3xl bg-situation text-white p-6 space-y-4"
         data-testid="situation-card"
       >
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/80">
+        <div className="flex items-center gap-2 text-xs font-semibold text-white/80">
           <Megaphone className="h-4 w-4" />
           {t("situation.setup.readAloud")}
         </div>

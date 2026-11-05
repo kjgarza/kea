@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { BellRing, Check, Timer } from "lucide-react";
+import { BellRing } from "lucide-react";
 import { TABOO_TIMER_SECONDS } from "@/lib/game/constants";
+import { useLocale } from "@/lib/i18n";
 import { CardDisplay } from "../card-display";
+import { useCardFlight } from "@/hooks/use-card-flight";
 import { CardStage } from "../card-stage";
 import { ActionBar, ActionButton, PassButton } from "../action-bar";
 import type { StandardPlayViewProps } from "./standard-play-view";
@@ -33,8 +34,10 @@ function useBeep() {
 /**
  * Taboo: the 60s timer lives here and resets whenever the card changes.
  */
-export function TabooPlayView({ session, currentCard, dispatch }: StandardPlayViewProps) {
+export function TabooPlayView({ deck, session, currentCard, dispatch }: StandardPlayViewProps) {
+  const { t } = useLocale(deck.language);
   const beep = useBeep();
+  const { direction, fly } = useCardFlight();
   const [timer, setTimer] = useState({
     cardId: session.currentCardId,
     seconds: TABOO_TIMER_SECONDS,
@@ -67,43 +70,66 @@ export function TabooPlayView({ session, currentCard, dispatch }: StandardPlayVi
 
   const onPass = () => dispatch({ type: "pass" });
   const onGotIt = () => dispatch({ type: "next" });
+  const isLow = active && seconds <= 10;
 
   return (
     <>
-      <CardStage>
-        <CardDisplay card={currentCard} tabooTimerSeconds={seconds} tabooTimerActive={active} />
+      <CardStage
+        cardKey={currentCard.cardId}
+        direction={direction}
+        fly={fly}
+        onSwipeLeft={onPass}
+        onSwipeRight={active ? onGotIt : undefined}
+        leftLabel={t("actions.pass")}
+        rightLabel={t("actions.gotIt")}
+      >
+        <CardDisplay card={currentCard} language={deck.language} />
       </CardStage>
+
+      {/* Lives outside the card so it stays put while cards change. */}
+      <div className="flex shrink-0 items-center gap-3 px-4 pt-2">
+        <div className="h-3 flex-1 overflow-hidden rounded-full bg-foreground/15">
+          <div
+            className={`h-full origin-left rounded-full transition-transform duration-1000 ease-linear ${
+              isLow ? "bg-game" : "bg-foreground"
+            }`}
+            style={{ transform: `scaleX(${seconds / TABOO_TIMER_SECONDS})` }}
+          />
+        </div>
+        <span
+          className={`font-display w-14 text-right text-2xl leading-none font-extrabold tabular-nums ${
+            active ? "" : "text-muted-foreground"
+          }`}
+        >
+          {String(seconds).padStart(2, "0")}s
+        </span>
+      </div>
+
       {active ? (
         <ActionBar stacked>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.95 }}
+          <button
+            type="button"
             onClick={() => beep(800)}
-            className="w-full h-16 rounded-2xl bg-destructive text-destructive-foreground font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-destructive/30"
+            className="font-display flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-paper text-xl font-extrabold text-game-deep transition-transform active:scale-[0.97]"
           >
-            <BellRing className="h-6 w-6" />
-            ALERT! Taboo Word Said
-          </motion.button>
-          <div className="flex gap-3">
-            <PassButton onClick={onPass} />
-            <ActionButton
-              variant="primary"
-              onClick={onGotIt}
-              icon={<Check className="h-5 w-5" />}
-            >
-              Got it!
+            <BellRing className="size-6" aria-hidden />
+            {t("actions.alert")}
+          </button>
+          <div className="flex gap-2.5">
+            <PassButton onClick={fly(-1, onPass)} language={deck.language} />
+            <ActionButton variant="primary" onClick={fly(1, onGotIt)}>
+              {t("actions.gotIt")}
             </ActionButton>
           </div>
         </ActionBar>
       ) : (
         <ActionBar>
-          <PassButton onClick={onPass} />
+          <PassButton onClick={fly(-1, onPass)} language={deck.language} />
           <ActionButton
             variant="primary"
             onClick={() => setTimer((t) => ({ ...t, active: true }))}
-            icon={<Timer className="h-5 w-5" />}
           >
-            Start Timer
+            {t("actions.startTimer")}
           </ActionButton>
         </ActionBar>
       )}

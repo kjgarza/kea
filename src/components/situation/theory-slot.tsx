@@ -102,7 +102,7 @@ export function TheorySlot({ deck, session, puzzle, card, dispatch, t }: TheoryS
 
   return (
     <SituationPanel className="space-y-3" data-testid="theory-sheet">
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-situation flex items-center gap-2">
+      <h2 className="text-sm font-semibold text-situation flex items-center gap-2">
         <Lightbulb className="h-4 w-4" />
         {t("situation.theory.title")}
       </h2>

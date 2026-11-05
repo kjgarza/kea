@@ -40,8 +40,5 @@ export const situationModule = defineGameModule<
   cardIds: situationCardIds,
   PlayView: SituationPlayView,
   completeTitle: "situation.complete.title",
-  theme: {
-    gradient: "from-situation/15 via-situation/8 to-situation/20",
-    pattern: "text-situation",
-  },
+  surface: "paper",
 });

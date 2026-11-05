@@ -106,15 +106,10 @@ export interface GameModule<
   completeTitle?: PlainMessageKey;
 
   /**
-   * Tailwind classes for the play/start/complete screens. Written out in full
-   * so Tailwind's source scan picks them up.
+   * What the in-game screen sits on: "table" (moss, one card fills the screen,
+   * no scrolling) or "paper" (bright and scrolling, for games built on reading).
    */
-  theme: {
-    /** Gradient stops for `bg-gradient-to-b`, e.g. "from-x/15 via-x/8 to-x/20". */
-    gradient: string;
-    /** Text colour class used by the `.game-bg-pattern` overlay. */
-    pattern: string;
-  };
+  surface: "table" | "paper";
 }
 
 /**

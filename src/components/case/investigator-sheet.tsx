@@ -208,7 +208,7 @@ export function InvestigatorSheet({
             disabled={!canSend}
             aria-label={t("case.investigator.send")}
             title={t("case.investigator.send")}
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-case text-white disabled:opacity-40"
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-case text-case-ink disabled:opacity-40"
             data-testid="case-investigator-send"
           >
             <Send className="h-5 w-5" />
@@ -268,7 +268,7 @@ export function InvestigatorSheet({
 
 function Question({ text }: { text: string }) {
   return (
-    <p className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-case px-4 py-2 text-white">{text}</p>
+    <p className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-case px-4 py-2 text-case-ink">{text}</p>
   );
 }
 

@@ -1,76 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 import Link from "next/link";
 import { GameGrid } from "@/components/home/game-grid";
+import { LocaleSwitch } from "@/components/i18n/locale-switch";
 import { useLocale } from "@/lib/i18n";
 
 export default function Home() {
   const { t } = useLocale();
   return (
-    <main className="min-h-screen p-6 md:p-8 relative overflow-hidden">
-      {/* Decorative background shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-charades/10 blur-3xl" />
-        <div className="absolute top-40 right-10 w-48 h-48 rounded-full bg-trivia/10 blur-3xl" />
-        <div className="absolute bottom-20 left-1/4 w-56 h-56 rounded-full bg-justone/10 blur-3xl" />
-        <div className="absolute bottom-40 right-1/4 w-40 h-40 rounded-full bg-monikers/10 blur-3xl" />
-      </div>
+    <main className="on-table feathers flex min-h-dvh flex-col">
+      <header className="pt-safe shrink-0">
+        <div className="flex items-start justify-between gap-3 px-5 pt-4">
+          <h1 className="display-type text-[3.75rem] leading-[0.86] whitespace-nowrap text-flash [overflow-wrap:normal] [--type-width:125%]">Kea</h1>
+          <div className="flex items-center gap-1 pt-1">
+            <Link href="/history" className="inline-flex h-11 items-center px-2 text-sm font-bold whitespace-nowrap">
+              {t("history.link")}
+            </Link>
+            <Link href="/about" className="inline-flex h-11 items-center px-2 text-sm font-bold whitespace-nowrap">
+              {t("home.about")}
+            </Link>
+            <LocaleSwitch />
+          </div>
+        </div>
+        <p className="px-5 pt-2.5 pb-4 text-[1.0625rem] font-bold">{t("home.tagline")}</p>
+      </header>
 
-      <div className="max-w-4xl mx-auto relative">
-        <header className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4"
-          >
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">Party time!</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-6xl font-bold mb-4 font-display bg-gradient-to-r from-charades via-primary to-trivia bg-clip-text text-transparent"
-          >
-            Party Card Games
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-muted-foreground text-lg"
-          >
-            Choose a game and let the fun begin!
-          </motion.p>
-        </header>
-
-        <GameGrid />
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 flex justify-center gap-6"
-        >
-          <Link
-            href="/history"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
-          >
-            {t("history.link")}
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
-          >
-            About
-          </Link>
-        </motion.div>
-      </div>
+      <GameGrid />
     </main>
   );
 }

@@ -19,7 +19,7 @@ export function SituationShell({ children, footer, testId }: Props) {
         <div className="mx-auto w-full max-w-lg space-y-4">{children}</div>
       </div>
       {footer && (
-        <div className="sticky bottom-0 z-20 px-4 pt-3 pb-6 bg-background/85 backdrop-blur-md border-t border-black/5">
+        <div className="sticky bottom-0 z-20 px-4 pt-3 pb-safe-3 bg-background border-t">
           <div className="mx-auto w-full max-w-lg space-y-3">{footer}</div>
         </div>
       )}
@@ -35,7 +35,7 @@ export function SituationPanel({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`rounded-3xl bg-white/90 backdrop-blur-sm shadow-sm border p-5 ${className}`}
+      className={`rounded-2xl bg-card border p-5 ${className}`}
       {...rest}
     >
       {children}
@@ -46,8 +46,8 @@ export function SituationPanel({
 /** Small labelled stat tile (time, questions, score). */
 export function SituationStat({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl bg-white/90 border shadow-sm px-4 py-2 text-center">
-      <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</div>
+    <div className="rounded-2xl bg-card border px-4 py-2 text-left">
+      <div className="text-xs font-medium text-muted-foreground">{label}</div>
       <div className="text-2xl font-bold font-display">{children}</div>
     </div>
   );
