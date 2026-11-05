@@ -204,6 +204,9 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
             <DialogDescription className="text-base">{t("play.restart.body")}</DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2.5">
+            <Button variant="secondary" size="lg" onClick={() => setShowRestartDialog(false)}>
+              {t("common.cancel")}
+            </Button>
             <Button
               variant="destructive"
               size="lg"
@@ -213,9 +216,6 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
               }}
             >
               {t("play.restart.confirm")}
-            </Button>
-            <Button variant="secondary" size="lg" onClick={() => setShowRestartDialog(false)}>
-              {t("common.cancel")}
             </Button>
           </DialogFooter>
         </DialogContent>

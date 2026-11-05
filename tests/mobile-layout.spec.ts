@@ -83,11 +83,8 @@ test.describe('card type', () => {
   });
 });
 
-test.describe('swiping', () => {
-  test.use({ viewport: { width: 390, height: 844 } });
-
-  async function swipe(page: Page, dx: number) {
-    const box = (await page.getByText('Alpha', { exact: true }).boundingBox())!;
+async function swipeCard(page: Page, text: string, dx: number) {
+    const box = (await page.getByText(text, { exact: true }).boundingBox())!;
     const x = box.x + box.width / 2;
     const y = box.y + box.height / 2;
     await page.mouse.move(x, y);
@@ -99,7 +96,92 @@ test.describe('swiping', () => {
       await page.waitForTimeout(24);
     }
     await page.mouse.up();
-  }
+}
+
+function fixture(deckId: string, gameType: string, cards: object[]) {
+  return {
+    schemaVersion: 1,
+    deckId,
+    version: '2026-01-07T00:00:00Z',
+    name: 'Fixture',
+    gameType,
+    language: 'en',
+    difficulty: 'easy',
+    topics: [],
+    nsfw: false,
+    cards,
+  };
+}
+
+test.describe('taboo swiping', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test('a card can only be scored once the timer is running', async ({ page }) => {
+    await page.route('**/decks/everyday-words-en-taboo.json', (route) =>
+      route.fulfill({
+        json: fixture('everyday-words-en-taboo', 'taboo', [
+          { cardId: 'a', type: 'taboo', target: 'Alpha', forbidden: ['a1', 'a2', 'a3', 'a4', 'a5'] },
+          { cardId: 'b', type: 'taboo', target: 'Bravo', forbidden: ['b1', 'b2', 'b3', 'b4', 'b5'] },
+        ]),
+      })
+    );
+    await start(page, 'everyday-words-en-taboo');
+    await expect(page.getByText('1 of 2')).toBeVisible();
+
+    await swipeCard(page, 'Alpha', 170);
+    await page.waitForTimeout(400);
+    await expect(page.getByText('1 of 2')).toBeVisible();
+
+    await page.getByRole('button', { name: /start timer/i }).click();
+    await swipeCard(page, 'Alpha', 170);
+    await expect(page.getByText('2 of 2')).toBeVisible();
+  });
+});
+
+test.describe('trivia on a short screen', () => {
+  // A small phone with the browser toolbar showing.
+  test.use({ viewport: { width: 375, height: 500 } });
+
+  test('a question too tall for its space can be read from its first line', async ({ page }) => {
+    const question = 'Which long question has so many words that it cannot possibly fit in the space above the answers?';
+    await page.route('**/decks/general-knowledge-en-trivia.json', (route) =>
+      route.fulfill({
+        json: fixture('general-knowledge-en-trivia', 'trivia', [
+          { cardId: 'a', type: 'trivia', format: 'mcq', question, choices: ['One', 'Two', 'Three', 'Four'], answerIndex: 1, answerText: 'Two' },
+        ]),
+      })
+    );
+    await start(page, 'general-knowledge-en-trivia');
+    const text = page.getByText(question, { exact: true });
+    await expect(text).toBeVisible();
+    const fits = await text.evaluate((el) => {
+      const box = el.parentElement!;
+      return { top: el.getBoundingClientRect().top >= box.getBoundingClientRect().top, overflows: box.scrollHeight > box.clientHeight };
+    });
+    expect(fits.overflows).toBe(true);
+    expect(fits.top).toBe(true);
+  });
+});
+
+test.describe('restart sheet', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test('Cancel is the bottom button and takes focus first', async ({ page }) => {
+    await start(page, 'animals-en-charades');
+    await page.getByRole('button', { name: /restart/i }).click();
+    const cancel = page.getByRole('button', { name: /cancel/i });
+    const confirm = page.getByRole('dialog').getByRole('button', { name: /^restart$/i });
+    await expect(cancel).toBeVisible();
+    const [c, r] = [(await cancel.boundingBox())!, (await confirm.boundingBox())!];
+    expect(c.y).toBeGreaterThan(r.y);
+    await expect(cancel).toBeFocused();
+  });
+});
+
+test.describe('swiping', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  const swipe = (page: Page, dx: number) => swipeCard(page, 'Alpha', dx);
 
   test.beforeEach(async ({ page }) => {
     await page.route('**/decks/animals-en-charades.json', (route) =>

@@ -210,6 +210,19 @@
   }
 }
 
+/*
+ * The installed iOS app draws a white status bar over the page, so that band
+ * stays moss on every screen, including paper and the light game colours.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--moss);
+  z-index: 60;
+}
+
 @utility font-display {
   font-family: var(--font-kea-display), var(--font-body), system-ui, sans-serif;
 }

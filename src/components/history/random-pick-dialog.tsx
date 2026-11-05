@@ -53,7 +53,7 @@ export function RandomPickDialog<C extends PickCandidate>({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="rounded-3xl" aria-describedby={undefined} data-testid="random-pick-dialog">
+      <DialogContent data-game="situation" aria-describedby={undefined} data-testid="random-pick-dialog">
         <DialogHeader>
           <DialogTitle className="font-display">{t("history.random.title")}</DialogTitle>
         </DialogHeader>

@@ -92,7 +92,7 @@ export function EvidenceDrawer({ open, onOpenChange, card, opened, onView, t }: 
                 </span>
                 {state === "opened" && <Check className="h-5 w-5 text-emerald-600" />}
                 {state === "unlocked" && (
-                  <span className="rounded-full bg-case px-2 py-0.5 text-xs font-semibold text-white">
+                  <span className="rounded-full bg-case px-2 py-0.5 text-xs font-semibold text-case-ink">
                     {t("case.evidence.new")}
                   </span>
                 )}

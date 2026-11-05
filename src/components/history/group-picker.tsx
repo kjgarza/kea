@@ -112,7 +112,7 @@ export function GroupPicker({ groups, t }: Props) {
       </label>
 
       <Dialog open={editing !== null} onOpenChange={(open) => !open && setEditing(null)}>
-        <DialogContent className="rounded-3xl" aria-describedby={undefined}>
+        <DialogContent data-game="situation" aria-describedby={undefined}>
           <DialogHeader>
             <DialogTitle className="font-display">
               {editing === "rename" ? t("history.group.renameTitle") : t("history.group.addTitle")}

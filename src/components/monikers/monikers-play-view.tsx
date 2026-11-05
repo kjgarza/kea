@@ -12,7 +12,8 @@ import {
 } from "@/lib/game/modules/monikers/logic";
 import { useLocale } from "@/lib/i18n";
 import { CardDisplay } from "@/components/play/card-display";
-import { CardStage, useCardFlight } from "@/components/play/card-stage";
+import { useCardFlight } from "@/hooks/use-card-flight";
+import { CardStage } from "@/components/play/card-stage";
 import { ActionBar, ActionButton, PassButton } from "@/components/play/action-bar";
 import { EndTurnOverlay } from "./end-turn-overlay";
 import { RoundCompleteScreen } from "./round-complete-screen";

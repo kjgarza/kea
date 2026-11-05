@@ -71,7 +71,7 @@ function KeeperSetup({ card, dispatch, t }: KeeperPanelProps) {
         }
       />
       <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
-        <DialogContent className="rounded-3xl">
+        <DialogContent data-game="situation">
           <DialogHeader>
             <DialogTitle className="font-display">{t("situation.reveal.title")}</DialogTitle>
             <DialogDescription>{t("situation.reveal.body")}</DialogDescription>

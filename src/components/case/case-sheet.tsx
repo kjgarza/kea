@@ -40,6 +40,7 @@ export function CaseSheet({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         data-testid={testId}
+        data-game="case"
         className={cn(
           "p-0 pb-0 gap-0 flex flex-col overflow-hidden",
           className

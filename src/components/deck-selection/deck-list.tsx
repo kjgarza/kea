@@ -5,7 +5,7 @@ import { DeckCard } from "./deck-card";
 import type { DeckMeta } from "@/types/deck";
 import type { GameType } from "@/types/game";
 import { getDecksForGame } from "@/lib/data/deck-loader";
-import { useLocale } from "@/lib/i18n";
+import { localeFromLanguage, useLocale } from "@/lib/i18n";
 
 interface DeckListProps {
   gameType: GameType;
@@ -60,9 +60,9 @@ export function DeckList({ gameType }: DeckListProps) {
   }
 
   // Decks in the language being used come first; the rest follow under a label.
-  const here = decks.filter((deck) => deck.language === locale);
-  const elsewhere = decks.filter((deck) => deck.language !== locale);
-  const otherLanguage = elsewhere[0]?.language === "es" ? "es" : "en";
+  const here = decks.filter((deck) => localeFromLanguage(deck.language) === locale);
+  const elsewhere = decks.filter((deck) => localeFromLanguage(deck.language) !== locale);
+  const otherLanguage = locale === "en" ? "es" : "en";
 
   return (
     <div className="pb-safe-5 pt-1">

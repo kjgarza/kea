@@ -1,6 +1,5 @@
 "use client";
 
-import { useCallback, useRef } from "react";
 import {
   AnimatePresence,
   motion,
@@ -10,32 +9,14 @@ import {
   useTransform,
   type PanInfo,
 } from "framer-motion";
-
-type Direction = 1 | -1;
-
-/**
- * Remembers which way the current card should leave. Wrap the game's actions
- * with it, so a tap on Got it throws the card right and a tap on Pass throws
- * it left, the same as swiping.
- */
-export function useCardFlight() {
-  const direction = useRef<Direction>(1);
-  const fly = useCallback(
-    <A extends unknown[]>(to: Direction, action: (...args: A) => void) =>
-      (...args: A) => {
-        direction.current = to;
-        action(...args);
-      },
-    []
-  );
-  return { direction, fly };
-}
+import type { useCardFlight } from "@/hooks/use-card-flight";
+import { SWIPE_LABEL_DISTANCE, swipeOutcome, type SwipeDirection } from "@/lib/ui/swipe";
 
 interface Props {
   /** Identity of the card. A new key deals a new card. */
   cardKey: string;
   children: React.ReactNode;
-  direction: React.RefObject<Direction>;
+  direction: React.RefObject<SwipeDirection>;
   /** From `useCardFlight`: runs an action after setting which way the card leaves. */
   fly: ReturnType<typeof useCardFlight>["fly"];
   /** Swipe left. Omit to turn the gesture off. */
@@ -45,9 +26,6 @@ interface Props {
   leftLabel?: string;
   rightLabel?: string;
 }
-
-const SWIPE_DISTANCE = 96;
-const SWIPE_VELOCITY = 520;
 
 /**
  * The current card on top of the deck, filling all the height the controls
@@ -88,7 +66,7 @@ export function CardStage({
 const cardMotion = {
   enter: { scale: 0.96, y: 10 },
   rest: { scale: 1, y: 0, x: 0, rotate: 0, opacity: 1 },
-  exit: (to: Direction) => ({ x: `${to * 115}%`, rotate: to * 10, opacity: 0 }),
+  exit: (to: SwipeDirection) => ({ x: `${to * 115}%`, rotate: to * 10, opacity: 0 }),
 };
 
 function FlyingCard({
@@ -103,16 +81,15 @@ function FlyingCard({
   const isPresent = useIsPresent();
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-220, 220], [-9, 9]);
-  const rightOpacity = useTransform(x, [24, SWIPE_DISTANCE], [0, 1]);
-  const leftOpacity = useTransform(x, [-SWIPE_DISTANCE, -24], [1, 0]);
+  const rightOpacity = useTransform(x, [24, SWIPE_LABEL_DISTANCE], [0, 1]);
+  const leftOpacity = useTransform(x, [-SWIPE_LABEL_DISTANCE, -24], [1, 0]);
 
   const canSwipe = !reduceMotion && Boolean(onSwipeLeft || onSwipeRight);
 
   const onDragEnd = (_: unknown, info: PanInfo) => {
-    const goesRight = info.offset.x > SWIPE_DISTANCE || info.velocity.x > SWIPE_VELOCITY;
-    const goesLeft = info.offset.x < -SWIPE_DISTANCE || info.velocity.x < -SWIPE_VELOCITY;
-    if (goesRight && onSwipeRight) fly(1, onSwipeRight)();
-    else if (goesLeft && onSwipeLeft) fly(-1, onSwipeLeft)();
+    const outcome = swipeOutcome(info.offset.x, info.velocity.x);
+    if (outcome === 1 && onSwipeRight) fly(1, onSwipeRight)();
+    else if (outcome === -1 && onSwipeLeft) fly(-1, onSwipeLeft)();
   };
 
   return (
@@ -121,13 +98,15 @@ function FlyingCard({
       aria-hidden={!isPresent}
       inert={!isPresent}
       className="absolute inset-0 touch-pan-y select-none [-webkit-touch-callout:none] [container-type:size]"
-      style={{ x, rotate }}
+      // The thrown card stays above the next one until it has left.
+      style={{ x, rotate, zIndex: isPresent ? 1 : 2 }}
       variants={reduceMotion ? undefined : cardMotion}
       initial="enter"
       animate="rest"
       exit="exit"
       transition={{ type: "spring", stiffness: 420, damping: 36, mass: 0.8 }}
       drag={canSwipe ? "x" : false}
+      dragDirectionLock
       dragSnapToOrigin
       dragElastic={0.85}
       dragConstraints={{

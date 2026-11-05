@@ -61,7 +61,6 @@ export function AppSettingsSheet({ open, onOpenChange, t }: SheetProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className="max-h-[90vh] overflow-y-auto rounded-3xl"
         data-testid="settings-sheet"
       >
         <DialogHeader>

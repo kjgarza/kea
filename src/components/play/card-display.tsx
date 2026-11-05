@@ -12,6 +12,7 @@ import {
 } from "@/types/card";
 import { useLocale, type TranslateFn } from "@/lib/i18n";
 import { fitType } from "@/lib/ui/fit-type";
+import { cn } from "@/lib/utils";
 
 interface CardDisplayProps {
   card: Card;
@@ -80,8 +81,9 @@ function TriviaFace({
   const isMCQ = isTriviaMCQCard(card);
   return (
     <div className={`${FACE} bg-game text-game-ink`}>
-      <div className="flex min-h-0 flex-1 items-center overflow-y-auto px-6 py-5">
-        <p className="display-type leading-[1.02]" style={{ ...fitType(card.question, { maxPx: 46, aspect: 0.62, measure: 80 }), "--type-width": "84%" } as React.CSSProperties}>
+      <div className="flex min-h-0 flex-1 overflow-y-auto px-6 py-5">
+        {/* my-auto, not items-center: centring would put an overflowing question out of scroll reach. */}
+        <p className="display-type my-auto leading-[1.02]" style={{ ...fitType(card.question, { maxPx: 46, aspect: 0.62, measure: 80 }), "--type-width": "84%" } as React.CSSProperties}>
           {card.question}
         </p>
       </div>
@@ -144,9 +146,9 @@ function TabooFace({ target, forbidden, t }: { target: string; forbidden: string
       <div className="flex shrink-0 flex-col bg-game px-5 pt-3 pb-2 text-game-ink">
         <p className="pb-1 text-base font-bold">{t("card.forbidden")}</p>
         <ul className="divide-y divide-white/30">
-          {forbidden.map((word) => (
+          {forbidden.map((word, idx) => (
             <li
-              key={word}
+              key={`${word}-${idx}`}
               className="font-display py-[clamp(0.25rem,1.3cqh,0.6rem)] text-[clamp(1.25rem,4.4cqh,1.75rem)] leading-tight font-bold [font-stretch:92%]"
             >
               {word}
@@ -162,7 +164,7 @@ function TabooFace({ target, forbidden, t }: { target: string; forbidden: string
 function JustOneFace({ target, t }: { target: string; t: TranslateFn }) {
   return (
     <div
-      className={`${FACE} card-back rounded-[0.5rem] [clip-path:polygon(0_0,100%_0,100%_calc(100%-2.75rem),calc(100%-2.75rem)_100%,0_100%)]`}
+      className={cn(FACE, "card-back rounded-[0.5rem] [clip-path:polygon(0_0,100%_0,100%_calc(100%-2.75rem),calc(100%-2.75rem)_100%,0_100%)]")}
     >
       <div className="flex min-h-0 flex-1 items-center px-6">
         <p className="display-type" style={fitType(target, { aspect: 0.7 })}>

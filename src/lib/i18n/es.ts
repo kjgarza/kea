@@ -88,7 +88,6 @@ export const es: Messages = {
   "decks.backToGames": "Volver a los juegos",
   "decks.howToPlay": "Cómo se juega",
   "decks.chooseDeck": "Elige una baraja",
-  "decks.recommended": "Recomendada",
   "decks.loadError": "No se pudieron cargar las barajas",
   "decks.empty": "Todavía no hay barajas para este juego.",
   "decks.contentWarnings": "Advertencias de contenido: {warnings}",

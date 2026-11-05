@@ -6,7 +6,8 @@ import type { PlayViewProps } from "@/lib/game/modules/types";
 import type { StandardAction } from "@/lib/game/modules/standard-stack/logic";
 import { useLocale } from "@/lib/i18n";
 import { CardDisplay } from "../card-display";
-import { CardStage, useCardFlight } from "../card-stage";
+import { useCardFlight } from "@/hooks/use-card-flight";
+import { CardStage } from "../card-stage";
 import { ActionBar, ActionButton, PassButton } from "../action-bar";
 
 export type StandardPlayViewProps = PlayViewProps<

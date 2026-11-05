@@ -5,7 +5,8 @@ import { BellRing } from "lucide-react";
 import { TABOO_TIMER_SECONDS } from "@/lib/game/constants";
 import { useLocale } from "@/lib/i18n";
 import { CardDisplay } from "../card-display";
-import { CardStage, useCardFlight } from "../card-stage";
+import { useCardFlight } from "@/hooks/use-card-flight";
+import { CardStage } from "../card-stage";
 import { ActionBar, ActionButton, PassButton } from "../action-bar";
 import type { StandardPlayViewProps } from "./standard-play-view";
 
@@ -78,7 +79,7 @@ export function TabooPlayView({ deck, session, currentCard, dispatch }: Standard
         direction={direction}
         fly={fly}
         onSwipeLeft={onPass}
-        onSwipeRight={onGotIt}
+        onSwipeRight={active ? onGotIt : undefined}
         leftLabel={t("actions.pass")}
         rightLabel={t("actions.gotIt")}
       >
