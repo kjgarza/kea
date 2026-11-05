@@ -4,8 +4,8 @@
   "description": "Playful party card games — Charades, Trivia, Taboo, Just One, and Monikers",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#1d3026",
+  "theme_color": "#1d3026",
   "icons": [
     {
       "src": "./icon-192.png",

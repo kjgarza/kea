@@ -30,7 +30,7 @@ export type StandardStackModule = GameModule<
 interface StandardStackConfig {
   type: StandardGameType;
   PlayView: ComponentType<PlayViewProps<StandardSessionState, Card, StandardAction>>;
-  theme: StandardStackModule["theme"];
+  surface: StandardStackModule["surface"];
 }
 
 /**
@@ -40,7 +40,7 @@ interface StandardStackConfig {
 export function createStandardStackModule({
   type,
   PlayView,
-  theme,
+  surface,
 }: StandardStackConfig): StandardStackModule {
   const passBehavior = GAMES[type as GameType].passBehavior;
   return defineGameModule<StandardSessionState, Card, StandardAction>({
@@ -51,6 +51,6 @@ export function createStandardStackModule({
     progress: standardProgress,
     cardIds: standardCardIds,
     PlayView,
-    theme,
+    surface,
   });
 }

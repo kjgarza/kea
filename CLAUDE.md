@@ -115,6 +115,16 @@ Decks loaded from `public/decks/*.json` via `src/lib/data/deck-loader.ts`:
 - `getDecksForGame(gameType)`, `getDeckMeta(deckId)` - Index helpers
 - Results cached in memory
 
+## Design system
+
+Kea is phone-only (the column caps at 520px; there are no `md:`/`lg:` layouts). Tokens live in `src/app/globals.css`.
+
+- **Surfaces:** paper is the default. `.on-table` flips the same tokens to moss, for home, deck lists and card play. Game modules choose theirs with `surface`.
+- **Game colour:** `data-game="<type>"` sets `--game`, `--game-deep` and `--game-ink` and points `--primary` at the game, so buttons follow. A new game needs a block here, a `.card-back`, and a mark in `src/components/game/game-mark.tsx`.
+- **Type:** Anybody for display, Lexend for text. Card words use `fitType()` (`src/lib/ui/fit-type.ts`), which picks size and width axis so words stay whole. If you add deck content with unusual words, re-check them at 375px.
+- **Conventions:** left-aligned, sentence case, no `dark:` classes (a single look on purpose), controls at least 44px and pinned in thumb reach, safe-area utilities (`pt-safe`, `pb-safe-3`, `pb-safe-5`) on edge-touching elements.
+- **Dev server:** file watching can miss `globals.css` on external volumes. If a CSS change doesn't appear, restart `bun run dev`.
+
 ## Generation Pipeline
 
 Scripts in `scripts/` generate deck content from YAML configs:

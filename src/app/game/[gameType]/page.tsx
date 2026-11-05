@@ -17,15 +17,12 @@ export default async function GamePage({ params }: GamePageProps) {
   }
 
   return (
-    <main className="min-h-screen p-6 md:p-8">
-      <div className="max-w-4xl mx-auto">
-        <GameIntro gameType={gameType} />
-
-        <section>
-          <ChooseDeckHeading />
-          <DeckList gameType={gameType} />
-        </section>
-      </div>
+    <main className="on-table min-h-dvh" data-game={gameType}>
+      <GameIntro gameType={gameType} />
+      <section>
+        <ChooseDeckHeading />
+        <DeckList gameType={gameType} />
+      </section>
     </main>
   );
 }

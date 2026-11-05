@@ -17,34 +17,22 @@ export const GAME_MODULES: Record<GameType, AnyGameModule> = {
   charades: createStandardStackModule({
     type: "charades",
     PlayView: StandardPlayView,
-    theme: {
-      gradient: "from-charades/15 via-charades/8 to-charades/20",
-      pattern: "text-charades",
-    },
+    surface: "table",
   }),
   trivia: createStandardStackModule({
     type: "trivia",
     PlayView: TriviaPlayView,
-    theme: {
-      gradient: "from-trivia/15 via-trivia/8 to-trivia/20",
-      pattern: "text-trivia",
-    },
+    surface: "table",
   }),
   taboo: createStandardStackModule({
     type: "taboo",
     PlayView: TabooPlayView,
-    theme: {
-      gradient: "from-taboo/15 via-taboo/8 to-taboo/20",
-      pattern: "text-taboo",
-    },
+    surface: "table",
   }),
   justone: createStandardStackModule({
     type: "justone",
     PlayView: StandardPlayView,
-    theme: {
-      gradient: "from-justone/15 via-justone/8 to-justone/20",
-      pattern: "text-justone",
-    },
+    surface: "table",
   }),
   monikers: monikersModule,
   situation: situationModule,

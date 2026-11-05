@@ -176,15 +176,13 @@ export function SituationSetupCard({ card, language }: SetupCardProps) {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="relative h-full rounded-3xl bg-gradient-to-br from-situation to-situation-dark overflow-hidden shadow-2xl shadow-situation/30"
+      className="relative h-full rounded-3xl bg-situation overflow-hidden"
       data-testid="situation-card"
     >
-      <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-white/10" />
-      <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-white/5" />
 
       <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
         <Search className="w-4 h-4 text-white" />
-        <span className="text-xs font-semibold text-white uppercase tracking-wide">
+        <span className="text-xs font-semibold text-white">
           {t("situation.card.badge")}
         </span>
       </div>

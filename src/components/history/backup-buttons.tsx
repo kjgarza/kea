@@ -40,13 +40,13 @@ export function BackupButtons({ t }: Props) {
   return (
     <div className="space-y-2">
       <div className="flex gap-2">
-        <Button variant="outline" className="flex-1 rounded-full" onClick={handleExport}>
+        <Button variant="outline" className="min-w-0 flex-1 px-3 text-sm" onClick={handleExport}>
           <Download className="h-4 w-4" />
           {t("history.export")}
         </Button>
         <Button
           variant="outline"
-          className="flex-1 rounded-full"
+          className="min-w-0 flex-1 px-3 text-sm"
           onClick={() => fileInput.current?.click()}
         >
           <Upload className="h-4 w-4" />

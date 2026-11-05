@@ -9,31 +9,20 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen p-6 md:p-10 relative overflow-hidden">
-      {/* Decorative background shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-justone/10 blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-56 h-56 rounded-full bg-trivia/10 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-primary/5 blur-3xl" />
-      </div>
-
-      <div className="max-w-2xl mx-auto relative flex flex-col min-h-[calc(100vh-3rem)]">
-        {/* Back link */}
+    <main className="pt-safe flex min-h-dvh flex-col px-5 pb-safe-5">
+      <div className="flex flex-1 flex-col">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10 w-fit"
+          aria-label="Back to games"
+          className="-ml-2 mt-2 inline-flex size-11 items-center justify-center rounded-full active:bg-foreground/10"
         >
-          <ArrowLeft className="w-4 h-4" />
-          Back to games
+          <ArrowLeft className="size-6" />
         </Link>
 
-        {/* Heading */}
-        <h1 className="text-4xl md:text-5xl font-bold font-display mb-10 bg-gradient-to-r from-justone via-primary to-trivia bg-clip-text text-transparent">
-          About
-        </h1>
+        <h1 className="display-type mt-4 mb-8 text-[5rem] text-flash [--type-width:120%]">About</h1>
 
         {/* Prose content */}
-        <div className="prose prose-neutral dark:prose-invert max-w-none flex-1">
+        <div className="prose prose-lg prose-neutral max-w-none flex-1 prose-headings:font-extrabold">
           <h2>Why I built this</h2>
           <p>
             Kea was born out of a simple frustration: you&rsquo;re outdoors with
@@ -83,7 +72,7 @@ export default function AboutPage() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-16 pt-6 border-t border-border/40 text-center text-sm text-muted-foreground">
+        <footer className="mt-12 pt-5 border-t text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Kristian Garza. Built for outdoor adventures.</p>
         </footer>
       </div>

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowLeft, RotateCcw, Sparkles, PartyPopper, Play, Shuffle } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, RotateCcw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,7 +15,10 @@ import {
 } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Skeleton } from "@/components/ui/skeleton";
+import { GameMark } from "@/components/game/game-mark";
 import { LocaleSwitch } from "@/components/i18n/locale-switch";
+import { ActionButton } from "./action-bar";
+import { deckDepthShadow, fitType } from "@/lib/ui/fit-type";
 import { useGameState } from "@/hooks/use-game-state";
 import { useLocale, type TranslateFn } from "@/lib/i18n";
 import { GAMES } from "@/types/game";
@@ -66,18 +69,14 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted/30">
-        <header className="flex items-center justify-between p-4">
-          <Skeleton className="h-10 w-20 rounded-full" />
-          <Skeleton className="h-8 w-32 rounded-full" />
-          <Skeleton className="h-10 w-10 rounded-full" />
-        </header>
-        <main className="flex-1 flex items-center justify-center p-4">
-          <Skeleton className="w-full max-w-lg aspect-[3/4] rounded-3xl" />
-        </main>
-        <div className="p-4 flex gap-3">
-          <Skeleton className="flex-1 h-14 rounded-2xl" />
-          <Skeleton className="flex-1 h-14 rounded-2xl" />
+      <div className="on-table pt-safe flex h-dvh flex-col">
+        <div className="h-14 shrink-0" />
+        <div className="min-h-0 flex-1 px-4 pb-2">
+          <Skeleton className="h-full rounded-[1.75rem]" />
+        </div>
+        <div className="pb-safe-3 flex gap-2.5 px-4 pt-3">
+          <Skeleton className="h-16 flex-1 rounded-2xl" />
+          <Skeleton className="h-16 flex-[1.7] rounded-2xl" />
         </div>
       </div>
     );
@@ -86,25 +85,18 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   // Error state
   if (error || isNotFound || !deck || !gameModule) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-background to-muted/30">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center"
-        >
-          <div className="text-6xl mb-4">😕</div>
-          <h1 className="text-2xl font-bold mb-2 font-display">
+      <div className="on-table feathers pt-safe pb-safe-5 flex min-h-dvh flex-col justify-between px-5">
+        <div className="pt-16">
+          <h1 className="display-type text-[3.5rem] text-flash [--type-width:84%]">
             {isNotFound ? t("play.error.notFoundTitle") : t("play.error.title")}
           </h1>
-          <p className="text-muted-foreground mb-6">
-            {isNotFound
-              ? t("play.error.notFoundBody")
-              : t("play.error.body")}
+          <p className="mt-4 text-xl font-bold">
+            {isNotFound ? t("play.error.notFoundBody") : t("play.error.body")}
           </p>
-          <Button asChild size="lg" className="rounded-full">
-            <Link href="/">{t("common.backToHome")}</Link>
-          </Button>
-        </motion.div>
+        </div>
+        <Button asChild size="lg" className="w-full">
+          <Link href="/">{t("common.backToHome")}</Link>
+        </Button>
       </div>
     );
   }
@@ -114,7 +106,6 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
     return (
       <StartScreen
         deck={deck}
-        gameModule={gameModule}
         hasSavedSession={hasSavedSession}
         shuffleEnabled={shuffleEnabled}
         onShuffleChange={setShuffleEnabled}
@@ -151,77 +142,80 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
     return playView;
   }
 
-  return (
-    <div className={`min-h-screen flex flex-col bg-gradient-to-b ${gameModule.theme.gradient} relative`}>
-      <div className={`game-bg-pattern ${gameModule.theme.pattern}`} />
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 relative z-10">
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link
-            href={`/game/${deck.gameType}`}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm text-sm font-medium hover:bg-white transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {t("play.header.exit")}
-          </Link>
-        </motion.div>
+  const isTable = gameModule.surface === "table";
+  const progress = isTable ? gameModule.progress(session, deck) : null;
+  const done = progress ? Math.min(progress.total, progress.completed + 1) : 0;
 
-        <div className="flex items-center gap-2">
+  return (
+    <div
+      data-game={deck.gameType}
+      className={`flex flex-col ${isTable ? "on-table h-dvh overflow-hidden" : "min-h-dvh"}`}
+    >
+      {/* Header: on paper it carries the game's colour, so the game stays recognisable. */}
+      <header
+        className={`pt-safe relative z-10 flex shrink-0 items-center gap-1 px-2 ${
+          isTable ? "" : "card-back mb-3 pb-1"
+        }`}
+      >
+        <Link
+          href={`/game/${deck.gameType}`}
+          aria-label={t("play.header.exit")}
+          title={t("play.header.exit")}
+          className="my-1.5 inline-flex size-11 shrink-0 items-center justify-center rounded-full active:bg-foreground/10"
+        >
+          <X className="size-6" />
+        </Link>
+
+        <div className="min-w-0 flex-1 px-1">
           {HeaderView ? (
             <HeaderView deck={deck} session={session} />
           ) : (
-            <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm text-sm font-medium">
-              {deck.name}
-            </div>
+            <>
+              <p className="font-display truncate py-0.5 text-lg leading-none font-extrabold [font-stretch:80%]">{deck.name}</p>
+              {progress && (
+                <p className="mt-1 text-sm leading-none font-bold text-muted-foreground tabular-nums">
+                  {t("play.progress", { done, total: progress.total })}
+                </p>
+              )}
+            </>
           )}
         </div>
 
-        <div className="flex items-center gap-2">
-          <LocaleSwitch deckLanguage={deck.language} />
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowRestartDialog(true)}
-            aria-label={t("play.header.restart")}
-            title={t("play.header.restart")}
-            className="p-2.5 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm hover:bg-white transition-colors"
-          >
-            <RotateCcw className="h-4 w-4" />
-          </motion.button>
-        </div>
+        <LocaleSwitch deckLanguage={deck.language} className="shrink-0 bg-transparent" />
+        <button
+          type="button"
+          onClick={() => setShowRestartDialog(true)}
+          aria-label={t("play.header.restart")}
+          title={t("play.header.restart")}
+          className="inline-flex size-11 shrink-0 items-center justify-center rounded-full active:bg-foreground/10"
+        >
+          <RotateCcw className="size-5" />
+        </button>
       </header>
 
       {/* Game body */}
-      <main className="flex-1 flex flex-col min-h-0 relative z-10">
-        {playView}
-      </main>
+      <main className="relative z-10 flex min-h-0 flex-1 flex-col">{playView}</main>
 
       {/* Restart Confirmation Dialog */}
       <Dialog open={showRestartDialog} onOpenChange={setShowRestartDialog}>
-        <DialogContent className="rounded-3xl">
+        <DialogContent>
           <DialogHeader>
-            <DialogTitle className="font-display">{t("play.restart.title")}</DialogTitle>
-            <DialogDescription>
-              {t("play.restart.body")}
-            </DialogDescription>
+            <DialogTitle className="font-display text-2xl font-extrabold">{t("play.restart.title")}</DialogTitle>
+            <DialogDescription className="text-base">{t("play.restart.body")}</DialogDescription>
           </DialogHeader>
-          <DialogFooter className="gap-2 sm:gap-0">
-            <Button
-              variant="outline"
-              onClick={() => setShowRestartDialog(false)}
-              className="rounded-full"
-            >
-              {t("common.cancel")}
-            </Button>
+          <DialogFooter className="gap-2.5">
             <Button
               variant="destructive"
+              size="lg"
               onClick={() => {
                 handleRestart();
                 setShowRestartDialog(false);
               }}
-              className="rounded-full"
             >
               {t("play.restart.confirm")}
+            </Button>
+            <Button variant="secondary" size="lg" onClick={() => setShowRestartDialog(false)}>
+              {t("common.cancel")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -230,10 +224,9 @@ export function PlayScreen({ deckId }: PlayScreenProps) {
   );
 }
 
-// Start Screen Component
+// Start Screen Component: the deck itself, ready to pick up.
 function StartScreen({
   deck,
-  gameModule,
   hasSavedSession,
   shuffleEnabled,
   onShuffleChange,
@@ -242,7 +235,6 @@ function StartScreen({
   t,
 }: {
   deck: Deck;
-  gameModule: AnyGameModule;
   hasSavedSession: boolean;
   shuffleEnabled: boolean;
   onShuffleChange: (enabled: boolean) => void;
@@ -252,78 +244,62 @@ function StartScreen({
 }) {
   const game = GAMES[deck.gameType];
   const cardCount = deck.cards.length;
-  const bgGradient = gameModule.theme.gradient;
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient} relative`}>
-      <div className={`game-bg-pattern ${gameModule.theme.pattern}`} />
-      <LocaleSwitch deckLanguage={deck.language} className="absolute top-4 right-4 z-20" />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md relative z-10"
-      >
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 text-center">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4"
-          >
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-medium">{game.name}</span>
-          </motion.div>
+    <div data-game={deck.gameType} className="on-table feathers pt-safe flex min-h-dvh flex-col">
+      <header className="flex h-14 shrink-0 items-center justify-between px-2">
+        <Link
+          href={`/game/${deck.gameType}`}
+          aria-label={t("common.chooseDifferentDeck")}
+          className="inline-flex size-11 items-center justify-center rounded-full active:bg-foreground/10"
+        >
+          <ArrowLeft className="size-6" />
+        </Link>
+        <LocaleSwitch deckLanguage={deck.language} />
+      </header>
 
-          <h1 className="text-3xl font-bold font-display mb-2">{deck.name}</h1>
-          <p className="text-muted-foreground mb-8">{t("common.cardCount", { count: cardCount })}</p>
-
-          <DeckCredits deck={deck} t={t} className="mb-6" />
-
-          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-2xl mb-6">
-            <div className="flex items-center gap-2">
-              <Shuffle className="w-4 h-4 text-muted-foreground" />
-              <span className="text-sm font-medium">{t("play.start.shuffle")}</span>
-            </div>
-            <Switch
-              checked={shuffleEnabled}
-              onCheckedChange={onShuffleChange}
-            />
+      <div className="flex flex-1 flex-col px-4 pb-6">
+        {/* The deck, with an edge for every doubling of its card count. */}
+        <div
+          className="card-back relative flex min-h-[17rem] flex-1 flex-col justify-between overflow-hidden rounded-[1.75rem] p-6 [container-type:inline-size]"
+          style={{ boxShadow: deckDepthShadow(cardCount, 2) }}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <p className="text-lg font-bold">{game.name}</p>
+            <GameMark game={deck.gameType} className="size-12 shrink-0" />
           </div>
-
-          <div className="space-y-3">
-            {hasSavedSession ? (
-              <>
-                <Button
-                  className="w-full h-14 rounded-2xl text-base font-bold"
-                  onClick={onResume}
-                >
-                  <Play className="w-5 h-5 mr-2" />
-                  {t("play.start.resume")}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full h-12 rounded-2xl"
-                  onClick={onStart}
-                >
-                  {t("play.start.startNew")}
-                </Button>
-              </>
-            ) : (
-              <Button
-                className="w-full h-14 rounded-2xl text-base font-bold"
-                onClick={onStart}
-              >
-                <Play className="w-5 h-5 mr-2" />
-                {t("play.start.start")}
-              </Button>
-            )}
+          <div>
+            <h1 className="display-type" style={fitType(deck.name, { maxPx: 76, aspect: 0.7, measure: 80 })}>
+              {deck.name}
+            </h1>
+            <p className="mt-3 text-xl font-bold">{t("common.cardCount", { count: cardCount })}</p>
           </div>
-
-          <Button variant="ghost" className="w-full mt-4 rounded-full" asChild>
-            <Link href={`/game/${deck.gameType}`}>{t("common.chooseDifferentDeck")}</Link>
-          </Button>
         </div>
-      </motion.div>
+      </div>
+
+      <div className="pb-safe-3 grid gap-2.5 px-4">
+        <DeckCredits deck={deck} t={t} className="px-1" />
+
+        <label className="flex min-h-14 items-center justify-between px-1 text-lg font-bold">
+          {t("play.start.shuffle")}
+          <Switch checked={shuffleEnabled} onCheckedChange={onShuffleChange} />
+        </label>
+
+        {hasSavedSession ? (
+          <>
+            <ActionButton variant="primary" className="w-full" onClick={onResume}>
+              {t("play.start.resume")}
+            </ActionButton>
+            <Button variant="secondary" size="lg" onClick={onStart}>
+              {t("play.start.startNew")}
+            </Button>
+          </>
+        ) : (
+          <ActionButton variant="primary" className="w-full" onClick={onStart}>
+            {t("play.start.start")}
+          </ActionButton>
+        )}
+      </div>
     </div>
   );
 }
@@ -340,48 +316,41 @@ function CompleteScreen({
   onRestart: () => void;
   t: TranslateFn;
 }) {
-  const bgGradient = gameModule.theme.gradient;
+  const reduceMotion = useReducedMotion();
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b ${bgGradient} relative`}>
-      <div className={`game-bg-pattern ${gameModule.theme.pattern}`} />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md text-center relative z-10"
-      >
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8">
+    <div data-game={deck.gameType} className="on-table feathers pt-safe flex min-h-dvh flex-col overflow-hidden">
+      {/* The played cards, fanned out across the table. */}
+      <div aria-hidden className="relative h-64 shrink-0">
+        {[-2, -1, 0, 1, 2].map((slot) => (
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", delay: 0.2 }}
-            className="text-7xl mb-4"
-          >
-            🎉
-          </motion.div>
+            key={slot}
+            className="card-back absolute top-14 left-1/2 -ml-16 h-48 w-32 rounded-2xl border-4 border-paper shadow-[0_10px_24px_-8px_rgb(0_0_0/0.6)]"
+            initial={reduceMotion ? false : { rotate: 0, x: 0, y: 40 }}
+            animate={{ rotate: slot * 13, x: slot * 44, y: Math.abs(slot) * 12 }}
+            transition={{ type: "spring", stiffness: 180, damping: 15, delay: 0.1 }}
+          />
+        ))}
+      </div>
 
-          <h1 className="text-3xl font-bold font-display mb-2">
-            {t(gameModule.completeTitle ?? "play.complete.deckTitle")}
-          </h1>
-          <p className="text-muted-foreground mb-8">{deck.name}</p>
+      <div className="flex-1 px-6 pt-8">
+        <h1 className="display-type text-[3.75rem] [--type-width:84%]">
+          {t(gameModule.completeTitle ?? "play.complete.deckTitle")}
+        </h1>
+        <p className="mt-4 text-xl font-bold text-muted-foreground">{deck.name}</p>
+      </div>
 
-          <div className="space-y-3">
-            <Button
-              className="w-full h-14 rounded-2xl text-base font-bold"
-              onClick={onRestart}
-            >
-              <PartyPopper className="w-5 h-5 mr-2" />
-              {t("play.complete.playAgain")}
-            </Button>
-            <Button variant="outline" className="w-full h-12 rounded-2xl" asChild>
-              <Link href={`/game/${deck.gameType}`}>{t("common.chooseDifferentDeck")}</Link>
-            </Button>
-            <Button variant="ghost" className="w-full rounded-full" asChild>
-              <Link href="/">{t("common.backToHome")}</Link>
-            </Button>
-          </div>
-        </div>
-      </motion.div>
+      <div className="pb-safe-3 grid gap-2.5 px-4 pt-4">
+        <ActionButton variant="primary" className="w-full" onClick={onRestart}>
+          {t("play.complete.playAgain")}
+        </ActionButton>
+        <Button variant="secondary" size="lg" asChild>
+          <Link href={`/game/${deck.gameType}`}>{t("common.chooseDifferentDeck")}</Link>
+        </Button>
+        <Button variant="ghost" asChild>
+          <Link href="/">{t("common.backToHome")}</Link>
+        </Button>
+      </div>
     </div>
   );
 }

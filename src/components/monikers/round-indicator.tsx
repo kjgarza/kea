@@ -1,46 +1,23 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import { useLocale } from "@/lib/i18n";
 import type { MonikersRound } from "@/types/session";
 
 interface RoundIndicatorProps {
   round: MonikersRound;
+  language?: string;
 }
 
-const ROUND_INFO: Record<MonikersRound, { name: string; hint: string }> = {
-  1: {
-    name: "Describe It",
-    hint: "Use any words except the name",
-  },
-  2: {
-    name: "One Word",
-    hint: "Only ONE word allowed",
-  },
-  3: {
-    name: "Act It Out",
-    hint: "No words! Just actions",
-  },
-};
-
-export function RoundIndicator({ round }: RoundIndicatorProps) {
-  const info = ROUND_INFO[round];
+/** Which round this is and the rule for it, so nobody has to ask mid-turn. */
+export function RoundIndicator({ round, language }: RoundIndicatorProps) {
+  const { t } = useLocale(language);
 
   return (
-    <div className="flex flex-col items-center gap-1">
-      <Badge variant="secondary" className="text-sm">
-        Round {round}/3
-      </Badge>
-      <span className="text-xs font-medium text-primary">{info.name}</span>
-      <span className="text-xs text-muted-foreground">{info.hint}</span>
+    <div className="min-w-0">
+      <p className="font-display text-lg leading-none font-extrabold">{t("monikers.round", { round })}</p>
+      <p className="mt-1 truncate text-sm leading-none font-bold text-muted-foreground">
+        {t(`monikers.hint.${round}`)}
+      </p>
     </div>
-  );
-}
-
-export function RoundBadge({ round }: RoundIndicatorProps) {
-  return (
-    <Badge variant="secondary" className="gap-1">
-      <span>Round {round}</span>
-      <span className="text-muted-foreground">/ 3</span>
-    </Badge>
   );
 }

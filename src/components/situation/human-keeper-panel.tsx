@@ -168,14 +168,14 @@ function KeeperCribSheet({ card, puzzle, dispatch, t }: KeeperPanelProps) {
       </SituationPanel>
 
       <SituationPanel data-testid="situation-solution">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-situation mb-2">
+        <h2 className="text-sm font-semibold text-situation mb-2">
           {t("situation.keeper.solution")}
         </h2>
         <p className="text-lg leading-relaxed">{card.solution}</p>
       </SituationPanel>
 
       <SituationPanel>
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-situation">
+        <h2 className="text-sm font-semibold text-situation">
           {t("situation.keeper.facts", { found: found.size, total: card.keyFacts.length })}
         </h2>
         <p className="text-xs text-muted-foreground mb-3">{t("situation.keeper.factsHelp")}</p>

@@ -1,12 +1,12 @@
 "use client";
 
-import { Check } from "lucide-react";
 import type { Card } from "@/types/card";
 import type { StandardSessionState } from "@/types/session";
 import type { PlayViewProps } from "@/lib/game/modules/types";
 import type { StandardAction } from "@/lib/game/modules/standard-stack/logic";
+import { useLocale } from "@/lib/i18n";
 import { CardDisplay } from "../card-display";
-import { CardStage } from "../card-stage";
+import { CardStage, useCardFlight } from "../card-stage";
 import { ActionBar, ActionButton, PassButton } from "../action-bar";
 
 export type StandardPlayViewProps = PlayViewProps<
@@ -15,23 +15,32 @@ export type StandardPlayViewProps = PlayViewProps<
   StandardAction
 >;
 
-/** Charades and Just One: card plus Pass / Got it. */
-export function StandardPlayView({ currentCard, dispatch }: StandardPlayViewProps) {
+/** Charades and Just One: card plus Pass / Got it, by button or by swiping. */
+export function StandardPlayView({ deck, currentCard, dispatch }: StandardPlayViewProps) {
+  const { t } = useLocale(deck.language);
+  const { direction, fly } = useCardFlight();
   if (!currentCard) return null;
+
+  const onPass = () => dispatch({ type: "pass" });
+  const onGotIt = () => dispatch({ type: "next" });
 
   return (
     <>
-      <CardStage>
-        <CardDisplay card={currentCard} />
+      <CardStage
+        cardKey={currentCard.cardId}
+        direction={direction}
+        fly={fly}
+        onSwipeLeft={onPass}
+        onSwipeRight={onGotIt}
+        leftLabel={t("actions.pass")}
+        rightLabel={t("actions.gotIt")}
+      >
+        <CardDisplay card={currentCard} language={deck.language} />
       </CardStage>
       <ActionBar>
-        <PassButton onClick={() => dispatch({ type: "pass" })} />
-        <ActionButton
-          variant="primary"
-          onClick={() => dispatch({ type: "next" })}
-          icon={<Check className="h-5 w-5" />}
-        >
-          Got it!
+        <PassButton onClick={fly(-1, onPass)} language={deck.language} />
+        <ActionButton variant="primary" onClick={fly(1, onGotIt)}>
+          {t("actions.gotIt")}
         </ActionButton>
       </ActionBar>
     </>

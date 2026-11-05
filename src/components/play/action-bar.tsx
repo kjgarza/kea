@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { SkipForward } from "lucide-react";
+import { useLocale } from "@/lib/i18n";
 
 /**
  * Building blocks for the controls under the card. Each game's PlayView
@@ -16,7 +15,7 @@ interface ActionBarProps {
 
 export function ActionBar({ children, stacked = false }: ActionBarProps) {
   return (
-    <div className={`flex gap-3 p-4 pb-6 ${stacked ? "flex-col" : ""}`}>
+    <div className={`pb-safe-3 flex shrink-0 gap-2.5 px-4 pt-3 ${stacked ? "flex-col" : ""}`}>
       {children}
     </div>
   );
@@ -26,10 +25,17 @@ interface ActionButtonProps {
   variant: "pass" | "primary" | "secondary";
   onClick?: () => void;
   disabled?: boolean;
-  icon: React.ReactNode;
+  /** Optional: the words carry the button; only some actions need a symbol. */
+  icon?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
 }
+
+const VARIANTS = {
+  pass: "flex-1 bg-foreground/12 text-foreground active:bg-foreground/20 disabled:opacity-40",
+  primary: "flex-[1.7] bg-primary text-primary-foreground active:brightness-90 disabled:opacity-35",
+  secondary: "flex-1 bg-secondary text-secondary-foreground active:brightness-95",
+};
 
 export function ActionButton({
   variant,
@@ -39,38 +45,24 @@ export function ActionButton({
   children,
   className = "",
 }: ActionButtonProps) {
-  const baseStyles =
-    "flex-1 h-14 rounded-2xl font-bold text-base flex items-center justify-center gap-2 transition-colors";
-
-  const variants = {
-    pass: "bg-white/80 border-2 border-border text-foreground hover:bg-white disabled:opacity-50",
-    primary:
-      "bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 disabled:opacity-50 disabled:shadow-none",
-    secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-  };
-
   return (
-    <motion.button
-      whileHover={disabled ? {} : { scale: 1.02 }}
-      whileTap={disabled ? {} : { scale: 0.98 }}
+    <button
+      type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`${baseStyles} ${variants[variant]} ${className}`}
+      className={`font-display flex h-16 min-w-0 items-center justify-center gap-2 rounded-2xl text-xl font-extrabold transition-[transform,filter,background-color] active:scale-[0.97] ${VARIANTS[variant]} ${className}`}
     >
       {icon}
       {children}
-    </motion.button>
+    </button>
   );
 }
 
-export function PassButton({ onClick }: { onClick: () => void }) {
+export function PassButton({ onClick, language }: { onClick: () => void; language?: string }) {
+  const { t } = useLocale(language);
   return (
-    <ActionButton
-      variant="pass"
-      onClick={onClick}
-      icon={<SkipForward className="h-5 w-5" />}
-    >
-      Pass
+    <ActionButton variant="pass" onClick={onClick}>
+      {t("actions.pass")}
     </ActionButton>
   );
 }

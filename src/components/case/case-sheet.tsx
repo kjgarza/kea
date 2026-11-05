@@ -41,10 +41,7 @@ export function CaseSheet({
       <DialogContent
         data-testid={testId}
         className={cn(
-          "top-auto bottom-0 left-0 translate-x-0 translate-y-0 max-w-none sm:max-w-none w-full",
-          "rounded-t-3xl rounded-b-none border-x-0 border-b-0 p-0 gap-0",
-          "max-h-[88dvh] flex flex-col",
-          "data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom data-[state=open]:zoom-in-100 data-[state=closed]:zoom-out-100",
+          "p-0 pb-0 gap-0 flex flex-col overflow-hidden",
           className
         )}
       >
@@ -57,7 +54,7 @@ export function CaseSheet({
           <div className="mx-auto w-full max-w-lg">{children}</div>
         </div>
         {footer && (
-          <div className="border-t px-5 pt-3 pb-6">
+          <div className="border-t px-5 pt-3 pb-safe-3">
             <div className="mx-auto w-full max-w-lg space-y-2">{footer}</div>
           </div>
         )}

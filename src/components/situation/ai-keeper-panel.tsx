@@ -269,10 +269,10 @@ function AiPlay({ solo, ...props }: KeeperPanelProps & { solo: boolean }) {
 function SetupBlock({ card, t }: { card: SituationCard; t: TranslateFn }) {
   return (
     <div
-      className="rounded-3xl bg-gradient-to-br from-situation to-situation-dark text-white shadow-lg shadow-situation/20 p-5 space-y-2"
+      className="rounded-3xl bg-situation text-white p-5 space-y-2"
       data-testid="situation-card"
     >
-      <div className="text-xs font-semibold uppercase tracking-wide text-white/80">
+      <div className="text-xs font-semibold text-white/80">
         {t("situation.ai.setup")}
       </div>
       <h1 className="text-xl font-bold font-display">{card.title}</h1>
@@ -301,7 +301,7 @@ function FactProgress({
   return (
     <SituationPanel className="py-4">
       <div className="flex items-baseline justify-between gap-3 mb-2">
-        <span id="keeper-progress-label" className="text-sm font-semibold uppercase tracking-wide text-situation">
+        <span id="keeper-progress-label" className="text-sm font-semibold text-situation">
           {t("situation.ai.progress")}
         </span>
         <span className="text-sm font-semibold tabular-nums" data-testid="keeper-progress-value">
@@ -355,7 +355,7 @@ function Transcript({ puzzle, pending, language, onRetry, onDiscard, t }: Transc
 
   return (
     <SituationPanel className="space-y-3">
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-situation">
+      <h2 className="text-sm font-semibold text-situation">
         {t("situation.ai.transcript")}
       </h2>
       {entries.length === 0 && !pending && (
@@ -438,7 +438,7 @@ function Transcript({ puzzle, pending, language, onRetry, onDiscard, t }: Transc
           className="rounded-3xl border-2 border-situation/30 bg-situation/5 p-4 text-center"
           data-testid="keeper-latest"
         >
-          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <div className="text-xs font-semibold text-muted-foreground">
             {t("situation.ai.latest")}
           </div>
           <p className="mt-1 text-sm text-muted-foreground break-words">{last.q}</p>

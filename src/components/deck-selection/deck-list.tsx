@@ -15,7 +15,7 @@ export function DeckList({ gameType }: DeckListProps) {
   const [decks, setDecks] = useState<DeckMeta[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<boolean>(false);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   useEffect(() => {
     async function loadDecks() {
@@ -43,40 +43,46 @@ export function DeckList({ gameType }: DeckListProps) {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="flex flex-col gap-2 px-5 pt-3">
         {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className="h-40 rounded-lg bg-muted animate-pulse"
-          />
+          <div key={i} className="h-20 rounded-xl bg-muted animate-pulse" />
         ))}
       </div>
     );
   }
 
   if (error) {
-    return (
-      <div className="text-center py-10">
-        <p className="text-destructive">{t("decks.loadError")}</p>
-      </div>
-    );
+    return <p className="px-5 py-8 text-lg font-bold">{t("decks.loadError")}</p>;
   }
 
   if (decks.length === 0) {
-    return (
-      <div className="text-center py-10">
-        <p className="text-muted-foreground">
-          {t("decks.empty")}
-        </p>
-      </div>
-    );
+    return <p className="px-5 py-8 text-lg text-muted-foreground">{t("decks.empty")}</p>;
   }
 
+  // Decks in the language being used come first; the rest follow under a label.
+  const here = decks.filter((deck) => deck.language === locale);
+  const elsewhere = decks.filter((deck) => deck.language !== locale);
+  const otherLanguage = elsewhere[0]?.language === "es" ? "es" : "en";
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {decks.map((deck) => (
-        <DeckCard key={deck.deckId} deck={deck} />
-      ))}
+    <div className="pb-safe-5 pt-1">
+      <div className="divide-y divide-border">
+        {here.map((deck) => (
+          <DeckCard key={deck.deckId} deck={deck} />
+        ))}
+      </div>
+      {elsewhere.length > 0 && (
+        <>
+          <h3 className="px-5 pt-6 pb-1 text-lg font-bold text-muted-foreground">
+            {t("decks.otherLanguage", { language: t(`locale.name.${otherLanguage}`) })}
+          </h3>
+          <div className="divide-y divide-border">
+            {elsewhere.map((deck) => (
+              <DeckCard key={deck.deckId} deck={deck} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

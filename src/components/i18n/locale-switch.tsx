@@ -1,6 +1,5 @@
 "use client";
 
-import { Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocale, type Locale } from "@/lib/i18n";
 
@@ -30,11 +29,10 @@ export function LocaleSwitch({ deckLanguage, className }: LocaleSwitchProps) {
         other: t(`locale.name.${other}`),
       })}
       className={cn(
-        "inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/80 backdrop-blur-sm border shadow-sm text-xs font-semibold uppercase hover:bg-white transition-colors",
+        "inline-flex size-11 items-center justify-center rounded-full bg-foreground/10 text-sm font-bold uppercase transition-colors active:bg-foreground/20",
         className
       )}
     >
-      <Languages className="h-3.5 w-3.5" aria-hidden />
       {locale}
     </button>
   );
